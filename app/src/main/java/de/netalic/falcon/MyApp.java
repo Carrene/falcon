@@ -7,7 +7,9 @@ import io.realm.RealmConfiguration;
 
 public class MyApp extends Application {
 
-    static MyApp instance;
+    private static MyApp instance;
+    public static RealmConfiguration.Builder insensitiveRealmConfiguration;
+    public static RealmConfiguration.Builder sensitiveRealmConfiguration;
 
     public static MyApp getInstance() {
 
@@ -17,13 +19,13 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
 
-
         super.onCreate();
         instance = this;
         Realm.init(this);
-        RealmConfiguration configuration = new RealmConfiguration.Builder()
-                .schemaVersion(1)
-                .build();
-        Realm.setDefaultConfiguration(configuration);
+
+        insensitiveRealmConfiguration = new RealmConfiguration.Builder()
+                .schemaVersion(1);
+        sensitiveRealmConfiguration = new RealmConfiguration.Builder()
+                .schemaVersion(1);
     }
 }
