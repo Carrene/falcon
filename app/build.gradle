@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
-ext.versionMajor = 01
-ext.versionMinor = 00
-ext.versionPatch = 01
-ext.versionClassifier = "rc"
+ext.versionMajor = 00
+ext.versionMinor = 01
+ext.versionPatch = 00
+ext.versionClassifier = ""
 ext.isSnapshot = false
 ext.minimumSdkVersion = 17
-ext.minimumScreenSize=1
-ext.maximumScreenSize=4
+ext.minimumScreenSize = 1
+ext.maximumScreenSize = 4
 
 android {
     compileSdkVersion 27
@@ -30,7 +30,7 @@ android {
 }
 
 private Integer generateVersionCode() {
-    return ext.minimumSdkVersion * 100000000 +ext.minimumScreenSize*10000000+ext.maximumScreenSize*1000000+ ext.versionMajor * 10000 + ext.versionMinor * 100 + ext.versionPatch
+    return ext.minimumSdkVersion * 100000000 + ext.minimumScreenSize * 10000000 + ext.maximumScreenSize * 1000000 + ext.versionMajor * 10000 + ext.versionMinor * 100 + ext.versionPatch
 }
 
 private String generateVersionName() {
