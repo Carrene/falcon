@@ -1,14 +1,23 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
+ext.versionMajor = 01
+ext.versionMinor = 00
+ext.versionPatch = 01
+ext.versionClassifier = "rc"
+ext.isSnapshot = false
+ext.minimumSdkVersion = 17
+ext.minimumScreenSize=1
+ext.maximumScreenSize=4
+
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "de.netalic.falcon"
-        minSdkVersion 17
+        minSdkVersion project.ext.minimumSdkVersion
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode generateVersionCode()
+        versionName generateVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -18,6 +27,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+private Integer generateVersionCode() {
+    return ext.minimumSdkVersion * 100000000 +ext.minimumScreenSize*10000000+ext.maximumScreenSize*1000000+ ext.versionMajor * 10000 + ext.versionMinor * 100 + ext.versionPatch
+}
+
+private String generateVersionName() {
+    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}"
+    if (ext.versionClassifier == null) {
+        if (ext.isSnapshot) {
+            ext.versionClassifier = "SNAPSHOT"
+        }
+    }
+
+    if (ext.versionClassifier != null) {
+        versionName += "-" + ext.versionClassifier
+    }
+    return versionName
 }
 
 dependencies {
