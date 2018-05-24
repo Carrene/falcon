@@ -18,13 +18,49 @@ android {
         targetSdkVersion 27
         versionCode generateVersionCode()
         versionName generateVersionName()
+        flavorDimensions "default"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        releaseSign {
+            def propsFile = rootProject.file('keystore.properties')
+            if (propsFile.exists()) {
+                def props = new Properties()
+                props.load(new FileInputStream(propsFile))
+                storeFile = file(props['storeFile'])
+                storePassword = props['storePassword']
+                keyAlias = props['keyAlias']
+                keyPassword = props['keyPassword']
+            }
+        }
+    }
+
     buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+            resValue "string", "app_name", "falcon-debug"
+        }
         release {
+            signingConfig signingConfigs.releaseSign
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".release"
+            resValue "string", "app_name", "falcon-release"
+        }
+    }
+
+    productFlavors {
+
+        carrene_dev {
+            buildConfigField "String", "WEB_SERVICE_URL", "\"https://60.1.7.11\""
+            buildConfigField "Integer", "WEB_SERVICE_PORT", "443"
+            buildConfigField "Integer", "WEB_SERVICE_VERSION", "1"
+            applicationIdSuffix ".carrene"
+            resValue "string", "app_name", "InTouch Messenger"
         }
     }
 }
@@ -48,10 +84,14 @@ private String generateVersionName() {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:design:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.google.guava:guava:25.1-android'
 }

@@ -3,39 +3,39 @@ package de.netalic.falcon.repository.authentication;
 import de.netalic.falcon.model.Authentication;
 import de.netalic.falcon.repository.IRepository;
 
-public class AuthenticationRepository implements IRepository<Authentication> {
+public class AuthenticationRepository implements IAuthenticationRepository {
 
-    private static volatile AuthenticationRepository authenticationRepository;
-    private AuthenticationRealmRepository authenticationRealmRepository;
+    private static volatile AuthenticationRepository sAuthenticationRepository;
+    private AuthenticationRealmRepository mAuthenticationRealmRepository;
 
     private AuthenticationRepository() {
 
-        authenticationRealmRepository = new AuthenticationRealmRepository();
+        mAuthenticationRealmRepository = new AuthenticationRealmRepository();
 
     }
 
     public static AuthenticationRepository getInstance() {
 
-        if (authenticationRepository == null) {
+        if (sAuthenticationRepository == null) {
 
             synchronized (AuthenticationRepository.class) {
-                if (authenticationRepository == null) {
-                    authenticationRepository = new AuthenticationRepository();
+                if (sAuthenticationRepository == null) {
+                    sAuthenticationRepository = new AuthenticationRepository();
                 }
             }
         }
-        return authenticationRepository;
+        return sAuthenticationRepository;
     }
 
     @Override
     public void update(Authentication authentication) {
 
-        authenticationRealmRepository.update(authentication);
+        mAuthenticationRealmRepository.update(authentication);
     }
 
     @Override
     public Authentication get(int id) {
 
-        return authenticationRealmRepository.get(id);
+        return mAuthenticationRealmRepository.get(id);
     }
 }

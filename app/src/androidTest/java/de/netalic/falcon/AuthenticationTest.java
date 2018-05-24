@@ -16,7 +16,7 @@ public class AuthenticationTest {
     @BeforeClass
     public static void setup() {
 
-        MyApp.insensitiveRealmConfiguration = MyApp.insensitiveRealmConfiguration.inMemory();
+        MyApp.sInsensitiveRealmConfiguration = MyApp.sInsensitiveRealmConfiguration.inMemory();
     }
 
     @Test

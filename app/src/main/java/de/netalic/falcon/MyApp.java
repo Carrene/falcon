@@ -7,25 +7,25 @@ import io.realm.RealmConfiguration;
 
 public class MyApp extends Application {
 
-    private static MyApp instance;
-    public static RealmConfiguration.Builder insensitiveRealmConfiguration;
-    public static RealmConfiguration.Builder sensitiveRealmConfiguration;
+    private static MyApp sInstance;
+    public static RealmConfiguration.Builder sInsensitiveRealmConfiguration;
+    public static RealmConfiguration.Builder sSensitiveRealmConfiguration;
 
     public static MyApp getInstance() {
 
-        return instance;
+        return sInstance;
     }
 
     @Override
     public void onCreate() {
 
         super.onCreate();
-        instance = this;
+        sInstance = this;
         Realm.init(this);
 
-        insensitiveRealmConfiguration = new RealmConfiguration.Builder()
+        sInsensitiveRealmConfiguration = new RealmConfiguration.Builder()
                 .schemaVersion(1);
-        sensitiveRealmConfiguration = new RealmConfiguration.Builder()
+        sSensitiveRealmConfiguration = new RealmConfiguration.Builder()
                 .schemaVersion(1);
     }
 }
