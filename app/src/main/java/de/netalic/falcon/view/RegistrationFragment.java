@@ -29,12 +29,11 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
         return new RegistrationFragment();
     }
 
-
     @Override
     public void onResume() {
 
         super.onResume();
-//        mPresenter.start();
+        mPresenter.start();
     }
 
     @Override

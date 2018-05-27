@@ -1,6 +1,10 @@
 package de.netalic.falcon.repository.user;
 
+import org.jdeferred.Deferred;
+import org.jdeferred.impl.DeferredObject;
+
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.repository.Deal;
 
 public class UserRealmRepository implements IUserRepository {
 
@@ -15,9 +19,11 @@ public class UserRealmRepository implements IUserRepository {
         return null;
     }
 
-    @Override
-    public void login(User user) {
 
-        throw new UnsupportedOperationException();
+    @Override
+    public Deferred<Deal<User, UserSource>, Throwable, Object> login(User user) {
+
+        return new DeferredObject<Deal<User, UserSource>, Throwable, Object>().reject(new UnsupportedOperationException());
+
     }
 }

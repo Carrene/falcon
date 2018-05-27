@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.presenter.RegistrationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -26,5 +27,6 @@ public class RegistrationActivity extends AppCompatActivity {
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), registrationFragment, R.id.framelayout_registration_fragmentcontainer);
         }
 
+        new RegistrationPresenter(registrationFragment);
     }
 }

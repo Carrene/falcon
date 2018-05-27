@@ -37,5 +37,11 @@ public class AuthenticationTest {
         Assert.assertEquals(authentication.getAttemptsNumber(), 2);
         authentication.successAttempt();
         Assert.assertEquals(authentication.getAttemptsNumber(), 0);
+        authentication.failAttempt();
+        authentication.failAttempt();
+        authentication.failAttempt();
+        authentication.failAttempt();
+        authentication.failAttempt();
+        Assert.assertTrue(authentication.isLocked());
     }
 }
