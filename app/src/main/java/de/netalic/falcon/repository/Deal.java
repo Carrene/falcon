@@ -3,8 +3,11 @@ package de.netalic.falcon.repository;
 
 import retrofit2.Response;
 
-//T is model type
-//K is source type
+
+/**
+ * @param <T> This describes model type
+ * @param <K> This describes source type
+ */
 
 public class Deal<T, K> {
 

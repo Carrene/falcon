@@ -24,14 +24,10 @@ public class UserRestRepository implements IUserRepository {
         return null;
     }
 
-    //TODO: Add request with retrofit
-    //TODO: This method should return promise
-
     @Override
     public Deferred<Deal<User, UserSource>, Throwable, Object> login(User user) {
 
         Deferred<Deal<User, UserSource>, Throwable, Object> deferredObject = new DeferredObject<>();
-
         ApiClient.getService().claimDevice(user.calculateUdid(), user.getPhone()).enqueue(new Callback<User>() {
 
             @Override
