@@ -9,38 +9,48 @@ import java.security.NoSuchAlgorithmException;
 import de.netalic.falcon.MyApp;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.device.DeviceUtil;
 import nuesoft.helpdroid.util.Converter;
 
 public class User extends RealmObject {
 
     @PrimaryKey
-    private int id;
+    @RealmField(name = "Id")
+    private int mId;
+
     @SerializedName("phone")
-    private String phone;
-    private String email;
-    private double balance;
+    @RealmField(name = "Phone")
+    private String mPhone;
+
+    @RealmField(name = "Email")
+    private String mEmail;
+
+    @RealmField(name = "Balance")
+    private double mBalance;
+
+    @RealmField(name = "Udid")
     @SerializedName("udid")
-    private String udid;
+    private String mUdid;
 
     public String getPhone() {
 
-        return phone;
+        return mPhone;
     }
 
     public String getEmail() {
 
-        return email;
+        return mEmail;
     }
 
     public double getBalance() {
 
-        return balance;
+        return mBalance;
     }
 
     public String getUdid() {
 
-        return this.udid;
+        return this.mUdid;
     }
 
     public String calculateUdid() {
@@ -62,16 +72,16 @@ public class User extends RealmObject {
 
     public void setPhone(String phone) {
 
-        this.phone = phone;
+        this.mPhone = phone;
     }
 
     public void setEmail(String email) {
 
-        this.email = email;
+        this.mEmail = email;
     }
 
     public void setBalance(double balance) {
 
-        this.balance = balance;
+        this.mBalance = balance;
     }
 }

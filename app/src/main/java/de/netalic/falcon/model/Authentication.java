@@ -2,14 +2,19 @@ package de.netalic.falcon.model;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmField;
 
 public class Authentication extends RealmObject {
 
     @PrimaryKey
-    private int id = 1;
-    private int authenticationType;
-    private int attemptsNumber;
-    private int maxAttemptsNumber = 5;
+    @RealmField(name = "Id")
+    private int mId = 1;
+    @RealmField(name = "AuthenticationType")
+    private int mAuthenticationType;
+    @RealmField(name = "AttemptNumber")
+    private int mAttemptNumber;
+    @RealmField(name = "MaxAttemptNumber")
+    private int mMaxAttemptNumber = 5;
 
     public Authentication() {
 
@@ -17,32 +22,32 @@ public class Authentication extends RealmObject {
 
     public void setAuthenticationType(int authenticationType) {
 
-        this.authenticationType = authenticationType;
+        this.mAuthenticationType = authenticationType;
     }
 
     public void setAttemptsNumber(int attemptsNumber) {
 
-        this.attemptsNumber = attemptsNumber;
+        this.mAttemptNumber = attemptsNumber;
     }
 
     public int getAttemptsNumber() {
 
-        return this.attemptsNumber;
+        return this.mAttemptNumber;
     }
 
     public int getAuthenticationType() {
 
-        return this.authenticationType;
+        return this.mAuthenticationType;
     }
 
     public int getMaxAttemptsNumber() {
 
-        return this.maxAttemptsNumber;
+        return this.mMaxAttemptNumber;
     }
 
     public boolean isLocked() {
 
-        if (this.attemptsNumber >= this.maxAttemptsNumber) {
+        if (this.mAttemptNumber >= this.mMaxAttemptNumber) {
             return true;
         }
         return false;
@@ -50,11 +55,11 @@ public class Authentication extends RealmObject {
 
     public void failAttempt() {
 
-        this.attemptsNumber++;
+        this.mAttemptNumber++;
     }
 
     public void successAttempt() {
 
-        this.attemptsNumber = 0;
+        this.mAttemptNumber = 0;
     }
 }
