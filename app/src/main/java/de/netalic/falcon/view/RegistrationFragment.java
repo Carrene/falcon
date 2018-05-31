@@ -27,8 +27,8 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     private RegistrationContract.Presenter mPresenter;
     private CountryPicker mCountryPicker;
-    private Button btButton;
-    private EditText etEditText;
+    private Button mButtonChoose;
+    private EditText mEditTextCountry;
 
 
     @Nullable
@@ -36,10 +36,10 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_registration, container, false);
-        etEditText = root.findViewById(R.id.editText2);
-        btButton = root.findViewById(R.id.button3);
+        mEditTextCountry = root.findViewById(R.id.editText2);
+        mButtonChoose = root.findViewById(R.id.button3);
         setCountryPicker();
-        initListenre();
+        initListener();
         modifyCountryName();
         return root;
     }
@@ -69,31 +69,26 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     }
 
     public void setCountryPicker() {
-        mCountryPicker =
-                new CountryPicker.Builder().with(getContext())
-                        .listener(new OnCountryPickerListener() {
+        mCountryPicker = new CountryPicker.Builder()
+                .with(getContext())
+                .listener(new OnCountryPickerListener() {
                             @Override
                             public void onSelectCountry(Country country) {
-                                //DO something here
 
-                                etEditText.setText(country.getDialCode());
+                                mEditTextCountry.setText(country.getDialCode());
                             }
-                        })
-                        .build();
+                        }).build();
     }
 
-    public void initListenre() {
+    public void initListener() {
 
-        btButton.setOnClickListener(new View.OnClickListener() {
+        mButtonChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 mCountryPicker.showDialog(getFragmentManager());
-
-
             }
         });
-
     }
 
     private void modifyCountryName() {
@@ -104,8 +99,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
             Country country = countries.get(i);
             if (country.getDialCode().equals("+972")) {
                 continue;
-            }
-            if (country.getDialCode().equals("+970")) {
+            }if (country.getDialCode().equals("+970")) {
                 continue;
             }
             allCountryModified.add(country);
