@@ -12,6 +12,10 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @HTTP(method = "CLAIM", path = "devices", hasBody = true)
-    Call<User> claimDevice(@Field("udid") String udid, @Field("phone") String phone);
+    Call<User> claim(@Field("udid") String udid, @Field("phone") String phone);
+
+    @FormUrlEncoded
+    @HTTP(method = "BIND", path = "devices", hasBody = true)
+    Call<User> bind(@Field("udid") String udid, @Field("phone") String phone, @Field("deviceName") String deviceName, @Field("activationCode") String activationCode);
 
 }
