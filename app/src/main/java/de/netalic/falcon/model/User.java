@@ -8,6 +8,7 @@ import java.security.NoSuchAlgorithmException;
 
 import de.netalic.falcon.MyApp;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.device.DeviceUtil;
@@ -16,6 +17,7 @@ import nuesoft.helpdroid.util.Converter;
 public class User extends RealmObject {
 
     @PrimaryKey
+    @SerializedName("id")
     @RealmField(name = "Id")
     private int mId;
 
@@ -32,6 +34,25 @@ public class User extends RealmObject {
     @RealmField(name = "Udid")
     @SerializedName("udid")
     private String mUdid;
+
+    @SerializedName("deviceName")
+    private String mDeviceName;
+
+    @Ignore
+    @SerializedName("isActive")
+    boolean mIsActive;
+
+    @SerializedName("secret")
+    String mSecret;
+
+    @SerializedName("hmacSecret")
+    String mHmacSecret;
+
+    @SerializedName("token")
+    String mToken;
+
+    @SerializedName("isNewClient")
+    boolean isNewClient;
 
     public String getPhone() {
 

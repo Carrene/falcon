@@ -28,7 +28,7 @@ public class UserRestRepository implements IUserRepository {
     public Deferred<Deal<User, UserSource>, Throwable, Object> login(User user) {
 
         Deferred<Deal<User, UserSource>, Throwable, Object> deferredObject = new DeferredObject<>();
-        ApiClient.getService().claimDevice(user.calculateUdid(), user.getPhone()).enqueue(new Callback<User>() {
+        ApiClient.getService().claim(user.calculateUdid(), user.getPhone()).enqueue(new Callback<User>() {
 
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
