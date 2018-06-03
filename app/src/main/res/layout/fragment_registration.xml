@@ -1,23 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mask="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/registration_mainbackground">
 
 
-    <EditText
-        android:id="@+id/editText2"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinputlayout_registration_countrypicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margintop_registration_countrypicker"
+        >
+
+        <EditText
+            android:id="@+id/edittext_registration_countrypicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="true"
+            android:focusable="false"
+            android:inputType="number"
+            android:layout_marginStart="@dimen/marginstart_registration_countrypicker"
+            android:layout_marginEnd="@dimen/marginend_registration_countrypicker"
+
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinputlayout_registration_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/textinputlayout_registration_phonenumber"
+        android:layout_below="@+id/textinputlayout_registration_countrypicker"
+        >
+
+        <EditText
+            android:id="@+id/edittext_registration_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="3"
+            android:enabled="false"
+            android:textColor="@color/registration_bottomcodetextview"
+            android:layout_marginStart="@dimen/marginstart_registration_code"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <br.com.sapereaude.maskedEditText.MaskedEditText
+        xmlns:mask="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/edittext_registration_phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textinputlayout_registration_code"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/marginend_registration_phonenumber"
+        android:hint="XXXXXXXXXX"
+        android:inputType="phone"
+        app:keep_hint="true"
+        mask:allowed_chars="1234567890"
+        mask:mask="###-###-####"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"/>
+        />
 
-    <Button
-        android:id="@+id/button3"
+
+    <TextView
+        android:id="@+id/textview_registration_confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"/>
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/marginbottom_registration_confirmtext"
+        android:text="@string/registration_bottomtextview"
+        android:gravity="center"
+        android:textColor="@color/registration_bottomtextview"
+        />
 
+</RelativeLayout>

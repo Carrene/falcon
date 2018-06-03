@@ -2,14 +2,12 @@ package de.netalic.falcon.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.QuickContactBadge;
-import android.widget.Toast;
 
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
@@ -18,6 +16,7 @@ import com.mukesh.countrypicker.OnCountryPickerListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.sapereaude.maskedEditText.MaskedEditText;
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.RegistrationContract;
 
@@ -27,21 +26,25 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     private RegistrationContract.Presenter mPresenter;
     private CountryPicker mCountryPicker;
-    private Button mButtonChoose;
-    private EditText mEditTextCountry;
+    private TextInputLayout mTextInputLayout;
+    private EditText mEditTextCountryName;
+    private EditText mEditTextCountryCode;
+    private MaskedEditText mCountryPhoneNumber;
+    private View mroot;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_registration, container, false);
-        mEditTextCountry = root.findViewById(R.id.editText2);
-        mButtonChoose = root.findViewById(R.id.button3);
+        mroot = inflater.inflate(R.layout.fragment_registration, container, false);
+
+
+        initUiComponents();
         setCountryPicker();
         initListener();
         modifyCountryName();
-        return root;
+        return mroot;
     }
 
     public static RegistrationFragment newInstance() {
@@ -68,27 +71,30 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     }
 
-    public void setCountryPicker() {
+    private void setCountryPicker() {
         mCountryPicker = new CountryPicker.Builder()
                 .with(getContext())
                 .listener(new OnCountryPickerListener() {
-                            @Override
-                            public void onSelectCountry(Country country) {
+                    @Override
+                    public void onSelectCountry(Country country) {
 
-                                mEditTextCountry.setText(country.getDialCode());
-                            }
-                        }).build();
+                        mEditTextCountryName.setText(country.getName());
+                        mEditTextCountryCode.setText(country.getDialCode());
+                    }
+                }).build();
     }
 
-    public void initListener() {
+    private void initListener() {
 
-        mButtonChoose.setOnClickListener(new View.OnClickListener() {
+        mEditTextCountryName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 mCountryPicker.showDialog(getFragmentManager());
             }
         });
+
+
     }
 
     private void modifyCountryName() {
@@ -99,12 +105,24 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
             Country country = countries.get(i);
             if (country.getDialCode().equals("+972")) {
                 continue;
-            }if (country.getDialCode().equals("+970")) {
+            }
+            if (country.getDialCode().equals("+970")) {
                 continue;
             }
             allCountryModified.add(country);
         }
         mCountryPicker.setCountries(allCountryModified);
+    }
+
+    private void initUiComponents() {
+
+        mCountryPhoneNumber = mroot.findViewById(R.id.edittext_registration_phonenumber);
+        mTextInputLayout = mroot.findViewById(R.id.textinputlayout_registration_countrypicker);
+        mEditTextCountryName = mroot.findViewById(R.id.edittext_registration_countrypicker);
+        mEditTextCountryCode = mroot.findViewById(R.id.edittext_registration_code);
+        mCountryPhoneNumber = mroot.findViewById(R.id.edittext_registration_phonenumber);
+
+
     }
 
 }

@@ -1,9 +1,14 @@
 package de.netalic.falcon.view;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.RegistrationPresenter;
@@ -28,5 +33,6 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         new RegistrationPresenter(registrationFragment);
+
     }
 }
