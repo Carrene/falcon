@@ -8,5 +8,7 @@ import de.netalic.falcon.repository.IRepository;
 
 public interface IUserRepository extends IRepository<User> {
 
-    Deferred<Deal<User, UserSource>, Throwable, Object> login(User user);
+    Deferred<Deal<User, UserSource>, Throwable, Object> bind(User user);
+
+    Deferred<Deal<User, UserSource>, Throwable, Object> claim(User user);
 }

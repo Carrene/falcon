@@ -26,7 +26,7 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
             mRegistrationView.showPhoneNumberFormatError();
             return;
         }
-        UserRepository.getInstance().login(user);
+        UserRepository.getInstance().bind(user);
     }
 
     @Override

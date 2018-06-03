@@ -44,8 +44,14 @@ public class UserRepository implements IUserRepository {
 
 
     @Override
-    public Deferred<Deal<User, UserSource>, Throwable, Object> login(User user) {
+    public Deferred<Deal<User, UserSource>, Throwable, Object> bind(User user) {
 
-        return mUserRealmRepository.login(user);
+        return mUserRestRepository.bind(user);
+    }
+
+    @Override
+    public Deferred<Deal<User, UserSource>, Throwable, Object> claim(User user) {
+
+        return mUserRestRepository.claim(user);
     }
 }

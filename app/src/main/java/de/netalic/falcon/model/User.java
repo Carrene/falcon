@@ -54,6 +54,19 @@ public class User extends RealmObject {
     @SerializedName("isNewClient")
     boolean isNewClient;
 
+    @Ignore
+    String mActivationCode;
+
+    public void setActivationCode(String activationCode) {
+
+        this.mActivationCode = activationCode;
+    }
+
+    public String getActivationCode() {
+
+        return mActivationCode;
+    }
+
     public String getPhone() {
 
         return mPhone;
@@ -89,6 +102,16 @@ public class User extends RealmObject {
         byte[] digest = messageDigest.digest();
         String digestSecureId = Converter.bytesToHexString(digest);
         return digestSecureId;
+    }
+
+    public String getDeviceName() {
+
+        return this.mDeviceName;
+    }
+
+    public String calculateDeviceName() {
+
+        return DeviceUtil.getDeviceName();
     }
 
     public void setPhone(String phone) {

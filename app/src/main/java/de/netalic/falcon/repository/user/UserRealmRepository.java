@@ -21,9 +21,15 @@ public class UserRealmRepository implements IUserRepository {
 
 
     @Override
-    public Deferred<Deal<User, UserSource>, Throwable, Object> login(User user) {
+    public Deferred<Deal<User, UserSource>, Throwable, Object> bind(User user) {
 
         return new DeferredObject<Deal<User, UserSource>, Throwable, Object>().reject(new UnsupportedOperationException());
 
+    }
+
+    @Override
+    public Deferred<Deal<User, UserSource>, Throwable, Object> claim(User user) {
+
+        return null;
     }
 }
