@@ -8,7 +8,7 @@
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_registration"
+            android:id="@+id/toolbar_phoneconfirmation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -20,7 +20,7 @@
         android:layout_height="match_parent">
 
         <FrameLayout
-            android:id="@+id/framelayout_registration_fragmentcontainer"
+            android:id="@+id/framelayout_phoneconfirmation_fragmentcontainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

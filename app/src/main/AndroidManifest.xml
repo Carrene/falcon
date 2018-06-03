@@ -21,6 +21,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.RegistrationActivity"/>
+
+        <activity
+            android:name=".view.PhoneConfirmationActivity"
+            android:parentActivityName=".view.RegistrationActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.RegistrationActivity"/>
+        </activity>
     </application>
 
 </manifest>

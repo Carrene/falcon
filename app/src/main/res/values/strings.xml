@@ -1,3 +1,5 @@
 <resources>
     <string name="registration_menudone">Done</string>
+    <string name="phoneconfirmation_menudone">Done</string>
+
 </resources>
