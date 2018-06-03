@@ -1,3 +1,4 @@
 <resources>
     <string name="registration_bottomtextview">confirmation code will be sent to you</string>
+    <string name="registration_defultcountry">Select your country</string>
 </resources>
