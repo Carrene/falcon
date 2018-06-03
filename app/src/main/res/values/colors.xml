@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="registration_textviewbackground">#FFFFFF</color>
+    <color name="registration_bottomtextview">#000000</color>
+    <color name="registration_bottomcodetextview">#000000</color>
 </resources>

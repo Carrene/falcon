@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="edittext_registration_code">
+        <item name="android:colorAccent">#b8b9b9</item>
+        <item name="android:colorControlNormal">#b8b9b9</item>
+        <item name="android:colorControlActivated">#b8b9b9</item>
+        <item name="android:colorControlHighlight">#b8b9b9</item>
+
+    </style>
+</resources>

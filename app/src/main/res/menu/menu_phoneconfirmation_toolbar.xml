@@ -7,5 +7,4 @@
         android:icon="@drawable/all_done_24dp"
         android:title="@string/phoneconfirmation_menudone"
         app:showAsAction="always"/>
-
 </menu>

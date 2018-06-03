@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_registration_tikicon">25dp</dimen>
+    <dimen name="height_registration_tikicon">25dp</dimen>
+    <dimen name="marginEnd_registration_tikicon">20dp</dimen>
+    <dimen name="margintop_registration_tikicon">20dp</dimen>
+    <dimen name="width_registration_border">1dp</dimen>
+    <dimen name="margintop_registration_countrypicker">50dp</dimen>
+    <dimen name="width_registration_stroke">1dp</dimen>
+    <dimen name="marginstart_registration_countrypicker">40dp</dimen>
+    <dimen name="marginend_registration_countrypicker">40dp</dimen>
+    <dimen name="marginstart_registration_code">40dp</dimen>
+    <dimen name="marginend_registration_phonenumber">40dp</dimen>
+    <dimen name="margintop_registration_phonenumber">120dp</dimen>
+    <dimen name="marginbottom_registration_confirmtext">180dp</dimen>
+
+
+
+</resources>
