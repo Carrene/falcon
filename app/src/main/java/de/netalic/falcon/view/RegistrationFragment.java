@@ -3,7 +3,6 @@ package de.netalic.falcon.view;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,13 +14,13 @@ import android.widget.EditText;
 
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
-import com.mukesh.countrypicker.OnCountryPickerListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sapereaude.maskedEditText.MaskedEditText;
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RegistrationContract;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -32,6 +31,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     private CountryPicker mCountryPicker;
     private EditText mEditTextCountryName;
     private EditText mEditTextCountryCode;
+    private MaskedEditText mEditTextPhone;
     private View mRoot;
 
     @Nullable
@@ -39,11 +39,10 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_registration, container, false);
-        setHasOptionsMenu(true);
         initUiComponents();
         setCountryPicker();
         initListener();
-        modifyCountryName();
+        modifyCountriesName();
         return mRoot;
     }
 
@@ -59,17 +58,10 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
         mPresenter.start();
     }
 
-
-    @Override
-    public void showPhoneNumberFormatError() {
-        //TODO: Add error to text input layout of phone number
-    }
-
     @Override
     public void setPresenter(RegistrationContract.Presenter presenter) {
 
         mPresenter = checkNotNull(presenter);
-
     }
 
     @Override
@@ -83,8 +75,12 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
         switch (item.getItemId()) {
             case R.id.menu_registration_done: {
-                //TODO: pass user to presenter based on input
-//                mPresenter.register(user);
+                if (mEditTextCountryCode.getText().toString().equals("")) {
+                    showCountryCodeError();
+                    break;
+                }
+                User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
+                mPresenter.claim(user);
             }
         }
         return true;
@@ -93,28 +89,28 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     private void setCountryPicker() {
 
         mCountryPicker = new CountryPicker.Builder()
-                .with(getContext())
+                .with(checkNotNull(getContext()))
                 .listener(country -> {
                     mEditTextCountryName.setText(country.getName());
                     mEditTextCountryCode.setText(country.getDialCode());
                 }).build();
     }
 
-    private void initListener() {
-
-        mEditTextCountryName.setOnClickListener(v -> mCountryPicker.showDialog(getFragmentManager()));
+    private void showCountryCodeError() {
+        //TODO: Milad display error on country code picker input layout error
     }
 
-    private void modifyCountryName() {
+    private void initListener() {
+
+        mEditTextCountryName.setOnClickListener(v -> mCountryPicker.showDialog(checkNotNull(getFragmentManager())));
+    }
+
+    private void modifyCountriesName() {
 
         List<Country> countries = mCountryPicker.getAllCountries();
         List<Country> allCountryModified = new ArrayList<>();
-        for (int i = 0; i < countries.size(); i++) {
-            Country country = countries.get(i);
-            if (country.getDialCode().equals("+972")) {
-                continue;
-            }
-            if (country.getDialCode().equals("+970")) {
+        for (Country country : countries) {
+            if (country.getDialCode().equals("+972") || country.getDialCode().equals("+970")) {
                 continue;
             }
             allCountryModified.add(country);
@@ -126,5 +122,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
         mEditTextCountryName = mRoot.findViewById(R.id.edittext_registration_countrypicker);
         mEditTextCountryCode = mRoot.findViewById(R.id.edittext_registration_code);
+        mEditTextPhone = mRoot.findViewById(R.id.edittext_registration_phonenumber);
+        setHasOptionsMenu(true);
     }
 }

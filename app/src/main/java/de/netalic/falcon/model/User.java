@@ -57,6 +57,14 @@ public class User extends RealmObject {
     @Ignore
     String mActivationCode;
 
+    public User(){
+
+    }
+    public User(String phone) {
+
+        mPhone = phone;
+    }
+
     public void setActivationCode(String activationCode) {
 
         this.mActivationCode = activationCode;

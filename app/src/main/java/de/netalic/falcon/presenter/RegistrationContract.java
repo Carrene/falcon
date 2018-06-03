@@ -6,10 +6,10 @@ import de.netalic.falcon.view.BaseView;
 public interface RegistrationContract {
 
     interface View extends BaseView<Presenter> {
-        void showPhoneNumberFormatError();
+
     }
 
     interface Presenter extends BasePresenter {
-        void register(User user);
+        void claim(User user);
     }
 }

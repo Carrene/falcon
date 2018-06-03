@@ -69,7 +69,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
         switch (item.getItemId()) {
             case R.id.menu_phoneconfirmation_done: {
                 //TODO: pass user to presenter based on input
-//                mPresenter.register(user);
+//                mPresenter.claim(user);
             }
 
 
