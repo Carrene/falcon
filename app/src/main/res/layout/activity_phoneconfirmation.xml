@@ -11,6 +11,9 @@
             android:id="@+id/toolbar_phoneconfirmation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/Toolbar"
             />
 
     </android.support.design.widget.AppBarLayout>

@@ -1,5 +1,7 @@
 <resources>
     <string name="registration_menudone">Done</string>
     <string name="phoneconfirmation_menudone">Done</string>
+    <string name="registration_toolbartitle">Input phone</string>
+    <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
 
 </resources>

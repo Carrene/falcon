@@ -31,6 +31,7 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
         if (mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);
             mActionBar.setDisplayShowHomeEnabled(true);
+            mActionBar.setTitle(getString(R.string.phoneconfirmation_toolbartitle));
         }
 
         PhoneConfirmationFragment phoneConfirmationFragment = (PhoneConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_phoneconfirmation_fragmentcontainer);
