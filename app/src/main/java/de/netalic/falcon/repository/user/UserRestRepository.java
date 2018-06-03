@@ -28,7 +28,7 @@ public class UserRestRepository implements IUserRepository {
     public Deferred<Deal<User, UserSource>, Throwable, Object> bind(User user) {
 
         Deferred<Deal<User, UserSource>, Throwable, Object> deferredObject = new DeferredObject<>();
-        ApiClient.getService().bind(user.calculateUdid(), user.getPhone(), user.calculateDeviceName(), user.getActivationCode()).enqueue(new Callback<User>() {
+        ApiClient.getService().bind(user.getUdid(), user.getPhone(), user.calculateDeviceName(), user.getActivationCode()).enqueue(new Callback<User>() {
 
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -50,7 +50,7 @@ public class UserRestRepository implements IUserRepository {
     public Deferred<Deal<User, UserSource>, Throwable, Object> claim(User user) {
 
         Deferred<Deal<User, UserSource>, Throwable, Object> deferredObject = new DeferredObject<>();
-        ApiClient.getService().claim(user.calculateUdid(), user.getPhone()).enqueue(new Callback<User>() {
+        ApiClient.getService().claim(user.getUdid(), user.getPhone()).enqueue(new Callback<User>() {
 
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

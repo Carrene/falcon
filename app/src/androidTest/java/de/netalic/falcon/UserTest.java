@@ -21,11 +21,9 @@ public class UserTest {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         User user = new User();
         user.setPhone("+989377426996");
-        String udid = user.calculateUdid();
         UserRepository.getInstance().claim(user).promise().done(result -> {
 
             Assert.assertEquals(result.getModel().getPhone(), "+989377426996");
-            Assert.assertEquals(result.getModel().getUdid(), udid);
             countDownLatch.countDown();
 
         }).fail(result -> {
@@ -47,12 +45,9 @@ public class UserTest {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         User user = new User();
         user.setPhone("+989377426996");
-        user.activationCode = "884532";
-        String udid = user.calculateUdid();
         UserRepository.getInstance().bind(user).promise().done(result -> {
 
             Assert.assertEquals(user.getPhone(), "+989377426996");
-            Assert.assertEquals(user.getUdid(), udid);
             countDownLatch.countDown();
 
 

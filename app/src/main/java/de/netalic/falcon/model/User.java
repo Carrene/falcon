@@ -31,7 +31,7 @@ public class User extends RealmObject {
     @RealmField(name = "Balance")
     private double mBalance;
 
-    @RealmField(name = "Udid")
+    @Ignore
     @SerializedName("udid")
     private String mUdid;
 
@@ -57,9 +57,10 @@ public class User extends RealmObject {
     @Ignore
     String mActivationCode;
 
-    public User(){
+    public User() {
 
     }
+
     public User(String phone) {
 
         mPhone = phone;
@@ -91,11 +92,6 @@ public class User extends RealmObject {
     }
 
     public String getUdid() {
-
-        return this.mUdid;
-    }
-
-    public String calculateUdid() {
 
         MessageDigest messageDigest = null;
         try {

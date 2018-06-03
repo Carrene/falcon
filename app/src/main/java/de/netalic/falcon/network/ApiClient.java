@@ -24,8 +24,8 @@ public class ApiClient {
 
             OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();
             okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
-            ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getInstance()));
-            okHttpClient.cookieJar(cookieJar);
+//            ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getInstance()));
+//            okHttpClient.cookieJar(cookieJar);
             sRetrofit = new Retrofit.Builder().baseUrl(baseURL)
                     .client(okHttpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())
@@ -37,9 +37,16 @@ public class ApiClient {
     public static ApiInterface getService() {
 
         if (sApi == null) {
-            String baseURL = String.format("%s:%s/apiv%s/", BuildConfig.WEB_SERVICE_URL, BuildConfig.WEB_SERVICE_PORT, BuildConfig.WEB_SERVICE_VERSION);
-            sApi = getClient(baseURL).create(ApiInterface.class);
+
+            sApi = getClient(getApiAddress()).create(ApiInterface.class);
         }
         return sApi;
     }
+
+    public static String getApiAddress() {
+
+        return String.format("%s:%s/apiv%s/", BuildConfig.WEB_SERVICE_URL, BuildConfig.WEB_SERVICE_PORT, BuildConfig.WEB_SERVICE_VERSION);
+    }
+
+
 }
