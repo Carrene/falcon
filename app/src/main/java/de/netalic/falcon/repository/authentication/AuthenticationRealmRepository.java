@@ -16,21 +16,21 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
     }
 
-    @Override
-    public void update(Authentication authentication) {
-
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(authentication);
-        mRealm.commitTransaction();
-    }
-
-    @Override
-    public Authentication get(int id) {
-
-        Authentication authentication = mRealm.where(Authentication.class).equalTo("id", id).findFirst();
-        if (authentication == null) {
-            return null;
-        }
-        return mRealm.copyFromRealm(authentication);
-    }
+//    @Override
+//    public void update(Authentication authentication) {
+//
+//        mRealm.beginTransaction();
+//        mRealm.copyToRealmOrUpdate(authentication);
+//        mRealm.commitTransaction();
+//    }
+//
+//    @Override
+//    public Authentication get(int id) {
+//
+//        Authentication authentication = mRealm.where(Authentication.class).equalTo("id", id).findFirst();
+//        if (authentication == null) {
+//            return null;
+//        }
+//        return mRealm.copyFromRealm(authentication);
+//    }
 }

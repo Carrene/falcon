@@ -2,7 +2,9 @@ package de.netalic.falcon.repository;
 
 public interface IRepository<T> {
 
-    void update(T t);
+    interface CallRepository<T> {
 
-    T get(int id);
+        void onDone(Deal<T> deal);
+
+    }
 }

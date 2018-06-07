@@ -1,35 +1,21 @@
 package de.netalic.falcon.repository.user;
 
-import org.jdeferred.Deferred;
-import org.jdeferred.impl.DeferredObject;
-
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.repository.Deal;
+import de.netalic.falcon.repository.IRepository;
 
 public class UserRealmRepository implements IUserRepository {
-
     @Override
-    public void update(User user) {
+    public void bind(User user, CallRepository<User> callRepository) {
+
+        callRepository.onDone(new Deal<>(null, null, new UnsupportedOperationException()));
 
     }
 
     @Override
-    public User get(int id) {
+    public void claim(User user, CallRepository<User> callRepository) {
 
-        return null;
-    }
+        callRepository.onDone(new Deal<>(null, null, new UnsupportedOperationException()));
 
-
-    @Override
-    public Deferred<Deal<User, UserSource>, Throwable, Object> bind(User user) {
-
-        return new DeferredObject<Deal<User, UserSource>, Throwable, Object>().reject(new UnsupportedOperationException());
-
-    }
-
-    @Override
-    public Deferred<Deal<User, UserSource>, Throwable, Object> claim(User user) {
-
-        return null;
     }
 }

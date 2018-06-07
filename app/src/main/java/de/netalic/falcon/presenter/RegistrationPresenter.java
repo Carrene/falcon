@@ -27,17 +27,17 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
     @Override
     public void claim(User user) {
 
-        UserRepository.getInstance().claim(user).promise().then(new DoneCallback<Deal<User, UserSource>>() {
-            @Override
-            public void onDone(Deal<User, UserSource> result) {
-
-            }
-        }).fail(new FailCallback<Throwable>() {
-            @Override
-            public void onFail(Throwable result) {
-
-            }
-        });
+//        UserRepository.getInstance().claim(user).promise().then(new DoneCallback<Deal<User, UserSource>>() {
+//            @Override
+//            public void onDone(Deal<User, UserSource> result) {
+//
+//            }
+//        }).fail(new FailCallback<Throwable>() {
+//            @Override
+//            public void onFail(Throwable result) {
+//
+//            }
+//        });
     }
 
     @Override

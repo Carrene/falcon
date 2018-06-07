@@ -27,15 +27,15 @@ public class AuthenticationRepository implements IAuthenticationRepository {
         return sAuthenticationRepository;
     }
 
-    @Override
-    public void update(Authentication authentication) {
-
-        mAuthenticationRealmRepository.update(authentication);
-    }
-
-    @Override
-    public Authentication get(int id) {
-
-        return mAuthenticationRealmRepository.get(id);
-    }
+//    @Override
+//    public void update(Authentication authentication) {
+//
+//        mAuthenticationRealmRepository.update(authentication);
+//    }
+//
+//    @Override
+//    public Authentication get(int id) {
+//
+//        return mAuthenticationRealmRepository.get(id);
+//    }
 }

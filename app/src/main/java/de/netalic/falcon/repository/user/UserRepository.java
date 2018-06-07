@@ -1,9 +1,6 @@
 package de.netalic.falcon.repository.user;
 
-import org.jdeferred.Deferred;
-
 import de.netalic.falcon.model.User;
-import de.netalic.falcon.repository.Deal;
 
 public class UserRepository implements IUserRepository {
 
@@ -32,26 +29,15 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public void update(User user) {
+    public void bind(User user, CallRepository<User> callRepository) {
 
+        mUserRestRepository.bind(user, callRepository);
     }
 
     @Override
-    public User get(int id) {
+    public void claim(User user, CallRepository<User> callRepository) {
 
-        return null;
-    }
+        mUserRestRepository.claim(user, callRepository);
 
-
-    @Override
-    public Deferred<Deal<User, UserSource>, Throwable, Object> bind(User user) {
-
-        return mUserRestRepository.bind(user);
-    }
-
-    @Override
-    public Deferred<Deal<User, UserSource>, Throwable, Object> claim(User user) {
-
-        return mUserRestRepository.claim(user);
     }
 }

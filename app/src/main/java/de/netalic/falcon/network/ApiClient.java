@@ -1,14 +1,8 @@
 package de.netalic.falcon.network;
 
-import com.franmontiel.persistentcookiejar.ClearableCookieJar;
-import com.franmontiel.persistentcookiejar.PersistentCookieJar;
-import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
-import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-
 import java.util.concurrent.TimeUnit;
 
 import de.netalic.falcon.BuildConfig;
-import de.netalic.falcon.MyApp;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,6 +11,7 @@ public class ApiClient {
 
     private static Retrofit sRetrofit = null;
     private static ApiInterface sApi;
+    public static String sUrl;
 
     private static Retrofit getClient(String baseURL) {
 
@@ -38,15 +33,17 @@ public class ApiClient {
 
         if (sApi == null) {
 
-            sApi = getClient(getApiAddress()).create(ApiInterface.class);
+            sApi = getClient(getUrl()).create(ApiInterface.class);
         }
         return sApi;
     }
 
-    public static String getApiAddress() {
+    public static String getUrl() {
 
-        return String.format("%s:%s/apiv%s/", BuildConfig.WEB_SERVICE_URL, BuildConfig.WEB_SERVICE_PORT, BuildConfig.WEB_SERVICE_VERSION);
+        if (sUrl == null) {
+            return String.format("%s:%s/apiv%s/", BuildConfig.WEB_SERVICE_URL, BuildConfig.WEB_SERVICE_PORT, BuildConfig.WEB_SERVICE_VERSION);
+
+        }
+        return sUrl;
     }
-
-
 }
