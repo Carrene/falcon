@@ -13,6 +13,16 @@
     <dimen name="marginend_registration_phonenumber">40dp</dimen>
     <dimen name="margintop_registration_phonenumber">120dp</dimen>
     <dimen name="marginbottom_registration_confirmtext">180dp</dimen>
+    <dimen name="margintop_phoneconfirmation_userphone">100dp</dimen>
+    <dimen name="textsize_phoneconfirmation_userphone">22sp</dimen>
+    <dimen name="margintop_phoneconfirmation_header1">40dp</dimen>
+    <dimen name="textsize_phoneconfirmation_header1">16sp</dimen>
+    <dimen name="marginend_phoneconfirmation_edittext">30dp</dimen>
+    <dimen name="marginstart_phoneconfirmation_edittext">30dp</dimen>
+    <dimen name="margintop_phoneconfirmation_resendtext">40dp</dimen>
+    <dimen name="textsize_phoneconfirmation_resendtext">16sp</dimen>
+    <dimen name="margintop_phoneconfirmation_changenumber">40dp</dimen>
+    <dimen name="textsize_phoneconfirmation_changenumber">16sp</dimen>
 
 
 

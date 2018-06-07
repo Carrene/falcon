@@ -5,4 +5,8 @@
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="registration_bottomtextview">confirmation code will be sent to you</string>
     <string name="registration_defultcountry">Select your country</string>
+    <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
+    <string name="phoneconfirmation_entertheverificationhere">"Enter the verification code here"</string>
+    <string name="phoneconfirmation_timer">"(02:00)"</string>
+    <string name="phoneconfirmation_changenumber">"Change number"</string>
 </resources>
