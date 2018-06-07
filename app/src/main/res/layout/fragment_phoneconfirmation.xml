@@ -30,8 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_phoneconfirmation_header1"
-        android:layout_centerHorizontal="true"
-        >
+        android:layout_centerHorizontal="true">
 
         <EditText
             android:id="@+id/edittext_phoneconfirmation_receivecode"
@@ -39,8 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/marginend_phoneconfirmation_edittext"
             android:layout_marginStart="@dimen/marginstart_phoneconfirmation_edittext"
-            android:ems="10"
-            />
+            android:ems="10" />
 
     </android.support.design.widget.TextInputLayout>
 
