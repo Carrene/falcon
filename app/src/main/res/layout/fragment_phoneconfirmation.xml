@@ -21,7 +21,7 @@
         android:layout_below="@+id/textview_phoneconfirmation_number"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_header1"
-        android:text="Enter the verification code here"
+        android:text="@string/phoneconfirmation_entertheverificationhere"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_phoneconfirmation_header1" />
 
@@ -30,7 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_phoneconfirmation_header1"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        >
 
         <EditText
             android:id="@+id/edittext_phoneconfirmation_receivecode"
@@ -38,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/marginend_phoneconfirmation_edittext"
             android:layout_marginStart="@dimen/marginstart_phoneconfirmation_edittext"
-            android:ems="10" />
+            android:ems="10"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -49,7 +51,7 @@
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext"
-        android:text="Resend(01:00)"
+        android:text="@string/phoneconfirmation_timer"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_phoneconfirmation_resendtext" />
 
@@ -60,7 +62,7 @@
         android:layout_below="@+id/textview_phoneconfirmation_timer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_changenumber"
-        android:text="Change number"
+        android:text="@string/phoneconfirmation_changenumber"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_phoneconfirmation_changenumber" />
 
