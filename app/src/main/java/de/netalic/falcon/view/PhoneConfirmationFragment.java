@@ -22,9 +22,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class PhoneConfirmationFragment extends Fragment implements PhoneConfirmationContract.View {
 
     private PhoneConfirmationContract.Presenter mPresenter;
-    //TODO: Milad why this variable is in class scope not method scope
+    //TODO:1 Milad why this variable is in class scope not method scope
     private CountDownTimer mCountDownTimer;
-    //TODO: Milad name this variable completely mTextViewTimer
+    //TODO:2 Milad name this variable completely mTextViewTimer
     private TextView mTextTimer;
     private View mRoot;
 
@@ -91,12 +91,12 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     }
 
-    //TODO: Milad call bind from repository when user click on tick icon, Get help from UserRepositoryTest
+    //TODO:6 Milad call bind from repository when user click on tick icon, Get help from UserRepositoryTest
     private void bind() {
 
     }
 
-    //TODO: Milad Restart counter when user click resend item
+    //TODO:3 Milad Restart counter when user click resend item
 
     private void setTimer() {
 
@@ -104,7 +104,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             @Override
             public void onTick(long millisUntilFinished) {
 
-                //TODO: Milad Try to implement it better with string format for XX:XX. Implement it as clean as possible
+                //TODO:4 Milad Try to implement it better with string format for XX:XX. Implement it as clean as possible
 
                 int minutes = (int) millisUntilFinished / 60000;
                 int seconds = (int) millisUntilFinished % 60000 / 1000;
