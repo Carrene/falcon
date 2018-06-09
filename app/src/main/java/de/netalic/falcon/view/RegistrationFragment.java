@@ -100,6 +100,11 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
         //TODO: Milad display error on country code picker input layout error
     }
 
+    //TODO: Milad call claim from repository when user click on tick icon, Get help from UserRepositoryTest
+    private void claim() {
+
+    }
+
     private void initListener() {
 
         mEditTextCountryName.setOnClickListener(v -> mCountryPicker.showDialog(checkNotNull(getFragmentManager())));
