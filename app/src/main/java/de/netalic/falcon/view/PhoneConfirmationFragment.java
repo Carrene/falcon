@@ -91,7 +91,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     }
 
-    //TODO:6 Milad call bind from repository when user click on tick icon, Get help from UserRepositoryTest
+    //TODO:6 Milad call bind from repository when user click on tick icon, Get help from UserRepositoryTest,call from presenter
     private void bind() {
 
     }
