@@ -41,7 +41,7 @@
             android:layout_marginStart="@dimen/marginstart_registration_code"
             android:ems="3"
             android:enabled="false"
-            android:textColor="@color/registration_bottomcodetextview"/>
+            android:textColor="@color/black"/>
     </android.support.design.widget.TextInputLayout>
 
     <br.com.sapereaude.maskedEditText.MaskedEditText
@@ -67,6 +67,6 @@
         android:layout_marginBottom="@dimen/marginbottom_registration_confirmtext"
         android:gravity="center"
         android:text="@string/registration_bottomtextview"
-        android:textColor="@color/registration_bottomtextview"/>
+        android:textColor="@color/black"/>
 
 </RelativeLayout>
