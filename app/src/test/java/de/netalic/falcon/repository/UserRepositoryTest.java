@@ -2,9 +2,9 @@ package de.netalic.falcon.repository;
 
 import android.provider.Settings;
 
-import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -36,22 +36,12 @@ public class UserRepositoryTest {
     private static MockWebServer sMockWebServer;
     private User mUser;
     @Mock
-    MyApp myApp;
+    private MyApp mMyApp;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
 
-        MockitoAnnotations.initMocks(this);
-
-        PowerMockito.mockStatic(Settings.Secure.class);
-        PowerMockito.mockStatic(MyApp.class);
-        PowerMockito.mockStatic(DeviceUtil.class);
-
-        Mockito.when(MyApp.getInstance()).thenReturn(myApp);
-        Mockito.when(DeviceUtil.getSecureId(myApp)).thenReturn("123456");
-        Mockito.when(DeviceUtil.getDeviceName()).thenReturn("SM-12345678");
-
-        mUserRepository = UserRepository.getInstance();
+        MockitoAnnotations.initMocks(UserRepository.class);
         sMockWebServer = new MockWebServer();
         try {
             sMockWebServer.start(0);
@@ -59,11 +49,20 @@ public class UserRepositoryTest {
             e.printStackTrace();
             Assert.fail("Unable to start server");
         }
-        ApiClient.sUrl = sMockWebServer.url("/").toString();
+        ApiClient.sTestUrl = sMockWebServer.url("/").toString();
     }
 
     @Test
     public void testClaimUser_200Response() {
+
+        PowerMockito.mockStatic(Settings.Secure.class);
+        PowerMockito.mockStatic(MyApp.class);
+        PowerMockito.mockStatic(DeviceUtil.class);
+        Mockito.when(MyApp.getInstance()).thenReturn(mMyApp);
+        Mockito.when(DeviceUtil.getSecureId(mMyApp)).thenReturn("123456");
+        Mockito.when(DeviceUtil.getDeviceName()).thenReturn("SM-12345678");
+
+        mUserRepository = UserRepository.getInstance();
 
         CountDownLatch countDownLatch = new CountDownLatch(1);
         String json = "{\"phone\":\"989122451075\",\"udid\":\"7C4A8D09CA3762AF61E59520943DC26494F8941B\"}";
@@ -88,6 +87,15 @@ public class UserRepositoryTest {
 
     @Test
     public void testBindUser_200Response() {
+
+        PowerMockito.mockStatic(Settings.Secure.class);
+        PowerMockito.mockStatic(MyApp.class);
+        PowerMockito.mockStatic(DeviceUtil.class);
+        Mockito.when(MyApp.getInstance()).thenReturn(mMyApp);
+        Mockito.when(DeviceUtil.getSecureId(mMyApp)).thenReturn("123456");
+        Mockito.when(DeviceUtil.getDeviceName()).thenReturn("SM-12345678");
+
+        mUserRepository = UserRepository.getInstance();
 
         String json = "{\"phone\":989122451075,\"udid\":\"2b6f0cc904d137be2e1730235f5664094b831186\",\"deviceName\":\"SM-12345678\",\"createdAt\":\"2018-05-29T17:52:48.414538Z\",\"type\":\"client\",\"hmacSecret\":\"4FSEfaboM2ExMvY8zHuj5wxabsdhX0xenqvpWAeKIQs=\",\"secret\":\"hKwi8TZzULSunXWzVoAFl6AxG9qVgopToGONaGtM31g=\",\"id\":1,\"isActive\":false,\"token\":\"eyJhbGciOiJIUzI1NiIsImlhdCI6MTUyNzYwMDE3MCwiZXhwIjoxNTI3Njg2NTcwfQ.eyJpZCI6MSwicGhvbmUiOjk4OTEyMjQ1MTA3NSwicm9sZXMiOlsiY2xpZW50Il0sInNlc3Npb25JZCI6ImI4Y2NlY2ZlLTc2NDctNDlhYy1iYjU1LWQ2MDc5YzhjYThiZCJ9.Rm7pays5ZfryMSt0-fq4mAIvf2iAVcs2WC3n4TEUkDY\",\"isNewClient\":false}";
 
@@ -114,8 +122,8 @@ public class UserRepositoryTest {
         }
     }
 
-    @After
-    public void shutdown() {
+    @AfterClass
+    public static void shutdown() {
 
         try {
             if (sMockWebServer != null)
