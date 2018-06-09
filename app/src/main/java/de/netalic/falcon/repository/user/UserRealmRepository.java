@@ -22,10 +22,14 @@ public class UserRealmRepository implements IUserRepository {
     @Override
     public void update(User user, CallRepository<User> callRepository) {
 
+        callRepository.onDone(new Deal<>(null, null, new UnsupportedOperationException()));
+
     }
 
     @Override
     public void get(Integer identifier, CallRepository<User> callRepository) {
+
+        callRepository.onDone(new Deal<>(null, null, new UnsupportedOperationException()));
 
     }
 }

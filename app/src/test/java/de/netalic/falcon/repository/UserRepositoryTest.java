@@ -2,8 +2,10 @@ package de.netalic.falcon.repository;
 
 import android.provider.Settings;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,9 +44,14 @@ public class UserRepositoryTest {
     public static void setUp() {
 
         MockitoAnnotations.initMocks(UserRepository.class);
+    }
+
+    @Before
+    public void setupServer() {
+
         sMockWebServer = new MockWebServer();
         try {
-            sMockWebServer.start(0);
+            sMockWebServer.start(8586);
         } catch (IOException e) {
             e.printStackTrace();
             Assert.fail("Unable to start server");
@@ -125,8 +132,99 @@ public class UserRepositoryTest {
         }
     }
 
-    @AfterClass
-    public static void shutdown() {
+    @Test
+    public void testClaimUser_failure() {
+
+        PowerMockito.mockStatic(Settings.Secure.class);
+        PowerMockito.mockStatic(MyApp.class);
+        PowerMockito.mockStatic(DeviceUtil.class);
+        Mockito.when(MyApp.getInstance()).thenReturn(mMyApp);
+        Mockito.when(DeviceUtil.getSecureId(mMyApp)).thenReturn("123456");
+        Mockito.when(DeviceUtil.getDeviceName()).thenReturn("SM-12345678");
+
+        mUserRepository = UserRepository.getInstance();
+        try {
+            sMockWebServer.shutdown();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+
+        sMockWebServer.enqueue(new MockResponse());
+
+        mUser = new User("+981234567890");
+        mUserRepository.claim(mUser, deal -> {
+            Assert.assertNull(deal.getModel());
+            Assert.assertNull(deal.getResponse());
+            Assert.assertNotNull(deal.getThrowable());
+            countDownLatch.countDown();
+
+        });
+
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testBindUser_failure() {
+
+        PowerMockito.mockStatic(Settings.Secure.class);
+        PowerMockito.mockStatic(MyApp.class);
+        PowerMockito.mockStatic(DeviceUtil.class);
+        Mockito.when(MyApp.getInstance()).thenReturn(mMyApp);
+        Mockito.when(DeviceUtil.getSecureId(mMyApp)).thenReturn("123456");
+        Mockito.when(DeviceUtil.getDeviceName()).thenReturn("SM-12345678");
+
+        mUserRepository = UserRepository.getInstance();
+        try {
+            sMockWebServer.shutdown();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+
+        sMockWebServer.enqueue(new MockResponse());
+
+        mUser = new User("+981234567890");
+        mUserRepository.bind(mUser, deal -> {
+            Assert.assertNull(deal.getModel());
+            Assert.assertNull(deal.getResponse());
+            Assert.assertNotNull(deal.getThrowable());
+            countDownLatch.countDown();
+
+        });
+
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testUserUpdate_exception() {
+
+        mUserRepository = UserRepository.getInstance();
+        mUserRepository.update(new User(), deal -> {
+            Assert.assertEquals(deal.getThrowable().getClass(), UnsupportedOperationException.class);
+
+        });
+    }
+
+    @Test
+    public void testUserGet_exception() {
+
+        mUserRepository = UserRepository.getInstance();
+        mUserRepository.get(1, deal -> {
+            Assert.assertEquals(deal.getThrowable().getClass(), UnsupportedOperationException.class);
+        });
+    }
+
+    @After
+    public void shutdown() {
 
         try {
             if (sMockWebServer != null)

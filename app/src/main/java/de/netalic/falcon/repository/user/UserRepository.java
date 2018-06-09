@@ -44,10 +44,14 @@ public class UserRepository implements IUserRepository {
     @Override
     public void update(User user, CallRepository<User> callRepository) {
 
+        mUserRestRepository.update(user, callRepository);
+
     }
 
     @Override
     public void get(Integer identifier, CallRepository<User> callRepository) {
+
+        mUserRestRepository.get(identifier, callRepository);
 
     }
 }
