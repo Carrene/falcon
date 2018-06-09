@@ -40,4 +40,14 @@ public class UserRepository implements IUserRepository {
         mUserRestRepository.claim(user, callRepository);
 
     }
+
+    @Override
+    public void update(User user, CallRepository<User> callRepository) {
+
+    }
+
+    @Override
+    public void get(Integer identifier, CallRepository<User> callRepository) {
+
+    }
 }

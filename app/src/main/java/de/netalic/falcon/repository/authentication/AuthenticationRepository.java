@@ -1,7 +1,6 @@
 package de.netalic.falcon.repository.authentication;
 
 import de.netalic.falcon.model.Authentication;
-import de.netalic.falcon.repository.IRepository;
 
 public class AuthenticationRepository implements IAuthenticationRepository {
 
@@ -27,15 +26,21 @@ public class AuthenticationRepository implements IAuthenticationRepository {
         return sAuthenticationRepository;
     }
 
-//    @Override
-//    public void update(Authentication authentication) {
-//
-//        mAuthenticationRealmRepository.update(authentication);
-//    }
-//
-//    @Override
-//    public Authentication get(int id) {
-//
-//        return mAuthenticationRealmRepository.get(id);
-//    }
+    @Override
+    public void get(CallRepository<Authentication> callRepository) {
+
+        mAuthenticationRealmRepository.get(callRepository);
+    }
+
+    @Override
+    public void update(Authentication authentication, CallRepository<Authentication> callRepository) {
+
+        mAuthenticationRealmRepository.update(authentication, callRepository);
+    }
+
+    @Override
+    public void get(Integer identifier, CallRepository<Authentication> callRepository) {
+
+        mAuthenticationRealmRepository.get(identifier, callRepository);
+    }
 }

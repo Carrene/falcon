@@ -2,6 +2,7 @@ package de.netalic.falcon.repository.authentication;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.model.Authentication;
+import de.netalic.falcon.repository.Deal;
 import de.netalic.falcon.repository.IRepository;
 import io.realm.Realm;
 
@@ -9,28 +10,42 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
     private Realm mRealm;
 
-
     public AuthenticationRealmRepository() {
-
-        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
 
     }
 
-//    @Override
-//    public void update(Authentication authentication) {
-//
-//        mRealm.beginTransaction();
-//        mRealm.copyToRealmOrUpdate(authentication);
-//        mRealm.commitTransaction();
-//    }
-//
-//    @Override
-//    public Authentication get(int id) {
-//
-//        Authentication authentication = mRealm.where(Authentication.class).equalTo("id", id).findFirst();
-//        if (authentication == null) {
-//            return null;
-//        }
-//        return mRealm.copyFromRealm(authentication);
-//    }
+    @Override
+    public void update(Authentication authentication, CallRepository<Authentication> callRepository) {
+
+        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
+        mRealm.beginTransaction();
+        mRealm.copyToRealmOrUpdate(authentication);
+        mRealm.commitTransaction();
+        mRealm.close();
+        callRepository.onDone(new Deal<>(authentication, null, null));
+    }
+
+    @Override
+    public void get(Integer identifier, CallRepository<Authentication> callRepository) {
+
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void get(CallRepository<Authentication> callRepository) {
+
+        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
+        Authentication authentication1 = mRealm.where(Authentication.class).equalTo("mId", 1).findFirst();
+        Deal deal;
+        if (authentication1 == null) {
+            deal = new Deal<>(null, null, null);
+        } else {
+            Authentication authentication = mRealm.copyFromRealm(authentication1);
+            Authentication returnAuthentication = mRealm.copyFromRealm(authentication);
+            deal = new Deal<>(returnAuthentication, null, null);
+        }
+        mRealm.close();
+        callRepository.onDone(deal);
+
+    }
 }

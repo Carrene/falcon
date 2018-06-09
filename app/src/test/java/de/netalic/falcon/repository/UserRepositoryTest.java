@@ -72,6 +72,7 @@ public class UserRepositoryTest {
         mUserRepository.claim(mUser, deal -> {
 
             Assert.assertNull(deal.getThrowable());
+            Assert.assertEquals(deal.getResponse().code(), 200);
             Assert.assertEquals(deal.getModel().getPhone(), "989122451075");
             Assert.assertEquals(deal.getModel().getUdid(), "7C4A8D09CA3762AF61E59520943DC26494F8941B");
             countDownLatch.countDown();
@@ -108,9 +109,11 @@ public class UserRepositoryTest {
         mUserRepository.bind(mUser, deal -> {
 
             Assert.assertNull(deal.getThrowable());
+            Assert.assertEquals(deal.getResponse().code(), 200);
             Assert.assertEquals(deal.getModel().getPhone(), "989122451075");
             Assert.assertEquals(deal.getModel().getUdid(), "7C4A8D09CA3762AF61E59520943DC26494F8941B");
             Assert.assertEquals(deal.getModel().getDeviceName(), "SM-12345678");
+
             countDownLatch.countDown();
 
         });

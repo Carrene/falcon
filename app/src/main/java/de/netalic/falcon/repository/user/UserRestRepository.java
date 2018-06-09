@@ -10,28 +10,6 @@ import retrofit2.Response;
 
 public class UserRestRepository implements IUserRepository {
 
-
-//    @Override
-//    public void bind(User user, CallRepository callRepository) {
-//
-//        ApiClient.getService().bind(user.getUdid(), user.getPhone(), user.calculateDeviceName(), user.getActivationCode()).enqueue(new Callback<User>() {
-//
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//
-//                callRepository.onDone(new Deal<User>(response.body(), response, null));
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//                callRepository.onDone(new Deal<User>(null, null, t));
-//
-//            }
-//        });
-//    }
-
     @Override
     public void bind(User user, CallRepository<User> callRepository) {
 
@@ -72,5 +50,15 @@ public class UserRestRepository implements IUserRepository {
 
             }
         });
+    }
+
+    @Override
+    public void update(User user, CallRepository<User> callRepository) {
+
+    }
+
+    @Override
+    public void get(Integer identifier, CallRepository<User> callRepository) {
+
     }
 }
