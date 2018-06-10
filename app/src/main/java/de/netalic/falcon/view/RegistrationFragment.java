@@ -3,6 +3,7 @@ package de.netalic.falcon.view;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
@@ -22,7 +24,9 @@ import br.com.sapereaude.maskedEditText.MaskedEditText;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RegistrationContract;
+import nuesoft.helpdroid.UI.SnackBar;
 
+import static android.widget.Toast.LENGTH_LONG;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class RegistrationFragment extends Fragment implements RegistrationContract.View {
@@ -38,7 +42,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_registration, container, false);
+        mRoot = inflater.inflate(R.layout.fragment_registration, null);
         initUiComponents();
         setCountryPicker();
         initListener();
@@ -130,4 +134,10 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
         mEditTextPhone = mRoot.findViewById(R.id.edittext_registration_phonenumber);
         setHasOptionsMenu(true);
     }
+//    public void show(String phone){
+//
+//        Snackbar.make(mRoot, phone, Snackbar.LENGTH_LONG).show();
+//
+//    }
+
 }

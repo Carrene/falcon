@@ -1,4 +1,5 @@
 <RelativeLayout
+    android:id="@+id/relativelayout_registration_countrypicker"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:mask="http://schemas.android.com/tools"
