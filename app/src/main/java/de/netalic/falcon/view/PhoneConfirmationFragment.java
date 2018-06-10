@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.PhoneConfirmationContract;
 
@@ -22,10 +24,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class PhoneConfirmationFragment extends Fragment implements PhoneConfirmationContract.View {
 
     private PhoneConfirmationContract.Presenter mPresenter;
-    //TODO:1 Milad why this variable is in class scope not method scope
-    private CountDownTimer mCountDownTimer;
-    //TODO:2 Milad name this variable completely mTextViewTimer
-    private TextView mTextTimer;
+    private TextView mTextViewTimer;
     private View mRoot;
 
     @Nullable
@@ -36,6 +35,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
         setHasOptionsMenu(true);
         initUiComponents();
         setTimer();
+        initListeners();
         return mRoot;
     }
 
@@ -87,7 +87,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void initUiComponents() {
 
-        mTextTimer = mRoot.findViewById(R.id.textview_phoneconfirmation_timer);
+        mTextViewTimer = mRoot.findViewById(R.id.textview_phoneconfirmation_timer);
 
     }
 
@@ -96,35 +96,38 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     }
 
-    //TODO:3 Milad Restart counter when user click resend item
+    private void initListeners(){
+
+        mTextViewTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (mTextViewTimer.getText().toString().equals("Resend")) {
+                    setTimer();
+                }
+            }
+        });
+    }
 
     private void setTimer() {
 
-        mCountDownTimer = new CountDownTimer(120000, 1000) {
+            CountDownTimer mCountDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                //TODO:4 Milad Try to implement it better with string format for XX:XX. Implement it as clean as possible
-
-                int minutes = (int) millisUntilFinished / 60000;
-                int seconds = (int) millisUntilFinished % 60000 / 1000;
-                String timeLeftText;
-                timeLeftText = "0" + minutes;
-                timeLeftText += ":";
-                if (seconds < 10) {
-                    timeLeftText += "0";
-                }
-                timeLeftText += "" + seconds;
-
-                mTextTimer.setText(timeLeftText);
+                mTextViewTimer.setText(""+String.format("%02d:%02d ",
+                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
             }
 
             @Override
             public void onFinish() {
 
-                mTextTimer.setText("Resend");
+                mTextViewTimer.setText("Resend");
 
             }
         }.start();
     }
 }
+
