@@ -30,6 +30,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.RegistrationActivity"/>
         </activity>
+
+        <activity
+            android:name=".view.AuthenticationDefinitionActivity">
+        </activity>
+
     </application>
 
 </manifest>

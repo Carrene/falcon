@@ -3,6 +3,7 @@
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="registration_toolbartitle">Input phone</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
+    <string name="authenticationdefinition_toolbartitle">Phone confirmation</string>
     <string name="registration_bottomtextview">confirmation code will be sent to you</string>
     <string name="registration_defultcountry">Select your country</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
