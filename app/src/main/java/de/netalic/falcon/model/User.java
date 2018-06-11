@@ -26,6 +26,7 @@ public class User extends RealmObject {
     private String mPhone;
 
     @RealmField(name = "Email")
+    @SerializedName("email")
     private String mEmail;
 
     @RealmField(name = "Balance")

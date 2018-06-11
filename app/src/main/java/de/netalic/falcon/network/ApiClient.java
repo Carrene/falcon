@@ -30,7 +30,6 @@ public class ApiClient {
         if (sRetrofit == null) {
 
             if (sTestUrl == null) {
-
                 OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();
                 okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
                 ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getInstance()));
@@ -48,8 +47,6 @@ public class ApiClient {
                         .build();
             }
         }
-
-
         return sRetrofit;
     }
 
@@ -72,6 +69,7 @@ public class ApiClient {
     private static class AuthorizationInterceptor implements Interceptor {
 
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance());
+
 
         @Override
         public Response intercept(Chain chain) throws IOException {

@@ -133,6 +133,43 @@ public class UserRepositoryTest {
     }
 
     @Test
+    public void testSetEmail_200response() {
+
+        PowerMockito.mockStatic(Settings.Secure.class);
+        PowerMockito.mockStatic(MyApp.class);
+        PowerMockito.mockStatic(DeviceUtil.class);
+        Mockito.when(MyApp.getInstance()).thenReturn(mMyApp);
+        Mockito.when(DeviceUtil.getSecureId(mMyApp)).thenReturn("123456");
+        Mockito.when(DeviceUtil.getDeviceName()).thenReturn("SM-12345678");
+
+        mUserRepository = UserRepository.getInstance();
+
+        String json = "{\"email\":\"test@test.com\"}";
+
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+
+        sMockWebServer.enqueue(new MockResponse().setBody(json).setResponseCode(200));
+
+        mUser = new User("+981234567890");
+        mUser.setEmail("test@test.com");
+        mUserRepository.setEmail(mUser, deal -> {
+
+            Assert.assertNull(deal.getThrowable());
+            Assert.assertEquals(deal.getResponse().code(), 200);
+            Assert.assertEquals(deal.getModel().getEmail(), "test@test.com");
+
+            countDownLatch.countDown();
+
+        });
+
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void testClaimUser_failure() {
 
         PowerMockito.mockStatic(Settings.Secure.class);
@@ -193,6 +230,49 @@ public class UserRepositoryTest {
             Assert.assertNull(deal.getModel());
             Assert.assertNull(deal.getResponse());
             Assert.assertNotNull(deal.getThrowable());
+            countDownLatch.countDown();
+
+        });
+
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testSetEmail_failure() {
+
+        PowerMockito.mockStatic(Settings.Secure.class);
+        PowerMockito.mockStatic(MyApp.class);
+        PowerMockito.mockStatic(DeviceUtil.class);
+        Mockito.when(MyApp.getInstance()).thenReturn(mMyApp);
+        Mockito.when(DeviceUtil.getSecureId(mMyApp)).thenReturn("123456");
+        Mockito.when(DeviceUtil.getDeviceName()).thenReturn("SM-12345678");
+
+        mUserRepository = UserRepository.getInstance();
+
+        String json = "{\"email\":\"test@test.com\"}";
+
+        try {
+            sMockWebServer.shutdown();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+
+        sMockWebServer.enqueue(new MockResponse().setBody(json).setResponseCode(200));
+
+        mUser = new User("+981234567890");
+        mUser.setEmail("test@test.com");
+        mUserRepository.setEmail(mUser, deal -> {
+
+            Assert.assertNull(deal.getThrowable());
+            Assert.assertEquals(deal.getResponse().code(), 200);
+            Assert.assertEquals(deal.getModel().getEmail(), "test@test.com");
+
             countDownLatch.countDown();
 
         });

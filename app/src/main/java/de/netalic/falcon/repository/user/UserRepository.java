@@ -1,6 +1,7 @@
 package de.netalic.falcon.repository.user;
 
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.repository.IRepository;
 
 public class UserRepository implements IUserRepository {
 
@@ -39,6 +40,12 @@ public class UserRepository implements IUserRepository {
 
         mUserRestRepository.claim(user, callRepository);
 
+    }
+
+    @Override
+    public void setEmail(User user, CallRepository<User> callRepository) {
+
+        mUserRestRepository.setEmail(user, callRepository);
     }
 
     @Override

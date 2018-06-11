@@ -9,5 +9,6 @@ public interface IUserRepository extends IRepository<User, Integer> {
 
     void claim(User user, CallRepository<User> callRepository);
 
+    void setEmail(User user, CallRepository<User> callRepository);
 
 }
