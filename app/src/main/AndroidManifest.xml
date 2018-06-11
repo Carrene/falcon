@@ -35,6 +35,8 @@
             android:name=".view.AuthenticationDefinitionActivity">
         </activity>
 
+        <activity android:name=".view.RecoveryEmailActivity"/>
+
     </application>
 
 </manifest>
