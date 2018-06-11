@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationContract;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -27,6 +28,8 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     //TODO:2 Milad name this variable completely mTextViewTimer
     private TextView mTextTimer;
     private View mRoot;
+    private static User mUser;
+    private TextView mTextView;
 
     @Nullable
     @Override
@@ -36,11 +39,13 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
         setHasOptionsMenu(true);
         initUiComponents();
         setTimer();
+        setUserPhoneNumber();
         return mRoot;
     }
 
-    public static PhoneConfirmationFragment newInstance() {
+    public static PhoneConfirmationFragment newInstance(User user) {
 
+        mUser=user;
         return new PhoneConfirmationFragment();
     }
 
@@ -88,6 +93,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private void initUiComponents() {
 
         mTextTimer = mRoot.findViewById(R.id.textview_phoneconfirmation_timer);
+        mTextView=mRoot.findViewById(R.id.textview_phoneconfirmation_number);
 
     }
 
@@ -126,5 +132,10 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
             }
         }.start();
+    }
+
+    private void setUserPhoneNumber(){
+
+        mTextView.setText(mUser.getPhone());
     }
 }

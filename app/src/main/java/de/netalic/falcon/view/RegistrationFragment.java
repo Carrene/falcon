@@ -1,10 +1,13 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,14 +81,25 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_registration_countrypicker);
+        MaskedEditText maskedEditText = mRoot.findViewById(R.id.edittext_registration_phonenumber);
+
         switch (item.getItemId()) {
             case R.id.menu_registration_done: {
-                if (mEditTextCountryCode.getText().toString().equals("")) {
-                    showCountryCodeError();
-                    break;
+
+                if (mEditTextCountryCode.getText().toString().isEmpty()) {
+
+                    textInputLayout.setError("Please pick a country");
+
                 }
-                User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
-                mPresenter.claim(user);
+
+                if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
+
+                    Snackbar.make(mRoot, "Please fill your number", Snackbar.LENGTH_LONG).show();
+                } else {
+                    User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
+                    mPresenter.claim(user, mEditTextCountryCode.getText().toString(), mEditTextCountryName.getText().toString());
+                }
             }
         }
         return true;
@@ -134,10 +149,20 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
         mEditTextPhone = mRoot.findViewById(R.id.edittext_registration_phonenumber);
         setHasOptionsMenu(true);
     }
-//    public void show(String phone){
-//
-//        Snackbar.make(mRoot, phone, Snackbar.LENGTH_LONG).show();
-//
-//    }
 
+
+    @Override
+    public void navigationToPhoneconfirmation(User user) {
+
+        Intent intent = new Intent(getActivity(), PhoneConfirmationActivity.class);
+        intent.putExtra("MyUser", user);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void errorForNullmessage() {
+
+        Snackbar.make(mRoot, "Fill all box", Snackbar.LENGTH_LONG).show();
+    }
 }

@@ -1,7 +1,11 @@
 package de.netalic.falcon.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +18,7 @@ import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.device.DeviceUtil;
 import nuesoft.helpdroid.util.Converter;
 
-public class User extends RealmObject {
+public class User extends RealmObject implements Parcelable {
 
     @PrimaryKey
     @SerializedName("id")
@@ -65,6 +69,8 @@ public class User extends RealmObject {
 
         mPhone = phone;
     }
+
+
 
     public void setActivationCode(String activationCode) {
 
@@ -132,4 +138,30 @@ public class User extends RealmObject {
 
         this.mBalance = balance;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.mPhone);
+    }
+
+    protected User(Parcel in) {
+        mPhone = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }
