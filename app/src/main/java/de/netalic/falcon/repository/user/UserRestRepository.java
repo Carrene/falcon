@@ -3,8 +3,6 @@ package de.netalic.falcon.repository.user;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
-import de.netalic.falcon.repository.IRepository;
-import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -1,9 +1,9 @@
 package de.netalic.falcon.repository;
 
+import android.content.SharedPreferences;
 import android.provider.Settings;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -27,6 +27,9 @@ import de.netalic.falcon.repository.user.UserRepository;
 import nuesoft.helpdroid.device.DeviceUtil;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
+
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyString;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({DeviceUtil.class, Settings.Secure.class, MyApp.class})
@@ -102,9 +105,12 @@ public class UserRepositoryTest {
         Mockito.when(MyApp.getInstance()).thenReturn(mMyApp);
         Mockito.when(DeviceUtil.getSecureId(mMyApp)).thenReturn("123456");
         Mockito.when(DeviceUtil.getDeviceName()).thenReturn("SM-12345678");
+        SharedPreferences sharedPrefs = Mockito.mock(SharedPreferences.class);
+        SharedPreferences.Editor sharedPreferenceEditor = Mockito.mock(SharedPreferences.Editor.class);
+        Mockito.when(sharedPrefs.edit()).thenReturn(sharedPreferenceEditor);
+        Mockito.when(mMyApp.getSharedPreferences(anyString(), anyInt())).thenReturn(sharedPrefs);
 
         mUserRepository = UserRepository.getInstance();
-
         String json = "{\"phone\":989122451075,\"udid\":\"2b6f0cc904d137be2e1730235f5664094b831186\",\"deviceName\":\"SM-12345678\",\"createdAt\":\"2018-05-29T17:52:48.414538Z\",\"type\":\"client\",\"hmacSecret\":\"4FSEfaboM2ExMvY8zHuj5wxabsdhX0xenqvpWAeKIQs=\",\"secret\":\"hKwi8TZzULSunXWzVoAFl6AxG9qVgopToGONaGtM31g=\",\"id\":1,\"isActive\":false,\"token\":\"eyJhbGciOiJIUzI1NiIsImlhdCI6MTUyNzYwMDE3MCwiZXhwIjoxNTI3Njg2NTcwfQ.eyJpZCI6MSwicGhvbmUiOjk4OTEyMjQ1MTA3NSwicm9sZXMiOlsiY2xpZW50Il0sInNlc3Npb25JZCI6ImI4Y2NlY2ZlLTc2NDctNDlhYy1iYjU1LWQ2MDc5YzhjYThiZCJ9.Rm7pays5ZfryMSt0-fq4mAIvf2iAVcs2WC3n4TEUkDY\",\"isNewClient\":false}";
 
         CountDownLatch countDownLatch = new CountDownLatch(1);

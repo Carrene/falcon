@@ -4,6 +4,8 @@ import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -41,6 +43,7 @@ public class ApiClient {
             } else {
                 OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();
                 okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
+                okHttpClient.addInterceptor(new AuthorizationInterceptor());
                 sRetrofit = new Retrofit.Builder().baseUrl(getUrl())
                         .client(okHttpClient.build())
                         .addConverterFactory(GsonConverterFactory.create())
@@ -80,8 +83,16 @@ public class ApiClient {
             if (token != null) {
                 request = request.newBuilder().addHeader("Authorization", "Bearer " + token).build();
             }
+
             Response response = chain.proceed(request);
 
+            if (response.request().method().equals("BIND")) {
+
+                JsonParser jsonParser = new JsonParser();
+                JsonObject jsonObject = (JsonObject) jsonParser.parse(response.body().string());
+                String freshToken = jsonObject.get("token").getAsString();
+                sharedPreferencesJwtPersistor.save(freshToken);
+            }
             String newJwtToken = response.header("X-New-JWT-Token");
 
             if (newJwtToken != null) {
