@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,12 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +25,7 @@ import br.com.sapereaude.maskedEditText.MaskedEditText;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RegistrationContract;
-import nuesoft.helpdroid.UI.SnackBar;
 
-import static android.widget.Toast.LENGTH_LONG;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class RegistrationFragment extends Fragment implements RegistrationContract.View {
@@ -81,7 +76,6 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_registration_countrypicker);
         MaskedEditText maskedEditText = mRoot.findViewById(R.id.edittext_registration_phonenumber);
 
         switch (item.getItemId()) {
@@ -89,16 +83,17 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
                 if (mEditTextCountryCode.getText().toString().isEmpty()) {
 
-                    textInputLayout.setError("Please pick a country");
+                    showCountryCodeError();
 
                 }
 
                 if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
 
-                    Snackbar.make(mRoot, "Please fill your number", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(mRoot, getContext().getString(R.string.registration_pleasefillyournumber), Snackbar.LENGTH_LONG).show();
                 } else {
-                    User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
-                    mPresenter.claim(user, mEditTextCountryCode.getText().toString(), mEditTextCountryName.getText().toString());
+
+                    claim();
+
                 }
             }
         }
@@ -117,10 +112,14 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     private void showCountryCodeError() {
         //TODO: Milad display error on country code picker input layout error
+        TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_registration_countrypicker);
+        textInputLayout.setError(getContext().getString(R.string.registration_pleasepickcountry));
     }
 
     //TODO:5 Milad call claim from repository when user click on tick icon, Get help from UserRepositoryTest, call from presenter
     private void claim() {
+        User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
+        mPresenter.claim(user, mEditTextCountryCode.getText().toString(), mEditTextCountryName.getText().toString());
 
     }
 
@@ -152,17 +151,17 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
 
     @Override
-    public void navigationToPhoneconfirmation(User user) {
+    public void navigationToPhoneConfirmation(User user) {
 
         Intent intent = new Intent(getActivity(), PhoneConfirmationActivity.class);
-        intent.putExtra("MyUser", user);
+        intent.putExtra("User", user);
         startActivity(intent);
 
     }
 
     @Override
-    public void errorForNullmessage() {
+    public void errorForNullPhoneNumber() {
 
-        Snackbar.make(mRoot, "Fill all box", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(mRoot, getContext().getString(R.string.registration_fillallbox), Snackbar.LENGTH_LONG).show();
     }
 }

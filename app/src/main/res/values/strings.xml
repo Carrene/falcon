@@ -9,4 +9,10 @@
     <string name="phoneconfirmation_entertheverificationhere">"Enter the verification code here"</string>
     <string name="phoneconfirmation_timer">"(02:00)"</string>
     <string name="phoneconfirmation_changenumber">"Change number"</string>
+    <string name="phoneconfirmation_resend">Resend</string>
+    <string name="registration_fillallbox">Fill all box</string>
+    <string name="registration_pleasepickcountry">Please pick a country</string>
+    <string name="registration_pleasefillyournumber">Please fill your number</string>
+    <string name="phoneconfirmation_Pleasefillbox">Please fill box</string>
+
 </resources>

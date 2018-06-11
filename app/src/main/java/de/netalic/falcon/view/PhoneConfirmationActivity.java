@@ -25,7 +25,7 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_phoneconfirmation);
 
 
-        User user = getIntent().getExtras().getParcelable("MyUser");
+        User user = getIntent().getExtras().getParcelable("User");
 
         Toolbar toolbar = findViewById(R.id.toolbar_phoneconfirmation);
         setSupportActionBar(toolbar);

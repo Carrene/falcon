@@ -7,8 +7,8 @@ public interface RegistrationContract {
 
     interface View extends BaseView<Presenter> {
 
-        void navigationToPhoneconfirmation(User user);
-        void errorForNullmessage();
+        void navigationToPhoneConfirmation(User user);
+        void errorForNullPhoneNumber();
 
     }
 

@@ -1,10 +1,12 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import de.netalic.falcon.R;
@@ -29,7 +32,9 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private TextView mTextTimer;
     private View mRoot;
     private static User mUser;
-    private TextView mTextView;
+    private TextView mTextViewPhone;
+    private TextView mTextViewChangeNumber;
+    private EditText mEditTextReceiveCode;
 
     @Nullable
     @Override
@@ -40,12 +45,13 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
         initUiComponents();
         setTimer();
         setUserPhoneNumber();
+        initListeners();
         return mRoot;
     }
 
     public static PhoneConfirmationFragment newInstance(User user) {
 
-        mUser=user;
+        mUser = user;
         return new PhoneConfirmationFragment();
     }
 
@@ -56,12 +62,16 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     }
 
     @Override
-    public void showActivationCodeError() {
+    public void showActivationCodeError(String error) {
         //TODO: Milad, display error at text input layout of activation code
+        Snackbar.make(mRoot, error, Snackbar.LENGTH_LONG).show();
+
     }
 
     private void changePhoneNumber() {
         //TODO: Milad Go to registration page when change phone number is called
+        Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -85,6 +95,15 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             case R.id.menu_phoneconfirmation_done: {
                 //TODO: pass user to presenter based on input
 //                mPresenter.register(user);
+
+                if (mEditTextReceiveCode.getText().toString().isEmpty()) {
+
+                    TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_phoneconfirmation_receivecode);
+                    textInputLayout.setError(getContext().getString(R.string.phoneconfirmation_Pleasefillbox));
+
+                } else {
+                    bind();
+                }
             }
         }
         return true;
@@ -93,12 +112,16 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private void initUiComponents() {
 
         mTextTimer = mRoot.findViewById(R.id.textview_phoneconfirmation_timer);
-        mTextView=mRoot.findViewById(R.id.textview_phoneconfirmation_number);
+        mTextViewPhone = mRoot.findViewById(R.id.textview_phoneconfirmation_number);
+        mTextViewChangeNumber = mRoot.findViewById(R.id.textview_phoneconfirmation_changenumber);
+        mEditTextReceiveCode = mRoot.findViewById(R.id.edittext_phoneconfirmation_receivecode);
 
     }
 
     //TODO:6 Milad call bind from repository when user click on tick icon, Get help from UserRepositoryTest,call from presenter
     private void bind() {
+
+        mPresenter.bind(mUser);
 
     }
 
@@ -128,14 +151,27 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             @Override
             public void onFinish() {
 
-                mTextTimer.setText("Resend");
+                mTextTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
 
             }
         }.start();
     }
 
-    private void setUserPhoneNumber(){
+    private void setUserPhoneNumber() {
 
-        mTextView.setText(mUser.getPhone());
+        mTextViewPhone.setText(mUser.getPhone());
+    }
+
+    private void initListeners() {
+
+        mTextViewChangeNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changePhoneNumber();
+            }
+        });
+
+
     }
 }
