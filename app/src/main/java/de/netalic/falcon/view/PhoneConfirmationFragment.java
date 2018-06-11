@@ -26,6 +26,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private PhoneConfirmationContract.Presenter mPresenter;
     private TextView mTextViewTimer;
     private View mRoot;
+    private boolean isRunning = true;
 
     @Nullable
     @Override
@@ -96,13 +97,13 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     }
 
-    private void initListeners(){
+    private void initListeners() {
 
         mTextViewTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (mTextViewTimer.getText().toString().equals("Resend")) {
+                if (isRunning == false) {
                     setTimer();
                 }
             }
@@ -111,20 +112,24 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setTimer() {
 
-            CountDownTimer mCountDownTimer = new CountDownTimer(120000, 1000) {
+
+        CountDownTimer mCountDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                mTextViewTimer.setText(""+String.format("%02d:%02d ",
-                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
-                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
-                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                long minute = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
+                long second = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
+
+                mTextViewTimer.setText(String.format("%02d:%02d ", minute, second));
+                isRunning = true;
             }
 
             @Override
             public void onFinish() {
 
                 mTextViewTimer.setText("Resend");
+                isRunning = false;
 
             }
         }.start();
