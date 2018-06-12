@@ -26,6 +26,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private PhoneConfirmationContract.Presenter mPresenter;
     private TextView mTextViewTimer;
     private View mRoot;
+    //TODO: Milad wrong convention!
     private boolean isRunning = true;
 
     @Nullable
@@ -112,16 +113,18 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setTimer() {
 
-
+        //TODO: Milad Wrong name convention and unused object
         CountDownTimer mCountDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
+                //TODO: Milad use better name for variables
                 long minute = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
                 long second = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
 
                 mTextViewTimer.setText(String.format("%02d:%02d ", minute, second));
+                //TODO: Milad what this line do? repetitive setting true always!
                 isRunning = true;
             }
 
