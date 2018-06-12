@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
@@ -22,6 +23,9 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phoneconfirmation);
+
+
+        User user = getIntent().getExtras().getParcelable("User");
 
         Toolbar toolbar = findViewById(R.id.toolbar_phoneconfirmation);
         setSupportActionBar(toolbar);
@@ -36,7 +40,7 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
 
         PhoneConfirmationFragment phoneConfirmationFragment = (PhoneConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_phoneconfirmation_fragmentcontainer);
         if (phoneConfirmationFragment == null) {
-            phoneConfirmationFragment = PhoneConfirmationFragment.newInstance();
+            phoneConfirmationFragment = PhoneConfirmationFragment.newInstance(user);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), phoneConfirmationFragment, R.id.framelayout_phoneconfirmation_fragmentcontainer);
         }
 

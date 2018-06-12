@@ -7,9 +7,12 @@ public interface RegistrationContract {
 
     interface View extends BaseView<Presenter> {
 
+        void navigationToPhoneConfirmation(User user);
+        void errorForNullPhoneNumber();
+
     }
 
     interface Presenter extends BasePresenter {
-        void claim(User user);
+        void claim(User user,String codeCountry,String phoneNumber);
     }
 }

@@ -1,8 +1,11 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -38,7 +41,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_registration, container, false);
+        mRoot = inflater.inflate(R.layout.fragment_registration, null);
         initUiComponents();
         setCountryPicker();
         initListener();
@@ -73,14 +76,25 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        MaskedEditText maskedEditText = mRoot.findViewById(R.id.edittext_registration_phonenumber);
+
         switch (item.getItemId()) {
             case R.id.menu_registration_done: {
-                if (mEditTextCountryCode.getText().toString().equals("")) {
+
+                if (mEditTextCountryCode.getText().toString().isEmpty()) {
+
                     showCountryCodeError();
-                    break;
+
                 }
-                User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
-                mPresenter.claim(user);
+
+                if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
+
+                    Snackbar.make(mRoot, getContext().getString(R.string.registration_pleasefillyournumber), Snackbar.LENGTH_LONG).show();
+                } else {
+
+                    claim();
+
+                }
             }
         }
         return true;
@@ -98,10 +112,14 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     private void showCountryCodeError() {
         //TODO: Milad display error on country code picker input layout error
+        TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_registration_countrypicker);
+        textInputLayout.setError(getContext().getString(R.string.registration_pleasepickcountry));
     }
 
     //TODO:5 Milad call claim from repository when user click on tick icon, Get help from UserRepositoryTest, call from presenter
     private void claim() {
+        User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
+        mPresenter.claim(user, mEditTextCountryCode.getText().toString(), mEditTextCountryName.getText().toString());
 
     }
 
@@ -129,5 +147,21 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
         mEditTextCountryCode = mRoot.findViewById(R.id.edittext_registration_code);
         mEditTextPhone = mRoot.findViewById(R.id.edittext_registration_phonenumber);
         setHasOptionsMenu(true);
+    }
+
+
+    @Override
+    public void navigationToPhoneConfirmation(User user) {
+
+        Intent intent = new Intent(getActivity(), PhoneConfirmationActivity.class);
+        intent.putExtra("User", user);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void errorForNullPhoneNumber() {
+
+        Snackbar.make(mRoot, getContext().getString(R.string.registration_fillallbox), Snackbar.LENGTH_LONG).show();
     }
 }
