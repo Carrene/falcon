@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationContract;
@@ -26,12 +28,13 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class PhoneConfirmationFragment extends Fragment implements PhoneConfirmationContract.View {
 
     private PhoneConfirmationContract.Presenter mPresenter;
-    private TextView mTextTimer;
-    private View mRoot;
     private static User sUser;
     private TextView mTextViewPhone;
     private TextView mTextViewChangeNumber;
     private EditText mEditTextReceiveCode;
+    private TextView mTextViewTimer;
+    private View mRoot;
+    private boolean mIsRunning = true;
 
     @Nullable
     @Override
@@ -107,43 +110,57 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void initUiComponents() {
 
-        mTextTimer = mRoot.findViewById(R.id.textview_phoneconfirmation_timer);
+
         mTextViewPhone = mRoot.findViewById(R.id.textview_phoneconfirmation_number);
         mTextViewChangeNumber = mRoot.findViewById(R.id.textview_phoneconfirmation_changenumber);
         mEditTextReceiveCode = mRoot.findViewById(R.id.edittext_phoneconfirmation_receivecode);
-
+        mTextViewTimer = mRoot.findViewById(R.id.textview_phoneconfirmation_timer);
     }
 
     private void bind() {
 
         mPresenter.bind(sUser);
+    }
 
+    private void initListeners() {
+
+        mTextViewTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (mIsRunning == false) {
+                    setTimer();
+                }
+            }
+        });
+
+        mTextViewChangeNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changePhoneNumber();
+            }
+        });
     }
 
     private void setTimer() {
 
-        CountDownTimer mCountDownTimer = new CountDownTimer(120000, 1000) {
+
+        CountDownTimer countDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-
-                int minutes = (int) millisUntilFinished / 60000;
-                int seconds = (int) millisUntilFinished % 60000 / 1000;
-                String timeLeftText;
-                timeLeftText = "0" + minutes;
-                timeLeftText += ":";
-                if (seconds < 10) {
-                    timeLeftText += "0";
-                }
-                timeLeftText += "" + seconds;
-
-                mTextTimer.setText(timeLeftText);
+                long minuteُTimer = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
+                long secondTimer = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
+                mTextViewTimer.setText(String.format("%02d:%02d ", minuteُTimer, secondTimer));
             }
 
             @Override
             public void onFinish() {
 
-                mTextTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
+                mTextViewTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
+
 
             }
         }.start();
@@ -153,16 +170,5 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
         mTextViewPhone.setText(sUser.getPhone());
     }
-
-    private void initListeners() {
-
-        mTextViewChangeNumber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                changePhoneNumber();
-            }
-        });
-
-    }
 }
+
