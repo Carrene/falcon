@@ -26,12 +26,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class PhoneConfirmationFragment extends Fragment implements PhoneConfirmationContract.View {
 
     private PhoneConfirmationContract.Presenter mPresenter;
-    //TODO:1 Milad why this variable is in class scope not method scope
-    private CountDownTimer mCountDownTimer;
-    //TODO:2 Milad name this variable completely mTextViewTimer
     private TextView mTextTimer;
     private View mRoot;
-    private static User mUser;
+    private static User sUser;
     private TextView mTextViewPhone;
     private TextView mTextViewChangeNumber;
     private EditText mEditTextReceiveCode;
@@ -51,7 +48,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     public static PhoneConfirmationFragment newInstance(User user) {
 
-        mUser = user;
+        sUser = user;
         return new PhoneConfirmationFragment();
     }
 
@@ -63,13 +60,13 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     @Override
     public void showActivationCodeError(String error) {
-        //TODO: Milad, display error at text input layout of activation code
+
         Snackbar.make(mRoot, error, Snackbar.LENGTH_LONG).show();
 
     }
 
     private void changePhoneNumber() {
-        //TODO: Milad Go to registration page when change phone number is called
+
         Intent intent = new Intent(getActivity(), RegistrationActivity.class);
         startActivity(intent);
     }
@@ -93,7 +90,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
         switch (item.getItemId()) {
             case R.id.menu_phoneconfirmation_done: {
-                //TODO: pass user to presenter based on input
 //                mPresenter.register(user);
 
                 if (mEditTextReceiveCode.getText().toString().isEmpty()) {
@@ -118,22 +114,18 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     }
 
-    //TODO:6 Milad call bind from repository when user click on tick icon, Get help from UserRepositoryTest,call from presenter
     private void bind() {
 
-        mPresenter.bind(mUser);
+        mPresenter.bind(sUser);
 
     }
 
-    //TODO:3 Milad Restart counter when user click resend item
-
     private void setTimer() {
 
-        mCountDownTimer = new CountDownTimer(120000, 1000) {
+        CountDownTimer mCountDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                //TODO:4 Milad Try to implement it better with string format for XX:XX. Implement it as clean as possible
 
                 int minutes = (int) millisUntilFinished / 60000;
                 int seconds = (int) millisUntilFinished % 60000 / 1000;
@@ -159,7 +151,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setUserPhoneNumber() {
 
-        mTextViewPhone.setText(mUser.getPhone());
+        mTextViewPhone.setText(sUser.getPhone());
     }
 
     private void initListeners() {
@@ -171,7 +163,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                 changePhoneNumber();
             }
         });
-
 
     }
 }

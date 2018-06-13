@@ -111,12 +111,11 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     }
 
     private void showCountryCodeError() {
-        //TODO: Milad display error on country code picker input layout error
+
         TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_registration_countrypicker);
         textInputLayout.setError(getContext().getString(R.string.registration_pleasepickcountry));
     }
 
-    //TODO:5 Milad call claim from repository when user click on tick icon, Get help from UserRepositoryTest, call from presenter
     private void claim() {
         User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
         mPresenter.claim(user, mEditTextCountryCode.getText().toString(), mEditTextCountryName.getText().toString());
