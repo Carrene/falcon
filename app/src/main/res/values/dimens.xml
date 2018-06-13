@@ -23,6 +23,15 @@
     <dimen name="textsize_phoneconfirmation_resendtext">16sp</dimen>
     <dimen name="margintop_phoneconfirmation_changenumber">40dp</dimen>
     <dimen name="textsize_phoneconfirmation_changenumber">16sp</dimen>
+    <dimen name="textsize_authenticationdefinition_header">20sp</dimen>
+    <dimen name="margintop_authenticationdefinition_header">100dp</dimen>
+    <dimen name="marginstart_authenticationdefinition_enterpasscode">40dp</dimen>
+    <dimen name="paddingtop_authentictiondefinition_enterpasscode">100dp</dimen>
+    <dimen name="textsize_authenticationdefinition_enterpasscode">15sp</dimen>
+    <dimen name="marginend_authenticationdefinition_edittext">30dp</dimen>
+    <dimen name="marginstart_authenticationdefinition_edittext">30dp</dimen>
+    <dimen name="margintop_authenticationdefinition_confirmpassword">40dp</dimen>
+
 
 
 

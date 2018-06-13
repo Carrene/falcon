@@ -170,5 +170,11 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
         mTextViewPhone.setText(sUser.getPhone());
     }
+    public void navigateToAuthenticationDefinition(){
+
+        Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+        startActivity(intent);
+
+    }
 }
 

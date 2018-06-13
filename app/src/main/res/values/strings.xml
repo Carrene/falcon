@@ -17,5 +17,8 @@
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
     <string name="phoneconfirmation_Pleasefillbox">Please fill box</string>
+    <string name="athenticationdefinition_selecttheappsloginmethod">Select the apps login methods</string>
+    <string name="authenticationdefinition_Enterpassword">Enter password</string>
+    <string name="authenticationdefinition_Confirmpassword">Confirm password</string>
 
 </resources>

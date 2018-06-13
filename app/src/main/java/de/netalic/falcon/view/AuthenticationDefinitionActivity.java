@@ -49,4 +49,5 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

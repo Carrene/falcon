@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textview_authenticationdefinition_enterpasscode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginstart_authenticationdefinition_enterpasscode"
+        android:paddingTop="@dimen/paddingtop_authentictiondefinition_enterpasscode"
+        android:text="@string/authenticationdefinition_Enterpassword"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textsize_authenticationdefinition_enterpasscode" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinputlayout_authenticationdefinition_enterpasscode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_authenticationdefinition_enterpasscode"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/edittext_phoneconfirmation_entercode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginend_authenticationdefinition_edittext"
+            android:layout_marginStart="@dimen/marginstart_authenticationdefinition_edittext"
+            android:ems="10" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/textview_authenticationdefinition_confirmpasscode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textinputlayout_authenticationdefinition_enterpasscode"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/margintop_authenticationdefinition_confirmpassword"
+        android:text="@string/authenticationdefinition_Confirmpassword"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textsize_authenticationdefinition_enterpasscode" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinputlayout_authenticationdefinition_confirmpasscode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_authenticationdefinition_confirmpasscode"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/edittext_authenticationdefinition_confirmcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginend_phoneconfirmation_edittext"
+            android:layout_marginStart="@dimen/marginstart_phoneconfirmation_edittext"
+            android:ems="10" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</RelativeLayout>
