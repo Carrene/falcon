@@ -101,6 +101,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                     textInputLayout.setError(getContext().getString(R.string.phoneconfirmation_Pleasefillbox));
 
                 } else {
+                    sUser.setActivationCode(mEditTextReceiveCode.getText().toString());
                     bind();
                 }
             }

@@ -79,8 +79,8 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getFragmentManager());
-        adapter.addFragment(new AuthenticationDefinitionPasscodeTab(), "Passcode");
-        adapter.addFragment(new AuthenticationDefinitionPatternTab(), "Pattern");
+        adapter.addFragment(new AuthenticationDefinitionPasswordTab(), getContext().getString(R.string.athenticationdefinition_password));
+        adapter.addFragment(new AuthenticationDefinitionPatternTab(), getContext().getString(R.string.authenticationdefinition_pattern));
         viewPager.setAdapter(adapter);
     }
 

@@ -36,6 +36,9 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
             if (deal.getResponse().code() == 200) {
 
+                deal.getResponse();
+                int a=deal.getResponse().code();
+
                 mPhoneConfirmationView.navigateToAuthenticationDefinition();
 
             } else {

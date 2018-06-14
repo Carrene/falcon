@@ -20,5 +20,15 @@
     <string name="athenticationdefinition_selecttheappsloginmethod">Select the apps login methods</string>
     <string name="authenticationdefinition_Enterpassword">Enter password</string>
     <string name="authenticationdefinition_Confirmpassword">Confirm password</string>
+    <string name="authenticationdefinition_pleasefillenterpassword">Please fill enter password</string>
+    <string name="authenticationdefinition_Entervalidpassword">Enter valid password</string>
+    <string name="athenticationdefinition_password">Password</string>
+    <string name="authenticationdefinition_pattern">Pattern</string>
+    <string name="authenticationdefinition_notmatch">Not match</string>
+    <string name="authenticationdefinition_connectfordots">Connect four dots</string>
+    <string name="authenticationdefinition_tryforsecondtime">Try for second time</string>
+    <string name="authenticationdefinition_nomatch">No match</string>
+    <string name="authenticationdefinition_setsuccessful">Set successful</string>
+    <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
 
 </resources>

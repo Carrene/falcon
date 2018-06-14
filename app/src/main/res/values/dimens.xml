@@ -28,9 +28,13 @@
     <dimen name="marginstart_authenticationdefinition_enterpasscode">40dp</dimen>
     <dimen name="paddingtop_authentictiondefinition_enterpasscode">100dp</dimen>
     <dimen name="textsize_authenticationdefinition_enterpasscode">15sp</dimen>
-    <dimen name="marginend_authenticationdefinition_edittext">30dp</dimen>
-    <dimen name="marginstart_authenticationdefinition_edittext">30dp</dimen>
+    <dimen name="marginend_authenticationdefinition_textinputlayout">30dp</dimen>
+    <dimen name="marginstart_authenticationdefinition_textinputlayout">30dp</dimen>
     <dimen name="margintop_authenticationdefinition_confirmpassword">40dp</dimen>
+    <dimen name="pathwidth_authenticationdefinition_pattern">4dp</dimen>
+    <dimen name="marginend_authentication_textinputlayout">30dp</dimen>
+    <dimen name="marginstart_authentication_textinputlayout">30dp</dimen>
+
 
 
 
