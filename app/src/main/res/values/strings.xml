@@ -1,6 +1,7 @@
 <resources>
     <string name="registration_menudone">Done</string>
     <string name="phoneconfirmation_menudone">Done</string>
+    <string name="recoveryemail_menudone">Done</string>
     <string name="registration_toolbartitle">Input phone</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="authenticationdefinition_toolbartitle">Authentication type</string>
@@ -30,5 +31,7 @@
     <string name="authenticationdefinition_nomatch">No match</string>
     <string name="authenticationdefinition_setsuccessful">Set successful</string>
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
+    <string name="recoveryemail_enterarecoveryemail">Enter a recovery email</string>
+    <string name="recoveryemail_skip">Skip</string>
 
 </resources>

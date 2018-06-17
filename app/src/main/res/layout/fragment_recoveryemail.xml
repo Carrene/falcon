@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textview_recoveryemail_enterrecoveryemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margintop_recoveryemail_header"
+        android:text="@string/recoveryemail_enterarecoveryemail"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textsize_recoveryemail_header" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinputlayout_recoveryemail_enterrecoveryemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_recoveryemail_enterrecoveryemail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/marginend_recoveryemail_textinputlayout"
+        android:layout_marginStart="@dimen/marginstart_recoveryemail_textinputlayout"
+        android:layout_marginTop="@dimen/margintop_recoveryemail_textinputlayout">
+
+        <EditText
+            android:id="@+id/edittext_recoveryemail_enterrecoveryemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:maxLength="16" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/textview_recoveryemail_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textinputlayout_recoveryemail_enterrecoveryemail"
+        android:layout_marginTop="@dimen/margintop_recoveryemail_skip"
+        android:text="@string/recoveryemail_skip"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textsize_authenticationdefinition_enterpasscode" />
+
+</RelativeLayout>

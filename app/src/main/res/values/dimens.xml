@@ -34,6 +34,12 @@
     <dimen name="pathwidth_authenticationdefinition_pattern">4dp</dimen>
     <dimen name="marginend_authentication_textinputlayout">30dp</dimen>
     <dimen name="marginstart_authentication_textinputlayout">30dp</dimen>
+    <dimen name="margintop_recoveryemail_header">120dp</dimen>
+    <dimen name="textsize_recoveryemail_header">16sp</dimen>
+    <dimen name="margintop_recoveryemail_textinputlayout">100dp</dimen>
+    <dimen name="margintop_recoveryemail_skip">100dp</dimen>
+    <dimen name="marginstart_recoveryemail_textinputlayout">30dp</dimen>
+    <dimen name="marginend_recoveryemail_textinputlayout">30dp</dimen>
 
 
 
