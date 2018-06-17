@@ -8,13 +8,14 @@ public interface PhoneConfirmationContract {
     interface View extends BaseView<PhoneConfirmationContract.Presenter> {
 
         void showActivationCodeError(String error);
-        void navigateToAuthenticationDefinition();
+        void navigateToRecoveryEmail(User user);
+        void showResendCodeAgain();
 
     }
 
     interface Presenter extends BasePresenter {
 
-        void resendActivationCode();
+        void resendActivationCode(User user);
         void bind(User user);
     }
 }

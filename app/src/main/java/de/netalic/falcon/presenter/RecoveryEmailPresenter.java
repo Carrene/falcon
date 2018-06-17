@@ -2,6 +2,9 @@ package de.netalic.falcon.presenter;
 
 import android.support.annotation.NonNull;
 
+import de.netalic.falcon.model.User;
+import de.netalic.falcon.repository.user.UserRepository;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
@@ -17,6 +20,24 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
 
     @Override
     public void start() {
+
+    }
+
+    @Override
+    public void set(User user) {
+
+
+       UserRepository.getInstance().setEmail(user,deal -> {
+
+           if (deal.getResponse().code()==200){
+
+               mRecoveryEmailView.navigateToAuthenticationDefinitionActivity();
+           }
+
+
+
+
+       });
 
     }
 }

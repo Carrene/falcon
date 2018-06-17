@@ -26,7 +26,20 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
     }
 
     @Override
-    public void resendActivationCode() {
+    public void resendActivationCode(User user) {
+
+        UserRepository.getInstance().claim(user,deal -> {
+
+
+            if (deal.getResponse().code() == 200) {
+                mPhoneConfirmationView.showResendCodeAgain();
+
+            }
+            if (deal.getThrowable() != null) {
+
+                mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
+            }
+        });
 
     }
 
@@ -36,10 +49,7 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
             if (deal.getResponse().code() == 200) {
 
-                deal.getResponse();
-                int a=deal.getResponse().code();
-
-                mPhoneConfirmationView.navigateToAuthenticationDefinition();
+                mPhoneConfirmationView.navigateToRecoveryEmail(user);
 
             } else {
                 mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));

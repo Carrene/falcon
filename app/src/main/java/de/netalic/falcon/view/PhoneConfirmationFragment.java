@@ -131,6 +131,8 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
                 if (mIsRunning == false) {
                     setTimer();
+                    mPresenter.resendActivationCode(sUser);
+
                 }
             }
         });
@@ -147,7 +149,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private void setTimer() {
 
 
-        CountDownTimer countDownTimer = new CountDownTimer(120000, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -160,6 +162,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             @Override
             public void onFinish() {
 
+                mIsRunning = false;
                 mTextViewTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
 
 
@@ -171,11 +174,19 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
         mTextViewPhone.setText(sUser.getPhone());
     }
-    public void navigateToAuthenticationDefinition(){
 
-        Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+    @Override
+    public void navigateToRecoveryEmail(User user) {
+
+        Intent intent = new Intent(getActivity(), RecoveryEmailActivity.class);
+        intent.putExtra("User", user);
         startActivity(intent);
+    }
 
+    @Override
+    public void showResendCodeAgain() {
+
+        Snackbar.make(mRoot,"Sent code again",Snackbar.LENGTH_LONG).show();
     }
 }
 

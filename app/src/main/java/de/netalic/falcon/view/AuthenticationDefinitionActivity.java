@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.AuthenticationDefinitionPresenter;
@@ -24,6 +25,7 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_authenticationdefinition);
         setSupportActionBar(toolbar);
 
+        
         mActionBar = getSupportActionBar();
 
         if (mActionBar != null) {

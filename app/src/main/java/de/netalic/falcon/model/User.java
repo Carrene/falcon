@@ -147,11 +147,14 @@ public class User extends RealmObject implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+
         dest.writeString(this.mPhone);
+
     }
 
     protected User(Parcel in) {
         mPhone = in.readString();
+
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {

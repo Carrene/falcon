@@ -33,5 +33,7 @@
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
     <string name="recoveryemail_enterarecoveryemail">Enter a recovery email</string>
     <string name="recoveryemail_skip">Skip</string>
+    <string name="recoveryemail_thisemaildoesnotexist">This email does not exist</string>
+    <string name="recoveryemail_pleaseenteremailaddress">Please enter email address</string>
 
 </resources>
