@@ -33,7 +33,6 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     private EditText mEditTextRecoveryEmail;
     private TextInputLayout mTextInputLayoutRecoveryEmail;
     private TextView mTextViewSkip;
-    //private static User sUser;
 
     @Nullable
     @Override
@@ -48,7 +47,6 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     public static RecoveryEmailFragment newInstance() {
 
-        //sUser = user;
         return new RecoveryEmailFragment();
     }
 
@@ -97,7 +95,6 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     }
 
     public void set() {
-        //sUser.setEmail(mEditTextRecoveryEmail.getText().toString());
         User user=new User(mEditTextRecoveryEmail.getText().toString());
         mPresenter.set(user);
 

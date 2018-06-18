@@ -9,7 +9,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.EditText;
 
 import de.netalic.falcon.R;
@@ -31,7 +30,6 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
         mRoot = inflater.inflate(R.layout.passwordtab_authenticationdefinition, container, false);
         initUiComponents();
         validationPassCode();
-
         return mRoot;
     }
 

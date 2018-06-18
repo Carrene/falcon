@@ -22,7 +22,6 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
     private int mAttemptTimeNumber;
     private String mFirstAttemptPattern;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,6 +36,7 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
 
         mPatternLockView = mRoot.findViewById(R.id.patternview_authenticationdefinition_pattern);
         mPatternLockView.setEnabled(true);
+
     }
 
     public void initListeners() {
@@ -46,11 +46,11 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
             public void onStarted() {
 
 
-
             }
 
             @Override
             public void onProgress(List<PatternLockView.Dot> progressPattern) {
+
 
             }
 
@@ -90,5 +90,6 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
         });
 
     }
+
 
 }

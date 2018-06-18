@@ -47,13 +47,17 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
     public void bind(User user) {
         UserRepository.getInstance().bind(user, deal -> {
 
-            if (deal.getResponse().code() == 200) {
+            System.out.println(deal.getThrowable());
 
-                mPhoneConfirmationView.navigateToRecoveryEmail(user);
+                if (deal.getResponse().code() == 200) {
 
-            } else {
-                mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
-            }
-        });
+                    mPhoneConfirmationView.navigateToRecoveryEmail(user);
+
+                } else {
+                    mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
+                }
+            });
+
+
     }
 }

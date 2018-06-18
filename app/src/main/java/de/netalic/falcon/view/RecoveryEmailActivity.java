@@ -22,8 +22,6 @@ public class RecoveryEmailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recoveryemail);
 
-        //User user = getIntent().getExtras().getParcelable("User");
-
         Toolbar toolbar = findViewById(R.id.toolbar_recoveryemail);
         setSupportActionBar(toolbar);
 

@@ -148,7 +148,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setTimer() {
 
-
         CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -164,8 +163,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
                 mIsRunning = false;
                 mTextViewTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
-
-
             }
         }.start();
     }
@@ -186,7 +183,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     @Override
     public void showResendCodeAgain() {
 
-        Snackbar.make(mRoot,"Sent code again",Snackbar.LENGTH_LONG).show();
+        Snackbar.make(mRoot, "Sent code again", Snackbar.LENGTH_LONG).show();
     }
 }
 
