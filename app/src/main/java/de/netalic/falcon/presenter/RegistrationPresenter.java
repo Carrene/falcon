@@ -19,7 +19,7 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
     }
 
     @Override
-    public void claim(User user, String countryCode, String phoneNumber) {
+    public void claim(User user) {
 
         UserRepository.getInstance().claim(user, deal -> {
 

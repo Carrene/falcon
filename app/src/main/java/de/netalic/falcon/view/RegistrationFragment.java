@@ -118,7 +118,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     private void claim() {
         User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
-        mPresenter.claim(user, mEditTextCountryCode.getText().toString(), mEditTextCountryName.getText().toString());
+        mPresenter.claim(user);
 
     }
 

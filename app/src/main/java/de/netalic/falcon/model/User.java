@@ -149,11 +149,15 @@ public class User extends RealmObject implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeString(this.mPhone);
+        dest.writeString(this.mDeviceName);
+        dest.writeString(this.mUdid);
 
     }
 
     protected User(Parcel in) {
         mPhone = in.readString();
+        mDeviceName=in.readString();
+        mUdid=in.readString();
 
     }
 

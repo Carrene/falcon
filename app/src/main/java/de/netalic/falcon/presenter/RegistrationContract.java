@@ -13,6 +13,6 @@ public interface RegistrationContract {
     }
 
     interface Presenter extends BasePresenter {
-        void claim(User user,String codeCountry,String phoneNumber);
+        void claim(User user);
     }
 }

@@ -47,7 +47,6 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
     public void bind(User user) {
         UserRepository.getInstance().bind(user, deal -> {
 
-            System.out.println(deal.getThrowable());
 
                 if (deal.getResponse().code() == 200) {
 

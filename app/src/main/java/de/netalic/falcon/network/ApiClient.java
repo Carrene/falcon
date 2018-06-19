@@ -91,8 +91,8 @@ public class ApiClient {
                 JsonParser jsonParser = new JsonParser();
                 JsonObject jsonObject = (JsonObject) jsonParser.parse(response.body().string());
                 // TODO Ehsan: check if 200 <= response < 300 do this
-                String freshToken = jsonObject.get("token").getAsString();
-                sharedPreferencesJwtPersistor.save(freshToken);
+//                String freshToken = jsonObject.get("token").getAsString();
+//                sharedPreferencesJwtPersistor.save(freshToken);
             }
             String newJwtToken = response.header("X-New-JWT-Token");
 

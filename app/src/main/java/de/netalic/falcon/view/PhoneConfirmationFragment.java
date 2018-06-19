@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -142,6 +143,26 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             public void onClick(View v) {
 
                 changePhoneNumber();
+            }
+        });
+
+        mEditTextReceiveCode.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (keyCode)
+                    {
+                        case KeyEvent.KEYCODE_ENTER:
+                            sUser.setActivationCode(mEditTextReceiveCode.getText().toString());
+                            bind();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
             }
         });
     }
