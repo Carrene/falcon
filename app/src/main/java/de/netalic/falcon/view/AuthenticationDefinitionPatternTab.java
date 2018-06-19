@@ -21,12 +21,14 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
     private PatternLockView mPatternLockView;
     private int mAttemptTimeNumber;
     private String mFirstAttemptPattern;
+    private AuthenticationDefinitionFragment mAuthenticationDefinitionFragment;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.patterntab_authenticationdefinition, container, false);
+        mAuthenticationDefinitionFragment =new AuthenticationDefinitionFragment();
         initUiComponents();
         initListeners();
         return mRoot;

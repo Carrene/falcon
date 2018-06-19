@@ -47,7 +47,6 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
     public void bind(User user) {
         UserRepository.getInstance().bind(user, deal -> {
 
-
                 if (deal.getResponse().code() == 200) {
 
                     mPhoneConfirmationView.navigateToRecoveryEmail(user);
@@ -56,7 +55,5 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
                     mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
                 }
             });
-
-
     }
 }

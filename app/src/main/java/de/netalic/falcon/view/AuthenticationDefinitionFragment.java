@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,20 +9,26 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.Scroller;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.AuthenticationDefinitionContract;
+import de.netalic.falcon.util.NonSwipeAbleViewPager;
 
 public class AuthenticationDefinitionFragment extends Fragment implements AuthenticationDefinitionContract.View {
 
     private View mRoot;
-    private ViewPager mViewPager;
+    private NonSwipeAbleViewPager mViewPager;
     private TabLayout mTabLayout;
 
 
@@ -36,7 +43,6 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
         mTabLayout.setupWithViewPager(mViewPager);
         return mRoot;
     }
-
 
     public static AuthenticationDefinitionFragment newInstance() {
 
@@ -81,9 +87,8 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getFragmentManager());
-        AuthenticationDefinitionPatternTab adpt = new AuthenticationDefinitionPatternTab();
         adapter.addFragment(new AuthenticationDefinitionPasswordTab(), getContext().getString(R.string.athenticationdefinition_password));
-        adapter.addFragment(adpt, getContext().getString(R.string.authenticationdefinition_pattern));
+        adapter.addFragment(new AuthenticationDefinitionPatternTab(), getContext().getString(R.string.authenticationdefinition_pattern));
         viewPager.setAdapter(adapter);
     }
 
@@ -92,4 +97,5 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
         mViewPager = mRoot.findViewById(R.id.viewpager_authentication_definition);
         mTabLayout = mRoot.findViewById(R.id.tablayout_authentication_definition);
     }
+
 }

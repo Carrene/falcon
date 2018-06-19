@@ -204,7 +204,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     @Override
     public void showResendCodeAgain() {
 
-        Snackbar.make(mRoot, "Sent code again", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_sentcodeagain), Snackbar.LENGTH_LONG).show();
     }
 }
 

@@ -35,5 +35,6 @@
     <string name="recoveryemail_skip">Skip</string>
     <string name="recoveryemail_thisemaildoesnotexist">This email does not exist</string>
     <string name="recoveryemail_pleaseenteremailaddress">Please enter email address</string>
+    <string name="phoneconfirmation_sentcodeagain">Sent code again</string>
 
 </resources>
