@@ -19,5 +19,5 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @HTTP(method = "SET", path = "emails", hasBody = true)
-    Call<User> setEmail(String email);
+    Call<User> setEmail(@Field("email") String email);
 }

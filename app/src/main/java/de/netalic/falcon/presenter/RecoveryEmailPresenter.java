@@ -33,6 +33,10 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
 
                mRecoveryEmailView.navigateToAuthenticationDefinitionActivity();
            }
+           else {
+
+               mRecoveryEmailView.showErrorSetEmail(deal.getResponse().code());
+           }
 
 
 
