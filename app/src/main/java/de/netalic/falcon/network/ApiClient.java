@@ -14,9 +14,11 @@ import de.netalic.falcon.BuildConfig;
 import de.netalic.falcon.MyApp;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -86,13 +88,17 @@ public class ApiClient {
 
             Response response = chain.proceed(request);
 
-            if (response.request().method().equals("BIND")) {
+            if (response.request().method().equals("BIND") && response.code()==200) {
 
                 JsonParser jsonParser = new JsonParser();
-                JsonObject jsonObject = (JsonObject) jsonParser.parse(response.body().string());
-                // TODO Ehsan: check if 200 <= response < 300 do this
+                String responseBodyString  = response.body().string();
+                JsonObject jsonObject = (JsonObject) jsonParser.parse(responseBodyString);
                 String freshToken = jsonObject.get("token").getAsString();
                 sharedPreferencesJwtPersistor.save(freshToken);
+                MediaType contentType = response.body().contentType();
+                ResponseBody body = ResponseBody.create(contentType, responseBodyString);
+                response = response.newBuilder().body(body).build();
+
             }
             String newJwtToken = response.header("X-New-JWT-Token");
 
