@@ -169,7 +169,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setTimer() {
 
-        CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -183,7 +183,9 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             public void onFinish() {
 
                 mIsRunning = false;
-                mTextViewTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
+                if (getContext() != null) {
+                    mTextViewTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
+                }
             }
         }.start();
     }

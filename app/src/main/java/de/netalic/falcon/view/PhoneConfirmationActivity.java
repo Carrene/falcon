@@ -16,7 +16,6 @@ import de.netalic.falcon.util.ActivityUtil;
 
 public class PhoneConfirmationActivity extends AppCompatActivity {
 
-    private ActionBar mActionBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,9 +26,11 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
 
         User user = getIntent().getExtras().getParcelable("User");
 
+
         Toolbar toolbar = findViewById(R.id.toolbar_phoneconfirmation);
         setSupportActionBar(toolbar);
 
+        ActionBar mActionBar;
         mActionBar = getSupportActionBar();
 
         if (mActionBar != null) {

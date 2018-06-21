@@ -35,7 +35,8 @@
             android:name=".view.AuthenticationDefinitionActivity">
         </activity>
 
-        <activity android:name=".view.RecoveryEmailActivity"/>
+        <activity android:name=".view.RecoveryEmailActivity"
+            android:parentActivityName=".view.PhoneConfirmationActivity" />
 
     </application>
 
