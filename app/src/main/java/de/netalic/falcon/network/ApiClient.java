@@ -30,7 +30,6 @@ public class ApiClient {
 
     private static Retrofit getClient() {
 
-
         if (sRetrofit == null) {
 
             if (sTestUrl == null) {

@@ -22,6 +22,8 @@ public class RecoveryEmailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recoveryemail);
 
+        User user = getIntent().getExtras().getParcelable("User");
+
         Toolbar toolbar = findViewById(R.id.toolbar_recoveryemail);
         setSupportActionBar(toolbar);
 
@@ -35,7 +37,7 @@ public class RecoveryEmailActivity extends AppCompatActivity {
 
         RecoveryEmailFragment recoveryEmailFragment = (RecoveryEmailFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_recoveryemail_fragmentcontainer);
         if (recoveryEmailFragment == null) {
-            recoveryEmailFragment = RecoveryEmailFragment.newInstance();
+            recoveryEmailFragment = RecoveryEmailFragment.newInstance(user);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), recoveryEmailFragment, R.id.framelayout_recoveryemail_fragmentcontainer);
         }
 
