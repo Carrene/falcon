@@ -38,10 +38,11 @@
     <dimen name="marginstart_authentication_textinputlayout">30dp</dimen>
     <dimen name="margintop_recoveryemail_header">120dp</dimen>
     <dimen name="textsize_recoveryemail_header">16sp</dimen>
-    <dimen name="margintop_recoveryemail_textinputlayout">100dp</dimen>
-    <dimen name="margintop_recoveryemail_skip">100dp</dimen>
+    <dimen name="margintop_recoveryemail_textinputlayout">90dp</dimen>
+    <dimen name="margintop_recoveryemail_skip">30dp</dimen>
     <dimen name="marginstart_recoveryemail_textinputlayout">30dp</dimen>
     <dimen name="marginend_recoveryemail_textinputlayout">30dp</dimen>
+    <dimen name="paddingbottom_recoveryemail_hintenteremail">25dp</dimen>
     <dimen name="width_signin_logo">263dp</dimen>
     <dimen name="height_singin_logo">92dp</dimen>
     <dimen name="marginstart_singin_logo">49dp</dimen>

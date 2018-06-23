@@ -34,9 +34,10 @@
     <string name="authenticationdefinition_setsuccessful">Set successful</string>
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
     <string name="recoveryemail_enterarecoveryemail">Enter a recovery email</string>
-    <string name="recoveryemail_skip">Skip</string>
+    <string name="recoveryemail_skip">SKIP</string>
     <string name="recoveryemail_thisemaildoesnotexist">This email does not exist</string>
     <string name="recoveryemail_pleaseenteremailaddress">Please enter email address</string>
+    <string name="recoveryemail_enteremailaddress">Enter Email address</string>
     <string name="title_activity_sign_in">SignInActivity</string>
     <string name="signin_textbutton">SIGN IN</string>
 
