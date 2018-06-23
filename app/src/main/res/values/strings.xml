@@ -36,5 +36,7 @@
     <string name="recoveryemail_thisemaildoesnotexist">This email does not exist</string>
     <string name="recoveryemail_pleaseenteremailaddress">Please enter email address</string>
     <string name="phoneconfirmation_sentcodeagain">Sent code again</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="signin_textbutton">SIGN IN</string>
 
 </resources>

@@ -40,9 +40,14 @@
     <dimen name="margintop_recoveryemail_skip">100dp</dimen>
     <dimen name="marginstart_recoveryemail_textinputlayout">30dp</dimen>
     <dimen name="marginend_recoveryemail_textinputlayout">30dp</dimen>
-
-
-
+    <dimen name="width_signin_logo">263dp</dimen>
+    <dimen name="height_singin_logo">92dp</dimen>
+    <dimen name="marginstart_singin_logo">49dp</dimen>
+    <dimen name="marginend_signin_logo">48dp</dimen>
+    <dimen name="margintop_signin_logo">180dp</dimen>
+    <dimen name="width_singin_button">144dp</dimen>
+    <dimen name="height_singin_button">43dp</dimen>
+    <dimen name="margintop_signin_button">105dp</dimen>
 
 
 </resources>
