@@ -1,8 +1,11 @@
 package de.netalic.falcon.repository.user;
 
+import de.netalic.falcon.model.Currency;
+import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
+import de.netalic.falcon.repository.IRepository;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -70,6 +73,27 @@ public class UserRestRepository implements IUserRepository {
 
             }
         });
+    }
+
+    @Override
+    public void exchangeRate(Currency currency, CallRepository<ExchangeRate> callRepository) {
+
+
+        ApiClient.getService().exchangeRate(currency).enqueue(new Callback<ExchangeRate>() {
+            @Override
+            public void onResponse(Call<ExchangeRate> call, Response<ExchangeRate> response) {
+
+                callRepository.onDone(new Deal<>(response.body(),response,null));
+            }
+
+            @Override
+            public void onFailure(Call<ExchangeRate> call, Throwable t) {
+
+                callRepository.onDone(new Deal<>(null,null,t));
+
+            }
+        });
+
     }
 
     @Override

@@ -1,10 +1,13 @@
 package de.netalic.falcon.network;
 
+import de.netalic.falcon.model.Currency;
+import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.User;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.HTTP;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
 
@@ -20,4 +23,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @HTTP(method = "SET", path = "emails", hasBody = true)
     Call<User> setEmail(@Field("email") String email);
+
+    @FormUrlEncoded
+    @HTTP(method = "GET",path = "rates/:{currency}",hasBody = true)
+    Call<ExchangeRate>exchangeRate(@Path("currency") Currency currency);
 }
