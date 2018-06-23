@@ -14,9 +14,11 @@
     <string name="phoneconfirmation_timer">"(02:00)"</string>
     <string name="phoneconfirmation_changenumber">"Change number"</string>
     <string name="phoneconfirmation_resend">Resend</string>
+    <string name="phoneconfirmation_sentcodeagain">Sent code again</string>
     <string name="registration_fillallbox">Fill all box</string>
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
+    <string name="registration_maskhint">XXXXXXXXXX</string>
     <string name="phoneconfirmation_Pleasefillbox">Please fill box</string>
     <string name="athenticationdefinition_selecttheappsloginmethod">Select the apps login methods</string>
     <string name="authenticationdefinition_Enterpassword">Enter password</string>
@@ -35,8 +37,8 @@
     <string name="recoveryemail_skip">Skip</string>
     <string name="recoveryemail_thisemaildoesnotexist">This email does not exist</string>
     <string name="recoveryemail_pleaseenteremailaddress">Please enter email address</string>
-    <string name="phoneconfirmation_sentcodeagain">Sent code again</string>
     <string name="title_activity_sign_in">SignInActivity</string>
     <string name="signin_textbutton">SIGN IN</string>
+
 
 </resources>

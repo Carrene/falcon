@@ -5,14 +5,14 @@
     <dimen name="marginEnd_registration_tikicon">20dp</dimen>
     <dimen name="margintop_registration_tikicon">20dp</dimen>
     <dimen name="width_registration_border">1dp</dimen>
-    <dimen name="margintop_registration_countrypicker">50dp</dimen>
+    <dimen name="margintop_registration_countrypicker">84dp</dimen>
     <dimen name="width_registration_stroke">1dp</dimen>
     <dimen name="marginstart_registration_countrypicker">40dp</dimen>
     <dimen name="marginend_registration_countrypicker">40dp</dimen>
     <dimen name="marginstart_registration_code">40dp</dimen>
     <dimen name="marginend_registration_phonenumber">40dp</dimen>
-    <dimen name="margintop_registration_phonenumber">120dp</dimen>
-    <dimen name="marginbottom_registration_confirmtext">180dp</dimen>
+    <dimen name="margintop_registration_phonenumber">180dp</dimen>
+    <dimen name="marginbottom_registration_confirmtext">20dp</dimen>
     <dimen name="margintop_phoneconfirmation_userphone">100dp</dimen>
     <dimen name="textsize_phoneconfirmation_userphone">22sp</dimen>
     <dimen name="margintop_phoneconfirmation_header1">40dp</dimen>
