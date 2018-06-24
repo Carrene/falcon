@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/Porcelain"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textview_phoneconfirmation_number"
@@ -23,8 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_phoneconfirmation_number"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margintop_phoneconfirmation_confirmationcodehere"
-        >
+        android:layout_marginTop="@dimen/margintop_phoneconfirmation_confirmationcodehere">
 
         <EditText
             android:id="@+id/edittext_phoneconfirmation_receivecode"
@@ -33,11 +31,9 @@
             android:layout_marginEnd="@dimen/marginend_phoneconfirmation_edittext"
             android:layout_marginStart="@dimen/marginstart_phoneconfirmation_edittext"
             android:ems="10"
-            android:hint="@string/phoneconfirmation_entertheverificationhere"
             android:gravity="center"
-            android:singleLine="true"
-            android:paddingBottom="@dimen/paddingbottom_phoneconfirmation_confirmationcodehere"
-            />
+            android:hint="@string/phoneconfirmation_entertheverificationhere"
+            android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
 

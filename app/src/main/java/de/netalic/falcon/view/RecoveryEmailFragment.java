@@ -39,14 +39,19 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
         mRoot = inflater.inflate(R.layout.fragment_recoveryemail, container, false);
         setHasOptionsMenu(true);
         initUiComponents();
-        initListeners();
         checkEmailSyntax();
+        initListeners();
         return mRoot;
     }
 
     public static RecoveryEmailFragment newInstance(User user) {
 
-        sUser=user;
+        sUser = user;
+        return new RecoveryEmailFragment();
+    }
+
+    public static RecoveryEmailFragment newInstance() {
+
         return new RecoveryEmailFragment();
     }
 
@@ -69,8 +74,8 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
         switch (item.getItemId()) {
             case R.id.menu_recoveryemail_done: {
 
-                   checkEmailSyntax();
-                   return true;
+                checkEmailSyntax();
+                return true;
             }
             default:
                 break;
@@ -88,49 +93,52 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         mTextInputLayoutRecoveryEmail = mRoot.findViewById(R.id.textinputlayout_recoveryemail_enterrecoveryemail);
         mEditTextRecoveryEmail = mRoot.findViewById(R.id.edittext_recoveryemail_enterrecoveryemail);
-        mTextViewSkip=mRoot.findViewById(R.id.textview_recoveryemail_skip);
+        mTextViewSkip = mRoot.findViewById(R.id.textview_recoveryemail_skip);
 
     }
 
     @Override
     public void navigateToAuthenticationDefinitionActivity() {
 
-        Intent intent=new Intent(getActivity(),AuthenticationDefinitionActivity.class);
+        Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void showErrorSetEmail(int code) {
 
-        Snackbar.make(mRoot,String.valueOf(code),Snackbar.LENGTH_LONG).show();
+        Snackbar.make(mRoot, String.valueOf(code), Snackbar.LENGTH_LONG).show();
     }
 
-    public void initListeners(){
+    public void initListeners() {
 
         mTextViewSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(getActivity(),AuthenticationDefinitionActivity.class);
+                Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+                intent.putExtra("User",sUser);
                 startActivity(intent);
             }
         });
+
+
 
         mEditTextRecoveryEmail.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if (event.getAction()==KeyEvent.ACTION_DOWN){
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
 
-                    switch (keyCode){
+                    switch (keyCode) {
 
                         case KeyEvent.KEYCODE_ENTER:
 
                             checkEmailSyntax();
 
-                            return  true;
-                         default:
-                             break;
+                            return true;
+                        default:
+                            break;
                     }
                 }
 
@@ -139,12 +147,17 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
         });
     }
 
-    public void checkEmailSyntax(){
+    public void checkEmailSyntax() {
 
         String emailPattern = "[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._-]+" +
                 "@[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]+\\.+" +
                 "[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]+";
-        if (!mEditTextRecoveryEmail.getText().toString().matches(emailPattern)) {
+
+        if (mEditTextRecoveryEmail.getText().toString().matches("")) {
+
+            mTextInputLayoutRecoveryEmail.setError(getContext().getString(R.string.recoveryemail_pleaseenteremailaddress));
+
+        } else if (!mEditTextRecoveryEmail.getText().toString().matches(emailPattern)) {
 
             mTextInputLayoutRecoveryEmail.setError(getContext().getString(R.string.recoveryemail_thisemaildoesnotexist));
 
@@ -153,11 +166,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
             set();
 
         }
-        if (mEditTextRecoveryEmail.getText().toString().matches("")) {
 
-            mTextInputLayoutRecoveryEmail.setError(getContext().getString(R.string.recoveryemail_pleaseenteremailaddress));
-
-        }
 
     }
 }

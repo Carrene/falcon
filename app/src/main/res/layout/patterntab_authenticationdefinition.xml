@@ -12,7 +12,8 @@
         android:layout_gravity="center"
         app:aspectRatioEnabled="true"
         app:dotCount="3"
-        app:normalStateColor="@color/black"
+        app:dotNormalSize="@dimen/dotnormalsize_authenticationdefinitionpatterntab_patternlockview"
+        app:normalStateColor="@color/mariner"
         app:pathWidth="@dimen/pathwidth_authenticationdefinition_pattern" />
 
 

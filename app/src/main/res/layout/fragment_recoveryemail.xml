@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Porcelain"
-    >
+    android:background="@color/Porcelain">
 
     <TextView
         android:id="@+id/textview_recoveryemail_enterrecoveryemail"
@@ -13,7 +12,8 @@
         android:text="@string/recoveryemail_enterarecoveryemail"
         android:textAlignment="center"
         android:textColor="@color/mariner"
-        android:textSize="@dimen/textsize_recoveryemail_header" />
+        android:textSize="@dimen/textsize_recoveryemail_header"
+        android:textStyle="bold" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textinputlayout_recoveryemail_enterrecoveryemail"
@@ -30,12 +30,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:maxLength="30"
-            android:hint="@string/recoveryemail_enteremailaddress"
-            android:paddingBottom="@dimen/paddingbottom_recoveryemail_hintenteremail"
             android:gravity="center"
-            />
+            android:hint="@string/recoveryemail_enteremailaddress"
+            android:inputType="textEmailAddress"
+            android:maxLength="30" />
 
     </android.support.design.widget.TextInputLayout>
 

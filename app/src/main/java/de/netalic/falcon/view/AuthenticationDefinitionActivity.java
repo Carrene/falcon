@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.AuthenticationDefinitionPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
@@ -20,6 +21,8 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authenticationdefinition);
+
+        User user = getIntent().getExtras().getParcelable("User");
 
         Toolbar toolbar = findViewById(R.id.toolbar_authenticationdefinition);
         setSupportActionBar(toolbar);
@@ -35,7 +38,7 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity {
 
         AuthenticationDefinitionFragment authenticationDefinitionFragment = (AuthenticationDefinitionFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_authenticationdefinition_fragmentcontainer);
         if (authenticationDefinitionFragment == null) {
-            authenticationDefinitionFragment = AuthenticationDefinitionFragment.newInstance();
+            authenticationDefinitionFragment = AuthenticationDefinitionFragment.newInstance(user);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), authenticationDefinitionFragment, R.id.framelayout_authenticationdefinition_fragmentcontainer);
         }
 
