@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <RelativeLayout
+
+        android:id="@+id/relativelayout_dashboard_firstpart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/mariner">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="23dp"
+            android:layout_toStartOf="@+id/spinner_dashboard_spinner"
+            android:src="@drawable/dashboard_dollarusd" />
+
+        <Spinner
+            android:id="@+id/spinner_dashboard_spinner"
+            android:layout_width="117dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/textview_dashboard_myyblance"
+            android:layout_marginTop="26dp" />
+
+        <TextView
+            android:id="@+id/textview_dashboard_myyblance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="72dp"
+            android:text="My Blance"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/alpha_dashboard_icon"
+            android:layout_width="124dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="165dp"
+            android:src="@drawable/signin_logo" />
+
+        <TextView
+            android:id="@+id/textview_dashboard_blance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/alpha_dashboard_icon"
+            android:layout_toEndOf="@+id/textview_dashboard_myyblance"
+            android:text="3.00"
+            android:textColor="@color/white"
+            android:textSize="60sp" />
+
+        <View
+            android:id="@+id/view_dashboard_borderline"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/alpha_dashboard_icon"
+            android:layout_centerHorizontal="true"
+            android:background="@color/Emerald" />
+
+        <TextView
+            android:id="@+id/textview_dashboard_equivalenttobasecurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/textview_dashboard_ratecurrency"
+            android:layout_marginStart="59dp"
+            android:text="Equivalent to base currency"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textview_dashboard_ratecurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textview_dashboard_blance"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="19dp"
+            android:text="1.98"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/view_dashboard_borderline2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/relativelayout_dashboard_firstpart"
+        android:layout_centerHorizontal="true"
+        android:background="@color/Emerald" />
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_dashboard_secondpart"
+        android:layout_width="match_parent"
+        android:layout_height="315dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/Porcelain">
+
+        <ImageView
+            android:id="@+id/imageview_dashboard_purcahse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="36dp"
+            android:src="@drawable/dashboard_purchase" />
+
+        <ImageView
+            android:id="@+id/imageview_dashboard_withdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="37dp"
+            android:src="@drawable/dashboard_withdraw" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageview_dashboard_purcahse"
+            android:layout_marginStart="74dp"
+            android:text="Purchase"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/mariner"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/imageview_dashboard_purcahse"
+            android:layout_marginEnd="74dp"
+            android:text="Withdraw"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/mariner"
+            />
+
+
+    </RelativeLayout>
+</RelativeLayout>

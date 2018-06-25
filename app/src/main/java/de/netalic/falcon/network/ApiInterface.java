@@ -25,6 +25,6 @@ public interface ApiInterface {
     Call<User> setEmail(@Field("email") String email);
 
     @FormUrlEncoded
-    @HTTP(method = "GET",path = "rates/:{currency}",hasBody = true)
+    @HTTP(method = "GET",path = "rates/{currency}",hasBody = true)
     Call<ExchangeRate>exchangeRate(@Path("currency") Currency currency);
 }
