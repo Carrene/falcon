@@ -3,7 +3,6 @@ package de.netalic.falcon.repository.user;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.User;
-import de.netalic.falcon.repository.IRepository;
 
 public class UserRepository implements IUserRepository {
 

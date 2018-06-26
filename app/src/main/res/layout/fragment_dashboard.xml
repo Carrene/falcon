@@ -14,7 +14,6 @@
         android:layout_alignParentTop="true"
         android:background="@color/mariner">
 
-
         <ImageView
             android:id="@+id/imageview_dashboard_dollaricon"
             android:layout_width="@dimen/width_dashboard_dollaricon"
@@ -30,7 +29,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="@dimen/marginend_dashboard_spinner"
-            android:layout_marginTop="@dimen/margintop_dashboard_spinner" />
+            android:layout_marginTop="@dimen/margintop_dashboard_spinner"
+            />
 
         <TextView
             android:id="@+id/textview_dashboard_myblance"
