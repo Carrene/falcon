@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
@@ -51,6 +53,7 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
 
         mSegmentedGroup = mRoot.findViewById(R.id.segmented_authenticationdefinition_segmentedgroup);
         mRadioButtonPassword = mRoot.findViewById(R.id.radiobutton_authenticationdefinition_password);
+        setHasOptionsMenu(true);
     }
 
     public void initListeners() {
@@ -86,6 +89,12 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
         FragmentTransaction fragmentTransactionPassword = getFragmentManager().beginTransaction();
         fragmentTransactionPassword.replace(R.id.framelayout_authenticationdefinition_container, fragment);
         fragmentTransactionPassword.commit();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.menu_authentication_toolbar, menu);
     }
 
 }
