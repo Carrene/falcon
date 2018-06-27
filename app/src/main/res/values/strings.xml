@@ -46,6 +46,8 @@
     <string name="dahboard_rateequivalent">1.98</string>
     <string name="dashboard_purchase">Purchase</string>
     <string name="dashboard_withdraw">Withdraw</string>
+    <string name="dashboard_dashboard">Dashboard</string>
+    <string name="dashboard_notification">Notification</string>
 
 
 </resources>

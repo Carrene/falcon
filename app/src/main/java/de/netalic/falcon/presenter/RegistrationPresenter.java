@@ -34,7 +34,6 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
 
                 });
     }
-
     @Override
     public void start() {
 

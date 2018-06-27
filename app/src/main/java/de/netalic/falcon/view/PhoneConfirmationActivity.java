@@ -30,8 +30,7 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_phoneconfirmation);
         setSupportActionBar(toolbar);
 
-        ActionBar mActionBar;
-        mActionBar = getSupportActionBar();
+        ActionBar mActionBar = getSupportActionBar();
 
         if (mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);

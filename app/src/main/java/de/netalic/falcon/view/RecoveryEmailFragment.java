@@ -168,6 +168,5 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         }
 
-
     }
 }
