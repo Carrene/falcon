@@ -64,16 +64,16 @@
     <dimen name="height_dashboard_dollaricon">20dp</dimen>
     <dimen name="width_dashboard_spinner">160dp</dimen>
     <dimen name="height_dashboard_spinner">20dp</dimen>
-    <dimen name="margintop_dashboard_spinner">28dp</dimen>
+    <dimen name="margintop_dashboard_spinner">20dp</dimen>
     <dimen name="marginend_dashboard_spinner">98dp</dimen>
     <dimen name="margintop_Dashboard_myblance">72dp</dimen>
     <dimen name="textsize_dashboard_myblance">20sp</dimen>
-    <dimen name="textsize_dashboard_amountalpha">50sp</dimen>
+    <dimen name="textsize_dashboard_amountalpha">65sp</dimen>
     <dimen name="height_dashboard_border">2dp</dimen>
     <dimen name="marginbottom_dashboard_linearlayoutmiddletextview">20dp</dimen>
     <dimen name="paddingtop_dashboard_linearlayoutmiddletextview">20dp</dimen>
-    <dimen name="textsize_dashboard_equivalenttobasecurrecy">13sp</dimen>
-    <dimen name="marginstart_dashboard_equivalenttobasecurrency">59dp</dimen>
+    <dimen name="textsize_dashboard_equivalenttobasecurrecy">18sp</dimen>
+    <dimen name="marginstart_dashboard_equivalenttobasecurrency">24dp</dimen>
     <dimen name="textsize_dashboard_rateequivalent">13sp</dimen>
     <dimen name="widthheight_dashboard_withdrawimageview">135dp</dimen>
     <dimen name="widthheight_dahboard_purchaseimageview">135dp</dimen>
@@ -83,18 +83,18 @@
     <dimen name="textsize_dashboard_purchasewithdrawtextsize">18sp</dimen>
     <dimen name="marginbottom_dashboard_linearlayoutalphasymbol">40dp</dimen>
     <dimen name="margintop_dashboard_linearlayoutalphasymbol">20dp</dimen>
-    <dimen name="widthheight_dashboard_alphaicon">55dp</dimen>
+    <dimen name="widthheight_dashboard_alphaicon">30dp</dimen>
     <dimen name="paddingstart_dashboard_alphaicon">70dp</dimen>
     <dimen name="paddingtop_dashboard_alphaicon">20dp</dimen>
-    <dimen name="widthheight_dashboard_currencydollar">13dp</dimen>
-    <dimen name="paddingstart_dashboard_currenyicon">40dp</dimen>
+    <dimen name="widthheight_dashboard_currencydollar">31dp</dimen>
+    <dimen name="paddingstart_dashboard_currenyicon">38dp</dimen>
     <dimen name="marginend_dashboard_withdrawimage">20dp</dimen>
     <dimen name="marginstart_dashboard_purchaseimage">20dp</dimen>
     <dimen name="paddingend_dashboard_linearlayoutbottomtextviews">20dp</dimen>
     <dimen name="paddingstart_dashboard_linearlayoutbottomtextviews">20dp</dimen>
     <dimen name="paddingtop_dashboard_linearlayoutbottomtextviews">10dp</dimen>
     <dimen name="height_dashboard_linearlayoutbottomtextviews">0dp</dimen>
-
-
+    <dimen name="height_dashboard_imageviewcurrencydollar">20dp</dimen>
+    <dimen name="paddingbottom_dashboard_linearlayoutalphasymbol">30dp</dimen>
 
 </resources>

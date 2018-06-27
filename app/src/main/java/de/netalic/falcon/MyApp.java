@@ -4,6 +4,7 @@ import android.app.Application;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MyApp extends Application {
 
@@ -27,5 +28,12 @@ public class MyApp extends Application {
                 .schemaVersion(1);
         sSensitiveRealmConfiguration = new RealmConfiguration.Builder()
                 .schemaVersion(1);
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Roboto_Medium.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
+
     }
 }
