@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,7 @@ import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.User;
 
 public class AuthenticationDefinitionPatternTab extends Fragment {
 
@@ -21,16 +23,15 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
     private PatternLockView mPatternLockView;
     private int mAttemptTimeNumber;
     private String mFirstAttemptPattern;
-    private AuthenticationDefinitionFragment mAuthenticationDefinitionFragment;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.patterntab_authenticationdefinition, container, false);
-        mAuthenticationDefinitionFragment =new AuthenticationDefinitionFragment();
         initUiComponents();
         initListeners();
+        setUser();
         return mRoot;
     }
 
@@ -80,9 +81,13 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
                     Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_nomatch), Snackbar.LENGTH_LONG).show();
                     return;
                 }
-                Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), Snackbar.LENGTH_LONG).show();
-                String credentialValue = mPatternLockView.getPattern().toString();
-                mPatternLockView.clearPattern();
+                else {
+                    Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), Snackbar.LENGTH_LONG).show();
+                    String credentialValue = mPatternLockView.getPattern().toString();
+                    mPatternLockView.clearPattern();
+                    navigationToDashboard();
+
+                }
             }
 
             @Override
@@ -92,6 +97,23 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
         });
 
     }
+
+    public void navigationToDashboard(){
+
+        Intent  intent=new Intent(getActivity(),DashboardActivity.class);
+        startActivity(intent);
+
+    }
+    public void setUser(){
+
+        Bundle bundle = this.getArguments();
+        User user = new User();
+        if (bundle != null) {
+            user = bundle.getParcelable("User");
+        }
+
+    }
+
 
 
 }

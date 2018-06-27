@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.User;
 
 
 public class AuthenticationDefinitionPasswordTab extends Fragment {
@@ -30,6 +32,7 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
         mRoot = inflater.inflate(R.layout.passwordtab_authenticationdefinition, container, false);
         initUiComponents();
         validationPassCode();
+        setUser();
         return mRoot;
     }
 
@@ -103,6 +106,7 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
                     mTextInputLayoutConfirmCode.setError(getContext().getString(R.string.authenticationdefinition_notmatch));
                 } else {
                     mTextInputLayoutConfirmCode.setError(null);
+                    navigationToDashboard();
 
                 }
             }
@@ -117,6 +121,23 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
 
             String passwordExpression = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%+=_*?])(?=\\S+$).{8,}$";
             return password.matches(passwordExpression);
+        }
+
+    }
+
+    public void navigationToDashboard(){
+
+            Intent intent=new Intent(getActivity(),DashboardActivity.class);
+            startActivity(intent);
+
+
+    }
+    public void setUser(){
+
+        Bundle bundle = this.getArguments();
+        User user = new User();
+        if (bundle != null) {
+            user = bundle.getParcelable("User");
         }
 
     }

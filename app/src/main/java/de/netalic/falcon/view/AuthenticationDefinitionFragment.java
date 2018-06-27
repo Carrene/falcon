@@ -23,6 +23,7 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
     private View mRoot;
     private SegmentedGroup mSegmentedGroup;
     private RadioButton mRadioButtonPassword;
+    // TODO: (check Ehsan) Arash said this field must not be static
     private static User sUser;
 
 
@@ -37,6 +38,7 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
         return mRoot;
     }
 
+    // TODO: (check Ehsan) Arash said this factory method must change based on changing user field to non-static
     public static AuthenticationDefinitionFragment newInstance(User user) {
 
         sUser = user;
@@ -86,6 +88,12 @@ public class AuthenticationDefinitionFragment extends Fragment implements Authen
 
     public void changeContainerFragment(Fragment fragment) {
 
+
+        // TODO: (check Ehsan) Arash said it is better to define bundle in factory method of target fragment
+        Bundle bundle = new Bundle();
+        // TODO: (check Ehsan) Arash said it is better to have bundle keys in target fragment as static parameters
+        bundle.putParcelable("User", sUser);
+        fragment.setArguments(bundle);
         FragmentTransaction fragmentTransactionPassword = getFragmentManager().beginTransaction();
         fragmentTransactionPassword.replace(R.id.framelayout_authenticationdefinition_container, fragment);
         fragmentTransactionPassword.commit();
