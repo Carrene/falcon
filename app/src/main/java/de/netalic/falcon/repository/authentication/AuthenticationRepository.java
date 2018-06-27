@@ -2,7 +2,7 @@ package de.netalic.falcon.repository.authentication;
 
 import de.netalic.falcon.model.Authentication;
 
-public class AuthenticationRepository implements IAuthenticationRepository {
+public class  AuthenticationRepository implements IAuthenticationRepository {
 
     private static volatile AuthenticationRepository sAuthenticationRepository;
     private AuthenticationRealmRepository mAuthenticationRealmRepository;

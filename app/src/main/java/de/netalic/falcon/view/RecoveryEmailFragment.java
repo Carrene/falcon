@@ -101,6 +101,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public void navigateToAuthenticationDefinitionActivity() {
 
         Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+        intent.putExtra("User", sUser);
         startActivity(intent);
     }
 
@@ -117,11 +118,10 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
-                intent.putExtra("User",sUser);
+                intent.putExtra("User", sUser);
                 startActivity(intent);
             }
         });
-
 
 
         mEditTextRecoveryEmail.setOnKeyListener(new View.OnKeyListener() {
@@ -163,6 +163,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         } else {
             mTextInputLayoutRecoveryEmail.setError(null);
+            sUser.setEmail(mEditTextRecoveryEmail.getText().toString());
             set();
 
         }

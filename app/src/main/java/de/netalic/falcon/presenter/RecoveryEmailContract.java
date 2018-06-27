@@ -10,7 +10,6 @@ public interface RecoveryEmailContract {
         void navigateToAuthenticationDefinitionActivity();
         void showErrorSetEmail(int code);
 
-
     }
 
     interface Presenter extends BasePresenter {

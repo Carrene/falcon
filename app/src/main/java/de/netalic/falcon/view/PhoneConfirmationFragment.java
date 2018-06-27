@@ -150,10 +150,8 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
                         case KeyEvent.KEYCODE_ENTER:
                             sUser.setActivationCode(mEditTextReceiveCode.getText().toString());
                             bind();

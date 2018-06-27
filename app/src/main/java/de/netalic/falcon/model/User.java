@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -149,12 +148,15 @@ public class User extends RealmObject implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeString(this.mPhone);
+        dest.writeString(this.mActivationCode);
+        dest.writeString(this.mEmail);
 
     }
 
     protected User(Parcel in) {
         mPhone = in.readString();
-
+        mActivationCode=in.readString();
+        mEmail=in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
