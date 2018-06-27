@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.DashboardPresenterContract;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -21,6 +22,7 @@ public class DashboardFragment extends Fragment implements DashboardPresenterCon
 
     private DashboardPresenterContract.Presenter mPresenter;
     private View mRoot;
+    private static User sUser;
 
 
     @Nullable
@@ -34,8 +36,9 @@ public class DashboardFragment extends Fragment implements DashboardPresenterCon
     }
 
 
-    public static DashboardFragment newInstance() {
+    public static DashboardFragment newInstance(User user) {
 
+        sUser=user;
         return new DashboardFragment();
     }
 

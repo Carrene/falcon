@@ -23,6 +23,7 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
     private TextInputLayout mTextInputLayoutConfirmCode;
     private TextInputLayout mTextInputLayoutPasswordCode;
     private View mRoot;
+    private User mUser;
 
 
     @Nullable
@@ -30,9 +31,9 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.passwordtab_authenticationdefinition, container, false);
+        setUser();
         initUiComponents();
         validationPassCode();
-        setUser();
         return mRoot;
     }
 
@@ -128,6 +129,7 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
     public void navigationToDashboard(){
 
             Intent intent=new Intent(getActivity(),DashboardActivity.class);
+            intent.putExtra("User",mUser);
             startActivity(intent);
 
 
@@ -135,9 +137,9 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
     public void setUser(){
 
         Bundle bundle = this.getArguments();
-        User user = new User();
+        mUser = new User();
         if (bundle != null) {
-            user = bundle.getParcelable("User");
+            mUser = bundle.getParcelable("User");
         }
 
     }

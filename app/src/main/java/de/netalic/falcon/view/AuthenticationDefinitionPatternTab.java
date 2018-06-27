@@ -23,15 +23,16 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
     private PatternLockView mPatternLockView;
     private int mAttemptTimeNumber;
     private String mFirstAttemptPattern;
+    private User mUser;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.patterntab_authenticationdefinition, container, false);
+        setUser();
         initUiComponents();
         initListeners();
-        setUser();
         return mRoot;
     }
 
@@ -101,15 +102,16 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
     public void navigationToDashboard(){
 
         Intent  intent=new Intent(getActivity(),DashboardActivity.class);
+        intent.putExtra("User",mUser);
         startActivity(intent);
 
     }
     public void setUser(){
 
         Bundle bundle = this.getArguments();
-        User user = new User();
+        mUser = new User();
         if (bundle != null) {
-            user = bundle.getParcelable("User");
+            mUser = bundle.getParcelable("User");
         }
 
     }
