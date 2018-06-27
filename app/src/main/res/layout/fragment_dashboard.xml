@@ -42,7 +42,8 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/textsize_dashboard_myblance"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <LinearLayout
             android:id="@+id/linearlayout_dashboard_alphasymbol"
