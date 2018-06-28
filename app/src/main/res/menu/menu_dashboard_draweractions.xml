@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/item_dashboard_dashboardnavigation"
+        android:icon="@drawable/dashboard_dashboard"
+        android:title="@string/dashboard_dashboardicon"
+        android:checked="true"
+        />
+    <item
+        android:id="@+id/item_dashboard_chargenavigation"
+        android:icon="@drawable/dashboard_charge"
+        android:title="@string/dashboard_charge"
+        />
+
+    <item
+        android:id="@+id/item_dashboard_requesttoreceivenavigation"
+        android:icon="@drawable/dashboard_requesttoreceive"
+        android:title="@string/dashboard_requesttoreceive"
+        />
+
+    <item
+        android:id="@+id/item_dashboard_walletaddressnavigation"
+        android:icon="@drawable/dashboard_wallet"
+        android:title="@string/dashboard_walletaddress"
+        />
+
+    <item
+        android:id="@+id/item_dashboard_transactionhistorynavigation"
+        android:icon="@drawable/dashboard_transaction"
+        android:title="@string/dashboard_transactionhistory"
+        />
+
+    <item
+        android:id="@+id/item_dashboard_chartnavigation"
+        android:icon="@drawable/dashboard_chart"
+        android:title="@string/dashboard_chart"
+        />
+
+    <item
+        android:id="@+id/item_dashboard_settingnavigation"
+        android:icon="@drawable/dashboard_setting"
+        android:title="@string/dashboard_setting"
+        />
+
+    <item
+        android:id="@+id/item_dashboard_helpnaigation"
+        android:icon="@drawable/dashboard_help"
+        android:title="@string/dashboard_help"
+        />
+</group>
+</menu>

@@ -48,6 +48,15 @@
     <string name="dashboard_withdraw">Withdraw</string>
     <string name="dashboard_dashboard">Dashboard</string>
     <string name="dashboard_notification">Notification</string>
+    <string name="dashboard_charge">Charge</string>
+    <string name="dashboard_requesttoreceive">Request to receive</string>
+    <string name="dashboard_walletaddress">Wallet address</string>
+    <string name="dashboard_transactionhistory">Transaction history</string>
+    <string name="dashboard_chart">Chart</string>
+    <string name="dashboard_setting">Setting</string>
+    <string name="dashboard_help">Help</string>
+    <string name="dashboard_dashboardicon">Dashboard</string>
+
 
 
 </resources>
