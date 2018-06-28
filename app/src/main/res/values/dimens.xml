@@ -83,8 +83,9 @@
     <dimen name="textsize_dashboard_purchasewithdrawtextsize">18sp</dimen>
     <dimen name="marginbottom_dashboard_linearlayoutalphasymbol">40dp</dimen>
     <dimen name="margintop_dashboard_linearlayoutalphasymbol">20dp</dimen>
-    <dimen name="widthheight_dashboard_alphaicon">30dp</dimen>
+    <dimen name="widthheight_dashboard_alphaicon">25dp</dimen>
     <dimen name="paddingstart_dashboard_alphaicon">70dp</dimen>
+    <dimen name="paddingbottom_dashboard_alphaicon">3dp</dimen>
     <dimen name="paddingtop_dashboard_alphaicon">20dp</dimen>
     <dimen name="widthheight_dashboard_currencydollar">31dp</dimen>
     <dimen name="paddingstart_dashboard_currenyicon">38dp</dimen>
@@ -96,5 +97,18 @@
     <dimen name="height_dashboard_linearlayoutbottomtextviews">0dp</dimen>
     <dimen name="height_dashboard_imageviewcurrencydollar">20dp</dimen>
     <dimen name="paddingbottom_dashboard_linearlayoutalphasymbol">30dp</dimen>
+    <dimen name="height_dashboard_navigationheader">203dp</dimen>
+    <dimen name="height_dashboard_circleimageviewinnavigation">67dp</dimen>
+    <dimen name="margintop_dashboard_circleimageviewinnavigation">40dp</dimen>
+    <dimen name="marginstart_dashboard_circleimageviewinnavigation">120dp</dimen>
+    <dimen name="marginend_dashboard_circleimageviewinnavigation">120dp</dimen>
+    <dimen name="margintop_dashboard_phonenumberinnavigation">16dp</dimen>
+    <dimen name="marginstart_dashboard_phonenumberinnavigation">58dp</dimen>
+    <dimen name="marginend_dashboard_phonenumberinnavigation">58dp</dimen>
+    <dimen name="textsize_dashboard_phonenumberinnavigation">15sp</dimen>
+    <dimen name="margintop_dashboard_emailinnavigation">10dp</dimen>
+    <dimen name="marginstart_dashboard_emailinnavigation">44dp</dimen>
+    <dimen name="marginend_dashboard_emailinnavigation">44dp</dimen>
+    <dimen name="textsize_dashboard_emialinnavigation">15sp</dimen>
 
 </resources>

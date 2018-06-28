@@ -2,31 +2,31 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" 
     android:layout_width="match_parent"
-    android:layout_height="203dp"
+    android:layout_height="@dimen/height_dashboard_navigationheader"
     android:background="@color/greenHaze"
     >
 
     <ImageView
         android:id="@+id/imageview_dashboard_navigationheader"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
+        android:layout_height="@dimen/height_dashboard_circleimageviewinnavigation"
         android:src="@drawable/dashboard_purchase"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="120dp"
+        android:layout_marginTop="@dimen/margintop_dashboard_circleimageviewinnavigation"
+        android:layout_marginStart="@dimen/marginstart_dashboard_circleimageviewinnavigation"
+        android:layout_marginEnd="@dimen/marginend_dashboard_circleimageviewinnavigation"
         />
 
     <TextView
         android:id="@+id/textview_dashboard_phonenumbernavigationheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+98 912 111 11 11"
+        android:text="@string/dashboard_phonenumber"
         android:layout_below="@+id/imageview_dashboard_navigationheader"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="58dp"
-        android:layout_marginEnd="58dp"
+        android:layout_marginTop="@dimen/margintop_dashboard_phonenumberinnavigation"
+        android:layout_marginStart="@dimen/marginstart_dashboard_phonenumberinnavigation"
+        android:layout_marginEnd="@dimen/marginend_dashboard_phonenumberinnavigation"
         android:gravity="center"
-        android:textSize="15sp"
+        android:textSize="@dimen/textsize_dashboard_phonenumberinnavigation"
         android:textColor="@color/white"
         />
     <TextView
@@ -34,13 +34,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_dashboard_phonenumbernavigationheader"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="44dp"
-        android:text="miladsalimi@gmail.com"
+        android:layout_marginTop="@dimen/margintop_dashboard_emailinnavigation"
+        android:layout_marginStart="@dimen/marginstart_dashboard_emailinnavigation"
+        android:layout_marginEnd="@dimen/marginend_dashboard_emailinnavigation"
+        android:text="@string/dashboard_email"
         android:textColor="@color/white"
         android:gravity="center"
-        android:textSize="15sp"
+        android:textSize="@dimen/textsize_dashboard_emialinnavigation"
 
         />
     

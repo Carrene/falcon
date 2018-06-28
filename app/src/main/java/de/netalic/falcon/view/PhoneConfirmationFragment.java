@@ -94,7 +94,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
         switch (item.getItemId()) {
             case R.id.menu_phoneconfirmation_done: {
-//                mPresenter.register(user);
 
                 if (mEditTextReceiveCode.getText().toString().isEmpty()) {
 
@@ -171,10 +170,10 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             @Override
             public void onTick(long millisUntilFinished) {
 
-                long minuteُTimer = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
+                long minuteTimer = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
                 long secondTimer = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
-                mTextViewTimer.setText(String.format("%02d:%02d ", minuteُTimer, secondTimer));
+                mTextViewTimer.setText(String.format("%02d:%02d ", minuteTimer, secondTimer));
             }
 
             @Override
