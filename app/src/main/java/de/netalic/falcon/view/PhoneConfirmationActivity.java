@@ -16,6 +16,7 @@ import de.netalic.falcon.util.ActivityUtil;
 
 public class PhoneConfirmationActivity extends AppCompatActivity {
 
+    public static final String ARGUMENT_USER = "USER";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,9 +24,7 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phoneconfirmation);
 
-
-        User user = getIntent().getExtras().getParcelable("User");
-
+        User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
         Toolbar toolbar = findViewById(R.id.toolbar_phoneconfirmation);
         setSupportActionBar(toolbar);

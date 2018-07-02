@@ -6,5 +6,6 @@
         android:id="@+id/menu_dashboard_notification"
         android:icon="@drawable/dashboard_notification"
         android:title="@string/dashboard_notification"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        />
 </menu>

@@ -30,13 +30,15 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     private EditText mEditTextRecoveryEmail;
     private TextInputLayout mTextInputLayoutRecoveryEmail;
     private TextView mTextViewSkip;
-    private static User sUser;
+    private User mUser;
+    private static final String ARGUMENT_USER = "USER";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_recoveryemail, container, false);
+        mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
         checkEmailSyntax();
@@ -46,8 +48,11 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     public static RecoveryEmailFragment newInstance(User user) {
 
-        sUser = user;
-        return new RecoveryEmailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ARGUMENT_USER, user);
+        RecoveryEmailFragment recoveryEmailFragment = new RecoveryEmailFragment();
+        recoveryEmailFragment.setArguments(bundle);
+        return recoveryEmailFragment;
     }
 
     public static RecoveryEmailFragment newInstance() {
@@ -85,7 +90,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     }
 
     public void set() {
-        mPresenter.set(sUser);
+        mPresenter.set(mUser);
 
     }
 
@@ -101,7 +106,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public void navigateToAuthenticationDefinitionActivity() {
 
         Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
-        intent.putExtra("User", sUser);
+        intent.putExtra("USER", mUser);
         startActivity(intent);
     }
 
@@ -118,7 +123,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
-                intent.putExtra("User", sUser);
+                intent.putExtra("USER", mUser);
                 startActivity(intent);
             }
         });
@@ -163,7 +168,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         } else {
             mTextInputLayoutRecoveryEmail.setError(null);
-            sUser.setEmail(mEditTextRecoveryEmail.getText().toString());
+            mUser.setEmail(mEditTextRecoveryEmail.getText().toString());
             set();
 
         }

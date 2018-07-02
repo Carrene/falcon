@@ -19,6 +19,7 @@
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
     <string name="registration_maskhint">XXXXXXXXXX</string>
+    <string name="registration_codehint">XXXX</string>
     <string name="phoneconfirmation_Pleasefillbox">Please fill box</string>
     <string name="authenticationdefinition_pleasefillenterpassword">Please fill enter password</string>
     <string name="authenticationdefinition_Entervalidpassword">Enter valid password</string>

@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -15,22 +14,19 @@ import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
 
-public class AuthenticationDefinitionPatternTab extends Fragment {
+public class AuthenticationDefinitionPatternFragment extends Fragment {
 
     private View mRoot;
     private PatternLockView mPatternLockView;
     private int mAttemptTimeNumber;
     private String mFirstAttemptPattern;
-    private User mUser;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.patterntab_authenticationdefinition, container, false);
-        setUser();
+        mRoot = inflater.inflate(R.layout.fragment_authenticationdefinitionpattern, container, false);
         initUiComponents();
         initListeners();
         return mRoot;
@@ -81,13 +77,10 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
                     mAttemptTimeNumber = 0;
                     Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_nomatch), Snackbar.LENGTH_LONG).show();
                     return;
-                }
-                else {
+                } else {
                     Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), Snackbar.LENGTH_LONG).show();
                     String credentialValue = mPatternLockView.getPattern().toString();
                     mPatternLockView.clearPattern();
-                    navigationToDashboard();
-
                 }
             }
 
@@ -98,24 +91,4 @@ public class AuthenticationDefinitionPatternTab extends Fragment {
         });
 
     }
-
-    public void navigationToDashboard(){
-
-        Intent  intent=new Intent(getActivity(),DashboardActivity.class);
-        intent.putExtra("User",mUser);
-        startActivity(intent);
-
-    }
-    public void setUser(){
-
-        Bundle bundle = this.getArguments();
-        mUser = new User();
-        if (bundle != null) {
-            mUser = bundle.getParcelable("User");
-        }
-
-    }
-
-
-
 }

@@ -153,7 +153,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public void navigationToPhoneConfirmation(User user) {
 
         Intent intent = new Intent(getActivity(), PhoneConfirmationActivity.class);
-        intent.putExtra("User", user);
+        intent.putExtra(PhoneConfirmationActivity.ARGUMENT_USER, user);
         startActivity(intent);
 
     }

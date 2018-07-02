@@ -1,6 +1,7 @@
 package de.netalic.falcon.presenter;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.repository.user.UserRepository;
@@ -23,17 +24,22 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
 
         UserRepository.getInstance().claim(user, deal -> {
 
-                    if (deal.getResponse().code() == 200) {
+            if (deal.getThrowable() != null) {
+
+                mRegistrationView.errorForNullPhoneNumber();
+
+            } else {
+                switch (deal.getResponse().code()) {
+                    case 200: {
                         mRegistrationView.navigationToPhoneConfirmation(user);
 
-                    }
-                    if (deal.getThrowable() != null) {
+                     }
+                }
+            }
 
-                        mRegistrationView.errorForNullPhoneNumber();
-                    }
-
-                });
+        });
     }
+
     @Override
     public void start() {
 

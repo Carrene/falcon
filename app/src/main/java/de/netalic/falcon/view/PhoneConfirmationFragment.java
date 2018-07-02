@@ -28,8 +28,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class PhoneConfirmationFragment extends Fragment implements PhoneConfirmationContract.View {
 
+    private static final String ARGUMENT_USER = "USER";
     private PhoneConfirmationContract.Presenter mPresenter;
-    private static User sUser;
+    private User mUser;
     private TextView mTextViewPhone;
     private TextView mTextViewChangeNumber;
     private EditText mEditTextReceiveCode;
@@ -42,6 +43,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_phoneconfirmation, container, false);
+        mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
         setTimer();
@@ -52,8 +54,11 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     public static PhoneConfirmationFragment newInstance(User user) {
 
-        sUser = user;
-        return new PhoneConfirmationFragment();
+        PhoneConfirmationFragment fragment = new PhoneConfirmationFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ARGUMENT_USER, user);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -101,7 +106,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                     textInputLayout.setError(getContext().getString(R.string.phoneconfirmation_Pleasefillbox));
 
                 } else {
-                    sUser.setActivationCode(mEditTextReceiveCode.getText().toString());
+                    mUser.setActivationCode(mEditTextReceiveCode.getText().toString());
                     bind();
                 }
             }
@@ -120,7 +125,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void bind() {
 
-        mPresenter.bind(sUser);
+        mPresenter.bind(mUser);
     }
 
     private void initListeners() {
@@ -131,7 +136,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
                 if (mIsRunning == false) {
                     setTimer();
-                    mPresenter.resendActivationCode(sUser);
+                    mPresenter.resendActivationCode(mUser);
 
                 }
             }
@@ -152,7 +157,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_ENTER:
-                            sUser.setActivationCode(mEditTextReceiveCode.getText().toString());
+                            mUser.setActivationCode(mEditTextReceiveCode.getText().toString());
                             bind();
                             return true;
                         default:
@@ -189,14 +194,14 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setUserPhoneNumber() {
 
-        mTextViewPhone.setText(sUser.getPhone());
+        mTextViewPhone.setText(mUser.getPhone());
     }
 
     @Override
     public void navigateToRecoveryEmail(User user) {
 
         Intent intent = new Intent(getActivity(), RecoveryEmailActivity.class);
-        intent.putExtra("User", user);
+        intent.putExtra("USER", user);
         startActivity(intent);
     }
 

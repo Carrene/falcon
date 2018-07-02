@@ -23,6 +23,16 @@ public final class ActivityUtil {
         transaction.add(frameId, fragment);
         transaction.commit();
     }
+
+    public static void replaceFragmentWithFragment(@NonNull FragmentManager fragmentManager,
+                                             @NonNull Fragment fragment, int frameId) {
+
+        checkNotNull(fragmentManager);
+        checkNotNull(fragment);
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(frameId,fragment);
+        transaction.commit();
+    }
 }
 
 

@@ -21,9 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.RegistrationActivity" />
+        <activity android:name=".view.RegistrationActivity"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity
             android:name=".view.PhoneConfirmationActivity"
+            android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".view.RegistrationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

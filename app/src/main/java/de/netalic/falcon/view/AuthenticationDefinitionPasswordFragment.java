@@ -1,6 +1,6 @@
 package de.netalic.falcon.view;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -16,26 +16,41 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 
 
-public class AuthenticationDefinitionPasswordTab extends Fragment {
+public class AuthenticationDefinitionPasswordFragment extends Fragment {
 
     private EditText mEditTextPassCode;
     private EditText mEditTextConfirmCode;
     private TextInputLayout mTextInputLayoutConfirmCode;
     private TextInputLayout mTextInputLayoutPasswordCode;
     private View mRoot;
-    private User mUser;
+    private GoToDashboard mCallback;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.passwordtab_authenticationdefinition, container, false);
-        setUser();
+        mRoot = inflater.inflate(R.layout.fragment_authenticationdefinitionpassword, container, false);
         initUiComponents();
         validationPassCode();
         return mRoot;
     }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (GoToDashboard) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
+
 
     public void initUiComponents() {
 
@@ -105,9 +120,9 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
                 if (!s.toString().equals(password)) {
 
                     mTextInputLayoutConfirmCode.setError(getContext().getString(R.string.authenticationdefinition_notmatch));
-                } else {
+                } else if (!s.toString().equals("") && s.toString().equals(password)) {
                     mTextInputLayoutConfirmCode.setError(null);
-                    navigationToDashboard();
+                  navigationToDashboard();
 
                 }
             }
@@ -115,6 +130,8 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
         });
 
     }
+
+
 
     public static class CustomValidator {
 
@@ -126,21 +143,17 @@ public class AuthenticationDefinitionPasswordTab extends Fragment {
 
     }
 
+    public interface GoToDashboard{
+
+        void navigationToDashboard();
+
+    }
+
     public void navigationToDashboard(){
 
-            Intent intent=new Intent(getActivity(),DashboardActivity.class);
-            intent.putExtra("User",mUser);
-            startActivity(intent);
-
+        mCallback.navigationToDashboard();
 
     }
-    public void setUser(){
 
-        Bundle bundle = this.getArguments();
-        mUser = new User();
-        if (bundle != null) {
-            mUser = bundle.getParcelable("User");
-        }
 
-    }
 }

@@ -25,7 +25,9 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        User user = getIntent().getExtras().getParcelable("User");
+        User user=new User();
+
+       // User user = getIntent().getExtras().getParcelable("USER");
 
         Toolbar toolbar = findViewById(R.id.toolbar_dashboard);
         setSupportActionBar(toolbar);
@@ -43,7 +45,6 @@ public class DashboardActivity extends AppCompatActivity {
         if (navigationView != null) {
             setupDrawerContent(navigationView);
         }
-
 
         DashboardFragment dashboardFragment = (DashboardFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_dashboard_fragmentcontainer);
         if (dashboardFragment == null) {
@@ -69,7 +70,6 @@ public class DashboardActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     private void setupDrawerContent(NavigationView navigationView) {
 

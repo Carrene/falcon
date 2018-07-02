@@ -19,7 +19,6 @@ public class ExchangeRate {
     @SerializedName("sell")
     private double mSell;
 
-
     public ExchangeRate(int mCreatedAt, Currency mCurrency, double mBuy, double mSell) {
         this.mCreatedAt = mCreatedAt;
         this.mCurrency = mCurrency;
