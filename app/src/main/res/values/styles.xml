@@ -19,12 +19,12 @@
 
     <style name="RadioButton">
         <item name="android:textColor">@drawable/authenticationpasswordtab_buttontextcolor</item>
-        <item name="android:minHeight">33dp</item>
-        <item name="android:minWidth">70dp</item>
+        <item name="android:minHeight">@dimen/minheight_style_radiobutton</item>
+        <item name="android:minWidth">@dimen/minwidth_style_radiobutton</item>
         <item name="android:gravity">center</item>
         <item name="android:button">@null</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingLeft">@dimen/paddingleft_style_radiobutton</item>
+        <item name="android:paddingRight">@dimen/paddingright_style_radiobutton</item>
     </style>
 
 </resources>

@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationContract;
+import de.netalic.falcon.util.ActivityUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -100,6 +101,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
         switch (item.getItemId()) {
             case R.id.menu_phoneconfirmation_done: {
 
+                ActivityUtil.hideSoftKeyboard(getActivity());
                 if (mEditTextReceiveCode.getText().toString().isEmpty()) {
 
                     TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_phoneconfirmation_receivecode);
@@ -115,7 +117,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     }
 
     private void initUiComponents() {
-
 
         mTextViewPhone = mRoot.findViewById(R.id.textview_phoneconfirmation_number);
         mTextViewChangeNumber = mRoot.findViewById(R.id.textview_phoneconfirmation_changenumber);

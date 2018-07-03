@@ -25,6 +25,7 @@ import br.com.sapereaude.maskedEditText.MaskedEditText;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RegistrationContract;
+import de.netalic.falcon.util.ActivityUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -81,6 +82,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
         switch (item.getItemId()) {
             case R.id.menu_registration_done: {
 
+                ActivityUtil.hideSoftKeyboard(getActivity());
                 if (mEditTextCountryCode.getText().toString().isEmpty()) {
 
                     showCountryCodeError();

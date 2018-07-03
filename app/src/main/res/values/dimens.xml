@@ -17,8 +17,8 @@
     <dimen name="textsize_phoneconfirmation_userphone">22sp</dimen>
     <dimen name="margintop_phoneconfirmation_header1">40dp</dimen>
     <dimen name="textsize_phoneconfirmation_header1">16sp</dimen>
-    <dimen name="marginend_phoneconfirmation_edittext">30dp</dimen>
-    <dimen name="marginstart_phoneconfirmation_edittext">30dp</dimen>
+    <dimen name="marginend_phoneconfirmation_textinputlayout">30dp</dimen>
+    <dimen name="marginstart_phoneconfirmation_textinputlayout">30dp</dimen>
     <dimen name="margintop_phoneconfirmation_resendtext">30dp</dimen>
     <dimen name="margintop_phoneconfirmation_confirmationcodehere">80dp</dimen>
     <dimen name="textsize_phoneconfirmation_resendtext">16sp</dimen>
@@ -110,5 +110,9 @@
     <dimen name="marginstart_dashboard_emailinnavigation">44dp</dimen>
     <dimen name="marginend_dashboard_emailinnavigation">44dp</dimen>
     <dimen name="textsize_dashboard_emialinnavigation">15sp</dimen>
+    <dimen name="minheight_style_radiobutton">33dp</dimen>
+    <dimen name="minwidth_style_radiobutton">70dp</dimen>
+    <dimen name="paddingleft_style_radiobutton">5dp</dimen>
+    <dimen name="paddingright_style_radiobutton">5dp</dimen>
 
 </resources>

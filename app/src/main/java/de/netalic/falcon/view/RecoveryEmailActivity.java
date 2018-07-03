@@ -14,6 +14,8 @@ import de.netalic.falcon.util.ActivityUtil;
 
 public class RecoveryEmailActivity extends AppCompatActivity {
 
+    private static final String ARGUMENT_USER = "USER";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,7 +23,9 @@ public class RecoveryEmailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recoveryemail);
 
-        User user = getIntent().getExtras().getParcelable("User");
+        User user=new User();
+
+        //User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
         Toolbar toolbar = findViewById(R.id.toolbar_recoveryemail);
         setSupportActionBar(toolbar);
@@ -29,8 +33,6 @@ public class RecoveryEmailActivity extends AppCompatActivity {
         ActionBar mActionBar = getSupportActionBar();
 
         if (mActionBar != null) {
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-            mActionBar.setDisplayShowHomeEnabled(true);
             mActionBar.setTitle(getString(R.string.recoveryemail_toolbartitle));
         }
 

@@ -26,7 +26,7 @@
     <string name="athenticationdefinition_password">Password</string>
     <string name="authenticationdefinition_pattern">Pattern</string>
     <string name="authenticationdefinition_notmatch">Not match</string>
-    <string name="authenticationdefinition_connectfordots">Connect four dots</string>
+    <string name="authenticationdefinition_connectfordots">Connect at least four dots</string>
     <string name="authenticationdefinition_tryforsecondtime">Try for second time</string>
     <string name="authenticationdefinition_nomatch">No match</string>
     <string name="authenticationdefinition_setsuccessful">Set successful</string>

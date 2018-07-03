@@ -43,10 +43,9 @@
             android:layout_marginStart="@dimen/marginstart_registration_code"
             android:ems="3"
             android:enabled="false"
-            android:textColor="@color/black"
+            android:textColor="@color/dustyGray"
             android:text="@string/registration_codehint"
-            android:textAlignment="textEnd"
-            />
+            android:textAlignment="textStart" />
     </android.support.design.widget.TextInputLayout>
 
     <br.com.sapereaude.maskedEditText.MaskedEditText

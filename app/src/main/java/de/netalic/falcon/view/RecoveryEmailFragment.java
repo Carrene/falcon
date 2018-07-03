@@ -20,6 +20,7 @@ import android.widget.TextView;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RecoveryEmailContract;
+import de.netalic.falcon.util.ActivityUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -79,6 +80,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
         switch (item.getItemId()) {
             case R.id.menu_recoveryemail_done: {
 
+                ActivityUtil.hideSoftKeyboard(getActivity());
                 checkEmailSyntax();
                 return true;
             }
@@ -90,8 +92,8 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     }
 
     public void set() {
-        mPresenter.set(mUser);
 
+        mPresenter.set(mUser);
     }
 
     public void initUiComponents() {
@@ -106,7 +108,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public void navigateToAuthenticationDefinitionActivity() {
 
         Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
-        intent.putExtra("USER", mUser);
+        intent.putExtra(ARGUMENT_USER, mUser);
         startActivity(intent);
     }
 
@@ -123,11 +125,10 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
-                intent.putExtra("USER", mUser);
+                intent.putExtra(ARGUMENT_USER, mUser);
                 startActivity(intent);
             }
         });
-
 
         mEditTextRecoveryEmail.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -174,4 +175,5 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
         }
 
     }
+
 }

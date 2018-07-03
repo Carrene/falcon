@@ -14,7 +14,7 @@ import de.netalic.falcon.presenter.AuthenticationDefinitionContract;
 import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
 
-public class AuthenticationDefinitionActivity extends AppCompatActivity implements AuthenticationDefinitionContract.View,AuthenticationDefinitionPasswordFragment.GoToDashboard {
+public class AuthenticationDefinitionActivity extends AppCompatActivity implements AuthenticationDefinitionContract.View,AuthenticationDefinitionPasswordFragment.GoToDashboardFromPassword {
 
     private ActionBar mActionBar;
     private SegmentedGroup mSegmentedGroup;
@@ -22,7 +22,6 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
     private AuthenticationDefinitionPasswordFragment mAuthenticationDefinitionPasswordFragment;
     private AuthenticationDefinitionPatternFragment mAuthenticationDefinitionPatternFragment;
     private static final String ARGUMENT_USER = "USER";
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,8 +32,9 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
         initUiComponents();
         initListeners();
 
+
         mUser=new User();
-//      mUser = getIntent().getExtras().getParcelable(ARGUMENT_USER);
+        //mUser = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
         Toolbar toolbar = findViewById(R.id.toolbar_authenticationdefinition);
         setSupportActionBar(toolbar);
@@ -42,8 +42,6 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
         mActionBar = getSupportActionBar();
 
         if (mActionBar != null) {
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-            mActionBar.setDisplayShowHomeEnabled(true);
             mActionBar.setTitle(getString(R.string.authenticationdefinition_toolbartitle));
         }
 
@@ -95,6 +93,7 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
     @Override
     public void navigationToDashboard() {
         Intent intent=new Intent(this,DashboardActivity.class);
+        intent.putExtra(ARGUMENT_USER,mUser);
         startActivity(intent);
     }
 }

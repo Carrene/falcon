@@ -6,6 +6,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class DashboardActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private static final String ARGUMENT_USER = "USER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,21 +28,27 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         User user=new User();
-
-       // User user = getIntent().getExtras().getParcelable("USER");
+        //User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
         Toolbar toolbar = findViewById(R.id.toolbar_dashboard);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
 
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setTitle(getString(R.string.dashboard_dashboard));
+
         }
 
         mDrawerLayout = findViewById(R.id.drawerlayout_dashboard);
         mDrawerLayout.setStatusBarBackground(R.color.greenHaze);
+
+
+
+        ActionBarDrawerToggle aToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
+        mDrawerLayout.addDrawerListener(aToggle);
+        aToggle.syncState();
+
+
         NavigationView navigationView = findViewById(R.id.navigationview_dashboard);
         if (navigationView != null) {
             setupDrawerContent(navigationView);

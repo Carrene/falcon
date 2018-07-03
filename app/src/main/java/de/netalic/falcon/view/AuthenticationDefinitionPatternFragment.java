@@ -32,6 +32,8 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
         return mRoot;
     }
 
+
+
     public void initUiComponents() {
 
         mPatternLockView = mRoot.findViewById(R.id.patternview_authenticationdefinition_pattern);
@@ -81,6 +83,7 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
                     Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), Snackbar.LENGTH_LONG).show();
                     String credentialValue = mPatternLockView.getPattern().toString();
                     mPatternLockView.clearPattern();
+
                 }
             }
 
@@ -91,4 +94,5 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
         });
 
     }
+
 }

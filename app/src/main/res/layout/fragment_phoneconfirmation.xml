@@ -15,21 +15,20 @@
         android:textColor="@color/mariner"
         android:textSize="@dimen/textsize_phoneconfirmation_userphone" />
 
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_phoneconfirmation_number"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margintop_phoneconfirmation_confirmationcodehere">
+        android:layout_marginTop="@dimen/margintop_phoneconfirmation_confirmationcodehere"
+        android:layout_marginEnd="@dimen/marginend_phoneconfirmation_textinputlayout"
+        android:layout_marginStart="@dimen/marginstart_phoneconfirmation_textinputlayout">
 
         <EditText
             android:id="@+id/edittext_phoneconfirmation_receivecode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginend_phoneconfirmation_edittext"
-            android:layout_marginStart="@dimen/marginstart_phoneconfirmation_edittext"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/phoneconfirmation_entertheverificationhere"

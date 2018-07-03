@@ -1,6 +1,6 @@
 package de.netalic.falcon.view;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
 
 
 public class AuthenticationDefinitionPasswordFragment extends Fragment {
@@ -23,7 +22,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     private TextInputLayout mTextInputLayoutConfirmCode;
     private TextInputLayout mTextInputLayoutPasswordCode;
     private View mRoot;
-    private GoToDashboard mCallback;
+    private GoToDashboardFromPassword mCallback;
 
 
     @Nullable
@@ -36,21 +35,17 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         return mRoot;
     }
 
-
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
         try {
-            mCallback = (GoToDashboard) activity;
+            mCallback = (GoToDashboardFromPassword) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
+            throw new ClassCastException(context.toString()
                     + " must implement OnHeadlineSelectedListener");
         }
     }
-
 
     public void initUiComponents() {
 
@@ -143,7 +138,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
 
     }
 
-    public interface GoToDashboard{
+    public interface GoToDashboardFromPassword{
 
         void navigationToDashboard();
 

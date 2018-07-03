@@ -2,8 +2,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@color/Porcelain"
-    >
+              android:background="@color/Porcelain">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -57,7 +56,9 @@
                 style="@style/RadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/athenticationdefinition_password" />
+                android:text="@string/athenticationdefinition_password"
+                android:checked="true"
+                />
 
             <RadioButton
                 android:id="@+id/radiobutton_authenticationdefinition_pattern"
