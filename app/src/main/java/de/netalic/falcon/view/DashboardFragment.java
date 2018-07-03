@@ -3,6 +3,7 @@ package de.netalic.falcon.view;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,30 +13,34 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.User;
-import de.netalic.falcon.presenter.DashboardPresenterContract;
+import de.netalic.falcon.presenter.DashboardContract;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class DashboardFragment extends Fragment implements DashboardPresenterContract.View {
+public class DashboardFragment extends Fragment implements DashboardContract.View {
 
-    private DashboardPresenterContract.Presenter mPresenter;
+    private DashboardContract.Presenter mPresenter;
     private View mRoot;
     private TextView mPhoneNumber;
     private TextView mEmail;
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
-
+    private TextView mRate;
+    private Currency USD;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        USD=new Currency(1,"usd",2);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
 //        setPhoneNumber();
 //        setEmail();
+        getRate();
         return mRoot;
     }
 
@@ -56,7 +61,7 @@ public class DashboardFragment extends Fragment implements DashboardPresenterCon
 
 
     @Override
-    public void setPresenter(DashboardPresenterContract.Presenter presenter) {
+    public void setPresenter(DashboardContract.Presenter presenter) {
 
         mPresenter = checkNotNull(presenter);
     }
@@ -71,18 +76,36 @@ public class DashboardFragment extends Fragment implements DashboardPresenterCon
 
         mPhoneNumber = mRoot.findViewById(R.id.textview_dashboard_phonenumbernavigationheader);
         mEmail = mRoot.findViewById(R.id.textview_dashboard_emailnavigationheader);
+        mRate=mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
 
     }
 
-    public void setPhoneNumber(){
 
-        mPhoneNumber.setText(mUser.getPhone());
+    @Override
+    public void setEmail() {
 
     }
 
-    public void setEmail(){
+    @Override
+    public void setPhoneNumber() {
 
-        mEmail.setText(mUser.getEmail());
     }
 
+    @Override
+    public void errorForNullCurrency() {
+
+        Snackbar.make(mRoot,getContext().getString(R.string.dashboard_yourcurrencyisnull),Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void updateExchangeRateCurrency(double rate) {
+
+        mRate.setText(String.valueOf(rate));
+    }
+    public void getRate(){
+
+        mPresenter.exchangeRate(USD);
+
+
+    }
 }
