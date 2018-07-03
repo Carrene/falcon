@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,8 @@ import de.netalic.falcon.presenter.AuthenticationDefinitionContract;
 import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
 
-public class AuthenticationDefinitionActivity extends AppCompatActivity implements AuthenticationDefinitionContract.View,AuthenticationDefinitionPasswordFragment.GoToDashboard {
+public class AuthenticationDefinitionActivity extends AppCompatActivity implements AuthenticationDefinitionContract.View, AuthenticationDefinitionPasswordFragment.NavigateToDashboardCallback
+        , AuthenticationDefinitionPatternFragment.NavigateToDashboardCallback {
 
     private ActionBar mActionBar;
     private SegmentedGroup mSegmentedGroup;
@@ -33,7 +33,7 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
         initUiComponents();
         initListeners();
 
-        mUser=new User();
+        mUser = new User();
 //      mUser = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
         Toolbar toolbar = findViewById(R.id.toolbar_authenticationdefinition);
@@ -93,8 +93,12 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
 
 
     @Override
-    public void navigationToDashboard() {
-        Intent intent=new Intent(this,DashboardActivity.class);
-        startActivity(intent);
+    public void navigationToDashboardFromPassword(String credentialValue) {
+
+    }
+
+    @Override
+    public void navigationToDashboardFromPattern(String credentialValue) {
+
     }
 }

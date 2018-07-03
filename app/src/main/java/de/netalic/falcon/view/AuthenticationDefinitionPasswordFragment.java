@@ -1,6 +1,6 @@
 package de.netalic.falcon.view;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -10,10 +10,10 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
 
 
 public class AuthenticationDefinitionPasswordFragment extends Fragment {
@@ -23,8 +23,15 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     private TextInputLayout mTextInputLayoutConfirmCode;
     private TextInputLayout mTextInputLayoutPasswordCode;
     private View mRoot;
-    private GoToDashboard mCallback;
+    private CheckBox mCheckBoxCapital;
+    private CheckBox mCheckBoxDigit;
+    private CheckBox mCheckBoxCustomChar;
+    private CheckBox mCheckBoxMinimumLength;
+    private NavigateToDashboardCallback mNavigateToDashboardCallback;
 
+    interface NavigateToDashboardCallback {
+        void navigationToDashboardFromPassword(String credentialValue);
+    }
 
     @Nullable
     @Override
@@ -36,21 +43,16 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         return mRoot;
     }
 
-
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
 
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
-        try {
-            mCallback = (GoToDashboard) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnHeadlineSelectedListener");
+        super.onAttach(context);
+        if (context instanceof NavigateToDashboardCallback) {
+            mNavigateToDashboardCallback = (NavigateToDashboardCallback) context;
+        } else {
+            throw new ClassCastException(context.toString() + " must implement NavigateToDashboardCallback");
         }
     }
-
 
     public void initUiComponents() {
 
@@ -59,6 +61,11 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         mEditTextConfirmCode.setEnabled(false);
         mTextInputLayoutConfirmCode = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_confirmpasscode);
         mTextInputLayoutPasswordCode = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_enterpasscode);
+
+        mCheckBoxCapital = mRoot.findViewById(R.id.checkbox_authenticationdefinition_capital);
+        mCheckBoxCustomChar = mRoot.findViewById(R.id.checkbox_authenticationdefinition_custom_char);
+        mCheckBoxDigit = mRoot.findViewById(R.id.checkbox_authenticationdefinition_digit);
+        mCheckBoxMinimumLength = mRoot.findViewById(R.id.checkbox_authenticationdefinition_length);
 
     }
 
@@ -84,16 +91,49 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (CustomValidator.isPasswordValid(s.toString())) {
-
-                    mEditTextConfirmCode.setEnabled(true);
-                    mTextInputLayoutPasswordCode.setError(null);
+                String password = s.toString();
+                int i = 0;
+                if (CustomValidator.hasCapitalLetter(password)) {
+                    mCheckBoxCapital.setChecked(true);
+                    i++;
                 } else {
+                    mCheckBoxCapital.setChecked(false);
+                    i--;
+                }
 
+                if (CustomValidator.hasDigit(password)) {
+                    mCheckBoxDigit.setChecked(true);
+                    i++;
+
+                } else {
+                    mCheckBoxDigit.setChecked(false);
+                    i--;
+
+                }
+
+                if (CustomValidator.hasCustomCharacters(password)) {
+                    mCheckBoxCustomChar.setChecked(true);
+                    i++;
+
+                } else {
+                    mCheckBoxCustomChar.setChecked(false);
+                    i--;
+
+                }
+                if (CustomValidator.hasMinimumLength(password)) {
+                    mCheckBoxMinimumLength.setChecked(true);
+                    i++;
+
+                } else {
+                    mCheckBoxMinimumLength.setChecked(false);
+                    i--;
+
+                }
+                if (i == 4) {
+                    mEditTextConfirmCode.setEnabled(true);
+                } else {
                     mEditTextConfirmCode.setText("");
                     mEditTextConfirmCode.setEnabled(false);
-                    mTextInputLayoutPasswordCode.setError(getContext().getString(R.string.authenticationdefinition_Entervalidpassword));
-
                 }
 
             }
@@ -117,12 +157,14 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
                 String password = mEditTextPassCode.getText().toString();
-                if (!s.toString().equals(password)) {
+                if (!s.toString().equals(password) && mEditTextConfirmCode.isEnabled()) {
 
                     mTextInputLayoutConfirmCode.setError(getContext().getString(R.string.authenticationdefinition_notmatch));
                 } else if (!s.toString().equals("") && s.toString().equals(password)) {
                     mTextInputLayoutConfirmCode.setError(null);
-                  navigationToDashboard();
+                    navigationToDashboard(s.toString());
+                    mEditTextPassCode.setText("");
+                    mEditTextConfirmCode.setText("");
 
                 }
             }
@@ -131,29 +173,37 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
 
     }
 
-
-
     public static class CustomValidator {
 
-        public static boolean isPasswordValid(String password) {
+        public static boolean hasMinimumLength(String password) {
 
-            String passwordExpression = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%+=_*?])(?=\\S+$).{8,}$";
-            return password.matches(passwordExpression);
+            return password.length() > 8;
         }
 
+        public static boolean hasCustomCharacters(String password) {
+
+            String customCharactes[] = {"@", "#", "$", "%", "+", "=", "_", "*", "?"};
+            for (String customCharacter : customCharactes) {
+                if (password.contains(customCharacter)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static boolean hasCapitalLetter(String password) {
+
+            return !password.equals(password.toLowerCase());
+        }
+
+        public static boolean hasDigit(String password) {
+
+            return password.matches(".*\\d+.*");
+        }
     }
 
-    public interface GoToDashboard{
+    public void navigationToDashboard(String credentialValue) {
 
-        void navigationToDashboard();
-
+        mNavigateToDashboardCallback.navigationToDashboardFromPassword(credentialValue);
     }
-
-    public void navigationToDashboard(){
-
-        mCallback.navigationToDashboard();
-
-    }
-
-
 }
