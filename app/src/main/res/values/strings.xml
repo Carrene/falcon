@@ -15,6 +15,7 @@
     <string name="phoneconfirmation_changenumber">"CHANGE NUMBER"</string>
     <string name="phoneconfirmation_resend">RESEND</string>
     <string name="phoneconfirmation_sentcodeagain">Sent code again</string>
+    <string name="phoneconfirmation_invalidactivationcode">Invalid activation code</string>
     <string name="registration_fillallbox">Fill all box</string>
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
@@ -62,6 +63,7 @@
     <string name="dashboard_yourcurrencyisnull">Your currency is null</string>
     <string name="materialdialogutil_isloading">Is loading ...</string>
     <string name="materialdialogutil_pleasewait">Please wait</string>
+
 
 
 

@@ -86,7 +86,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     public void onStart() {
 
         super.onStart();
-        mPresenter.start();
+        mPresenter.start(getContext());
 
     }
 
@@ -132,42 +132,30 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void initListeners() {
 
-        mTextViewTimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mTextViewTimer.setOnClickListener(v -> {
 
-                if (mIsRunning == false) {
-                    setTimer();
-                    mPresenter.resendActivationCode(mUser);
+            if (mIsRunning == false) {
+                setTimer();
+                mPresenter.resendActivationCode(mUser);
 
-                }
             }
         });
 
-        mTextViewChangeNumber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mTextViewChangeNumber.setOnClickListener(v -> changePhoneNumber());
 
-                changePhoneNumber();
-            }
-        });
+        mEditTextReceiveCode.setOnKeyListener((v, keyCode, event) -> {
 
-        mEditTextReceiveCode.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_ENTER:
-                            mUser.setActivationCode(mEditTextReceiveCode.getText().toString());
-                            bind();
-                            return true;
-                        default:
-                            break;
-                    }
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                switch (keyCode) {
+                    case KeyEvent.KEYCODE_ENTER:
+                        mUser.setActivationCode(mEditTextReceiveCode.getText().toString());
+                        bind();
+                        return true;
+                    default:
+                        break;
                 }
-                return false;
             }
+            return false;
         });
     }
 
@@ -222,7 +210,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     @Override
     public void disMissShowProgressBar() {
 
-        MaterialDialogUtil.disMissMaterialDialog();
+        MaterialDialogUtil.dismissMaterialDialog();
     }
 }
 

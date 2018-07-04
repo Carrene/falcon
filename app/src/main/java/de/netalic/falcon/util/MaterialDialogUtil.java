@@ -1,33 +1,40 @@
 package de.netalic.falcon.util;
 
-import android.app.Activity;
+import android.content.Context;
+import android.support.annotation.NonNull;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import de.netalic.falcon.R;
 
-public final class  MaterialDialogUtil {
+import static com.google.common.base.Preconditions.checkNotNull;
 
-    private static MaterialDialog sDialog;
+public final class MaterialDialogUtil {
 
-    public static void showMaterialDialog(Activity activity){
+    private static MaterialDialog sMaterialDialog;
 
-        MaterialDialog.Builder mMaterialDialogBuilder=new MaterialDialog.Builder(activity)
-                .title(activity.getString(R.string.materialdialogutil_pleasewait))
-                .content(activity.getString(R.string.materialdialogutil_isloading))
-                .progress(true,R.dimen.max_materialutil_materialutil)
+    public static void showMaterialDialog(@NonNull Context context) {
+
+        checkNotNull(context);
+        MaterialDialog.Builder mMaterialDialogBuilder = new MaterialDialog.Builder(context)
+                .title(context.getString(R.string.materialdialogutil_pleasewait))
+                .content(context.getString(R.string.materialdialogutil_isloading))
+                .progress(true, R.dimen.max_materialutil_materialutil)
+                .negativeText("Cancel")
                 .cancelable(false);
 
-        sDialog=mMaterialDialogBuilder.build();
 
-        sDialog.show();
 
+        sMaterialDialog = mMaterialDialogBuilder.build();
+        sMaterialDialog.show();
+
+        sMaterialDialog.getBuilder().onNegative((dialog, which) -> sMaterialDialog.dismiss());
     }
 
-    public static void disMissMaterialDialog(){
+    public static void dismissMaterialDialog() {
 
-        sDialog.dismiss();
-
-
+        checkNotNull(sMaterialDialog);
+        sMaterialDialog.dismiss();
     }
 }

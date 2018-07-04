@@ -21,23 +21,23 @@ public class Currency {
         return mId;
     }
 
-    public void setmId(int mId) {
+    public void setId(int mId) {
         this.mId = mId;
     }
 
-    public String getmName() {
+    public String getName() {
         return mName;
     }
 
-    public void setmName(String mName) {
+    public void setName(String mName) {
         this.mName = mName;
     }
 
-    public double getmPrice() {
+    public double getPrice() {
         return mPrice;
     }
 
-    public void setmPrice(double mPrice) {
+    public void setPrice(double mPrice) {
         this.mPrice = mPrice;
     }
 }

@@ -22,6 +22,7 @@ import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RecoveryEmailContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
 import nuesoft.helpdroid.UI.Keyboard;
+import nuesoft.helpdroid.validation.Validator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -43,7 +44,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
         mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
-        checkEmailSyntax();
+        //TODO: (Milad) remove this
         initListeners();
         return mRoot;
     }
@@ -128,7 +129,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     @Override
     public void disMissShowProgressBar() {
 
-        MaterialDialogUtil.disMissMaterialDialog();
+        MaterialDialogUtil.dismissMaterialDialog();
 
     }
 
@@ -163,15 +164,11 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     public void checkEmailSyntax() {
 
-        String emailPattern = "[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._-]+" +
-                "@[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]+\\.+" +
-                "[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]+";
-
         if (mEditTextRecoveryEmail.getText().toString().matches("")) {
 
             mTextInputLayoutRecoveryEmail.setError(getContext().getString(R.string.recoveryemail_pleaseenteremailaddress));
 
-        } else if (!mEditTextRecoveryEmail.getText().toString().matches(emailPattern)) {
+        } else if (!Validator.isEmailValid(mEditTextRecoveryEmail.getText().toString())) {
 
             mTextInputLayoutRecoveryEmail.setError(getContext().getString(R.string.recoveryemail_thisemaildoesnotexist));
 
@@ -181,7 +178,5 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
             set();
 
         }
-
     }
-
 }

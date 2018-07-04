@@ -1,5 +1,6 @@
 package de.netalic.falcon.presenter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import de.netalic.falcon.model.User;
@@ -18,10 +19,6 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
         mRecoveryEmailView.setPresenter(this);
     }
 
-    @Override
-    public void start() {
-
-    }
 
     @Override
     public void set(User user) {
@@ -45,6 +42,11 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
             }
 
         });
+
+    }
+
+    @Override
+    public void start(Context context) {
 
     }
 }

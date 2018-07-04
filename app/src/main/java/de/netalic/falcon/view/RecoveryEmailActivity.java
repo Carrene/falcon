@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -11,6 +12,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RecoveryEmailPresenter;
 import de.netalic.falcon.util.ActivityUtil;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RecoveryEmailActivity extends AppCompatActivity {
 
@@ -52,5 +54,10 @@ public class RecoveryEmailActivity extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

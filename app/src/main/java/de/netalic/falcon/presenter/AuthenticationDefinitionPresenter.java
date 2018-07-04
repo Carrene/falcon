@@ -1,5 +1,6 @@
 package de.netalic.falcon.presenter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -15,8 +16,9 @@ public class AuthenticationDefinitionPresenter implements AuthenticationDefiniti
         mAuthenticationDefinitionView.setPresenter(this);
     }
 
+
     @Override
-    public void start() {
+    public void start(Context context) {
 
     }
 }

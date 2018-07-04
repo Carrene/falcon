@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-
 import de.netalic.falcon.R;
+import nuesoft.helpdroid.validation.Validator;
 
 
 public class AuthenticationDefinitionPasswordFragment extends Fragment {
@@ -119,7 +118,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
                     mTextInputLayoutConfirmCode.setError(getContext().getString(R.string.authenticationdefinition_notmatch));
                 } else if (!s.toString().equals("") && s.toString().equals(password)) {
                     mTextInputLayoutConfirmCode.setError(null);
-                  navigationToDashboard();
+                    navigationToDashboard();
 
                 }
             }
@@ -128,25 +127,23 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
 
     }
 
-
-
     public static class CustomValidator {
 
         public static boolean isPasswordValid(String password) {
 
-            String passwordExpression = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%+=_*?])(?=\\S+$).{8,}$";
-            return password.matches(passwordExpression);
+
+            return Validator.isPasswordValid(password);
         }
 
     }
 
-    public interface GoToDashboardFromPassword{
+    public interface GoToDashboardFromPassword {
 
         void navigationToDashboard();
 
     }
 
-    public void navigationToDashboard(){
+    public void navigationToDashboard() {
 
         mCallback.navigationToDashboard();
 

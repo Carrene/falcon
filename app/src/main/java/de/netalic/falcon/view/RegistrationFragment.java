@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
@@ -61,7 +64,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public void onResume() {
 
         super.onResume();
-        mPresenter.start();
+        mPresenter.start(getContext());
     }
 
     @Override
@@ -162,10 +165,14 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void errorForNullPhoneNumber() {
 
-        Snackbar.make(mRoot, getContext().getString(R.string.registration_fillallbox), Snackbar.LENGTH_LONG).show();
+
+      Snackbar.make(mRoot, getContext().getString(R.string.registration_fillallbox), Snackbar.LENGTH_LONG).show();
+
+
     }
 
     @Override
@@ -179,7 +186,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public void disMissShowProgressBar() {
 
-        MaterialDialogUtil.disMissMaterialDialog();
+        MaterialDialogUtil.dismissMaterialDialog();
 
     }
 }

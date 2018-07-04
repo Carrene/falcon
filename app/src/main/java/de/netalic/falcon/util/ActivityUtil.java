@@ -1,12 +1,9 @@
 package de.netalic.falcon.util;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.inputmethod.InputMethodManager;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -37,4 +34,3 @@ public final class ActivityUtil {
         transaction.commit();
     }
 }
-

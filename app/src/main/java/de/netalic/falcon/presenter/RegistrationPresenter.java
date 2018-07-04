@@ -1,6 +1,7 @@
 package de.netalic.falcon.presenter;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 
@@ -47,9 +48,9 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
         });
     }
 
+
     @Override
-    public void start() {
+    public void start(Context context) {
 
     }
-
 }

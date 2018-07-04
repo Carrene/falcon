@@ -1,8 +1,10 @@
 package de.netalic.falcon.presenter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
+import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.repository.user.UserRepository;
 import de.netalic.falcon.view.AuthenticationDefinitionActivity;
@@ -10,6 +12,8 @@ import de.netalic.falcon.view.AuthenticationDefinitionActivity;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Presenter {
+
+    private Context mContext;
 
     @NonNull
     private final PhoneConfirmationContract.View mPhoneConfirmationView;
@@ -21,8 +25,9 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
     }
 
     @Override
-    public void start() {
+    public void start(Context context) {
 
+        mContext=context;
     }
 
     @Override
@@ -35,7 +40,7 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
             if (deal.getThrowable() != null) {
 
                 mPhoneConfirmationView.disMissShowProgressBar();
-                mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
+
             } else {
 
                 switch (deal.getResponse().code()) {
@@ -58,15 +63,28 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
         UserRepository.getInstance().bind(user, deal -> {
 
-            if (deal.getResponse().code() == 200) {
+            if (deal.getThrowable()!=null){
 
                 mPhoneConfirmationView.disMissShowProgressBar();
-                mPhoneConfirmationView.navigateToRecoveryEmail(user);
-
-            } else {
-                mPhoneConfirmationView.disMissShowProgressBar();
-                mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
             }
+
+            else {
+
+                switch (deal.getResponse().code()){
+
+                    case 200:
+                        mPhoneConfirmationView.disMissShowProgressBar();
+                        mPhoneConfirmationView.navigateToRecoveryEmail(user);
+                    case 711:
+                        mPhoneConfirmationView.disMissShowProgressBar();
+                        mPhoneConfirmationView.showActivationCodeError(mContext.getString(R.string.phoneconfirmation_invalidactivationcode));
+
+                }
+            }
+
         });
     }
+
+
+
 }

@@ -30,10 +30,12 @@ public class MyApp extends Application {
                 .schemaVersion(1);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Roboto_Medium.ttf")
+                .setDefaultFontPath("fonts/roboto_medium.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+
+
 
     }
 }

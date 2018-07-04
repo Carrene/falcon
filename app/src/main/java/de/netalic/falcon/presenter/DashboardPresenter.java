@@ -1,5 +1,6 @@
 package de.netalic.falcon.presenter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import de.netalic.falcon.model.Currency;
@@ -16,11 +17,6 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
         mDashboardView = checkNotNull(dashboardView);
         mDashboardView.setPresenter(this);
-    }
-
-    @Override
-    public void start() {
-
     }
 
     @Override
@@ -47,6 +43,11 @@ public class DashboardPresenter implements DashboardContract.Presenter {
             }
 
         });
+
+    }
+
+    @Override
+    public void start(Context context) {
 
     }
 }

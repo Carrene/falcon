@@ -12,7 +12,7 @@ public class ExchangeRateRestRepository implements IExchangeRate {
     @Override
     public void exchangeRate(Currency currency, CallRepository<ExchangeRate> callRepository) {
 
-        ApiClient.getService().exchangeRate(currency.getmName()).enqueue(new Callback<ExchangeRate>() {
+        ApiClient.getService().exchangeRate(currency.getName()).enqueue(new Callback<ExchangeRate>() {
             @Override
             public void onResponse(Call<ExchangeRate> call, Response<ExchangeRate> response) {
 

@@ -1,5 +1,6 @@
 package de.netalic.falcon.presenter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import de.netalic.falcon.view.SignInFragment;
 
@@ -17,8 +18,9 @@ public class SignInPresenter implements SignInContract.Presenter {
     }
 
 
+
     @Override
-    public void start() {
+    public void start(Context context) {
 
     }
 }

@@ -22,7 +22,7 @@ public class SignInFragment extends Fragment implements SignInContract.View {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot=inflater.inflate(R.layout.fragment_singin,null);
+        mRoot = inflater.inflate(R.layout.fragment_singin, null);
         initUiComponents();
         initListener();
         return mRoot;
@@ -37,23 +37,20 @@ public class SignInFragment extends Fragment implements SignInContract.View {
     public void setPresenter(SignInContract.Presenter presenter) {
 
 
-        }
-
-    private void initUiComponents(){
-
-        mSignIn=mRoot.findViewById(R.id.button_singin_singin);
     }
 
-    public void initListener(){
+    private void initUiComponents() {
 
-        mSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mSignIn = mRoot.findViewById(R.id.button_singin_singin);
+    }
 
-                Intent intent=new Intent(getActivity(),RegistrationActivity.class);
-                startActivity(intent);
+    public void initListener() {
 
-            }
+        mSignIn.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+            startActivity(intent);
+
         });
     }
 }

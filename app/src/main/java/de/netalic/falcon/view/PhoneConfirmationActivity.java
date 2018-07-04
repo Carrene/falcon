@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PhoneConfirmationActivity extends AppCompatActivity {
 
@@ -58,5 +60,10 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

@@ -58,7 +58,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start();
+        mPresenter.start(getContext());
     }
 
 
@@ -108,13 +108,13 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void showProgressBar() {
 
-        MaterialDialogUtil.showMaterialDialog(getActivity());
+        MaterialDialogUtil.showMaterialDialog(getContext());
     }
 
     @Override
     public void disMissShowProgressBar() {
 
-        MaterialDialogUtil.disMissMaterialDialog();
+        MaterialDialogUtil.dismissMaterialDialog();
     }
 
     public void getRate() {

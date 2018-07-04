@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.RegistrationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -34,5 +36,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         new RegistrationPresenter(registrationFragment);
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
