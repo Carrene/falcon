@@ -9,6 +9,8 @@ public interface RecoveryEmailContract {
 
         void navigateToAuthenticationDefinitionActivity();
         void showErrorSetEmail(int code);
+        void showProgressBar();
+        void disMissShowProgressBar();
 
     }
 

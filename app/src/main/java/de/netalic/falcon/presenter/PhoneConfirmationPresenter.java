@@ -28,32 +28,45 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
     @Override
     public void resendActivationCode(User user) {
 
-        UserRepository.getInstance().claim(user,deal -> {
+        mPhoneConfirmationView.showProgressBar();
 
+        UserRepository.getInstance().claim(user, deal -> {
 
-            if (deal.getResponse().code() == 200) {
-                mPhoneConfirmationView.showResendCodeAgain();
-
-            }
             if (deal.getThrowable() != null) {
 
+                mPhoneConfirmationView.disMissShowProgressBar();
                 mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
+            } else {
+
+                switch (deal.getResponse().code()) {
+
+                    case 200:
+                        mPhoneConfirmationView.disMissShowProgressBar();
+                        mPhoneConfirmationView.showResendCodeAgain();
+                }
             }
+
+
         });
 
     }
 
     @Override
     public void bind(User user) {
+
+        mPhoneConfirmationView.showProgressBar();
+
         UserRepository.getInstance().bind(user, deal -> {
 
-                if (deal.getResponse().code() == 200) {
+            if (deal.getResponse().code() == 200) {
 
-                    mPhoneConfirmationView.navigateToRecoveryEmail(user);
+                mPhoneConfirmationView.disMissShowProgressBar();
+                mPhoneConfirmationView.navigateToRecoveryEmail(user);
 
-                } else {
-                    mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
-                }
-            });
+            } else {
+                mPhoneConfirmationView.disMissShowProgressBar();
+                mPhoneConfirmationView.showActivationCodeError(String.valueOf(deal.getResponse().code()));
+            }
+        });
     }
 }

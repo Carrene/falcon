@@ -26,15 +26,22 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
     @Override
     public void set(User user) {
 
-
+        mRecoveryEmailView.showProgressBar();
         UserRepository.getInstance().setEmail(user, deal -> {
 
-            if (deal.getResponse().code() == 200) {
 
-                mRecoveryEmailView.navigateToAuthenticationDefinitionActivity();
+            if (deal.getThrowable() != null) {
+                mRecoveryEmailView.disMissShowProgressBar();
+                mRecoveryEmailView.showErrorSetEmail(deal.getResponse().code());
+
             } else {
 
-                mRecoveryEmailView.showErrorSetEmail(deal.getResponse().code());
+                switch (deal.getResponse().code()) {
+
+                    case 200:
+                        mRecoveryEmailView.disMissShowProgressBar();
+                        mRecoveryEmailView.navigateToAuthenticationDefinitionActivity();
+                }
             }
 
         });

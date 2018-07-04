@@ -10,6 +10,8 @@ public interface PhoneConfirmationContract {
         void showActivationCodeError(String error);
         void navigateToRecoveryEmail(User user);
         void showResendCodeAgain();
+        void showProgressBar();
+        void disMissShowProgressBar();
 
     }
 

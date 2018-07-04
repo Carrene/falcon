@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,13 +34,14 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     private TextView mTextViewSkip;
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
-
+    private ProgressDialog mProgressDialog;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_recoveryemail, container, false);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
+        mProgressDialog=new ProgressDialog(getActivity());
         setHasOptionsMenu(true);
         initUiComponents();
         checkEmailSyntax();
@@ -116,6 +118,19 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public void showErrorSetEmail(int code) {
 
         Snackbar.make(mRoot, String.valueOf(code), Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgressBar() {
+
+        ActivityUtil.showProgressBar(mProgressDialog);
+    }
+
+    @Override
+    public void disMissShowProgressBar() {
+
+        ActivityUtil.disMissShowProgressBar(mProgressDialog);
+
     }
 
     public void initListeners() {

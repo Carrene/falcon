@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -37,12 +38,14 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     private EditText mEditTextCountryCode;
     private MaskedEditText mEditTextPhone;
     private View mRoot;
+    private ProgressDialog mProgressDialog;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_registration, null);
+        mProgressDialog =new ProgressDialog(getActivity());
         initUiComponents();
         setCountryPicker();
         initListener();
@@ -164,5 +167,18 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public void errorForNullPhoneNumber() {
 
         Snackbar.make(mRoot, getContext().getString(R.string.registration_fillallbox), Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgressBar() {
+
+        ActivityUtil.showProgressBar(mProgressDialog);
+
+    }
+
+    @Override
+    public void disMissShowProgressBar() {
+
+        ActivityUtil.disMissShowProgressBar(mProgressDialog);
     }
 }

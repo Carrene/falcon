@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -38,6 +39,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private TextView mTextViewTimer;
     private View mRoot;
     private boolean mIsRunning = true;
+    private ProgressDialog mProgressDialog;
 
     @Nullable
     @Override
@@ -45,6 +47,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
         mRoot = inflater.inflate(R.layout.fragment_phoneconfirmation, container, false);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
+        mProgressDialog=new ProgressDialog(getActivity());
         setHasOptionsMenu(true);
         initUiComponents();
         setTimer();
@@ -210,6 +213,18 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     public void showResendCodeAgain() {
 
         Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_sentcodeagain), Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgressBar() {
+
+        ActivityUtil.showProgressBar(mProgressDialog);
+    }
+
+    @Override
+    public void disMissShowProgressBar() {
+
+        ActivityUtil.disMissShowProgressBar(mProgressDialog);
     }
 }
 

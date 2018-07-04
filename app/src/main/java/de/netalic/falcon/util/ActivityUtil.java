@@ -1,6 +1,7 @@
 package de.netalic.falcon.util;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,12 +28,12 @@ public final class ActivityUtil {
     }
 
     public static void replaceFragmentWithFragment(@NonNull FragmentManager fragmentManager,
-                                             @NonNull Fragment fragment, int frameId) {
+                                                   @NonNull Fragment fragment, int frameId) {
 
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(frameId,fragment);
+        transaction.replace(frameId, fragment);
         transaction.commit();
     }
 
@@ -43,6 +44,22 @@ public final class ActivityUtil {
                         Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public static void showProgressBar(ProgressDialog progressDialog) {
+
+        progressDialog.setMax(100);
+        progressDialog.setMessage("Is loading ...");
+        progressDialog.setProgressStyle(progressDialog.STYLE_SPINNER);
+        progressDialog.show();
+
+    }
+
+    public static void disMissShowProgressBar(ProgressDialog progressDialog) {
+
+        progressDialog.dismiss();
+
+
     }
 }
 

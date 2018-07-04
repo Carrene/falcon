@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.DashboardContract;
+import de.netalic.falcon.util.ActivityUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -29,13 +31,16 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private static final String ARGUMENT_USER = "USER";
     private TextView mRate;
     private Currency USD;
+    private ProgressDialog mProgressDialog;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        USD=new Currency(1,"usd",2);
+        USD = new Currency(1, "usd", 2);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
+        mProgressDialog=new ProgressDialog(getActivity());
         setHasOptionsMenu(true);
         initUiComponents();
 //        setPhoneNumber();
@@ -76,7 +81,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mPhoneNumber = mRoot.findViewById(R.id.textview_dashboard_phonenumbernavigationheader);
         mEmail = mRoot.findViewById(R.id.textview_dashboard_emailnavigationheader);
-        mRate=mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
+        mRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
 
     }
 
@@ -94,7 +99,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void errorForNullCurrency() {
 
-        Snackbar.make(mRoot,getContext().getString(R.string.dashboard_yourcurrencyisnull),Snackbar.LENGTH_LONG).show();
+        Snackbar.make(mRoot, getContext().getString(R.string.dashboard_yourcurrencyisnull), Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -102,10 +107,22 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mRate.setText(String.valueOf(rate));
     }
-    public void getRate(){
+
+    @Override
+    public void showProgressBar() {
+
+        ActivityUtil.showProgressBar(mProgressDialog);
+    }
+
+    @Override
+    public void disMissShowProgressBar() {
+
+        ActivityUtil.disMissShowProgressBar(mProgressDialog);
+    }
+
+    public void getRate() {
 
         mPresenter.exchangeRate(USD);
-
 
     }
 }
