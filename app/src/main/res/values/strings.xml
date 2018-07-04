@@ -60,7 +60,8 @@
     <string name="dashboard_phonenumber">+98 912 111 11 11</string>
     <string name="dashboard_email">miladsalimi@gmail.com</string>
     <string name="dashboard_yourcurrencyisnull">Your currency is null</string>
-    <string name="activityutil_isloading">Is loading ...</string>
+    <string name="materialdialogutil_isloading">Is loading ...</string>
+    <string name="materialdialogutil_pleasewait">Please wait</string>
 
 
 

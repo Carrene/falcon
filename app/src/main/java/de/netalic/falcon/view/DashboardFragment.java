@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,7 +16,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.DashboardContract;
-import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.MaterialDialogUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -30,17 +29,15 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
     private TextView mRate;
-    private Currency USD;
-    private ProgressDialog mProgressDialog;
+    private Currency mUsd;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        USD = new Currency(1, "usd", 2);
+        mUsd = new Currency(1, "usd", 2);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
-        mProgressDialog=new ProgressDialog(getActivity());
         setHasOptionsMenu(true);
         initUiComponents();
 //        setPhoneNumber();
@@ -111,18 +108,18 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void showProgressBar() {
 
-        ActivityUtil.showProgressBar(mProgressDialog);
+        MaterialDialogUtil.showMaterialDialog(getActivity());
     }
 
     @Override
     public void disMissShowProgressBar() {
 
-        ActivityUtil.disMissShowProgressBar(mProgressDialog);
+        MaterialDialogUtil.disMissMaterialDialog();
     }
 
     public void getRate() {
 
-        mPresenter.exchangeRate(USD);
+        mPresenter.exchangeRate(mUsd);
 
     }
 }

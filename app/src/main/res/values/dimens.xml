@@ -114,5 +114,6 @@
     <dimen name="minwidth_style_radiobutton">70dp</dimen>
     <dimen name="paddingleft_style_radiobutton">5dp</dimen>
     <dimen name="paddingright_style_radiobutton">5dp</dimen>
+    <dimen name="max_materialutil_materialutil">100</dimen>
 
 </resources>

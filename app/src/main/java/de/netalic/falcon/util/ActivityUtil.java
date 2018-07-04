@@ -36,31 +36,5 @@ public final class ActivityUtil {
         transaction.replace(frameId, fragment);
         transaction.commit();
     }
-
-
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
-    public static void showProgressBar(ProgressDialog progressDialog) {
-
-        progressDialog.setMax(100);
-        progressDialog.setMessage("Is loading ...");
-        progressDialog.setProgressStyle(progressDialog.STYLE_SPINNER);
-        progressDialog.show();
-
-    }
-
-    public static void disMissShowProgressBar(ProgressDialog progressDialog) {
-
-        progressDialog.dismiss();
-
-
-    }
 }
-
 

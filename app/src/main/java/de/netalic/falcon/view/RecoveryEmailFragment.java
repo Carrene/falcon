@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,7 +20,8 @@ import android.widget.TextView;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RecoveryEmailContract;
-import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.MaterialDialogUtil;
+import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -34,14 +34,13 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     private TextView mTextViewSkip;
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
-    private ProgressDialog mProgressDialog;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_recoveryemail, container, false);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
-        mProgressDialog=new ProgressDialog(getActivity());
         setHasOptionsMenu(true);
         initUiComponents();
         checkEmailSyntax();
@@ -82,7 +81,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
         switch (item.getItemId()) {
             case R.id.menu_recoveryemail_done: {
 
-                ActivityUtil.hideSoftKeyboard(getActivity());
+                Keyboard.hideKeyboard(mRoot);
                 checkEmailSyntax();
                 return true;
             }
@@ -123,48 +122,42 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     @Override
     public void showProgressBar() {
 
-        ActivityUtil.showProgressBar(mProgressDialog);
+        MaterialDialogUtil.showMaterialDialog(getActivity());
     }
 
     @Override
     public void disMissShowProgressBar() {
 
-        ActivityUtil.disMissShowProgressBar(mProgressDialog);
+        MaterialDialogUtil.disMissMaterialDialog();
 
     }
 
     public void initListeners() {
 
-        mTextViewSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mTextViewSkip.setOnClickListener(v -> {
 
-                Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
-                intent.putExtra(ARGUMENT_USER, mUser);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+            intent.putExtra(ARGUMENT_USER, mUser);
+            startActivity(intent);
         });
 
-        mEditTextRecoveryEmail.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+        mEditTextRecoveryEmail.setOnKeyListener((v, keyCode, event) -> {
 
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
 
-                    switch (keyCode) {
+                switch (keyCode) {
 
-                        case KeyEvent.KEYCODE_ENTER:
+                    case KeyEvent.KEYCODE_ENTER:
 
-                            checkEmailSyntax();
+                        checkEmailSyntax();
 
-                            return true;
-                        default:
-                            break;
-                    }
+                        return true;
+                    default:
+                        break;
                 }
-
-                return false;
             }
+
+            return false;
         });
     }
 

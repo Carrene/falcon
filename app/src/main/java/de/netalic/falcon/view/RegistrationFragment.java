@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -26,7 +25,8 @@ import br.com.sapereaude.maskedEditText.MaskedEditText;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RegistrationContract;
-import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.MaterialDialogUtil;
+import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -38,14 +38,12 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     private EditText mEditTextCountryCode;
     private MaskedEditText mEditTextPhone;
     private View mRoot;
-    private ProgressDialog mProgressDialog;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_registration, null);
-        mProgressDialog =new ProgressDialog(getActivity());
         initUiComponents();
         setCountryPicker();
         initListener();
@@ -57,6 +55,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
         return new RegistrationFragment();
     }
+
 
     @Override
     public void onResume() {
@@ -85,7 +84,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
         switch (item.getItemId()) {
             case R.id.menu_registration_done: {
 
-                ActivityUtil.hideSoftKeyboard(getActivity());
+                Keyboard.hideKeyboard(mRoot);
                 if (mEditTextCountryCode.getText().toString().isEmpty()) {
 
                     showCountryCodeError();
@@ -172,13 +171,15 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public void showProgressBar() {
 
-        ActivityUtil.showProgressBar(mProgressDialog);
+        MaterialDialogUtil.showMaterialDialog(getActivity());
+
 
     }
 
     @Override
     public void disMissShowProgressBar() {
 
-        ActivityUtil.disMissShowProgressBar(mProgressDialog);
+        MaterialDialogUtil.disMissMaterialDialog();
+
     }
 }

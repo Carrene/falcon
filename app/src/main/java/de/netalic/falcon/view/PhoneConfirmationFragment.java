@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -24,7 +23,8 @@ import java.util.concurrent.TimeUnit;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationContract;
-import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.MaterialDialogUtil;
+import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -39,7 +39,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private TextView mTextViewTimer;
     private View mRoot;
     private boolean mIsRunning = true;
-    private ProgressDialog mProgressDialog;
 
     @Nullable
     @Override
@@ -47,7 +46,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
         mRoot = inflater.inflate(R.layout.fragment_phoneconfirmation, container, false);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
-        mProgressDialog=new ProgressDialog(getActivity());
         setHasOptionsMenu(true);
         initUiComponents();
         setTimer();
@@ -104,7 +102,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
         switch (item.getItemId()) {
             case R.id.menu_phoneconfirmation_done: {
 
-                ActivityUtil.hideSoftKeyboard(getActivity());
+                Keyboard.hideKeyboard(mRoot);
                 if (mEditTextReceiveCode.getText().toString().isEmpty()) {
 
                     TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_phoneconfirmation_receivecode);
@@ -205,7 +203,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     public void navigateToRecoveryEmail(User user) {
 
         Intent intent = new Intent(getActivity(), RecoveryEmailActivity.class);
-        intent.putExtra("USER", user);
+        intent.putExtra(ARGUMENT_USER, user);
         startActivity(intent);
     }
 
@@ -218,13 +216,13 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     @Override
     public void showProgressBar() {
 
-        ActivityUtil.showProgressBar(mProgressDialog);
+        MaterialDialogUtil.showMaterialDialog(getActivity());
     }
 
     @Override
     public void disMissShowProgressBar() {
 
-        ActivityUtil.disMissShowProgressBar(mProgressDialog);
+        MaterialDialogUtil.disMissMaterialDialog();
     }
 }
 

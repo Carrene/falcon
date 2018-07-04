@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,6 +35,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         validationPassCode();
         return mRoot;
     }
+
 
     @Override
     public void onAttach(Context context) {
