@@ -1,6 +1,5 @@
 package de.netalic.falcon.presenter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import de.netalic.falcon.model.Currency;
@@ -9,6 +8,7 @@ import de.netalic.falcon.repository.exchangeRate.ExchangeRateRepository;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class DashboardPresenter implements DashboardContract.Presenter {
+
 
     @NonNull
     private final DashboardContract.View mDashboardView;
@@ -28,26 +28,37 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
-                mDashboardView.disMissShowProgressBar();
-                mDashboardView.errorForNullCurrency();
+                mDashboardView.dismissShowProgressBar();
 
             } else {
 
                 switch (deal.getResponse().code()) {
 
-                    case 200:
-                        mDashboardView.disMissShowProgressBar();
+                    case 200: {
+
+                        mDashboardView.dismissShowProgressBar();
                         mDashboardView.updateExchangeRateCurrency(deal.getModel().getSell());
+                        break;
+                    }
+                    case 709: {
+                        mDashboardView.dismissShowProgressBar();
+                        mDashboardView.showErrorInvalidCurrency();
+                        break;
+                    }
+                    case 721: {
+                        mDashboardView.dismissShowProgressBar();
+                        mDashboardView.showErrorRatesDoesNotExists();
+                        break;
+                    }
                 }
-
             }
-
         });
-
     }
 
     @Override
-    public void start(Context context) {
+    public void start() {
+
+
 
     }
 }

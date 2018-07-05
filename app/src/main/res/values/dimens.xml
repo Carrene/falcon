@@ -72,7 +72,7 @@
     <dimen name="height_dashboard_border">2dp</dimen>
     <dimen name="marginbottom_dashboard_linearlayoutmiddletextview">20dp</dimen>
     <dimen name="paddingtop_dashboard_linearlayoutmiddletextview">20dp</dimen>
-    <dimen name="textsize_dashboard_equivalenttobasecurrecy">18sp</dimen>
+    <dimen name="textsize_dashboard_equivalenttobasecurrecy">13sp</dimen>
     <dimen name="marginstart_dashboard_equivalenttobasecurrency">24dp</dimen>
     <dimen name="textsize_dashboard_rateequivalent">13sp</dimen>
     <dimen name="widthheight_dashboard_withdrawimageview">135dp</dimen>
@@ -95,7 +95,7 @@
     <dimen name="paddingstart_dashboard_linearlayoutbottomtextviews">20dp</dimen>
     <dimen name="paddingtop_dashboard_linearlayoutbottomtextviews">10dp</dimen>
     <dimen name="height_dashboard_linearlayoutbottomtextviews">0dp</dimen>
-    <dimen name="height_dashboard_imageviewcurrencydollar">20dp</dimen>
+    <dimen name="height_dashboard_imageviewcurrencydollar">15dp</dimen>
     <dimen name="paddingbottom_dashboard_linearlayoutalphasymbol">30dp</dimen>
     <dimen name="height_dashboard_navigationheader">203dp</dimen>
     <dimen name="height_dashboard_circleimageviewinnavigation">67dp</dimen>

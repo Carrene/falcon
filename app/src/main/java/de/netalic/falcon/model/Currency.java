@@ -16,28 +16,28 @@ public class Currency {
 
     }
 
-    public int getmId() {
+    public int getId() {
 
         return mId;
     }
 
-    public void setId(int mId) {
-        this.mId = mId;
+    public void setId(int id) {
+        this.mId = id;
     }
 
     public String getName() {
         return mName;
     }
 
-    public void setName(String mName) {
-        this.mName = mName;
+    public void setName(String name) {
+        this.mName = name;
     }
 
     public double getPrice() {
         return mPrice;
     }
 
-    public void setPrice(double mPrice) {
-        this.mPrice = mPrice;
+    public void setPrice(double price) {
+        this.mPrice = price;
     }
 }

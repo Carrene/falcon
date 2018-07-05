@@ -40,8 +40,7 @@
             android:text="@string/dashboard_myblance"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="@dimen/textsize_dashboard_myblance"
-            android:textStyle="bold" />
+            android:textSize="@dimen/textsize_dashboard_myblance" />
 
         <LinearLayout
             android:id="@+id/linearlayout_dashboard_alphasymbol"
@@ -183,8 +182,7 @@
                 android:text="@string/dashboard_purchase"
                 android:textAlignment="center"
                 android:textColor="@color/mariner"
-                android:textSize="@dimen/textsize_dashboard_purchasewithdrawtextsize"
-                android:textStyle="bold" />
+                android:textSize="@dimen/textsize_dashboard_purchasewithdrawtextsize" />
 
             <TextView
                 android:id="@+id/textview_dashboard_withdraw"
@@ -194,8 +192,7 @@
                 android:text="@string/dashboard_withdraw"
                 android:textAlignment="center"
                 android:textColor="@color/mariner"
-                android:textSize="@dimen/textsize_dashboard_purchasewithdrawtextsize"
-                android:textStyle="bold" />
+                android:textSize="@dimen/textsize_dashboard_purchasewithdrawtextsize" />
 
         </LinearLayout>
     </LinearLayout>

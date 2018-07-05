@@ -97,6 +97,8 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         });
 
         mEditTextConfirmCode.addTextChangedListener(new TextWatcher() {
+
+            String password = mEditTextPassCode.getText().toString();
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -106,17 +108,24 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+                if (!s.toString().matches("") && !password.equals(s.toString())){
+
+                    mTextInputLayoutConfirmCode.setError(getContext().getString(R.string.authenticationdefinition_notmatch));
+
+                }
+                else {
+
+                    mTextInputLayoutConfirmCode.setError(null);
+                }
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
-                String password = mEditTextPassCode.getText().toString();
-                if (!s.toString().equals(password)) {
+                password = mEditTextPassCode.getText().toString();
 
-                    mTextInputLayoutConfirmCode.setError(getContext().getString(R.string.authenticationdefinition_notmatch));
-                } else if (!s.toString().equals("") && s.toString().equals(password)) {
+                if (!s.toString().equals("") && s.toString().equals(password)) {
                     mTextInputLayoutConfirmCode.setError(null);
                     navigationToDashboard();
 

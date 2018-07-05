@@ -9,10 +9,11 @@ public interface DashboardContract {
 
         void setEmail();
         void setPhoneNumber();
-        void errorForNullCurrency();
+        void showErrorInvalidCurrency();
+        void showErrorRatesDoesNotExists();
         void updateExchangeRateCurrency(double rate);
         void showProgressBar();
-        void disMissShowProgressBar();
+        void dismissShowProgressBar();
 
     }
 

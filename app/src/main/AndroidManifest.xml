@@ -39,7 +39,7 @@
             android:name=".view.RecoveryEmailActivity"
             android:parentActivityName=".view.PhoneConfirmationActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".view.SignInActivity"></activity>
+        <activity android:name=".view.SplashActivity"></activity>
         <activity android:name=".view.DashboardActivity"></activity>
     </application>
 

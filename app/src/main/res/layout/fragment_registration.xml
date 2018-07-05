@@ -1,11 +1,10 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:mask="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/Porcelain">
+    android:background="@color/Porcelain"
+    android:orientation="vertical">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textinputlayout_registration_countrypicker"
@@ -13,19 +12,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/marginend_registration_countrypicker"
+        android:layout_marginStart="@dimen/marginstart_registration_countrypicker"
         android:layout_marginTop="@dimen/margintop_registration_countrypicker">
 
         <EditText
             android:id="@+id/edittext_registration_countrypicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginend_registration_countrypicker"
-            android:layout_marginStart="@dimen/marginstart_registration_countrypicker"
             android:ems="10"
             android:enabled="true"
             android:focusable="false"
             android:hint="@string/registration_defultcountry"
-            android:inputType="number"/>
+            android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -43,13 +42,12 @@
             android:layout_marginStart="@dimen/marginstart_registration_code"
             android:ems="3"
             android:enabled="false"
-            android:textColor="@color/dustyGray"
             android:text="@string/registration_codehint"
-            android:textAlignment="textStart" />
+            android:textAlignment="textStart"
+            android:textColor="@color/dustyGray" />
     </android.support.design.widget.TextInputLayout>
 
-    <br.com.sapereaude.maskedEditText.MaskedEditText
-        xmlns:mask="http://schemas.android.com/apk/res-auto"
+    <br.com.sapereaude.maskedEditText.MaskedEditText xmlns:mask="http://schemas.android.com/apk/res-auto"
         android:id="@+id/edittext_registration_phonenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +59,7 @@
         android:inputType="phone"
         app:keep_hint="true"
         mask:allowed_chars="1234567890"
-        mask:mask="###-###-####"/>
+        mask:mask="###-###-####" />
 
     <TextView
         android:id="@+id/textview_registration_confirmation"
@@ -71,6 +69,6 @@
         android:layout_marginBottom="@dimen/marginbottom_registration_confirmtext"
         android:gravity="center"
         android:text="@string/registration_bottomtextview"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black" />
 
 </RelativeLayout>

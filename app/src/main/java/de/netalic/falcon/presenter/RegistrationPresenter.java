@@ -1,17 +1,14 @@
 package de.netalic.falcon.presenter;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.repository.user.UserRepository;
-import de.netalic.falcon.util.ActivityUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class RegistrationPresenter implements RegistrationContract.Presenter {
+
 
 
     @NonNull
@@ -32,16 +29,20 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
-                mRegistrationView.disMissShowProgressBar();
-                mRegistrationView.errorForNullPhoneNumber();
+                mRegistrationView.dismissProgressBar();
 
             } else {
                 switch (deal.getResponse().code()) {
-                    case 200: {
-                        mRegistrationView.disMissShowProgressBar();
+                    case 200:
+                        mRegistrationView.dismissProgressBar();
                         mRegistrationView.navigationToPhoneConfirmation(user);
+                        break;
 
-                     }
+                    case 710: {
+                        mRegistrationView.dismissProgressBar();
+                        mRegistrationView.showErrorInvalidUdidOrPhone();
+                        break;
+                    }
                 }
             }
 
@@ -50,7 +51,8 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
 
 
     @Override
-    public void start(Context context) {
+    public void start() {
+
 
     }
 }

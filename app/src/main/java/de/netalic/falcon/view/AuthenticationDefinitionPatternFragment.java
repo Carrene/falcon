@@ -14,6 +14,7 @@ import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import nuesoft.helpdroid.UI.SnackBar;
 
 public class AuthenticationDefinitionPatternFragment extends Fragment {
 
@@ -33,7 +34,6 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
     }
 
 
-
     public void initUiComponents() {
 
         mPatternLockView = mRoot.findViewById(R.id.patternview_authenticationdefinition_pattern);
@@ -46,7 +46,6 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
         mPatternLockView.addPatternLockListener(new PatternLockViewListener() {
             @Override
             public void onStarted() {
-
 
             }
 

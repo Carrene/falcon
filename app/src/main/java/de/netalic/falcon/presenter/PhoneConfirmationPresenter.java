@@ -1,19 +1,14 @@
 package de.netalic.falcon.presenter;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 
-import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.repository.user.UserRepository;
-import de.netalic.falcon.view.AuthenticationDefinitionActivity;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Presenter {
 
-    private Context mContext;
 
     @NonNull
     private final PhoneConfirmationContract.View mPhoneConfirmationView;
@@ -25,9 +20,9 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
     }
 
     @Override
-    public void start(Context context) {
+    public void start() {
 
-        mContext=context;
+
     }
 
     @Override
@@ -39,15 +34,25 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
             if (deal.getThrowable() != null) {
 
-                mPhoneConfirmationView.disMissShowProgressBar();
+                mPhoneConfirmationView.dismissProgressBar();
 
             } else {
 
                 switch (deal.getResponse().code()) {
 
-                    case 200:
-                        mPhoneConfirmationView.disMissShowProgressBar();
+                    case 200: {
+                        mPhoneConfirmationView.dismissProgressBar();
                         mPhoneConfirmationView.showResendCodeAgain();
+                        break;
+                    }
+
+                    case 710: {
+                        mPhoneConfirmationView.dismissProgressBar();
+                        mPhoneConfirmationView.showErrorInvalidUdidOrPhone();
+                        break;
+                    }
+
+
                 }
             }
 
@@ -63,28 +68,36 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
         UserRepository.getInstance().bind(user, deal -> {
 
-            if (deal.getThrowable()!=null){
+            if (deal.getThrowable() != null) {
 
-                mPhoneConfirmationView.disMissShowProgressBar();
-            }
+                mPhoneConfirmationView.dismissProgressBar();
+            } else {
 
-            else {
+                switch (deal.getResponse().code()) {
 
-                switch (deal.getResponse().code()){
-
-                    case 200:
-                        mPhoneConfirmationView.disMissShowProgressBar();
+                    case 200: {
+                        mPhoneConfirmationView.dismissProgressBar();
                         mPhoneConfirmationView.navigateToRecoveryEmail(user);
-                    case 711:
-                        mPhoneConfirmationView.disMissShowProgressBar();
-                        mPhoneConfirmationView.showActivationCodeError(mContext.getString(R.string.phoneconfirmation_invalidactivationcode));
-
+                        break;
+                    }
+                    case 710: {
+                        mPhoneConfirmationView.dismissProgressBar();
+                        mPhoneConfirmationView.showErrorInvalidUdidOrPhone();
+                        break;
+                    }
+                    case 711: {
+                        mPhoneConfirmationView.dismissProgressBar();
+                        mPhoneConfirmationView.showErrorInvalidActivationCode();
+                        break;
+                    }
+                    case 716: {
+                        mPhoneConfirmationView.dismissProgressBar();
+                        mPhoneConfirmationView.showErrorInvalidDeviceName();
+                        break;
+                    }
                 }
             }
 
         });
     }
-
-
-
 }

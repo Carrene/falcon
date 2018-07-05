@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.presenter.SignInContract;
+import de.netalic.falcon.presenter.SplashContract;
 
-public class SignInFragment extends Fragment implements SignInContract.View {
+public class SplashFragment extends Fragment implements SplashContract.View {
 
     private View mRoot;
     private Button mSignIn;
@@ -22,19 +22,19 @@ public class SignInFragment extends Fragment implements SignInContract.View {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_singin, null);
+        mRoot = inflater.inflate(R.layout.fragment_splash, null);
         initUiComponents();
         initListener();
         return mRoot;
     }
 
-    public static SignInFragment newInstance() {
+    public static SplashFragment newInstance() {
 
-        return new SignInFragment();
+        return new SplashFragment();
     }
 
     @Override
-    public void setPresenter(SignInContract.Presenter presenter) {
+    public void setPresenter(SplashContract.Presenter presenter) {
 
 
     }

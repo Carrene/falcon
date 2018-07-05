@@ -42,8 +42,6 @@ public class DashboardActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawerlayout_dashboard);
         mDrawerLayout.setStatusBarBackground(R.color.greenHaze);
 
-
-
         ActionBarDrawerToggle aToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
         mDrawerLayout.addDrawerListener(aToggle);
         aToggle.syncState();

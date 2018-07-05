@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
@@ -64,7 +62,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public void onResume() {
 
         super.onResume();
-        mPresenter.start(getContext());
+        mPresenter.start();
     }
 
     @Override
@@ -88,7 +86,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
             case R.id.menu_registration_done: {
 
                 Keyboard.hideKeyboard(mRoot);
-                if (mEditTextCountryCode.getText().toString().isEmpty()) {
+                if (mEditTextCountryCode.getText().toString().matches("XXXX")) {
 
                     showCountryCodeError();
 
@@ -96,11 +94,17 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
                 if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
 
-                    Snackbar.make(mRoot, getContext().getString(R.string.registration_pleasefillyournumber), Snackbar.LENGTH_LONG).show();
+                    showErrorDescription(getContext().getString(R.string.registration_pleasefillyournumber));
                 } else {
 
-                    claim();
+                    if (maskedEditText.getText().toString().charAt(11) == 'X') {
 
+                        showErrorDescription(getContext().getString(R.string.registration_pleasefillalldigits));
+                    } else {
+
+                        claim();
+
+                    }
                 }
             }
         }
@@ -165,28 +169,35 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     }
 
-    @SuppressLint("ResourceAsColor")
-    @Override
-    public void errorForNullPhoneNumber() {
-
-
-      Snackbar.make(mRoot, getContext().getString(R.string.registration_fillallbox), Snackbar.LENGTH_LONG).show();
-
-
-    }
-
     @Override
     public void showProgressBar() {
 
-        MaterialDialogUtil.showMaterialDialog(getActivity());
-
+        checkNotNull(getContext());
+        MaterialDialogUtil.showMaterialDialog(getContext());
 
     }
 
     @Override
-    public void disMissShowProgressBar() {
+    public void dismissProgressBar() {
 
         MaterialDialogUtil.dismissMaterialDialog();
+
+    }
+
+    @Override
+    public void showErrorInvalidUdidOrPhone() {
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_invalidudidorphone), Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
+    }
+
+    public void showErrorDescription(String error){
+
+        Snackbar snackbar = Snackbar.make(mRoot, error, Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
 
     }
 }

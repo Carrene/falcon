@@ -8,7 +8,11 @@ public interface PhoneConfirmationContract {
 
     interface View extends BaseView<PhoneConfirmationContract.Presenter> {
 
-        void showActivationCodeError(String error);
+        void showErrorInvalidUdidOrPhone();
+
+        void showErrorInvalidActivationCode();
+
+        void showErrorInvalidDeviceName();
 
         void navigateToRecoveryEmail(User user);
 
@@ -16,7 +20,7 @@ public interface PhoneConfirmationContract {
 
         void showProgressBar();
 
-        void disMissShowProgressBar();
+        void dismissProgressBar();
 
     }
 

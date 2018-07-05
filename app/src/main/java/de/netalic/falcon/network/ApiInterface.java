@@ -23,7 +23,6 @@ public interface ApiInterface {
     @HTTP(method = "SET", path = "emails", hasBody = true)
     Call<User> setEmail(@Field("email") String email);
 
-
     @HTTP(method = "GET",path = "rates/{currency}",hasBody = true)
     Call<ExchangeRate>exchangeRate(@Path("currency") String currency);
 }

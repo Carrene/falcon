@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signin_background">
+    android:background="@drawable/splash_background">
     
     <ImageView
         android:id="@+id/imageview_singin_alphalogo"
         android:layout_width="@dimen/width_signin_logo"
         android:layout_height="@dimen/height_singin_logo"
-        android:background="@drawable/signin_logo"
+        android:background="@drawable/splash_logo"
         android:layout_marginTop="@dimen/margintop_signin_logo"
         android:layout_centerHorizontal="true"
         />
@@ -21,7 +21,7 @@
         android:background="@color/Emerald"
         android:layout_below="@+id/imageview_singin_alphalogo"
         android:layout_marginTop="@dimen/margintop_signin_button"
-        android:text="@string/signin_textbutton"
+        android:text="@string/splash_textbutton"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
 

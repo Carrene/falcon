@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -69,13 +70,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
         mPresenter = checkNotNull(presenter);
     }
 
-    @Override
-    public void showActivationCodeError(String error) {
-
-        Snackbar.make(mRoot, error, Snackbar.LENGTH_LONG).show();
-
-    }
-
     private void changePhoneNumber() {
 
         Intent intent = new Intent(getActivity(), RegistrationActivity.class);
@@ -86,7 +80,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     public void onStart() {
 
         super.onStart();
-        mPresenter.start(getContext());
+        mPresenter.start();
 
     }
 
@@ -188,6 +182,33 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     }
 
     @Override
+    public void showErrorInvalidUdidOrPhone() {
+        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.phoneconfirmation_invalidudidorphone),Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
+
+    }
+
+    @Override
+    public void showErrorInvalidActivationCode() {
+
+        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.phoneconfirmation_invalidactivationcode),Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
+    }
+
+    @Override
+    public void showErrorInvalidDeviceName() {
+
+        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.phoneconfirmation_invaliddevicename),Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
+    }
+
+    @Override
     public void navigateToRecoveryEmail(User user) {
 
         Intent intent = new Intent(getActivity(), RecoveryEmailActivity.class);
@@ -198,19 +219,23 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     @Override
     public void showResendCodeAgain() {
 
-        Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_sentcodeagain), Snackbar.LENGTH_LONG).show();
+        Snackbar snackbar=Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_sentcodeagain), Snackbar.LENGTH_LONG);
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
     }
 
     @Override
     public void showProgressBar() {
 
-        MaterialDialogUtil.showMaterialDialog(getActivity());
+        checkNotNull(getContext());
+        MaterialDialogUtil.showMaterialDialog(getContext());
     }
 
     @Override
-    public void disMissShowProgressBar() {
+    public void dismissProgressBar() {
 
         MaterialDialogUtil.dismissMaterialDialog();
     }
+
 }
 

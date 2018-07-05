@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -58,7 +59,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start(getContext());
+        mPresenter.start();
     }
 
 
@@ -94,9 +95,21 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     }
 
     @Override
-    public void errorForNullCurrency() {
+    public void showErrorInvalidCurrency() {
 
-        Snackbar.make(mRoot, getContext().getString(R.string.dashboard_yourcurrencyisnull), Snackbar.LENGTH_LONG).show();
+        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.dashboard_invalidcurrency),Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
+    }
+
+    @Override
+    public void showErrorRatesDoesNotExists() {
+
+        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.dashboard_ratedosenotexists),Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
     }
 
     @Override
@@ -108,11 +121,12 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void showProgressBar() {
 
+        checkNotNull(getContext());
         MaterialDialogUtil.showMaterialDialog(getContext());
     }
 
     @Override
-    public void disMissShowProgressBar() {
+    public void dismissShowProgressBar() {
 
         MaterialDialogUtil.dismissMaterialDialog();
     }

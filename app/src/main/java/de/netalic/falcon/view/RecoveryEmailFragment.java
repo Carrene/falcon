@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,7 +45,6 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
         mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
-        //TODO: (Milad) remove this
         initListeners();
         return mRoot;
     }
@@ -115,19 +115,33 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     }
 
     @Override
-    public void showErrorSetEmail(int code) {
+    public void showErrorInvalidEmail() {
 
-        Snackbar.make(mRoot, String.valueOf(code), Snackbar.LENGTH_LONG).show();
+        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.recoveryemail_invalidemail),Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
     }
+
+    @Override
+    public void showErrorEmailAlreadyExists() {
+
+        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.recoveryemail_emailalreadyexists),Snackbar.LENGTH_LONG);
+        checkNotNull(getContext());
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        snackbar.show();
+    }
+
 
     @Override
     public void showProgressBar() {
 
-        MaterialDialogUtil.showMaterialDialog(getActivity());
+        checkNotNull(getContext());
+        MaterialDialogUtil.showMaterialDialog(getContext());
     }
 
     @Override
-    public void disMissShowProgressBar() {
+    public void dismissProgressBar() {
 
         MaterialDialogUtil.dismissMaterialDialog();
 
@@ -164,18 +178,15 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     public void checkEmailSyntax() {
 
-        if (mEditTextRecoveryEmail.getText().toString().matches("")) {
+      if (Validator.isEmailValid(mEditTextRecoveryEmail.getText().toString())) {
 
-            mTextInputLayoutRecoveryEmail.setError(getContext().getString(R.string.recoveryemail_pleaseenteremailaddress));
-
-        } else if (!Validator.isEmailValid(mEditTextRecoveryEmail.getText().toString())) {
-
-            mTextInputLayoutRecoveryEmail.setError(getContext().getString(R.string.recoveryemail_thisemaildoesnotexist));
+            mUser.setEmail(mEditTextRecoveryEmail.getText().toString());
+            mTextInputLayoutRecoveryEmail.setError(null);
+            set();
 
         } else {
-            mTextInputLayoutRecoveryEmail.setError(null);
-            mUser.setEmail(mEditTextRecoveryEmail.getText().toString());
-            set();
+
+            mTextInputLayoutRecoveryEmail.setError(getContext().getString(R.string.recoveryemail_thisemaildoesnotexist));
 
         }
     }
