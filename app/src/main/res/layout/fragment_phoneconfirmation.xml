@@ -56,6 +56,8 @@
         android:layout_marginBottom="@dimen/marginbottom_phoneconfirmation_changenumber"
         android:text="@string/phoneconfirmation_changenumber"
         android:textColor="@color/Emerald"
-        android:textSize="@dimen/textsize_phoneconfirmation_changenumber" />
+        android:textSize="@dimen/textsize_phoneconfirmation_changenumber"
+
+        />
 
 </RelativeLayout>

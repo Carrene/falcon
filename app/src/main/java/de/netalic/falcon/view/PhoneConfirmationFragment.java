@@ -155,7 +155,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setTimer() {
 
-        CountDownTimer countDownTimer = new CountDownTimer(120000, 1000) {
+        new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -183,7 +183,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     @Override
     public void showErrorInvalidUdidOrPhone() {
-        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.phoneconfirmation_invalidudidorphone),Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_invalidudidorphone), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();
@@ -193,7 +193,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     @Override
     public void showErrorInvalidActivationCode() {
 
-        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.phoneconfirmation_invalidactivationcode),Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_invalidactivationcode), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();
@@ -202,7 +202,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     @Override
     public void showErrorInvalidDeviceName() {
 
-        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.phoneconfirmation_invaliddevicename),Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_invaliddevicename), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();
@@ -219,7 +219,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     @Override
     public void showResendCodeAgain() {
 
-        Snackbar snackbar=Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_sentcodeagain), Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_sentcodeagain), Snackbar.LENGTH_LONG);
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();
     }

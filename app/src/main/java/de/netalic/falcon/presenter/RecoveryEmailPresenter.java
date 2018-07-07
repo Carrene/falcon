@@ -47,7 +47,7 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
                     }
                     case 712:{
                         mRecoveryEmailView.dismissProgressBar();
-                        mRecoveryEmailView.showErrorInvalidEmail();
+                        mRecoveryEmailView.showErrorInvalidEmail( );
                         break;
                     }
                     case 718:{

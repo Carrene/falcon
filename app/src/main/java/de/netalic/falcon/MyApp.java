@@ -34,8 +34,5 @@ public class MyApp extends Application {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
-
-
-
     }
 }
