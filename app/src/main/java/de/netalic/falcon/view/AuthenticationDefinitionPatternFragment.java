@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,11 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
     private PatternLockView mPatternLockView;
     private int mAttemptTimeNumber;
     private String mFirstAttemptPattern;
+    private NavigateToDashboardCallback mNavigateToDashboardCallback;
+
+    interface NavigateToDashboardCallback {
+        void navigationToDashboardFromPattern(String credentialValue);
+    }
 
     @Nullable
     @Override
@@ -39,6 +45,17 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
         mPatternLockView = mRoot.findViewById(R.id.patternview_authenticationdefinition_pattern);
         mPatternLockView.setEnabled(true);
 
+    }
+
+    @Override
+    public void onAttach(Context context) {
+
+        super.onAttach(context);
+        if (context instanceof NavigateToDashboardCallback) {
+            mNavigateToDashboardCallback = (NavigateToDashboardCallback) context;
+        } else {
+            throw new ClassCastException(context.toString() + " must implement NavigateToDashboardCallback");
+        }
     }
 
     public void initListeners() {
@@ -82,7 +99,7 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
                     Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), Snackbar.LENGTH_LONG).show();
                     String credentialValue = mPatternLockView.getPattern().toString();
                     mPatternLockView.clearPattern();
-
+                    navigateToDashboard(credentialValue);
                 }
             }
 
@@ -93,5 +110,8 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
         });
 
     }
+    private void navigateToDashboard(String credentialValue) {
 
+        mNavigateToDashboardCallback.navigationToDashboardFromPattern(credentialValue);
+    }
 }

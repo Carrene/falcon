@@ -14,7 +14,9 @@ import de.netalic.falcon.presenter.AuthenticationDefinitionContract;
 import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
 
-public class AuthenticationDefinitionActivity extends AppCompatActivity implements AuthenticationDefinitionContract.View,AuthenticationDefinitionPasswordFragment.GoToDashboardFromPassword {
+
+public class AuthenticationDefinitionActivity extends AppCompatActivity implements AuthenticationDefinitionContract.View, AuthenticationDefinitionPasswordFragment.NavigateToDashboardCallback
+        , AuthenticationDefinitionPatternFragment.NavigateToDashboardCallback {
 
     private ActionBar mActionBar;
     private SegmentedGroup mSegmentedGroup;
@@ -32,9 +34,9 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
         initUiComponents();
         initListeners();
 
-
-        mUser=new User();
+        mUser = new User();
         //mUser = getIntent().getExtras().getParcelable(ARGUMENT_USER);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar_authenticationdefinition);
         setSupportActionBar(toolbar);
@@ -89,11 +91,17 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
 
     }
 
+    @Override
+    public void navigationToDashboardFromPassword(String credentialValue) {
+        Intent intent = new Intent(this, DashboardActivity.class);
+        intent.putExtra(ARGUMENT_USER, mUser);
+        startActivity(intent);
+    }
 
     @Override
-    public void navigationToDashboard() {
-        Intent intent=new Intent(this,DashboardActivity.class);
-        intent.putExtra(ARGUMENT_USER,mUser);
+    public void navigationToDashboardFromPattern(String credentialValue) {
+        Intent intent = new Intent(this, DashboardActivity.class);
+        intent.putExtra(ARGUMENT_USER, mUser);
         startActivity(intent);
     }
 }
