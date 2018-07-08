@@ -32,7 +32,9 @@
             android:ems="10"
             android:gravity="center"
             android:hint="@string/phoneconfirmation_entertheverificationhere"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:inputType="number"
+            />
 
     </android.support.design.widget.TextInputLayout>
 

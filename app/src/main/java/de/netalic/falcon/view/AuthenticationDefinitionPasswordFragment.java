@@ -46,7 +46,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
 
-
         super.onAttach(context);
         if (context instanceof NavigateToDashboardCallback) {
             mNavigateToDashboardCallback = (NavigateToDashboardCallback) context;
@@ -148,7 +147,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-
             }
 
             @Override
@@ -190,7 +188,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         public static boolean hasMinimumLength(String password) {
 
 
-            return password.length() > 8;
+            return password.length() > 7;
         }
 
         public static boolean hasCustomCharacters(String password) {

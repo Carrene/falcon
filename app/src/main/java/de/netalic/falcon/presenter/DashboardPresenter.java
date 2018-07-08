@@ -36,28 +36,29 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
                     case 200: {
 
-                        mDashboardView.dismissShowProgressBar();
+
                         mDashboardView.updateExchangeRateCurrency(deal.getModel().getSell());
                         break;
                     }
                     case 709: {
-                        mDashboardView.dismissShowProgressBar();
+
                         mDashboardView.showErrorInvalidCurrency();
                         break;
                     }
                     case 721: {
-                        mDashboardView.dismissShowProgressBar();
+
                         mDashboardView.showErrorRatesDoesNotExists();
                         break;
                     }
+
                 }
+                mDashboardView.dismissShowProgressBar();
             }
         });
     }
 
     @Override
     public void start() {
-
 
     }
 }

@@ -34,16 +34,17 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
             } else {
                 switch (deal.getResponse().code()) {
                     case 200:
-                        mRegistrationView.dismissProgressBar();
+
                         mRegistrationView.navigationToPhoneConfirmation(user);
                         break;
 
                     case 710: {
-                        mRegistrationView.dismissProgressBar();
+
                         mRegistrationView.showErrorInvalidUdidOrPhone();
                         break;
                     }
                 }
+                mRegistrationView.dismissProgressBar();
             }
 
         });
