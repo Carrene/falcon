@@ -60,7 +60,6 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
         });
 
-
     }
 
     @Override

@@ -17,12 +17,12 @@
     <dimen name="textsize_phoneconfirmation_userphone">22sp</dimen>
     <dimen name="margintop_phoneconfirmation_header1">40dp</dimen>
     <dimen name="textsize_phoneconfirmation_header1">16sp</dimen>
-    <dimen name="marginend_phoneconfirmation_textinputlayout">30dp</dimen>
-    <dimen name="marginstart_phoneconfirmation_textinputlayout">30dp</dimen>
+    <dimen name="marginend_phoneconfirmation_textinputlayout">50dp</dimen>
+    <dimen name="marginstart_phoneconfirmation_textinputlayout">50dp</dimen>
     <dimen name="margintop_phoneconfirmation_resendtext">30dp</dimen>
     <dimen name="margintop_phoneconfirmation_confirmationcodehere">80dp</dimen>
     <dimen name="textsize_phoneconfirmation_resendtext">16sp</dimen>
-    <dimen name="marginbottom_phoneconfirmation_changenumber">20dp</dimen>
+    <dimen name="margintop_phoneconfirmation_changenumber">30dp</dimen>
     <dimen name="textsize_phoneconfirmation_changenumber">13sp</dimen>
     <dimen name="textsize_authenticationdefinition_header">20sp</dimen>
     <dimen name="margintop_authenticationdefinition_header">100dp</dimen>

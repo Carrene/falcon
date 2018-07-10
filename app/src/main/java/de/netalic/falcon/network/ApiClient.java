@@ -65,7 +65,7 @@ public class ApiClient {
     public static String getUrl() {
 
         if (sTestUrl == null) {
-            return String.format("%s:%s/apiv%s/", BuildConfig.WEB_SERVICE_URL, BuildConfig.WEB_SERVICE_PORT, BuildConfig.WEB_SERVICE_VERSION);
+            return String.format("http://192.168.1.53:80/apiv1/");
         }
         return sTestUrl;
     }

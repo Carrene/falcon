@@ -32,6 +32,7 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
                 mRegistrationView.dismissProgressBar();
 
             } else {
+
                 switch (deal.getResponse().code()) {
                     case 200:
 

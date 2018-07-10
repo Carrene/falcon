@@ -34,8 +34,8 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
         initUiComponents();
         initListeners();
 
-        mUser = new User();
-        //mUser = getIntent().getExtras().getParcelable(ARGUMENT_USER);
+
+        mUser = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar_authenticationdefinition);
