@@ -36,7 +36,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mUsd = new Currency(1, "usd", 2);
+        mUsd = new Currency(1, "usd", "1");
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
@@ -113,7 +113,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     }
 
     @Override
-    public void updateExchangeRateCurrency(double rate) {
+    public void updateExchangeRateCurrency(String rate) {
 
         mRate.setText(String.valueOf(rate));
     }

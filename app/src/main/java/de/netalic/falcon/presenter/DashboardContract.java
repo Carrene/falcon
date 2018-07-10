@@ -11,7 +11,7 @@ public interface DashboardContract {
         void setPhoneNumber();
         void showErrorInvalidCurrency();
         void showErrorRatesDoesNotExists();
-        void updateExchangeRateCurrency(double rate);
+        void updateExchangeRateCurrency(String rate);
         void showProgressBar();
         void dismissShowProgressBar();
 
