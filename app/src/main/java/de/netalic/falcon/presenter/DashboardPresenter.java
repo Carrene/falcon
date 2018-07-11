@@ -3,6 +3,7 @@ package de.netalic.falcon.presenter;
 import android.support.annotation.NonNull;
 
 import de.netalic.falcon.model.Currency;
+import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.repository.exchangeRate.ExchangeRateRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -20,17 +21,18 @@ public class DashboardPresenter implements DashboardContract.Presenter {
     }
 
     @Override
-    public void exchangeRate(Currency currency) {
+    public void exchangeRate(ExchangeRate exchangeRate) {
 
         mDashboardView.showProgressBar();
 
-        ExchangeRateRepository.getInstance().exchangeRate(currency, deal -> {
+        ExchangeRateRepository.getInstance().exchangeRate(exchangeRate, deal -> {
 
             if (deal.getThrowable() != null) {
 
-                mDashboardView.dismissShowProgressBar();
+                mDashboardView.dismissProgressBar();
 
             } else {
+
 
                 switch (deal.getResponse().code()) {
 
@@ -52,7 +54,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
                     }
 
                 }
-                mDashboardView.dismissShowProgressBar();
+                mDashboardView.dismissProgressBar();
             }
         });
     }

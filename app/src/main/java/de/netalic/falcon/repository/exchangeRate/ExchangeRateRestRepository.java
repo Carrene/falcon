@@ -1,6 +1,5 @@
 package de.netalic.falcon.repository.exchangeRate;
 
-import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
@@ -10,9 +9,9 @@ import retrofit2.Response;
 
 public class ExchangeRateRestRepository implements IExchangeRate {
     @Override
-    public void exchangeRate(Currency currency, CallRepository<ExchangeRate> callRepository) {
+    public void exchangeRate(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
 
-        ApiClient.getService().exchangeRate(currency.getName()).enqueue(new Callback<ExchangeRate>() {
+        ApiClient.getService().exchangeRate(exchangeRate.getCurrency().getCode()).enqueue(new Callback<ExchangeRate>() {
             @Override
             public void onResponse(Call<ExchangeRate> call, Response<ExchangeRate> response) {
 

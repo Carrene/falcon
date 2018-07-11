@@ -30,6 +30,12 @@ public class ExchangeRate {
         this.mCurrencyID = currencyID;
     }
 
+    public ExchangeRate(Currency currency) {
+
+        mCurrency=currency;
+
+    }
+
     public int getCreatedAt() {
         return mCreatedAt;
     }

@@ -6,5 +6,5 @@ import de.netalic.falcon.repository.IRepository;
 
 public interface IExchangeRate extends IRepository<ExchangeRate,Integer> {
 
-    void exchangeRate(Currency currency, CallRepository<ExchangeRate>callRepository);
+    void exchangeRate(ExchangeRate exchangeRate, CallRepository<ExchangeRate>callRepository);
 }

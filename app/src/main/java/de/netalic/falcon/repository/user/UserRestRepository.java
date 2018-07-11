@@ -33,8 +33,6 @@ public class UserRestRepository implements IUserRepository {
     @Override
     public void claim(User user, CallRepository<User> callRepository) {
 
-        String a=user.getUdid();
-        String b=user.getPhone();
         ApiClient.getService().claim(user.getUdid(), user.getPhone()).enqueue(new Callback<User>() {
 
             @Override

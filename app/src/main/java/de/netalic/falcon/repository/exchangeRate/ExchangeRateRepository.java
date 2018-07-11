@@ -1,8 +1,6 @@
 package de.netalic.falcon.repository.exchangeRate;
 
-import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
-import de.netalic.falcon.repository.user.UserRepository;
 
 public class ExchangeRateRepository implements IExchangeRate {
 
@@ -15,17 +13,12 @@ public class ExchangeRateRepository implements IExchangeRate {
 
     }
 
-    public ExchangeRateRepository(ExchangeRateRestRepository mExchangeRateRestRepository) {
-
-        this.mExchangeRateRestRepository = mExchangeRateRestRepository;
-    }
-
 
     public static ExchangeRateRepository getInstance() {
 
         if (sExchangeRateRepository == null) {
 
-            synchronized (UserRepository.class) {
+            synchronized (ExchangeRateRepository.class) {
                 if (sExchangeRateRepository == null) {
                     sExchangeRateRepository = new ExchangeRateRepository();
                 }
@@ -35,9 +28,9 @@ public class ExchangeRateRepository implements IExchangeRate {
     }
 
     @Override
-    public void exchangeRate(Currency currency, CallRepository<ExchangeRate> callRepository) {
+    public void exchangeRate(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
 
-        mExchangeRateRestRepository.exchangeRate(currency, callRepository);
+        mExchangeRateRestRepository.exchangeRate(exchangeRate, callRepository);
     }
 
     @Override

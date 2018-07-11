@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Currency;
+import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.DashboardContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
@@ -30,17 +31,18 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private static final String ARGUMENT_USER = "USER";
     private TextView mRate;
     private Currency mUsd;
+    private ExchangeRate mExchangeRate;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mUsd = new Currency(1, "usd", "1");
+        mUsd = new Currency(1, "dolar", "usd");
+        mExchangeRate=new ExchangeRate(mUsd);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
-
         getRate();
         return mRoot;
     }
@@ -115,14 +117,14 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     }
 
     @Override
-    public void dismissShowProgressBar() {
+    public void dismissProgressBar() {
 
         MaterialDialogUtil.dismissMaterialDialog();
     }
 
     public void getRate() {
 
-        mPresenter.exchangeRate(mUsd);
+        mPresenter.exchangeRate(mExchangeRate);
 
     }
 }
