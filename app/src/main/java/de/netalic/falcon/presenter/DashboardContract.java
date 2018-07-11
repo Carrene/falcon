@@ -6,9 +6,7 @@ import de.netalic.falcon.view.BaseView;
 public interface DashboardContract {
 
     interface View extends BaseView<Presenter>{
-
-        void setEmail();
-        void setPhoneNumber();
+        
         void showErrorInvalidCurrency();
         void showErrorRatesDoesNotExists();
         void updateExchangeRateCurrency(String rate);

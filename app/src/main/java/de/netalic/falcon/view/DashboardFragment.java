@@ -25,8 +25,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
-    private TextView mPhoneNumber;
-    private TextView mEmail;
+
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
     private TextView mRate;
@@ -41,8 +40,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
-//        setPhoneNumber();
-//        setEmail();
+
         getRate();
         return mRoot;
     }
@@ -77,22 +75,13 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void initUiComponents() {
 
-        mPhoneNumber = mRoot.findViewById(R.id.textview_dashboard_phonenumbernavigationheader);
-        mEmail = mRoot.findViewById(R.id.textview_dashboard_emailnavigationheader);
+
         mRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
 
     }
 
 
-    @Override
-    public void setEmail() {
 
-    }
-
-    @Override
-    public void setPhoneNumber() {
-
-    }
 
     @Override
     public void showErrorInvalidCurrency() {

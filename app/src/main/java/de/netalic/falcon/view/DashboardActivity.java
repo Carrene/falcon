@@ -12,6 +12,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
@@ -28,7 +30,9 @@ public class DashboardActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private static final String ARGUMENT_USER = "USER";
     private User mUser;
-    private static final int DROP_IN_REQUEST=1;
+    private static final int DROP_IN_REQUEST = 1;
+    private TextView mPhoneNumber;
+    private TextView mEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +50,18 @@ public class DashboardActivity extends AppCompatActivity {
 
         }
 
+
+        View header = ((NavigationView) findViewById(R.id.navigationview_dashboard)).getHeaderView(0);
+
+
+        mPhoneNumber = header.findViewById(R.id.textview_dashboard_phonenumbernavigationheader);
+        mEmail = header.findViewById(R.id.textview_dashboard_emailnavigationheader);
+
         mDrawerLayout = findViewById(R.id.drawerlayout_dashboard);
         mDrawerLayout.setStatusBarBackground(R.color.greenHaze);
+
+        setPhoneNumber();
+        setEmail();
 
         ActionBarDrawerToggle aToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
         mDrawerLayout.addDrawerListener(aToggle);
@@ -143,5 +157,19 @@ public class DashboardActivity extends AppCompatActivity {
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
             }
         }
+    }
+
+
+    public void setEmail() {
+
+        mEmail.setText(mUser.getEmail());
+
+    }
+
+
+    public void setPhoneNumber() {
+
+        mPhoneNumber.setText(mUser.getPhone());
+
     }
 }

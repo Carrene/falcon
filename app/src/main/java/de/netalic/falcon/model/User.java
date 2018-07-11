@@ -153,14 +153,14 @@ public class User extends RealmObject implements Parcelable {
 
         dest.writeString(this.mPhone);
 //        dest.writeString(this.mActivationCode);
-//        dest.writeString(this.mEmail);
+        dest.writeString(this.mEmail);
 
     }
 
     protected User(Parcel in) {
         mPhone = in.readString();
 //        mActivationCode=in.readString();
-//        mEmail=in.readString();
+        mEmail=in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
