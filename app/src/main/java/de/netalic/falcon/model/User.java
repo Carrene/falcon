@@ -97,6 +97,10 @@ public class User extends RealmObject implements Parcelable {
         return mBalance;
     }
 
+    public String getToken() {
+        return mToken;
+    }
+
     public String getUdid() {
 
         MessageDigest messageDigest = null;
