@@ -8,10 +8,10 @@ public class ExchangeRate {
 
     @SerializedName("createdAt")
     @PrimaryKey
-    private int mCreatedAt;
+    private String mCreatedAt;
 
     @SerializedName("currency")
-    private Currency  mCurrency;
+    private Currency mCurrency;
 
     @SerializedName("buy")
     private String mBuy;
@@ -22,7 +22,7 @@ public class ExchangeRate {
     @SerializedName("currencyId")
     private int mCurrencyID;
 
-    public ExchangeRate(int createdAt, Currency currency, String buy, String sell, int currencyID) {
+    public ExchangeRate(String createdAt, Currency currency, String buy, String sell, int currencyID) {
         this.mCreatedAt = createdAt;
         this.mCurrency = currency;
         this.mBuy = buy;
@@ -32,15 +32,15 @@ public class ExchangeRate {
 
     public ExchangeRate(Currency currency) {
 
-        mCurrency=currency;
+        mCurrency = currency;
 
     }
 
-    public int getCreatedAt() {
+    public String getCreatedAt() {
         return mCreatedAt;
     }
 
-    public void setCreatedAt(int createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.mCreatedAt = createdAt;
     }
 

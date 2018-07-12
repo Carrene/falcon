@@ -10,9 +10,7 @@ public class ExchangeRateRepository implements IExchangeRate {
     private ExchangeRateRepository() {
 
         mExchangeRateRestRepository = new ExchangeRateRestRepository();
-
     }
-
 
     public static ExchangeRateRepository getInstance() {
 
@@ -28,21 +26,14 @@ public class ExchangeRateRepository implements IExchangeRate {
     }
 
     @Override
-    public void exchangeRate(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
-
-        mExchangeRateRestRepository.exchangeRate(exchangeRate, callRepository);
-    }
-
-    @Override
     public void update(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
 
-        mExchangeRateRestRepository.update(exchangeRate,callRepository);
+        mExchangeRateRestRepository.update(exchangeRate, callRepository);
     }
 
     @Override
-    public void get(Integer identifier, CallRepository<ExchangeRate> callRepository) {
+    public void get(String identifier, CallRepository<ExchangeRate> callRepository) {
 
-        mExchangeRateRestRepository.get(identifier,callRepository);
-
+        mExchangeRateRestRepository.get(identifier, callRepository);
     }
 }

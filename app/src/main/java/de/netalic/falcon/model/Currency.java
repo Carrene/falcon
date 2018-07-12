@@ -2,6 +2,8 @@ package de.netalic.falcon.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.security.PublicKey;
+
 import io.realm.annotations.PrimaryKey;
 
 public class Currency {
@@ -14,14 +16,9 @@ public class Currency {
     @SerializedName("code")
     private String mCode;
 
-    public Currency(int id, String name, String code) {
-        this.mId = id;
-        this.mName = name;
+
+    public Currency(String code) {
         this.mCode = code;
-    }
-
-    public Currency() {
-
     }
 
     public int getId() {
@@ -29,7 +26,7 @@ public class Currency {
     }
 
     public void setId(int id) {
-        this.mId =id;
+        this.mId = id;
     }
 
     public String getName() {

@@ -25,7 +25,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
         mDashboardView.showProgressBar();
 
-        ExchangeRateRepository.getInstance().exchangeRate(exchangeRate, deal -> {
+        ExchangeRateRepository.getInstance().get(exchangeRate.getCurrency().getCode(), deal -> {
 
             if (deal.getThrowable() != null) {
 

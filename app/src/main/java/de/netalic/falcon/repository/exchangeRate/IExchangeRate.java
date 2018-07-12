@@ -1,10 +1,8 @@
 package de.netalic.falcon.repository.exchangeRate;
 
-import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.repository.IRepository;
 
-public interface IExchangeRate extends IRepository<ExchangeRate,Integer> {
+public interface IExchangeRate extends IRepository<ExchangeRate, String> {
 
-    void exchangeRate(ExchangeRate exchangeRate, CallRepository<ExchangeRate>callRepository);
 }

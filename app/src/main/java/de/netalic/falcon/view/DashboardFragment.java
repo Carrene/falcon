@@ -16,6 +16,7 @@ import android.widget.TextView;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
+import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.DashboardContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
@@ -37,8 +38,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mUsd = new Currency(1, "dolar", "usd");
-        mExchangeRate=new ExchangeRate(mUsd);
+        mUsd = new UsdCurrency();
+        mExchangeRate = new ExchangeRate(mUsd);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
@@ -83,12 +84,10 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     }
 
 
-
-
     @Override
     public void showErrorInvalidCurrency() {
 
-        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.dashboard_invalidcurrency),Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.dashboard_invalidcurrency), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();
@@ -97,7 +96,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void showErrorRatesDoesNotExists() {
 
-        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.dashboard_ratedosenotexists),Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.dashboard_ratedosenotexists), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();

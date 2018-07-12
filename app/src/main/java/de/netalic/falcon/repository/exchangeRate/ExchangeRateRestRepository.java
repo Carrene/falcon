@@ -8,24 +8,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ExchangeRateRestRepository implements IExchangeRate {
-    @Override
-    public void exchangeRate(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
-
-        ApiClient.getService().exchangeRate(exchangeRate.getCurrency().getCode()).enqueue(new Callback<ExchangeRate>() {
-            @Override
-            public void onResponse(Call<ExchangeRate> call, Response<ExchangeRate> response) {
-
-                callRepository.onDone(new Deal<>(response.body(),response,null));
-            }
-
-            @Override
-            public void onFailure(Call<ExchangeRate> call, Throwable t) {
-
-                callRepository.onDone(new Deal<>(null,null,t));
-
-            }
-        });
-    }
 
     @Override
     public void update(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
@@ -33,7 +15,21 @@ public class ExchangeRateRestRepository implements IExchangeRate {
     }
 
     @Override
-    public void get(Integer identifier, CallRepository<ExchangeRate> callRepository) {
+    public void get(String identifier, CallRepository<ExchangeRate> callRepository) {
 
+        ApiClient.getService().exchangeRate(identifier).enqueue(new Callback<ExchangeRate>() {
+            @Override
+            public void onResponse(Call<ExchangeRate> call, Response<ExchangeRate> response) {
+
+                callRepository.onDone(new Deal<>(response.body(), response, null));
+            }
+
+            @Override
+            public void onFailure(Call<ExchangeRate> call, Throwable t) {
+
+                callRepository.onDone(new Deal<>(null, null, t));
+
+            }
+        });
     }
 }

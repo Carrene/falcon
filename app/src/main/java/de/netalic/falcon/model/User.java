@@ -97,10 +97,6 @@ public class User extends RealmObject implements Parcelable {
         return mBalance;
     }
 
-    public String getToken() {
-        return mToken;
-    }
-
     public String getUdid() {
 
         MessageDigest messageDigest = null;
@@ -152,14 +148,12 @@ public class User extends RealmObject implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeString(this.mPhone);
-//        dest.writeString(this.mActivationCode);
         dest.writeString(this.mEmail);
 
     }
 
     protected User(Parcel in) {
         mPhone = in.readString();
-//        mActivationCode=in.readString();
         mEmail=in.readString();
     }
 
