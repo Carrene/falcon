@@ -6,10 +6,9 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmField;
 
-public class Wallet extends RealmObject {
+public class Wallet{
 
     @PrimaryKey
-    @RealmField(name = "Id")
     @SerializedName("id")
     private int mId;
 

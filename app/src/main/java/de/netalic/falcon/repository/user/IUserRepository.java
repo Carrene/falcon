@@ -13,6 +13,4 @@ public interface IUserRepository extends IRepository<User, Integer> {
 
     void setEmail(User user, CallRepository<User> callRepository);
 
-
-
 }

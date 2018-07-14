@@ -31,5 +31,6 @@ public interface ApiInterface {
     @GET("rates/{currency}")
     Call<ExchangeRate>exchangeRate(@Path("currency") String currency);
 
- 
+    @GET("wallets")
+    Call<List<Wallet>>walletList();
 }
