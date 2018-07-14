@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.repository.exchangeRate.ExchangeRateRepository;
+import de.netalic.falcon.repository.wallet.WalletRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -57,6 +58,35 @@ public class DashboardPresenter implements DashboardContract.Presenter {
                 mDashboardView.dismissProgressBar();
             }
         });
+    }
+
+    @Override
+    public void getWalletList() {
+
+        mDashboardView.showProgressBar();
+        WalletRepository.getInstance().getList(deal -> {
+
+
+            if (deal.getThrowable()!=null){
+                mDashboardView.dismissProgressBar();
+
+            } else {
+                switch (deal.getResponse().code()){
+
+                    case 200:{
+
+                        mDashboardView.showListWallet(deal.getResponse().body());
+
+                    }
+                }
+
+
+
+            }
+
+
+        });
+
     }
 
     @Override

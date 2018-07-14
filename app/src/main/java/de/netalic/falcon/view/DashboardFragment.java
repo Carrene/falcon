@@ -11,13 +11,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.DashboardContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
 
@@ -27,7 +32,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
-
+    private Spinner mSpinner;
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
     private TextView mRate;
@@ -45,6 +50,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         setHasOptionsMenu(true);
         initUiComponents();
         getRate();
+        getWalletList();
         return mRoot;
     }
 
@@ -80,6 +86,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
 
         mRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
+        mSpinner=mRoot.findViewById(R.id.spinner_dashboard_spinner);
 
     }
 
@@ -121,9 +128,26 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         MaterialDialogUtil.dismissMaterialDialog();
     }
 
+    @Override
+    public void showListWallet(List<Wallet>walletList) {
+
+        Integer []items=new Integer[walletList.size()];
+        for (int i=0;i<walletList.size();i++){
+
+            items[i]=walletList.get(i).getId();
+        }
+        ArrayAdapter<Integer>adapter=new ArrayAdapter<Integer>(this.getActivity(),android.R.layout.simple_spinner_item,items);
+        mSpinner.setAdapter(adapter);
+
+    }
+
     public void getRate() {
 
         mPresenter.exchangeRate(mExchangeRate);
 
+    }
+    public void getWalletList(){
+
+        mPresenter.getWalletList();
     }
 }

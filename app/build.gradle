@@ -20,6 +20,7 @@ android {
         versionName generateVersionName()
         flavorDimensions "default"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     sourceSets.test.resources.srcDirs += ["src/test/res"]
 
