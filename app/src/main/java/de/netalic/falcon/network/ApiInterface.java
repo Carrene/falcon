@@ -1,7 +1,10 @@
 package de.netalic.falcon.network;
 
+import java.util.List;
+
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.model.Wallet;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -27,4 +30,6 @@ public interface ApiInterface {
 
     @GET("rates/{currency}")
     Call<ExchangeRate>exchangeRate(@Path("currency") String currency);
+
+ 
 }
