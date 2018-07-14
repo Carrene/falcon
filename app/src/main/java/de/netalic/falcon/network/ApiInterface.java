@@ -10,6 +10,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
 
@@ -31,6 +32,6 @@ public interface ApiInterface {
     @GET("rates/{currency}")
     Call<ExchangeRate>exchangeRate(@Path("currency") String currency);
 
-    @GET("wallets")
+    @HTTP(method = "LIST",path = "wallets")
     Call<List<Wallet>>walletList();
 }
