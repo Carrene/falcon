@@ -55,9 +55,10 @@ public class DashboardPresenter implements DashboardContract.Presenter {
                     }
 
                 }
-                mDashboardView.dismissProgressBar();
+
             }
         });
+        mDashboardView.dismissProgressBar();
     }
 
     @Override
@@ -75,14 +76,13 @@ public class DashboardPresenter implements DashboardContract.Presenter {
                     case 200:{
 
                         mDashboardView.showListWallet(deal.getResponse().body());
-
+                        break;
                     }
                 }
-                mDashboardView.dismissProgressBar();
 
             }
         });
-
+        mDashboardView.dismissProgressBar();
     }
 
     @Override

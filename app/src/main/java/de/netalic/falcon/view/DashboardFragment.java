@@ -136,7 +136,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
             items[i]=walletList.get(i).getId();
         }
-        ArrayAdapter<Integer>adapter=new ArrayAdapter<Integer>(this.getActivity(),android.R.layout.simple_spinner_item,items);
+        ArrayAdapter<Integer>adapter=new ArrayAdapter<>(checkNotNull(this.getActivity()),R.layout.spinner_dashboard,R.id.textview_dashboard_spinner,items);
         mSpinner.setAdapter(adapter);
 
     }

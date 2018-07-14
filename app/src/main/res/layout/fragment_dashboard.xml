@@ -29,7 +29,9 @@
             android:layout_height="@dimen/height_dashboard_spinner"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margintop_dashboard_spinner" />
+            android:layout_marginTop="@dimen/margintop_dashboard_spinner"
+            android:textAlignment="center"
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:id="@+id/textview_dashboard_myblance"
