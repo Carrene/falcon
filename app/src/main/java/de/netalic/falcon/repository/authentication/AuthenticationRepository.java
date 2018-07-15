@@ -1,5 +1,7 @@
 package de.netalic.falcon.repository.authentication;
 
+import java.util.List;
+
 import de.netalic.falcon.model.Authentication;
 
 public class  AuthenticationRepository implements IAuthenticationRepository {
@@ -42,5 +44,11 @@ public class  AuthenticationRepository implements IAuthenticationRepository {
     public void get(Integer identifier, CallRepository<Authentication> callRepository) {
 
         mAuthenticationRealmRepository.get(identifier, callRepository);
+    }
+
+    @Override
+    public void getAll(CallRepository<List<Authentication>> callRepository) {
+
+        mAuthenticationRealmRepository.getAll(callRepository);
     }
 }

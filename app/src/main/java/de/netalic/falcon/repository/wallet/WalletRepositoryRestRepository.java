@@ -9,11 +9,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WalletRestRepository implements IWallet {
-
+public class WalletRepositoryRestRepository implements IWalletRepository {
 
     @Override
-    public void getList(CallRepository<List<Wallet>> callRepository) {
+    public void update(Wallet wallet, CallRepository<Wallet> callRepository) {
+
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void get(Integer identifier, CallRepository<Wallet> callRepository) {
+
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void getAll(CallRepository<List<Wallet>> callRepository) {
+
         ApiClient.getService().walletList().enqueue(new Callback<List<Wallet>>() {
             @Override
             public void onResponse(Call<List<Wallet>> call, Response<List<Wallet>> response) {
@@ -25,15 +37,5 @@ public class WalletRestRepository implements IWallet {
                 callRepository.onDone(new Deal<>(null,null,t));
             }
         });
-    }
-
-    @Override
-    public void update(Wallet wallet, CallRepository<Wallet> callRepository) {
-
-    }
-
-    @Override
-    public void get(Integer identifier, CallRepository<Wallet> callRepository) {
-
     }
 }

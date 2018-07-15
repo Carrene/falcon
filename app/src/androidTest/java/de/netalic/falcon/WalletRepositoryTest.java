@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 import java.util.concurrent.CountDownLatch;
 
-import de.netalic.falcon.repository.wallet.WalletRepository;
+import de.netalic.falcon.repository.wallet.WalletRepositoryRepository;
 
 @RunWith(AndroidJUnit4.class)
 public class WalletRepositoryTest {
@@ -19,7 +19,7 @@ public class WalletRepositoryTest {
     public void testGetListWallet_200response(){
 
         mCountDownLatch = new CountDownLatch(1);
-        WalletRepository.getInstance().getList(deal -> {
+        WalletRepositoryRepository.getInstance().getAll(deal -> {
 
             Assert.assertNull(deal.getThrowable());
             Assert.assertEquals(deal.getResponse().code(),200);
@@ -36,7 +36,7 @@ public class WalletRepositoryTest {
     public void testGetListWallet_failure(){
 
         mCountDownLatch = new CountDownLatch(1);
-        WalletRepository.getInstance().getList(deal -> {
+        WalletRepositoryRepository.getInstance().getAll(deal -> {
 
             Assert.assertNull(deal.getThrowable());
             mCountDownLatch.countDown();

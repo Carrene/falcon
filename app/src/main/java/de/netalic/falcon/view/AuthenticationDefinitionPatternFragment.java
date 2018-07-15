@@ -16,7 +16,6 @@ import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import nuesoft.helpdroid.UI.SnackBar;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

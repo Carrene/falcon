@@ -2,7 +2,6 @@ package de.netalic.falcon.presenter;
 
 import java.util.List;
 
-import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.view.BaseView;

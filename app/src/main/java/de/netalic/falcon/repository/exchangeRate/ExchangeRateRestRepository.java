@@ -1,5 +1,7 @@
 package de.netalic.falcon.repository.exchangeRate;
 
+import java.util.List;
+
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
@@ -12,6 +14,7 @@ public class ExchangeRateRestRepository implements IExchangeRate {
     @Override
     public void update(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
 
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -31,5 +34,11 @@ public class ExchangeRateRestRepository implements IExchangeRate {
 
             }
         });
+    }
+
+    @Override
+    public void getAll(CallRepository<List<ExchangeRate>> callRepository) {
+
+        throw new UnsupportedOperationException();
     }
 }

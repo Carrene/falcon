@@ -2,11 +2,9 @@ package de.netalic.falcon.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmField;
 
-public class Wallet{
+public class Wallet {
 
     @PrimaryKey
     @SerializedName("id")

@@ -1,9 +1,6 @@
 package de.netalic.falcon.repository;
 
 
-import java.util.List;
-
-import de.netalic.falcon.model.Wallet;
 import retrofit2.Response;
 
 

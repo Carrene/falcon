@@ -2,8 +2,6 @@ package de.netalic.falcon.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.security.PublicKey;
-
 import io.realm.annotations.PrimaryKey;
 
 public class Currency {

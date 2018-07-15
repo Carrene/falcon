@@ -10,7 +10,6 @@ import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import de.netalic.falcon.BuildConfig;
 import de.netalic.falcon.MyApp;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import okhttp3.Interceptor;
