@@ -43,10 +43,16 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         mRoot = inflater.inflate(R.layout.fragment_recoveryemail, container, false);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
+        return mRoot;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
         initUiComponents();
         initListeners();
-        return mRoot;
     }
 
     public static RecoveryEmailFragment newInstance(User user) {
@@ -117,7 +123,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     @Override
     public void showErrorInvalidEmail() {
 
-        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.recoveryemail_invalidemail),Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.recoveryemail_invalidemail), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();
@@ -126,7 +132,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     @Override
     public void showErrorEmailAlreadyExists() {
 
-        Snackbar snackbar=Snackbar.make(mRoot,getContext().getString(R.string.recoveryemail_emailalreadyexists),Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.recoveryemail_emailalreadyexists), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();
@@ -178,7 +184,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     public void checkEmailSyntax() {
 
-      if (Validator.isEmailValid(mEditTextRecoveryEmail.getText().toString())) {
+        if (Validator.isEmailValid(mEditTextRecoveryEmail.getText().toString())) {
 
             mUser.setEmail(mEditTextRecoveryEmail.getText().toString());
             mTextInputLayoutRecoveryEmail.setError(null);

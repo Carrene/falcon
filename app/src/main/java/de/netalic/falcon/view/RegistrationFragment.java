@@ -45,11 +45,18 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_registration, null);
+
+        return mRoot;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         setCountryPicker();
         initListener();
         modifyCountriesName();
-        return mRoot;
     }
 
     public static RegistrationFragment newInstance() {
@@ -128,6 +135,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     }
 
     private void claim() {
+
         User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
         mPresenter.claim(user);
 
@@ -186,13 +194,14 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     @Override
     public void showErrorInvalidUdidOrPhone() {
+
         Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_invalidudidorphone), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         snackbar.show();
     }
 
-    public void showErrorDescription(String error){
+    public void showErrorDescription(String error) {
 
         Snackbar snackbar = Snackbar.make(mRoot, error, Snackbar.LENGTH_LONG);
         checkNotNull(getContext());

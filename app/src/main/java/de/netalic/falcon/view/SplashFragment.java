@@ -23,9 +23,15 @@ public class SplashFragment extends Fragment implements SplashContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_splash, null);
+        return mRoot;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         initListener();
-        return mRoot;
     }
 
     public static SplashFragment newInstance() {

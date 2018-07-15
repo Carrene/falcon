@@ -47,12 +47,18 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
         mRoot = inflater.inflate(R.layout.fragment_phoneconfirmation, container, false);
         mUser = getArguments().getParcelable(ARGUMENT_USER);
+        return mRoot;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
         initUiComponents();
         setTimer();
         setUserPhoneNumber();
         initListeners();
-        return mRoot;
     }
 
     public static PhoneConfirmationFragment newInstance(User user) {
@@ -183,6 +189,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     @Override
     public void showErrorInvalidUdidOrPhone() {
+
         Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_invalidudidorphone), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));

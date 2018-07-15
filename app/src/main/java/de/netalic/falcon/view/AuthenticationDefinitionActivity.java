@@ -93,6 +93,7 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
 
     @Override
     public void navigationToDashboardFromPassword(String credentialValue) {
+
         Intent intent = new Intent(this, DashboardActivity.class);
         intent.putExtra(ARGUMENT_USER, mUser);
         startActivity(intent);
@@ -100,6 +101,7 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
 
     @Override
     public void navigationToDashboardFromPattern(String credentialValue) {
+
         Intent intent = new Intent(this, DashboardActivity.class);
         intent.putExtra(ARGUMENT_USER, mUser);
         startActivity(intent);

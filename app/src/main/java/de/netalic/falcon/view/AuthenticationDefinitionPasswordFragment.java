@@ -2,6 +2,7 @@ package de.netalic.falcon.view;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -38,14 +39,19 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_authenticationdefinitionpassword, container, false);
-        initUiComponents();
-        validationPassCode();
         return mRoot;
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        super.onViewCreated(view, savedInstanceState);
+        initUiComponents();
+        validationPassCode();
+    }
+
+    @Override
+    public void onAttach(Context context) {
 
         super.onAttach(context);
         if (context instanceof NavigateToDashboardCallback) {
@@ -53,6 +59,13 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         } else {
             throw new ClassCastException(context.toString() + " must implement NavigateToDashboardCallback");
         }
+    }
+
+    @Override
+    public void onDetach() {
+
+        super.onDetach();
+        mNavigateToDashboardCallback = null;
     }
 
     public void initUiComponents() {
