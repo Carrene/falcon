@@ -1,5 +1,7 @@
 package de.netalic.falcon.repository.user;
 
+import java.util.List;
+
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
@@ -83,6 +85,12 @@ public class UserRestRepository implements IUserRepository {
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
         callRepository.onDone(new Deal<>(null, null, new UnsupportedOperationException()));
+
+    }
+
+    @Override
+    public void getAll(CallRepository<List<User>> callRepository) {
+        throw new UnsupportedOperationException();
 
     }
 }

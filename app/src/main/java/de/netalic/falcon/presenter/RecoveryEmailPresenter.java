@@ -41,23 +41,22 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
                 switch (deal.getResponse().code()) {
 
                     case 200: {
-                        mRecoveryEmailView.dismissProgressBar();
+
                         mRecoveryEmailView.navigateToAuthenticationDefinitionActivity();
                         break;
                     }
                     case 712:{
-                        mRecoveryEmailView.dismissProgressBar();
+
                         mRecoveryEmailView.showErrorInvalidEmail( );
                         break;
                     }
                     case 718:{
 
-                        mRecoveryEmailView.dismissProgressBar();
                         mRecoveryEmailView.showErrorEmailAlreadyExists();
                         break;
                     }
                 }
-
+                mRecoveryEmailView.dismissProgressBar();
             }
 
         });

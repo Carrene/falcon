@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_phoneconfirmation_number"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margintop_phoneconfirmation_confirmationcodehere"
         android:layout_marginEnd="@dimen/marginend_phoneconfirmation_textinputlayout"
-        android:layout_marginStart="@dimen/marginstart_phoneconfirmation_textinputlayout">
+        android:layout_marginStart="@dimen/marginstart_phoneconfirmation_textinputlayout"
+        android:layout_marginTop="@dimen/margintop_phoneconfirmation_confirmationcodehere">
 
         <EditText
             android:id="@+id/edittext_phoneconfirmation_receivecode"
@@ -32,6 +32,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="@string/phoneconfirmation_entertheverificationhere"
+            android:inputType="number"
             android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
@@ -40,24 +41,22 @@
         android:id="@+id/textview_phoneconfirmation_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext"
+        android:layout_alignStart="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:text="@string/phoneconfirmation_timer"
         android:textColor="@color/Emerald"
-        android:textSize="@dimen/textsize_phoneconfirmation_resendtext" />
+        android:textSize="@dimen/textsize_phoneconfirmation_resendtext"
+        android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
+        android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext" />
 
     <TextView
         android:id="@+id/textview_phoneconfirmation_changenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbottom_phoneconfirmation_changenumber"
+        android:layout_alignEnd="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:text="@string/phoneconfirmation_changenumber"
         android:textColor="@color/Emerald"
         android:textSize="@dimen/textsize_phoneconfirmation_changenumber"
-
-        />
+        android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
+        android:layout_marginTop="@dimen/margintop_phoneconfirmation_changenumber" />
 
 </RelativeLayout>

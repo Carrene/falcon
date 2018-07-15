@@ -1,5 +1,7 @@
 package de.netalic.falcon.repository.user;
 
+import java.util.List;
+
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.repository.Deal;
 
@@ -36,5 +38,11 @@ public class UserRealmRepository implements IUserRepository {
 
         callRepository.onDone(new Deal<>(null, null, new UnsupportedOperationException()));
 
+    }
+
+    @Override
+    public void getAll(CallRepository<List<User>> callRepository) {
+
+        throw new UnsupportedOperationException();
     }
 }

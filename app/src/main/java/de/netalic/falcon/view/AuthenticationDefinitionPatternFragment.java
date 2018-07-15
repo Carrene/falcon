@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,8 @@ import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import nuesoft.helpdroid.UI.SnackBar;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class AuthenticationDefinitionPatternFragment extends Fragment {
 
@@ -94,10 +96,18 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
                     mFirstAttemptPattern = pattern.toString();
 
                     if (pattern.size() < 4) {
-                        Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_connectfordots), Snackbar.LENGTH_LONG).show();
+                        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_connectfordots), Snackbar.LENGTH_LONG);
+                        checkNotNull(getContext());
+                        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+                        snackbar.show();
                     } else {
                         mAttemptTimeNumber++;
-                        Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_tryforsecondtime), Snackbar.LENGTH_LONG).show();
+
+                        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_tryforsecondtime), Snackbar.LENGTH_LONG);
+                        checkNotNull(getContext());
+                        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+                        snackbar.show();
+
                     }
                     mPatternLockView.clearPattern();
                     return;
@@ -110,7 +120,11 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
                     Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_nomatch), Snackbar.LENGTH_LONG).show();
                     return;
                 } else {
-                    Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), Snackbar.LENGTH_LONG).show();
+                    Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), Snackbar.LENGTH_LONG);
+                    checkNotNull(getContext());
+                    snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+                    snackbar.show();
+
                     String credentialValue = mPatternLockView.getPattern().toString();
                     mPatternLockView.clearPattern();
                     navigateToDashboard(credentialValue);

@@ -1,24 +1,60 @@
 package de.netalic.falcon.model;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmField;
+import com.google.gson.annotations.SerializedName;
 
-public class Wallet extends RealmObject {
+import io.realm.annotations.PrimaryKey;
+
+public class Wallet {
 
     @PrimaryKey
-    @RealmField(name = "Id")
+    @SerializedName("id")
     private int mId;
 
-    @RealmField(name = "Address")
+    @SerializedName("balance")
     private String mAddress;
 
-    @RealmField(name = "User")
-    private User mUser;
+    @SerializedName("currency")
+    private Currency mCurrency;
 
-    @RealmField(name = "Balance")
-    private String mBalance;
+    @SerializedName("spendableBalance")
+    private double mSpendableBalance;
 
-//    private WalletStatus walletStatus;
+    public Wallet(int id, String address, Currency currency, double spendableBalance) {
+        this.mId = id;
+        this.mAddress = address;
+        this.mCurrency = currency;
+        this.mSpendableBalance = spendableBalance;
+    }
 
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        this.mId = id;
+    }
+
+    public String getAddress() {
+        return mAddress;
+    }
+
+    public void setAddress(String address) {
+        this.mAddress = address;
+    }
+
+    public Currency getCurrency() {
+        return mCurrency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.mCurrency = currency;
+    }
+
+    public double getSpendableBalance() {
+        return mSpendableBalance;
+    }
+
+    public void setSpendableBalance(double spendableBalance) {
+        this.mSpendableBalance = spendableBalance;
+    }
 }

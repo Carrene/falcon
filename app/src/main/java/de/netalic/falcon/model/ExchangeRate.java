@@ -8,29 +8,39 @@ public class ExchangeRate {
 
     @SerializedName("createdAt")
     @PrimaryKey
-    private int mCreatedAt;
+    private String mCreatedAt;
 
     @SerializedName("currency")
-    private Currency  mCurrency;
+    private Currency mCurrency;
 
     @SerializedName("buy")
-    private double mBuy;
+    private String mBuy;
 
     @SerializedName("sell")
-    private double mSell;
+    private String mSell;
 
-    public ExchangeRate(int mCreatedAt, Currency mCurrency, double mBuy, double mSell) {
-        this.mCreatedAt = mCreatedAt;
-        this.mCurrency = mCurrency;
-        this.mBuy = mBuy;
-        this.mSell = mSell;
+    @SerializedName("currencyId")
+    private int mCurrencyID;
+
+    public ExchangeRate(String createdAt, Currency currency, String buy, String sell, int currencyID) {
+        this.mCreatedAt = createdAt;
+        this.mCurrency = currency;
+        this.mBuy = buy;
+        this.mSell = sell;
+        this.mCurrencyID = currencyID;
     }
 
-    public int getCreatedAt() {
+    public ExchangeRate(Currency currency) {
+
+        mCurrency = currency;
+
+    }
+
+    public String getCreatedAt() {
         return mCreatedAt;
     }
 
-    public void setCreatedAt(int createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.mCreatedAt = createdAt;
     }
 
@@ -42,20 +52,28 @@ public class ExchangeRate {
         this.mCurrency = currency;
     }
 
-    public double getBuy() {
+    public String getBuy() {
         return mBuy;
     }
 
-    public void setBuy(double buy) {
+    public void setBuy(String buy) {
         this.mBuy = buy;
     }
 
-    public double getSell() {
+    public String getSell() {
         return mSell;
     }
 
-    public void setSell(double sell) {
+    public void setSell(String sell) {
         this.mSell = sell;
+    }
+
+    public int getCurrencyID() {
+        return mCurrencyID;
+    }
+
+    public void setCurrencyID(int currencyID) {
+        this.mCurrencyID = currencyID;
     }
 }
 

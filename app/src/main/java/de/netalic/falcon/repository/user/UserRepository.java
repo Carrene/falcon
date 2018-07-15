@@ -1,5 +1,7 @@
 package de.netalic.falcon.repository.user;
 
+import java.util.List;
+
 import de.netalic.falcon.model.User;
 
 public class UserRepository implements IUserRepository {
@@ -59,6 +61,12 @@ public class UserRepository implements IUserRepository {
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
         mUserRestRepository.get(identifier, callRepository);
+
+    }
+
+    @Override
+    public void getAll(CallRepository<List<User>> callRepository) {
+        mUserRestRepository.getAll(callRepository);
 
     }
 }

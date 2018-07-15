@@ -2,8 +2,9 @@ package de.netalic.falcon.presenter;
 
 import android.support.annotation.NonNull;
 
-import de.netalic.falcon.model.Currency;
+import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.repository.exchangeRate.ExchangeRateRepository;
+import de.netalic.falcon.repository.wallet.WalletRepositoryRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -20,44 +21,71 @@ public class DashboardPresenter implements DashboardContract.Presenter {
     }
 
     @Override
-    public void exchangeRate(Currency currency) {
+    public void exchangeRate(ExchangeRate exchangeRate) {
 
         mDashboardView.showProgressBar();
 
-        ExchangeRateRepository.getInstance().exchangeRate(currency, deal -> {
+        ExchangeRateRepository.getInstance().get(exchangeRate.getCurrency().getCode(), deal -> {
 
             if (deal.getThrowable() != null) {
 
-                mDashboardView.dismissShowProgressBar();
+                mDashboardView.dismissProgressBar();
 
             } else {
+
 
                 switch (deal.getResponse().code()) {
 
                     case 200: {
 
-                        mDashboardView.dismissShowProgressBar();
+
                         mDashboardView.updateExchangeRateCurrency(deal.getModel().getSell());
                         break;
                     }
                     case 709: {
-                        mDashboardView.dismissShowProgressBar();
+
                         mDashboardView.showErrorInvalidCurrency();
                         break;
                     }
                     case 721: {
-                        mDashboardView.dismissShowProgressBar();
+
                         mDashboardView.showErrorRatesDoesNotExists();
                         break;
                     }
+
                 }
+
             }
         });
+        mDashboardView.dismissProgressBar();
+    }
+
+    @Override
+    public void getWalletList() {
+
+        mDashboardView.showProgressBar();
+        WalletRepositoryRepository.getInstance().getAll(deal -> {
+
+            if (deal.getThrowable()!=null){
+                mDashboardView.dismissProgressBar();
+
+            } else {
+                switch (deal.getResponse().code()){
+
+                    case 200:{
+
+                        mDashboardView.showListWallet(deal.getResponse().body());
+                        break;
+                    }
+                }
+
+            }
+        });
+        mDashboardView.dismissProgressBar();
     }
 
     @Override
     public void start() {
-
 
     }
 }

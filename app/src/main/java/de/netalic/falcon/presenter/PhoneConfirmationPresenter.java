@@ -41,24 +41,24 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
                 switch (deal.getResponse().code()) {
 
                     case 200: {
-                        mPhoneConfirmationView.dismissProgressBar();
+
                         mPhoneConfirmationView.showResendCodeAgain();
                         break;
                     }
 
                     case 710: {
-                        mPhoneConfirmationView.dismissProgressBar();
+
                         mPhoneConfirmationView.showErrorInvalidUdidOrPhone();
                         break;
                     }
 
 
                 }
+                mPhoneConfirmationView.dismissProgressBar();
             }
 
 
         });
-
 
     }
 

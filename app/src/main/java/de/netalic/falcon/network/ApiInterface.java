@@ -1,10 +1,14 @@
 package de.netalic.falcon.network;
 
+import java.util.List;
+
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.model.Wallet;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.Path;
 
@@ -23,6 +27,9 @@ public interface ApiInterface {
     @HTTP(method = "SET", path = "emails", hasBody = true)
     Call<User> setEmail(@Field("email") String email);
 
-    @HTTP(method = "GET",path = "rates/{currency}",hasBody = true)
+    @GET("rates/{currency}")
     Call<ExchangeRate>exchangeRate(@Path("currency") String currency);
+
+    @HTTP(method = "LIST",path = "wallets")
+    Call<List<Wallet>>walletList();
 }

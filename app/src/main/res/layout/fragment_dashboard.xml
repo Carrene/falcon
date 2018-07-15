@@ -24,12 +24,14 @@
 
         <Spinner
             android:id="@+id/spinner_dashboard_spinner"
+            style="@style/SpinnerTheme"
             android:layout_width="@dimen/width_dashboard_spinner"
             android:layout_height="@dimen/height_dashboard_spinner"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="@dimen/marginend_dashboard_spinner"
-            android:layout_marginTop="@dimen/margintop_dashboard_spinner" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margintop_dashboard_spinner"
+            android:textAlignment="center"
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:id="@+id/textview_dashboard_myblance"

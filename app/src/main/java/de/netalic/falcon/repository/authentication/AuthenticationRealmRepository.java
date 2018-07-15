@@ -1,9 +1,10 @@
 package de.netalic.falcon.repository.authentication;
 
+import java.util.List;
+
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.model.Authentication;
 import de.netalic.falcon.repository.Deal;
-import de.netalic.falcon.repository.IRepository;
 import io.realm.Realm;
 
 public class AuthenticationRealmRepository implements IAuthenticationRepository {
@@ -27,6 +28,12 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
     @Override
     public void get(Integer identifier, CallRepository<Authentication> callRepository) {
+
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void getAll(CallRepository<List<Authentication>> callRepository) {
 
         throw new UnsupportedOperationException();
     }

@@ -1,23 +1,25 @@
 package de.netalic.falcon.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import io.realm.annotations.PrimaryKey;
+
 public class Currency {
 
+    @PrimaryKey
+    @SerializedName("id")
     private int mId;
+    @SerializedName("name")
     private String mName;
-    private double mPrice;
+    @SerializedName("code")
+    private String mCode;
 
-    public Currency(int mId, String mName, double mPrice) {
-        this.mId = mId;
-        this.mName = mName;
-        this.mPrice = mPrice;
-    }
 
-    public Currency() {
-
+    public Currency(String code) {
+        this.mCode = code;
     }
 
     public int getId() {
-
         return mId;
     }
 
@@ -33,11 +35,11 @@ public class Currency {
         this.mName = name;
     }
 
-    public double getPrice() {
-        return mPrice;
+    public String getCode() {
+        return mCode;
     }
 
-    public void setPrice(double price) {
-        this.mPrice = price;
+    public void setCode(String code) {
+        this.mCode = code;
     }
 }

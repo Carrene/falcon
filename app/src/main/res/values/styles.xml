@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
     <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -26,7 +26,9 @@
         <item name="android:paddingLeft">@dimen/paddingleft_style_radiobutton</item>
         <item name="android:paddingRight">@dimen/paddingright_style_radiobutton</item>
     </style>
-
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/dashboard_backgroundspinner</item>
+    </style>
 </resources>
 
 

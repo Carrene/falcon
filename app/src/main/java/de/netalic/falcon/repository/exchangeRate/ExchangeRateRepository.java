@@ -1,8 +1,8 @@
 package de.netalic.falcon.repository.exchangeRate;
 
-import de.netalic.falcon.model.Currency;
+import java.util.List;
+
 import de.netalic.falcon.model.ExchangeRate;
-import de.netalic.falcon.repository.user.UserRepository;
 
 public class ExchangeRateRepository implements IExchangeRate {
 
@@ -12,20 +12,13 @@ public class ExchangeRateRepository implements IExchangeRate {
     private ExchangeRateRepository() {
 
         mExchangeRateRestRepository = new ExchangeRateRestRepository();
-
     }
-
-    public ExchangeRateRepository(ExchangeRateRestRepository mExchangeRateRestRepository) {
-
-        this.mExchangeRateRestRepository = mExchangeRateRestRepository;
-    }
-
 
     public static ExchangeRateRepository getInstance() {
 
         if (sExchangeRateRepository == null) {
 
-            synchronized (UserRepository.class) {
+            synchronized (ExchangeRateRepository.class) {
                 if (sExchangeRateRepository == null) {
                     sExchangeRateRepository = new ExchangeRateRepository();
                 }
@@ -35,21 +28,19 @@ public class ExchangeRateRepository implements IExchangeRate {
     }
 
     @Override
-    public void exchangeRate(Currency currency, CallRepository<ExchangeRate> callRepository) {
-
-        mExchangeRateRestRepository.exchangeRate(currency, callRepository);
-    }
-
-    @Override
     public void update(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
 
-        mExchangeRateRestRepository.update(exchangeRate,callRepository);
+        mExchangeRateRestRepository.update(exchangeRate, callRepository);
     }
 
     @Override
-    public void get(Integer identifier, CallRepository<ExchangeRate> callRepository) {
+    public void get(String identifier, CallRepository<ExchangeRate> callRepository) {
 
-        mExchangeRateRestRepository.get(identifier,callRepository);
+        mExchangeRateRestRepository.get(identifier, callRepository);
+    }
 
+    @Override
+    public void getAll(CallRepository<List<ExchangeRate>> callRepository) {
+        mExchangeRateRestRepository.getAll(callRepository);
     }
 }
