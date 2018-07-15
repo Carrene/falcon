@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/spinner_charge_customspinner"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:spinnerMode="dropdown"></Spinner>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_charge_middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_charge_customspinner"
+        android:layout_marginTop="@dimen/margintop_charge_linearlayout"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputlayout_charge_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/marginend_charge_textinputlayoutamount"
+            android:layout_marginStart="@dimen/marginstart_charge_textinputlayoutamount"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edittext_cahrge_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/charge_amount"
+                android:inputType="number"
+                android:maxLength="12"
+                android:textSize="@dimen/textsize_charge_amountdollar" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputlayout_charge_dollar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/marginend_charge_textinputlayoutdollar"
+            android:layout_marginStart="@dimen/marginstart_charge_textinputlayoutdollar"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edittext_charge_dollar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/charge_dollar"
+                android:inputType="number"
+                android:maxLength="12"
+                android:textSize="@dimen/textsize_charge_amountdollar" />
+
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_charge_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearlayout_charge_middle"
+        android:layout_marginEnd="@dimen/marginendstart_charge_nextbutton"
+        android:layout_marginStart="@dimen/marginendstart_charge_nextbutton"
+        android:layout_marginTop="@dimen/margintop_charge_nextbutton"
+        android:background="@color/greenHaze"
+        android:text="@string/charge_next"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

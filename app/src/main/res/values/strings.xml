@@ -76,6 +76,10 @@
     <string name="materialdialogutil_isloading">Is loading ...</string>
     <string name="materialdialogutil_pleasewait">Please wait</string>
 
+    <string name="charge_amount">Amount</string>
+    <string name="charge_dollar">$</string>
+    <string name="charge_next">NEXT</string>
+
 
 
 
