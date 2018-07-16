@@ -21,7 +21,7 @@ public class SpinnerAdapter extends ArrayAdapter<Wallet> {
     private static final int OPEN = 1;
 
     public SpinnerAdapter(Context mContext, List<Wallet> arrayList) {
-        super(mContext, R.layout.spinneritemopen_charge, arrayList);
+        super(mContext, R.layout.spinneritem_charge, arrayList);
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -39,17 +39,20 @@ public class SpinnerAdapter extends ArrayAdapter<Wallet> {
     public View getCustomView(int position, ViewGroup viewGroup, int type) {
 
         View view = null;
+
+
         if (type == OPEN) {
-            view = mLayoutInflater.inflate(R.layout.spinneritemopen_charge, viewGroup, false);
+
+            view = mLayoutInflater.inflate(R.layout.spinneritem_charge, viewGroup, false);
+            TextView textView = view.findViewById(R.id.textview_charge_spinner);
+            textView.setText(String.valueOf(getItem(position).getId()));
 
         } else if (type == CLOSE) {
 
-
-            view = mLayoutInflater.inflate(R.layout.spinneritemopen_charge, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinneritem_charge, viewGroup, false);
             TextView textView = view.findViewById(R.id.textview_charge_spinner);
             textView.setText(String.valueOf(getItem(position).getId()));
         }
-
 
         return view;
     }

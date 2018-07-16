@@ -11,17 +11,16 @@
         android:layout_width="@dimen/layoutwidth_charge_imagview"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_charge_imagview"
-        android:src="@drawable/dashboard_dollarusd"/>
+        android:src="@drawable/dashboard_dollarusd"
+        android:foregroundGravity="left"
+        />
 
     <TextView
         android:id="@+id/textview_charge_spinner"
         style="?android:attr/spinnerItemStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:ellipsize="marquee"
         android:gravity="center"
-        android:text="Milad"
-        android:textAlignment="inherit"
-        android:textColor="#404040"
+        android:textColor="@color/black"
         android:textSize="@dimen/textsize_charge_textview"/>
 </RelativeLayout>

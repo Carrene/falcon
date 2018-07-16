@@ -130,7 +130,7 @@
     <dimen name="padding_charge_imagview">4dp</dimen>
     <dimen name="textsize_charge_textview">13sp</dimen>
 
-    <dimen name="layoutwidth_charge_spinnerr">100dp</dimen>
+    <dimen name="layoutwidth_charge_spinnerr">240dp</dimen>
     <dimen name="layoutheight_charge_spinnerr">30dp</dimen>
     <dimen name="margintop_charge_spinnerr">47dp</dimen>
 
