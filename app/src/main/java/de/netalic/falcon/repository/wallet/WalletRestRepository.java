@@ -9,7 +9,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WalletRepositoryRestRepository implements IWalletRepository {
+public class WalletRestRepository implements IWalletRepository {
 
     @Override
     public void update(Wallet wallet, CallRepository<Wallet> callRepository) {

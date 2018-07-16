@@ -4,23 +4,23 @@ import java.util.List;
 
 import de.netalic.falcon.model.Wallet;
 
-public class WalletRepositoryRepository implements IWalletRepository {
+public class WalletRepository implements IWalletRepository {
 
-    private static volatile WalletRepositoryRepository sWalletRepository;
-    private WalletRepositoryRestRepository mWalletRestRepository;
+    private static volatile WalletRepository sWalletRepository;
+    private WalletRestRepository mWalletRestRepository;
 
-    private WalletRepositoryRepository() {
+    private WalletRepository() {
 
-        mWalletRestRepository = new WalletRepositoryRestRepository();
+        mWalletRestRepository = new WalletRestRepository();
     }
 
-    public static WalletRepositoryRepository getInstance() {
+    public static WalletRepository getInstance() {
 
         if (sWalletRepository == null) {
 
-            synchronized (WalletRepositoryRepository.class) {
+            synchronized (WalletRepository.class) {
                 if (sWalletRepository == null) {
-                    sWalletRepository = new WalletRepositoryRepository();
+                    sWalletRepository = new WalletRepository();
                 }
             }
         }

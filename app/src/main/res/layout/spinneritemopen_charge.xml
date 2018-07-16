@@ -4,28 +4,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rltv"
     android:layout_width="match_parent"
-    android:layout_height="35dp">
+    android:layout_height="@dimen/layoutheight_charge_spinner">
 
     <ImageView
         android:id="@+id/imageview_charge_spinner"
-        android:layout_width="70dp"
+        android:layout_width="@dimen/layoutwidth_charge_imagview"
         android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:padding="@dimen/padding_charge_imagview"
         android:src="@drawable/dashboard_dollarusd"/>
 
     <TextView
         android:id="@+id/textview_charge_spinner"
-        android:layout_toRightOf="@+id/imageview_charge_spinner"
         style="?android:attr/spinnerItemStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:ellipsize="marquee"
         android:gravity="center"
-        android:paddingBottom="8dp"
-        android:paddingRight="18dp"
-        android:paddingTop="8dp"
         android:text="Milad"
         android:textAlignment="inherit"
         android:textColor="#404040"
-        android:textSize="15sp"/>
+        android:textSize="@dimen/textsize_charge_textview"/>
 </RelativeLayout>

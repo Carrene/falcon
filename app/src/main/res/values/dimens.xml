@@ -116,13 +116,22 @@
     <dimen name="paddingright_style_radiobutton">5dp</dimen>
     <dimen name="max_materialutil_materialutil">100</dimen>
     <dimen name="textsize_dashboard_spinner">15sp</dimen>
-    <dimen name="margintop_charge_linearlayout">95dp</dimen>
-    <dimen name="marginstart_charge_textinputlayoutamount">50</dimen>
-    <dimen name="marginend_charge_textinputlayoutamount">15</dimen>
-    <dimen name="marginstart_charge_textinputlayoutdollar">15</dimen>
-    <dimen name="marginend_charge_textinputlayoutdollar">50</dimen>
+    <dimen name="margintop_charge_linearlayout">172dp</dimen>
+    <dimen name="marginend_charge_edittextamount">20dp</dimen>
+    <dimen name="marginstart_charge_edittextdollar">20dp</dimen>
     <dimen name="textsize_charge_amountdollar">13sp</dimen>
     <dimen name="marginendstart_charge_nextbutton">125dp</dimen>
     <dimen name="margintop_charge_nextbutton">96dp</dimen>
+    <dimen name="layoutwidth_charge_edittextdolaramount">100dp</dimen>
+
+
+    <dimen name="layoutheight_charge_spinner">35dp</dimen>
+    <dimen name="layoutwidth_charge_imagview">70dp</dimen>
+    <dimen name="padding_charge_imagview">4dp</dimen>
+    <dimen name="textsize_charge_textview">13sp</dimen>
+
+    <dimen name="layoutwidth_charge_spinnerr">100dp</dimen>
+    <dimen name="layoutheight_charge_spinnerr">30dp</dimen>
+    <dimen name="margintop_charge_spinnerr">47dp</dimen>
 
 </resources>

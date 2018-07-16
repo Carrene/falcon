@@ -41,7 +41,9 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.SplashActivity" />
         <activity android:name=".view.DashboardActivity" />
-        <activity android:name=".view.ChargeActivity"></activity>
+        <activity
+            android:name=".view.ChargeActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

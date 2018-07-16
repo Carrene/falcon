@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Wallet;
@@ -17,11 +18,10 @@ import de.netalic.falcon.model.Wallet;
 public class SpinnerAdapter extends ArrayAdapter<Wallet> {
 
     private LayoutInflater mLayoutInflater;
-    private static final int CLOSE=0;
-    private static final int OPEN=1;
+    private static final int CLOSE = 0;
+    private static final int OPEN = 1;
 
-    public SpinnerAdapter(Context mContext, ArrayList<Wallet> arrayList)
-    {
+    public SpinnerAdapter(Context mContext, List<Wallet> arrayList) {
         super(mContext, R.layout.spinneritemopen_charge, arrayList);
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -29,29 +29,27 @@ public class SpinnerAdapter extends ArrayAdapter<Wallet> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return getCustomView(position,parent,CLOSE);
+        return getCustomView(position, parent, CLOSE);
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return getCustomView(position,parent,OPEN);
+        return getCustomView(position, parent, OPEN);
     }
 
-    public View getCustomView(int position ,ViewGroup viewGroup,int type ){
+    public View getCustomView(int position, ViewGroup viewGroup, int type) {
 
         View view = null;
-        if (type==OPEN) {
+        if (type == OPEN) {
             view = mLayoutInflater.inflate(R.layout.spinneritemopen_charge, viewGroup, false);
 
-        }
-        else if (type==CLOSE){
+        } else if (type == CLOSE) {
 
 
             view = mLayoutInflater.inflate(R.layout.spinneritemopen_charge, viewGroup, false);
-            TextView textView=view.findViewById(R.id.textview_charge_spinner);
+            TextView textView = view.findViewById(R.id.textview_charge_spinner);
             textView.setText(getItem(position).getId());
         }
-
 
 
         return view;

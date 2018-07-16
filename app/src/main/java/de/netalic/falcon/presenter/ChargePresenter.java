@@ -2,6 +2,8 @@ package de.netalic.falcon.presenter;
 
 import android.support.annotation.NonNull;
 
+import de.netalic.falcon.repository.wallet.WalletRepository;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ChargePresenter implements ChargeContract.Presenter {
@@ -20,5 +22,29 @@ public class ChargePresenter implements ChargeContract.Presenter {
     @Override
     public void start() {
 
+    }
+
+    @Override
+    public void getWalletList() {
+
+        mChargeView.showProgressBar();
+        WalletRepository.getInstance().getAll(deal -> {
+
+            if (deal.getThrowable()!=null){
+                mChargeView.dismissProgressBar();
+
+            } else {
+                switch (deal.getResponse().code()){
+
+                    case 200:{
+
+                        mChargeView.setListWallet(deal.getResponse().body());
+                        break;
+                    }
+                }
+
+            }
+        });
+        mChargeView.dismissProgressBar();
     }
 }

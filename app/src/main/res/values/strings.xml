@@ -77,7 +77,7 @@
     <string name="materialdialogutil_pleasewait">Please wait</string>
 
     <string name="charge_amount">Amount</string>
-    <string name="charge_dollar">$</string>
+    <string name="charge_dollar">USD</string>
     <string name="charge_next">NEXT</string>
 
 
