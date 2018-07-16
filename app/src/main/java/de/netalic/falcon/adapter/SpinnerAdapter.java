@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -48,7 +47,7 @@ public class SpinnerAdapter extends ArrayAdapter<Wallet> {
 
             view = mLayoutInflater.inflate(R.layout.spinneritemopen_charge, viewGroup, false);
             TextView textView = view.findViewById(R.id.textview_charge_spinner);
-            textView.setText(getItem(position).getId());
+            textView.setText(String.valueOf(getItem(position).getId()));
         }
 
 

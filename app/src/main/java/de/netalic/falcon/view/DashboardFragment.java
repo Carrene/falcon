@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -150,4 +151,5 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mPresenter.getWalletList();
     }
+
 }

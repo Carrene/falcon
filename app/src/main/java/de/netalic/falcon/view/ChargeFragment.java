@@ -13,6 +13,7 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.adapter.SpinnerAdapter;
+import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
@@ -24,12 +25,15 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     private ChargeContract.Presenter mChargePresenter;
     private View mRoot;
     private Spinner mSpinner;
+    private User mUser;
+    public static final String ARGUMENT_USER = "USER";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot=inflater.inflate(R.layout.fragment_charge,null);
+        mUser = getArguments().getParcelable(ARGUMENT_USER);
         return mRoot;
     }
 
@@ -48,9 +52,13 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
     }
 
-    public static  ChargeFragment newInstance(){
+    public static  ChargeFragment newInstance(User user){
 
-        return new ChargeFragment();
+        ChargeFragment fragment = new ChargeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ARGUMENT_USER, user);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     public void initUiComponent(){
