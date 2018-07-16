@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,7 +33,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
     private Spinner mSpinner;
-    private User mUser;
     private static final String ARGUMENT_USER = "USER";
     private TextView mRate;
     private Currency mUsd;
@@ -47,7 +45,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mUsd = new UsdCurrency();
         mExchangeRate = new ExchangeRate(mUsd);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
-        mUser = getArguments().getParcelable(ARGUMENT_USER);
+        User user = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
         getRate();

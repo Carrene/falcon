@@ -79,6 +79,8 @@
     <string name="charge_amount">Amount</string>
     <string name="charge_dollar">USD</string>
     <string name="charge_next">NEXT</string>
+    <string name="charge_notification">Notification</string>
+    <string name="charge_toolbartitle">Charge</string>
 
 
 </resources>

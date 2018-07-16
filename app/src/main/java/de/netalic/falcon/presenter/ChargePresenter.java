@@ -30,13 +30,13 @@ public class ChargePresenter implements ChargeContract.Presenter {
         mChargeView.showProgressBar();
         WalletRepository.getInstance().getAll(deal -> {
 
-            if (deal.getThrowable()!=null){
+            if (deal.getThrowable() != null) {
                 mChargeView.dismissProgressBar();
 
             } else {
-                switch (deal.getResponse().code()){
+                switch (deal.getResponse().code()) {
 
-                    case 200:{
+                    case 200: {
 
                         mChargeView.setListWallet(deal.getResponse().body());
                         break;
@@ -44,7 +44,8 @@ public class ChargePresenter implements ChargeContract.Presenter {
                 }
 
             }
+            mChargeView.dismissProgressBar();
         });
-        mChargeView.dismissProgressBar();
+
     }
 }

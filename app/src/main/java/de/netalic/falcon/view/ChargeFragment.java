@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
@@ -25,7 +27,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     private ChargeContract.Presenter mChargePresenter;
     private View mRoot;
     private Spinner mSpinner;
-    private User mUser;
     public static final String ARGUMENT_USER = "USER";
 
     @Nullable
@@ -33,7 +34,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot=inflater.inflate(R.layout.fragment_charge,null);
-        mUser = getArguments().getParcelable(ARGUMENT_USER);
+         User user = getArguments().getParcelable(ARGUMENT_USER);
         return mRoot;
     }
 
@@ -42,6 +43,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
         getListWallet();
+        setHasOptionsMenu(true);
 
     }
 
@@ -99,5 +101,10 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     public void getListWallet(){
 
         mChargePresenter.getWalletList();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_charge_toolbar,menu);
     }
 }
