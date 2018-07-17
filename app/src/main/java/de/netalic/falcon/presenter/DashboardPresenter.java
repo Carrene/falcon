@@ -74,7 +74,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
                     case 200:{
 
-                        mDashboardView.showListWallet(deal.getResponse().body());
+                        mDashboardView.setListWallet(deal.getResponse().body());
                         break;
                     }
                 }

@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -37,6 +38,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private TextView mRate;
     private Currency mUsd;
     private ExchangeRate mExchangeRate;
+    private TextView mBalanceTextView;
+    private List<Wallet>mWalletList;
 
     @Nullable
     @Override
@@ -46,11 +49,18 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mExchangeRate = new ExchangeRate(mUsd);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         User user = getArguments().getParcelable(ARGUMENT_USER);
-        setHasOptionsMenu(true);
+        return mRoot;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         getRate();
         getWalletList();
-        return mRoot;
+        initListener();
+
+
     }
 
     public static DashboardFragment newInstance(User user) {
@@ -86,6 +96,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
         mSpinner=mRoot.findViewById(R.id.spinner_dashboard_spinner);
+        mBalanceTextView=mRoot.findViewById(R.id.textview_dashboard_balance);
+
 
     }
 
@@ -127,17 +139,18 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         MaterialDialogUtil.dismissMaterialDialog();
     }
 
+
     @Override
-    public void showListWallet(List<Wallet>walletList) {
+    public void setListWallet(List<Wallet> walletList) {
+        mWalletList=walletList;
 
-        Integer []items=new Integer[walletList.size()];
-        for (int i=0;i<walletList.size();i++){
+        Integer []items=new Integer[mWalletList.size()];
+        for (int i=0;i<mWalletList.size();i++){
 
-            items[i]=walletList.get(i).getId();
+            items[i]=mWalletList.get(i).getId();
         }
         ArrayAdapter<Integer>adapter=new ArrayAdapter<>(checkNotNull(this.getActivity()),R.layout.spinner_dashboard,R.id.textview_dashboard_spinner,items);
         mSpinner.setAdapter(adapter);
-
     }
 
     public void getRate() {
@@ -148,6 +161,26 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     public void getWalletList(){
 
         mPresenter.getWalletList();
+    }
+
+    public void initListener(){
+
+
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                mBalanceTextView.setText(String.valueOf(mWalletList.get(position).getSpendableBalance()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+
+            }
+        });
+
+
     }
 
 }

@@ -15,7 +15,7 @@ public interface DashboardContract {
         void updateExchangeRateCurrency(String rate);
         void showProgressBar();
         void dismissProgressBar();
-        void showListWallet(List<Wallet>walletList);
+        void setListWallet(List<Wallet>walletList);
 
     }
 
