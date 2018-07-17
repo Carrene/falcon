@@ -45,7 +45,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button_charge_next"
+        android:id="@+id/button_charge_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearlayout_charge_middle"
