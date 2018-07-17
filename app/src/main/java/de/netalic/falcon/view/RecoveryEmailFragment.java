@@ -116,6 +116,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public void navigateToAuthenticationDefinitionActivity() {
 
         Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra(ARGUMENT_USER, mUser);
         startActivity(intent);
     }

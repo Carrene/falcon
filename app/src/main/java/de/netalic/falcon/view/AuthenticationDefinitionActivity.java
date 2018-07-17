@@ -96,6 +96,7 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
 
         Intent intent = new Intent(this, DashboardActivity.class);
         intent.putExtra(ARGUMENT_USER, mUser);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
@@ -103,6 +104,7 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
     public void navigationToDashboardFromPattern(String credentialValue) {
 
         Intent intent = new Intent(this, DashboardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra(ARGUMENT_USER, mUser);
         startActivity(intent);
     }
