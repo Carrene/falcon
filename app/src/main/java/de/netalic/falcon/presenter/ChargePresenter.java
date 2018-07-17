@@ -48,4 +48,32 @@ public class ChargePresenter implements ChargeContract.Presenter {
         });
 
     }
+
+    @Override
+    public void getToken(int id, double amount) {
+
+        mChargeView.showProgressBar();
+        WalletRepository.getInstance().getToken(id,amount,deal -> {
+
+            if (deal.getThrowable()!=null){
+
+                mChargeView.dismissProgressBar();
+            }else {
+
+                int a=deal.getResponse().code();
+                switch (deal.getResponse().code()){
+
+                    case 200:{
+
+
+
+                    }
+                }
+            }
+
+        });
+
+    }
+
+
 }

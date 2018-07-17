@@ -14,11 +14,13 @@ public interface ChargeContract {
         void dismissProgressBar();
         void setListWallet(List<Wallet> walletList);
 
+
     }
 
     interface Presenter extends BasePresenter{
 
         void getWalletList();
+        void getToken(int id,double amount);
 
     }
 

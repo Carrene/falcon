@@ -5,6 +5,7 @@ import java.util.List;
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.repository.IRepository;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -32,4 +33,8 @@ public interface ApiInterface {
 
     @HTTP(method = "LIST",path = "wallets")
     Call<List<Wallet>>walletList();
+
+    @FormUrlEncoded
+    @HTTP(method = "CHARGE",path = "wallets/{id}/braintree",hasBody = true)
+    Call<String>getToken(@Path("id")int id,@Field("amount")double amount);
 }

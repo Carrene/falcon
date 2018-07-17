@@ -81,6 +81,7 @@
     <string name="charge_next">NEXT</string>
     <string name="charge_notification">Notification</string>
     <string name="charge_toolbartitle">Charge</string>
+    <string name="charge_pleasefillamount">Please fill amount</string>
 
 
 </resources>
