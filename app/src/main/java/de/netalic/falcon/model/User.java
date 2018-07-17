@@ -71,7 +71,6 @@ public class User extends RealmObject implements Parcelable {
     }
 
 
-
     public void setActivationCode(String activationCode) {
 
         this.mActivationCode = activationCode;
@@ -154,7 +153,7 @@ public class User extends RealmObject implements Parcelable {
 
     protected User(Parcel in) {
         mPhone = in.readString();
-        mEmail=in.readString();
+        mEmail = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
