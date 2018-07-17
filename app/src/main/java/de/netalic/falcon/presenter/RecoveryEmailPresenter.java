@@ -18,6 +18,7 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
         mRecoveryEmailView = checkNotNull(recoveryEmailView);
         mRecoveryEmailView.setPresenter(this);
     }
+
     @Override
     public void start() {
 
@@ -45,12 +46,12 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
                         mRecoveryEmailView.navigateToAuthenticationDefinitionActivity();
                         break;
                     }
-                    case 712:{
+                    case 712: {
 
-                        mRecoveryEmailView.showErrorInvalidEmail( );
+                        mRecoveryEmailView.showErrorInvalidEmail();
                         break;
                     }
-                    case 718:{
+                    case 718: {
 
                         mRecoveryEmailView.showErrorEmailAlreadyExists();
                         break;

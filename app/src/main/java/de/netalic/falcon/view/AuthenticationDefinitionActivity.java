@@ -8,11 +8,24 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import org.junit.Assert;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.Authentication;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.AuthenticationDefinitionContract;
+import de.netalic.falcon.repository.Deal;
+import de.netalic.falcon.repository.IRepository;
+import de.netalic.falcon.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
+import nuesoft.helpdroid.device.DeviceUtil;
+import nuesoft.helpdroid.util.Converter;
 
 
 public class AuthenticationDefinitionActivity extends AppCompatActivity implements AuthenticationDefinitionContract.View, AuthenticationDefinitionPasswordFragment.NavigateToDashboardCallback
@@ -20,10 +33,8 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
 
     private ActionBar mActionBar;
     private SegmentedGroup mSegmentedGroup;
-    private User mUser;
     private AuthenticationDefinitionPasswordFragment mAuthenticationDefinitionPasswordFragment;
     private AuthenticationDefinitionPatternFragment mAuthenticationDefinitionPatternFragment;
-    private static final String ARGUMENT_USER = "USER";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,10 +44,6 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
 
         initUiComponents();
         initListeners();
-
-
-        mUser = getIntent().getExtras().getParcelable(ARGUMENT_USER);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar_authenticationdefinition);
         setSupportActionBar(toolbar);
@@ -94,18 +101,51 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
     @Override
     public void navigationToDashboardFromPassword(String credentialValue) {
 
-        Intent intent = new Intent(this, DashboardActivity.class);
-        intent.putExtra(ARGUMENT_USER, mUser);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+
+        saveCredential(credentialValue, 0);
     }
 
     @Override
     public void navigationToDashboardFromPattern(String credentialValue) {
 
+        saveCredential(credentialValue, 1);
+
+    }
+
+    private void saveCredential(String credentialValue, int type) {
+
+        byte[] credentialDigest = digestSha512(credentialValue);
+        Authentication authentication = new Authentication(Converter.bytesToHexString(credentialDigest), type);
+        AuthenticationRepository.getInstance().update(authentication, deal -> {
+
+            if (deal.getModel() == null) {
+                throw new RuntimeException("Authentication has not been saved!");
+            }
+            MyApp.sSensitiveRealmConfiguration.encryptionKey(credentialDigest).build();
+            navigateToDashboard();
+
+        });
+    }
+
+    private byte[] digestSha512(String value) {
+
+        MessageDigest messageDigest = null;
+        try {
+            messageDigest = MessageDigest.getInstance("SHA-512");
+            messageDigest.update(value.getBytes("UTF-8"));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        byte[] digest = messageDigest.digest();
+        return digest;
+    }
+
+    private void navigateToDashboard() {
+
         Intent intent = new Intent(this, DashboardActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra(ARGUMENT_USER, mUser);
         startActivity(intent);
     }
 }

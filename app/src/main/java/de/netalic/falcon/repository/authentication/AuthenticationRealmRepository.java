@@ -47,8 +47,7 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
         if (authentication1 == null) {
             deal = new Deal<>(null, null, null);
         } else {
-            Authentication authentication = mRealm.copyFromRealm(authentication1);
-            Authentication returnAuthentication = mRealm.copyFromRealm(authentication);
+            Authentication returnAuthentication = mRealm.copyFromRealm(authentication1);
             deal = new Deal<>(returnAuthentication, null, null);
         }
         mRealm.close();

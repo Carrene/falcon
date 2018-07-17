@@ -117,7 +117,6 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra(ARGUMENT_USER, mUser);
         startActivity(intent);
     }
 
@@ -158,9 +157,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         mTextViewSkip.setOnClickListener(v -> {
 
-            Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
-            intent.putExtra(ARGUMENT_USER, mUser);
-            startActivity(intent);
+            navigateToAuthenticationDefinitionActivity();
         });
 
         mEditTextRecoveryEmail.setOnKeyListener((v, keyCode, event) -> {

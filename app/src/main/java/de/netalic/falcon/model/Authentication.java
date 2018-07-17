@@ -15,9 +15,17 @@ public class Authentication extends RealmObject {
     private int mAttemptNumber;
     @RealmField(name = "MaxAttemptNumber")
     private int mMaxAttemptNumber = 5;
+    @RealmField(name = "Value")
+    private String mCredential;
 
     public Authentication() {
 
+    }
+
+    public Authentication(String credential, int authenticationType) {
+
+        this.mCredential = credential;
+        this.mAuthenticationType = authenticationType;
     }
 
     public void setAuthenticationType(int authenticationType) {

@@ -33,8 +33,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
     private Spinner mSpinner;
-    private User mUser;
-    private static final String ARGUMENT_USER = "USER";
     private TextView mRate;
     private Currency mUsd;
     private ExchangeRate mExchangeRate;
@@ -46,7 +44,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mUsd = new UsdCurrency();
         mExchangeRate = new ExchangeRate(mUsd);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
-        mUser = getArguments().getParcelable(ARGUMENT_USER);
         setHasOptionsMenu(true);
         initUiComponents();
         getRate();
@@ -54,17 +51,15 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         return mRoot;
     }
 
-    public static DashboardFragment newInstance(User user) {
+    public static DashboardFragment newInstance() {
 
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(ARGUMENT_USER, user);
         DashboardFragment dashboardFragment = new DashboardFragment();
-        dashboardFragment.setArguments(bundle);
         return dashboardFragment;
     }
 
     @Override
     public void onResume() {
+
         super.onResume();
         mPresenter.start();
     }
@@ -86,7 +81,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
 
         mRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
-        mSpinner=mRoot.findViewById(R.id.spinner_dashboard_spinner);
+        mSpinner = mRoot.findViewById(R.id.spinner_dashboard_spinner);
 
     }
 
@@ -129,14 +124,14 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     }
 
     @Override
-    public void showListWallet(List<Wallet>walletList) {
+    public void showListWallet(List<Wallet> walletList) {
 
-        Integer []items=new Integer[walletList.size()];
-        for (int i=0;i<walletList.size();i++){
+        Integer[] items = new Integer[walletList.size()];
+        for (int i = 0; i < walletList.size(); i++) {
 
-            items[i]=walletList.get(i).getId();
+            items[i] = walletList.get(i).getId();
         }
-        ArrayAdapter<Integer>adapter=new ArrayAdapter<>(checkNotNull(this.getActivity()),R.layout.spinner_dashboard,R.id.textview_dashboard_spinner,items);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(checkNotNull(this.getActivity()), R.layout.spinner_dashboard, R.id.textview_dashboard_spinner, items);
         mSpinner.setAdapter(adapter);
 
     }
@@ -146,7 +141,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mPresenter.exchangeRate(mExchangeRate);
 
     }
-    public void getWalletList(){
+
+    public void getWalletList() {
 
         mPresenter.getWalletList();
     }

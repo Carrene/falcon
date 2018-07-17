@@ -28,31 +28,27 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class DashboardActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private static final String ARGUMENT_USER = "USER";
-    private User mUser;
     private static final int DROP_IN_REQUEST = 1;
     private TextView mPhoneNumber;
     private TextView mEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-        mUser = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
         Toolbar toolbar = findViewById(R.id.toolbar_dashboard);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+
         if (actionBar != null) {
 
             actionBar.setTitle(getString(R.string.dashboard_dashboard));
-
         }
 
 
         View header = ((NavigationView) findViewById(R.id.navigationview_dashboard)).getHeaderView(0);
-
 
         mPhoneNumber = header.findViewById(R.id.textview_dashboard_phonenumbernavigationheader);
         mEmail = header.findViewById(R.id.textview_dashboard_emailnavigationheader);
@@ -75,7 +71,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         DashboardFragment dashboardFragment = (DashboardFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_dashboard_fragmentcontainer);
         if (dashboardFragment == null) {
-            dashboardFragment = DashboardFragment.newInstance(mUser);
+            dashboardFragment = DashboardFragment.newInstance();
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), dashboardFragment, R.id.framelayout_dashboard_fragmentcontainer);
         }
 
@@ -85,11 +81,13 @@ public class DashboardActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
+
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
@@ -143,6 +141,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == DROP_IN_REQUEST) {
@@ -162,14 +161,14 @@ public class DashboardActivity extends AppCompatActivity {
 
     public void setEmail() {
 
-        mEmail.setText(mUser.getEmail());
+//        mEmail.setText(mUser.getEmail());
 
     }
 
 
     public void setPhoneNumber() {
 
-        mPhoneNumber.setText(mUser.getPhone());
+//        mPhoneNumber.setText(mUser.getPhone());
 
     }
 }
