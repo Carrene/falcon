@@ -22,7 +22,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     private EditText mEditTextPassCode;
     private EditText mEditTextConfirmCode;
     private TextInputLayout mTextInputLayoutConfirmCode;
-    private TextInputLayout mTextInputLayoutPasswordCode;
     private View mRoot;
     private CheckBox mCheckBoxCapital;
     private CheckBox mCheckBoxDigit;
@@ -72,9 +71,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
 
         mEditTextPassCode = mRoot.findViewById(R.id.edittext_authentication_entercode);
         mEditTextConfirmCode = mRoot.findViewById(R.id.edittext_authenticationdefinition_confirmcode);
-        mEditTextConfirmCode.setEnabled(false);
         mTextInputLayoutConfirmCode = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_confirmpasscode);
-        mTextInputLayoutPasswordCode = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_enterpasscode);
 
         mCheckBoxCapital = mRoot.findViewById(R.id.checkbox_authenticationdefinition_capital);
         mCheckBoxCustomChar = mRoot.findViewById(R.id.checkbox_authenticationdefinition_custom_char);

@@ -51,7 +51,7 @@
 
     <string name="splash_textbutton">SIGN IN</string>
 
-    <string name="dashboard_myblance">My blance</string>
+    <string name="dashboard_myblance">My balance</string>
     <string name="dashboard_amountalpha">3.000</string>
     <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
     <string name="dahboard_rateequivalent">1.000</string>
@@ -67,8 +67,6 @@
     <string name="dashboard_setting">Setting</string>
     <string name="dashboard_help">Help</string>
     <string name="dashboard_dashboardicon">Dashboard</string>
-    <string name="dashboard_phonenumber">+98 912 111 11 11</string>
-    <string name="dashboard_email">miladsalimi@gmail.com</string>
     <string name="dashboard_invalidcurrency">Invalid currency</string>
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>
 
@@ -76,6 +74,16 @@
     <string name="materialdialogutil_isloading">Is loading ...</string>
     <string name="materialdialogutil_pleasewait">Please wait</string>
 
+    <string name="charge_amount">Amount</string>
+    <string name="charge_dollar">USD</string>
+    <string name="charge_next">NEXT</string>
+    <string name="charge_notification">Notification</string>
+    <string name="charge_toolbartitle">Charge</string>
+    <string name="charge_pleasefillamount">Please fill amount</string>
+    <string name="charge_invalidamount">Invalid amount</string>
+    <string name="charge_amountissmallerthanlowerbound">Amount is smaller than lower bound</string>
+    <string name="charge_amountisgreaterthanupperbound">Amount is greater than upper bound</string>
+    <string name="charge_invalidwalletid">Invalid wallet id</string>
 
 
 

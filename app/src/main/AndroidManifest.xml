@@ -43,7 +43,12 @@
             android:parentActivityName=".view.PhoneConfirmationActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".view.SplashActivity"/>
-        <activity android:name=".view.DashboardActivity"/>
+        <activity
+            android:name=".view.DashboardActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".view.ChargeActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

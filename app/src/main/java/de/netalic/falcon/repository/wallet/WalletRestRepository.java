@@ -1,5 +1,7 @@
 package de.netalic.falcon.repository.wallet;
 
+import com.google.gson.JsonObject;
+
 import java.util.List;
 
 import de.netalic.falcon.model.Wallet;
@@ -9,7 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WalletRepositoryRestRepository implements IWalletRepository {
+public class WalletRestRepository implements IWalletRepository {
 
     @Override
     public void update(Wallet wallet, CallRepository<Wallet> callRepository) {
@@ -29,12 +31,32 @@ public class WalletRepositoryRestRepository implements IWalletRepository {
         ApiClient.getService().walletList().enqueue(new Callback<List<Wallet>>() {
             @Override
             public void onResponse(Call<List<Wallet>> call, Response<List<Wallet>> response) {
-                callRepository.onDone(new Deal<>(response.body(),response,null));
+
+                callRepository.onDone(new Deal<>(response.body(), response, null));
             }
 
             @Override
             public void onFailure(Call<List<Wallet>> call, Throwable t) {
-                callRepository.onDone(new Deal<>(null,null,t));
+
+                callRepository.onDone(new Deal<>(null, null, t));
+            }
+        });
+    }
+
+    @Override
+    public void charge(int id, double amount, CallRepository<JsonObject> callRepository) {
+
+        ApiClient.getService().charge(id, amount).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+
+                callRepository.onDone(new Deal<>(response.body(), response, null));
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                callRepository.onDone(new Deal<>(null, null, t));
             }
         });
     }

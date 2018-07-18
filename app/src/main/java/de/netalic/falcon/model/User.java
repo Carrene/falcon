@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import de.netalic.falcon.MyApp;
 import io.realm.RealmObject;
@@ -43,6 +44,10 @@ public class User extends RealmObject implements Parcelable {
     private String mDeviceName;
 
     @Ignore
+    @SerializedName("wallets")
+    private List<Wallet> mWallets;
+
+    @Ignore
     @SerializedName("isActive")
     boolean mIsActive;
 
@@ -57,6 +62,7 @@ public class User extends RealmObject implements Parcelable {
 
     @Ignore
     String mActivationCode;
+
 
     public User() {
 
@@ -133,6 +139,11 @@ public class User extends RealmObject implements Parcelable {
     public void setBalance(double balance) {
 
         this.mBalance = balance;
+    }
+
+    public List<Wallet> getWallets() {
+
+        return mWallets;
     }
 
     @Override

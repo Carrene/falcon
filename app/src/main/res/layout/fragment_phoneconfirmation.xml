@@ -42,21 +42,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textinputlayout_phoneconfirmation_receivecode"
+        android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
+        android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext"
         android:text="@string/phoneconfirmation_timer"
         android:textColor="@color/Emerald"
-        android:textSize="@dimen/textsize_phoneconfirmation_resendtext"
-        android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
-        android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext" />
+        android:textSize="@dimen/textsize_phoneconfirmation_resendtext" />
 
     <TextView
         android:id="@+id/textview_phoneconfirmation_changenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/textinputlayout_phoneconfirmation_receivecode"
+        android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
+        android:layout_marginTop="@dimen/margintop_phoneconfirmation_changenumber"
         android:text="@string/phoneconfirmation_changenumber"
         android:textColor="@color/Emerald"
-        android:textSize="@dimen/textsize_phoneconfirmation_changenumber"
-        android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
-        android:layout_marginTop="@dimen/margintop_phoneconfirmation_changenumber" />
+        android:textSize="@dimen/textsize_phoneconfirmation_changenumber" />
 
 </RelativeLayout>

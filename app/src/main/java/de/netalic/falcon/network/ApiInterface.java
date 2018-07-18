@@ -1,5 +1,7 @@
 package de.netalic.falcon.network;
 
+import com.google.gson.JsonObject;
+
 import java.util.List;
 
 import de.netalic.falcon.model.Rate;
@@ -30,6 +32,12 @@ public interface ApiInterface {
     @GET("rates/{currency}")
     Call<Rate>exchangeRate(@Path("currency") String currency);
 
-    @HTTP(method = "LIST",path = "wallets")
-    Call<List<Wallet>>walletList();
+
+    @HTTP(method = "LIST", path = "wallets")
+    Call<List<Wallet>> walletList();
+
+    @FormUrlEncoded
+    @HTTP(method = "CHARGE", path = "wallets/{id}/braintree", hasBody = true)
+    Call<JsonObject> charge(@Path("id") int id, @Field("amount") double amount);
+
 }

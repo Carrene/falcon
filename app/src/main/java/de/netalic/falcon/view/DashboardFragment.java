@@ -11,13 +11,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.adapter.SpinnerAdapter;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.UsdCurrency;
@@ -32,22 +33,34 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
     private Spinner mSpinner;
-    private TextView mRate;
+
+    private static final String ARGUMENT_USER = "USER";
+    private TextView mRateTextView;
     private Currency mUsd;
-//    private Rate mRate;
+    private Rate mRate;
+    private TextView mBalanceTextView;
+    private List<Wallet> mWalletList;
+    private SpinnerAdapter mSpinnerAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mUsd = new UsdCurrency();
-//        mRate = new Rate(mUsd);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         setHasOptionsMenu(true);
+        mUsd = new UsdCurrency();
+        mRate = new Rate(mUsd);
+        return mRoot;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         getRate();
         getWalletList();
-        return mRoot;
+        initListener();
     }
 
     public static DashboardFragment newInstance() {
@@ -63,7 +76,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mPresenter.start();
     }
 
-
     @Override
     public void setPresenter(DashboardContract.Presenter presenter) {
 
@@ -78,12 +90,10 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void initUiComponents() {
 
-
-        mRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
+        mRateTextView = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
         mSpinner = mRoot.findViewById(R.id.spinner_dashboard_spinner);
-
+        mBalanceTextView = mRoot.findViewById(R.id.textview_dashboard_balance);
     }
-
 
     @Override
     public void showErrorInvalidCurrency() {
@@ -106,7 +116,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void updateExchangeRateCurrency(String rate) {
 
-        mRate.setText(String.valueOf(rate));
+        mRateTextView.setText(String.valueOf(rate));
     }
 
     @Override
@@ -122,17 +132,13 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         MaterialDialogUtil.dismissMaterialDialog();
     }
 
+
     @Override
-    public void showListWallet(List<Wallet> walletList) {
+    public void setListWallet(List<Wallet> walletList) {
 
-        Integer[] items = new Integer[walletList.size()];
-        for (int i = 0; i < walletList.size(); i++) {
-
-            items[i] = walletList.get(i).getId();
-        }
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(checkNotNull(this.getActivity()), R.layout.spinner_dashboard, R.id.textview_dashboard_spinner, items);
-        mSpinner.setAdapter(adapter);
-
+        mWalletList = walletList;
+        mSpinnerAdapter = new SpinnerAdapter(getContext(), mWalletList);
+        mSpinner.setAdapter(mSpinnerAdapter);
     }
 
     public void getRate() {
@@ -144,5 +150,21 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     public void getWalletList() {
 
         mPresenter.getWalletList();
+    }
+
+    public void initListener() {
+
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                mBalanceTextView.setText(String.valueOf(mWalletList.get(position).getBalance()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }

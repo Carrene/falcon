@@ -104,14 +104,11 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
                     showErrorDescription(getContext().getString(R.string.registration_pleasefillyournumber));
                 } else {
 
-                    if (maskedEditText.getText().toString().charAt(11) == 'X') {
 
-                        showErrorDescription(getContext().getString(R.string.registration_pleasefillalldigits));
-                    } else {
 
                         claim();
 
-                    }
+
                 }
             }
         }
