@@ -11,7 +11,7 @@ public class Wallet {
     private int mId;
 
     @SerializedName("balance")
-    private String mAddress;
+    private double mBalance;
 
     @SerializedName("currency")
     private Currency mCurrency;
@@ -19,42 +19,51 @@ public class Wallet {
     @SerializedName("spendableBalance")
     private double mSpendableBalance;
 
-    public Wallet(int id, String address, Currency currency, double spendableBalance) {
+    public Wallet(int id, double balance, Currency currency, double spendableBalance) {
+
         this.mId = id;
-        this.mAddress = address;
+        this.mBalance = balance;
         this.mCurrency = currency;
         this.mSpendableBalance = spendableBalance;
     }
 
     public int getId() {
+
         return mId;
     }
 
     public void setId(int id) {
+
         this.mId = id;
     }
 
-    public String getAddress() {
-        return mAddress;
+    public double getBalance() {
+
+        return mBalance;
     }
 
-    public void setAddress(String address) {
-        this.mAddress = address;
+    public void setBalance(double balance) {
+
+        this.mBalance = balance;
     }
 
     public Currency getCurrency() {
+
         return mCurrency;
     }
 
     public void setCurrency(Currency currency) {
+
         this.mCurrency = currency;
     }
 
     public double getSpendableBalance() {
+
         return mSpendableBalance;
     }
 
     public void setSpendableBalance(double spendableBalance) {
+
         this.mSpendableBalance = spendableBalance;
     }
 }

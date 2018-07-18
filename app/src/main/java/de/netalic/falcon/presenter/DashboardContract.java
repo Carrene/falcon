@@ -2,7 +2,7 @@ package de.netalic.falcon.presenter;
 
 import java.util.List;
 
-import de.netalic.falcon.model.ExchangeRate;
+import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.view.BaseView;
 
@@ -21,7 +21,7 @@ public interface DashboardContract {
 
     interface Presenter extends BasePresenter{
 
-        void exchangeRate(ExchangeRate exchangeRate);
+        void exchangeRate(Rate rate);
         void getWalletList();
 
     }

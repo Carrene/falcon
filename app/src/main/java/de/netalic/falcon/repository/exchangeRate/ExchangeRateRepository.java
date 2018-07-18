@@ -2,7 +2,7 @@ package de.netalic.falcon.repository.exchangeRate;
 
 import java.util.List;
 
-import de.netalic.falcon.model.ExchangeRate;
+import de.netalic.falcon.model.Rate;
 
 public class ExchangeRateRepository implements IExchangeRate {
 
@@ -28,19 +28,19 @@ public class ExchangeRateRepository implements IExchangeRate {
     }
 
     @Override
-    public void update(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
+    public void update(Rate rate, CallRepository<Rate> callRepository) {
 
-        mExchangeRateRestRepository.update(exchangeRate, callRepository);
+        mExchangeRateRestRepository.update(rate, callRepository);
     }
 
     @Override
-    public void get(String identifier, CallRepository<ExchangeRate> callRepository) {
+    public void get(String identifier, CallRepository<Rate> callRepository) {
 
         mExchangeRateRestRepository.get(identifier, callRepository);
     }
 
     @Override
-    public void getAll(CallRepository<List<ExchangeRate>> callRepository) {
+    public void getAll(CallRepository<List<Rate>> callRepository) {
         mExchangeRateRestRepository.getAll(callRepository);
     }
 }

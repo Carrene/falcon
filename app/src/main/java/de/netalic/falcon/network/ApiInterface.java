@@ -2,7 +2,7 @@ package de.netalic.falcon.network;
 
 import java.util.List;
 
-import de.netalic.falcon.model.ExchangeRate;
+import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
 import retrofit2.Call;
@@ -28,7 +28,7 @@ public interface ApiInterface {
     Call<User> setEmail(@Field("email") String email);
 
     @GET("rates/{currency}")
-    Call<ExchangeRate>exchangeRate(@Path("currency") String currency);
+    Call<Rate>exchangeRate(@Path("currency") String currency);
 
     @HTTP(method = "LIST",path = "wallets")
     Call<List<Wallet>>walletList();

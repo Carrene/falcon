@@ -19,9 +19,8 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Currency;
-import de.netalic.falcon.model.ExchangeRate;
+import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.UsdCurrency;
-import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.DashboardContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
@@ -35,14 +34,14 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private Spinner mSpinner;
     private TextView mRate;
     private Currency mUsd;
-    private ExchangeRate mExchangeRate;
+    private Rate mRate;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mUsd = new UsdCurrency();
-        mExchangeRate = new ExchangeRate(mUsd);
+        mRate = new Rate(mUsd);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         setHasOptionsMenu(true);
         initUiComponents();
@@ -138,7 +137,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void getRate() {
 
-        mPresenter.exchangeRate(mExchangeRate);
+        mPresenter.exchangeRate(mRate);
 
     }
 

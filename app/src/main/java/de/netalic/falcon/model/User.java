@@ -52,9 +52,6 @@ public class User extends RealmObject implements Parcelable {
     @SerializedName("hmacSecret")
     String mHmacSecret;
 
-    @SerializedName("token")
-    String mToken;
-
     @SerializedName("isNewClient")
     boolean isNewClient;
 

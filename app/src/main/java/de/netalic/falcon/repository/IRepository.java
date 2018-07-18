@@ -13,7 +13,5 @@ public interface IRepository<T, K> {
     interface CallRepository<T> {
 
         void onDone(Deal<T> deal);
-
-
     }
 }

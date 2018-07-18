@@ -70,4 +70,9 @@ public class Authentication extends RealmObject {
 
         this.mAttemptNumber = 0;
     }
+
+    public int getRemainAttemptsNumber() {
+
+        return mMaxAttemptNumber - mAttemptNumber;
+    }
 }

@@ -13,7 +13,7 @@ import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.repository.exchangeRate.ExchangeRateRepository;
 
 @RunWith(AndroidJUnit4.class)
-public class ExchangeRateRepositoryTest {
+public class RateRepositoryTest {
 
 
     private CountDownLatch mCountDownLatch;

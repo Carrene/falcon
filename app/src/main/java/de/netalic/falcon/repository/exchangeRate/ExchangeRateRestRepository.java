@@ -2,7 +2,7 @@ package de.netalic.falcon.repository.exchangeRate;
 
 import java.util.List;
 
-import de.netalic.falcon.model.ExchangeRate;
+import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
 import retrofit2.Call;
@@ -12,23 +12,23 @@ import retrofit2.Response;
 public class ExchangeRateRestRepository implements IExchangeRate {
 
     @Override
-    public void update(ExchangeRate exchangeRate, CallRepository<ExchangeRate> callRepository) {
+    public void update(Rate rate, CallRepository<Rate> callRepository) {
 
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void get(String identifier, CallRepository<ExchangeRate> callRepository) {
+    public void get(String identifier, CallRepository<Rate> callRepository) {
 
-        ApiClient.getService().exchangeRate(identifier).enqueue(new Callback<ExchangeRate>() {
+        ApiClient.getService().exchangeRate(identifier).enqueue(new Callback<Rate>() {
             @Override
-            public void onResponse(Call<ExchangeRate> call, Response<ExchangeRate> response) {
+            public void onResponse(Call<Rate> call, Response<Rate> response) {
 
                 callRepository.onDone(new Deal<>(response.body(), response, null));
             }
 
             @Override
-            public void onFailure(Call<ExchangeRate> call, Throwable t) {
+            public void onFailure(Call<Rate> call, Throwable t) {
 
                 callRepository.onDone(new Deal<>(null, null, t));
 
@@ -37,7 +37,7 @@ public class ExchangeRateRestRepository implements IExchangeRate {
     }
 
     @Override
-    public void getAll(CallRepository<List<ExchangeRate>> callRepository) {
+    public void getAll(CallRepository<List<Rate>> callRepository) {
 
         throw new UnsupportedOperationException();
     }
