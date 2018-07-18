@@ -27,6 +27,10 @@ public class Wallet {
         this.mSpendableBalance = spendableBalance;
     }
 
+    public Wallet() {
+
+    }
+
     public int getId() {
 
         return mId;
@@ -40,11 +44,6 @@ public class Wallet {
     public double getBalance() {
 
         return mBalance;
-    }
-
-    public void setBalance(double balance) {
-
-        this.mBalance = balance;
     }
 
     public Currency getCurrency() {

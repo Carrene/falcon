@@ -21,26 +21,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.RegistrationActivity"
-            android:windowSoftInputMode="adjustResize"
-            />
+        <activity
+            android:name=".view.RegistrationActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.PhoneConfirmationActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:parentActivityName=".view.RegistrationActivity">
+            android:parentActivityName=".view.RegistrationActivity"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.RegistrationActivity" />
         </activity>
-        <activity android:name=".view.AuthenticationDefinitionActivity"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
+        <activity
+            android:name=".view.AuthenticationDefinitionActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".view.RecoveryEmailActivity"
             android:parentActivityName=".view.PhoneConfirmationActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".view.SplashActivity"></activity>
-        <activity android:name=".view.DashboardActivity"></activity>
+        <activity android:name=".view.SplashActivity" />
+        <activity android:name=".view.DashboardActivity" />
+        <activity
+            android:name=".view.ChargeActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

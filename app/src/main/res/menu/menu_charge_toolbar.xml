@@ -3,9 +3,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_dashboard_notification"
+        android:id="@+id/menu_charge_notification"
         android:icon="@drawable/everywhere_notification"
-        android:title="@string/dashboard_notification"
+        android:title="@string/charge_notification"
         app:showAsAction="always"
         />
 </menu>
