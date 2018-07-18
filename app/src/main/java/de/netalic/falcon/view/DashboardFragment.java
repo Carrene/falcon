@@ -34,14 +34,14 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private Spinner mSpinner;
     private TextView mRate;
     private Currency mUsd;
-    private Rate mRate;
+//    private Rate mRate;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mUsd = new UsdCurrency();
-        mRate = new Rate(mUsd);
+//        mRate = new Rate(mUsd);
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         setHasOptionsMenu(true);
         initUiComponents();
@@ -137,7 +137,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void getRate() {
 
-        mPresenter.exchangeRate(mRate);
+//        mPresenter.exchangeRate(mRate);
 
     }
 

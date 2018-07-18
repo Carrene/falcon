@@ -12,21 +12,19 @@ import de.netalic.falcon.presenter.RegistrationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends BaseActivity {
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+//        setContentView(R.layout.activity_registration);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_registration);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle(getString(R.string.registration_toolbartitle));
-        }
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setTitle(getString(R.string.registration_toolbartitle));
+//        }
 
         RegistrationFragment registrationFragment = (RegistrationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_registration_fragmentcontainer);
         if (registrationFragment == null) {
@@ -39,7 +37,20 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     @Override
+    protected int getLayoutId() {
+
+        return R.layout.activity_registration;
+    }
+
+    @Override
+    protected String getActionbarTitle() {
+
+        return getString(R.string.registration_toolbartitle);
+    }
+
+    @Override
     protected void attachBaseContext(Context newBase) {
+
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

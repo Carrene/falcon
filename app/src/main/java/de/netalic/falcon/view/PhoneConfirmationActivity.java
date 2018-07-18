@@ -16,7 +16,7 @@ import de.netalic.falcon.presenter.PhoneConfirmationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class PhoneConfirmationActivity extends AppCompatActivity {
+public class PhoneConfirmationActivity extends BaseActivity {
 
     public static final String ARGUMENT_USER = "USER";
 
@@ -24,7 +24,6 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phoneconfirmation);
 
         User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
@@ -49,6 +48,18 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
     }
 
     @Override
+    protected int getLayoutId() {
+
+        return R.layout.activity_phoneconfirmation;
+    }
+
+    @Override
+    protected String getActionbarTitle() {
+
+        return null;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -64,6 +75,7 @@ public class PhoneConfirmationActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
+
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
