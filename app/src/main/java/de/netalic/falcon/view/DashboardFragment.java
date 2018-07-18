@@ -170,7 +170,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mBalanceTextView.setText(String.valueOf(mWalletList.get(position).getSpendableBalance()));
+                mBalanceTextView.setText(String.valueOf(mWalletList.get(position).getBalance()));
             }
 
             @Override
