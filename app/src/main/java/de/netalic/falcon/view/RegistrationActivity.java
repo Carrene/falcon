@@ -19,12 +19,6 @@ public class RegistrationActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_registration);
-
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setTitle(getString(R.string.registration_toolbartitle));
-//        }
 
         RegistrationFragment registrationFragment = (RegistrationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_registration_fragmentcontainer);
         if (registrationFragment == null) {
@@ -33,7 +27,6 @@ public class RegistrationActivity extends BaseActivity {
         }
 
         new RegistrationPresenter(registrationFragment);
-
     }
 
     @Override

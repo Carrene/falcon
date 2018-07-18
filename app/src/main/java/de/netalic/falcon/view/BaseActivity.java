@@ -10,6 +10,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.network.CheckInternetConnectivity;
 
 public abstract class BaseActivity extends AppCompatActivity implements CheckInternetConnectivity.NetworkStateChangeListener {
+
     private Toolbar mToolbar;
     private CheckInternetConnectivity checkInternetConnectivity;
 
@@ -64,6 +65,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
     @Override
     public void networkUnavailable() {
 
-        getSupportActionBar().setTitle("no internet");
+        getSupportActionBar().setTitle("Connection error");
     }
 }
