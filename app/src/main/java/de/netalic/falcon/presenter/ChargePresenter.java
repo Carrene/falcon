@@ -49,10 +49,10 @@ public class ChargePresenter implements ChargeContract.Presenter {
     }
 
     @Override
-    public void getToken(int id, double amount) {
+    public void charge(int id, double amount) {
 
         mChargeView.showProgressBar();
-        WalletRepository.getInstance().getToken(id, amount, deal -> {
+        WalletRepository.getInstance().charge(id, amount, deal -> {
 
             if (deal.getThrowable() != null) {
 

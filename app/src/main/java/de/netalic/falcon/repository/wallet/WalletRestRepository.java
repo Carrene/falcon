@@ -31,29 +31,32 @@ public class WalletRestRepository implements IWalletRepository {
         ApiClient.getService().walletList().enqueue(new Callback<List<Wallet>>() {
             @Override
             public void onResponse(Call<List<Wallet>> call, Response<List<Wallet>> response) {
-                callRepository.onDone(new Deal<>(response.body(),response,null));
+
+                callRepository.onDone(new Deal<>(response.body(), response, null));
             }
 
             @Override
             public void onFailure(Call<List<Wallet>> call, Throwable t) {
-                callRepository.onDone(new Deal<>(null,null,t));
+
+                callRepository.onDone(new Deal<>(null, null, t));
             }
         });
     }
 
     @Override
-    public void getToken(int id, double amount, CallRepository<JsonObject> callRepository) {
-        ApiClient.getService().getToken(id,amount).enqueue(new Callback<JsonObject>() {
+    public void charge(int id, double amount, CallRepository<JsonObject> callRepository) {
+
+        ApiClient.getService().charge(id, amount).enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
 
-                callRepository.onDone(new Deal<>(response.body(),response,null));
+                callRepository.onDone(new Deal<>(response.body(), response, null));
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
 
-                callRepository.onDone(new Deal<>(null,null,t));
+                callRepository.onDone(new Deal<>(null, null, t));
             }
         });
     }

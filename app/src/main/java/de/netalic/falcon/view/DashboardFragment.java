@@ -40,7 +40,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private Currency mUsd;
     private ExchangeRate mExchangeRate;
     private TextView mBalanceTextView;
-    private List<Wallet>mWalletList;
+    private List<Wallet> mWalletList;
     private SpinnerAdapter mSpinnerAdapter;
 
     @Nullable
@@ -56,13 +56,12 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         getRate();
         getWalletList();
         initListener();
-
-
     }
 
     public static DashboardFragment newInstance(User user) {
@@ -76,10 +75,10 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     @Override
     public void onResume() {
+
         super.onResume();
         mPresenter.start();
     }
-
 
     @Override
     public void setPresenter(DashboardContract.Presenter presenter) {
@@ -95,14 +94,10 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void initUiComponents() {
 
-
         mRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
-        mSpinner=mRoot.findViewById(R.id.spinner_dashboard_spinner);
-        mBalanceTextView=mRoot.findViewById(R.id.textview_dashboard_balance);
-
-
+        mSpinner = mRoot.findViewById(R.id.spinner_dashboard_spinner);
+        mBalanceTextView = mRoot.findViewById(R.id.textview_dashboard_balance);
     }
-
 
     @Override
     public void showErrorInvalidCurrency() {
@@ -144,13 +139,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     @Override
     public void setListWallet(List<Wallet> walletList) {
-        mWalletList=walletList;
 
-        Integer []items=new Integer[mWalletList.size()];
-        for (int i=0;i<mWalletList.size();i++){
-
-            items[i]=mWalletList.get(i).getId();
-        }
+        mWalletList = walletList;
         mSpinnerAdapter = new SpinnerAdapter(getContext(), mWalletList);
         mSpinner.setAdapter(mSpinnerAdapter);
     }
@@ -158,15 +148,14 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     public void getRate() {
 
         mPresenter.exchangeRate(mExchangeRate);
-
     }
-    public void getWalletList(){
+
+    public void getWalletList() {
 
         mPresenter.getWalletList();
     }
 
-    public void initListener(){
-
+    public void initListener() {
 
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -178,11 +167,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-
             }
         });
-
-
     }
-
 }

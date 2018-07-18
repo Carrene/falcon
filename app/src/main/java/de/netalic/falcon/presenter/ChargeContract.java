@@ -27,7 +27,7 @@ public interface ChargeContract {
     interface Presenter extends BasePresenter{
 
         void getWalletList();
-        void getToken(int id,double amount);
+        void charge(int id, double amount);
 
     }
 

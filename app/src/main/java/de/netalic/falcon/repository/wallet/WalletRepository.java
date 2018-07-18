@@ -32,13 +32,13 @@ public class WalletRepository implements IWalletRepository {
     @Override
     public void update(Wallet wallet, CallRepository<Wallet> callRepository) {
 
-        mWalletRestRepository.update(wallet,callRepository);
+        mWalletRestRepository.update(wallet, callRepository);
     }
 
     @Override
     public void get(Integer identifier, CallRepository<Wallet> callRepository) {
 
-        mWalletRestRepository.get(identifier,callRepository);
+        mWalletRestRepository.get(identifier, callRepository);
     }
 
     @Override
@@ -48,8 +48,8 @@ public class WalletRepository implements IWalletRepository {
     }
 
     @Override
-    public void getToken(int id, double amount, CallRepository<JsonObject> callRepository) {
+    public void charge(int id, double amount, CallRepository<JsonObject> callRepository) {
 
-        mWalletRestRepository.getToken(id,amount,callRepository);
+        mWalletRestRepository.charge(id, amount, callRepository);
     }
 }

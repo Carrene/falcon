@@ -7,6 +7,6 @@ import de.netalic.falcon.repository.IRepository;
 
 public interface IWalletRepository extends IRepository<Wallet,Integer> {
 
-    void getToken(int id, double amount, CallRepository<JsonObject>callRepository);
+    void charge(int id, double amount, CallRepository<JsonObject>callRepository);
 
 }
