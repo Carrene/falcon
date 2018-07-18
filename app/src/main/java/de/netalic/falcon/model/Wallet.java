@@ -25,6 +25,9 @@ public class Wallet {
         this.mCurrency = currency;
         this.mSpendableBalance = spendableBalance;
     }
+    public Wallet(){
+
+    }
 
     public int getId() {
         return mId;

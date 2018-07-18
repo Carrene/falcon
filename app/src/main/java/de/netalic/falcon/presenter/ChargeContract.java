@@ -1,5 +1,7 @@
 package de.netalic.falcon.presenter;
 
+import com.google.gson.JsonObject;
+
 import java.util.List;
 
 import de.netalic.falcon.model.Wallet;
@@ -13,6 +15,11 @@ public interface ChargeContract {
         void showProgressBar();
         void dismissProgressBar();
         void setListWallet(List<Wallet> walletList);
+        void setToken(JsonObject token);
+        void showErrorInvalidAmount();
+        void showErrorInvalidWalletId();
+        void showErrorAmountIsSmallerThanLowerBound();
+        void showErrorAmountIsGreaterThanUpperBound();
 
 
     }

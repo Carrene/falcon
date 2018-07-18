@@ -1,9 +1,10 @@
 package de.netalic.falcon.repository.wallet;
 
+import com.google.gson.JsonObject;
+
 import java.util.List;
 
 import de.netalic.falcon.model.Wallet;
-import de.netalic.falcon.repository.IRepository;
 
 public class WalletRepository implements IWalletRepository {
 
@@ -47,7 +48,7 @@ public class WalletRepository implements IWalletRepository {
     }
 
     @Override
-    public void getToken(int id, double amount, CallRepository<String> callRepository) {
+    public void getToken(int id, double amount, CallRepository<JsonObject> callRepository) {
 
         mWalletRestRepository.getToken(id,amount,callRepository);
     }

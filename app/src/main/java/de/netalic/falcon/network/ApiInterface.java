@@ -1,5 +1,8 @@
 package de.netalic.falcon.network;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import java.util.List;
 
 import de.netalic.falcon.model.ExchangeRate;
@@ -36,5 +39,5 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @HTTP(method = "CHARGE",path = "wallets/{id}/braintree",hasBody = true)
-    Call<String>getToken(@Path("id")int id,@Field("amount")double amount);
+    Call<JsonObject>getToken(@Path("id")int id, @Field("amount")double amount);
 }

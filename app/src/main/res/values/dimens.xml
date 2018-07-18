@@ -122,7 +122,7 @@
     <dimen name="textsize_charge_amountdollar">13sp</dimen>
     <dimen name="marginendstart_charge_nextbutton">125dp</dimen>
     <dimen name="margintop_charge_nextbutton">96dp</dimen>
-    <dimen name="layoutwidth_charge_edittextdolaramount">100dp</dimen>
+    <dimen name="layoutwidth_charge_edittextdolaramount">110dp</dimen>
 
 
     <dimen name="layoutheight_charge_spinner">35dp</dimen>

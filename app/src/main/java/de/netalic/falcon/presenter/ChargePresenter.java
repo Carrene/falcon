@@ -21,7 +21,6 @@ public class ChargePresenter implements ChargeContract.Presenter {
 
     @Override
     public void start() {
-
     }
 
     @Override
@@ -53,27 +52,48 @@ public class ChargePresenter implements ChargeContract.Presenter {
     public void getToken(int id, double amount) {
 
         mChargeView.showProgressBar();
-        WalletRepository.getInstance().getToken(id,amount,deal -> {
+        WalletRepository.getInstance().getToken(id, amount, deal -> {
 
-            if (deal.getThrowable()!=null){
+            if (deal.getThrowable() != null) {
 
                 mChargeView.dismissProgressBar();
-            }else {
+            } else {
 
-                int a=deal.getResponse().code();
-                switch (deal.getResponse().code()){
+                switch (deal.getResponse().code()) {
 
-                    case 200:{
+                    case 200: {
 
+                        mChargeView.setToken(deal.getResponse().body());
+                        break;
+                    }
 
+                    case 700: {
 
+                        mChargeView.showErrorInvalidWalletId();
+                        break;
+                    }
+
+                    case 702: {
+
+                        mChargeView.showErrorInvalidAmount();
+                        break;
+                    }
+
+                    case 703: {
+
+                        mChargeView.showErrorAmountIsSmallerThanLowerBound();
+                        break;
+                    }
+
+                    case 704: {
+
+                        mChargeView.showErrorAmountIsGreaterThanUpperBound();
+                        break;
                     }
                 }
+                mChargeView.dismissProgressBar();
             }
 
         });
-
     }
-
-
 }
