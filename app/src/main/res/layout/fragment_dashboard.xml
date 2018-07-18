@@ -14,14 +14,6 @@
         android:layout_alignParentTop="true"
         android:background="@color/mariner">
 
-        <ImageView
-            android:id="@+id/imageview_dashboard_dollaricon"
-            android:layout_width="@dimen/width_dashboard_dollaricon"
-            android:layout_height="@dimen/height_dashboard_dollaricon"
-            android:layout_alignTop="@+id/spinner_dashboard_spinner"
-            android:layout_toStartOf="@+id/spinner_dashboard_spinner"
-            android:src="@drawable/dashboard_dollarusd" />
-
         <Spinner
             android:id="@+id/spinner_dashboard_spinner"
             style="@style/SpinnerTheme"

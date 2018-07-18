@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageview_charge_spinner"
         android:layout_width="@dimen/layoutwidth_charge_imagview"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:padding="@dimen/padding_charge_imagview"
         android:src="@drawable/dashboard_dollarusd"
         android:foregroundGravity="left"

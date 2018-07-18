@@ -62,8 +62,8 @@
     <dimen name="margintop_signin_button">105dp</dimen>
     <dimen name="width_dashboard_dollaricon">20dp</dimen>
     <dimen name="height_dashboard_dollaricon">20dp</dimen>
-    <dimen name="width_dashboard_spinner">160dp</dimen>
-    <dimen name="height_dashboard_spinner">25dp</dimen>
+    <dimen name="width_dashboard_spinner">240dp</dimen>
+    <dimen name="height_dashboard_spinner">35dp</dimen>
     <dimen name="margintop_dashboard_spinner">20dp</dimen>
     <dimen name="marginend_dashboard_spinner">98dp</dimen>
     <dimen name="margintop_Dashboard_myblance">72dp</dimen>
@@ -131,7 +131,7 @@
     <dimen name="textsize_charge_textview">13sp</dimen>
 
     <dimen name="layoutwidth_charge_spinnerr">240dp</dimen>
-    <dimen name="layoutheight_charge_spinnerr">30dp</dimen>
+    <dimen name="layoutheight_charge_spinnerr">35dp</dimen>
     <dimen name="margintop_charge_spinnerr">47dp</dimen>
 
 </resources>

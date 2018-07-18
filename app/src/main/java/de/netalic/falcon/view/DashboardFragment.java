@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.adapter.SpinnerAdapter;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.ExchangeRate;
 import de.netalic.falcon.model.UsdCurrency;
@@ -40,6 +41,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ExchangeRate mExchangeRate;
     private TextView mBalanceTextView;
     private List<Wallet>mWalletList;
+    private SpinnerAdapter mSpinnerAdapter;
 
     @Nullable
     @Override
@@ -149,8 +151,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
             items[i]=mWalletList.get(i).getId();
         }
-        ArrayAdapter<Integer>adapter=new ArrayAdapter<>(checkNotNull(this.getActivity()),R.layout.spinner_dashboard,R.id.textview_dashboard_spinner,items);
-        mSpinner.setAdapter(adapter);
+        mSpinnerAdapter = new SpinnerAdapter(getContext(), mWalletList);
+        mSpinner.setAdapter(mSpinnerAdapter);
     }
 
     public void getRate() {
