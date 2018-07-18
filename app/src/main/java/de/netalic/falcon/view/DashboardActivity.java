@@ -1,16 +1,12 @@
 package de.netalic.falcon.view;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -22,9 +18,8 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.DashboardPresenter;
 import de.netalic.falcon.util.ActivityUtil;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
     private static final int DROP_IN_REQUEST = 1;
@@ -37,19 +32,10 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_dashboard);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
+        NavigationView navigationView = findViewById(R.id.navigationview_dashboard);
 
-        if (actionBar != null) {
-
-            actionBar.setTitle(getString(R.string.dashboard_dashboard));
-        }
-
-
-        View header = ((NavigationView) findViewById(R.id.navigationview_dashboard)).getHeaderView(0);
+        View header = navigationView.getHeaderView(0);
 
         mTextViewPhoneNumber = header.findViewById(R.id.textview_dashboard_phonenumbernavigationheader);
         mTextViewEmail = header.findViewById(R.id.textview_dashboard_emailnavigationheader);
@@ -60,12 +46,11 @@ public class DashboardActivity extends AppCompatActivity {
         setPhoneNumber();
         setEmail();
 
-        ActionBarDrawerToggle aToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
+        ActionBarDrawerToggle aToggle = new ActionBarDrawerToggle(this, mDrawerLayout, getToolbar(), R.string.app_name, R.string.app_name);
         mDrawerLayout.addDrawerListener(aToggle);
         aToggle.syncState();
 
 
-        NavigationView navigationView = findViewById(R.id.navigationview_dashboard);
         if (navigationView != null) {
             setupDrawerContent(navigationView);
         }
@@ -81,9 +66,15 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void attachBaseContext(Context newBase) {
+    protected int getLayoutId() {
 
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+        return R.layout.activity_dashboard;
+    }
+
+    @Override
+    protected String getActionbarTitle() {
+
+        return getString(R.string.dashboard_dashboard);
     }
 
     @Override

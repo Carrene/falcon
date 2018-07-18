@@ -22,6 +22,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RecoveryEmailContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
+import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 import nuesoft.helpdroid.validation.Validator;
 
@@ -42,6 +43,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_recoveryemail, container, false);
+        checkNotNull(getArguments());
         mUser = getArguments().getParcelable(ARGUMENT_USER);
         return mRoot;
     }
@@ -123,19 +125,15 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     @Override
     public void showErrorInvalidEmail() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.recoveryemail_invalidemail), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.recoveryemail_invalidemail), getContext());
     }
 
     @Override
     public void showErrorEmailAlreadyExists() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.recoveryemail_emailalreadyexists), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.recoveryemail_emailalreadyexists), getContext());
     }
 
 

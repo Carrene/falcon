@@ -30,6 +30,8 @@ import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
+import de.netalic.falcon.util.SnackbarUtil;
+import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -127,37 +129,29 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     @Override
     public void showErrorInvalidAmount() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.charge_invalidamount), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_invalidamount), getContext());
     }
 
     @Override
     public void showErrorInvalidWalletId() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.charge_invalidwalletid), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_invalidwalletid), getContext());
     }
 
     @Override
     public void showErrorAmountIsSmallerThanLowerBound() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.charge_amountissmallerthanlowerbound), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_amountissmallerthanlowerbound), getContext());
     }
 
     @Override
     public void showErrorAmountIsGreaterThanUpperBound() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.charge_amountisgreaterthanupperbound), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_amountisgreaterthanupperbound), getContext());
     }
 
     public void getListWallet() {
@@ -175,12 +169,11 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         mPaymentButton.setOnClickListener(v -> {
 
+                    Keyboard.hideKeyboard(mRoot);
                     if (mAmountEditText.getText().toString().equals("")) {
 
-                        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.charge_pleasefillamount), Snackbar.LENGTH_LONG);
                         checkNotNull(getContext());
-                        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-                        snackbar.show();
+                        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_pleasefillamount), getContext());
 
                     } else {
                         Wallet wallet = mSpinnerAdapter.getItem(mSpinner.getSelectedItemPosition());

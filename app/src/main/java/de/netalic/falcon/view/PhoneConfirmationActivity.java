@@ -1,20 +1,16 @@
 package de.netalic.falcon.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PhoneConfirmationActivity extends BaseActivity {
 
@@ -24,26 +20,24 @@ public class PhoneConfirmationActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        if (getIntent().getExtras() == null) {
+            throw new RuntimeException("User should not be null");
+        }
         User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
-
-        Toolbar toolbar = findViewById(R.id.toolbar_phoneconfirmation);
-        setSupportActionBar(toolbar);
 
         ActionBar mActionBar = getSupportActionBar();
 
         if (mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);
             mActionBar.setDisplayShowHomeEnabled(true);
-            mActionBar.setTitle(getString(R.string.phoneconfirmation_toolbartitle));
         }
 
         PhoneConfirmationFragment phoneConfirmationFragment = (PhoneConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_phoneconfirmation_fragmentcontainer);
+
         if (phoneConfirmationFragment == null) {
             phoneConfirmationFragment = PhoneConfirmationFragment.newInstance(user);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), phoneConfirmationFragment, R.id.framelayout_phoneconfirmation_fragmentcontainer);
         }
-
         new PhoneConfirmationPresenter(phoneConfirmationFragment);
     }
 
@@ -56,7 +50,7 @@ public class PhoneConfirmationActivity extends BaseActivity {
     @Override
     protected String getActionbarTitle() {
 
-        return null;
+        return getString(R.string.phoneconfirmation_toolbartitle);
     }
 
     @Override
@@ -71,11 +65,5 @@ public class PhoneConfirmationActivity extends BaseActivity {
             }
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

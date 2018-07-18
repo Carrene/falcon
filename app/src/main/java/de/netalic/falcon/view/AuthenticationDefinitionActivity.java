@@ -28,10 +28,9 @@ import nuesoft.helpdroid.device.DeviceUtil;
 import nuesoft.helpdroid.util.Converter;
 
 
-public class AuthenticationDefinitionActivity extends AppCompatActivity implements AuthenticationDefinitionContract.View, AuthenticationDefinitionPasswordFragment.NavigateToDashboardCallback
+public class AuthenticationDefinitionActivity extends BaseActivity implements AuthenticationDefinitionContract.View, AuthenticationDefinitionPasswordFragment.NavigateToDashboardCallback
         , AuthenticationDefinitionPatternFragment.NavigateToDashboardCallback {
 
-    private ActionBar mActionBar;
     private SegmentedGroup mSegmentedGroup;
     private AuthenticationDefinitionPasswordFragment mAuthenticationDefinitionPasswordFragment;
     private AuthenticationDefinitionPatternFragment mAuthenticationDefinitionPatternFragment;
@@ -40,19 +39,9 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authenticationdefinition);
 
         initUiComponents();
         initListeners();
-
-        Toolbar toolbar = findViewById(R.id.toolbar_authenticationdefinition);
-        setSupportActionBar(toolbar);
-
-        mActionBar = getSupportActionBar();
-
-        if (mActionBar != null) {
-            mActionBar.setTitle(getString(R.string.authenticationdefinition_toolbartitle));
-        }
 
         if (mAuthenticationDefinitionPasswordFragment == null) {
             mAuthenticationDefinitionPasswordFragment = new AuthenticationDefinitionPasswordFragment();
@@ -63,6 +52,18 @@ public class AuthenticationDefinitionActivity extends AppCompatActivity implemen
         }
 
         changeAuthenticationDefinitionFragment(mAuthenticationDefinitionPasswordFragment);
+    }
+
+    @Override
+    protected int getLayoutId() {
+
+        return R.layout.activity_authenticationdefinition;
+    }
+
+    @Override
+    protected String getActionbarTitle() {
+
+        return getString(R.string.authenticationdefinition_toolbartitle);
     }
 
     private void initUiComponents() {

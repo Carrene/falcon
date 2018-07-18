@@ -27,6 +27,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RegistrationContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
+import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -99,16 +100,13 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
                 }
 
-                if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
+               else if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
 
-                    showErrorDescription(getContext().getString(R.string.registration_pleasefillyournumber));
+                    checkNotNull(getContext());
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.registration_pleasefillyournumber), getContext());
                 } else {
 
-
-
                         claim();
-
-
                 }
             }
         }
@@ -192,18 +190,8 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public void showErrorInvalidUdidOrPhone() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.phoneconfirmation_invalidudidorphone), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.phoneconfirmation_invalidudidorphone), getContext());
     }
 
-    public void showErrorDescription(String error) {
-
-        Snackbar snackbar = Snackbar.make(mRoot, error, Snackbar.LENGTH_LONG);
-        checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
-
-    }
 }

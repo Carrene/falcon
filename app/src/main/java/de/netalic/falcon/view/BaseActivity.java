@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.network.CheckInternetConnectivity;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity implements CheckInternetConnectivity.NetworkStateChangeListener {
 
@@ -27,12 +29,11 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
 
         checkInternetConnectivity = new CheckInternetConnectivity(this);
         this.registerReceiver(checkInternetConnectivity, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
-
     }
 
     public void setupToolbar() {
 
-        mToolbar = findViewById(R.id.toolbar_registration);
+        mToolbar = findViewById(R.id.toolbar);
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
         }
@@ -59,12 +60,21 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
     @Override
     public void networkAvailable() {
 
-        getSupportActionBar().setTitle(getActionbarTitle());
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getActionbarTitle());
+        }
     }
 
     @Override
     public void networkUnavailable() {
 
-        getSupportActionBar().setTitle("Connection error");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Connection error...");
+        }
+    }
+
+    protected void attachBaseContext(Context newBase) {
+
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

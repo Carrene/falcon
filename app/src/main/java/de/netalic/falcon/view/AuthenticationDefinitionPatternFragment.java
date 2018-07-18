@@ -17,6 +17,7 @@ import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -96,17 +97,13 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
                     mFirstAttemptPattern = pattern.toString();
 
                     if (pattern.size() < 4) {
-                        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_connectfordots), Snackbar.LENGTH_LONG);
                         checkNotNull(getContext());
-                        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-                        snackbar.show();
+                        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_connectfordots), getContext());
                     } else {
                         mAttemptTimeNumber++;
 
-                        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_tryforsecondtime), Snackbar.LENGTH_LONG);
                         checkNotNull(getContext());
-                        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-                        snackbar.show();
+                        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_tryforsecondtime), getContext());
 
                     }
                     mPatternLockView.clearPattern();
@@ -117,13 +114,12 @@ public class AuthenticationDefinitionPatternFragment extends Fragment {
                 if (!isPatternSame) {
                     mPatternLockView.clearPattern();
                     mAttemptTimeNumber = 0;
-                    Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_nomatch), Snackbar.LENGTH_LONG).show();
+                    checkNotNull(getContext());
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_notmatch), getContext());
                     return;
                 } else {
-                    Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), Snackbar.LENGTH_LONG);
                     checkNotNull(getContext());
-                    snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-                    snackbar.show();
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), getContext());
 
                     String credentialValue = mPatternLockView.getPattern().toString();
                     mPatternLockView.clearPattern();

@@ -10,11 +10,11 @@
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_registration"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            android:theme="@style/Toolbar" />
+            android:theme="@style/Toolbar"/>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -25,7 +25,7 @@
         <FrameLayout
             android:id="@+id/framelayout_registration_fragmentcontainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

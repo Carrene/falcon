@@ -25,6 +25,7 @@ import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.DashboardContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -98,19 +99,15 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void showErrorInvalidCurrency() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.dashboard_invalidcurrency), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.dashboard_invalidcurrency), getContext());
     }
 
     @Override
     public void showErrorRatesDoesNotExists() {
 
-        Snackbar snackbar = Snackbar.make(mRoot, getContext().getString(R.string.dashboard_ratedosenotexists), Snackbar.LENGTH_LONG);
         checkNotNull(getContext());
-        snackbar.getView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-        snackbar.show();
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.dashboard_ratedosenotexists), getContext());
     }
 
     @Override
@@ -143,7 +140,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void getRate() {
 
-//        mPresenter.exchangeRate(mRate);
+        mPresenter.exchangeRate(mRate);
 
     }
 
