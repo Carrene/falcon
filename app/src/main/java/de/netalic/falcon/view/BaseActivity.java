@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.network.CheckInternetConnectivity;
+import de.netalic.falcon.util.MaterialDialogUtil;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity implements CheckInternetConnectivity.NetworkStateChangeListener {
@@ -46,11 +47,18 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
     }
 
     @Override
+    protected void onPause() {
+
+        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+        super.onPause();
+    }
+
+    @Override
     protected void onDestroy() {
 
+        super.onDestroy();
         this.checkInternetConnectivity.removeListener();
         this.unregisterReceiver(checkInternetConnectivity);
-        super.onDestroy();
     }
 
     protected abstract int getLayoutId();

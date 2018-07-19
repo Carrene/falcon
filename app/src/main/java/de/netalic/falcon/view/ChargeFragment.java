@@ -100,13 +100,13 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     public void showProgressBar() {
 
         checkNotNull(getContext());
-        MaterialDialogUtil.showMaterialDialog(getContext());
+        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.dismissMaterialDialog();
+        MaterialDialogUtil.getInstance().dismissMaterialDialog();
     }
 
     @Override

@@ -9,11 +9,24 @@ import de.netalic.falcon.R;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public final class MaterialDialogUtil {
+public class MaterialDialogUtil {
 
-    private static MaterialDialog sMaterialDialog;
+    private MaterialDialog sMaterialDialog;
+    private static MaterialDialogUtil sMaterialDialogUtil;
 
-    public static void showMaterialDialog(@NonNull Context context) {
+    public static MaterialDialogUtil getInstance() {
+
+        if (sMaterialDialogUtil == null) {
+            sMaterialDialogUtil = new MaterialDialogUtil();
+        }
+        return sMaterialDialogUtil;
+    }
+
+    private MaterialDialogUtil() {
+
+    }
+
+    public void showMaterialDialog(@NonNull Context context) {
 
         checkNotNull(context);
         MaterialDialog.Builder mMaterialDialogBuilder = new MaterialDialog.Builder(context)
@@ -24,16 +37,15 @@ public final class MaterialDialogUtil {
                 .cancelable(false);
 
 
-
         sMaterialDialog = mMaterialDialogBuilder.build();
         sMaterialDialog.show();
 
         sMaterialDialog.getBuilder().onNegative((dialog, which) -> sMaterialDialog.dismiss());
     }
 
-    public static void dismissMaterialDialog() {
+    public void dismissMaterialDialog() {
 
-        checkNotNull(sMaterialDialog);
-        sMaterialDialog.dismiss();
+        if (sMaterialDialog != null)
+            sMaterialDialog.dismiss();
     }
 }

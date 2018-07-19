@@ -118,6 +118,7 @@ dependencies {
     implementation 'info.hoang8f:android-segmented:1.0.6'
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
 }

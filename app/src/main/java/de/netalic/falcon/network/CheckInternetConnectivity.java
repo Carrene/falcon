@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.util.Log;
 
+import de.netalic.falcon.MyApp;
 import nuesoft.helpdroid.device.DeviceUtil;
 
 public class CheckInternetConnectivity extends BroadcastReceiver {
@@ -22,15 +23,11 @@ public class CheckInternetConnectivity extends BroadcastReceiver {
 
         if (intent == null || intent.getExtras() == null)
             return;
-        if (DeviceUtil.isConnectedToInternet(context)) {
+        if (DeviceUtil.isConnectedToInternet(context.getApplicationContext())) {
             mNetworkStateChangeListener.networkAvailable();
-            Log.d("connected", "connected");
         } else {
             mNetworkStateChangeListener.networkUnavailable();
-            Log.d("connected", "disconnected");
-
         }
-
     }
 
     public void removeListener() {

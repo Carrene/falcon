@@ -176,14 +176,14 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public void showProgressBar() {
 
         checkNotNull(getContext());
-        MaterialDialogUtil.showMaterialDialog(getContext());
+        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
 
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.dismissMaterialDialog();
+        MaterialDialogUtil.getInstance().dismissMaterialDialog();
 
     }
 
