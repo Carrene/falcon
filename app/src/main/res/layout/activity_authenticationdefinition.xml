@@ -32,7 +32,7 @@
             android:layout_marginTop="@dimen/margintop_authenticationdefinition_selecttheapploginmethod"
             android:gravity="center"
             android:text="@string/authenticationdefinitin_selectappsloginmethod"
-            android:textColor="@color/mariner"
+            android:textColor="@color/black"
             android:textSize="@dimen/textsize_authenticationdefinition_selecttheapploginmethod"
             android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                 style="@style/RadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/authenticationdefinition_pattern" />
+                android:text="@string/authenticationdefinition_pattern"/>
 
         </info.hoang8f.android.segmented.SegmentedGroup>
 

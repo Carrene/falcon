@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@color/tundora">
+        android:background="@color/colorPrimary">
 
         <Spinner
             android:id="@+id/spinner_dashboard_spinner"
@@ -33,7 +33,7 @@
             android:layout_marginTop="@dimen/margintop_Dashboard_myblance"
             android:text="@string/dashboard_myblance"
             android:textAlignment="center"
-            android:textColor="@color/lightningYellow"
+            android:textColor="@color/colorSecondary"
             android:textSize="@dimen/textsize_dashboard_myblance" />
 
         <RelativeLayout
@@ -74,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/layoutheight_dashboard_linearlayoutmiddletextview"
         android:layout_below="@+id/relativelayout_dashboard_firstpart"
-        android:background="@color/lightningYellow"
+        android:background="@color/colorSecondary"
         android:orientation="horizontal">
 
         <TextView

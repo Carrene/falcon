@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_dashboard_navigationheader"
-    android:background="@color/tundora"
+    android:background="@color/colorPrimary"
     >
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -36,7 +36,7 @@
         android:layout_marginStart="@dimen/marginstart_dashboard_emailinnavigation"
         android:layout_marginTop="@dimen/margintop_dashboard_emailinnavigation"
         android:gravity="center"
-        android:textColor="@color/lightningYellow"
+        android:textColor="@color/colorSecondary"
         android:textSize="@dimen/textsize_dashboard_emialinnavigation"/>
 
 </RelativeLayout>

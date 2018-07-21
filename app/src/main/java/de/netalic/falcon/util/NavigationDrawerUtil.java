@@ -20,7 +20,7 @@ public class NavigationDrawerUtil {
 
     public static Drawer getDrawer(final Activity activity, Toolbar toolbar, int identifier) {
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.navigation_dashboard).withIcon(R.drawable.navigation_dashboard);
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.navigation_dashboard).withIcon(R.drawable.navigation_dashboard).withIconTintingEnabled(true).withSelectedIconColorRes(R.color.colorSecondary).withSelectedTextColorRes(R.color.colorSecondaryLight);
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.navigation_charge).withIcon(R.drawable.navigation_charge);
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_requesttoreceive).withIcon(R.drawable.navigation_requesttoreceive);
         PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_walletaddress).withIcon(R.drawable.navigation_wallet);
@@ -31,7 +31,7 @@ public class NavigationDrawerUtil {
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(activity)
-                .withHeaderBackground(R.color.black).withSelectionListEnabledForSingleProfile(false)
+                .withHeaderBackground(R.color.primary).withSelectionListEnabledForSingleProfile(false)
                 .addProfiles(
                         new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(R.drawable.navigation_charge))
                 .build();
