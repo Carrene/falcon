@@ -22,7 +22,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/edittext_charge_amount"
+            android:id="@+id/edittext_charge_amountwallet"
             android:layout_width="@dimen/layoutwidth_charge_edittextdolaramount"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/marginend_charge_edittextamount"
@@ -36,7 +36,7 @@
             android:src="@drawable/charge_transfer"/>
 
         <EditText
-            android:id="@+id/edittext_charge_dollar"
+            android:id="@+id/edittext_charge_amountbase"
             android:layout_width="@dimen/layoutwidth_charge_edittextdolaramount"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginstart_charge_edittextdollar"

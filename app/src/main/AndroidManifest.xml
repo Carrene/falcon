@@ -45,10 +45,15 @@
         <activity android:name=".view.SplashActivity"/>
         <activity
             android:name=".view.DashboardActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".view.ChargeActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:parentActivityName=".view.DashboardActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.DashboardActivity"/>
+        </activity>
     </application>
 
 </manifest>

@@ -39,7 +39,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
                     case 200: {
 
 
-                        mDashboardView.updateExchangeRateCurrency(deal.getModel().getSell());
+                        mDashboardView.updateExchangeRateCurrency(deal.getModel());
                         break;
                     }
                     case 709: {

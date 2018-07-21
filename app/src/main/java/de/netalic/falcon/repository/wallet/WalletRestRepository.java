@@ -7,6 +7,7 @@ import java.util.List;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
+import de.netalic.falcon.repository.IRepository;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,4 +61,24 @@ public class WalletRestRepository implements IWalletRepository {
             }
         });
     }
+
+    @Override
+    public void finalize(double amount, String braintreeNonce, String chargeDataToken, CallRepository<JsonObject> callRepository) {
+
+        ApiClient.getService().finalize(amount, braintreeNonce, chargeDataToken).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+
+                callRepository.onDone(new Deal<>(response.body(), response, null));
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                callRepository.onDone(new Deal<>(null, null, t));
+
+            }
+        });
+    }
+
 }

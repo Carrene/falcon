@@ -37,6 +37,10 @@ public class Rate {
         return mSell;
     }
 
+    public String getBuy() {
+
+        return mBuy;
+    }
 }
 
 

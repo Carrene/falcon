@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -42,10 +43,11 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     private Spinner mSpinner;
     public static final String ARGUMENT_USER = "USER";
     private Button mPaymentButton;
-    private EditText mAmountEditText;
+    private EditText mEditTextAmountWallet;
+    private EditText mEditTextAmountBase;
     private SpinnerAdapter mSpinnerAdapter;
-    private User mUser;
     private static final int DROP_IN_REQUEST = 1;
+    private String mChargeDataToken;
 
 
     @Nullable
@@ -53,7 +55,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_charge, null);
-        mUser = getArguments().getParcelable(ARGUMENT_USER);
         return mRoot;
     }
 
@@ -73,12 +74,9 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         mChargePresenter = checkNotNull(presenter);
     }
 
-    public static ChargeFragment newInstance(User user) {
+    public static ChargeFragment newInstance() {
 
         ChargeFragment fragment = new ChargeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(ARGUMENT_USER, user);
-        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -86,8 +84,8 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         mSpinner = mRoot.findViewById(R.id.spinner_charge_customspinner);
         mPaymentButton = mRoot.findViewById(R.id.button_charge_payment);
-        mAmountEditText = mRoot.findViewById(R.id.edittext_charge_amount);
-
+        mEditTextAmountWallet = mRoot.findViewById(R.id.edittext_charge_amountwallet);
+        mEditTextAmountBase = mRoot.findViewById(R.id.edittext_charge_amountbase);
     }
 
     public void setWalletToSpinner(List<Wallet> wallets) {
@@ -119,7 +117,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     public void setToken(JsonObject token) {
 
         String braintreeToken = token.get("braintreeToken").getAsString();
-        String chargeDataToken = token.get("chargeDataToken").getAsString();
+        mChargeDataToken = token.get("chargeDataToken").getAsString();
 
         DropInRequest dropInRequest = new DropInRequest()
                 .clientToken(braintreeToken);
@@ -167,17 +165,51 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
     public void initListener() {
 
+        mEditTextAmountBase.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        mEditTextAmountWallet.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         mPaymentButton.setOnClickListener(v -> {
 
                     Keyboard.hideKeyboard(mRoot);
-                    if (mAmountEditText.getText().toString().equals("")) {
+                    if (mEditTextAmountWallet.getText().toString().equals("")) {
 
                         checkNotNull(getContext());
                         SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_pleasefillamount), getContext());
 
                     } else {
                         Wallet wallet = mSpinnerAdapter.getItem(mSpinner.getSelectedItemPosition());
-                        mChargePresenter.charge(wallet.getId(), Double.parseDouble(mAmountEditText.getText().toString()));
+                        mChargePresenter.charge(wallet.getId(), Double.parseDouble(mEditTextAmountWallet.getText().toString()));
                     }
                 }
         );
@@ -193,8 +225,10 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
             if (resultCode == Activity.RESULT_OK) {
 
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
-                String paymentMethodNonce = result.getPaymentMethodNonce().getNonce();
+                String braintreeNonce = result.getPaymentMethodNonce().getNonce();
+                mChargePresenter.finalize(10, braintreeNonce, mChargeDataToken);
                 // send paymentMethodNonce to your server
+                //TODO: finalize
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 //TODO: Payment is cancelled
                 // canceled
@@ -203,5 +237,11 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -12,7 +12,7 @@ public interface DashboardContract {
 
         void showErrorInvalidCurrency();
         void showErrorRatesDoesNotExists();
-        void updateExchangeRateCurrency(String rate);
+        void updateExchangeRateCurrency(Rate rate);
         void showProgressBar();
         void dismissProgressBar();
         void setListWallet(List<Wallet>walletList);

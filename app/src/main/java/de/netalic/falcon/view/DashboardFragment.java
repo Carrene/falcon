@@ -34,8 +34,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
     private Spinner mSpinner;
-
-    private static final String ARGUMENT_USER = "USER";
     private TextView mRateTextView;
     private Currency mUsd;
     private Rate mRate;
@@ -61,7 +59,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         initUiComponents();
         getRate();
         getWalletList();
-        initListener();
     }
 
     public static DashboardFragment newInstance() {
@@ -111,9 +108,9 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     }
 
     @Override
-    public void updateExchangeRateCurrency(String rate) {
+    public void updateExchangeRateCurrency(Rate rate) {
 
-        mRateTextView.setText(String.valueOf(rate));
+        mRate = rate;
     }
 
     @Override
@@ -136,6 +133,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mWalletList = walletList;
         mSpinnerAdapter = new SpinnerAdapter(getContext(), mWalletList);
         mSpinner.setAdapter(mSpinnerAdapter);
+        initListener();
+
     }
 
     public void getRate() {
@@ -156,6 +155,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 mBalanceTextView.setText(String.valueOf(mWalletList.get(position).getBalance()));
+                mRateTextView.setText("" + mWalletList.get(position).getBalance() * Double.parseDouble(mRate.getSell()));
             }
 
             @Override

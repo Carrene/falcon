@@ -3,12 +3,8 @@ package de.netalic.falcon.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import com.braintreepayments.api.dropin.DropInActivity;
@@ -18,42 +14,21 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.DashboardPresenter;
 import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class DashboardActivity extends BaseActivity {
 
-    private DrawerLayout mDrawerLayout;
     private static final int DROP_IN_REQUEST = 1;
-    private static final String ARGUMENT_USER = "USER";
-    private User mUser;
-    private TextView mTextViewPhoneNumber;
-    private TextView mTextViewEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        NavigationView navigationView = findViewById(R.id.navigationview_dashboard);
-
-        View header = navigationView.getHeaderView(0);
-
-        mTextViewPhoneNumber = header.findViewById(R.id.textview_dashboard_phonenumbernavigationheader);
-        mTextViewEmail = header.findViewById(R.id.textview_dashboard_emailnavigationheader);
-
-        mDrawerLayout = findViewById(R.id.drawerlayout_dashboard);
-        mDrawerLayout.setStatusBarBackground(R.color.greenHaze);
-
         setPhoneNumber();
         setEmail();
 
-        ActionBarDrawerToggle aToggle = new ActionBarDrawerToggle(this, mDrawerLayout, getToolbar(), R.string.app_name, R.string.app_name);
-        mDrawerLayout.addDrawerListener(aToggle);
-        aToggle.syncState();
-
-
-        if (navigationView != null) {
-            setupDrawerContent(navigationView);
-        }
+        NavigationDrawerUtil.getDrawer(this, getToolbar(),1);
 
         DashboardFragment dashboardFragment = (DashboardFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_dashboard_fragmentcontainer);
         if (dashboardFragment == null) {
@@ -74,61 +49,7 @@ public class DashboardActivity extends BaseActivity {
     @Override
     protected String getActionbarTitle() {
 
-        return getString(R.string.dashboard_dashboard);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void setupDrawerContent(NavigationView navigationView) {
-
-
-        navigationView.setNavigationItemSelectedListener(
-
-                menuItem -> {
-                    switch (menuItem.getItemId()) {
-                        case R.id.item_dashboard_dashboardnavigation:
-
-                            break;
-                        case R.id.item_dashboard_chargenavigation:
-
-                            Intent intent = new Intent(this, ChargeActivity.class);
-                            intent.putExtra(ARGUMENT_USER, mUser);
-                            startActivity(intent);
-
-                            break;
-                        case R.id.item_dashboard_requesttoreceivenavigation:
-
-                            break;
-                        case R.id.item_dashboard_walletaddressnavigation:
-
-                            break;
-                        case R.id.item_dashboard_transactionhistorynavigation:
-
-                            break;
-                        case R.id.item_dashboard_chartnavigation:
-
-                            break;
-                        case R.id.item_dashboard_settingnavigation:
-
-                            break;
-                        case R.id.item_dashboard_helpnaigation:
-
-                            break;
-
-                        default:
-                            break;
-                    }
-                    return true;
-                });
+        return getString(R.string.navigation_dashboard);
     }
 
     @Override

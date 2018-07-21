@@ -1,11 +1,14 @@
 package de.netalic.falcon.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.network.CheckInternetConnectivity;
@@ -85,4 +88,26 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
 
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home: {
+                Intent intent = NavUtils.getParentActivityIntent(this);
+                NavUtils.navigateUpTo(this, intent);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+//    @Override
+//    public void onBackPressed() {
+//
+//        super.onBackPressed();
+//        Intent intent = NavUtils.getParentActivityIntent(this);
+//        NavUtils.navigateUpTo(this, intent);
+//    }
 }

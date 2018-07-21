@@ -1,11 +1,17 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
+
+import com.mikepenz.materialdrawer.Drawer;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.ChargePresenter;
 import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class ChargeActivity extends BaseActivity {
 
@@ -16,15 +22,16 @@ public class ChargeActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        if (getIntent().getExtras() == null) {
-            throw new RuntimeException("User should not be null!");
-        }
+//        if (getIntent().getExtras() == null) {
+//            throw new RuntimeException("User should not be null!");
+//        }
 
-        User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
+        Drawer result = NavigationDrawerUtil.getDrawer(this, getToolbar(),2);
+//        User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
         ChargeFragment chargeFragment = (ChargeFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_charge_fragmentcontainer);
         if (chargeFragment == null) {
-            chargeFragment = ChargeFragment.newInstance(user);
+            chargeFragment = ChargeFragment.newInstance();
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), chargeFragment, R.id.framelayout_charge_fragmentcontainer);
         }
         new ChargePresenter(chargeFragment);
@@ -40,5 +47,13 @@ public class ChargeActivity extends BaseActivity {
     protected String getActionbarTitle() {
 
         return getString(R.string.charge_toolbartitle);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+        Intent intent = NavUtils.getParentActivityIntent(this);
+        NavUtils.navigateUpTo(this, intent);
     }
 }

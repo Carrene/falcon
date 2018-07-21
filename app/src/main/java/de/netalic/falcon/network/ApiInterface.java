@@ -30,8 +30,7 @@ public interface ApiInterface {
     Call<User> setEmail(@Field("email") String email);
 
     @GET("rates/{currency}")
-    Call<Rate>exchangeRate(@Path("currency") String currency);
-
+    Call<Rate> exchangeRate(@Path("currency") String currency);
 
     @HTTP(method = "LIST", path = "wallets")
     Call<List<Wallet>> walletList();
@@ -40,4 +39,7 @@ public interface ApiInterface {
     @HTTP(method = "CHARGE", path = "wallets/{id}/braintree", hasBody = true)
     Call<JsonObject> charge(@Path("id") int id, @Field("amount") double amount);
 
+    @FormUrlEncoded
+    @HTTP(method = "FINALIZE", path = "braintree/sessions", hasBody = true)
+    Call<JsonObject> finalize(@Field("amount") double amount, @Field("braintreeNonce") String braintreeNonce, @Field("chargeDataToken") String chargeDataToken);
 }
