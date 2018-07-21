@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Porcelain">
+    android:background="@color/porcelain">
 
     <TextView
         android:id="@+id/textview_recoveryemail_enterrecoveryemail"
@@ -46,7 +46,7 @@
         android:layout_marginTop="@dimen/margintop_recoveryemail_skip"
         android:text="@string/recoveryemail_skip"
         android:textAlignment="center"
-        android:textColor="@color/Emerald"
+        android:textColor="@color/mariner"
         android:textSize="@dimen/textsize_authenticationdefinition_enterpasscode" />
 
 </RelativeLayout>

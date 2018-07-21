@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Porcelain"
+    android:background="@color/porcelain"
     android:orientation="vertical">
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext"
         android:text="@string/phoneconfirmation_timer"
-        android:textColor="@color/Emerald"
+        android:textColor="@color/mariner"
         android:textSize="@dimen/textsize_phoneconfirmation_resendtext" />
 
     <TextView
@@ -56,7 +56,7 @@
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_changenumber"
         android:text="@string/phoneconfirmation_changenumber"
-        android:textColor="@color/Emerald"
+        android:textColor="@color/mariner"
         android:textSize="@dimen/textsize_phoneconfirmation_changenumber" />
 
 </RelativeLayout>

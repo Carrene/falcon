@@ -1,13 +1,11 @@
 package de.netalic.falcon.view;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.RegistrationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RegistrationActivity extends BaseActivity {
 

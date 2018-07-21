@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/greenHaze"
+        android:textColor="@color/lightningYellow"
         android:textSize="@dimen/textsize_dashboard_spinner"
         />
 </RelativeLayout>

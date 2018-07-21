@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,10 +37,10 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
     private ChargeContract.Presenter mChargePresenter;
     private View mRoot;
-    private Spinner mSpinner;
+    private Spinner mSpinnerWalletList;
     public static final String ARGUMENT_USER = "USER";
-    private Button mPaymentButton;
-    private EditText mAmountEditText;
+    private Button mButtonPayment;
+    private EditText mEditTextAmount;
     private SpinnerAdapter mSpinnerAdapter;
     private User mUser;
     private static final int DROP_IN_REQUEST = 1;
@@ -84,16 +82,16 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
     public void initUiComponent() {
 
-        mSpinner = mRoot.findViewById(R.id.spinner_charge_customspinner);
-        mPaymentButton = mRoot.findViewById(R.id.button_charge_payment);
-        mAmountEditText = mRoot.findViewById(R.id.edittext_charge_amount);
+        mSpinnerWalletList = mRoot.findViewById(R.id.spinner_charge_customspinner);
+        mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
+        mEditTextAmount = mRoot.findViewById(R.id.edittext_charge_amount);
 
     }
 
     public void setWalletToSpinner(List<Wallet> wallets) {
 
         mSpinnerAdapter = new SpinnerAdapter(getContext(), wallets);
-        mSpinner.setAdapter(mSpinnerAdapter);
+        mSpinnerWalletList.setAdapter(mSpinnerAdapter);
     }
 
     @Override
@@ -167,17 +165,17 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
     public void initListener() {
 
-        mPaymentButton.setOnClickListener(v -> {
+        mButtonPayment.setOnClickListener(v -> {
 
                     Keyboard.hideKeyboard(mRoot);
-                    if (mAmountEditText.getText().toString().equals("")) {
+                    if (mEditTextAmount.getText().toString().equals("")) {
 
                         checkNotNull(getContext());
                         SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_pleasefillamount), getContext());
 
                     } else {
-                        Wallet wallet = mSpinnerAdapter.getItem(mSpinner.getSelectedItemPosition());
-                        mChargePresenter.charge(wallet.getId(), Double.parseDouble(mAmountEditText.getText().toString()));
+                        Wallet wallet = mSpinnerAdapter.getItem(mSpinnerWalletList.getSelectedItemPosition());
+                        mChargePresenter.charge(wallet.getId(), Double.parseDouble(mEditTextAmount.getText().toString()));
                     }
                 }
         );

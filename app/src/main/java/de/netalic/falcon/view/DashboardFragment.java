@@ -3,9 +3,7 @@ package de.netalic.falcon.view;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,13 +31,12 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
-    private Spinner mSpinner;
-
+    private Spinner mSpinnerWalletList;
     private static final String ARGUMENT_USER = "USER";
-    private TextView mRateTextView;
+    private TextView mTextViewRate;
     private Currency mUsd;
     private Rate mRate;
-    private TextView mBalanceTextView;
+    private TextView mTextViewBalance;
     private List<Wallet> mWalletList;
     private SpinnerAdapter mSpinnerAdapter;
 
@@ -91,9 +88,9 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void initUiComponents() {
 
-        mRateTextView = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
-        mSpinner = mRoot.findViewById(R.id.spinner_dashboard_spinner);
-        mBalanceTextView = mRoot.findViewById(R.id.textview_dashboard_balance);
+        mTextViewRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
+        mSpinnerWalletList = mRoot.findViewById(R.id.spinner_dashboard_spinner);
+        mTextViewBalance = mRoot.findViewById(R.id.textview_dashboard_balance);
     }
 
     @Override
@@ -113,7 +110,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void updateExchangeRateCurrency(String rate) {
 
-        mRateTextView.setText(String.valueOf(rate));
+        mTextViewRate.setText(String.valueOf(rate));
     }
 
     @Override
@@ -135,7 +132,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mWalletList = walletList;
         mSpinnerAdapter = new SpinnerAdapter(getContext(), mWalletList);
-        mSpinner.setAdapter(mSpinnerAdapter);
+        mSpinnerWalletList.setAdapter(mSpinnerAdapter);
     }
 
     public void getRate() {
@@ -151,11 +148,11 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void initListener() {
 
-        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mSpinnerWalletList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mBalanceTextView.setText(String.valueOf(mWalletList.get(position).getBalance()));
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
             }
 
             @Override

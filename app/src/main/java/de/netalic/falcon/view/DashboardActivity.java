@@ -41,7 +41,6 @@ public class DashboardActivity extends BaseActivity {
         mTextViewEmail = header.findViewById(R.id.textview_dashboard_emailnavigationheader);
 
         mDrawerLayout = findViewById(R.id.drawerlayout_dashboard);
-        mDrawerLayout.setStatusBarBackground(R.color.greenHaze);
 
         setPhoneNumber();
         setEmail();

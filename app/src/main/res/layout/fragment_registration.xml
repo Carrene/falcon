@@ -3,7 +3,7 @@
     xmlns:mask="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Porcelain"
+    android:background="@color/porcelain"
     android:orientation="vertical">
 
     <android.support.design.widget.TextInputLayout

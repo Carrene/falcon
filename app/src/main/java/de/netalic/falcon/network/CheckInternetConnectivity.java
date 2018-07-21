@@ -3,7 +3,6 @@ package de.netalic.falcon.network;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.util.Log;
 
 import nuesoft.helpdroid.device.DeviceUtil;
