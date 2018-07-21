@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary"> #003D9A</color>
+    <color name="colorPrimary"> #000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="tealA100">#64ffda</color>
@@ -12,5 +12,7 @@
     <color name="mariner">#3366CC</color>
     <color name="dustyGray">#999999</color>
     <color name="greenHaze">#009A39</color>
+    <color name="lightningYellow">#FBC02D</color>
+    <color name="tundora">#424242</color>
 
 </resources>

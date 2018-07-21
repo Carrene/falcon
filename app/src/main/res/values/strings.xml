@@ -52,9 +52,7 @@
     <string name="splash_textbutton">SIGN IN</string>
 
     <string name="dashboard_myblance">My balance</string>
-    <string name="dashboard_amountalpha">3.000</string>
     <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
-    <string name="dahboard_rateequivalent">1.000</string>
     <string name="dashboard_purchase">Purchase</string>
     <string name="dashboard_withdraw">Withdraw</string>
     <string name="navigation_dashboard">Dashboard</string>
