@@ -4,11 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
-import org.junit.Assert;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -17,14 +12,10 @@ import java.security.NoSuchAlgorithmException;
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Authentication;
-import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.AuthenticationDefinitionContract;
-import de.netalic.falcon.repository.Deal;
-import de.netalic.falcon.repository.IRepository;
 import de.netalic.falcon.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
-import nuesoft.helpdroid.device.DeviceUtil;
 import nuesoft.helpdroid.util.Converter;
 
 

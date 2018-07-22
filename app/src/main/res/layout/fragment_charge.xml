@@ -54,7 +54,7 @@
         android:layout_marginEnd="@dimen/marginendstart_charge_nextbutton"
         android:layout_marginStart="@dimen/marginendstart_charge_nextbutton"
         android:layout_marginTop="@dimen/margintop_charge_nextbutton"
-        android:background="@color/greenHaze"
+        android:background="@color/lightningYellow"
         android:text="@string/charge_next"
         android:textColor="@color/white" />
 

@@ -16,7 +16,7 @@ import de.netalic.falcon.presenter.SplashContract;
 public class SplashFragment extends Fragment implements SplashContract.View {
 
     private View mRoot;
-    private Button mSignIn;
+    private Button mButtonSignIn;
 
     @Nullable
     @Override
@@ -47,12 +47,12 @@ public class SplashFragment extends Fragment implements SplashContract.View {
 
     private void initUiComponents() {
 
-        mSignIn = mRoot.findViewById(R.id.button_singin_singin);
+        mButtonSignIn = mRoot.findViewById(R.id.button_singin_singin);
     }
 
     public void initListener() {
 
-        mSignIn.setOnClickListener(v -> {
+        mButtonSignIn.setOnClickListener(v -> {
 
             Intent intent = new Intent(getActivity(), RegistrationActivity.class);
             startActivity(intent);

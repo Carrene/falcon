@@ -9,13 +9,10 @@
     <color name="colorSecondaryLight">#FFF263</color>
 
     <color name="colorAccent">#FF4081</color>
-    <color name="tealA100">#64ffda</color>
     <color name="black">#000000</color>
-    <color name="blue500">#2196f3</color>
-    <color name="indigo900">#1a237e</color>
-    <color name="Emerald">#33CC66</color>
-    <color name="Porcelain">#F4F5F6</color>
+    <color name="porcelain">#F4F5F6</color>
     <color name="mariner">#3366CC</color>
     <color name="dustyGray">#999999</color>
-    <color name="greenHaze">#009A39</color>
+    <color name="lightningYellow">#FBC02D</color>
+    <color name="tundora">#424242</color>
 </resources>

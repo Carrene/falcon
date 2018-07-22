@@ -22,7 +22,7 @@
         android:layout_below="@+id/imageview_singin_alphalogo"
         android:layout_marginTop="@dimen/margintop_signin_button"
         android:text="@string/splash_textbutton"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_centerHorizontal="true"
 
         />

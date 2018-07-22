@@ -27,7 +27,6 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.adapter.SpinnerAdapter;
-import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
@@ -40,9 +39,9 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
     private ChargeContract.Presenter mChargePresenter;
     private View mRoot;
-    private Spinner mSpinner;
+    private Spinner mSpinnerWalletList;
     public static final String ARGUMENT_USER = "USER";
-    private Button mPaymentButton;
+    private Button mButtonPayment;
     private EditText mEditTextAmountWallet;
     private EditText mEditTextAmountBase;
     private SpinnerAdapter mSpinnerAdapter;
@@ -82,16 +81,17 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
     public void initUiComponent() {
 
-        mSpinner = mRoot.findViewById(R.id.spinner_charge_customspinner);
-        mPaymentButton = mRoot.findViewById(R.id.button_charge_payment);
+        mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
         mEditTextAmountWallet = mRoot.findViewById(R.id.edittext_charge_amountwallet);
         mEditTextAmountBase = mRoot.findViewById(R.id.edittext_charge_amountbase);
+        mSpinnerWalletList = mRoot.findViewById(R.id.spinner_charge_customspinner);
+        mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
     }
 
     public void setWalletToSpinner(List<Wallet> wallets) {
 
         mSpinnerAdapter = new SpinnerAdapter(getContext(), wallets);
-        mSpinner.setAdapter(mSpinnerAdapter);
+        mSpinnerWalletList.setAdapter(mSpinnerAdapter);
     }
 
     @Override
@@ -199,7 +199,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
             }
         });
 
-        mPaymentButton.setOnClickListener(v -> {
+        mButtonPayment.setOnClickListener(v -> {
 
                     Keyboard.hideKeyboard(mRoot);
                     if (mEditTextAmountWallet.getText().toString().equals("")) {
@@ -208,7 +208,8 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
                         SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_pleasefillamount), getContext());
 
                     } else {
-                        Wallet wallet = mSpinnerAdapter.getItem(mSpinner.getSelectedItemPosition());
+
+                        Wallet wallet = mSpinnerAdapter.getItem(mSpinnerWalletList.getSelectedItemPosition());
                         mChargePresenter.charge(wallet.getId(), Double.parseDouble(mEditTextAmountWallet.getText().toString()));
                     }
                 }

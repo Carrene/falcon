@@ -2,7 +2,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@color/Porcelain">
+              android:background="@color/porcelain">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:id="@+id/relativelayout_authenticationdefinition_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Porcelain"
+        android:background="@color/porcelain"
         >
         <TextView
             android:id="@+id/textview_authenticationdefinition_selectappsloginmethod"
