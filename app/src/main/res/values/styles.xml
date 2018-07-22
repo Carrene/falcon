@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/mariner</item>
+        <item name="colorAccent">#38000000</item>
         <item name="colorControlNormal">@color/dustyGray</item>
     </style>
 
