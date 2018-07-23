@@ -16,8 +16,6 @@ public interface ChargeAmountContract {
 
         void dismissProgressBar();
 
-        void setListWallet(List<Wallet> walletList);
-
         void setToken(JsonObject token);
 
         void showErrorInvalidAmount();

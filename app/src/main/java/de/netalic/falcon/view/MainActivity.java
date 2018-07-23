@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            });
 //        }
-        Intent intent = new Intent(this, ChargeActivity.class);
+        Intent intent = new Intent(this, ChargeActivityAmount.class);
         startActivity(intent);
 //        intent.get().setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //        startActivity(intent.get());

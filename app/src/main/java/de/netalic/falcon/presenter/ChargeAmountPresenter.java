@@ -38,7 +38,7 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
 
                     case 200: {
 
-                        mChargeView.setListWallet(deal.getResponse().body());
+
                         break;
                     }
                 }
@@ -64,7 +64,7 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
 
                     case 200: {
 
-                        mChargeView.setToken(deal.getResponse().body());
+
                         break;
                     }
 

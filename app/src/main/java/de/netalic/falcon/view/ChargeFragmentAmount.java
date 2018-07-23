@@ -23,8 +23,6 @@ import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 import com.google.gson.JsonObject;
 
-import java.util.List;
-
 import de.netalic.falcon.R;
 import de.netalic.falcon.adapter.SpinnerAdapter;
 import de.netalic.falcon.model.Wallet;
@@ -88,11 +86,6 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
         mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
     }
 
-    public void setWalletToSpinner(List<Wallet> wallets) {
-
-        mSpinnerAdapter = new SpinnerAdapter(getContext(), wallets);
-        mSpinnerWalletList.setAdapter(mSpinnerAdapter);
-    }
 
     @Override
     public void showProgressBar() {
@@ -107,11 +100,6 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
         MaterialDialogUtil.getInstance().dismissMaterialDialog();
     }
 
-    @Override
-    public void setListWallet(List<Wallet> walletList) {
-
-        setWalletToSpinner(walletList);
-    }
 
     @Override
     public void setToken(JsonObject token) {
