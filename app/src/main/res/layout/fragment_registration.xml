@@ -44,7 +44,7 @@
             android:enabled="false"
             android:text="@string/registration_codehint"
             android:textAlignment="textStart"
-            android:textColor="@color/dustyGray" />
+            android:textColor="@color/black" />
     </android.support.design.widget.TextInputLayout>
 
     <br.com.sapereaude.maskedEditText.MaskedEditText xmlns:mask="http://schemas.android.com/apk/res-auto"

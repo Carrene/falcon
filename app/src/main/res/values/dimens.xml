@@ -23,7 +23,7 @@
     <dimen name="margintop_phoneconfirmation_confirmationcodehere">80dp</dimen>
     <dimen name="textsize_phoneconfirmation_resendtext">16sp</dimen>
     <dimen name="margintop_phoneconfirmation_changenumber">30dp</dimen>
-    <dimen name="textsize_phoneconfirmation_changenumber">13sp</dimen>
+    <dimen name="textsize_phoneconfirmation_changenumber">14sp</dimen>
     <dimen name="textsize_authenticationdefinition_header">20sp</dimen>
     <dimen name="margintop_authenticationdefinition_header">100dp</dimen>
     <dimen name="marginstart_authenticationdefinition_enterpasscode">40dp</dimen>
@@ -32,7 +32,7 @@
     <dimen name="marginend_authenticationdefinition_textinputlayout">30dp</dimen>
     <dimen name="marginstart_authenticationdefinition_textinputlayout">30dp</dimen>
     <dimen name="margintop_authenticationdefinition_confirmpassword">40dp</dimen>
-    <dimen name="pathwidth_authenticationdefinition_pattern">4dp</dimen>
+    <dimen name="pathwidth_authenticationdefinition_pattern">2dp</dimen>
     <dimen name="marginend_authentication_textinputlayout">30dp</dimen>
     <dimen name="marginstart_authentication_textinputlayout">30dp</dimen>
     <dimen name="margintop_authenticationdefinitionpasswordtab_entercode">20dp</dimen>
@@ -48,7 +48,7 @@
     <dimen name="margin_authenticationdefinition_container">10dp</dimen>
     <dimen name="margintop_recoveryemail_header">120dp</dimen>
     <dimen name="textsize_recoveryemail_header">16sp</dimen>
-    <dimen name="margintop_recoveryemail_textinputlayout">90dp</dimen>
+    <dimen name="margintop_recoveryemail_textinputlayout">155dp</dimen>
     <dimen name="margintop_recoveryemail_skip">30dp</dimen>
     <dimen name="marginstart_recoveryemail_textinputlayout">30dp</dimen>
     <dimen name="marginend_recoveryemail_textinputlayout">30dp</dimen>
@@ -63,12 +63,12 @@
     <dimen name="width_dashboard_dollaricon">20dp</dimen>
     <dimen name="height_dashboard_dollaricon">20dp</dimen>
     <dimen name="width_dashboard_spinner">240dp</dimen>
-    <dimen name="height_dashboard_spinner">35dp</dimen>
+    <dimen name="height_dashboard_spinner">40dp</dimen>
     <dimen name="margintop_dashboard_spinner">20dp</dimen>
     <dimen name="marginend_dashboard_spinner">98dp</dimen>
-    <dimen name="margintop_Dashboard_myblance">72dp</dimen>
-    <dimen name="textsize_dashboard_myblance">20sp</dimen>
-    <dimen name="textsize_dashboard_amountalpha">50sp</dimen>
+    <dimen name="margintop_Dashboard_myblance">82dp</dimen>
+    <dimen name="textsize_dashboard_myblance">30sp</dimen>
+    <dimen name="textsize_dashboard_amountalpha">55sp</dimen>
     <dimen name="height_dashboard_amountalpha">81dp</dimen>
     <dimen name="height_dashboard_border">2dp</dimen>
     <dimen name="layoutheight_dashboard_linearlayoutmiddletextview">47dp</dimen>
@@ -76,7 +76,7 @@
     <dimen name="marginstart_dashboard_equivalenttobasecurrency">30dp</dimen>
     <dimen name="textsize_dashboard_rateequivalent">13sp</dimen>
     <dimen name="widthheight_dashboard_withdrawimageview">135dp</dimen>
-    <dimen name="widthheight_dahboard_purchaseimageview">135dp</dimen>
+    <dimen name="widthheight_dahboard_purchaseimageview">140dp</dimen>
     <dimen name="marginstartend_dashboard_purchasewithdrawimageview">30dp</dimen>
     <dimen name="paddingtop_dashboard_bottomlinearlayout">50dp</dimen>
     <dimen name="marginbottom_dashboard_purcahsewithdrawtextview">59dp</dimen>
@@ -89,7 +89,7 @@
     <dimen name="paddingstart_dashboard_alphaicon">70dp</dimen>
     <dimen name="paddingbottom_dashboard_alphaicon">3dp</dimen>
     <dimen name="paddingtop_dashboard_alphaicon">20dp</dimen>
-    <dimen name="width_dashboard_currencydollar">24dp</dimen>
+    <dimen name="width_dashboard_currencydollar">20dp</dimen>
     <dimen name="marginend_dashboard_ratecurrency">36dp</dimen>
     <dimen name="paddingstart_dashboard_currenyicon">45dp</dimen>
     <dimen name="marginend_dashboard_withdrawimage">20dp</dimen>
@@ -98,7 +98,7 @@
     <dimen name="paddingstart_dashboard_linearlayoutbottomtextviews">20dp</dimen>
     <dimen name="paddingtop_dashboard_linearlayoutbottomtextviews">10dp</dimen>
     <dimen name="height_dashboard_linearlayoutbottomtextviews">0dp</dimen>
-    <dimen name="height_dashboard_imageviewcurrencydollar">18dp</dimen>
+    <dimen name="height_dashboard_imageviewcurrencydollar">16sp</dimen>
     <dimen name="paddingbottom_dashboard_linearlayoutalphasymbol">30dp</dimen>
     <dimen name="height_dashboard_navigationheader">203dp</dimen>
     <dimen name="height_dashboard_circleimageviewinnavigation">67dp</dimen>
@@ -132,7 +132,7 @@
     <dimen name="layoutwidth_charge_imagview">70dp</dimen>
     <dimen name="layoutheight_charge_imagview">45dp</dimen>
     <dimen name="padding_charge_imagview">4dp</dimen>
-    <dimen name="textsize_charge_textview">13sp</dimen>
+    <dimen name="textsize_charge_textview">19sp</dimen>
 
     <dimen name="layoutwidth_charge_spinnerr">240dp</dimen>
     <dimen name="layoutheight_charge_spinnerr">35dp</dimen>

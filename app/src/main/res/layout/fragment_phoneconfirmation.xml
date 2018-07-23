@@ -30,10 +30,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:gravity="center"
             android:hint="@string/phoneconfirmation_entertheverificationhere"
             android:inputType="number"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:maxLength="16"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -41,7 +42,7 @@
         android:id="@+id/textview_phoneconfirmation_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textinputlayout_phoneconfirmation_receivecode"
+        android:layout_alignEnd="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext"
         android:text="@string/phoneconfirmation_timer"
@@ -52,7 +53,7 @@
         android:id="@+id/textview_phoneconfirmation_changenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textinputlayout_phoneconfirmation_receivecode"
+        android:layout_alignStart="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_changenumber"
         android:text="@string/phoneconfirmation_changenumber"

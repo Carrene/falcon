@@ -13,7 +13,7 @@
         app:aspectRatioEnabled="true"
         app:dotCount="3"
         app:dotNormalSize="@dimen/dotnormalsize_authenticationdefinitionpatterntab_patternlockview"
-        app:normalStateColor="@color/mariner"
+        app:normalStateColor="@color/black"
         app:pathWidth="@dimen/pathwidth_authenticationdefinition_pattern" />
 
 
