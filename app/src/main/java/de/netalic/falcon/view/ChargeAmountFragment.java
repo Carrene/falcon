@@ -35,7 +35,7 @@ import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class ChargeFragmentAmount extends Fragment implements ChargeAmountContract.View {
+public class ChargeAmountFragment extends Fragment implements ChargeAmountContract.View {
 
     private ChargeAmountContract.Presenter mChargePresenter;
     private View mRoot;
@@ -73,9 +73,9 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
         mChargePresenter = checkNotNull(presenter);
     }
 
-    public static ChargeFragmentAmount newInstance() {
+    public static ChargeAmountFragment newInstance() {
 
-        ChargeFragmentAmount fragment = new ChargeFragmentAmount();
+        ChargeAmountFragment fragment = new ChargeAmountFragment();
         return fragment;
     }
 

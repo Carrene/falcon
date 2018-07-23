@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.presenter.ChargePresenter;
+import de.netalic.falcon.presenter.DashboardPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class ChargeActivity extends BaseActivity {
@@ -18,6 +20,8 @@ public class ChargeActivity extends BaseActivity {
             chargeFragment = ChargeFragment.newInstance();
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), chargeFragment, R.id.framelayout_charge_fragmentcontainer);
         }
+
+        new ChargePresenter(chargeFragment);
     }
 
     @Override

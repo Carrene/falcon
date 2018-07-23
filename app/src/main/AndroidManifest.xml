@@ -47,7 +47,7 @@
             android:name=".view.DashboardActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".view.ChargeActivityAmount"
+            android:name=".view.ChargeAmountActivity"
             android:parentActivityName=".view.DashboardActivity"
             android:windowSoftInputMode="adjustResize">
             <meta-data

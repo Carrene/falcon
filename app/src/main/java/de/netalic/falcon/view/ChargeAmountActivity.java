@@ -11,7 +11,7 @@ import de.netalic.falcon.presenter.ChargeAmountPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
-public class ChargeActivityAmount extends BaseActivity {
+public class ChargeAmountActivity extends BaseActivity {
 
     public static final String ARGUMENT_USER = "USER";
 
@@ -27,12 +27,12 @@ public class ChargeActivityAmount extends BaseActivity {
         Drawer result = NavigationDrawerUtil.getDrawer(this, getToolbar(),2);
 //        User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
-        ChargeFragmentAmount chargeFragmentAmount = (ChargeFragmentAmount) getSupportFragmentManager().findFragmentById(R.id.framelayout_charge_fragmentcontainer);
-        if (chargeFragmentAmount == null) {
-            chargeFragmentAmount = ChargeFragmentAmount.newInstance();
-            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), chargeFragmentAmount, R.id.framelayout_charge_fragmentcontainer);
+        ChargeAmountFragment chargeAmountFragment = (ChargeAmountFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_charge_fragmentcontainer);
+        if (chargeAmountFragment == null) {
+            chargeAmountFragment = ChargeAmountFragment.newInstance();
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), chargeAmountFragment, R.id.framelayout_charge_fragmentcontainer);
         }
-        new ChargeAmountPresenter(chargeFragmentAmount);
+        new ChargeAmountPresenter(chargeAmountFragment);
     }
 
     @Override

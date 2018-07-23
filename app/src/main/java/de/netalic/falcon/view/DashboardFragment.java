@@ -31,7 +31,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
-
     private Spinner mSpinnerWalletList;
     private static final String ARGUMENT_USER = "USER";
     private TextView mTextViewRate;

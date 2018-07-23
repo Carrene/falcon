@@ -19,6 +19,9 @@ public class Wallet {
     @SerializedName("spendableBalance")
     private double mSpendableBalance;
 
+    @SerializedName("name")
+    private String mName;
+
     public Wallet(int id, double balance, Currency currency, double spendableBalance) {
 
         this.mId = id;
@@ -44,6 +47,11 @@ public class Wallet {
     public double getBalance() {
 
         return mBalance;
+    }
+
+    public String getName() {
+
+        return mName;
     }
 
     public Currency getCurrency() {

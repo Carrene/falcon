@@ -8,6 +8,8 @@
     <color name="colorSecondaryDark">#FF9800</color>
     <color name="colorSecondaryLight">#FFF263</color>
 
+    <color name="colorBlack35">#60000000</color>
+
     <color name="dovegray">#6D6D6D</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000000</color>

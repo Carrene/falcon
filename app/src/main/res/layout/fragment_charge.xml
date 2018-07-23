@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
         android:id="@+id/button"
@@ -17,13 +18,13 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_above="@id/button"
-                  android:foregroundGravity="center"
+                  android:layout_alignParentTop="true"
                   android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Wallet:"/>
 
@@ -31,25 +32,33 @@
             android:id="@+id/recyclerViewWallets"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4">
+            android:layout_weight="0.4"/>
 
-        </android.support.v7.widget.RecyclerView>
+        <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
+            android:id="@+id/charge_wallet_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            app:dotColor="@color/colorBlack35"
+            app:supportRTL="true"
+            app:dotRadius="7dp"
+            app:selectedDotRadius="8.5dp"
+            app:selectedDotColor="@color/primary_dark"
+            android:layout_weight="0.1"
+            />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textview_charge_walletname"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Payment gateway:"/>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewWalletsa"
+            android:id="@+id/recyclerViewPaymentGateway"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.4">
-
-        </android.support.v7.widget.RecyclerView>
+            android:layout_weight="0.4"/>
 
 
     </LinearLayout>

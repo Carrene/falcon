@@ -12,19 +12,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.adapter.ChargePaymentGatewayRecyclerViewAdapter;
 import de.netalic.falcon.adapter.OffsetItemDecoration;
-import de.netalic.falcon.adapter.WalletRecyclerViewAdapter;
+import de.netalic.falcon.adapter.ChargeWalletRecyclerViewAdapter;
+import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.presenter.ChargeContract;
 
-public class ChargeFragment extends Fragment {
+import static com.google.common.base.Preconditions.checkNotNull;
+
+public class ChargeFragment extends Fragment implements ChargeContract.View {
 
     private View mRoot;
     private RecyclerView mRecyclerViewWallets;
-    private WalletRecyclerViewAdapter mWalletRecyclerViewAdapter;
-    View mLastSnappedView;
+    private RecyclerView mRecyclerViewPaymentGateway;
+
+    private ChargeWalletRecyclerViewAdapter mRecyclerViewAdapterChargeWallet;
+    private ChargePaymentGatewayRecyclerViewAdapter mRecyclerViewAdapterChargePaymentGateway;
+
+    private ChargeContract.Presenter mPresenter;
+    private SnapHelper mWalletSnapHelper;
+    private SnapHelper mPaymentGatewaySnapHelper;
 
 
     @Nullable
@@ -45,51 +58,103 @@ public class ChargeFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
         mRecyclerViewWallets = mRoot.findViewById(R.id.recyclerViewWallets);
-        List<String> list = new ArrayList<>();
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        list.add("4");
-        list.add("4");
-        list.add("4");
-        list.add("4");
-        list.add("4");
+        mRecyclerViewPaymentGateway = mRoot.findViewById(R.id.recyclerViewPaymentGateway);
 
-        mWalletRecyclerViewAdapter = new WalletRecyclerViewAdapter(list);
-        mRecyclerViewWallets.setAdapter(mWalletRecyclerViewAdapter);
+        mRecyclerViewAdapterChargeWallet = new ChargeWalletRecyclerViewAdapter(new ArrayList<>());
+        IndefinitePagerIndicator wallletIndicator = mRoot.findViewById(R.id.charge_wallet_indicator);
+        wallletIndicator.attachToRecyclerView(mRecyclerViewWallets);
+        mRecyclerViewAdapterChargePaymentGateway = new ChargePaymentGatewayRecyclerViewAdapter(new ArrayList<>());
+
+        mRecyclerViewWallets.setAdapter(mRecyclerViewAdapterChargeWallet);
         mRecyclerViewWallets.addItemDecoration(new OffsetItemDecoration(getContext()));
         mRecyclerViewWallets.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
-        SnapHelper snapHelper = new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(mRecyclerViewWallets);
+        mRecyclerViewPaymentGateway.setAdapter(mRecyclerViewAdapterChargePaymentGateway);
+        mRecyclerViewPaymentGateway.addItemDecoration(new OffsetItemDecoration(getContext()));
+        mRecyclerViewPaymentGateway.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
+        mWalletSnapHelper = new PagerSnapHelper();
+        mWalletSnapHelper.attachToRecyclerView(mRecyclerViewWallets);
+
+        mPaymentGatewaySnapHelper = new PagerSnapHelper();
+        mPaymentGatewaySnapHelper.attachToRecyclerView(mRecyclerViewPaymentGateway);
+
+        initListener();
+        getWalletList();
+    }
+
+    private void initListener() {
 
         mRecyclerViewWallets.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 
                 super.onScrollStateChanged(recyclerView, newState);
+
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    View view = snapHelper.findSnapView(recyclerView.getLayoutManager());
-                    view.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                    View centerView = snapHelper.findSnapView(recyclerView.getLayoutManager());
+
+                    View centerView = mPaymentGatewaySnapHelper.findSnapView(recyclerView.getLayoutManager());
                     int pos = recyclerView.getLayoutManager().getPosition(centerView);
-                    System.out.println(pos);
-                    mLastSnappedView = view;
-                } else if (mLastSnappedView != null) {
-
-                    mLastSnappedView.setBackgroundColor(getResources().getColor(android.R.color.white));
-                    mLastSnappedView = null;
-
+                    ((ChargeWalletRecyclerViewAdapter) mRecyclerViewWallets.getAdapter()).select(pos);
                 }
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
+            }
+        });
+
+        mRecyclerViewPaymentGateway.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+
+                    View centerView = mPaymentGatewaySnapHelper.findSnapView(recyclerView.getLayoutManager());
+                    int pos = recyclerView.getLayoutManager().getPosition(centerView);
+                    ((ChargePaymentGatewayRecyclerViewAdapter) mRecyclerViewPaymentGateway.getAdapter()).select(pos);
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
             }
         });
+
+
+    }
+
+    public void getWalletList() {
+
+        mPresenter.getWalletList();
+    }
+
+    @Override
+    public void setListWallet(List<Wallet> walletList) {
+
+        walletList.add(walletList.get(0));
+        walletList.add(walletList.get(0));
+        walletList.add(walletList.get(0));
+
+        mRecyclerViewAdapterChargeWallet.setDataSource(walletList);
+        //TODO:(Ehsan) get it as an array from resource
+        List<Integer> list = new ArrayList<>();
+        list.add(R.drawable.charge_braintree);
+        list.add(R.drawable.charge_braintree);
+        list.add(R.drawable.charge_braintree);
+
+        mRecyclerViewAdapterChargePaymentGateway.setDataSource(list);
+    }
+
+    @Override
+    public void setPresenter(ChargeContract.Presenter presenter) {
+
+        mPresenter = checkNotNull(presenter);
     }
 }
