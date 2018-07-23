@@ -12,7 +12,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.view.ChargeActivity;
+import de.netalic.falcon.view.ChargeActivityAmount;
 import de.netalic.falcon.view.DashboardActivity;
 
 
@@ -57,7 +57,7 @@ public class NavigationDrawerUtil {
                             }
 
                             case 2: {
-                                Intent intent = new Intent(activity, ChargeActivity.class);
+                                Intent intent = new Intent(activity, ChargeActivityAmount.class);
                                 activity.startActivity(intent);
                                 break;
                             }

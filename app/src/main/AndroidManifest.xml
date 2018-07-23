@@ -10,8 +10,8 @@
         android:name=".MyApp"
         android:allowBackup="false"
         android:icon="@drawable/icon_alpha"
-        android:roundIcon="@drawable/icon_alpha"
         android:label="@string/app_name"
+        android:roundIcon="@drawable/icon_alpha"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
@@ -47,13 +47,18 @@
             android:name=".view.DashboardActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".view.ChargeActivity"
+            android:name=".view.ChargeActivityAmount"
             android:parentActivityName=".view.DashboardActivity"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.DashboardActivity"/>
         </activity>
+
+        <activity android:name=".view.ChargeActivity">
+
+        </activity>
+
     </application>
 
 </manifest>

@@ -1,52 +1,30 @@
 package de.netalic.falcon.view;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 
-import com.braintreepayments.api.dropin.DropInActivity;
-import com.braintreepayments.api.dropin.DropInRequest;
-import com.braintreepayments.api.dropin.DropInResult;
-import com.google.gson.JsonObject;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.adapter.SpinnerAdapter;
-import de.netalic.falcon.model.Wallet;
-import de.netalic.falcon.presenter.ChargeContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
-import de.netalic.falcon.util.SnackbarUtil;
-import nuesoft.helpdroid.UI.Keyboard;
+import de.netalic.falcon.adapter.OffsetItemDecoration;
+import de.netalic.falcon.adapter.WalletRecyclerViewAdapter;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+public class ChargeFragment extends Fragment {
 
-public class ChargeFragment extends Fragment implements ChargeContract.View {
-
-    private ChargeContract.Presenter mChargePresenter;
     private View mRoot;
-    private Spinner mSpinnerWalletList;
-    public static final String ARGUMENT_USER = "USER";
-    private Button mButtonPayment;
-    private EditText mEditTextAmountWallet;
-    private EditText mEditTextAmountBase;
-    private SpinnerAdapter mSpinnerAdapter;
-    private static final int DROP_IN_REQUEST = 1;
-    private String mChargeDataToken;
+    private RecyclerView mRecyclerViewWallets;
+    private WalletRecyclerViewAdapter mWalletRecyclerViewAdapter;
+    View mLastSnappedView;
 
 
     @Nullable
@@ -57,192 +35,61 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         return mRoot;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-        super.onViewCreated(view, savedInstanceState);
-        initUiComponent();
-        getListWallet();
-        initListener();
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void setPresenter(ChargeContract.Presenter presenter) {
-
-        mChargePresenter = checkNotNull(presenter);
-    }
-
     public static ChargeFragment newInstance() {
 
-        ChargeFragment fragment = new ChargeFragment();
-        return fragment;
-    }
-
-    public void initUiComponent() {
-
-        mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
-        mEditTextAmountWallet = mRoot.findViewById(R.id.edittext_charge_amountwallet);
-        mEditTextAmountBase = mRoot.findViewById(R.id.edittext_charge_amountbase);
-        mSpinnerWalletList = mRoot.findViewById(R.id.spinner_charge_customspinner);
-        mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
-    }
-
-    public void setWalletToSpinner(List<Wallet> wallets) {
-
-        mSpinnerAdapter = new SpinnerAdapter(getContext(), wallets);
-        mSpinnerWalletList.setAdapter(mSpinnerAdapter);
+        return new ChargeFragment();
     }
 
     @Override
-    public void showProgressBar() {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-        checkNotNull(getContext());
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
-    }
+        super.onViewCreated(view, savedInstanceState);
+        mRecyclerViewWallets = mRoot.findViewById(R.id.recyclerViewWallets);
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+        list.add("4");
+        list.add("4");
+        list.add("4");
+        list.add("4");
+        list.add("4");
 
-    @Override
-    public void dismissProgressBar() {
+        mWalletRecyclerViewAdapter = new WalletRecyclerViewAdapter(list);
+        mRecyclerViewWallets.setAdapter(mWalletRecyclerViewAdapter);
+        mRecyclerViewWallets.addItemDecoration(new OffsetItemDecoration(getContext()));
+        mRecyclerViewWallets.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
-    }
+        SnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(mRecyclerViewWallets);
 
-    @Override
-    public void setListWallet(List<Wallet> walletList) {
 
-        setWalletToSpinner(walletList);
-    }
-
-    @Override
-    public void setToken(JsonObject token) {
-
-        String braintreeToken = token.get("braintreeToken").getAsString();
-        mChargeDataToken = token.get("chargeDataToken").getAsString();
-
-        DropInRequest dropInRequest = new DropInRequest()
-                .clientToken(braintreeToken);
-        startActivityForResult(dropInRequest.getIntent(getContext()), DROP_IN_REQUEST);
-    }
-
-    @Override
-    public void showErrorInvalidAmount() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_invalidamount), getContext());
-    }
-
-    @Override
-    public void showErrorInvalidWalletId() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_invalidwalletid), getContext());
-    }
-
-    @Override
-    public void showErrorAmountIsSmallerThanLowerBound() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_amountissmallerthanlowerbound), getContext());
-    }
-
-    @Override
-    public void showErrorAmountIsGreaterThanUpperBound() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_amountisgreaterthanupperbound), getContext());
-    }
-
-    public void getListWallet() {
-
-        mChargePresenter.getWalletList();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        inflater.inflate(R.menu.menu_charge_toolbar, menu);
-    }
-
-    public void initListener() {
-
-        mEditTextAmountBase.addTextChangedListener(new TextWatcher() {
+        mRecyclerViewWallets.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 
-            }
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    View view = snapHelper.findSnapView(recyclerView.getLayoutManager());
+                    view.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                    View centerView = snapHelper.findSnapView(recyclerView.getLayoutManager());
+                    int pos = recyclerView.getLayoutManager().getPosition(centerView);
+                    System.out.println(pos);
+                    mLastSnappedView = view;
+                } else if (mLastSnappedView != null) {
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    mLastSnappedView.setBackgroundColor(getResources().getColor(android.R.color.white));
+                    mLastSnappedView = null;
 
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        mEditTextAmountWallet.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        mButtonPayment.setOnClickListener(v -> {
-
-                    Keyboard.hideKeyboard(mRoot);
-                    if (mEditTextAmountWallet.getText().toString().equals("")) {
-
-                        checkNotNull(getContext());
-                        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_pleasefillamount), getContext());
-
-                    } else {
-
-                        Wallet wallet = mSpinnerAdapter.getItem(mSpinnerWalletList.getSelectedItemPosition());
-                        mChargePresenter.charge(wallet.getId(), Double.parseDouble(mEditTextAmountWallet.getText().toString()));
-                    }
                 }
-        );
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == DROP_IN_REQUEST) {
-            if (resultCode == Activity.RESULT_OK) {
-
-                DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
-                String braintreeNonce = result.getPaymentMethodNonce().getNonce();
-                mChargePresenter.finalize(10, braintreeNonce, mChargeDataToken);
-                // send paymentMethodNonce to your server
-                //TODO: finalize
-            } else if (resultCode == Activity.RESULT_CANCELED) {
-                //TODO: Payment is cancelled
-                // canceled
-            } else {
-                // an error occurred, checked the returned exception
-                Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
             }
-        }
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
-        return super.onOptionsItemSelected(item);
+
+            }
+        });
     }
 }
