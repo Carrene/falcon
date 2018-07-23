@@ -84,5 +84,9 @@
     <string name="charge_invalidwalletid">Invalid wallet id</string>
 
 
+    <string name="chargeamount_invalidcurrency">Invalid currency</string>
+    <string name="chargeamount_ratedosenotexists">Rate dose not exists</string>
+
+
 
 </resources>

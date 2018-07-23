@@ -25,6 +25,9 @@ import com.google.gson.JsonObject;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.adapter.SpinnerAdapter;
+import de.netalic.falcon.model.Currency;
+import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeAmountContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
@@ -45,6 +48,8 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
     private SpinnerAdapter mSpinnerAdapter;
     private static final int DROP_IN_REQUEST = 1;
     private String mChargeDataToken;
+    private Rate mRate;
+    private Currency mUsd;
 
 
     @Nullable
@@ -63,6 +68,9 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
         getListWallet();
         initListener();
         setHasOptionsMenu(true);
+        mUsd = new UsdCurrency();
+        mRate = new Rate(mUsd);
+        getRate();
     }
 
     @Override
@@ -138,6 +146,27 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
 
         checkNotNull(getContext());
         SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_amountisgreaterthanupperbound), getContext());
+    }
+
+    @Override
+    public void showErrorInvalidCurrency() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeamount_invalidcurrency), getContext());
+    }
+
+    @Override
+    public void showErrorRatesDoesNotExists() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeamount_ratedosenotexists), getContext());
+    }
+
+    @Override
+    public void updateExchangeRateCurrency(Rate rate) {
+
+        mRate = rate;
+
     }
 
     public void getListWallet() {
@@ -232,5 +261,10 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
     public boolean onOptionsItemSelected(MenuItem item) {
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void getRate(){
+
+        mChargePresenter.exchangeRate(mRate);
     }
 }
