@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_below="@+id/spinner_charge_customspinner"
-        android:layout_marginTop="@dimen/margintop_charge_linearlayout"
+        android:layout_marginTop="@dimen/margintop_chargeamount_linearlayout"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -17,8 +16,8 @@
             android:id="@+id/textview_chargeamount_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amount:"
-            android:textSize="16sp"
+            android:text="@string/chargeamount_amount"
+            android:textSize="@dimen/textsize_chargeamount_amount"
             android:textColor="@color/black" />
 
         <android.support.design.widget.TextInputLayout
@@ -31,18 +30,18 @@
             android:id="@+id/edittext_charge_amountwallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/charge_amount"
+            android:hint="@string/chargeamount_amounthint"
             android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:layout_marginStart="70dp"
-            android:layout_marginEnd="70dp"
+            android:layout_marginStart="@dimen/marginstartend_chargeamount_edittextamount"
+            android:layout_marginEnd="@dimen/marginstartend_chargeamount_edittextamount"
             android:textColor="@color/black" />
         </android.support.design.widget.TextInputLayout>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imageview_chargeamount_transfer"
+            android:layout_width="@dimen/width_chargeamount_transfer"
+            android:layout_height="@dimen/height_chargeamount_transfer"
             android:src="@drawable/charge_transfer"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="@dimen/margintop_chargeamount_transfer" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/texinputlayout_chargeamount_dollar"
@@ -52,12 +51,11 @@
             android:id="@+id/edittext_charge_amountbase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/charge_dollar"
+            android:hint="@string/chargeamount_dollar"
             android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:layout_marginStart="70dp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginTop="27dp"
+            android:layout_marginStart="@dimen/marginstartend_chargeamount_edittextdollar"
+            android:layout_marginEnd="@dimen/marginstartend_chargeamount_edittextdollar"
+            android:layout_marginTop="@dimen/margintop_chargeamount_amountbase"
             android:textColor="@color/black" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -68,11 +66,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="27dp"
+        android:layout_marginBottom="@dimen/marginbottom_chargeamount_nextpayment"
         android:background="@color/lightningYellow"
-        android:text="@string/charge_nextpayment"
+        android:text="@string/chargeamount_nextpayment"
         android:textColor="@color/black"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginStart="@dimen/marginstartend_chargeamount_nextpayment"
+        android:layout_marginEnd="@dimen/marginstartend_chargeamount_nextpayment" />
 
 </RelativeLayout>

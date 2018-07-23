@@ -143,9 +143,11 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
                     }
 
                 }
+                mChargeAmountView.dismissProgressBar();
 
             }
+
         });
-        mChargeAmountView.dismissProgressBar();
+
     }
 }

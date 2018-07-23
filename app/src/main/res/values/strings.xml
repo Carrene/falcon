@@ -72,9 +72,9 @@
     <string name="materialdialogutil_isloading">Is loading ...</string>
     <string name="materialdialogutil_pleasewait">Please wait</string>
 
-    <string name="charge_amount">Amount</string>
-    <string name="charge_dollar">USD</string>
-    <string name="charge_nextpayment">NEXT-PAYMENT</string>
+
+    <string name="chargeamount_dollar">USD</string>
+    <string name="chargeamount_nextpayment">NEXT-PAYMENT</string>
     <string name="charge_notification">Notification</string>
     <string name="charge_toolbartitle">Charge</string>
     <string name="charge_pleasefillamount">Please fill amount</string>
@@ -86,6 +86,8 @@
 
     <string name="chargeamount_invalidcurrency">Invalid currency</string>
     <string name="chargeamount_ratedosenotexists">Rate dose not exists</string>
+    <string name="chargeamount_amount">Amount:</string>
+    <string name="chargeamount_amounthint">Amount</string>
 
 
 

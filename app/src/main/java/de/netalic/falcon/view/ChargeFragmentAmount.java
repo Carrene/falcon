@@ -24,7 +24,6 @@ import com.braintreepayments.api.dropin.DropInResult;
 import com.google.gson.JsonObject;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.adapter.SpinnerAdapter;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.UsdCurrency;
@@ -45,7 +44,6 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
     private Button mButtonPayment;
     private EditText mEditTextAmountWallet;
     private EditText mEditTextAmountBase;
-    private SpinnerAdapter mSpinnerAdapter;
     private static final int DROP_IN_REQUEST = 1;
     private String mChargeDataToken;
     private Rate mRate;
@@ -65,7 +63,6 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
 
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
-        getListWallet();
         initListener();
         setHasOptionsMenu(true);
         mUsd = new UsdCurrency();
@@ -90,7 +87,6 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
         mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
         mEditTextAmountWallet = mRoot.findViewById(R.id.edittext_charge_amountwallet);
         mEditTextAmountBase = mRoot.findViewById(R.id.edittext_charge_amountbase);
-        mSpinnerWalletList = mRoot.findViewById(R.id.spinner_charge_customspinner);
         mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
     }
 
@@ -169,10 +165,6 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
 
     }
 
-    public void getListWallet() {
-
-        mChargePresenter.getWalletList();
-    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -181,6 +173,41 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
     }
 
     public void initListener() {
+
+
+        mEditTextAmountWallet.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                if (mEditTextAmountWallet.isFocused()) {
+                    if (s.toString().equals("")) {
+                        mEditTextAmountBase.setText("");
+
+                    } else {
+
+                        double amountEnter = Double.parseDouble(s.toString());
+                        double rate = Double.parseDouble(mRate.getBuy());
+                        double dollar = amountEnter * rate;
+
+                        mEditTextAmountBase.setText(String.valueOf(dollar));
+
+                    }
+                }
+            }
+        });
 
         mEditTextAmountBase.addTextChangedListener(new TextWatcher() {
             @Override
@@ -191,30 +218,31 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        mEditTextAmountWallet.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
+
+                if (mEditTextAmountBase.isFocused()) {
+                    if (s.toString().equals("")) {
+                        mEditTextAmountWallet.setText("");
+                    } else {
+
+
+                        double dollar = Double.parseDouble(s.toString());
+                        double rate = Double.parseDouble(mRate.getBuy());
+                        double alpha = dollar / rate;
+
+                        mEditTextAmountWallet.setText(String.valueOf(alpha));
+
+                    }
+                }
+
             }
         });
+
 
         mButtonPayment.setOnClickListener(v -> {
 
@@ -226,8 +254,7 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
 
                     } else {
 
-                        Wallet wallet = mSpinnerAdapter.getItem(mSpinnerWalletList.getSelectedItemPosition());
-                        mChargePresenter.charge(wallet.getId(), Double.parseDouble(mEditTextAmountWallet.getText().toString()));
+                        // mChargePresenter.charge(wallet.getId(), Double.parseDouble(mEditTextAmountWallet.getText().toString()));
                     }
                 }
         );
@@ -263,7 +290,7 @@ public class ChargeFragmentAmount extends Fragment implements ChargeAmountContra
         return super.onOptionsItemSelected(item);
     }
 
-    public void getRate(){
+    public void getRate() {
 
         mChargePresenter.exchangeRate(mRate);
     }
