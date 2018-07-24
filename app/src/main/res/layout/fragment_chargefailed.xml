@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="@dimen/width_chargecompleted_linearlayout"
+        android:layout_height="@dimen/height_chargecompleted_linearlayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margintop_chargecompleted_linearlayout"
+        android:background="@drawable/chargefailed_border"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageview_chargecompleted_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margintop_chargecompleted_successimageview"
+            android:src="@drawable/chargefailed_failed" />
+
+        <TextView
+            android:id="@+id/textview_chargecompleted_success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_chargeamount_successtextview"
+            android:gravity="center"
+            android:text="@string/chargecompleted_success"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_chargecompleted_successtextview" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_walletnamelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstart_chargecompleted_walletnamelable"
+                android:layout_marginTop="@dimen/margintop_chargecompleted_walletnamelable"
+                android:text="@string/chargecompleted_walletname"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_walletnamelable" />
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_walletname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margintop_chargecompleted_walletname"
+                android:layout_toRightOf="@+id/textview_chargecompleted_walletnamelable"
+                android:paddingStart="@dimen/paddingstart_chargecompleted_walletname"
+                android:text="milad"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_walletnamelable" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_amountalphalable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargecompleted_amount"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_walletnolable" />
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_amountalpha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargecompleted_amountalphalable"
+                android:paddingStart="@dimen/paddingstart_chargecompleted_walletno"
+                android:text="milad"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_walletnolable" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_amountdollarlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargecompleted_amount"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_amountdollar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargecompleted_amountdollarlable"
+                android:paddingStart="@dimen/paddingstart_chargecompleted_amountalpha"
+                android:text="milad"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_paymentgatewaylable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargecompleted_paymentgateway"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_paymentgatewaylable" />
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_paymentgateway"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargecompleted_paymentgatewaylable"
+                android:paddingStart="@dimen/paddingstart_chargecompleted_amountdollar"
+                android:text="milad"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_paymentgatewaylable" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_transactiondatelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargecompleted_transactiondate"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_transactiondate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargecompleted_transactiondatelable"
+                android:paddingStart="@dimen/paddingstart_chargecompleted_transactiondate"
+                android:text="milad"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_transactiondate" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_chargecompleted_dashborad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbuttom_chargecompleted_confirm"
+        android:layout_marginEnd="@dimen/marginstartend_chargecompleted_confirm"
+        android:layout_marginStart="@dimen/marginstartend_chargecompleted_confirm"
+        android:background="@color/colorSecondary"
+        android:text="@string/chargecompleted_dashboard"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textsize_chargecompleted_confirmbutton" />
+</RelativeLayout>

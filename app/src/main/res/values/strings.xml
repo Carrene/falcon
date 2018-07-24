@@ -89,6 +89,14 @@
     <string name="chargeamount_amount">Amount:</string>
     <string name="chargeamount_amounthint">Amount</string>
 
+    <string name="chargefailed_failed">Charge Failed</string>
+    <string name="chargecompleted_success">Failed</string>
+    <string name="chargecompleted_walletname">Wallet Name :</string>
+    <string name="chargecompleted_amount">Amount :</string>
+    <string name="chargecompleted_paymentgateway">Payment Gateway :</string>
+    <string name="chargecompleted_transactiondate">Transaction date :</string>
+    <string name="chargecompleted_dashboard">Dashboard</string>
+
 
 
 </resources>
