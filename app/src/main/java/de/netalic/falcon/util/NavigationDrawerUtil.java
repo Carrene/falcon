@@ -47,25 +47,24 @@ public class NavigationDrawerUtil {
                 ).withAccountHeader(headerResult)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if (position != identifier) {
+                        Intent intent = null;
                         switch (position) {
 
                             case 1: {
-                                Intent intent = new Intent(activity, DashboardActivity.class);
+                                intent = new Intent(activity, DashboardActivity.class);
+
                                 activity.startActivity(intent);
                                 break;
                             }
 
                             case 2: {
-                                Intent intent = new Intent(activity, ChargeActivity.class);
+                                intent = new Intent(activity, ChargeActivity.class);
                                 activity.startActivity(intent);
                                 break;
                             }
                         }
-                        return true;
-                    } else {
-                        return false;
                     }
-
+                    return false;
                 }).withOnDrawerNavigationListener(view -> {
 
                     activity.onBackPressed();

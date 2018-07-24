@@ -1,14 +1,16 @@
 package de.netalic.falcon.view;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.concurrent.atomic.AtomicReference;
+
+import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.presenter.SplashPresenter;
-import de.netalic.falcon.util.ActivityUtil;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import de.netalic.falcon.repository.authentication.AuthenticationRepository;
+import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -16,21 +18,25 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
 
-        SplashFragment splashFragment = (SplashFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_signin_fragmentcontainer);
-        if (splashFragment == null) {
-            splashFragment = SplashFragment.newInstance();
-            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), splashFragment, R.id.framelayout_signin_fragmentcontainer);
+        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+        AtomicReference<Intent> intent = new AtomicReference<>();
+
+        if (sharedPreferencesJwtPersistor.get() == null) {
+            intent.set(new Intent(this, RegistrationActivity.class));
+
+        } else {
+            AuthenticationRepository.getInstance().get(deal -> {
+                if (deal.getModel() == null) {
+                    intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
+                } else {
+                    intent.set(new Intent(this, DashboardActivity.class));
+                }
+            });
         }
+        intent.set(new Intent(this, DashboardActivity.class));
 
-        new SplashPresenter(splashFragment);
-
+        startActivity(intent.get());
+        finish();
     }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
 }

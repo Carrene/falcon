@@ -30,6 +30,9 @@
         <item name="android:background">@drawable/dashboard_backgroundspinner</item>
     </style>
 
+    <style name="SplashTheme" parent="Base.AppTheme">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
 </resources>
 
 

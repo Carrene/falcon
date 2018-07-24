@@ -25,10 +25,7 @@ public class DashboardActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        setPhoneNumber();
-        setEmail();
-
-        NavigationDrawerUtil.getDrawer(this, getToolbar(),1);
+        NavigationDrawerUtil.getDrawer(this, getToolbar(), 1);
 
         DashboardFragment dashboardFragment = (DashboardFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_dashboard_fragmentcontainer);
         if (dashboardFragment == null) {
