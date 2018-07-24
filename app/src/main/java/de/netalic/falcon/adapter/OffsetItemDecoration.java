@@ -21,7 +21,7 @@ public class OffsetItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
 
         super.getItemOffsets(outRect, view, parent, state);
-        int nCols = 9;
+        int nCols = parent.getAdapter().getItemCount()+1;
         int colWidth = (int) (getScreenWidth() / (float) (nCols));
 
         if (parent.getChildAdapterPosition(view) == 0) {

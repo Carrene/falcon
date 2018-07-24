@@ -12,8 +12,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/charge_wallet_border"
-        android:alpha="0.5">
+        android:background="@drawable/charge_wallet_border">
 
         <TextView
             android:id="@+id/textview_charge_paymentgateway"
@@ -41,8 +40,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Value"/>
+            android:text="Value"
+            android:textColor="@color/colorPrimaryDark"/>
     </RelativeLayout>
 
     <ImageView

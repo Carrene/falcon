@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
@@ -57,6 +58,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
+
         mRecyclerViewWallets = mRoot.findViewById(R.id.recyclerViewWallets);
         mRecyclerViewPaymentGateway = mRoot.findViewById(R.id.recyclerViewPaymentGateway);
 
@@ -73,13 +75,13 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         mRecyclerViewPaymentGateway.addItemDecoration(new OffsetItemDecoration(getContext()));
         mRecyclerViewPaymentGateway.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
-        IndefinitePagerIndicator payemntGatewayIndicator = mRoot.findViewById(R.id.charge_paymentgateway_indicator);
-        payemntGatewayIndicator.attachToRecyclerView(mRecyclerViewPaymentGateway);
+        IndefinitePagerIndicator paymentGatewayIndicator = mRoot.findViewById(R.id.charge_paymentgateway_indicator);
+        paymentGatewayIndicator.attachToRecyclerView(mRecyclerViewPaymentGateway);
 
-        mWalletSnapHelper = new PagerSnapHelper();
+        mWalletSnapHelper = new LinearSnapHelper();
         mWalletSnapHelper.attachToRecyclerView(mRecyclerViewWallets);
 
-        mPaymentGatewaySnapHelper = new PagerSnapHelper();
+        mPaymentGatewaySnapHelper = new LinearSnapHelper();
         mPaymentGatewaySnapHelper.attachToRecyclerView(mRecyclerViewPaymentGateway);
 
         initListener();

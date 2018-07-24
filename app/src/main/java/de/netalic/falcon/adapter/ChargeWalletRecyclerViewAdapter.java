@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -19,6 +18,9 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     private List<Wallet> mWalletList;
     private int mSelectedPosition;
 
+    private static final int ADD_WALLET = 0;
+    private static final int WALLET = 1;
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -27,14 +29,14 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
         switch (viewType) {
 
-            case 0: {
+            case ADD_WALLET: {
                 itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_row_addwallet, parent, false);
-                return new CreateHolder(itemView);
+                return new AddWalletHolder(itemView);
             }
 
-            case 1: {
+            case WALLET: {
                 itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_row_wallet, parent, false);
-                return new Holder(itemView);
+                return new WalletHolder(itemView);
             }
         }
 
@@ -53,50 +55,28 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             default: {
 
                 if (mSelectedPosition == position) {
-                    ((Holder) holder).itemView.setAlpha(1);
-                    ((Holder) holder).mImageViewCheck.setVisibility(View.VISIBLE);
+                    ((WalletHolder) holder).itemView.setAlpha(1);
+                    ((WalletHolder) holder).mImageViewCheck.setVisibility(View.VISIBLE);
                 } else {
                     holder.itemView.setAlpha(0.5f);
-                    ((Holder) holder).mImageViewCheck.setVisibility(View.GONE);
+                    ((WalletHolder) holder).mImageViewCheck.setVisibility(View.GONE);
                 }
 
-                ((Holder) holder).mTextViewWalletName.setText(mWalletList.get(position).getName());
-                ((Holder) holder).mTextViewWalletBalance.setText("" + mWalletList.get(position).getBalance());
+                ((WalletHolder) holder).mTextViewWalletName.setText(mWalletList.get(position - 1).getName());
+                ((WalletHolder) holder).mTextViewWalletBalance.setText("" + mWalletList.get(position - 1).getBalance());
             }
         }
     }
-
-//    @Override
-//    public void onBindViewHolder(@NonNull CreateHolder holder, int mSelectedPosition) {
-//
-//        if (this.mSelectedPosition == mSelectedPosition) {
-//            holder.itemView.setAlpha(1);
-//            holder.mImageViewCheck.setVisibility(View.VISIBLE);
-//
-//        } else {
-//            holder.itemView.setAlpha(0.5f);
-//            holder.mImageViewCheck.setVisibility(View.GONE);
-//        }
-//
-//        if (mSelectedPosition == 0) {
-//            holder.mRelativeLayout.setBackgroundResource(R.drawable.charge_wallet_dashedborder);
-//        }
-//
-//        holder.mTextViewWalletName.setText(mWalletList.get(mSelectedPosition).getName());
-//        holder.mTextViewWalletBalance.setText("" + mWalletList.get(mSelectedPosition).getBalance());
-//
-//    }
-
 
     @Override
     public int getItemViewType(int position) {
 
         switch (position) {
             case 0: {
-                return 0;
+                return ADD_WALLET;
             }
             default: {
-                return 1;
+                return WALLET;
             }
         }
     }
@@ -120,29 +100,27 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     @Override
     public int getItemCount() {
 
-        return mWalletList.size();
+        return mWalletList.size() + 1;
     }
 
-    private static class Holder extends RecyclerView.ViewHolder {
+    private static class WalletHolder extends RecyclerView.ViewHolder {
 
         private TextView mTextViewWalletBalance;
         private TextView mTextViewWalletName;
         private ImageView mImageViewCheck;
-        private RelativeLayout mRelativeLayout;
 
-        private Holder(View itemView) {
+        private WalletHolder(View itemView) {
 
             super(itemView);
-            mRelativeLayout = itemView.findViewById(R.id.relativelayout_charge_wallet);
             mTextViewWalletBalance = itemView.findViewById(R.id.textView_charge_walletbalance);
             mTextViewWalletName = itemView.findViewById(R.id.textview_charge_paymentgateway);
             mImageViewCheck = itemView.findViewById(R.id.imageview_charge_check);
         }
     }
 
-    private static class CreateHolder extends RecyclerView.ViewHolder {
+    private static class AddWalletHolder extends RecyclerView.ViewHolder {
 
-        private CreateHolder(View itemView) {
+        private AddWalletHolder(View itemView) {
 
             super(itemView);
 

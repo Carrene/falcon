@@ -26,13 +26,17 @@ public class ChargePresenter implements ChargeContract.Presenter {
     public void getWalletList() {
 
         WalletRepository.getInstance().getAll(deal -> {
+
             if (deal.getThrowable() == null) {
-                mChargeView.setListWallet(deal.getModel());
-            } else {
-                //TODO: handle status codes
                 switch (deal.getResponse().code()) {
 
+                    case 200: {
+
+                        mChargeView.setListWallet(deal.getModel());
+                    }
                 }
+            } else {
+                //TODO: handle status codes
             }
         });
     }

@@ -5,23 +5,22 @@
                 android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_charge_next"
         android:layout_width="match_parent"
         android:layout_height="43dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="20dp"
-        android:textSize="14sp"
-        android:background="@color/colorSecondary"
-        android:textColor="@color/black"
         android:layout_marginStart="20dp"
-        android:text="NEXT - AMOUNT"/>
+        android:background="@color/colorSecondary"
+        android:text="NEXT - AMOUNT"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_above="@id/button"
-                  android:gravity="center_vertical"
+                  android:layout_above="@id/button_charge_next"
                   android:layout_alignParentTop="true"
                   android:orientation="vertical">
 
@@ -30,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Wallet:"/>
+            android:text="@string/charge_wallet"
+            android:textSize="16sp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewWallets"
@@ -47,7 +47,7 @@
             app:dotColor="@color/colorBlack35"
             app:dotRadius="6dp"
             app:selectedDotColor="@color/primary_dark"
-            app:selectedDotRadius="7.5dp"
+            app:selectedDotRadius="7dp"
             app:supportRTL="true"
             />
 
@@ -55,16 +55,17 @@
             android:id="@+id/textview_charge_paymentgateway"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="32dp"
             android:gravity="center"
-            android:text="Payment gateway:"/>
+            android:text="@string/charge_paymentgateway"
+            android:textSize="16sp"/>
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewPaymentGateway"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.2"/>
 
         <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
             android:id="@+id/charge_paymentgateway_indicator"
@@ -75,10 +76,9 @@
             app:dotColor="@color/colorBlack35"
             app:dotRadius="6dp"
             app:selectedDotColor="@color/primary_dark"
-            app:selectedDotRadius="7.5dp"
+            app:selectedDotRadius="7dp"
             app:supportRTL="true"
             />
-
 
     </LinearLayout>
 </RelativeLayout>
