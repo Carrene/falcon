@@ -7,6 +7,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.ChargePresenter;
 import de.netalic.falcon.presenter.DashboardPresenter;
 import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class ChargeActivity extends BaseActivity {
 
@@ -14,6 +15,8 @@ public class ChargeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        NavigationDrawerUtil.getDrawer(this, getToolbar(),2);
 
         ChargeFragment chargeFragment = (ChargeFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_charge_fragmentcontainer);
         if (chargeFragment == null) {
@@ -33,6 +36,6 @@ public class ChargeActivity extends BaseActivity {
     @Override
     protected String getActionbarTitle() {
 
-        return "test";
+        return getString(R.string.navigation_charge);
     }
 }

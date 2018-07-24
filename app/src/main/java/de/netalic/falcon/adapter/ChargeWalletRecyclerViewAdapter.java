@@ -17,7 +17,7 @@ import de.netalic.falcon.model.Wallet;
 public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Wallet> mWalletList;
-    private int position;
+    private int mSelectedPosition;
 
     @NonNull
     @Override
@@ -45,22 +45,19 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         switch (position) {
+
             case 0: {
                 break;
             }
 
             default: {
-                if (this.position == position) {
+
+                if (mSelectedPosition == position) {
                     ((Holder) holder).itemView.setAlpha(1);
                     ((Holder) holder).mImageViewCheck.setVisibility(View.VISIBLE);
-
                 } else {
                     holder.itemView.setAlpha(0.5f);
                     ((Holder) holder).mImageViewCheck.setVisibility(View.GONE);
-                }
-
-                if (position == 0) {
-                    ((Holder) holder).mRelativeLayout.setBackgroundResource(R.drawable.charge_wallet_dashedborder);
                 }
 
                 ((Holder) holder).mTextViewWalletName.setText(mWalletList.get(position).getName());
@@ -70,9 +67,9 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     }
 
 //    @Override
-//    public void onBindViewHolder(@NonNull CreateHolder holder, int position) {
+//    public void onBindViewHolder(@NonNull CreateHolder holder, int mSelectedPosition) {
 //
-//        if (this.position == position) {
+//        if (this.mSelectedPosition == mSelectedPosition) {
 //            holder.itemView.setAlpha(1);
 //            holder.mImageViewCheck.setVisibility(View.VISIBLE);
 //
@@ -81,12 +78,12 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 //            holder.mImageViewCheck.setVisibility(View.GONE);
 //        }
 //
-//        if (position == 0) {
+//        if (mSelectedPosition == 0) {
 //            holder.mRelativeLayout.setBackgroundResource(R.drawable.charge_wallet_dashedborder);
 //        }
 //
-//        holder.mTextViewWalletName.setText(mWalletList.get(position).getName());
-//        holder.mTextViewWalletBalance.setText("" + mWalletList.get(position).getBalance());
+//        holder.mTextViewWalletName.setText(mWalletList.get(mSelectedPosition).getName());
+//        holder.mTextViewWalletBalance.setText("" + mWalletList.get(mSelectedPosition).getBalance());
 //
 //    }
 
@@ -111,7 +108,7 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
     public void select(int position) {
 
-        this.position = position;
+        mSelectedPosition = position;
         notifyDataSetChanged();
     }
 
@@ -126,7 +123,7 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         return mWalletList.size();
     }
 
-    public static class Holder extends RecyclerView.ViewHolder {
+    private static class Holder extends RecyclerView.ViewHolder {
 
         private TextView mTextViewWalletBalance;
         private TextView mTextViewWalletName;
@@ -138,12 +135,12 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             super(itemView);
             mRelativeLayout = itemView.findViewById(R.id.relativelayout_charge_wallet);
             mTextViewWalletBalance = itemView.findViewById(R.id.textView_charge_walletbalance);
-            mTextViewWalletName = itemView.findViewById(R.id.textview_charge_walletname);
+            mTextViewWalletName = itemView.findViewById(R.id.textview_charge_paymentgateway);
             mImageViewCheck = itemView.findViewById(R.id.imageview_charge_check);
         }
     }
 
-    public static class CreateHolder extends RecyclerView.ViewHolder {
+    private static class CreateHolder extends RecyclerView.ViewHolder {
 
         private CreateHolder(View itemView) {
 

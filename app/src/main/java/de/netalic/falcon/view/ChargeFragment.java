@@ -61,17 +61,20 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         mRecyclerViewPaymentGateway = mRoot.findViewById(R.id.recyclerViewPaymentGateway);
 
         mRecyclerViewAdapterChargeWallet = new ChargeWalletRecyclerViewAdapter(new ArrayList<>());
-        IndefinitePagerIndicator wallletIndicator = mRoot.findViewById(R.id.charge_wallet_indicator);
-        wallletIndicator.attachToRecyclerView(mRecyclerViewWallets);
-        mRecyclerViewAdapterChargePaymentGateway = new ChargePaymentGatewayRecyclerViewAdapter(new ArrayList<>());
-
         mRecyclerViewWallets.setAdapter(mRecyclerViewAdapterChargeWallet);
         mRecyclerViewWallets.addItemDecoration(new OffsetItemDecoration(getContext()));
         mRecyclerViewWallets.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
+        IndefinitePagerIndicator walletIndicator = mRoot.findViewById(R.id.charge_wallet_indicator);
+        walletIndicator.attachToRecyclerView(mRecyclerViewWallets);
+
+        mRecyclerViewAdapterChargePaymentGateway = new ChargePaymentGatewayRecyclerViewAdapter(new ArrayList<>());
         mRecyclerViewPaymentGateway.setAdapter(mRecyclerViewAdapterChargePaymentGateway);
         mRecyclerViewPaymentGateway.addItemDecoration(new OffsetItemDecoration(getContext()));
         mRecyclerViewPaymentGateway.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+
+        IndefinitePagerIndicator payemntGatewayIndicator = mRoot.findViewById(R.id.charge_paymentgateway_indicator);
+        payemntGatewayIndicator.attachToRecyclerView(mRecyclerViewPaymentGateway);
 
         mWalletSnapHelper = new PagerSnapHelper();
         mWalletSnapHelper.attachToRecyclerView(mRecyclerViewWallets);
