@@ -3,59 +3,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spinner_charge_customspinner"
-        android:layout_width="@dimen/layoutwidth_charge_spinnerr"
-        android:layout_height="@dimen/layoutheight_charge_spinnerr"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margintop_charge_spinnerr"
-        android:spinnerMode="dropdown" />
-
     <LinearLayout
         android:id="@+id/linearlayout_charge_middle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_below="@+id/spinner_charge_customspinner"
-        android:layout_marginTop="@dimen/margintop_charge_linearlayout"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/margintop_chargeamount_linearlayout"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_chargeamount_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chargeamount_amount"
+            android:textSize="@dimen/textsize_chargeamount_amount"
+            android:textColor="@color/black" />
+
+        <android.support.design.widget.TextInputLayout
+
+            android:id="@+id/textinputlayout_chargeamount_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/edittext_charge_amountwallet"
-            android:layout_width="@dimen/layoutwidth_charge_edittextdolaramount"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginend_charge_edittextamount"
-            android:hint="@string/charge_amount"
+            android:hint="@string/chargeamount_amounthint"
             android:inputType="numberDecimal"
-            android:maxLength="10" />
-
+            android:layout_marginStart="@dimen/marginstartend_chargeamount_edittextamount"
+            android:layout_marginEnd="@dimen/marginstartend_chargeamount_edittextamount"
+            android:textColor="@color/black" />
+        </android.support.design.widget.TextInputLayout>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/charge_transfer"/>
+            android:id="@+id/imageview_chargeamount_transfer"
+            android:layout_width="@dimen/width_chargeamount_transfer"
+            android:layout_height="@dimen/height_chargeamount_transfer"
+            android:src="@drawable/charge_transfer"
+            android:layout_marginTop="@dimen/margintop_chargeamount_transfer" />
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/texinputlayout_chargeamount_dollar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:id="@+id/edittext_charge_amountbase"
-            android:layout_width="@dimen/layoutwidth_charge_edittextdolaramount"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_charge_edittextdollar"
-            android:hint="@string/charge_dollar"
+            android:hint="@string/chargeamount_dollar"
             android:inputType="numberDecimal"
-            android:maxLength="10" />
-
+            android:layout_marginStart="@dimen/marginstartend_chargeamount_edittextdollar"
+            android:layout_marginEnd="@dimen/marginstartend_chargeamount_edittextdollar"
+            android:layout_marginTop="@dimen/margintop_chargeamount_amountbase"
+            android:textColor="@color/black" />
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/button_charge_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearlayout_charge_middle"
-        android:layout_marginEnd="@dimen/marginendstart_charge_nextbutton"
-        android:layout_marginStart="@dimen/marginendstart_charge_nextbutton"
-        android:layout_marginTop="@dimen/margintop_charge_nextbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbottom_chargeamount_nextpayment"
         android:background="@color/lightningYellow"
-        android:text="@string/charge_next"
-        android:textColor="@color/white" />
+        android:text="@string/chargeamount_nextpayment"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/marginstartend_chargeamount_nextpayment"
+        android:layout_marginEnd="@dimen/marginstartend_chargeamount_nextpayment" />
 
 </RelativeLayout>
