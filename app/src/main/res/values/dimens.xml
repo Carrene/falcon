@@ -134,6 +134,30 @@
     <dimen name="marginstartend_chargeamount_nextpayment">16dp</dimen>
 
 
+    <dimen name="width_chargeconfirmation_linearlayout">260dp</dimen>
+    <dimen name="height_chargeconfirmation_linearlayout">214dp</dimen>
+    <dimen name="margintop_chargeconfirmation_linearlayout">42dp</dimen>
+    <dimen name="textsize_chargeconfirmation_walletnamelable">14sp</dimen>
+    <dimen name="marginstart_chargeconfirmation_walletnamelable">40dp</dimen>
+    <dimen name="margintop_chargeconfirmation_walletnamelable">40dp</dimen>
+    <dimen name="margintop_chargeconfirmation_walletname">40dp</dimen>
+    <dimen name="paddingstart_chargeconfirmation_walletname">10dp</dimen>
+    <dimen name="margintop_chargeconfirmation_relativelayout">9dp</dimen>
+    <dimen name="marginstart_chargeconfirmation_relativelayout">40dp</dimen>
+    <dimen name="textsize_chargeconfirmation_walletnolable">14sp</dimen>
+    <dimen name="paddingstart_chargeconfirmation_walletno">10dp</dimen>
+    <dimen name="textsize_chargeconfirmation_amountalphalable">14sp</dimen>
+    <dimen name="paddingstart_chargeconfirmation_amountalpha">10dp</dimen>
+    <dimen name="textsize_chargeconfirmation_amountdollarlable">14sp</dimen>
+    <dimen name="paddingstart_chargeconfirmation_amountdollar">10dp</dimen>
+    <dimen name="textsize_chargeconfirmation_paymentgatewaylable">14sp</dimen>
+    <dimen name="paddingstart_chargeconfirmation_paymentgateway">10dp</dimen>
+    <dimen name="marginbuttom_chargeconfirmation_confirm">27dp</dimen>
+    <dimen name="marginstartend_chargeconfirmation_confirm">16dp</dimen>
+    <dimen name="textsize_chargeconfirmation_confirmbutton">14sp</dimen>
+
+
+
     <dimen name="layoutheight_charge_spinner">35dp</dimen>
     <dimen name="layoutwidth_charge_imagview">70dp</dimen>
     <dimen name="layoutheight_charge_imagview">45dp</dimen>

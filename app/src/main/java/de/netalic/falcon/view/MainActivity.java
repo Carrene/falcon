@@ -25,23 +25,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void initStartup() {
 
-        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
-        AtomicReference<Intent> intent = new AtomicReference<>();
-
-        if (sharedPreferencesJwtPersistor.get() == null) {
-            intent.set(new Intent(this, SplashActivity.class));
-
-        } else {
-            AuthenticationRepository.getInstance().get(deal -> {
-                if (deal.getModel() == null) {
-                    intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
-                } else {
-                    intent.set(new Intent(this, DashboardActivity.class));
-                }
-            });
-        }
-
-        intent.get().setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent.get());
+//        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+//        AtomicReference<Intent> intent = new AtomicReference<>();
+//
+//        if (sharedPreferencesJwtPersistor.get() == null) {
+//            intent.set(new Intent(this, SplashActivity.class));
+//
+//        } else {
+//            AuthenticationRepository.getInstance().get(deal -> {
+//                if (deal.getModel() == null) {
+//                    intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
+//                } else {
+//                    intent.set(new Intent(this, DashboardActivity.class));
+//                }
+//            });
+//        }
+//
+//        intent.get().setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent.get());
+        Intent intent=new Intent(this,ChargeConfirmationActivity.class);
+        startActivity(intent);
     }
 }
