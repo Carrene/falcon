@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
+
         <activity
             android:name=".view.RegistrationActivity"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".view.PhoneConfirmationActivity"
             android:parentActivityName=".view.RegistrationActivity"
@@ -29,8 +29,7 @@
         </activity>
         <activity
             android:name=".view.AuthenticationDefinitionActivity"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".view.RecoveryEmailActivity"
             android:parentActivityName=".view.PhoneConfirmationActivity"
@@ -56,11 +55,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.DashboardActivity"/>
         </activity>
-
-        <activity android:name=".view.ChargeActivity">
-
-        </activity>
-
+        <activity android:name=".view.ChargeActivity"/>
+        <activity android:name=".view.ChargeConfirmationActivity"/>
     </application>
 
 </manifest>

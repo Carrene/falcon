@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="@dimen/width_chargeconfirmation_linearlayout"
+        android:layout_height="@dimen/height_chargeconfirmation_linearlayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margintop_chargeconfirmation_linearlayout"
+        android:background="@drawable/chargeconfirmation_border"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_walletnamelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstart_chargeconfirmation_walletnamelable"
+                android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletnamelable"
+                android:text="@string/chargeconfirmation_walletname"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargeconfirmation_walletnamelable" />
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_walletname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletname"
+                android:layout_toRightOf="@+id/textview_chargeconfirmation_walletnamelable"
+                android:paddingStart="@dimen/paddingstart_chargeconfirmation_walletname"
+                android:text="milad"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_chargeconfirmation_relativelayout"
+            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_walletnolable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargeconfirmation_walletno"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargeconfirmation_walletnolable" />
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_walletno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargeconfirmation_walletnolable"
+                android:paddingStart="@dimen/paddingstart_chargeconfirmation_walletno"
+                android:text="milad"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_chargeconfirmation_relativelayout"
+            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_amountalphalable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargeconfirmation_amount"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargeconfirmation_amountalphalable" />
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_amountalpha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargeconfirmation_amountalphalable"
+                android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountalpha"
+                android:text="milad"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_chargeconfirmation_relativelayout"
+            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_amountdollarlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargeconfirmation_amount"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargeconfirmation_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_amountdollar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargeconfirmation_amountdollarlable"
+                android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountdollar"
+                android:text="milad"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_chargeconfirmation_relativelayout"
+            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_paymentgatewaylable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargeconfirmation_paymentgateway"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargeconfirmation_paymentgatewaylable" />
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_paymentgateway"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargeconfirmation_paymentgatewaylable"
+                android:paddingStart="@dimen/paddingstart_chargeconfirmation_paymentgateway"
+                android:text="milad"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_chargeconfirmation_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbuttom_chargeconfirmation_confirm"
+        android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_confirm"
+        android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_confirm"
+        android:background="@color/colorSecondary"
+        android:text="@string/chargeconfirmation_confirm"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textsize_chargeconfirmation_confirmbutton" />
+</RelativeLayout>
