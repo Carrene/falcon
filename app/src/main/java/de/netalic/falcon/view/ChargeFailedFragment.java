@@ -28,7 +28,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        mRoot=inflater.inflate(R.layout.activity_chargefailed,null);
+        mRoot=inflater.inflate(R.layout.fragment_chargefailed,null);
         return mRoot;
     }
 

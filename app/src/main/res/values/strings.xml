@@ -90,12 +90,12 @@
     <string name="chargeamount_amounthint">Amount</string>
 
     <string name="chargefailed_failed">Charge Failed</string>
-    <string name="chargecompleted_success">Failed</string>
-    <string name="chargecompleted_walletname">Wallet Name :</string>
-    <string name="chargecompleted_amount">Amount :</string>
-    <string name="chargecompleted_paymentgateway">Payment Gateway :</string>
-    <string name="chargecompleted_transactiondate">Transaction date :</string>
-    <string name="chargecompleted_dashboard">Dashboard</string>
+    <string name="chargefailed_failedtextview">Failed</string>
+    <string name="chargefailed_walletname">Wallet Name :</string>
+    <string name="chargefailed_amount">Amount :</string>
+    <string name="chargefailed_paymentgateway">Payment Gateway :</string>
+    <string name="chargefailed_transactiondate">Transaction date :</string>
+    <string name="chargefailed_dashboard">Dashboard</string>
 
 
 
