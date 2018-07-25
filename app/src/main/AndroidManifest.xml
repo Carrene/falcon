@@ -15,9 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
+
         <activity
             android:name=".view.RegistrationActivity"
             android:windowSoftInputMode="adjustResize"/>
+
         <activity
             android:name=".view.PhoneConfirmationActivity"
             android:parentActivityName=".view.RegistrationActivity"
@@ -26,9 +28,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.RegistrationActivity"/>
         </activity>
+
         <activity
             android:name=".view.AuthenticationDefinitionActivity"
             android:windowSoftInputMode="adjustResize"/>
+
         <activity
             android:name=".view.RecoveryEmailActivity"
             android:parentActivityName=".view.PhoneConfirmationActivity"
@@ -39,13 +43,14 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name=".view.DashboardActivity"
             android:windowSoftInputMode="adjustResize"/>
+
         <activity
             android:name=".view.ChargeAmountActivity"
             android:parentActivityName=".view.DashboardActivity"
@@ -54,9 +59,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.DashboardActivity"/>
         </activity>
+
         <activity android:name=".view.ChargeActivity"/>
         <activity android:name=".view.ChargeConfirmationActivity"/>
+        <activity android:name=".view.ChargeFailedActivity"/>
 
     </application>
-
 </manifest>

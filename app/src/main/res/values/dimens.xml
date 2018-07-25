@@ -157,7 +157,6 @@
     <dimen name="textsize_chargeconfirmation_confirmbutton">14sp</dimen>
 
 
-
     <dimen name="layoutheight_charge_spinner">35dp</dimen>
     <dimen name="layoutwidth_charge_imagview">70dp</dimen>
     <dimen name="layoutheight_charge_imagview">45dp</dimen>
@@ -196,5 +195,30 @@
     <dimen name="margintop_chargecompleted_successimageview">40dp</dimen>
     <dimen name="margintop_chargeamount_successtextview">6dp</dimen>
     <dimen name="textsize_chargecompleted_successtextview">20sp</dimen>
+
+    <dimen name="width_chargefailed_linearlayout">260dp</dimen>
+    <dimen name="height_chargefailed_linearlayout">295dp</dimen>
+    <dimen name="margintop_chargefailed_linearlayout">42dp</dimen>
+    <dimen name="margintop_chargefailed_failedimageview">40dp</dimen>
+    <dimen name="margintop_chargefailed_failedtextview">6dp</dimen>
+    <dimen name="textsize_chargefailed_failedtextview">20sp</dimen>
+    <dimen name="marginstart_chargefailed_walletnamelable">40dp</dimen>
+    <dimen name="margintop_chargefailed_walletnamelable">20dp</dimen>
+    <dimen name="textsize_chargefailed_walletnamelable">14sp</dimen>
+    <dimen name="margintop_chargefailed_walletname">20dp</dimen>
+    <dimen name="paddingstart_chargefailed_walletname">5dp</dimen>
+    <dimen name="marginstart_chargefailed_relativelayout">40dp</dimen>
+    <dimen name="margintop_chargefailed_relativelayout">8dp</dimen>
+    <dimen name="textsize_chargefailed_walletnolable">14sp</dimen>
+    <dimen name="textsize_chargefailed_amountdollarlable">14sp</dimen>
+    <dimen name="paddingstart_chargefailed_amountalpha">5dp</dimen>
+    <dimen name="textsize_chargefailed_paymentgatewaylable">14sp</dimen>
+    <dimen name="paddingstart_chargefailed_amountdollar">5dp</dimen>
+    <dimen name="textsize_chargefailed_transactiondate">14sp</dimen>
+    <dimen name="paddingstart_chargefailed_transactiondate">5dp</dimen>
+    <dimen name="marginbuttom_chargefailed_dashboard">27dp</dimen>
+    <dimen name="marginstartend_chargefailed_dashboard">16dp</dimen>
+    <dimen name="textsize_chargefailed_dashboardbutton">14sp</dimen>
+    <dimen name="paddingstart_chargefailed_walletno">5dp</dimen>
 
 </resources>
