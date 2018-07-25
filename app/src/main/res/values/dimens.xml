@@ -168,4 +168,33 @@
     <dimen name="layoutheight_charge_spinnerr">35dp</dimen>
     <dimen name="margintop_charge_spinnerr">47dp</dimen>
 
+    <dimen name="width_chargecompleted_linearlayout">260dp</dimen>
+    <dimen name="height_chargecompleted_linearlayout">330dp</dimen>
+    <dimen name="margintop_chargecompleted_linearlayout">42dp</dimen>
+    <dimen name="marginstart_chargecompleted_walletnamelable">26dp</dimen>
+    <dimen name="margintop_chargecompleted_walletnamelable">20dp</dimen>
+    <dimen name="textsize_chargecompleted_walletnamelable">14sp</dimen>
+    <dimen name="margintop_chargecompleted_walletname">20dp</dimen>
+    <dimen name="paddingstart_chargecompleted_walletname">5dp</dimen>
+    <dimen name="marginstart_chargecompleted_relativelayout">26dp</dimen>
+    <dimen name="margintop_chargecompleted_relativelayout">8dp</dimen>
+    <dimen name="textsize_chargecompleted_walletnolable">14sp</dimen>
+    <dimen name="paddingstart_chargecompleted_walletno">5dp</dimen>
+    <dimen name="textsize_chargecompleted_amountalphalable">14sp</dimen>
+    <dimen name="textsize_chargecompleted_amountdollarlable">14sp</dimen>
+    <dimen name="paddingstart_chargecompleted_amountalpha">5dp</dimen>
+    <dimen name="paddingstart_chargecompleted_amountdollar">5dp</dimen>
+    <dimen name="paddingstart_chargecompleted_paymentgateway">14sp</dimen>
+    <dimen name="paddingstart_chargecompleted_trackingcode">5dp</dimen>
+    <dimen name="paddingstart_chargecompleted_transactiondate">5dp</dimen>
+    <dimen name="textsize_chargecompleted_trackingcode">14sp</dimen>
+    <dimen name="marginbuttom_chargecompleted_confirm">27dp</dimen>
+    <dimen name="marginstartend_chargecompleted_confirm">16dp</dimen>
+    <dimen name="textsize_chargecompleted_confirmbutton">14dp</dimen>
+    <dimen name="textsize_chargecompleted_paymentgatewaylable">14sp</dimen>
+    <dimen name="textsize_chargecompleted_transactiondate">14sp</dimen>
+    <dimen name="margintop_chargecompleted_successimageview">40dp</dimen>
+    <dimen name="margintop_chargeamount_successtextview">6dp</dimen>
+    <dimen name="textsize_chargecompleted_successtextview">20sp</dimen>
+
 </resources>
