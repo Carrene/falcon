@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import de.netalic.falcon.model.ChargeStartResponse;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
@@ -36,8 +37,8 @@ public interface ApiInterface {
     Call<List<Wallet>> walletList();
 
     @FormUrlEncoded
-    @HTTP(method = "CHARGE", path = "wallets/{id}/braintree", hasBody = true)
-    Call<JsonObject> charge(@Path("id") int id, @Field("amount") double amount);
+    @HTTP(method = "START", path = "wallets/{id}/braintree/deposits", hasBody = true)
+    Call<ChargeStartResponse> charge(@Path("id") int id, @Field("amount") double amount);
 
     @FormUrlEncoded
     @HTTP(method = "FINALIZE", path = "braintree/sessions", hasBody = true)

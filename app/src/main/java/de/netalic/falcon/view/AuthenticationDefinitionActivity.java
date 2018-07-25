@@ -91,6 +91,16 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
     }
 
     @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void dismissProgressBar() {
+
+    }
+
+    @Override
     public void navigationToDashboardFromPassword(String credentialValue) {
 
 

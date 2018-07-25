@@ -14,9 +14,9 @@ public class Currency {
     @SerializedName("code")
     private String mCode;
     @SerializedName("chargeLowerBound")
-    private String mChargeLowerBound;
+    private double mChargeLowerBound;
     @SerializedName("mChargeUpperBound")
-    private String mChargeUpperBound;
+    private double mChargeUpperBound;
 
 
     public Currency(String code) {
@@ -54,12 +54,12 @@ public class Currency {
         this.mCode = code;
     }
 
-    public String getChargeLowerBound() {
+    public double getChargeLowerBound() {
 
         return mChargeLowerBound;
     }
 
-    public String getChargeUpperBound() {
+    public double getChargeUpperBound() {
 
         return mChargeUpperBound;
     }

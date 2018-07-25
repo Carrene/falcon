@@ -24,6 +24,7 @@ import com.braintreepayments.api.dropin.DropInResult;
 import com.google.gson.JsonObject;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.ChargeStartResponse;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.UsdCurrency;
@@ -39,22 +40,27 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
     private ChargeAmountContract.Presenter mChargePresenter;
     private View mRoot;
-    private Spinner mSpinnerWalletList;
-    public static final String ARGUMENT_USER = "USER";
     private Button mButtonPayment;
     private EditText mEditTextAmountWallet;
     private EditText mEditTextAmountBase;
-    private static final int DROP_IN_REQUEST = 1;
     private String mChargeDataToken;
     private Rate mRate;
     private Currency mUsd;
 
+
+    public static final String ARGUMENT_WALLET_ID = "walletID";
+    public static final String ARGUMENT_PAYMENT_GATEWAY_NAME = "paymentGatewayName";
+
+    private String mPaymentGatewayName;
+    private int mWalletId;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_charge_amount, null);
+        mPaymentGatewayName = getArguments().getString(ARGUMENT_PAYMENT_GATEWAY_NAME);
+        mWalletId = getArguments().getInt(ARGUMENT_WALLET_ID);
         return mRoot;
     }
 
@@ -70,24 +76,29 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
         getRate();
     }
 
+    public static ChargeAmountFragment newInstance(int walletId, String paymentGatewayName) {
+
+        ChargeAmountFragment fragment = new ChargeAmountFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(ARGUMENT_WALLET_ID, walletId);
+        bundle.putString(ARGUMENT_PAYMENT_GATEWAY_NAME, paymentGatewayName);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+
     @Override
     public void setPresenter(ChargeAmountContract.Presenter presenter) {
 
         mChargePresenter = checkNotNull(presenter);
     }
 
-    public static ChargeAmountFragment newInstance() {
-
-        ChargeAmountFragment fragment = new ChargeAmountFragment();
-        return fragment;
-    }
 
     public void initUiComponent() {
 
         mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
         mEditTextAmountWallet = mRoot.findViewById(R.id.edittext_charge_amountwallet);
         mEditTextAmountBase = mRoot.findViewById(R.id.edittext_charge_amountbase);
-        mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
     }
 
 
@@ -104,16 +115,12 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
         MaterialDialogUtil.getInstance().dismissMaterialDialog();
     }
 
-
     @Override
-    public void setToken(JsonObject token) {
+    public void showChargePaymentConfirmation(ChargeStartResponse chargeStartResponse) {
 
-        String braintreeToken = token.get("braintreeToken").getAsString();
-        mChargeDataToken = token.get("chargeDataToken").getAsString();
-
-        DropInRequest dropInRequest = new DropInRequest()
-                .clientToken(braintreeToken);
-        startActivityForResult(dropInRequest.getIntent(getContext()), DROP_IN_REQUEST);
+        Intent intent = new Intent(getContext(), ChargeConfirmationActivity.class);
+        intent.putExtra(ChargeConfirmationActivity.ARGUMENT_CHARGE_START, chargeStartResponse);
+        startActivity(intent);
     }
 
     @Override
@@ -163,13 +170,6 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
         mRate = rate;
 
-    }
-
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        inflater.inflate(R.menu.menu_charge_toolbar, menu);
     }
 
     public void initListener() {
@@ -254,35 +254,14 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
                     } else {
 
-                        // mChargePresenter.charge(wallet.getId(), Double.parseDouble(mEditTextAmountWallet.getText().toString()));
+                        mChargePresenter.charge(mWalletId, Double.parseDouble(mEditTextAmountWallet.getText().toString()));
                     }
                 }
         );
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == DROP_IN_REQUEST) {
-            if (resultCode == Activity.RESULT_OK) {
-
-                DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
-                String braintreeNonce = result.getPaymentMethodNonce().getNonce();
-                mChargePresenter.finalize(10, braintreeNonce, mChargeDataToken);
-                // send paymentMethodNonce to your server
-                //TODO: finalize
-            } else if (resultCode == Activity.RESULT_CANCELED) {
-                //TODO: Payment is cancelled
-                // canceled
-            } else {
-                // an error occurred, checked the returned exception
-                Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
-            }
-        }
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

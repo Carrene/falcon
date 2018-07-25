@@ -24,7 +24,8 @@ public class ChargePresenter implements ChargeContract.Presenter {
 
     @Override
     public void getWalletList() {
-
+        //TODO: (Milad) handle other status codes
+        mChargeView.showProgressBar();
         WalletRepository.getInstance().getAll(deal -> {
 
             if (deal.getThrowable() == null) {
@@ -33,6 +34,7 @@ public class ChargePresenter implements ChargeContract.Presenter {
                     case 200: {
 
                         mChargeView.setListWallet(deal.getModel());
+                        mChargeView.dismissProgressBar();
                     }
                 }
             } else {

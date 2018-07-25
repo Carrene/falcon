@@ -3,6 +3,7 @@ package de.netalic.falcon.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 
 import com.mikepenz.materialdrawer.Drawer;
 
@@ -13,23 +14,28 @@ import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class ChargeAmountActivity extends BaseActivity {
 
-    public static final String ARGUMENT_USER = "USER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-//        if (getIntent().getExtras() == null) {
-//            throw new RuntimeException("User should not be null!");
-//        }
+        //TODO: (Ehsan) get walletId and paymentGatewayName when back is pressed
+        if (getIntent().getExtras() == null) {
+            throw new RuntimeException("User should not be null!");
+        }
 
-        Drawer result = NavigationDrawerUtil.getDrawer(this, getToolbar(),2);
-//        User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
+        setupBackButton();
+
+
+        Bundle bundle = getIntent().getExtras();
+
+        int walletId = bundle.getInt("walletId");
+        String paymentGatewayName = bundle.getString("paymentGatewayName");
 
         ChargeAmountFragment chargeAmountFragment = (ChargeAmountFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_charge_fragmentcontainer);
         if (chargeAmountFragment == null) {
-            chargeAmountFragment = ChargeAmountFragment.newInstance();
+            chargeAmountFragment = ChargeAmountFragment.newInstance(walletId, paymentGatewayName);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), chargeAmountFragment, R.id.framelayout_charge_fragmentcontainer);
         }
         new ChargeAmountPresenter(chargeAmountFragment);
@@ -44,7 +50,7 @@ public class ChargeAmountActivity extends BaseActivity {
     @Override
     protected String getActionbarTitle() {
 
-        return getString(R.string.charge_toolbartitle);
+        return getString(R.string.chargeamount_toolbartitle);
     }
 
     @Override

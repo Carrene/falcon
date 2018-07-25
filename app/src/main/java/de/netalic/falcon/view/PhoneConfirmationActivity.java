@@ -14,7 +14,7 @@ import de.netalic.falcon.util.ActivityUtil;
 
 public class PhoneConfirmationActivity extends BaseActivity {
 
-    public static final String ARGUMENT_USER = "USER";
+    public static final String ARGUMENT_USER = "user";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,12 +25,7 @@ public class PhoneConfirmationActivity extends BaseActivity {
         }
         User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
 
-        ActionBar mActionBar = getSupportActionBar();
 
-        if (mActionBar != null) {
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-            mActionBar.setDisplayShowHomeEnabled(true);
-        }
 
         PhoneConfirmationFragment phoneConfirmationFragment = (PhoneConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_phoneconfirmation_fragmentcontainer);
 

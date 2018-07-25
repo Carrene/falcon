@@ -35,6 +35,16 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mChargeCompletedPresenter=presenter;
     }
 
+    @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void dismissProgressBar() {
+
+    }
+
     public static ChargeCompletedFragment newInstance() {
 
         ChargeCompletedFragment fragment = new ChargeCompletedFragment();

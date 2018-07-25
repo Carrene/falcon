@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import de.netalic.falcon.model.ChargeStartResponse;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
@@ -45,19 +46,21 @@ public class WalletRestRepository implements IWalletRepository {
     }
 
     @Override
-    public void charge(int id, double amount, CallRepository<JsonObject> callRepository) {
+    public void charge(int id, double amount, CallRepository<ChargeStartResponse> callRepository) {
 
-        ApiClient.getService().charge(id, amount).enqueue(new Callback<JsonObject>() {
+        ApiClient.getService().charge(id, amount).enqueue(new Callback<ChargeStartResponse>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            public void onResponse(Call<ChargeStartResponse> call, Response<ChargeStartResponse> response) {
 
                 callRepository.onDone(new Deal<>(response.body(), response, null));
+
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(Call<ChargeStartResponse> call, Throwable t) {
 
                 callRepository.onDone(new Deal<>(null, null, t));
+
             }
         });
     }

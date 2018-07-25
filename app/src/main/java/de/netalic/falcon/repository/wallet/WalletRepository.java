@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import de.netalic.falcon.model.ChargeStartResponse;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.repository.IRepository;
 
@@ -49,7 +50,7 @@ public class WalletRepository implements IWalletRepository {
     }
 
     @Override
-    public void charge(int id, double amount, CallRepository<JsonObject> callRepository) {
+    public void charge(int id, double amount, CallRepository<ChargeStartResponse> callRepository) {
 
         mWalletRestRepository.charge(id, amount, callRepository);
     }

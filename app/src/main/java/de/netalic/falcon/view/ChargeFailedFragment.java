@@ -22,6 +22,16 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mChargeFailedPresenter=checkNotNull(presenter);
     }
 
+    @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void dismissProgressBar() {
+
+    }
+
 
     @Nullable
     @Override

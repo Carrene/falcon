@@ -11,9 +11,14 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 
+import java.util.Map;
+
+import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.view.ChargeActivity;
 import de.netalic.falcon.view.DashboardActivity;
+import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
+import nuesoft.helpdroid.util.Parser;
 
 public class NavigationDrawerUtil {
 
@@ -28,12 +33,16 @@ public class NavigationDrawerUtil {
         PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(8).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
         PrimaryDrawerItem item8 = new CustomPrimaryDrawerItem().withIdentifier(9).withName(R.string.navigation_help).withIcon(R.drawable.navigation_help);
 
-        //TODO:(Milad) Fill user and email from token
+        //TODO: Inject this object
+        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+        String phone = (String) tokenBody.get("phone");
+        String email = (String) tokenBody.get("email");
+
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(activity)
                 .withHeaderBackground(R.color.primary).withSelectionListEnabledForSingleProfile(false)
-                .addProfiles(
-                        new ProfileDrawerItem().withName("VALUE").withEmail("VALUE").withIcon(R.drawable.navigation_charge))
+                .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigation_charge))
                 .build();
 
         Drawer result = new DrawerBuilder()
@@ -43,9 +52,8 @@ public class NavigationDrawerUtil {
                 .withActionBarDrawerToggleAnimated(true)
                 .withCloseOnClick(true)
                 .withSelectedItem(identifier)
-                .addDrawerItems(
-                        item1, item2, item3, item4, item5, item6, item7, item8
-                ).withAccountHeader(headerResult)
+                .addDrawerItems(item1, item2, item3, item4, item5, item6, item7, item8)
+                .withAccountHeader(headerResult)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if (position != identifier) {
                         Intent intent = null;
@@ -75,8 +83,3 @@ public class NavigationDrawerUtil {
         return result;
     }
 }
-
-
-
-
-

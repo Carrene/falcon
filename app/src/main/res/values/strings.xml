@@ -86,6 +86,7 @@
     <string name="charge_wallet">Wallet:</string>
     <string name="charge_paymentgateway">Payment gateway:</string>
 
+    <string name="chargeamount_toolbartitle">Charge-Amount</string>
     <string name="chargeamount_invalidcurrency">Invalid currency</string>
     <string name="chargeamount_ratedosenotexists">Rate dose not exists</string>
     <string name="chargeamount_amount">Amount:</string>
@@ -115,6 +116,6 @@
     <string name="chargefailed_dashboard">Dashboard</string>
 
 
->>>>>>> charge_failed
+    >>>>>>> charge_failed
 
 </resources>

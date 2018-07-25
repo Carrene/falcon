@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import de.netalic.falcon.model.ChargeStartResponse;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.view.BaseView;
@@ -17,7 +18,7 @@ public interface ChargeAmountContract {
 
         void dismissProgressBar();
 
-        void setToken(JsonObject token);
+        void showChargePaymentConfirmation(ChargeStartResponse chargeStartResponse);
 
         void showErrorInvalidAmount();
 

@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargeconfirmation_walletnolable"
                 android:paddingStart="@dimen/paddingstart_chargeconfirmation_walletno"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black" />
         </RelativeLayout>
 
@@ -76,7 +76,7 @@
                 android:textSize="@dimen/textsize_chargeconfirmation_amountalphalable" />
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_amountalpha"
+                android:id="@+id/textview_chargeconfirmation_chargeamount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargeconfirmation_amountalphalable"
@@ -100,7 +100,7 @@
                 android:textSize="@dimen/textsize_chargeconfirmation_amountdollarlable" />
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_amountdollar"
+                android:id="@+id/textview_chargeconfirmation_paidamount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargeconfirmation_amountdollarlable"

@@ -66,6 +66,7 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
 
                     case 200: {
 
+                        mChargeAmountView.showChargePaymentConfirmation(deal.getModel());
 
                         break;
                     }

@@ -53,15 +53,24 @@
 
         <activity
             android:name=".view.ChargeAmountActivity"
-            android:parentActivityName=".view.DashboardActivity"
+            android:parentActivityName=".view.ChargeActivity"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.DashboardActivity"/>
+                android:value=".view.ChargeActivity"/>
         </activity>
 
         <activity android:name=".view.ChargeActivity"/>
-        <activity android:name=".view.ChargeConfirmationActivity"/>
+
+        <activity
+            android:name=".view.ChargeConfirmationActivity"
+            android:parentActivityName=".view.ChargeAmountActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.ChargeAmountActivity"/>
+        </activity>
+
         <activity android:name=".view.ChargeFailedActivity"/>
 
     </application>
