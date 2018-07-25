@@ -39,6 +39,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private TextView mTextViewTimer;
     private View mRoot;
     private boolean mIsRunning = true;
+    private CountDownTimer mCountDownTimer;
 
     @Nullable
     @Override
@@ -160,7 +161,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setTimer() {
 
-        new CountDownTimer(120000, 1000) {
+        mCountDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -168,6 +169,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                 long secondTimer = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
                 mTextViewTimer.setText(String.format("%02d:%02d ", minuteTimer, secondTimer));
+                mTextViewTimer.setTextColor(getResources().getColor(R.color.black));
             }
 
             @Override
@@ -176,6 +178,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                 mIsRunning = false;
                 if (getContext() != null) {
                     mTextViewTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
+                    mTextViewTimer.setTextColor(getResources().getColor(R.color.colorSecondaryDark));
                 }
             }
         }.start();
@@ -238,5 +241,11 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
         MaterialDialogUtil.getInstance().dismissMaterialDialog();
     }
 
+    @Override
+    public void onPause() {
+
+        mCountDownTimer.cancel();
+        super.onPause();
+    }
 }
 

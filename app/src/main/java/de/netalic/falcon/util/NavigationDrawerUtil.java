@@ -28,11 +28,12 @@ public class NavigationDrawerUtil {
         PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(8).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
         PrimaryDrawerItem item8 = new CustomPrimaryDrawerItem().withIdentifier(9).withName(R.string.navigation_help).withIcon(R.drawable.navigation_help);
 
+        //TODO:(Milad) Fill user and email from token
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(activity)
                 .withHeaderBackground(R.color.primary).withSelectionListEnabledForSingleProfile(false)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(R.drawable.navigation_charge))
+                        new ProfileDrawerItem().withName("VALUE").withEmail("VALUE").withIcon(R.drawable.navigation_charge))
                 .build();
 
         Drawer result = new DrawerBuilder()

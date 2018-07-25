@@ -9,19 +9,19 @@
         android:id="@+id/imageview_charge_spinner"
         android:layout_width="@dimen/layoutwidth_charge_imagview"
         android:layout_height="@dimen/layoutheight_charge_imagview"
+        android:foregroundGravity="left"
         android:padding="@dimen/padding_charge_imagview"
         android:src="@drawable/dashboard_alphayellowicon"
-        android:foregroundGravity="left"
         />
 
     <TextView
-        android:id="@+id/textview_charge_spinner"
+        android:id="@+id/textview_charge_walletname"
         style="?android:attr/spinnerItemStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/imageview_charge_spinner"
+        android:layout_toEndOf="@+id/imageview_charge_spinner"
+        android:gravity="center_vertical"
         android:textColor="@color/white"
         android:textSize="@dimen/textsize_charge_textview"
-        android:gravity="center_vertical"
         />
 </RelativeLayout>

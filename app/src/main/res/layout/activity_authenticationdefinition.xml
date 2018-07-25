@@ -44,6 +44,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margintop_authenticationdefinition_segmentedgroup"
+            segmentedgroup:sc_tint_color="@color/colorSecondaryDark"
             android:orientation="horizontal"
             segmentedgroup:sc_border_width="@dimen/borderwidth_authenticationdefinition_segmentedgroup"
             segmentedgroup:sc_corner_radius="@dimen/cornerradius_authenticationdefinition_segmentedgroup">

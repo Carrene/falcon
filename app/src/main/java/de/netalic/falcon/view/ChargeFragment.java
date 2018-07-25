@@ -99,7 +99,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
 
-                    View centerView = mPaymentGatewaySnapHelper.findSnapView(recyclerView.getLayoutManager());
+                    View centerView = mWalletSnapHelper.findSnapView(recyclerView.getLayoutManager());
                     int pos = recyclerView.getLayoutManager().getPosition(centerView);
                     ((ChargeWalletRecyclerViewAdapter) mRecyclerViewWallets.getAdapter()).select(pos);
                 }
@@ -131,8 +131,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
             }
         });
-
-
     }
 
     public void getWalletList() {
@@ -143,17 +141,11 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     @Override
     public void setListWallet(List<Wallet> walletList) {
 
-        walletList.add(walletList.get(0));
-        walletList.add(walletList.get(0));
-        walletList.add(walletList.get(0));
-
         mRecyclerViewAdapterChargeWallet.setDataSource(walletList);
+
         //TODO:(Ehsan) get it as an array from resource
         List<Integer> list = new ArrayList<>();
         list.add(R.drawable.charge_braintree);
-        list.add(R.drawable.charge_braintree);
-        list.add(R.drawable.charge_braintree);
-
         mRecyclerViewAdapterChargePaymentGateway.setDataSource(list);
     }
 

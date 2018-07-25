@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.concurrent.TimeUnit;
 
 import de.netalic.falcon.MyApp;
@@ -36,6 +37,7 @@ public class ApiClient {
                 okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
                 ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getInstance()));
                 okHttpClient.cookieJar(cookieJar).addInterceptor(new AuthorizationInterceptor());
+                okHttpClient.addInterceptor(new NetworkErrorInterceptor());
                 sRetrofit = new Retrofit.Builder().baseUrl(getUrl())
                         .client(okHttpClient.build())
                         .addConverterFactory(GsonConverterFactory.create())
@@ -44,6 +46,7 @@ public class ApiClient {
                 OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();
                 okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
                 okHttpClient.addInterceptor(new AuthorizationInterceptor());
+                okHttpClient.addInterceptor(new NetworkErrorInterceptor());
                 sRetrofit = new Retrofit.Builder().baseUrl(getUrl())
                         .client(okHttpClient.build())
                         .addConverterFactory(GsonConverterFactory.create())
@@ -69,10 +72,29 @@ public class ApiClient {
         return sTestUrl;
     }
 
+    private static class NetworkErrorInterceptor implements Interceptor {
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+
+            Response response = null;
+            try {
+                Request request = chain.request();
+                response = chain.proceed(request);
+                if (response.code() == 500) {
+                    //TODO:(Milad) Display error
+                    System.out.println("ERROR");
+                }
+            } catch (SocketTimeoutException socketTimeoutException) {
+                //TODO (Milad) Display error
+            }
+            return response;
+        }
+    }
+
     private static class AuthorizationInterceptor implements Interceptor {
 
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance());
-
 
         @Override
         public Response intercept(Chain chain) throws IOException {
@@ -86,23 +108,24 @@ public class ApiClient {
 
             Response response = chain.proceed(request);
 
-            if (response.request().method().equals("BIND") && response.code()==200) {
+            if (response.request().method().equals("BIND") && response.code() == 200) {
 
                 JsonParser jsonParser = new JsonParser();
-                String responseBodyString  = response.body().string();
+                String responseBodyString = response.body().string();
                 JsonObject jsonObject = (JsonObject) jsonParser.parse(responseBodyString);
                 String freshToken = jsonObject.get("token").getAsString();
                 sharedPreferencesJwtPersistor.save(freshToken);
                 MediaType contentType = response.body().contentType();
                 ResponseBody body = ResponseBody.create(contentType, responseBodyString);
                 response = response.newBuilder().body(body).build();
-
             }
+
             String newJwtToken = response.header("X-New-JWT-Token");
 
             if (newJwtToken != null) {
                 sharedPreferencesJwtPersistor.save(newJwtToken);
             }
+
             return response;
         }
     }

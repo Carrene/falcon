@@ -46,7 +46,6 @@
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext"
         android:text="@string/phoneconfirmation_timer"
-        android:textColor="@color/colorSecondaryDark"
         android:textSize="@dimen/textsize_phoneconfirmation_resendtext" />
 
     <TextView

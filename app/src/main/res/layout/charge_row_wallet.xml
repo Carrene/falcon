@@ -22,7 +22,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="Value"/>
+            android:text="Value"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <ImageView
             android:id="@+id/textview_charge_walletcurrency"

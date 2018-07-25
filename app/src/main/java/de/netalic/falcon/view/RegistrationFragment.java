@@ -30,6 +30,7 @@ import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+//TODO: (Milad) change the masking for longer phone number
 public class RegistrationFragment extends Fragment implements RegistrationContract.View {
 
     private RegistrationContract.Presenter mPresenter;
@@ -95,16 +96,12 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
                 if (mEditTextCountryCode.getText().toString().matches("XXXX")) {
 
                     showCountryCodeError();
-
-                }
-
-               else if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
+                } else if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
 
                     checkNotNull(getContext());
                     SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.registration_pleasefillyournumber), getContext());
                 } else {
-
-                        claim();
+                    claim();
                 }
             }
         }

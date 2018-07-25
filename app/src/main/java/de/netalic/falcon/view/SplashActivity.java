@@ -34,8 +34,6 @@ public class SplashActivity extends AppCompatActivity {
                 }
             });
         }
-        intent.set(new Intent(this, DashboardActivity.class));
-
         startActivity(intent.get());
         finish();
     }
