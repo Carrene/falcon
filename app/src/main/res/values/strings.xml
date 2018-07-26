@@ -34,7 +34,6 @@
     <string name="authenticationdefinition_nomatch">No match</string>
     <string name="authenticationdefinition_setsuccessful">Set successful</string>
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
-    <string name="authenticationdefinitin_selectappsloginmethod">Select the apps login method</string>
     <string name="authenticationdefinition_hintpassword">Enter password</string>
     <string name="authenticationdefinition_hintconfirmpassword">Confirm password</string>
     <string name="authenticationdefinition_toolbartitle">Authentication type</string>

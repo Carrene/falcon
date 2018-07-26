@@ -55,7 +55,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/textview_dashboard_balance"
                 android:paddingEnd="@dimen/paddingend_dashboard_alphaicon"
-                android:src="@drawable/dashboard_alphasymbol" />
+                android:src="@drawable/dashboard_alphaicon" />
 
             <TextView
                 android:id="@+id/textview_dashboard_balance"

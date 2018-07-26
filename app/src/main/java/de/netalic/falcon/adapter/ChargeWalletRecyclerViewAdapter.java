@@ -30,12 +30,12 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         switch (viewType) {
 
             case ADD_WALLET: {
-                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_row_addwallet, parent, false);
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_rowaddwallet, parent, false);
                 return new AddWalletHolder(itemView);
             }
 
             case WALLET: {
-                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_row_wallet, parent, false);
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_rowwallet, parent, false);
                 return new WalletHolder(itemView);
             }
         }
