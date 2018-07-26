@@ -10,7 +10,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class RegistrationPresenter implements RegistrationContract.Presenter {
 
 
-
     @NonNull
     private final RegistrationContract.View mRegistrationView;
 

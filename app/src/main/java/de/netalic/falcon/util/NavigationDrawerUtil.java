@@ -61,13 +61,14 @@ public class NavigationDrawerUtil {
 
                             case 1: {
                                 intent = new Intent(activity, DashboardActivity.class);
-
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
                             }
 
                             case 2: {
                                 intent = new Intent(activity, ChargeActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
                             }

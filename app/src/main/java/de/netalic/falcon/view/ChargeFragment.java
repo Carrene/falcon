@@ -17,6 +17,7 @@ import android.widget.Button;
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -160,7 +161,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         //TODO:(Ehsan) get it as an array from resource
         List<Integer> list = new ArrayList<>();
-        list.add(R.drawable.charge_braintree);
+        list.add(R.drawable.charge_braintreelogo);
         mRecyclerViewAdapterChargePaymentGateway.setDataSource(list);
     }
 

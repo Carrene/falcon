@@ -20,7 +20,6 @@ public class ChargeAmountActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        //TODO: (Ehsan) get walletId and paymentGatewayName when back is pressed
         if (getIntent().getExtras() == null) {
             throw new RuntimeException("User should not be null!");
         }
