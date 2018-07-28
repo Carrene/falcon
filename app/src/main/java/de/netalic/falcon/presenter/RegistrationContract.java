@@ -8,8 +8,6 @@ public interface RegistrationContract {
     interface View extends BaseView<Presenter> {
 
         void navigationToPhoneConfirmation(User user);
-        void showProgressBar();
-        void dismissProgressBar();
         void showErrorInvalidUdidOrPhone();
 
     }

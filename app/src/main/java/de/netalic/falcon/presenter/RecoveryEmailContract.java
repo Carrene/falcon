@@ -10,8 +10,6 @@ public interface RecoveryEmailContract {
         void navigateToAuthenticationDefinitionActivity();
         void showErrorInvalidEmail();
         void showErrorEmailAlreadyExists();
-        void showProgressBar();
-        void dismissProgressBar();
 
     }
 

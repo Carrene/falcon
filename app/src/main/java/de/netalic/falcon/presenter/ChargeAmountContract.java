@@ -14,10 +14,6 @@ public interface ChargeAmountContract {
 
     interface View extends BaseView<Presenter> {
 
-        void showProgressBar();
-
-        void dismissProgressBar();
-
         void showChargePaymentConfirmation(ChargeStartResponse chargeStartResponse);
 
         void showErrorInvalidAmount();

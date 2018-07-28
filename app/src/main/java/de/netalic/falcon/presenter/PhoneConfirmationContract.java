@@ -18,9 +18,6 @@ public interface PhoneConfirmationContract {
 
         void showResendCodeAgain();
 
-        void showProgressBar();
-
-        void dismissProgressBar();
 
     }
 
