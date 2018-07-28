@@ -101,14 +101,6 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
         });
     }
 
-    @Override
-    public void finalize(double amount, String braintreeNonce, String chargeDataToken) {
-
-        WalletRepository.getInstance().finalize(amount, braintreeNonce, chargeDataToken, deal -> {
-
-            System.out.println(deal.getResponse().code());
-        });
-    }
 
     @Override
     public void exchangeRate(Rate rate) {

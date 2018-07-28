@@ -72,7 +72,7 @@
                 android:textSize="@dimen/textsize_chargefailed_walletnolable" />
 
             <TextView
-                android:id="@+id/textview_chargecompleted_amountalpha"
+                android:id="@+id/textview_chargefailed_amountalpha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargefailed_amountalphalable"
@@ -147,7 +147,7 @@
                 android:textSize="@dimen/textsize_chargefailed_transactiondate" />
 
             <TextView
-                android:id="@+id/textview_chargecompleted_transactiondate"
+                android:id="@+id/textview_chargefailed_transactiondate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargefailed_transactiondatelable"

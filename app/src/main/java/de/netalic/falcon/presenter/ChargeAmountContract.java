@@ -1,12 +1,7 @@
 package de.netalic.falcon.presenter;
 
-import com.google.gson.JsonObject;
-
-import java.util.List;
-
-import de.netalic.falcon.model.ChargeStartResponse;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Rate;
-import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.view.BaseView;
 
 public interface ChargeAmountContract {
@@ -18,7 +13,7 @@ public interface ChargeAmountContract {
 
         void dismissProgressBar();
 
-        void showChargePaymentConfirmation(ChargeStartResponse chargeStartResponse);
+        void showChargePaymentConfirmation(Deposit deposit);
 
         void showErrorInvalidAmount();
 
@@ -42,7 +37,6 @@ public interface ChargeAmountContract {
 
         void charge(int id, double amount);
 
-        void finalize(double amount, String braintreeNonce, String chargeDataToken);
 
         void exchangeRate(Rate rate);
 

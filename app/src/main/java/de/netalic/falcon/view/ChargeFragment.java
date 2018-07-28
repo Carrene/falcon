@@ -17,7 +17,6 @@ import android.widget.Button;
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import de.netalic.falcon.R;

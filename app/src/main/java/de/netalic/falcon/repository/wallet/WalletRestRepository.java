@@ -1,14 +1,11 @@
 package de.netalic.falcon.repository.wallet;
 
-import com.google.gson.JsonObject;
-
 import java.util.List;
 
-import de.netalic.falcon.model.ChargeStartResponse;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.Deal;
-import de.netalic.falcon.repository.IRepository;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,18 +43,18 @@ public class WalletRestRepository implements IWalletRepository {
     }
 
     @Override
-    public void charge(int id, double amount, CallRepository<ChargeStartResponse> callRepository) {
+    public void charge(int id, double amount, CallRepository<Deposit> callRepository) {
 
-        ApiClient.getService().charge(id, amount).enqueue(new Callback<ChargeStartResponse>() {
+        ApiClient.getService().charge(id, amount).enqueue(new Callback<Deposit>() {
             @Override
-            public void onResponse(Call<ChargeStartResponse> call, Response<ChargeStartResponse> response) {
+            public void onResponse(Call<Deposit> call, Response<Deposit> response) {
 
                 callRepository.onDone(new Deal<>(response.body(), response, null));
 
             }
 
             @Override
-            public void onFailure(Call<ChargeStartResponse> call, Throwable t) {
+            public void onFailure(Call<Deposit> call, Throwable t) {
 
                 callRepository.onDone(new Deal<>(null, null, t));
 
@@ -66,22 +63,23 @@ public class WalletRestRepository implements IWalletRepository {
     }
 
     @Override
-    public void finalize(double amount, String braintreeNonce, String chargeDataToken, CallRepository<JsonObject> callRepository) {
-
-        ApiClient.getService().finalize(amount, braintreeNonce, chargeDataToken).enqueue(new Callback<JsonObject>() {
+    public void finalize(int walletId, int depositId,String braintreeNonce, CallRepository<Deposit> callRepository) {
+        ApiClient.getService().finalize(walletId,depositId,braintreeNonce).enqueue(new Callback<Deposit>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            public void onResponse(Call<Deposit> call, Response<Deposit> response) {
 
-                callRepository.onDone(new Deal<>(response.body(), response, null));
+                callRepository.onDone(new Deal<>(response.body(),response,null));
+
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(Call<Deposit> call, Throwable t) {
 
-                callRepository.onDone(new Deal<>(null, null, t));
+                callRepository.onDone(new Deal<>(null,null,t));
 
             }
         });
     }
+
 
 }

@@ -1,10 +1,8 @@
 package de.netalic.falcon.network;
 
-import com.google.gson.JsonObject;
-
 import java.util.List;
 
-import de.netalic.falcon.model.ChargeStartResponse;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
@@ -38,9 +36,11 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @HTTP(method = "START", path = "wallets/{id}/braintree/deposits", hasBody = true)
-    Call<ChargeStartResponse> charge(@Path("id") int id, @Field("amount") double amount);
+    Call<Deposit> charge(@Path("id") int id, @Field("amount") double amount);
 
     @FormUrlEncoded
-    @HTTP(method = "FINALIZE", path = "braintree/sessions", hasBody = true)
-    Call<JsonObject> finalize(@Field("amount") double amount, @Field("braintreeNonce") String braintreeNonce, @Field("chargeDataToken") String chargeDataToken);
+    @HTTP(method = "FINALIZE", path = "wallets/{walletId}/braintree/deposits/{depositId}", hasBody = true)
+    Call<Deposit> finalize(@Path("walletId") int walletId, @Path("depositId") int depositId, @Field("braintreeNonce") String braintreeNonce );
+
+
 }

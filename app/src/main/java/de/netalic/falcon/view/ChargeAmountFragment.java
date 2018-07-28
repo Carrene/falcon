@@ -1,6 +1,5 @@
 package de.netalic.falcon.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,26 +8,17 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-
-import com.braintreepayments.api.dropin.DropInActivity;
-import com.braintreepayments.api.dropin.DropInRequest;
-import com.braintreepayments.api.dropin.DropInResult;
-import com.google.gson.JsonObject;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.ChargeStartResponse;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.UsdCurrency;
-import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeAmountContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -116,10 +106,10 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
     }
 
     @Override
-    public void showChargePaymentConfirmation(ChargeStartResponse chargeStartResponse) {
+    public void showChargePaymentConfirmation(Deposit deposit) {
 
         Intent intent = new Intent(getContext(), ChargeConfirmationActivity.class);
-        intent.putExtra(ChargeConfirmationActivity.ARGUMENT_CHARGE_START, chargeStartResponse);
+        intent.putExtra(ChargeConfirmationActivity.ARGUMENT_CHARGE_START, deposit);
         startActivity(intent);
     }
 
@@ -260,7 +250,6 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
         );
 
     }
-
 
 
     @Override

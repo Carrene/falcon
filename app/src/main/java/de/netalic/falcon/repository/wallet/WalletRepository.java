@@ -1,12 +1,9 @@
 package de.netalic.falcon.repository.wallet;
 
-import com.google.gson.JsonObject;
-
 import java.util.List;
 
-import de.netalic.falcon.model.ChargeStartResponse;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Wallet;
-import de.netalic.falcon.repository.IRepository;
 
 public class WalletRepository implements IWalletRepository {
 
@@ -50,14 +47,15 @@ public class WalletRepository implements IWalletRepository {
     }
 
     @Override
-    public void charge(int id, double amount, CallRepository<ChargeStartResponse> callRepository) {
+    public void charge(int id, double amount, CallRepository<Deposit> callRepository) {
 
         mWalletRestRepository.charge(id, amount, callRepository);
     }
 
     @Override
-    public void finalize(double amount, String braintreeNonce, String chargeDataToken, CallRepository<JsonObject> callRepository) {
-
-        mWalletRestRepository.finalize(amount, braintreeNonce, chargeDataToken, callRepository);
+    public void finalize(int walletId, int depositId,String braintreeNonce, CallRepository<Deposit> callRepository) {
+        mWalletRestRepository.finalize(walletId,depositId,braintreeNonce,callRepository);
     }
+
+
 }
