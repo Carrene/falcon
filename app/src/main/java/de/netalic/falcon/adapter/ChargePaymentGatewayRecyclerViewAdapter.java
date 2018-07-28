@@ -30,10 +30,14 @@ public class ChargePaymentGatewayRecyclerViewAdapter extends RecyclerView.Adapte
         if (mSelectedPosition == position) {
             holder.itemView.setAlpha(1);
             holder.mImageViewCheck.setVisibility(View.VISIBLE);
+            holder.itemView.setScaleX(1.1f);
+            holder.itemView.setScaleY(1.1f);
 
         } else {
             holder.itemView.setAlpha(0.5f);
             holder.mImageViewCheck.setVisibility(View.GONE);
+            holder.itemView.setScaleX(1f);
+            holder.itemView.setScaleY(1f);
         }
 
         holder.mImageViewPaymentGatewayIcon.setImageResource(mPaymentGatewayList.get(position));

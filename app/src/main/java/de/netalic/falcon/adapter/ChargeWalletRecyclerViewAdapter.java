@@ -57,9 +57,14 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 if (mSelectedPosition == position) {
                     ((WalletHolder) holder).itemView.setAlpha(1);
                     ((WalletHolder) holder).mImageViewCheck.setVisibility(View.VISIBLE);
+                    ((WalletHolder) holder).itemView.setScaleX(1.1f);
+                    ((WalletHolder) holder).itemView.setScaleY(1.1f);
+
                 } else {
                     holder.itemView.setAlpha(0.5f);
                     ((WalletHolder) holder).mImageViewCheck.setVisibility(View.GONE);
+                    ((WalletHolder) holder).itemView.setScaleX(1);
+                    ((WalletHolder) holder).itemView.setScaleY(1);
                 }
 
                 ((WalletHolder) holder).mTextViewWalletName.setText(mWalletList.get(position - 1).getName());
@@ -96,6 +101,7 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
         mWalletList = walletList;
     }
+
 
     @Override
     public int getItemCount() {

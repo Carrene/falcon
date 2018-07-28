@@ -17,13 +17,11 @@ import android.widget.Button;
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.adapter.ChargePaymentGatewayRecyclerViewAdapter;
 import de.netalic.falcon.adapter.ChargeWalletRecyclerViewAdapter;
-import de.netalic.falcon.adapter.OffsetItemDecoration;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
@@ -71,7 +69,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         mRecyclerViewAdapterChargeWallet = new ChargeWalletRecyclerViewAdapter(new ArrayList<>());
         mRecyclerViewWallets.setAdapter(mRecyclerViewAdapterChargeWallet);
-        mRecyclerViewWallets.addItemDecoration(new OffsetItemDecoration(getContext()));
         mRecyclerViewWallets.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
         IndefinitePagerIndicator walletIndicator = mRoot.findViewById(R.id.charge_wallet_indicator);
@@ -79,7 +76,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         mRecyclerViewAdapterChargePaymentGateway = new ChargePaymentGatewayRecyclerViewAdapter(new ArrayList<>());
         mRecyclerViewPaymentGateway.setAdapter(mRecyclerViewAdapterChargePaymentGateway);
-        mRecyclerViewPaymentGateway.addItemDecoration(new OffsetItemDecoration(getContext()));
         mRecyclerViewPaymentGateway.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
         IndefinitePagerIndicator paymentGatewayIndicator = mRoot.findViewById(R.id.charge_paymentgateway_indicator);
