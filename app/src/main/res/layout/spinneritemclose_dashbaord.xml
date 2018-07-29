@@ -11,7 +11,7 @@
         android:layout_height="@dimen/layoutheight_charge_imagview"
         android:foregroundGravity="left"
         android:padding="@dimen/padding_charge_imagview"
-        android:src="@drawable/dashboard_alphayellowicon"
+        android:src="@drawable/dashboard_yellowalphaicon"
         />
 
     <TextView

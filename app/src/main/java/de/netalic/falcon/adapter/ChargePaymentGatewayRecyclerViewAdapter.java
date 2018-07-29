@@ -20,7 +20,7 @@ public class ChargePaymentGatewayRecyclerViewAdapter extends RecyclerView.Adapte
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_row_paymentgateway, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_rowpaymentgateway, parent, false);
         return new Holder(itemView);
     }
 

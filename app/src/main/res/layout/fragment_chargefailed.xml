@@ -72,7 +72,7 @@
                 android:textSize="@dimen/textsize_chargefailed_walletnolable" />
 
             <TextView
-                android:id="@+id/textview_chargecompleted_amountalpha"
+                android:id="@+id/textview_chargefailed_amountalpha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargefailed_amountalphalable"
@@ -80,6 +80,14 @@
                 android:text="milad"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargefailed_walletnolable" />
+            <TextView
+                android:id="@+id/textview_chargefailed_symbolalpha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargefailed_amountalpha"
+                android:paddingStart="@dimen/paddingstart_chargefailed_amountalpha"
+                android:text="α"
+                android:textColor="@color/black" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -105,6 +113,14 @@
                 android:text="milad"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargefailed_amountdollarlable" />
+            <TextView
+                android:id="@+id/textview_chargefailed_symboldollar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargefailed_amountdollar"
+                android:paddingStart="@dimen/paddingstart_chargefailed_amountdollar"
+                android:text="$"
+                android:textColor="@color/black" />
         </RelativeLayout>
 
         <RelativeLayout

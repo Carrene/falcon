@@ -3,14 +3,10 @@ package de.netalic.falcon.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
-
-import com.mikepenz.materialdrawer.Drawer;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.ChargeAmountPresenter;
 import de.netalic.falcon.util.ActivityUtil;
-import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class ChargeAmountActivity extends BaseActivity {
 
