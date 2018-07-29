@@ -159,6 +159,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         List<Integer> list = new ArrayList<>();
         list.add(R.drawable.charge_braintreelogo);
         mRecyclerViewAdapterChargePaymentGateway.setDataSource(list);
+        mRecyclerViewAdapterChargeWallet.notifyDataSetChanged();
     }
 
     @Override

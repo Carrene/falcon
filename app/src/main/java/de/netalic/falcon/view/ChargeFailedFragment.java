@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import de.netalic.falcon.R;
@@ -29,14 +30,14 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private TextView mTextViewPaymentGateway;
     private TextView mTextViewTransactionDate;
     private TextView mTextViewTransactionAmount;
-    private Button mButtonShare;
-    private Button mButtonDownload;
+    private ImageButton mButtonShare;
+    private ImageButton mButtonDownload;
     private Button mButtonNavigationDashboard;
 
     @Override
     public void setPresenter(ChargeFailedContract.Presenter presenter) {
 
-        mChargeFailedPresenter=checkNotNull(presenter);
+        mChargeFailedPresenter = checkNotNull(presenter);
     }
 
     @Override
@@ -55,14 +56,15 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        mRoot=inflater.inflate(R.layout.fragment_chargefailed,null);
+        mRoot = inflater.inflate(R.layout.fragment_chargefailed, null);
         checkNotNull(getArguments());
-        mDeposit=getArguments().getParcelable(ARGUMENT_DEPOSIT);
+        mDeposit = getArguments().getParcelable(ARGUMENT_DEPOSIT);
         return mRoot;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
         setPaymentInformation();
@@ -71,28 +73,28 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
     public static ChargeFailedFragment newInstance(Deposit deposit) {
 
-        Bundle bundle=new Bundle();
-        bundle.putParcelable(ARGUMENT_DEPOSIT,deposit);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ARGUMENT_DEPOSIT, deposit);
         ChargeFailedFragment fragment = new ChargeFailedFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    public void initUiComponent(){
+    public void initUiComponent() {
 
-        mTextViewWalletName =mRoot.findViewById(R.id.textview_chargefailed_walletname);
-        mTextViewChargeAmount=mRoot.findViewById(R.id.textview_chargefailed_amountalpha);
-        mTextViewPaidAmount=mRoot.findViewById(R.id.textview_chargefailed_amountdollar);
-        mTextViewPaymentGateway=mRoot.findViewById(R.id.textview_chargefailed_paymentgateway);
-        mTextViewTransactionDate=mRoot.findViewById(R.id.textview_chargefailed_transactiondate);
-        mTextViewTransactionAmount=mRoot.findViewById(R.id.textview_chargefailed_transactionamount);
-        mButtonShare=mRoot.findViewById(R.id.imagebutton_chargefailed_sharebutton);
-        mButtonDownload=mRoot.findViewById(R.id.imagebutton_chargefailed_downloadbutton);
-        mButtonNavigationDashboard=mRoot.findViewById(R.id.button_chargefailed_dashborad);
+        mTextViewWalletName = mRoot.findViewById(R.id.textview_chargefailed_walletname);
+        mTextViewChargeAmount = mRoot.findViewById(R.id.textview_chargefailed_amountalpha);
+        mTextViewPaidAmount = mRoot.findViewById(R.id.textview_chargefailed_amountdollar);
+        mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargefailed_paymentgateway);
+        mTextViewTransactionDate = mRoot.findViewById(R.id.textview_chargefailed_transactiondate);
+        mTextViewTransactionAmount = mRoot.findViewById(R.id.textview_chargefailed_transactionamount);
+        mButtonShare = mRoot.findViewById(R.id.imagebutton_chargefailed_sharebutton);
+        mButtonDownload = mRoot.findViewById(R.id.imagebutton_chargefailed_downloadbutton);
+        mButtonNavigationDashboard = mRoot.findViewById(R.id.button_chargefailed_dashborad);
 
     }
 
-    public void setPaymentInformation(){
+    public void setPaymentInformation() {
 
         mTextViewWalletName.setText(mDeposit.getWalletName());
         mTextViewChargeAmount.setText(String.valueOf(mDeposit.getChargeAmount()));
@@ -101,11 +103,11 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewTransactionDate.setText(mDeposit.getModifiedAt());
     }
 
-    public void initListener(){
+    public void initListener() {
 
         mButtonNavigationDashboard.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getActivity(),DashboardActivity.class);
+            Intent intent = new Intent(getActivity(), DashboardActivity.class);
             startActivity(intent);
         });
 

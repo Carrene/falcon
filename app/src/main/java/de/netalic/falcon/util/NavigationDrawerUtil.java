@@ -42,10 +42,10 @@ public class NavigationDrawerUtil {
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(activity)
                 .withHeaderBackground(R.color.primary).withSelectionListEnabledForSingleProfile(false)
-                .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigation_charge))
+                .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigationheader_profile))
                 .build();
 
-        Drawer result = new DrawerBuilder()
+        Drawer result = new DrawerBuilder()Enha
                 .withActivity(activity)
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)

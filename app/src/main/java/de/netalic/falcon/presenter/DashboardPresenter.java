@@ -29,7 +29,6 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
-                mDashboardView.dismissProgressBar();
 
             } else {
 
@@ -67,7 +66,6 @@ public class DashboardPresenter implements DashboardContract.Presenter {
         WalletRepository.getInstance().getAll(deal -> {
 
             if (deal.getThrowable()!=null){
-                mDashboardView.dismissProgressBar();
 
             } else {
                 switch (deal.getResponse().code()){

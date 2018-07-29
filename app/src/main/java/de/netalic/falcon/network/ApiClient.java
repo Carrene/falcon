@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.concurrent.TimeUnit;
 
+import de.netalic.falcon.BuildConfig;
 import de.netalic.falcon.MyApp;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import okhttp3.Interceptor;
@@ -65,9 +66,9 @@ public class ApiClient {
     }
 
     public static String getUrl() {
-
         if (sTestUrl == null) {
-            return String.format("http://192.168.1.53:80/apiv1/");
+            String url = BuildConfig.WEB_SERVICE_URL+":"+BuildConfig.WEB_SERVICE_PORT+"/apiv1/";
+            return url;
         }
         return sTestUrl;
     }

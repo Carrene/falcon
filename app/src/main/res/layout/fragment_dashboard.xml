@@ -63,7 +63,7 @@
                 android:layout_height="@dimen/height_dashboard_amountalpha"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="3.000"
+                android:text="VALUE"
                 android:textColor="@color/white"
                 android:textSize="@dimen/textsize_dashboard_amountalpha" />
 
@@ -112,7 +112,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/marginend_dashboard_ratecurrency"
-            android:text="1.00"
+            android:text="VALUE"
             android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy" />

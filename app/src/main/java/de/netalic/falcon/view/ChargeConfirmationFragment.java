@@ -19,6 +19,7 @@ import com.braintreepayments.api.dropin.DropInResult;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeConfirmationContract;
+import de.netalic.falcon.util.MaterialDialogUtil;
 
 public class ChargeConfirmationFragment extends Fragment implements ChargeConfirmationContract.View {
 
@@ -91,11 +92,13 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     @Override
     public void showProgressBar() {
 
+        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
     }
 
     @Override
     public void dismissProgressBar() {
 
+        MaterialDialogUtil.getInstance().dismissMaterialDialog();
     }
 
     public static ChargeConfirmationFragment newInstance(Deposit deposit) {
@@ -115,7 +118,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_chargeconfirmation_paidamount);
         mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargeconfirmation_paymentgateway);
         mButtonConfirm = mRoot.findViewById(R.id.button_chargeconfirmation_confirm);
-        mTextViewTransactionAmount=mRoot.findViewById(R.id.textview_chargeconfirmation_transactionamount);
+        mTextViewTransactionAmount = mRoot.findViewById(R.id.textview_chargeconfirmation_transactionamount);
     }
 
     @Override
@@ -129,13 +132,9 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 String braintreeNonce = result.getPaymentMethodNonce().getNonce();
 
-                mChargeConfirmationPresenter.finalize(mDeposit.getWalletId(), mDeposit.getId(),braintreeNonce);
-//                mChargePresenter.finalize(10, braintreeNonce, mChargeDataToken);
-                // send paymentMethodNonce to your server
-                //TODO: finalize
+                mChargeConfirmationPresenter.finalize(mDeposit.getWalletId(), mDeposit.getId(), braintreeNonce);
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                //TODO: Payment is cancelled
-                // canceled
+                //TODO(Milad): Payment is cancelled
             } else {
                 // an error occurred, checked the returned exception
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
@@ -146,16 +145,18 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     @Override
     public void navigationToChargeCompleted() {
 
-        Intent intent=new Intent(getActivity(),ChargeCompletedActivity.class);
-        intent.putExtra(ARGUMENT_DEPOSIT,mDeposit);
+        Intent intent = new Intent(getActivity(), ChargeCompletedActivity.class);
+        intent.putExtra(ARGUMENT_DEPOSIT, mDeposit);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     @Override
     public void navigationToChargeFailed() {
 
-        Intent intent=new Intent(getActivity(),ChargeFailedActivity.class);
-        intent.putExtra(ARGUMENT_DEPOSIT,mDeposit);
+        Intent intent = new Intent(getActivity(), ChargeFailedActivity.class);
+        intent.putExtra(ARGUMENT_DEPOSIT, mDeposit);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

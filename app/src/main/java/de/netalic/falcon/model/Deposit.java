@@ -10,9 +10,6 @@ public class Deposit implements Parcelable {
     @SerializedName("id")
     private int mId;
 
-    @SerializedName("transactionId")
-    private int mTransactionId;
-
     @SerializedName("rate")
     private double mRate;
 
@@ -63,11 +60,6 @@ public class Deposit implements Parcelable {
     public int getWalletId() {
 
         return mWalletId;
-    }
-
-    public int getTransactionId() {
-
-        return mTransactionId;
     }
 
     public double getRate() {
@@ -152,6 +144,8 @@ public class Deposit implements Parcelable {
         dest.writeString(mPaymentGatewayName);
         dest.writeString(mBraintreeToken);
         dest.writeInt(mId);
+        dest.writeString(mRetrievalReferenceNumber);
+        dest.writeString(mModifiedAt);
 
     }
 
@@ -163,7 +157,9 @@ public class Deposit implements Parcelable {
         mWalletId = in.readInt();
         mPaymentGatewayName = in.readString();
         mBraintreeToken = in.readString();
-        mId=in.readInt();
+        mId = in.readInt();
+        mRetrievalReferenceNumber = in.readString();
+        mModifiedAt = in.readString();
     }
 
     public static final Creator<Deposit> CREATOR = new Creator<Deposit>() {

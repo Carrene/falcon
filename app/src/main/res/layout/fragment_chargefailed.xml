@@ -81,14 +81,7 @@
                 android:text="VALUE"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargefailed_walletnolable" />
-            <TextView
-                android:id="@+id/textview_chargefailed_symbolalpha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargefailed_amountalpha"
-                android:paddingStart="@dimen/paddingstart_chargefailed_amountalpha"
-                android:text="α"
-                android:textColor="@color/black" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -114,14 +107,6 @@
                 android:text="VALUE"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargefailed_amountdollarlable" />
-            <TextView
-                android:id="@+id/textview_chargefailed_symboldollar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargefailed_amountdollar"
-                android:paddingStart="@dimen/paddingstart_chargefailed_amountdollar"
-                android:text="$"
-                android:textColor="@color/black" />
         </RelativeLayout>
 
 
@@ -215,7 +200,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="@dimen/marginstartend_chargefailed_downloadsharebutton"
-                android:src="@drawable/chargefailed_sharebutton"
+                android:src="@drawable/chargecompletedfailed_sharebutton"
 
                 />
 
@@ -226,7 +211,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="@dimen/marginstartend_chargefailed_downloadsharebutton"
-                android:src="@drawable/chargefailed_downloadbutton" />
+                android:src="@drawable/chargecompletedfailed_downloadbutton" />
 
 
         </RelativeLayout>

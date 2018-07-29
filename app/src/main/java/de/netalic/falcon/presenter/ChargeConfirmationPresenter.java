@@ -1,6 +1,7 @@
 package de.netalic.falcon.presenter;
 
 import de.netalic.falcon.repository.wallet.WalletRepository;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ChargeConfirmationPresenter implements ChargeConfirmationContract.Presenter {
@@ -8,7 +9,8 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
     private final ChargeConfirmationContract.View mChargeConfirmationView;
 
     public ChargeConfirmationPresenter(ChargeConfirmationContract.View chargeConfirmationView) {
-        mChargeConfirmationView=checkNotNull(chargeConfirmationView);
+
+        mChargeConfirmationView = checkNotNull(chargeConfirmationView);
         mChargeConfirmationView.setPresenter(this);
     }
 
@@ -20,25 +22,25 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
     @Override
     public void finalize(int walletId, int depositId, String braintreeNonce) {
 
-        WalletRepository.getInstance().finalize(walletId,depositId,braintreeNonce,deal -> {
+        mChargeConfirmationView.showProgressBar();
+        WalletRepository.getInstance().finalize(walletId, depositId, braintreeNonce, deal -> {
 
-            mChargeConfirmationView.showProgressBar();
-
-            if (deal.getThrowable()!=null){
-
-
-            }else {
+            mChargeConfirmationView.dismissProgressBar();
+            if (deal.getThrowable() != null) {
 
 
-                switch (deal.getResponse().code()){
+            } else {
 
-                    case 200:{
+
+                switch (deal.getResponse().code()) {
+
+                    case 200: {
 
                         mChargeConfirmationView.navigationToChargeCompleted();
                         break;
                     }
 
-                    case 800:{
+                    case 800: {
 
                         mChargeConfirmationView.navigationToChargeFailed();
                         break;

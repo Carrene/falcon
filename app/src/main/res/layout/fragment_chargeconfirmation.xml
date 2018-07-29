@@ -85,14 +85,6 @@
                 android:text="VALUE"
                 android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/textview_chargeconfirmation_symbolalpha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargeconfirmation_chargeamount"
-                android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountalpha"
-                android:text="α"
-                android:textColor="@color/black" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -142,14 +134,6 @@
                 android:text="VALUE"
                 android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/textview_chargeconfirmation_symboldollar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargeconfirmation_paidamount"
-                android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountalpha"
-                android:text="$"
-                android:textColor="@color/black" />
         </RelativeLayout>
 
         <RelativeLayout
