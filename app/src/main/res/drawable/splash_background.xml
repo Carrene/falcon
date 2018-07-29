@@ -4,9 +4,9 @@
     <item
         android:drawable="@color/colorPrimary"/>
 
-    <item>
+    <item android:top="230dp">
         <bitmap
-            android:gravity="center"
+            android:gravity="top"
             android:src="@drawable/splash_logo"/>
     </item>
 
