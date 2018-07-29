@@ -28,6 +28,9 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     private TextView mTextViewPaymentGateway;
     private TextView mTextViewTransactionDate;
     private TextView mTextViewTrackingCode;
+    private TextView mTextViewTransactionAmount;
+    private Button mButtonShare;
+    private Button mButtonDownload;
     private Button mButtonNavigationToDashboard;
 
     @Nullable
@@ -81,6 +84,9 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mTextViewPaymentGateway=mRoot.findViewById(R.id.textview_chargecompleted_paymentgateway);
         mTextViewTransactionDate=mRoot.findViewById(R.id.textview_chargecompleted_transactiondate);
         mTextViewTrackingCode=mRoot.findViewById(R.id.textview_chargecompleted_trackingcode);
+        mTextViewTransactionAmount=mRoot.findViewById(R.id.textview_chargecompleted_transactionamount);
+        mButtonShare=mRoot.findViewById(R.id.imagebutton_chargecompleted_sharebutton);
+        mButtonDownload=mRoot.findViewById(R.id.imagebutton_chargecompleted_downloadbutton);
         mButtonNavigationToDashboard=mRoot.findViewById(R.id.button_chargecompleted_dashborad);
     }
     public void initListener(){
