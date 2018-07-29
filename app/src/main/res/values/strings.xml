@@ -95,7 +95,8 @@
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
     <string name="chargeconfirmation_walletname">Wallet name :</string>
     <string name="chargeconfirmation_paymentgateway">Payment Gateway :</string>
-    <string name="chargeconfirmation_amount">Amount :</string>
+    <string name="chargeconfirmation_amount">Charge Amount :</string>
+    <string name="chargeconfirmation_amounttransaction">Transaction Amount :</string>
     <string name="chargeconfirmation_walletno">Wallet No :</string>
     <string name="chargeconfirmation_confirm">CONFIRM</string>
     <string name="chargecompleted_chargecompleted">Charge Completed</string>

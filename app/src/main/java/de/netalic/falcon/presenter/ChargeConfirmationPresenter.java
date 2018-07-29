@@ -35,11 +35,14 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
                     case 200:{
 
                         mChargeConfirmationView.navigationToChargeCompleted();
+                        break;
                     }
 
                     case 800:{
 
                         mChargeConfirmationView.navigationToChargeFailed();
+                        break;
+
                     }
 
                 }
