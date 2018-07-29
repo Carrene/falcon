@@ -204,13 +204,12 @@
 
 
 
-    <dimen name="width_chargefailed_linearlayout">260dp</dimen>
-    <dimen name="height_chargefailed_linearlayout">295dp</dimen>
-    <dimen name="margintop_chargefailed_linearlayout">42dp</dimen>
-    <dimen name="margintop_chargefailed_failedimageview">40dp</dimen>
+    <dimen name="width_chargefailed_linearlayout">294dp</dimen>
+    <dimen name="height_chargefailed_linearlayout">367dp</dimen>
+    <dimen name="margintop_chargefailed_linearlayout">28dp</dimen>
+    <dimen name="margintop_chargefailed_failedimageview">30dp</dimen>
     <dimen name="margintop_chargefailed_failedtextview">6dp</dimen>
     <dimen name="textsize_chargefailed_failedtextview">20sp</dimen>
-    <dimen name="marginstart_chargefailed_walletnamelable">40dp</dimen>
     <dimen name="margintop_chargefailed_walletnamelable">20dp</dimen>
     <dimen name="textsize_chargefailed_walletnamelable">14sp</dimen>
     <dimen name="margintop_chargefailed_walletname">20dp</dimen>
@@ -228,5 +227,10 @@
     <dimen name="marginstartend_chargefailed_dashboard">16dp</dimen>
     <dimen name="textsize_chargefailed_dashboardbutton">14sp</dimen>
     <dimen name="paddingstart_chargefailed_walletno">5dp</dimen>
+    <dimen name="marginbutton_chargefailed_relativelayoutconsistdownloadandshare">31dp</dimen>
+    <dimen name="margintop_chargefailed_relativelayoutconsistdownloadandshare">20dp</dimen>
+    <dimen name="widthheight_chargefailed_sharebutton">35dp</dimen>
+    <dimen name="widthheight_chargefailed_downloadbutton">35dp</dimen>
+    <dimen name="marginstartend_chargefailed_downloadsharebutton">100dp</dimen>
 
 </resources>

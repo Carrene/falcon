@@ -112,7 +112,9 @@
     <string name="chargefailed_failed">Charge Failed</string>
     <string name="chargefailed_failedtextview">Failed</string>
     <string name="chargefailed_walletname">Wallet Name :</string>
-    <string name="chargefailed_amount">Amount :</string>
+    <string name="chargefailed_walletamount">Charge Amount(Alpha) :</string>
+    <string name="chargefailed_baseamount">Charge Amount(USD) :</string>
+    <string name="chargefailed_transactionamount">Transaction Amount(USD) :</string>
     <string name="chargefailed_paymentgateway">Payment Gateway :</string>
     <string name="chargefailed_transactiondate">Transaction date :</string>
     <string name="chargefailed_dashboard">Dashboard</string>

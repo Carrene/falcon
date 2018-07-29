@@ -28,6 +28,9 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private TextView mTextViewPaidAmount;
     private TextView mTextViewPaymentGateway;
     private TextView mTextViewTransactionDate;
+    private TextView mTextViewTransactionAmount;
+    private Button mButtonShare;
+    private Button mButtonDownload;
     private Button mButtonNavigationDashboard;
 
     @Override
@@ -82,6 +85,9 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewPaidAmount=mRoot.findViewById(R.id.textview_chargefailed_amountdollar);
         mTextViewPaymentGateway=mRoot.findViewById(R.id.textview_chargefailed_paymentgateway);
         mTextViewTransactionDate=mRoot.findViewById(R.id.textview_chargefailed_transactiondate);
+        mTextViewTransactionAmount=mRoot.findViewById(R.id.textview_chargefailed_transactionamount);
+        mButtonShare=mRoot.findViewById(R.id.imagebutton_chargefailed_sharebutton);
+        mButtonDownload=mRoot.findViewById(R.id.imagebutton_chargefailed_downloadbutton);
         mButtonNavigationDashboard=mRoot.findViewById(R.id.button_chargefailed_dashborad);
 
     }
