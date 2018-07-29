@@ -92,7 +92,7 @@
                 android:id="@+id/textview_chargecompleted_amountdollarlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chargecompleted_amount"
+                android:text="@string/chargecompleted_baseamount"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
 

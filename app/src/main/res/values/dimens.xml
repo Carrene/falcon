@@ -140,12 +140,10 @@
     <dimen name="height_chargeconfirmation_linearlayout">214dp</dimen>
     <dimen name="margintop_chargeconfirmation_linearlayout">42dp</dimen>
     <dimen name="textsize_chargeconfirmation_walletnamelable">14sp</dimen>
-    <dimen name="marginstart_chargeconfirmation_walletnamelable">40dp</dimen>
     <dimen name="margintop_chargeconfirmation_walletnamelable">40dp</dimen>
     <dimen name="margintop_chargeconfirmation_walletname">40dp</dimen>
     <dimen name="paddingstart_chargeconfirmation_walletname">10dp</dimen>
     <dimen name="margintop_chargeconfirmation_relativelayout">9dp</dimen>
-    <dimen name="marginstart_chargeconfirmation_relativelayout">40dp</dimen>
     <dimen name="textsize_chargeconfirmation_walletnolable">14sp</dimen>
     <dimen name="paddingstart_chargeconfirmation_walletno">10dp</dimen>
     <dimen name="textsize_chargeconfirmation_amountalphalable">14sp</dimen>
