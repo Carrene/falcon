@@ -15,7 +15,6 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeFailedContract;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ChargeFailedFragment extends Fragment implements ChargeFailedContract.View {
@@ -54,6 +53,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
 
         mRoot=inflater.inflate(R.layout.fragment_chargefailed,null);
+        checkNotNull(getArguments());
         mDeposit=getArguments().getParcelable(ARGUMENT_DEPOSIT);
         return mRoot;
     }

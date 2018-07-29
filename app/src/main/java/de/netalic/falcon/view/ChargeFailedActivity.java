@@ -15,6 +15,11 @@ public class ChargeFailedActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getIntent().getExtras()==null){
+
+            throw new RuntimeException("deposit should not null");
+        }
+
         Deposit deposit=getIntent().getExtras().getParcelable(ARGUMENT_DEPOSIT);
 
 
