@@ -3,9 +3,7 @@ package de.netalic.falcon.network;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
-import de.netalic.falcon.MyApp;
 import nuesoft.helpdroid.device.DeviceUtil;
 
 public class CheckInternetConnectivity extends BroadcastReceiver {

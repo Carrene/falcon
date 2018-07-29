@@ -5,36 +5,50 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ChargeStartResponse implements Parcelable {
+public class Deposit implements Parcelable {
 
     @SerializedName("id")
     private int mId;
+
     @SerializedName("transactionId")
     private int mTransactionId;
+
     @SerializedName("rate")
     private double mRate;
+
     @SerializedName("paidAmount")
     private double mPaidAmount;
+
     @SerializedName("createdAt")
     private String mCreatedAt;
+
     @SerializedName("chargeAmount")
     private double mChargeAmount;
+
     @SerializedName("walletName")
     private String mWalletName;
+
     @SerializedName("walletCurrencyCode")
     private String mWalletCurrencyCode;
+
     @SerializedName("retrievalReferenceNumber")
-    private int mRetrievalReferenceNumber;
+    private String mRetrievalReferenceNumber;
+
     @SerializedName("paymentGatewayCurrencyCode")
     private String mPaymentGatewayCurrencyCode;
+
     @SerializedName("status")
     private String mStatus;
+
     @SerializedName("paymentGatewayName")
     private String mPaymentGatewayName;
+
     @SerializedName("modifiedAt")
     private String mModifiedAt;
+
     @SerializedName("isExpired")
     private boolean mIsExpired;
+
     @SerializedName("braintreeToken")
     private String mBraintreeToken;
 
@@ -86,7 +100,7 @@ public class ChargeStartResponse implements Parcelable {
         return mWalletCurrencyCode;
     }
 
-    public int getRetrievalReferenceNumber() {
+    public String getRetrievalReferenceNumber() {
 
         return mRetrievalReferenceNumber;
     }
@@ -137,10 +151,11 @@ public class ChargeStartResponse implements Parcelable {
         dest.writeInt(mWalletId);
         dest.writeString(mPaymentGatewayName);
         dest.writeString(mBraintreeToken);
+        dest.writeInt(mId);
 
     }
 
-    private ChargeStartResponse(Parcel in) {
+    private Deposit(Parcel in) {
 
         mPaidAmount = in.readDouble();
         mChargeAmount = in.readDouble();
@@ -148,19 +163,20 @@ public class ChargeStartResponse implements Parcelable {
         mWalletId = in.readInt();
         mPaymentGatewayName = in.readString();
         mBraintreeToken = in.readString();
+        mId=in.readInt();
     }
 
-    public static final Creator<ChargeStartResponse> CREATOR = new Creator<ChargeStartResponse>() {
+    public static final Creator<Deposit> CREATOR = new Creator<Deposit>() {
         @Override
-        public ChargeStartResponse createFromParcel(Parcel in) {
+        public Deposit createFromParcel(Parcel in) {
 
-            return new ChargeStartResponse(in);
+            return new Deposit(in);
         }
 
         @Override
-        public ChargeStartResponse[] newArray(int size) {
+        public Deposit[] newArray(int size) {
 
-            return new ChargeStartResponse[size];
+            return new Deposit[size];
         }
     };
 }

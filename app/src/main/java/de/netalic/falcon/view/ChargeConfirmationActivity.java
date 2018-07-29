@@ -3,7 +3,7 @@ package de.netalic.falcon.view;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.ChargeStartResponse;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeConfirmationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
@@ -24,12 +24,12 @@ public class ChargeConfirmationActivity extends BaseActivity {
         setupBackButton();
 
         Bundle bundle = getIntent().getExtras();
-        ChargeStartResponse chargeStartResponse = bundle.getParcelable(ARGUMENT_CHARGE_START);
+        Deposit deposit = bundle.getParcelable(ARGUMENT_CHARGE_START);
 
         ChargeConfirmationFragment chargeConfirmationFragment = (ChargeConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_chargeconfirmation_fragmentcontainer);
         if (chargeConfirmationFragment == null) {
 
-            chargeConfirmationFragment = ChargeConfirmationFragment.newInstance(chargeStartResponse);
+            chargeConfirmationFragment = ChargeConfirmationFragment.newInstance(deposit);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), chargeConfirmationFragment, R.id.framelayout_chargeconfirmation_fragmentcontainer);
         }
         new ChargeConfirmationPresenter(chargeConfirmationFragment);

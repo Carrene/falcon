@@ -14,13 +14,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_walletnamelable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginstart_chargeconfirmation_walletnamelable"
                 android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletnamelable"
                 android:text="@string/chargeconfirmation_walletname"
                 android:textColor="@color/black"
@@ -33,14 +34,14 @@
                 android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletname"
                 android:layout_toRightOf="@+id/textview_chargeconfirmation_walletnamelable"
                 android:paddingStart="@dimen/paddingstart_chargeconfirmation_walletname"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargeconfirmation_relativelayout"
+            android:gravity="center"
             android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
 
             <TextView
@@ -64,14 +65,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargeconfirmation_relativelayout"
+            android:gravity="center"
             android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_amountalphalable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chargeconfirmation_amount"
+                android:text="@string/chargeconfirmation_walletamount"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargeconfirmation_amountalphalable" />
 
@@ -81,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargeconfirmation_amountalphalable"
                 android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountalpha"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black" />
 
             <TextView
@@ -97,14 +98,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargeconfirmation_relativelayout"
+            android:gravity="center"
             android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_amountdollarlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chargeconfirmation_amount"
+                android:text="@string/chargeconfirmation_baseamount"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargeconfirmation_amountdollarlable" />
 
@@ -114,7 +115,31 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargeconfirmation_amountdollarlable"
                 android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountdollar"
-                android:text="milad"
+                android:text="VALUE"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_transactionamountlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargeconfirmation_amounttransaction"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargeconfirmation_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_chargeconfirmation_transactionamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargeconfirmation_transactionamountlable"
+                android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountdollar"
+                android:text="VALUE"
                 android:textColor="@color/black" />
 
             <TextView
@@ -130,7 +155,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargeconfirmation_relativelayout"
+            android:gravity="center"
             android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
 
             <TextView
@@ -147,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargeconfirmation_paymentgatewaylable"
                 android:paddingStart="@dimen/paddingstart_chargeconfirmation_paymentgateway"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black" />
         </RelativeLayout>
     </LinearLayout>

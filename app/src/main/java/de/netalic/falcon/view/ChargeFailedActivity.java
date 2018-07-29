@@ -3,18 +3,29 @@ package de.netalic.falcon.view;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeFailedPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class ChargeFailedActivity extends BaseActivity {
 
+    private static final String ARGUMENT_DEPOSIT = "DEPOSIT";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getIntent().getExtras()==null){
+
+            throw new RuntimeException("deposit should not null");
+        }
+
+        Deposit deposit=getIntent().getExtras().getParcelable(ARGUMENT_DEPOSIT);
+
+
         ChargeFailedFragment chargeFailedFragment=(ChargeFailedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_chargefailed_fragmentcontainer);
         if (chargeFailedFragment==null){
-            chargeFailedFragment=ChargeFailedFragment.newInstance();
+            chargeFailedFragment=ChargeFailedFragment.newInstance(deposit);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),chargeFailedFragment,R.id.framelayout_chargefailed_fragmentcontainer);
         }
 

@@ -33,13 +33,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textview_chargecompleted_walletnamelable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginstart_chargecompleted_walletnamelable"
                 android:layout_marginTop="@dimen/margintop_chargecompleted_walletnamelable"
                 android:text="@string/chargecompleted_walletname"
                 android:textColor="@color/black"
@@ -52,7 +52,7 @@
                 android:layout_marginTop="@dimen/margintop_chargecompleted_walletname"
                 android:layout_toRightOf="@+id/textview_chargecompleted_walletnamelable"
                 android:paddingStart="@dimen/paddingstart_chargecompleted_walletname"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargecompleted_walletnamelable" />
         </RelativeLayout>
@@ -60,8 +60,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
-            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textview_chargecompleted_amountalphalable"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargecompleted_amountalphalable"
                 android:paddingStart="@dimen/paddingstart_chargecompleted_walletno"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargecompleted_walletnolable" />
             <TextView
@@ -93,14 +93,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
-            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textview_chargecompleted_amountdollarlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chargecompleted_amount"
+                android:text="@string/chargecompleted_baseamount"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
 
@@ -110,7 +110,33 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargecompleted_amountdollarlable"
                 android:paddingStart="@dimen/paddingstart_chargecompleted_amountalpha"
-                android:text="milad"
+                android:text="VALUE"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_transactionamountlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargecompleted_transactionamount"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_chargecompleted_transactionamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargecompleted_transactionamountlable"
+                android:paddingStart="@dimen/paddingstart_chargecompleted_amountalpha"
+                android:text="VALUE"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
             <TextView
@@ -126,8 +152,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
-            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textview_chargecompleted_paymentgatewaylable"
@@ -143,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargecompleted_paymentgatewaylable"
                 android:paddingStart="@dimen/paddingstart_chargecompleted_amountdollar"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargecompleted_paymentgatewaylable" />
         </RelativeLayout>
@@ -151,8 +177,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
-            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textview_chargecompleted_transactiondatelable"
@@ -168,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargecompleted_transactiondatelable"
                 android:paddingStart="@dimen/paddingstart_chargecompleted_transactiondate"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargecompleted_transactiondate" />
         </RelativeLayout>
@@ -176,8 +202,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_chargecompleted_relativelayout"
-            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout">
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayout"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textview_chargecompleted_trackingcodelable"
@@ -193,9 +219,39 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargecompleted_trackingcodelable"
                 android:paddingStart="@dimen/paddingstart_chargecompleted_trackingcode"
-                android:text="milad"
+                android:text="VALUE"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargecompleted_trackingcode" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_chargecompleted_consistdownloadandshare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbutton_chargecompleted_relativelayoutconsistdownloadandshare"
+            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayoutconsistdownloadandshare">
+
+            <ImageButton
+                android:id="@+id/imagebutton_chargecompleted_sharebutton"
+                android:layout_width="@dimen/widthheight_chargecompleted_sharebutton"
+                android:layout_height="@dimen/widthheight_chargecompleted_sharebutton"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/marginstartend_chargecompleted_downloadsharebutton"
+                android:src="@drawable/chargecompleted_sharebutton"
+
+                />
+
+            <ImageButton
+                android:id="@+id/imagebutton_chargecompleted_downloadbutton"
+                android:layout_width="@dimen/widthheight_chargecompleted_downloadbutton"
+                android:layout_height="@dimen/widthheight_chargecompleted_downloadbutton"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="@dimen/marginstartend_chargecompleted_downloadsharebutton"
+                android:src="@drawable/chargecompleted_downloadbutton" />
+
+
         </RelativeLayout>
     </LinearLayout>
 

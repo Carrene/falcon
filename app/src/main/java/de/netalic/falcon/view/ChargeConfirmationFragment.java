@@ -17,22 +17,24 @@ import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.ChargeStartResponse;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeConfirmationContract;
 
 public class ChargeConfirmationFragment extends Fragment implements ChargeConfirmationContract.View {
 
     private ChargeConfirmationContract.Presenter mChargeConfirmationPresenter;
     private View mRoot;
-    private ChargeStartResponse mChargeStartResponse;
+    private Deposit mDeposit;
     private TextView mTextViewWalletName;
     private TextView mTextViewWalletNo;
     private TextView mTextViewChargeAmount;
     private TextView mTextViewPaidAmount;
     private TextView mTextViewPaymentGateway;
+    private TextView mTextViewTransactionAmount;
     private Button mButtonConfirm;
     public static final String ARGUMENT_CHARGE_START = "chargeStart";
     private static final int DROP_IN_REQUEST = 1;
+    private static final String ARGUMENT_DEPOSIT = "DEPOSIT";
 
 
     @Nullable
@@ -43,7 +45,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         if (getArguments() == null) {
             throw new RuntimeException("Charge response should not be null!");
         }
-        mChargeStartResponse = getArguments().getParcelable(ARGUMENT_CHARGE_START);
+        mDeposit = getArguments().getParcelable(ARGUMENT_CHARGE_START);
 
         return mRoot;
     }
@@ -61,18 +63,19 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
 
     private void setPaymentConfirmationData() {
 
-        mTextViewWalletName.setText(mChargeStartResponse.getWalletName());
-        mTextViewWalletNo.setText(String.valueOf(mChargeStartResponse.getWalletId()));
-        mTextViewChargeAmount.setText(String.valueOf(mChargeStartResponse.getChargeAmount()) + "");
-        mTextViewPaidAmount.setText(String.valueOf(mChargeStartResponse.getPaidAmount()));
-        mTextViewPaymentGateway.setText(mChargeStartResponse.getPaymentGatewayName());
+        mTextViewWalletName.setText(mDeposit.getWalletName());
+        mTextViewWalletNo.setText(String.valueOf(mDeposit.getWalletId()));
+        mTextViewChargeAmount.setText(String.valueOf(mDeposit.getChargeAmount()));
+        mTextViewPaidAmount.setText(String.valueOf(mDeposit.getPaidAmount()));
+        mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
+
     }
 
     private void initListener() {
 
         mButtonConfirm.setOnClickListener(v -> {
 
-            String braintreeToken = mChargeStartResponse.getBraintreeToken();
+            String braintreeToken = mDeposit.getBraintreeToken();
             DropInRequest dropInRequest = new DropInRequest()
                     .clientToken(braintreeToken);
             startActivityForResult(dropInRequest.getIntent(getContext()), DROP_IN_REQUEST);
@@ -95,11 +98,11 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
 
     }
 
-    public static ChargeConfirmationFragment newInstance(ChargeStartResponse chargeStartResponse) {
+    public static ChargeConfirmationFragment newInstance(Deposit deposit) {
 
         ChargeConfirmationFragment fragment = new ChargeConfirmationFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(ARGUMENT_CHARGE_START, chargeStartResponse);
+        bundle.putParcelable(ARGUMENT_CHARGE_START, deposit);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -112,6 +115,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_chargeconfirmation_paidamount);
         mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargeconfirmation_paymentgateway);
         mButtonConfirm = mRoot.findViewById(R.id.button_chargeconfirmation_confirm);
+        mTextViewTransactionAmount=mRoot.findViewById(R.id.textview_chargeconfirmation_transactionamount);
     }
 
     @Override
@@ -124,6 +128,8 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
 
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 String braintreeNonce = result.getPaymentMethodNonce().getNonce();
+
+                mChargeConfirmationPresenter.finalize(mDeposit.getWalletId(), mDeposit.getId(),braintreeNonce);
 //                mChargePresenter.finalize(10, braintreeNonce, mChargeDataToken);
                 // send paymentMethodNonce to your server
                 //TODO: finalize
@@ -135,5 +141,21 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
             }
         }
+    }
+
+    @Override
+    public void navigationToChargeCompleted() {
+
+        Intent intent=new Intent(getActivity(),ChargeCompletedActivity.class);
+        intent.putExtra(ARGUMENT_DEPOSIT,mDeposit);
+        startActivity(intent);
+    }
+
+    @Override
+    public void navigationToChargeFailed() {
+
+        Intent intent=new Intent(getActivity(),ChargeFailedActivity.class);
+        intent.putExtra(ARGUMENT_DEPOSIT,mDeposit);
+        startActivity(intent);
     }
 }
