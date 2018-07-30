@@ -123,7 +123,8 @@ public class User extends RealmObject implements Parcelable {
 
     public String calculateDeviceName() {
 
-        return DeviceUtil.getDeviceName();
+        mDeviceName = DeviceUtil.getDeviceName();
+        return mDeviceName;
     }
 
     public void setPhone(String phone) {

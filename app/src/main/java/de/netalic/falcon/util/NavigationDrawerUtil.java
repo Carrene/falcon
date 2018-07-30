@@ -45,7 +45,7 @@ public class NavigationDrawerUtil {
                 .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigationheader_profile))
                 .build();
 
-        Drawer result = new DrawerBuilder()Enha
+        Drawer result = new DrawerBuilder()
                 .withActivity(activity)
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)
