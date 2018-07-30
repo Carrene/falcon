@@ -5,6 +5,12 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.SimpleFormatter;
+
 public class Deposit implements Parcelable {
 
     @SerializedName("id")
@@ -114,7 +120,15 @@ public class Deposit implements Parcelable {
 
     public String getModifiedAt() {
 
-        return mModifiedAt;
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            Date date = dateFormat.parse(mModifiedAt);
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+            return dateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public boolean isIsExpired() {

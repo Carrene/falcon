@@ -92,7 +92,7 @@
     <string name="chargeamount_amounthint">Amount</string>
 
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
-    <string name="chargeconfirmation_walletname">Wallet name :</string>
+    <string name="chargeconfirmation_walletname">Wallet Name :</string>
     <string name="chargeconfirmation_paymentgateway">Payment Gateway :</string>
     <string name="chargeconfirmation_walletamount">Charge Amount(Alpha) :</string>
     <string name="chargeconfirmation_baseamount">Charge Amount(USD) :</string>
@@ -100,7 +100,7 @@
     <string name="chargeconfirmation_walletno">Wallet No :</string>
     <string name="chargeconfirmation_confirm">CONFIRM</string>
     <string name="chargecompleted_chargecompleted">Charge Completed</string>
-    <string name="chargecompleted_walletname">Wallet name :</string>
+    <string name="chargecompleted_walletname">Wallet Name :</string>
     <string name="chargecompleted_amount">Charge Amount(Alpha) :</string>
     <string name="chargecompleted_baseamount">Charge Amount(USD) :</string>
     <string name="chargecompleted_transactionamount">Transaction Amount(USD) :</string>

@@ -129,6 +129,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         if (requestCode == DROP_IN_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
 
+                mRoot.setVisibility(View.GONE);
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 String braintreeNonce = result.getPaymentMethodNonce().getNonce();
 
@@ -143,19 +144,19 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     }
 
     @Override
-    public void navigationToChargeCompleted() {
+    public void navigationToChargeCompleted(Deposit deposit) {
 
         Intent intent = new Intent(getActivity(), ChargeCompletedActivity.class);
-        intent.putExtra(ARGUMENT_DEPOSIT, mDeposit);
+        intent.putExtra(ARGUMENT_DEPOSIT, deposit);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     @Override
-    public void navigationToChargeFailed() {
+    public void navigationToChargeFailed(Deposit deposit) {
 
         Intent intent = new Intent(getActivity(), ChargeFailedActivity.class);
-        intent.putExtra(ARGUMENT_DEPOSIT, mDeposit);
+        intent.putExtra(ARGUMENT_DEPOSIT, deposit);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

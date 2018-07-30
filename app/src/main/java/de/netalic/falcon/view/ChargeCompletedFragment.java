@@ -99,9 +99,11 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mButtonNavigationToDashboard.setOnClickListener(v -> {
 
             Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
     }
+
 
     public void setPaymentInformation() {
 

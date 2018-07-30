@@ -103,8 +103,8 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
 
                     View centerView = mWalletSnapHelper.findSnapView(recyclerView.getLayoutManager());
-                    mSelectedWalletPosition = recyclerView.getLayoutManager().getPosition(centerView) - 1;
-                    ((ChargeWalletRecyclerViewAdapter) mRecyclerViewWallets.getAdapter()).select(mSelectedWalletPosition + 1);
+                    mSelectedWalletPosition = recyclerView.getLayoutManager().getPosition(centerView);
+                    ((ChargeWalletRecyclerViewAdapter) mRecyclerViewWallets.getAdapter()).select(mSelectedWalletPosition);
                 }
             }
 
@@ -137,10 +137,12 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         mButtonChargeNext.setOnClickListener(v -> {
 
-            Intent intent = new Intent(getContext(), ChargeAmountActivity.class);
-            intent.putExtra("walletId", mWalletList.get(mSelectedWalletPosition).getId());
-            intent.putExtra("paymentGatewayName", "braintree");
-            startActivity(intent);
+            if(mWalletList.size() > 0 && mSelectedWalletPosition != mWalletList.size()){
+                Intent intent = new Intent(getContext(), ChargeAmountActivity.class);
+                intent.putExtra("walletId", mWalletList.get(mSelectedWalletPosition).getId());
+                intent.putExtra("paymentGatewayName", "braintree");
+                startActivity(intent);
+            }
         });
     }
 
@@ -154,8 +156,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         mWalletList = walletList;
         mRecyclerViewAdapterChargeWallet.setDataSource(walletList);
-
-        //TODO:(Ehsan) get it as an array from resource
         List<Integer> list = new ArrayList<>();
         list.add(R.drawable.charge_braintreelogo);
         mRecyclerViewAdapterChargePaymentGateway.setDataSource(list);
