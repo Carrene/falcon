@@ -1,7 +1,10 @@
 package de.netalic.falcon.view;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +14,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
@@ -104,22 +113,19 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
         mButtonShare.setOnClickListener(v -> {
 
-            Intent intent=new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            String shareBody=String.format("wallet name : %s " +
-                            "%n charge amount(Alpha) : %s " +
-                            "%n charge amount(USD) : %s " +
-                            "%n charge transaction(USD) : %s"+
-                            "%n Payment Gateway : %s"+
-                            "%n Transaction date : %s"
-                    , mDeposit.getWalletName(), String.valueOf(mDeposit.getChargeAmount()),String.valueOf(mDeposit.getPaidAmount())
-                    ,"",mDeposit.getPaymentGatewayName(),mDeposit.getModifiedAt());
+            Uri imageUri;
+
+            imageUri = Uri.parse("android.resource://" + getActivity().getPackageName()
+                    + "/drawable/" + "icon_alpha");
+
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, true);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+            shareIntent.setType("image/jpeg");
+            startActivity(Intent.createChooser(shareIntent, "Share to"));
 
 
-            String shareSubject="Charge Completed";
-            intent.putExtra(intent.EXTRA_SUBJECT,shareSubject);
-            intent.putExtra(intent.EXTRA_TEXT,shareBody);
-            startActivity(Intent.createChooser(intent,"Share Using"));
         });
     }
 
@@ -132,5 +138,6 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mTextViewTransactionDate.setText(mDeposit.getModifiedAt());
         mTextViewTrackingCode.setText(mDeposit.getRetrievalReferenceNumber());
     }
+
 
 }

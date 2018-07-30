@@ -25,6 +25,7 @@ import de.netalic.falcon.adapter.ChargeWalletRecyclerViewAdapter;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -137,10 +138,11 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         mButtonChargeNext.setOnClickListener(v -> {
 
-            Intent intent = new Intent(getContext(), ChargeAmountActivity.class);
-            intent.putExtra("walletId", mWalletList.get(mSelectedWalletPosition).getId());
-            intent.putExtra("paymentGatewayName", "braintree");
-            startActivity(intent);
+                Intent intent = new Intent(getContext(), ChargeAmountActivity.class);
+                intent.putExtra("walletId", mWalletList.get(mSelectedWalletPosition).getId());
+                intent.putExtra("paymentGatewayName", "braintree");
+                startActivity(intent);
+
         });
     }
 
