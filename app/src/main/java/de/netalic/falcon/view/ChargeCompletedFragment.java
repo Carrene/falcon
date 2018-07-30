@@ -101,6 +101,26 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
             Intent intent = new Intent(getActivity(), DashboardActivity.class);
             startActivity(intent);
         });
+
+        mButtonShare.setOnClickListener(v -> {
+
+            Intent intent=new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            String shareBody=String.format("wallet name : %s " +
+                            "%n charge amount(Alpha) : %s " +
+                            "%n charge amount(USD) : %s " +
+                            "%n charge transaction(USD) : %s"+
+                            "%n Payment Gateway : %s"+
+                            "%n Transaction date : %s"
+                    , mDeposit.getWalletName(), String.valueOf(mDeposit.getChargeAmount()),String.valueOf(mDeposit.getPaidAmount())
+                    ,"",mDeposit.getPaymentGatewayName(),mDeposit.getModifiedAt());
+
+
+            String shareSubject="Charge Completed";
+            intent.putExtra(intent.EXTRA_SUBJECT,shareSubject);
+            intent.putExtra(intent.EXTRA_TEXT,shareBody);
+            startActivity(Intent.createChooser(intent,"Share Using"));
+        });
     }
 
     public void setPaymentInformation() {

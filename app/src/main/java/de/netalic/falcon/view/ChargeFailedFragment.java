@@ -111,5 +111,28 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
             startActivity(intent);
         });
 
+        mButtonShare.setOnClickListener(v -> {
+
+
+            Intent intent=new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            String shareBody=String.format("wallet name : %s " +
+                            "%n charge amount(Alpha) : %s " +
+                            "%n charge amount(USD) : %s " +
+                            "%n charge transaction(USD) : %s"+
+                            "%n Payment Gateway : %s"+
+                            "%n Transaction date : %s"+
+                            "%n Tracking code : %s"
+                    , mDeposit.getWalletName(), String.valueOf(mDeposit.getChargeAmount()),String.valueOf(mDeposit.getPaidAmount())
+                    ,"",mDeposit.getPaymentGatewayName(),mDeposit.getModifiedAt(),mDeposit.getRetrievalReferenceNumber());
+
+
+            String shareSubject="Charge Failed";
+            intent.putExtra(intent.EXTRA_SUBJECT,shareSubject);
+            intent.putExtra(intent.EXTRA_TEXT,shareBody);
+            startActivity(Intent.createChooser(intent,"Share Using"));
+
+        });
+
     }
 }
