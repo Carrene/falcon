@@ -29,6 +29,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
+                mDashboardView.dismissProgressBar();
 
             } else {
 

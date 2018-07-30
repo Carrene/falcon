@@ -25,14 +25,16 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
         mChargeConfirmationView.showProgressBar();
         WalletRepository.getInstance().finalize(walletId, depositId, braintreeNonce, deal -> {
 
-            mChargeConfirmationView.dismissProgressBar();
+
             if (deal.getThrowable() != null) {
 
+                mChargeConfirmationView.dismissProgressBar();
 
             } else {
 
 
                 switch (deal.getResponse().code()) {
+
 
                     case 200: {
 
@@ -43,6 +45,46 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
                     case 800: {
 
                         mChargeConfirmationView.navigationToChargeFailed();
+                        break;
+
+                    }
+                    case 404: {
+
+                        if (deal.getResponse().message().equals("Wallet not found")) {
+
+                            mChargeConfirmationView.showErrorWalletNotFound();
+                        } else {
+
+                            mChargeConfirmationView.showErrorDepositNotFound();
+
+                        }
+                        break;
+
+                    }
+
+                    case 700: {
+
+                        mChargeConfirmationView.showErrorInvalidWalletId();
+                        break;
+                    }
+
+                    case 722: {
+
+                        mChargeConfirmationView.showErrorInvalidBraintreeNonce();
+                        break;
+
+                    }
+
+                    case 723: {
+
+                        mChargeConfirmationView.showErrorInvalidDepositId();
+                        break;
+
+                    }
+
+                    case 727: {
+
+                        mChargeConfirmationView.showErrorDepositAlreadySucceed();
                         break;
 
                     }

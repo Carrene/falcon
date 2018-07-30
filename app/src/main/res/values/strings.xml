@@ -99,6 +99,15 @@
     <string name="chargeconfirmation_amounttransaction">Transaction Amount(USD) :</string>
     <string name="chargeconfirmation_walletno">Wallet No :</string>
     <string name="chargeconfirmation_confirm">CONFIRM</string>
+    <string name="chargeconfirmation_invalidwalletid">Invalid wallet id</string>
+    <string name="chargeconfirmation_walletnotfound">Wallet not found</string>
+    <string name="chargeconfirmation_depositnotfound">Deposit not found</string>
+    <string name="chargeconfirmation_invaliddepositid">Invalid deposit id</string>
+    <string name="chargeconfirmation_depositalreadyexist">deposit already exist</string>
+    <string name="chargeconfirmation_invalidbraintreenoce">Invalid braintree nonce</string>
+
+
+
     <string name="chargecompleted_chargecompleted">Charge Completed</string>
     <string name="chargecompleted_walletname">Wallet name :</string>
     <string name="chargecompleted_amount">Charge Amount(Alpha) :</string>

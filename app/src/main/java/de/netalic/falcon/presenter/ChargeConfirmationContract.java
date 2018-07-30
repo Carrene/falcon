@@ -8,6 +8,12 @@ public interface ChargeConfirmationContract {
 
         void navigationToChargeCompleted();
         void navigationToChargeFailed();
+        void showErrorInvalidWalletId();
+        void showErrorWalletNotFound();
+        void showErrorDepositNotFound();
+        void showErrorInvalidDepositId();
+        void showErrorDepositAlreadySucceed();
+        void showErrorInvalidBraintreeNonce();
 
     }
 
