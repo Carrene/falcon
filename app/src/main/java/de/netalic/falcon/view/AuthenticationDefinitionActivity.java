@@ -42,7 +42,7 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
             mAuthenticationDefinitionPatternFragment = new AuthenticationDefinitionPatternFragment();
         }
 
-        changeAuthenticationDefinitionFragment(mAuthenticationDefinitionPasswordFragment);
+        changeAuthenticationDefinitionFragment(mAuthenticationDefinitionPatternFragment);
     }
 
     @Override

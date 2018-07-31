@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="@color/white">
+              android:background="@color/white"
+              android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -31,10 +31,19 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margintop_authenticationdefinition_segmentedgroup"
-            segmentedgroup:sc_tint_color="@color/colorSecondaryDark"
             android:orientation="horizontal"
             segmentedgroup:sc_border_width="@dimen/borderwidth_authenticationdefinition_segmentedgroup"
-            segmentedgroup:sc_corner_radius="@dimen/cornerradius_authenticationdefinition_segmentedgroup">
+            segmentedgroup:sc_corner_radius="@dimen/cornerradius_authenticationdefinition_segmentedgroup"
+            segmentedgroup:sc_tint_color="@color/colorSecondaryDark">
+
+
+            <RadioButton
+                android:id="@+id/radiobutton_authenticationdefinition_pattern"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/authenticationdefinition_pattern"/>
 
             <RadioButton
                 android:id="@+id/radiobutton_authenticationdefinition_password"
@@ -42,16 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/athenticationdefinition_password"
-                android:checked="true"
                 />
-
-            <RadioButton
-                android:id="@+id/radiobutton_authenticationdefinition_pattern"
-                style="@style/RadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/authenticationdefinition_pattern"/>
-
         </info.hoang8f.android.segmented.SegmentedGroup>
 
     </RelativeLayout>
