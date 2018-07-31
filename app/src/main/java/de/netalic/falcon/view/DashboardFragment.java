@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -38,6 +40,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private TextView mTextViewBalance;
     private List<Wallet> mWalletList;
     private DashboardWalletSpinnerAdapter mDashboardWalletSpinnerAdapter;
+    private ImageView mImageViewWithdraw;
 
     @Nullable
     @Override
@@ -89,6 +92,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mTextViewRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
         mSpinnerWalletList = mRoot.findViewById(R.id.spinner_dashboard_spinner);
         mTextViewBalance = mRoot.findViewById(R.id.textview_dashboard_balance);
+        mImageViewWithdraw=mRoot.findViewById(R.id.imageview_dashboard_withdraw);
     }
 
     @Override
@@ -160,6 +164,12 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+        });
+
+        mImageViewWithdraw.setOnClickListener(v -> {
+
+            Intent intent=new Intent(getActivity(),WithdrawActivity.class);
+            startActivity(intent);
         });
     }
 }
