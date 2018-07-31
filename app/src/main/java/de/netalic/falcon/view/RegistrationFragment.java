@@ -14,10 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.google.common.collect.Lists;
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import br.com.sapereaude.maskedEditText.MaskedEditText;
@@ -146,6 +149,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
             }
             allCountryModified.add(country);
         }
+        Collections.sort(allCountryModified, new CountryPicker.NameComparator());
         mCountryPicker.setCountries(allCountryModified);
     }
 
