@@ -1,11 +1,14 @@
 package de.netalic.falcon.view;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.telephony.PhoneNumberUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,16 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.google.common.collect.Lists;
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import br.com.sapereaude.maskedEditText.MaskedEditText;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RegistrationContract;
@@ -40,7 +40,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     private CountryPicker mCountryPicker;
     private EditText mEditTextCountryName;
     private EditText mEditTextCountryCode;
-    private MaskedEditText mEditTextPhone;
+    private EditText mEditTextPhone;
     private View mRoot;
 
     @Nullable
@@ -48,7 +48,6 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_registration, null);
-
         return mRoot;
     }
 
@@ -90,7 +89,6 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        MaskedEditText maskedEditText = mRoot.findViewById(R.id.edittext_registration_phonenumber);
 
         switch (item.getItemId()) {
             case R.id.menu_registration_done: {
@@ -99,7 +97,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
                 if (mEditTextCountryCode.getText().toString().matches("XXXX")) {
 
                     showCountryCodeError();
-                } else if (maskedEditText.getText().toString().matches("XXX-XXX-XXXX")) {
+                } else if (mEditTextPhone.getText().toString().equals("")) {
 
                     checkNotNull(getContext());
                     SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.registration_pleasefillyournumber), getContext());
@@ -118,6 +116,14 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
                 .listener(country -> {
                     mEditTextCountryName.setText(country.getName());
                     mEditTextCountryCode.setText(country.getDialCode());
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        if (country.getCode().equals("IR")) {
+                            mEditTextPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher("US"));
+
+                        }
+                        mEditTextPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher(country.getCode()));
+                    }
+
                 }).build();
     }
 
@@ -129,7 +135,7 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
 
     private void claim() {
 
-        User user = new User(mEditTextCountryCode.getText().toString() + mEditTextPhone.getRawText());
+        User user = new User(mEditTextCountryCode.getText().toString() + PhoneNumberUtils.stripSeparators(mEditTextPhone.getText().toString()));
         mPresenter.claim(user);
 
     }

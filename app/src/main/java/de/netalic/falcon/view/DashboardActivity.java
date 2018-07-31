@@ -3,15 +3,11 @@ package de.netalic.falcon.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInResult;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.DashboardPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;

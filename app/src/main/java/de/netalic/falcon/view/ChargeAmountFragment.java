@@ -15,8 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Currency;
+import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.presenter.ChargeAmountContract;

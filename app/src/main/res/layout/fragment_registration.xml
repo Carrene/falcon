@@ -1,10 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:mask="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textinputlayout_registration_countrypicker"
@@ -47,7 +45,7 @@
             android:textColor="@color/black" />
     </android.support.design.widget.TextInputLayout>
 
-    <br.com.sapereaude.maskedEditText.MaskedEditText xmlns:mask="http://schemas.android.com/apk/res-auto"
+    <EditText
         android:id="@+id/edittext_registration_phonenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,11 +53,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/marginend_registration_phonenumber"
         android:ems="10"
-        android:hint="@string/registration_maskhint"
-        android:inputType="phone"
-        app:keep_hint="true"
-        mask:allowed_chars="1234567890"
-        mask:mask="###-###-####" />
+        android:hint="@string/registration_phonehint"
+        android:inputType="phone"/>
 
     <TextView
         android:id="@+id/textview_registration_confirmation"

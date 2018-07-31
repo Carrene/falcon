@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.ChargePresenter;
-import de.netalic.falcon.presenter.DashboardPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 

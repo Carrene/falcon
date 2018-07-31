@@ -106,7 +106,6 @@ dependencies {
     implementation 'com.google.guava:guava:25.1-android'
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     implementation 'com.github.EhsanMashhadi:helpdroid:0.7.0'
-    implementation 'ru.egslava:MaskedEditText:1.0.5'
     implementation 'com.github.mukeshsolanki:country-picker-android:1.2.4'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
     implementation 'com.braintreepayments.api:drop-in:3.4.0'

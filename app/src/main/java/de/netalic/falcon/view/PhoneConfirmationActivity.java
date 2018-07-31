@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;
@@ -20,13 +19,13 @@ public class PhoneConfirmationActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setupBackButton();
+
         if (getIntent().getExtras() == null) {
             throw new RuntimeException("User should not be null");
         }
+
         User user = getIntent().getExtras().getParcelable(ARGUMENT_USER);
-
-
-
         PhoneConfirmationFragment phoneConfirmationFragment = (PhoneConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_phoneconfirmation_fragmentcontainer);
 
         if (phoneConfirmationFragment == null) {

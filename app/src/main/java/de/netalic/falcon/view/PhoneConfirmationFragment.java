@@ -1,12 +1,14 @@
 package de.netalic.falcon.view;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.telephony.PhoneNumberUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -186,7 +188,11 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setUserPhoneNumber() {
 
-        mTextViewPhone.setText(mUser.getPhone());
+        String phoneNumber = mUser.getPhone();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            phoneNumber = PhoneNumberUtils.formatNumber(mUser.getPhone(), "US");
+        }
+        mTextViewPhone.setText(phoneNumber);
     }
 
     @Override
