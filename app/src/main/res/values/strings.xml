@@ -120,7 +120,6 @@
     <string name="chargefailed_transactiondate">Transaction date :</string>
     <string name="chargefailed_dashboard">Dashboard</string>
 
-
-    >>>>>>> charge_failed
+    <string name="withdraw_toolbar">Withdraw</string>
 
 </resources>

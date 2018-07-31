@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="de.netalic.falcon">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="de.netalic.falcon">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MyApp"
@@ -15,45 +15,38 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-
         <activity
             android:name=".view.RegistrationActivity"
-            android:windowSoftInputMode="adjustResize"/>
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.PhoneConfirmationActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".view.RegistrationActivity"
-
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.RegistrationActivity"/>
+                android:value=".view.RegistrationActivity" />
         </activity>
-
         <activity
             android:name=".view.AuthenticationDefinitionActivity"
-            android:windowSoftInputMode="adjustResize"/>
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.RecoveryEmailActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".view.PhoneConfirmationActivity"
-            android:windowSoftInputMode="adjustResize"/>
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.DashboardActivity"
-            android:windowSoftInputMode="adjustResize"/>
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.ChargeAmountActivity"
             android:launchMode="singleTop"
@@ -61,22 +54,20 @@
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.ChargeActivity"/>
+                android:value=".view.ChargeActivity" />
         </activity>
-
-        <activity android:name=".view.ChargeActivity"/>
-        <activity android:name=".view.ChargeCompletedActivity"/>
-
+        <activity android:name=".view.ChargeActivity" />
+        <activity android:name=".view.ChargeCompletedActivity" />
         <activity
             android:name=".view.ChargeConfirmationActivity"
             android:parentActivityName=".view.ChargeAmountActivity"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.ChargeAmountActivity"/>
+                android:value=".view.ChargeAmountActivity" />
         </activity>
-
-        <activity android:name=".view.ChargeFailedActivity"/>
-
+        <activity android:name=".view.ChargeFailedActivity" />
+        <activity android:name=".view.WithdrawActivity"></activity>
     </application>
+
 </manifest>
