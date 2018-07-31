@@ -1,9 +1,16 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ShareCompat;
+import android.support.v4.content.FileProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,6 +20,10 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.lang.reflect.Method;
+import java.util.Date;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -58,6 +69,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         initUiComponents();
         getRate();
         getWalletList();
+        initListener();
+
     }
 
     public static DashboardFragment newInstance() {
@@ -133,7 +146,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mWalletList = walletList;
         mDashboardWalletSpinnerAdapter = new DashboardWalletSpinnerAdapter(getContext(), mWalletList);
         mSpinnerWalletList.setAdapter(mDashboardWalletSpinnerAdapter);
-        initListener();
     }
 
     public void getRate() {
@@ -162,5 +174,85 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
             }
         });
+
+        mRoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takeScreenshot();
+            }
+        });
+    }
+
+    private void takeScreenshot() {
+        try {
+
+//            Date now = new Date();
+//            android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+            mRoot.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(mRoot.getDrawingCache());
+            mRoot.setDrawingCacheEnabled(false);
+
+            String mPath = getActivity().getFilesDir().getAbsolutePath() + "/" + "ehsan" + ".jpg";
+
+            File imageFile = new File(getContext().getCacheDir(), "images");
+            imageFile.createNewFile();
+
+
+
+
+            File newFile = new File(imageFile, "image.png");
+
+
+
+            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            int quality = 100;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+            outputStream.flush();
+            outputStream.close();
+            shareIt(newFile);
+
+
+
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void shareIt(File file) {
+        boolean isRead = file.canRead();
+
+//        File file1=file;
+//        Intent shareIntent = new Intent();
+//        shareIntent.setAction(Intent.ACTION_SEND);
+//        shareIntent.setType("image/jpg");
+//        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+//        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        startActivityForResult(Intent.createChooser(shareIntent, "Share to"),1);
+
+
+
+
+        Uri contentUri = FileProvider.getUriForFile(getContext(), "de.netalic.falcon.fileprovider", file);
+
+        if (contentUri != null) {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
+            shareIntent.setDataAndType(contentUri,getActivity().getContentResolver().getType(contentUri));
+            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            startActivity(Intent.createChooser(shareIntent, "Choose an app"));
+        }
+
+
+    }
+
+    private void openScreenshot(File imageFile) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        Uri uri = Uri.fromFile(imageFile);
+        intent.setDataAndType(uri, "image/*");
+        startActivity(intent);
     }
 }
