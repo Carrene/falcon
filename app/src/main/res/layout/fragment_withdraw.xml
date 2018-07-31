@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <TextView
+        android:id="@+id/textview_withdraw_withdrawmethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Withdraw method :"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="23dp"
+        />
+        <TextView
+            android:id="@+id/textview_withdraw_qrcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QR code"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"
+            />
+        <TextView
+            android:id="@+id/textview_withdraw_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:textSize="16sp"
+            android:text="Wallet :"
+            android:gravity="center"
+            />
+
+
+
+    </LinearLayout>
+</RelativeLayout>
