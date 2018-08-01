@@ -33,7 +33,7 @@ import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-//TODO: (Milad) change the masking for longer phone number
+
 public class RegistrationFragment extends Fragment implements RegistrationContract.View {
 
     private RegistrationContract.Presenter mPresenter;

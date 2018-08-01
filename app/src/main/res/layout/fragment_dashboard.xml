@@ -18,7 +18,7 @@
 
         <Spinner
             android:id="@+id/spinner_dashboard_spinner"
-            style="@style/SpinnerTheme"
+            style="@style/SpinnerThemeDashboard"
             android:layout_width="@dimen/width_dashboard_spinner"
             android:layout_height="@dimen/height_dashboard_spinner"
             android:layout_alignParentTop="true"

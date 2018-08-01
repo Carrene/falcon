@@ -26,7 +26,11 @@
         <item name="android:paddingLeft">@dimen/paddingleft_style_radiobutton</item>
         <item name="android:paddingRight">@dimen/paddingright_style_radiobutton</item>
     </style>
-    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+    <style name="SpinnerThemeDashboard" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/dashboard_backgroundspinner</item>
+    </style>
+
+    <style name="SpinnerThemeWithdraw" parent="android:Widget.Spinner">
         <item name="android:background">@drawable/dashboard_backgroundspinner</item>
     </style>
 
