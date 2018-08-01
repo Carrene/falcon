@@ -9,13 +9,16 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.telephony.PhoneNumberUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
@@ -143,6 +146,15 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     private void initListener() {
 
         mEditTextCountryName.setOnClickListener(v -> mCountryPicker.showDialog(checkNotNull(getFragmentManager())));
+
+        mEditTextPhone.setOnEditorActionListener((v, actionId, event) -> {
+
+            if (actionId== EditorInfo.IME_ACTION_DONE){
+
+                claim();
+            }
+            return false;
+        });
     }
 
     private void modifyCountriesName() {
