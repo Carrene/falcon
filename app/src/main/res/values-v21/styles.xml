@@ -6,6 +6,57 @@
         <item name="android:colorControlNormal">#b8b9b9</item>
         <item name="android:colorControlActivated">#b8b9b9</item>
         <item name="android:colorControlHighlight">#b8b9b9</item>
-
     </style>
+
+    <!-- text styles -->
+    <style name="AppText" parent="Base.AppText" />
+
+    <style name="AppText.H1" parent="Base.AppText.H1">
+        <item name="android:letterSpacing">@dimen/app_text_h1_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H2" parent="Base.AppText.H2">
+        <item name="android:letterSpacing">@dimen/app_text_h2_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H3" parent="Base.AppText.H3">
+        <item name="android:letterSpacing">@dimen/app_text_h3_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H4" parent="Base.AppText.H4">
+        <item name="android:letterSpacing">@dimen/app_text_h4_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H5" parent="Base.AppText.H5">
+        <item name="android:letterSpacing">@dimen/app_text_h5_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H6" parent="Base.AppText.H6">
+        <item name="android:letterSpacing">@dimen/app_text_h6_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Subtitle1" parent="Base.AppText.Subtitle1">
+        <item name="android:letterSpacing">@dimen/app_text_subtitle1_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Subtitle2" parent="Base.AppText.Subtitle2">
+        <item name="android:letterSpacing">@dimen/app_text_subtitle2_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Body1" parent="Base.AppText.Body1">
+        <item name="android:letterSpacing">@dimen/app_text_body1_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Body2" parent="Base.AppText.Body2">
+        <item name="android:letterSpacing">@dimen/app_text_body2_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Caption" parent="Base.AppText.Caption">
+        <item name="android:letterSpacing">@dimen/app_text_caption_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Overline" parent="Base.AppText.Overline">
+        <item name="android:letterSpacing">@dimen/app_text_overline_letter_spacing</item>
+    </style>
+
 </resources>

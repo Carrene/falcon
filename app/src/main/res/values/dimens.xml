@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Text Sizes -->
+    <dimen name="app_text_h1_text_size">96sp</dimen>
+    <dimen name="app_text_h2_text_size">60sp</dimen>
+    <dimen name="app_text_h3_text_size">48sp</dimen>
+    <dimen name="app_text_h4_text_size">34sp</dimen>
+    <dimen name="app_text_h5_text_size">24sp</dimen>
+    <dimen name="app_text_h6_text_size">20sp</dimen>
+    <dimen name="app_text_subtitle1_text_size">16sp</dimen>
+    <dimen name="app_text_subtitle2_text_size">14sp</dimen>
+    <dimen name="app_text_body1_text_size">16sp</dimen>
+    <dimen name="app_text_body2_text_size">14sp</dimen>
+    <dimen name="app_text_caption_text_size">12sp</dimen>
+    <dimen name="app_text_overline_text_size">10sp</dimen>
+
     <dimen name="width_registration_tikicon">25dp</dimen>
     <dimen name="height_registration_tikicon">25dp</dimen>
     <dimen name="marginEnd_registration_tikicon">20dp</dimen>
@@ -197,7 +211,6 @@
     <dimen name="widthheight_chargecompleted_sharebutton">35dp</dimen>
     <dimen name="widthheight_chargecompleted_downloadbutton">35dp</dimen>
     <dimen name="marginstartend_chargecompleted_downloadsharebutton">100dp</dimen>
-
 
 
     <dimen name="width_chargefailed_linearlayout">294dp</dimen>
