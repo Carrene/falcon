@@ -1,57 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textview_withdraw_withdrawmethod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Withdraw method :"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:layout_marginTop="23dp"
-        />
+        <TextView
+            android:id="@+id/textview_withdraw_withdrawmethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_withdraw_withdrawmethod"
+            android:gravity="center"
+            android:text="@string/withdraw_withdrawmethod"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_withdraw_withdrawmethod" />
+
         <TextView
             android:id="@+id/textview_withdraw_qrcode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="QR code"
+            android:layout_marginTop="@dimen/margintop_withdraw_qrcode"
             android:gravity="center"
-            android:textSize="14sp"
-            android:layout_marginTop="12dp"
-            />
+            android:text="@string/withdraw_qrcode"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_withdraw_qrcode" />
+
         <TextView
             android:id="@+id/textview_withdraw_wallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="19dp"
-            android:textSize="16sp"
-            android:text="Wallet :"
+            android:layout_marginTop="@dimen/margintop_withdraw_wallet"
             android:gravity="center"
-            />
+            android:text="@string/withdraw_wallet"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_withdraw_wallet" />
 
         <Spinner
             android:id="@+id/spinner_withdraw_spinner"
             style="@style/SpinnerThemeWithdraw"
+            android:layout_width="@dimen/width_withdraw_spinner"
+            android:layout_height="@dimen/height_withdraw_spinner"
+            android:layout_marginTop="@dimen/margintop_withdraw_spinner"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center" />
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="12dp"
-            android:spinnerMode="dropdown"
-            android:textAlignment="center"
-            android:layout_marginStart="74dp"
-            android:layout_marginEnd="74dp"
-            />
+            android:layout_marginTop="@dimen/margintop_withdraw_relativelayout"
+            android:gravity="center">
 
+            <TextView
+                android:id="@+id/textview_withdraw_balancelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/withdraw_balance"
+                android:textColor="@color/persianGreen"
+                android:textSize="@dimen/textsize_withdraw_balancelable" />
+
+            <TextView
+                android:id="@+id/textview_withdraw_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_withdraw_balancelable"
+                android:textColor="@color/persianGreen"
+                android:textSize="@dimen/textsize_withdraw_balance" />
+
+            <TextView
+                android:id="@+id/textview_withdraw_alphaicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_withdraw_balance"
+                android:text=" α"
+                android:textColor="@color/persianGreen"
+                android:textSize="@dimen/textsize_withdraw_alphaicon" />
+
+        </RelativeLayout>
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_withdraw_nextamount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margnbottom_withdraw_nextamountbutton"
+        android:layout_marginEnd="@dimen/margnstartend_withdraw_nextamountbutton"
+        android:layout_marginStart="@dimen/margnstartend_withdraw_nextamountbutton"
+        android:background="@color/colorSecondary"
+        android:text="@string/withdraw_nextamount" />
 </RelativeLayout>

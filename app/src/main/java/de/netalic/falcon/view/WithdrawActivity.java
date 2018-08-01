@@ -3,6 +3,7 @@ package de.netalic.falcon.view;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.presenter.WithdrawPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
@@ -21,6 +22,7 @@ public class WithdrawActivity extends BaseActivity {
             withdrawFragment=WithdrawFragment.newInstance();
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),withdrawFragment,R.id.framelayout_withdraw_fragmentcontainer);
         }
+        new WithdrawPresenter(withdrawFragment);
     }
 
 

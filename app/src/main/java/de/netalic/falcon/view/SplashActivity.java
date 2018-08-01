@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.concurrent.atomic.AtomicReference;
 
 import de.netalic.falcon.MyApp;
-import de.netalic.falcon.R;
 import de.netalic.falcon.repository.authentication.AuthenticationRepository;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 

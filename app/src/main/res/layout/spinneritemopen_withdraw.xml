@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_withdraw_spinneradapterrelaytivelayout"
+    android:background="@color/dovegray"
+    >
+
+    <ImageView
+        android:id="@+id/imageview_withdraw_spinner"
+        android:layout_width="@dimen/width_withdraw_spinneradapterimageview"
+        android:layout_height="@dimen/height_withdraw_spinneradapterimageview"
+        android:foregroundGravity="left"
+        android:padding="@dimen/padding_withdraw_spinneradapterimageview"
+        android:src="@drawable/withdraw_spinneralphaiconopen"
+        />
+
+    <TextView
+        android:id="@+id/textview_withdraw_walletname"
+        style="?android:attr/spinnerItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/imageview_withdraw_spinner"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_withdraw_spinneradaptertextview"
+        />
+
+</RelativeLayout>

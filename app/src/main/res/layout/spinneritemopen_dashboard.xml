@@ -13,7 +13,7 @@
         android:layout_height="@dimen/layoutheight_charge_imagview"
         android:foregroundGravity="left"
         android:padding="@dimen/padding_charge_imagview"
-        android:src="@drawable/dashboard_spinneralphaicon"
+        android:src="@drawable/withdraw_spinneralphaiconopen"
         />
 
     <TextView

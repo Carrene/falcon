@@ -121,5 +121,10 @@
     <string name="chargefailed_dashboard">Dashboard</string>
 
     <string name="withdraw_toolbar">Withdraw</string>
+    <string name="withdraw_nextamount">NEXT-AMOUNT</string>
+    <string name="withdraw_balance">Balance :</string>
+    <string name="withdraw_wallet">Wallet :</string>
+    <string name="withdraw_qrcode">QR code</string>
+    <string name="withdraw_withdrawmethod">Withdraw method :</string>
 
 </resources>

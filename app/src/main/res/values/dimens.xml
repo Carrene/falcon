@@ -229,4 +229,26 @@
     <dimen name="widthheight_chargefailed_downloadbutton">35dp</dimen>
     <dimen name="marginstartend_chargefailed_downloadsharebutton">100dp</dimen>
 
+    <dimen name="margintop_withdraw_withdrawmethod">23dp</dimen>
+    <dimen name="textsize_withdraw_withdrawmethod">16sp</dimen>
+    <dimen name="margintop_withdraw_qrcode">12dp</dimen>
+    <dimen name="textsize_withdraw_qrcode">14sp</dimen>
+    <dimen name="margintop_withdraw_wallet">19dp</dimen>
+    <dimen name="textsize_withdraw_wallet">16sp</dimen>
+    <dimen name="width_withdraw_spinner">240dp</dimen>
+    <dimen name="height_withdraw_spinner">40dp</dimen>
+    <dimen name="margintop_withdraw_spinner">12dp</dimen>
+    <dimen name="margintop_withdraw_relativelayout">42dp</dimen>
+    <dimen name="textsize_withdraw_balancelable">14sp</dimen>
+    <dimen name="textsize_withdraw_balance">14sp</dimen>
+    <dimen name="textsize_withdraw_alphaicon">14sp</dimen>
+    <dimen name="margnbottom_withdraw_nextamountbutton">27dp</dimen>
+    <dimen name="margnstartend_withdraw_nextamountbutton">16dp</dimen>
+
+    <dimen name="height_withdraw_spinneradapterrelaytivelayout">35dp</dimen>
+    <dimen name="width_withdraw_spinneradapterimageview">70dp</dimen>
+    <dimen name="height_withdraw_spinneradapterimageview">45dp</dimen>
+    <dimen name="padding_withdraw_spinneradapterimageview">4dp</dimen>
+    <dimen name="textsize_withdraw_spinneradaptertextview">19sp</dimen>
+
 </resources>

@@ -14,12 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.google.common.collect.Lists;
 import com.mukesh.countrypicker.Country;
 import com.mukesh.countrypicker.CountryPicker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
