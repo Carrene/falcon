@@ -1,13 +1,18 @@
 package de.netalic.falcon.view;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.media.MediaBrowserCompatUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +29,7 @@ import java.util.Date;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeCompletedContract;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -43,6 +49,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     private ImageButton mButtonShare;
     private ImageButton mButtonDownload;
     private Button mButtonNavigationToDashboard;
+    private static final int REQUEST_PERMISSIONS = 120;
 
     @Nullable
     @Override
@@ -114,17 +121,12 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mButtonShare.setOnClickListener(v -> {
 
 
-            takeScreenshot();
-
-
-
-
         });
 
         mButtonDownload.setOnClickListener(v -> {
 
-            takeScreenshot();
-
+            requestPermission();
+            saveImage(takeScreenshot());
 
         });
     }
@@ -140,58 +142,60 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     }
 
 
-    private void takeScreenshot() {
+    public Bitmap takeScreenshot() {
+
+        mRoot.setDrawingCacheEnabled(true);
+        return mRoot.getDrawingCache();
+    }
+
+
+    private void requestPermission() {
+
+
+        int regEX = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (regEX != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            SnackbarUtil.showSnackbar(mRoot, "permission ok", getContext());
+        } else {
+
+            SnackbarUtil.showSnackbar(mRoot, "permission failed", getContext());
+
+        }
+    }
+
+
+    public void saveImage(Bitmap finalBitmap) {
+
+        String root = Environment.getExternalStorageDirectory().toString();
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-
+        File myDir = new File(root + "/Alpha");
+        myDir.mkdirs();
+        String fileName = "Image-" + now + ".PNG";
+        File file = new File(myDir, fileName);
+        if (file.exists()) {
+            file.delete();
+        }
         try {
-            String mPath =  getActivity().getFilesDir().getAbsolutePath()+ "/alpha"+"/charge" + now + ".jpg";
+            FileOutputStream out = new FileOutputStream(file);
+            finalBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
 
-
-
-            View v1 =getActivity().getWindow().getDecorView().getRootView();
-            v1.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
-            v1.setDrawingCacheEnabled(false);
-
-            File imageFile = new File(mPath);
-            if(!imageFile.exists()) {
-                imageFile.mkdirs();
-            }
-
-            shareScreenShot(imageFile);
-
-            FileOutputStream outputStream = new FileOutputStream(imageFile);
-            int quality = 100;
-            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
-            outputStream.flush();
-            outputStream.close();
-
-        } catch (Throwable e) {
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-    }
-
-    private void shareScreenShot(File file){
-
-
-        Uri uri = Uri.fromFile(file);
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.setType("image/*");
-
-        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
-        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        try {
-            startActivity(Intent.createChooser(intent, "Share Screenshot"));
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(getContext(), "No App Available", Toast.LENGTH_SHORT).show();
-        }
 
     }
-
 
 }

@@ -1,10 +1,16 @@
 package de.netalic.falcon.view;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +18,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Date;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeFailedContract;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -33,6 +44,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private ImageButton mButtonShare;
     private ImageButton mButtonDownload;
     private Button mButtonNavigationDashboard;
+    private static final int REQUEST_PERMISSIONS = 120;
 
     @Override
     public void setPresenter(ChargeFailedContract.Presenter presenter) {
@@ -114,25 +126,72 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mButtonShare.setOnClickListener(v -> {
 
 
-            Intent intent=new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            String shareBody=String.format("wallet name : %s " +
-                            "%n charge amount(Alpha) : %s " +
-                            "%n charge amount(USD) : %s " +
-                            "%n charge transaction(USD) : %s"+
-                            "%n Payment Gateway : %s"+
-                            "%n Transaction date : %s"+
-                            "%n Tracking code : %s"
-                    , mDeposit.getWalletName(), String.valueOf(mDeposit.getChargeAmount()),String.valueOf(mDeposit.getPaidAmount())
-                    ,"",mDeposit.getPaymentGatewayName(),mDeposit.getModifiedAt(),mDeposit.getRetrievalReferenceNumber());
-
-
-            String shareSubject="Charge Failed";
-            intent.putExtra(intent.EXTRA_SUBJECT,shareSubject);
-            intent.putExtra(intent.EXTRA_TEXT,shareBody);
-            startActivity(Intent.createChooser(intent,"Share Using"));
 
         });
+        mButtonDownload.setOnClickListener(v -> {
+
+
+            requestPermission();
+            saveImage(takeScreenshot());
+
+        });
+
+    }
+
+
+    public Bitmap takeScreenshot() {
+
+        mRoot.setDrawingCacheEnabled(true);
+        return mRoot.getDrawingCache();
+    }
+
+
+    private void requestPermission() {
+
+
+        int regEX = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (regEX != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            SnackbarUtil.showSnackbar(mRoot, "permission ok", getContext());
+        } else {
+
+            SnackbarUtil.showSnackbar(mRoot, "permission failed", getContext());
+
+        }
+    }
+
+
+    public void saveImage(Bitmap finalBitmap) {
+
+        String root = Environment.getExternalStorageDirectory().toString();
+        Date now = new Date();
+        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+        File myDir = new File(root + "/Alpha");
+        myDir.mkdirs();
+        String fileName = "Image-" + now + ".PNG";
+        File file = new File(myDir, fileName);
+        if (file.exists()) {
+            file.delete();
+        }
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            finalBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
