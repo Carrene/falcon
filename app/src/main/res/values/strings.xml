@@ -89,7 +89,7 @@
     <string name="chargeamount_invalidcurrency">Invalid currency</string>
     <string name="chargeamount_ratedosenotexists">Rate dose not exists</string>
     <string name="chargeamount_amount">Amount:</string>
-    <string name="chargeamount_amounthint">Amount</string>
+    <string name="chargeamount_amounthint">Amount(Alpha)</string>
 
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
     <string name="chargeconfirmation_walletname">Wallet Name :</string>
