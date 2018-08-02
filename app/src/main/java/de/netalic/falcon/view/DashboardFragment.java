@@ -1,7 +1,9 @@
 package de.netalic.falcon.view;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,9 +21,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.List;
@@ -178,75 +182,140 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takeScreenshot();
+
+             savePic(takeScreenShot());
+
+
+
             }
         });
     }
 
-    private void takeScreenshot() {
+
+
+
+//    private void takeScreenshot() {
+//        Date now = new Date();
+//        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+//
+//        try {
+//            String mPath =  getActivity().getFilesDir().getAbsolutePath()+ "/alpha" + now + ".jpg";
+//
+//
+//
+//            mRoot.setDrawingCacheEnabled(true);
+//            Bitmap bitmap = Bitmap.createBitmap(mRoot.getDrawingCache());
+//            mRoot.setDrawingCacheEnabled(false);
+//
+//            File imageFile = new File(mPath,"milad");
+//            if(!imageFile.exists()) {
+//                imageFile.mkdirs();
+//            }
+//
+//
+//            FileOutputStream outputStream = new FileOutputStream(imageFile);
+//            int quality = 100;
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+//            outputStream.flush();
+//            outputStream.close();
+//
+//        } catch (Throwable e) {
+//
+//            e.printStackTrace();
+//        }
+//
+//    }
+
+
+//    private void shareScreenShot(File file){
+//
+//
+//        Uri uri = Uri.fromFile(file);
+//        Intent intent = new Intent();
+//        intent.setAction(Intent.ACTION_SEND);
+//        intent.setType("image/*");
+//
+//        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+//        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+//        intent.putExtra(Intent.EXTRA_STREAM, uri);
+//        try {
+//            startActivity(Intent.createChooser(intent, "Share Screenshot"));
+//        } catch (ActivityNotFoundException e) {
+//            Toast.makeText(getContext(), "No App Available", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
+
+//    public  Bitmap getScreenShot() {
+//
+//        mRoot.setDrawingCacheEnabled(true);
+//        Bitmap bitmap = Bitmap.createBitmap(mRoot.getDrawingCache());
+//        mRoot.setDrawingCacheEnabled(false);
+//        return bitmap;
+//    }
+
+//    public  void store(Bitmap bm){
+//        final String dirPath =  getActivity().getFilesDir() + "/Screenshots";
+//        File dir = new File(dirPath);
+//        if(!dir.exists())
+//            dir.mkdirs();
+//        File file = new File(dirPath,"milad");
+//        try {
+//            FileOutputStream fOut = new FileOutputStream(file);
+//            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
+//            fOut.flush();
+//            fOut.close();
+//            openScreenshot(file);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
+    public  Bitmap takeScreenShot() {
+
+        mRoot.setDrawingCacheEnabled(true);
+        mRoot.buildDrawingCache();
+        Bitmap b1 = mRoot.getDrawingCache();
+        Rect frame = new Rect();
+        getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+        int statusBarHeight = frame.top;
+
+        //Find the screen dimensions to create bitmap in the same size.
+        int width = getActivity().getWindowManager().getDefaultDisplay().getHeight();
+        int height = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+
+        Bitmap b = Bitmap.createBitmap(b1, 0, statusBarHeight, width, height - statusBarHeight);
+        mRoot.destroyDrawingCache();
+        return b;
+    }
+
+
+
+
+    public static void savePic(Bitmap b) {
+        FileOutputStream fos;
         try {
-
-//            Date now = new Date();
-//            android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-            mRoot.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(mRoot.getDrawingCache());
-            mRoot.setDrawingCacheEnabled(false);
-
-            String mPath = getActivity().getFilesDir().getAbsolutePath() + "/" + "ehsan" + ".jpg";
-
-            File imageFile = new File(getContext().getCacheDir(), "images");
-            imageFile.createNewFile();
-
-
-
-
-            File newFile = new File(imageFile, "image.png");
-
-
-
-            FileOutputStream outputStream = new FileOutputStream(imageFile);
-            int quality = 100;
-            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
-            outputStream.flush();
-            outputStream.close();
-            shareIt(newFile);
-
-
-
-        } catch (Throwable e) {
+            fos = new FileOutputStream("MILADSALIMI");
+            b.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
-    public void shareIt(File file) {
-        boolean isRead = file.canRead();
-
-//        File file1=file;
-//        Intent shareIntent = new Intent();
-//        shareIntent.setAction(Intent.ACTION_SEND);
-//        shareIntent.setType("image/jpg");
-//        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-//        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//        startActivityForResult(Intent.createChooser(shareIntent, "Share to"),1);
 
 
 
 
-        Uri contentUri = FileProvider.getUriForFile(getContext(), "de.netalic.falcon.fileprovider", file);
-
-        if (contentUri != null) {
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
-            shareIntent.setDataAndType(contentUri,getActivity().getContentResolver().getType(contentUri));
-            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            startActivity(Intent.createChooser(shareIntent, "Choose an app"));
-        }
 
 
-    }
+
+
+
+
+
 
     private void openScreenshot(File imageFile) {
         Intent intent = new Intent();

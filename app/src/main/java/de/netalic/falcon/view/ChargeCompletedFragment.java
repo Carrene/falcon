@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -7,12 +8,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.media.MediaBrowserCompatUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -110,8 +113,17 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
         mButtonShare.setOnClickListener(v -> {
 
+
             takeScreenshot();
 
+
+
+
+        });
+
+        mButtonDownload.setOnClickListener(v -> {
+
+            takeScreenshot();
 
 
         });
@@ -133,40 +145,53 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
 
         try {
-            String mPath = getActivity().getFilesDir().getAbsolutePath()+ "/" + now + ".jpg";
+            String mPath =  getActivity().getFilesDir().getAbsolutePath()+ "/alpha"+"/charge" + now + ".jpg";
 
 
-            mRoot.setDrawingCacheEnabled(true);
-            Bitmap bitmap = Bitmap.createBitmap(mRoot.getDrawingCache());
-            mRoot.setDrawingCacheEnabled(false);
+
+            View v1 =getActivity().getWindow().getDecorView().getRootView();
+            v1.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
 
             File imageFile = new File(mPath);
+            if(!imageFile.exists()) {
+                imageFile.mkdirs();
+            }
 
+            shareScreenShot(imageFile);
 
             FileOutputStream outputStream = new FileOutputStream(imageFile);
             int quality = 100;
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
             outputStream.flush();
             outputStream.close();
-            shareIt(mPath);
 
         } catch (Throwable e) {
+
             e.printStackTrace();
         }
+
     }
 
-    public void shareIt(String path){
+    private void shareScreenShot(File file){
 
 
-        Uri imageUri;
+        Uri uri = Uri.fromFile(file);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("image/*");
 
-        imageUri = Uri.parse(path);
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        try {
+            startActivity(Intent.createChooser(intent, "Share Screenshot"));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getContext(), "No App Available", Toast.LENGTH_SHORT).show();
+        }
 
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-        shareIntent.setType("image/jpeg");
-        startActivity(Intent.createChooser(shareIntent, "Share to"));
     }
+
 
 }
