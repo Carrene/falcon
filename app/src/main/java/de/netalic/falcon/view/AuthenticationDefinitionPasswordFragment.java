@@ -1,18 +1,21 @@
 package de.netalic.falcon.view;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import de.netalic.falcon.R;
 
@@ -23,10 +26,11 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     private EditText mEditTextConfirmCode;
     private TextInputLayout mTextInputLayoutConfirmCode;
     private View mRoot;
-    private CheckBox mCheckBoxCapital;
-    private CheckBox mCheckBoxDigit;
-    private CheckBox mCheckBoxCustomChar;
-    private CheckBox mCheckBoxMinimumLength;
+    private TextView mTextViewMinimumLength;
+    private TextView mTextViewCapitalLetter;
+    private TextView mTextViewDigit;
+    private TextView mTextViewSpecialCharacter;
+
     private NavigateToDashboardCallback mNavigateToDashboardCallback;
 
     interface NavigateToDashboardCallback {
@@ -72,12 +76,10 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         mEditTextPassCode = mRoot.findViewById(R.id.edittext_authentication_entercode);
         mEditTextConfirmCode = mRoot.findViewById(R.id.edittext_authenticationdefinition_confirmcode);
         mTextInputLayoutConfirmCode = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_confirmpasscode);
-
-        mCheckBoxCapital = mRoot.findViewById(R.id.checkbox_authenticationdefinition_capital);
-        mCheckBoxCustomChar = mRoot.findViewById(R.id.checkbox_authenticationdefinition_custom_char);
-        mCheckBoxDigit = mRoot.findViewById(R.id.checkbox_authenticationdefinition_digit);
-        mCheckBoxMinimumLength = mRoot.findViewById(R.id.checkbox_authenticationdefinition_length);
-
+        mTextViewMinimumLength = mRoot.findViewById(R.id.textView_authenticationdefinition_length);
+        mTextViewCapitalLetter = mRoot.findViewById(R.id.textView_authenticationdefinition_capital);
+        mTextViewDigit = mRoot.findViewById(R.id.textView_authenticationdefinition_digit);
+        mTextViewSpecialCharacter = mRoot.findViewById(R.id.textView_authenticationdefinition_special);
     }
 
     public void validationPassCode() {
@@ -105,38 +107,39 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
                 String password = s.toString();
                 int i = 0;
                 if (CustomValidator.hasCapitalLetter(password)) {
-                    mCheckBoxCapital.setChecked(true);
+                    mTextViewCapitalLetter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGreen));
+                    ;
                     i++;
                 } else {
-                    mCheckBoxCapital.setChecked(false);
+                    mTextViewCapitalLetter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
                     i--;
                 }
 
                 if (CustomValidator.hasDigit(password)) {
-                    mCheckBoxDigit.setChecked(true);
+                    mTextViewDigit.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGreen));
                     i++;
 
                 } else {
-                    mCheckBoxDigit.setChecked(false);
+                    mTextViewDigit.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
                     i--;
 
                 }
 
                 if (CustomValidator.hasCustomCharacters(password)) {
-                    mCheckBoxCustomChar.setChecked(true);
+                    mTextViewSpecialCharacter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGreen));
                     i++;
 
                 } else {
-                    mCheckBoxCustomChar.setChecked(false);
+                    mTextViewSpecialCharacter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
                     i--;
 
                 }
                 if (CustomValidator.hasMinimumLength(password)) {
-                    mCheckBoxMinimumLength.setChecked(true);
+                    mTextViewMinimumLength.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGreen));
                     i++;
 
                 } else {
-                    mCheckBoxMinimumLength.setChecked(false);
+                    mTextViewMinimumLength.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
                     i--;
 
                 }

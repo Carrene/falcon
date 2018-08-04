@@ -38,7 +38,7 @@
     <dimen name="marginend_authentication_textinputlayout">30dp</dimen>
     <dimen name="marginstart_authentication_textinputlayout">30dp</dimen>
     <dimen name="margintop_authenticationdefinitionpasswordtab_entercode">20dp</dimen>
-    <dimen name="margintop_authenticationdefinitionpasswordtab_confirmcode">40dp</dimen>
+    <dimen name="margintop_authenticationdefinitionpasswordtab_confirmcode">20dp</dimen>
     <dimen name="textsize_authenticationdefinitionpasswordtab_entercode">13sp</dimen>
     <dimen name="textsize_authenticationdefinitionpasswordtab_confirmcode">13sp</dimen>
     <dimen name="dotnormalsize_authenticationdefinitionpatterntab_patternlockview">20dp</dimen>

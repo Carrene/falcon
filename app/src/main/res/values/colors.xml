@@ -9,6 +9,8 @@
     <color name="colorSecondaryLight">#FFF263</color>
 
     <color name="colorBlack35">#60000000</color>
+    <color name="colorGreen">#009688</color>
+    <color name="colorRed">#B92D00</color>
 
     <color name="dovegray">#6D6D6D</color>
     <color name="colorAccent">#FF4081</color>

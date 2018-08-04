@@ -37,6 +37,10 @@
     <string name="authenticationdefinition_hintpassword">Enter password</string>
     <string name="authenticationdefinition_hintconfirmpassword">Confirm password</string>
     <string name="authenticationdefinition_toolbartitle">Authentication type</string>
+    <string name="authenticationdefinition_minimumlength">At least 8 characters</string>
+    <string name="authenticationdefinition_digit">At least one digit</string>
+    <string name="authenticationdefinition_capitalletter">At least on capital letter</string>
+    <string name="authenticationdefinition_specialchar">At least one of (@  #  $  %  +  =  *  ?)</string>
 
     <string name="recoveryemail_enterarecoveryemail">Enter a recovery email</string>
     <string name="recoveryemail_skip">SKIP</string>
