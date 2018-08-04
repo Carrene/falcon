@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
+apply plugin: 'io.fabric'
 
 ext.versionMajor = 00
 ext.versionMinor = 15
@@ -119,6 +120,7 @@ dependencies {
     implementation 'com.google.zxing:core:3.2.1'
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
     implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.4'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
