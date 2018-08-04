@@ -61,6 +61,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         getWalletList();
         initListener();
 
+
     }
 
     public static DashboardFragment newInstance() {
@@ -165,10 +166,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             }
         });
 
-
     }
-
-
 
 
 }

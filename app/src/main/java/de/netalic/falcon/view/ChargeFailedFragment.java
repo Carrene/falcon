@@ -3,9 +3,7 @@ package de.netalic.falcon.view;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -19,12 +17,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Date;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeFailedContract;
+import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -32,6 +29,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ChargeFailedFragment extends Fragment implements ChargeFailedContract.View {
 
     private ChargeFailedContract.Presenter mChargeFailedPresenter;
+    private static final String ALPHA_PATH = "/Alpha";
+    private static final String CHARGE_PATH = "/Charge";
     private View mRoot;
     private static final String ARGUMENT_DEPOSIT = "DEPOSIT";
     private Deposit mDeposit;
@@ -45,6 +44,8 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private ImageButton mButtonDownload;
     private Button mButtonNavigationDashboard;
     private static final int REQUEST_PERMISSIONS = 120;
+    private static final int IMAGE_QUALITY = 100;
+    private View mScreenshotView;
 
     @Override
     public void setPresenter(ChargeFailedContract.Presenter presenter) {
@@ -81,6 +82,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         initUiComponent();
         setPaymentInformation();
         initListener();
+        requestPermission();
     }
 
     public static ChargeFailedFragment newInstance(Deposit deposit) {
@@ -103,6 +105,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mButtonShare = mRoot.findViewById(R.id.imagebutton_chargefailed_sharebutton);
         mButtonDownload = mRoot.findViewById(R.id.imagebutton_chargefailed_downloadbutton);
         mButtonNavigationDashboard = mRoot.findViewById(R.id.button_chargefailed_dashborad);
+        mScreenshotView = mRoot.findViewById(R.id.linearlayout_chargefailed_main);
 
     }
 
@@ -125,34 +128,27 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
         mButtonShare.setOnClickListener(v -> {
 
-
+            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
 
         });
+
         mButtonDownload.setOnClickListener(v -> {
 
-
-            requestPermission();
-            saveImage(takeScreenshot());
+            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargefailed_imagesaved),getContext());
 
         });
 
     }
-
-
-    public Bitmap takeScreenshot() {
-
-        mRoot.setDrawingCacheEnabled(true);
-        return mRoot.getDrawingCache();
-    }
-
 
     private void requestPermission() {
 
 
-        int regEX = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (regEX != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         }
     }
 
@@ -161,37 +157,14 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-            SnackbarUtil.showSnackbar(mRoot, "permission ok", getContext());
+            SnackbarUtil.showSnackbar(mRoot, "Permission Ok", getContext());
         } else {
 
-            SnackbarUtil.showSnackbar(mRoot, "permission failed", getContext());
+            SnackbarUtil.showSnackbar(mRoot, "Permission Failed", getContext());
 
         }
     }
 
 
-    public void saveImage(Bitmap finalBitmap) {
 
-        String root = Environment.getExternalStorageDirectory().toString();
-        Date now = new Date();
-        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-        File myDir = new File(root + "/Alpha");
-        myDir.mkdirs();
-        String fileName = "Image-" + now + ".PNG";
-        File file = new File(myDir, fileName);
-        if (file.exists()) {
-            file.delete();
-        }
-        try {
-            FileOutputStream out = new FileOutputStream(file);
-            finalBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-            out.flush();
-            out.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
 }

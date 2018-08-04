@@ -118,6 +118,7 @@
     <string name="chargecompleted_trackingcode">Tracking Code :</string>
     <string name="chargecompleted_dashboard">DASHBOARD</string>
     <string name="chargecompleted_success">Success</string>
+    <string name="chargecompleted_imagesaved">Image Saved</string>
 
     <string name="chargefailed_failed">Charge Failed</string>
     <string name="chargefailed_failedtextview">Failed</string>
@@ -128,8 +129,8 @@
     <string name="chargefailed_paymentgateway">Payment Gateway :</string>
     <string name="chargefailed_transactiondate">Transaction date :</string>
     <string name="chargefailed_dashboard">Dashboard</string>
+    <string name="chargefailed_imagesaved">Image Saved</string>
 
 
-    >>>>>>> charge_failed
 
 </resources>
