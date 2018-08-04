@@ -27,32 +27,36 @@ public class ApiClient {
 
     private static Retrofit sRetrofit = null;
     private static ApiInterface sApi;
-    public static String sTestUrl;
 
     private static Retrofit getClient() {
 
         if (sRetrofit == null) {
 
-            if (sTestUrl == null) {
-                OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();
-                okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
-                ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getInstance()));
-                okHttpClient.cookieJar(cookieJar).addInterceptor(new AuthorizationInterceptor());
-                okHttpClient.addInterceptor(new NetworkErrorInterceptor());
-                sRetrofit = new Retrofit.Builder().baseUrl(getUrl())
-                        .client(okHttpClient.build())
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-            } else {
-                OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();
-                okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
-                okHttpClient.addInterceptor(new AuthorizationInterceptor());
-                okHttpClient.addInterceptor(new NetworkErrorInterceptor());
-                sRetrofit = new Retrofit.Builder().baseUrl(getUrl())
-                        .client(okHttpClient.build())
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-            }
+            OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();
+            okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
+            ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getInstance()));
+            okHttpClient.cookieJar(cookieJar).addInterceptor(new AuthorizationInterceptor());
+            okHttpClient.addInterceptor(new NetworkErrorInterceptor());
+            sRetrofit = new Retrofit.Builder().baseUrl(getUrl())
+                    .client(okHttpClient.build())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return sRetrofit;
+    }
+
+    public static Retrofit getMockUpClient(String url) {
+
+        if (sRetrofit == null) {
+
+            OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();
+            okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
+            okHttpClient.addInterceptor(new AuthorizationInterceptor());
+            okHttpClient.addInterceptor(new NetworkErrorInterceptor());
+            sRetrofit = new Retrofit.Builder().baseUrl(url)
+                    .client(okHttpClient.build())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
         }
         return sRetrofit;
     }
@@ -65,12 +69,19 @@ public class ApiClient {
         return sApi;
     }
 
-    public static String getUrl() {
-        if (sTestUrl == null) {
-            String url = BuildConfig.WEB_SERVICE_URL+":"+BuildConfig.WEB_SERVICE_PORT+"/apiv1/";
-            return url;
+    public static ApiInterface setService(Retrofit retrofit) {
+
+        if (sApi == null) {
+            sApi = retrofit.create(ApiInterface.class);
         }
-        return sTestUrl;
+        return sApi;
+    }
+
+    public static String getUrl() {
+
+        String url = BuildConfig.WEB_SERVICE_URL + ":" + BuildConfig.WEB_SERVICE_PORT + "/apiv1/";
+        return url;
+
     }
 
     private static class NetworkErrorInterceptor implements Interceptor {

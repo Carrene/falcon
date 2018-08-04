@@ -1,0 +1,15 @@
+{
+  "deviceName": "dsadasds",
+  "hmacSecret": "K6xsmnGNPdfg+KdARW+8sECeggwvL3ok0ExA4h4fqRE=",
+  "udid": "V89707AC55BAED9E8F23B826FB2A28E96095A190",
+  "createdAt": "2018-07-29T11:52:45.052020",
+  "phone": "989367150741",
+  "secret": "I4zfmuCeQufVPvaa1RJAi1B5J8pbF88cV+lmshnSP6s=",
+  "isAdmin": false,
+  "type": "client",
+  "email": null,
+  "id": 4,
+  "isActive": false,
+  "token": "eyJhbGciOiJIUzI1NiIsImlhdCI6MTUzMzM4Mzg2NiwiZXhwIjoxNTMzNDcwMjY2fQ.eyJpZCI6NCwicGhvbmUiOiI5ODkzNjcxNTA3NDEiLCJyb2xlcyI6WyJjbGllbnQiXSwic2Vzc2lvbklkIjoiOTIzMDM4ODAtYTk1NS00NmU0LWE2MTAtNzA2NTc2MDQ0MjBlIiwiZW1haWwiOm51bGwsImlzQWN0aXZlIjpmYWxzZX0.Ial_Lhm-W2yMuKaDjbls2_VJCVAXMDJHWaTVD16k8GM",
+  "isNewClient": false
+}

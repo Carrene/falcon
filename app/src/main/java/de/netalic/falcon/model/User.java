@@ -33,6 +33,7 @@ public class User extends RealmObject implements Parcelable {
     @SerializedName("email")
     private String mEmail;
 
+
     @RealmField(name = "Balance")
     private double mBalance;
 
@@ -51,9 +52,11 @@ public class User extends RealmObject implements Parcelable {
     @SerializedName("isActive")
     boolean mIsActive;
 
+    @RealmField(name = "Secret")
     @SerializedName("secret")
     String mSecret;
 
+    @RealmField(name = "HmacSecret")
     @SerializedName("hmacSecret")
     String mHmacSecret;
 
@@ -73,6 +76,22 @@ public class User extends RealmObject implements Parcelable {
         mPhone = phone;
     }
 
+    public User(String phone, String udid, String activationCode) {
+
+        mPhone = phone;
+        mUdid = udid;
+        mActivationCode = activationCode;
+    }
+
+    public String getSecret() {
+
+        return mSecret;
+    }
+
+    public String getHmacSecret() {
+
+        return mHmacSecret;
+    }
 
     public void setActivationCode(String activationCode) {
 

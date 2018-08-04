@@ -3,6 +3,7 @@ package de.netalic.falcon.repository.user;
 import java.util.List;
 
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.repository.Deal;
 
 public class UserRepository implements IUserRepository {
 
@@ -33,7 +34,15 @@ public class UserRepository implements IUserRepository {
     @Override
     public void bind(User user, CallRepository<User> callRepository) {
 
-        mUserRestRepository.bind(user, callRepository);
+        mUserRestRepository.bind(user, deal -> {
+            if (deal.getThrowable() == null && deal.getResponse().code() == 200) {
+                mUserRealmRepository.update(deal.getModel(), deal1 -> {
+                });
+
+            }
+            callRepository.onDone(deal);
+
+        });
     }
 
     @Override
@@ -66,6 +75,7 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void getAll(CallRepository<List<User>> callRepository) {
+
         mUserRestRepository.getAll(callRepository);
 
     }
