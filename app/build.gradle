@@ -66,7 +66,7 @@ android {
             buildConfigField "Integer", "WEB_SERVICE_VERSION", "1"
         }
 
-        global{
+        global {
             buildConfigField "String", "WEB_SERVICE_URL", "\"http://217.170.248.52\""
             buildConfigField "Integer", "WEB_SERVICE_PORT", "9595"
             buildConfigField "Integer", "WEB_SERVICE_VERSION", "1"
@@ -122,6 +122,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.4'
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 

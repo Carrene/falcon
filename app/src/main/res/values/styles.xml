@@ -33,6 +33,12 @@
     <style name="SplashTheme" parent="Base.AppTheme">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
+
+    <style name="SimpleSpinnerTheme" parent="Base.Widget.AppCompat.Spinner.Underlined">
+
+    </style>
+
+
 </resources>
 
 
