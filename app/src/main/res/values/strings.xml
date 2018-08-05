@@ -12,7 +12,7 @@
     <string name="phoneconfirmation_invaliddevicename">Invalid device name</string>
 
     <string name="registration_menudone">Done</string>
-    <string name="registration_toolbartitle">Input phone</string>
+    <string name="registration_toolbartitle">Your phone</string>
     <string name="registration_bottomtextview">confirmation code will be sent to you</string>
     <string name="registration_defultcountry">Select your country</string>
     <string name="registration_fillallbox">Fill all box</string>
@@ -36,7 +36,7 @@
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
     <string name="authenticationdefinition_hintpassword">Enter password</string>
     <string name="authenticationdefinition_hintconfirmpassword">Confirm password</string>
-    <string name="authenticationdefinition_toolbartitle">Authentication type</string>
+    <string name="authenticationdefinition_toolbartitle">Login method</string>
     <string name="authenticationdefinition_minimumlength">At least 8 characters</string>
     <string name="authenticationdefinition_digit">At least one digit</string>
     <string name="authenticationdefinition_capitalletter">At least on capital letter</string>

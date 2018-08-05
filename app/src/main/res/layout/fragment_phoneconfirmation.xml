@@ -33,7 +33,8 @@
             android:hint="@string/phoneconfirmation_entertheverificationhere"
             android:inputType="number"
             android:singleLine="true"
-            android:maxLength="16"
+            android:maxLength="6"
+            android:textAlignment="center"
             />
 
     </android.support.design.widget.TextInputLayout>
