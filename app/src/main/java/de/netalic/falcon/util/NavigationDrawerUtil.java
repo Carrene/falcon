@@ -43,11 +43,15 @@ public class NavigationDrawerUtil {
         String email = (String) tokenBody.get("email");
 
 
-            mHeaderResult = new AccountHeaderBuilder()
-                    .withActivity(activity)
-                    .withHeaderBackground(R.color.primary).withSelectionListEnabledForSingleProfile(false)
-                    .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigationheader_profile))
-                    .build();
+        if (email == null) {
+
+            email = EMAIL_NOT_SET;
+        }
+        mHeaderResult = new AccountHeaderBuilder()
+                .withActivity(activity)
+                .withHeaderBackground(R.color.primary).withSelectionListEnabledForSingleProfile(false)
+                .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigationheader_profile))
+                .build();
 
 
         Drawer result = new DrawerBuilder()
