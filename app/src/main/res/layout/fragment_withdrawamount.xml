@@ -31,7 +31,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/marginstartend_withdrawamount_walletamount"
                 android:layout_marginStart="@dimen/marginstartend_withdrawamount_walletamount"
-                android:hint="@string/withdrawamount_alpha" />
+                android:hint="@string/withdrawamount_alpha"
+                style="@style/Base.V7.Widget.AppCompat.EditText"
+                android:textColor="@color/colorPrimaryLight"
+                />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -54,7 +57,9 @@
                 android:layout_marginEnd="@dimen/marginstartend_withdrawamount_basecurrency"
                 android:layout_marginStart="@dimen/marginstartend_withdrawamount_basecurrency"
                 android:hint="@string/withdrawamount_usd"
-                android:textColor="@color/colorPrimaryLight" />
+                android:textColor="@color/colorPrimaryLight"
+                style="@style/Base.V7.Widget.AppCompat.EditText"
+                />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -76,15 +81,26 @@
                 android:id="@+id/spinner_withdrawamount_currency"
                 style="@style/SimpleSpinnerTheme"
                 android:layout_width="@dimen/width_withdrawamount_spinner"
-                android:layout_height="@dimen/height_withdrawamount_spinner"/>
+                android:layout_height="@dimen/height_withdrawamount_spinner"
+                android:backgroundTint="@color/black"
+                />
 
-            <EditText
-                android:id="@+id/edittext_withdrawamount_othercurrency"
-                android:layout_width="@dimen/width_withdrawamount_edittextothercurrency"
-                android:layout_height="@dimen/height_withdrawamount_edittextothercurrency"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="@dimen/width_withdrawamount_textinputlayoutothercurrency"
+                android:layout_height="@dimen/height_withdrawamount_textinputlaypitothercurrency"
                 android:layout_toRightOf="@+id/spinner_withdrawamount_currency"
-                android:textColor="@color/black" />
 
+                >
+
+                <EditText
+                    android:id="@+id/edittext_withdrawamount_othercurrency"
+                    style="@style/Base.V7.Widget.AppCompat.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryLight"
+
+                    />
+            </android.support.design.widget.TextInputLayout>
         </RelativeLayout>
 
         <RelativeLayout

@@ -237,15 +237,15 @@
     <dimen name="marginstartend_withdrawamount_relativelayout">70dp</dimen>
     <dimen name="margintop_withdrawamount_relativelayout">18dp</dimen>
     <dimen name="width_withdrawamount_spinner">75dp</dimen>
-    <dimen name="height_withdrawamount_spinner">40dp</dimen>
+    <dimen name="height_withdrawamount_spinner">32dp</dimen>
     <dimen name="marginstartend_withdrawamount_betweenusemaxandusemin">41dp</dimen>
     <dimen name="textsize_withdrawamount_useminimumusemaximum">14sp</dimen>
-    <dimen name="marginstartend_withdrawamount_textviewtransferlimit">102dp</dimen>
+    <dimen name="marginstartend_withdrawamount_textviewtransferlimit">90dp</dimen>
     <dimen name="margintop_withdrawamount_textviewtransferlimit">17dp</dimen>
     <dimen name="textsize_withdrawamount_textviewtransferlimit">14sp</dimen>
     <dimen name="marginstartend_withdrawamount_buttonnextwithdraw">16dp</dimen>
     <dimen name="marginbottom_withdrawamount_buttonnextwithdraw">27dp</dimen>
-    <dimen name="width_withdrawamount_edittextothercurrency">170dp</dimen>
-    <dimen name="height_withdrawamount_edittextothercurrency">40dp</dimen>
+    <dimen name="width_withdrawamount_textinputlayoutothercurrency">170dp</dimen>
+    <dimen name="height_withdrawamount_textinputlaypitothercurrency">40dp</dimen>
 
 </resources>
