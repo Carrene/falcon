@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.telephony.PhoneNumberUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -158,6 +160,28 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                 }
             }
             return false;
+        });
+
+        mEditTextReceiveCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (s.toString().length()==6){
+
+                    mUser.setActivationCode(mEditTextReceiveCode.getText().toString());
+                    bind();
+                }
+            }
         });
     }
 

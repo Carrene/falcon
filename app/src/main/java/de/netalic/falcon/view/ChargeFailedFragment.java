@@ -39,7 +39,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private TextView mTextViewPaidAmount;
     private TextView mTextViewPaymentGateway;
     private TextView mTextViewTransactionDate;
-    private TextView mTextViewTransactionAmount;
+    private TextView mTextViewRrn;
     private ImageButton mButtonShare;
     private ImageButton mButtonDownload;
     private Button mButtonNavigationDashboard;
@@ -101,7 +101,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_chargefailed_amountdollar);
         mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargefailed_paymentgateway);
         mTextViewTransactionDate = mRoot.findViewById(R.id.textview_chargefailed_transactiondate);
-        mTextViewTransactionAmount = mRoot.findViewById(R.id.textview_chargefailed_transactionamount);
+        mTextViewRrn=mRoot.findViewById(R.id.textview_chargefailed_rrn);
         mButtonShare = mRoot.findViewById(R.id.imagebutton_chargefailed_sharebutton);
         mButtonDownload = mRoot.findViewById(R.id.imagebutton_chargefailed_downloadbutton);
         mButtonNavigationDashboard = mRoot.findViewById(R.id.button_chargefailed_dashborad);
@@ -116,6 +116,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewPaidAmount.setText(String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
         mTextViewTransactionDate.setText(mDeposit.getModifiedAt());
+        mTextViewRrn.setText(mDeposit.getRetrievalReferenceNumber());
     }
 
     public void initListener() {

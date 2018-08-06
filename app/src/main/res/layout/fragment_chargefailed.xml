@@ -7,11 +7,13 @@
     <LinearLayout
         android:id="@+id/linearlayout_chargefailed_main"
         android:layout_width="@dimen/width_chargefailed_linearlayout"
-        android:layout_height="@dimen/height_chargefailed_linearlayout"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_chargefailed_linearlayout"
         android:background="@drawable/chargefailed_border"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/paddingbottom_chargefailed_linearlayout"
+        >
 
         <ImageView
             android:id="@+id/imageview_chargefailed_failed"
@@ -118,32 +120,6 @@
             android:layout_marginTop="@dimen/margintop_chargefailed_relativelayout">
 
             <TextView
-                android:id="@+id/textview_chargefailed_transactionamountlable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chargefailed_transactionamount"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textsize_chargefailed_amountdollarlable" />
-
-            <TextView
-                android:id="@+id/textview_chargefailed_transactionamount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargefailed_transactionamountlable"
-                android:paddingStart="@dimen/paddingstart_chargefailed_amountalpha"
-                android:text="VALUE"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textsize_chargefailed_amountdollarlable" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margintop_chargefailed_relativelayout">
-
-            <TextView
                 android:id="@+id/textview_chargefailed_paymentgatewaylable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -181,6 +157,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textview_chargefailed_transactiondatelable"
+                android:paddingStart="@dimen/paddingstart_chargefailed_transactiondate"
+                android:text="VALUE"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargefailed_transactiondate" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margintop_chargefailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargefailed_transactiontimelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargefailed_transactiontime"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargefailed_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_chargefailed_transactiontime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargefailed_transactiontimelable"
+                android:paddingStart="@dimen/paddingstart_chargefailed_transactiondate"
+                android:text="VALUE"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargefailed_transactiondate" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margintop_chargefailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_chargefailed_rrnlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chargefailed_rrn"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_chargefailed_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_chargefailed_rrn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textview_chargefailed_rrnlable"
                 android:paddingStart="@dimen/paddingstart_chargefailed_transactiondate"
                 android:text="VALUE"
                 android:textColor="@color/black"
