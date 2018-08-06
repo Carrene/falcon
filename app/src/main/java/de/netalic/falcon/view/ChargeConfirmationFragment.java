@@ -20,6 +20,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeConfirmationContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
+import de.netalic.falcon.util.SnackbarUtil;
 
 public class ChargeConfirmationFragment extends Fragment implements ChargeConfirmationContract.View {
 
@@ -159,5 +160,42 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         intent.putExtra(ARGUMENT_DEPOSIT, deposit);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void showErrorInvalidWalletId() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_invalidwalletid),getContext());
+    }
+
+    @Override
+    public void showErrorWalletNotFound() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_walletnotfound),getContext());
+
+    }
+
+    @Override
+    public void showErrorDepositNotFound() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_depositnotfound),getContext());
+    }
+
+    @Override
+    public void showErrorInvalidDepositId() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_invaliddepositid),getContext());
+    }
+
+    @Override
+    public void showErrorDepositAlreadySucceed() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_depositalreadyexist),getContext());
+    }
+
+    @Override
+    public void showErrorInvalidBraintreeNonce() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_invalidbraintreenoce),getContext());
     }
 }

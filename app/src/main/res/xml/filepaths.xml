@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-files-path name="my_images" path="my_images" />
+    <cache-path name="shared_images_from_glide_cache" path="image_manager_disk_cache"/>
+</paths>

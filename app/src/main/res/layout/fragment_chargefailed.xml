@@ -5,6 +5,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearlayout_chargefailed_main"
         android:layout_width="@dimen/width_chargefailed_linearlayout"
         android:layout_height="@dimen/height_chargefailed_linearlayout"
         android:layout_centerHorizontal="true"

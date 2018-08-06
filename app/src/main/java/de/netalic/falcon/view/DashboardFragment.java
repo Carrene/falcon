@@ -39,6 +39,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private List<Wallet> mWalletList;
     private DashboardWalletSpinnerAdapter mDashboardWalletSpinnerAdapter;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,6 +58,9 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         initUiComponents();
         getRate();
         getWalletList();
+        initListener();
+
+
     }
 
     public static DashboardFragment newInstance() {
@@ -132,7 +136,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mWalletList = walletList;
         mDashboardWalletSpinnerAdapter = new DashboardWalletSpinnerAdapter(getContext(), mWalletList);
         mSpinnerWalletList.setAdapter(mDashboardWalletSpinnerAdapter);
-        initListener();
     }
 
     public void getRate() {
@@ -161,5 +164,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
             }
         });
+
     }
+
+
 }

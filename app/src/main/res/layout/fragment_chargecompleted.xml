@@ -5,12 +5,14 @@
 
 
     <LinearLayout
+        android:id="@+id/linearlayout_chargecompleted_main"
         android:layout_width="@dimen/width_chargecompleted_linearlayout"
         android:layout_height="@dimen/height_chargecompleted_linearlayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_chargecompleted_linearlayout"
         android:background="@drawable/chargecompleted_border"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <ImageView
             android:id="@+id/imageview_chargecompleted_success"
