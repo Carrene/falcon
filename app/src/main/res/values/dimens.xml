@@ -42,10 +42,17 @@
     <dimen name="textsize_authenticationdefinitionpasswordtab_entercode">13sp</dimen>
     <dimen name="textsize_authenticationdefinitionpasswordtab_confirmcode">13sp</dimen>
     <dimen name="dotnormalsize_authenticationdefinitionpatterntab_patternlockview">20dp</dimen>
-    <dimen name="margintop_authenticationdefinition_segmentedgroup">42dp</dimen>
+    <dimen name="margintop_authenticationdefinition_segmentedgroup">38dp</dimen>
     <dimen name="borderwidth_authenticationdefinition_segmentedgroup">2dp</dimen>
-    <dimen name="cornerradius_authenticationdefinition_segmentedgroup">10dp</dimen>
+    <dimen name="cornerradius_authenticationdefinition_segmentedgroup">5dp</dimen>
     <dimen name="margin_authenticationdefinition_container">10dp</dimen>
+    <dimen name="width_authenticationdefinition_radiobutton">130dp</dimen>
+    <dimen name="height_authenticationdefinition_radiobutton">35dp</dimen>
+    
+    
+    
+    
+    
     <dimen name="margintop_recoveryemail_header">120dp</dimen>
     <dimen name="textsize_recoveryemail_header">16sp</dimen>
     <dimen name="margintop_recoveryemail_textinputlayout">155dp</dimen>
@@ -142,8 +149,6 @@
     <dimen name="margintop_chargeconfirmation_walletname">40dp</dimen>
     <dimen name="paddingstart_chargeconfirmation_walletname">10dp</dimen>
     <dimen name="margintop_chargeconfirmation_relativelayout">9dp</dimen>
-    <dimen name="textsize_chargeconfirmation_walletnolable">14sp</dimen>
-    <dimen name="paddingstart_chargeconfirmation_walletno">10dp</dimen>
     <dimen name="textsize_chargeconfirmation_amountalphalable">14sp</dimen>
     <dimen name="paddingstart_chargeconfirmation_amountalpha">10dp</dimen>
     <dimen name="textsize_chargeconfirmation_amountdollarlable">14sp</dimen>
@@ -166,7 +171,7 @@
     <dimen name="margintop_charge_spinnerr">47dp</dimen>
 
     <dimen name="width_chargecompleted_linearlayout">300dp</dimen>
-    <dimen name="height_chargecompleted_linearlayout">390dp</dimen>
+    <dimen name="paddingbottom_chargecompleted_linearlayout">20dp</dimen>
     <dimen name="margintop_chargecompleted_linearlayout">28dp</dimen>
     <dimen name="marginstart_chargecompleted_walletnamelable">26dp</dimen>
     <dimen name="margintop_chargecompleted_walletnamelable">20dp</dimen>
@@ -201,7 +206,7 @@
 
 
     <dimen name="width_chargefailed_linearlayout">294dp</dimen>
-    <dimen name="height_chargefailed_linearlayout">367dp</dimen>
+    <dimen name="paddingbottom_chargefailed_linearlayout">20dp</dimen>
     <dimen name="margintop_chargefailed_linearlayout">28dp</dimen>
     <dimen name="margintop_chargefailed_failedimageview">30dp</dimen>
     <dimen name="margintop_chargefailed_failedtextview">6dp</dimen>

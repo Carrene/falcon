@@ -9,6 +9,6 @@ class CustomPrimaryDrawerItem extends PrimaryDrawerItem {
 
     CustomPrimaryDrawerItem() {
 
-        withIconTintingEnabled(true).withSelectedIconColorRes(R.color.colorSecondary).withSelectedTextColorRes(R.color.colorSecondaryLight).withSelectedColorRes(R.color.colorPrimaryLight);
+        withIconTintingEnabled(true).withSelectedIconColorRes(R.color.colorSecondary).withSelectedTextColorRes(R.color.colorSecondary).withSelectedColorRes(R.color.colorSecondaryDark25);
     }
 }

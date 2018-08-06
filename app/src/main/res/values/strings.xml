@@ -98,30 +98,31 @@
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
     <string name="chargeconfirmation_walletname">Wallet Name :</string>
     <string name="chargeconfirmation_paymentgateway">Payment Gateway :</string>
-    <string name="chargeconfirmation_walletamount">Charge Amount(Alpha) :</string>
-    <string name="chargeconfirmation_baseamount">Charge Amount(USD) :</string>
+    <string name="chargeconfirmation_walletamount">Charge Amount : α</string>
+    <string name="chargeconfirmation_baseamount">Charge Amount : $</string>
     <string name="chargeconfirmation_amounttransaction">Transaction Amount(USD) :</string>
-    <string name="chargeconfirmation_walletno">Wallet No :</string>
+
     <string name="chargeconfirmation_confirm">CONFIRM</string>
     <string name="chargecompleted_chargecompleted">Charge Completed</string>
     <string name="chargecompleted_walletname">Wallet Name :</string>
-    <string name="chargecompleted_amount">Charge Amount(Alpha) :</string>
-    <string name="chargecompleted_baseamount">Charge Amount(USD) :</string>
-    <string name="chargecompleted_transactionamount">Transaction Amount(USD) :</string>
+    <string name="chargecompleted_amount">Charge Amount : α</string>
+    <string name="chargecompleted_baseamount">Paid Amount : $</string>
     <string name="chargecompleted_paymentgateway">Payment Gateway :</string>
     <string name="chargecompleted_transactiondate">Transaction Date :</string>
-    <string name="chargecompleted_trackingcode">Tracking Code :</string>
+    <string name="chargecompleted_transactiontime">Transaction Time :</string>
+    <string name="chargecompleted_trackingcode">RRN :</string>
     <string name="chargecompleted_dashboard">DASHBOARD</string>
     <string name="chargecompleted_success">Success</string>
 
     <string name="chargefailed_failed">Charge Failed</string>
     <string name="chargefailed_failedtextview">Failed</string>
     <string name="chargefailed_walletname">Wallet Name :</string>
-    <string name="chargefailed_walletamount">Charge Amount(Alpha) :</string>
-    <string name="chargefailed_baseamount">Charge Amount(USD) :</string>
-    <string name="chargefailed_transactionamount">Transaction Amount(USD) :</string>
+    <string name="chargefailed_walletamount">Charge Amount : α</string>
+    <string name="chargefailed_baseamount">Paid Amount : $</string>
     <string name="chargefailed_paymentgateway">Payment Gateway :</string>
     <string name="chargefailed_transactiondate">Transaction date :</string>
+    <string name="chargefailed_transactiontime">Transaction time :</string>
+    <string name="chargefailed_rrn">RRN :</string>
     <string name="chargefailed_dashboard">Dashboard</string>
 
 

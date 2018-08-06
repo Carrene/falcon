@@ -27,7 +27,6 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private View mRoot;
     private Deposit mDeposit;
     private TextView mTextViewWalletName;
-    private TextView mTextViewWalletNo;
     private TextView mTextViewChargeAmount;
     private TextView mTextViewPaidAmount;
     private TextView mTextViewPaymentGateway;
@@ -65,7 +64,6 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private void setPaymentConfirmationData() {
 
         mTextViewWalletName.setText(mDeposit.getWalletName());
-        mTextViewWalletNo.setText(String.valueOf(mDeposit.getWalletId()));
         mTextViewChargeAmount.setText(String.valueOf(mDeposit.getChargeAmount()));
         mTextViewPaidAmount.setText(String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
@@ -113,7 +111,6 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     public void initUiComponent() {
 
         mTextViewWalletName = mRoot.findViewById(R.id.textview_chargeconfirmation_walletname);
-        mTextViewWalletNo = mRoot.findViewById(R.id.textview_chargeconfirmation_walletno);
         mTextViewChargeAmount = mRoot.findViewById(R.id.textview_chargeconfirmation_chargeamount);
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_chargeconfirmation_paidamount);
         mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargeconfirmation_paymentgateway);

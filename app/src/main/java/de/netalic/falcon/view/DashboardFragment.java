@@ -153,7 +153,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
-                mTextViewRate.setText("" + mWalletList.get(position).getBalance() * Double.parseDouble(mRate.getSell()));
+                double roundDollar = round(mWalletList.get(position).getBalance() * Double.parseDouble(mRate.getSell()), 2);
+                mTextViewRate.setText("" + roundDollar);
             }
 
             @Override
@@ -161,5 +162,15 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
             }
         });
+    }
+
+    private double round(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }

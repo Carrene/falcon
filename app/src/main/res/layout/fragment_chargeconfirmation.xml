@@ -45,30 +45,6 @@
             android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_walletnolable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chargeconfirmation_walletno"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textsize_chargeconfirmation_walletnolable" />
-
-            <TextView
-                android:id="@+id/textview_chargeconfirmation_walletno"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargeconfirmation_walletnolable"
-                android:paddingStart="@dimen/paddingstart_chargeconfirmation_walletno"
-                android:text="VALUE"
-                android:textColor="@color/black" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
-
-            <TextView
                 android:id="@+id/textview_chargeconfirmation_amountalphalable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
