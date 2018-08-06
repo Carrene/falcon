@@ -14,19 +14,18 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Wallet;
 
-public class DashboardWalletSpinnerAdapter extends ArrayAdapter<Wallet> {
+public class WithdrawWalletSpinnerAdapter extends ArrayAdapter<Wallet> {
 
     private LayoutInflater mLayoutInflater;
     private static final int CLOSE = 0;
     private static final int OPEN = 1;
 
-    public DashboardWalletSpinnerAdapter(Context mContext, List<Wallet> walletList) {
+
+    public WithdrawWalletSpinnerAdapter(Context mContext, List<Wallet> walletList) {
 
         super(mContext, R.layout.spinneritemclose_dashbaord, walletList);
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-
-
 
     @NonNull
     @Override
@@ -48,15 +47,15 @@ public class DashboardWalletSpinnerAdapter extends ArrayAdapter<Wallet> {
 
         if (type == OPEN) {
 
-            view = mLayoutInflater.inflate(R.layout.spinneritemopen_dashboard, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinneritemopen_withdraw, viewGroup, false);
 
 
         } else if (type == CLOSE) {
 
-            view = mLayoutInflater.inflate(R.layout.spinneritemclose_dashbaord, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinneritemclose_withdraw, viewGroup, false);
         }
 
-        TextView textViewChargeWalletName = view.findViewById(R.id.textview_charge_walletname);
+        TextView textViewChargeWalletName = view.findViewById(R.id.textview_withdraw_walletname);
         textViewChargeWalletName.setText(getItem(position).getName());
 
         return view;
