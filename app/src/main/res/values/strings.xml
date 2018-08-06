@@ -142,4 +142,13 @@
     <string name="withdraw_qrcode">QR code</string>
     <string name="withdraw_withdrawmethod">Withdraw method :</string>
 
+
+    <string name="withdrawamount_toolbar">Withdraw-Amount</string>
+    <string name="withdrawamount_amount">Amount</string>
+    <string name="withdrawamount_alpha">Alpha</string>
+    <string name="withdrawamount_usd">USD</string>
+    <string name="withdrawamount_usemaximum">Use maximum</string>
+    <string name="withdrawamount_useminimum">Use minimum</string>
+    <string name="withdrawamount_transferlimit">2500α daily transfer limit</string>
+    <string name="withdrawamount_nextwithdrawbutton">NEXT_WITHDRAW</string>
 </resources>

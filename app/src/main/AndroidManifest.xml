@@ -21,8 +21,7 @@
         <activity
             android:name=".view.RegistrationActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize"/>
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.PhoneConfirmationActivity"
             android:launchMode="singleTop"
@@ -73,6 +72,7 @@
         </activity>
         <activity android:name=".view.ChargeFailedActivity" />
         <activity android:name=".view.WithdrawActivity"></activity>
+        <activity android:name=".view.WithdrawAmountActivity"></activity>
     </application>
 
 </manifest>

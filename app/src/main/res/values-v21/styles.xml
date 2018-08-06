@@ -9,5 +9,16 @@
 
     </style>
 
+    <style name="Base.V7.Widget.AppCompat.EditText" parent="Widget.AppCompat.EditText">
+
+        <item name="android:backgroundTint">@color/black</item>
+
+    </style>
+
+    <style name="SimpleSpinnerTheme" parent="android:Widget.Material.Spinner.Underlined">
+
+        <item name="android:background">@drawable/withdrawamount_backgroundspinner</item>
+
+    </style>
 
 </resources>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_withdrawamount_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_withdrawamount_amount"
+            android:text="@string/withdrawamount_amount"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_withdrawamount_amount" />
+
+        <android.support.design.widget.TextInputLayout
+
+            android:id="@+id/textinputlayout_withdrawamount_walletamount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edittext_withdrawamount_walletamount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/marginstartend_withdrawamount_walletamount"
+                android:layout_marginStart="@dimen/marginstartend_withdrawamount_walletamount"
+                android:hint="@string/withdrawamount_alpha"
+                style="@style/Base.V7.Widget.AppCompat.EditText"
+                android:textColor="@color/colorPrimaryLight"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_withdrawamount_imageview"
+            android:src="@drawable/withdrawamount_transfer" />
+
+        <android.support.design.widget.TextInputLayout
+
+            android:id="@+id/textinputlayout_withdrawamount_basecurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edittext_withdrawamount_basecurrency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/marginstartend_withdrawamount_basecurrency"
+                android:layout_marginStart="@dimen/marginstartend_withdrawamount_basecurrency"
+                android:hint="@string/withdrawamount_usd"
+                android:textColor="@color/colorPrimaryLight"
+                style="@style/Base.V7.Widget.AppCompat.EditText"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_withdrawamount_imageview"
+            android:src="@drawable/withdrawamount_transfer" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_withdrawamount_relativelayout"
+            android:layout_marginStart="@dimen/marginstartend_withdrawamount_relativelayout"
+            android:layout_marginTop="@dimen/margintop_withdrawamount_relativelayout"
+            android:gravity="center_horizontal">
+
+            <Spinner
+                android:id="@+id/spinner_withdrawamount_currency"
+                style="@style/SimpleSpinnerTheme"
+                android:layout_width="@dimen/width_withdrawamount_spinner"
+                android:layout_height="@dimen/height_withdrawamount_spinner"
+                android:backgroundTint="@color/black"
+                />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="@dimen/width_withdrawamount_textinputlayoutothercurrency"
+                android:layout_height="@dimen/height_withdrawamount_textinputlaypitothercurrency"
+                android:layout_toRightOf="@+id/spinner_withdrawamount_currency"
+
+                >
+
+                <EditText
+                    android:id="@+id/edittext_withdrawamount_othercurrency"
+                    style="@style/Base.V7.Widget.AppCompat.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryLight"
+
+                    />
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_withdrawamount_relativelayout"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textview_withdrawamount_usemaximum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/marginstartend_withdrawamount_betweenusemaxandusemin"
+                android:text="@string/withdrawamount_usemaximum"
+                android:textColor="@color/colorSecondaryDark"
+                android:textSize="@dimen/textsize_withdrawamount_useminimumusemaximum" />
+
+            <TextView
+                android:id="@+id/textview_withdraw_useminimum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_withdrawamount_betweenusemaxandusemin"
+                android:layout_toRightOf="@+id/textview_withdrawamount_usemaximum"
+                android:text="@string/withdrawamount_useminimum"
+                android:textColor="@color/colorSecondaryDark"
+                android:textSize="@dimen/textsize_withdrawamount_useminimumusemaximum" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textview_withdrawamount_transferlimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_withdrawamount_textviewtransferlimit"
+            android:layout_marginStart="@dimen/marginstartend_withdrawamount_textviewtransferlimit"
+            android:layout_marginTop="@dimen/margintop_withdrawamount_textviewtransferlimit"
+            android:gravity="center_horizontal"
+            android:text="@string/withdrawamount_transferlimit"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/textsize_withdrawamount_textviewtransferlimit" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_withdrawamount_nextwithdraw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbottom_withdrawamount_buttonnextwithdraw"
+        android:layout_marginEnd="@dimen/marginbottom_withdrawamount_buttonnextwithdraw"
+        android:layout_marginStart="@dimen/marginstartend_withdrawamount_buttonnextwithdraw"
+        android:background="@color/colorSecondary"
+        android:text="NEXT-WithDRAW" />
+</RelativeLayout>

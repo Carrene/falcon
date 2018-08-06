@@ -66,6 +66,7 @@ android {
             buildConfigField "Integer", "WEB_SERVICE_VERSION", "1"
         }
         global{
+
             buildConfigField "String", "WEB_SERVICE_URL", "\"http://217.170.248.52\""
             buildConfigField "Integer", "WEB_SERVICE_PORT", "9595"
             buildConfigField "Integer", "WEB_SERVICE_VERSION", "1"
