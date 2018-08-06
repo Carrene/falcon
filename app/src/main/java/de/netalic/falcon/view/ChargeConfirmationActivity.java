@@ -1,6 +1,8 @@
 package de.netalic.falcon.view;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
@@ -36,6 +38,14 @@ public class ChargeConfirmationActivity extends BaseActivity {
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_chargecompleted_toolbar, menu);
+        return true;
+    }
 
     @Override
     protected int getLayoutId() {

@@ -1,0 +1,19 @@
+
+
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:icon="@drawable/chargecompleted_shareicon"
+        app:showAsAction="always"
+        android:title="" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/chargecompleted_downloadicon"
+        android:title="">
+    </item>
+
+</menu>
+
