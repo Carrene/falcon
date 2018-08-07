@@ -113,6 +113,8 @@
     <string name="chargecompleted_trackingcode">RRN :</string>
     <string name="chargecompleted_dashboard">DASHBOARD</string>
     <string name="chargecompleted_success">Success</string>
+    <string name="chargecompleted_sharemenutoolbar">Share</string>
+    <string name="chargecompleted_downloadmenutoolbar">Download</string>
 
     <string name="chargefailed_failed">Charge Failed</string>
     <string name="chargefailed_failedtextview">Failed</string>
@@ -124,6 +126,8 @@
     <string name="chargefailed_transactiontime">Transaction time :</string>
     <string name="chargefailed_rrn">RRN :</string>
     <string name="chargefailed_dashboard">Dashboard</string>
+    <string name="chargefailed_sharemenutoolbar">Share</string>
+    <string name="chargefailed_downloadmenutoolbar">Download</string>
 
 
     >>>>>>> charge_failed

@@ -194,7 +194,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textview_chargecompleted_trackingcodelable"
+                android:id="@+id/textview_chargecompleted_rrnlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargecompleted_trackingcode"
@@ -202,10 +202,10 @@
                 android:textSize="@dimen/textsize_chargecompleted_trackingcode" />
 
             <TextView
-                android:id="@+id/textview_chargecompleted_trackingcode"
+                android:id="@+id/textview_chargecompleted_rrn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargecompleted_trackingcodelable"
+                android:layout_toRightOf="@+id/textview_chargecompleted_rrnlable"
                 android:paddingStart="@dimen/paddingstart_chargecompleted_trackingcode"
                 android:text="VALUE"
                 android:textColor="@color/black"

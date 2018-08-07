@@ -38,15 +38,6 @@ public class ChargeConfirmationActivity extends BaseActivity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_chargecompleted_toolbar, menu);
-        return true;
-    }
-
     @Override
     protected int getLayoutId() {
 

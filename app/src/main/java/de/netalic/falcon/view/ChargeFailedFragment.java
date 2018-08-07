@@ -6,11 +6,20 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
@@ -29,6 +38,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private TextView mTextViewPaidAmount;
     private TextView mTextViewPaymentGateway;
     private TextView mTextViewTransactionDate;
+    private TextView mTextViewTransactionTime;
     private TextView mTextViewRrn;
     private ImageButton mButtonShare;
     private ImageButton mButtonDownload;
@@ -58,6 +68,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
         mRoot = inflater.inflate(R.layout.fragment_chargefailed, null);
         checkNotNull(getArguments());
+        setHasOptionsMenu(true);
         mDeposit = getArguments().getParcelable(ARGUMENT_DEPOSIT);
         return mRoot;
     }
@@ -87,6 +98,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_chargefailed_amountdollar);
         mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargefailed_paymentgateway);
         mTextViewTransactionDate = mRoot.findViewById(R.id.textview_chargefailed_transactiondate);
+        mTextViewTransactionTime=mRoot.findViewById(R.id.textview_chargefailed_transactiontime);
         mTextViewRrn=mRoot.findViewById(R.id.textview_chargefailed_rrn);
         mButtonShare = mRoot.findViewById(R.id.imagebutton_chargefailed_sharebutton);
         mButtonDownload = mRoot.findViewById(R.id.imagebutton_chargefailed_downloadbutton);
@@ -100,7 +112,19 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewChargeAmount.setText(String.valueOf(mDeposit.getChargeAmount()));
         mTextViewPaidAmount.setText(String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
-        mTextViewTransactionDate.setText(mDeposit.getModifiedAt());
+
+        try {
+            DateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+            Date baseDate=dateFormat.parse(mDeposit.getModifiedAt());
+            DateFormat date=new SimpleDateFormat("MM/dd/yyyy");
+            DateFormat time=new SimpleDateFormat("hh:mm:ss");
+            mTextViewTransactionDate.setText(date.format(baseDate));
+            mTextViewTransactionTime.setText(time.format(baseDate));
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         mTextViewRrn.setText(mDeposit.getRetrievalReferenceNumber());
     }
 
@@ -112,5 +136,10 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
             startActivity(intent);
         });
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_chargefailed_toolbar,menu);
     }
 }

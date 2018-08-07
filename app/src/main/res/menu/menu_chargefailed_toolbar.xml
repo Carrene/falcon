@@ -8,12 +8,12 @@
         android:id="@+id/action_refresh"
         android:icon="@drawable/chargecompleted_shareicon"
         app:showAsAction="always"
-        android:title="@string/chargecompleted_sharemenutoolbar" />
+        android:title="@string/chargefailed_sharemenutoolbar" />
 
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/chargecompleted_downloadicon"
-        android:title="@string/chargecompleted_downloadmenutoolbar"
+        android:title="@string/chargefailed_downloadmenutoolbar"
         app:showAsAction="always"
         />
 
