@@ -12,10 +12,10 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.io.File;
@@ -47,8 +47,6 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     private TextView mTextViewTransactionDate;
     private TextView mTextViewTransactionTime;
     private TextView mTextViewRrn;
-    private ImageButton mButtonShare;
-    private ImageButton mButtonDownload;
     private Button mButtonNavigationToDashboard;
     private static final int REQUEST_PERMISSIONS = 120;
     private static final int IMAGE_QUALITY = 100;
@@ -110,8 +108,6 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mTextViewTransactionDate = mRoot.findViewById(R.id.textview_chargecompleted_transactiondate);
         mTextViewTransactionTime = mRoot.findViewById(R.id.textview_chargecompleted_transactiontime);
         mTextViewRrn = mRoot.findViewById(R.id.textview_chargecompleted_rrn);
-        mButtonShare = mRoot.findViewById(R.id.imagebutton_chargecompleted_sharebutton);
-        mButtonDownload = mRoot.findViewById(R.id.imagebutton_chargecompleted_downloadbutton);
         mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_chargecompleted_dashborad);
         mScreenshotView = mRoot.findViewById(R.id.linearlayout_chargecompleted_main);
     }
@@ -125,19 +121,6 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
             startActivity(intent);
         });
 
-        mButtonShare.setOnClickListener(v -> {
-
-            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-            ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
-
-        });
-
-        mButtonDownload.setOnClickListener(v -> {
-
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargecompleted_imagesaved), getContext());
-
-        });
     }
 
 
@@ -190,5 +173,29 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.menu_chargecompleted_toolbar, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.item_chargecompletedmenu_download:{
+
+                ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargecompleted_imagesaved), getContext());
+
+            }
+
+            case R.id.item_chargecompletedmenu_share:{
+
+                File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+                ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
+
+            }
+
+        }
+
+        return true;
     }
 }

@@ -15,8 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            >
+            android:paddingStart="@dimen/paddingstart_chargeconfirmation_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_walletnamelable"
@@ -32,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletname"
-                android:layout_toRightOf="@+id/textview_chargeconfirmation_walletnamelable"
+
                 android:paddingStart="@dimen/paddingstart_chargeconfirmation_walletname"
                 android:text="VALUE"
                 android:textColor="@color/black" />
@@ -41,8 +40,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout"
+            android:paddingStart="@dimen/paddingstart_chargeconfirmation_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_amountalphalable"
@@ -52,22 +51,37 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargeconfirmation_amountalphalable" />
 
-            <TextView
-                android:id="@+id/textview_chargeconfirmation_chargeamount"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargeconfirmation_amountalphalable"
-                android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountalpha"
-                android:text="VALUE"
-                android:textColor="@color/black" />
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/paddingstart_chargeconfirmation_linearlayout">
 
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="α"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textview_chargeconfirmation_chargeamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VALUE"
+                    android:textColor="@color/black"
+
+                    />
+
+
+            </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout"
+            android:paddingStart="@dimen/paddingstart_chargeconfirmation_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_amountdollarlable"
@@ -77,47 +91,32 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_chargeconfirmation_amountdollarlable" />
 
-            <TextView
-                android:id="@+id/textview_chargeconfirmation_paidamount"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargeconfirmation_amountdollarlable"
-                android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountdollar"
-                android:text="VALUE"
-                android:textColor="@color/black" />
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/paddingstart_chargeconfirmation_linearlayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textview_chargeconfirmation_paidamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VALUE"
+                    android:textColor="@color/black" />
+            </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
-
-            <TextView
-                android:id="@+id/textview_chargeconfirmation_transactionamountlable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chargeconfirmation_amounttransaction"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textsize_chargeconfirmation_amountdollarlable" />
-
-            <TextView
-                android:id="@+id/textview_chargeconfirmation_transactionamount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargeconfirmation_transactionamountlable"
-                android:paddingStart="@dimen/paddingstart_chargeconfirmation_amountdollar"
-                android:text="VALUE"
-                android:textColor="@color/black" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout"
+            android:paddingStart="@dimen/paddingstart_chargeconfirmation_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_paymentgatewaylable"
@@ -131,10 +130,11 @@
                 android:id="@+id/textview_chargeconfirmation_paymentgateway"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_chargeconfirmation_paymentgatewaylable"
                 android:paddingStart="@dimen/paddingstart_chargeconfirmation_paymentgateway"
                 android:text="VALUE"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+
+                />
         </RelativeLayout>
     </LinearLayout>
 

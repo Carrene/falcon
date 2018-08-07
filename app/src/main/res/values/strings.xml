@@ -98,8 +98,8 @@
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
     <string name="chargeconfirmation_walletname">Wallet Name :</string>
     <string name="chargeconfirmation_paymentgateway">Payment Gateway :</string>
-    <string name="chargeconfirmation_walletamount">Charge Amount : α</string>
-    <string name="chargeconfirmation_baseamount">Charge Amount : $</string>
+    <string name="chargeconfirmation_walletamount">Charge Amount : </string>
+    <string name="chargeconfirmation_baseamount">Charge Amount : </string>
     <string name="chargeconfirmation_amounttransaction">Transaction Amount(USD) :</string>
 
     <string name="chargeconfirmation_confirm">CONFIRM</string>

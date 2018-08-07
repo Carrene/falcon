@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -47,8 +48,6 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private TextView mTextViewTransactionDate;
     private TextView mTextViewTransactionTime;
     private TextView mTextViewRrn;
-    private ImageButton mButtonShare;
-    private ImageButton mButtonDownload;
     private Button mButtonNavigationDashboard;
     private static final int REQUEST_PERMISSIONS = 120;
     private static final int IMAGE_QUALITY = 100;
@@ -111,8 +110,6 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewTransactionDate = mRoot.findViewById(R.id.textview_chargefailed_transactiondate);
         mTextViewTransactionTime = mRoot.findViewById(R.id.textview_chargefailed_transactiontime);
         mTextViewRrn = mRoot.findViewById(R.id.textview_chargefailed_rrn);
-        mButtonShare = mRoot.findViewById(R.id.imagebutton_chargefailed_sharebutton);
-        mButtonDownload = mRoot.findViewById(R.id.imagebutton_chargefailed_downloadbutton);
         mButtonNavigationDashboard = mRoot.findViewById(R.id.button_chargefailed_dashborad);
         mScreenshotView = mRoot.findViewById(R.id.linearlayout_chargefailed_main);
 
@@ -148,20 +145,6 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
             startActivity(intent);
         });
 
-        mButtonShare.setOnClickListener(v -> {
-
-            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-            ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
-
-        });
-
-        mButtonDownload.setOnClickListener(v -> {
-
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargefailed_imagesaved), getContext());
-
-        });
-
     }
 
     private void requestPermission() {
@@ -188,10 +171,33 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         }
     }
 
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.menu_chargefailed_toolbar, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+
+            case R.id.item_chargefailed_download: {
+
+                ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargefailed_imagesaved), getContext());
+
+            }
+
+            case R.id.item_chargefailed_share: {
+
+                File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+                ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
+
+            }
+
+        }
+        return true;
     }
 }

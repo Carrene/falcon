@@ -81,6 +81,7 @@ public class ScreenshotUtil {
         shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
         shareIntent.setType("image/png");
         context.startActivity(Intent.createChooser(shareIntent, "Share Screenshot"));
+
     }
 
 

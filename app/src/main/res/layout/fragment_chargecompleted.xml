@@ -212,35 +212,6 @@
                 android:textSize="@dimen/textsize_chargecompleted_trackingcode" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/relativelayout_chargecompleted_consistdownloadandshare"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginbutton_chargecompleted_relativelayoutconsistdownloadandshare"
-            android:layout_marginTop="@dimen/margintop_chargecompleted_relativelayoutconsistdownloadandshare">
-
-            <ImageButton
-                android:id="@+id/imagebutton_chargecompleted_sharebutton"
-                android:layout_width="@dimen/widthheight_chargecompleted_sharebutton"
-                android:layout_height="@dimen/widthheight_chargecompleted_sharebutton"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="@dimen/marginstartend_chargecompleted_downloadsharebutton"
-                android:src="@drawable/chargecompletedfailed_sharebutton"
-
-                />
-
-            <ImageButton
-                android:id="@+id/imagebutton_chargecompleted_downloadbutton"
-                android:layout_width="@dimen/widthheight_chargecompleted_downloadbutton"
-                android:layout_height="@dimen/widthheight_chargecompleted_downloadbutton"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="@dimen/marginstartend_chargecompleted_downloadsharebutton"
-                android:src="@drawable/chargecompletedfailed_downloadbutton" />
-
-
-        </RelativeLayout>
     </LinearLayout>
 
     <Button

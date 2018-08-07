@@ -213,36 +213,6 @@
                 android:textSize="@dimen/textsize_chargefailed_transactiondate" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/relativelayout_chargefailed_consistdownloadandshare"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginbutton_chargefailed_relativelayoutconsistdownloadandshare"
-            android:layout_marginTop="@dimen/margintop_chargefailed_relativelayoutconsistdownloadandshare">
-
-            <ImageButton
-                android:id="@+id/imagebutton_chargefailed_sharebutton"
-                android:layout_width="@dimen/widthheight_chargefailed_sharebutton"
-                android:layout_height="@dimen/widthheight_chargefailed_sharebutton"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="@dimen/marginstartend_chargefailed_downloadsharebutton"
-                android:src="@drawable/chargecompletedfailed_sharebutton"
-
-                />
-
-            <ImageButton
-                android:id="@+id/imagebutton_chargefailed_downloadbutton"
-                android:layout_width="@dimen/widthheight_chargefailed_downloadbutton"
-                android:layout_height="@dimen/widthheight_chargefailed_downloadbutton"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="@dimen/marginstartend_chargefailed_downloadsharebutton"
-                android:src="@drawable/chargecompletedfailed_downloadbutton" />
-
-
-        </RelativeLayout>
-
     </LinearLayout>
 
     <Button
