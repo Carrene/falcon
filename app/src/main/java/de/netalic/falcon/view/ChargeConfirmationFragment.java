@@ -31,7 +31,6 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private TextView mTextViewChargeAmount;
     private TextView mTextViewPaidAmount;
     private TextView mTextViewPaymentGateway;
-    private TextView mTextViewTransactionAmount;
     private Button mButtonConfirm;
     public static final String ARGUMENT_CHARGE_START = "chargeStart";
     private static final int DROP_IN_REQUEST = 1;
@@ -116,7 +115,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_chargeconfirmation_paidamount);
         mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargeconfirmation_paymentgateway);
         mButtonConfirm = mRoot.findViewById(R.id.button_chargeconfirmation_confirm);
-        mTextViewTransactionAmount = mRoot.findViewById(R.id.textview_chargeconfirmation_transactionamount);
+
     }
 
     @Override

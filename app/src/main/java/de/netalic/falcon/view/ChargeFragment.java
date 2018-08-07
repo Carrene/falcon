@@ -25,7 +25,6 @@ import de.netalic.falcon.adapter.ChargeWalletRecyclerViewAdapter;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
-import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

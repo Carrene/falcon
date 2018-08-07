@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.WithdrawAmountContract;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class WithdrawAmountFragment extends Fragment implements WithdrawAmountContract.View {

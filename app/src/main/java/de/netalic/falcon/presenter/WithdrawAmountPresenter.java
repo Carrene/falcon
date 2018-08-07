@@ -1,6 +1,6 @@
 package de.netalic.falcon.presenter;
 
-import static  com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class WithdrawAmountPresenter implements WithdrawAmountContract.Presenter {
 

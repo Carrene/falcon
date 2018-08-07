@@ -3,7 +3,6 @@ package de.netalic.falcon.repository.user;
 import java.util.List;
 
 import de.netalic.falcon.model.User;
-import de.netalic.falcon.repository.Deal;
 
 public class UserRepository implements IUserRepository {
 

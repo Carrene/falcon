@@ -1,8 +1,6 @@
 package de.netalic.falcon.view;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

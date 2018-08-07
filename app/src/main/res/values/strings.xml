@@ -93,7 +93,7 @@
     <string name="chargeamount_invalidcurrency">Invalid currency</string>
     <string name="chargeamount_ratedosenotexists">Rate dose not exists</string>
     <string name="chargeamount_amount">Amount:</string>
-    <string name="chargeamount_amounthint">Amount(Alpha)</string>
+    <string name="chargeamount_amounthint">Alpha</string>
 
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
     <string name="chargeconfirmation_walletname">Wallet Name :</string>
@@ -114,8 +114,8 @@
 
     <string name="chargecompleted_chargecompleted">Charge Completed</string>
     <string name="chargecompleted_walletname">Wallet Name :</string>
-    <string name="chargecompleted_amount">Charge Amount : α</string>
-    <string name="chargecompleted_baseamount">Paid Amount : $</string>
+    <string name="chargecompleted_amount">Charge Amount : </string>
+    <string name="chargecompleted_baseamount">Paid Amount : </string>
     <string name="chargecompleted_paymentgateway">Payment Gateway :</string>
     <string name="chargecompleted_transactiondate">Transaction Date :</string>
     <string name="chargecompleted_transactiontime">Transaction Time :</string>
@@ -129,8 +129,8 @@
     <string name="chargefailed_failed">Charge Failed</string>
     <string name="chargefailed_failedtextview">Failed</string>
     <string name="chargefailed_walletname">Wallet Name :</string>
-    <string name="chargefailed_walletamount">Charge Amount : α</string>
-    <string name="chargefailed_baseamount">Paid Amount : $</string>
+    <string name="chargefailed_walletamount">Charge Amount : </string>
+    <string name="chargefailed_baseamount">Paid Amount : </string>
     <string name="chargefailed_paymentgateway">Payment Gateway :</string>
     <string name="chargefailed_transactiondate">Transaction date :</string>
     <string name="chargefailed_transactiontime">Transaction time :</string>

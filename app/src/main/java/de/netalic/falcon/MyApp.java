@@ -2,7 +2,6 @@ package de.netalic.falcon;
 
 import android.app.Application;
 
-import com.crashlytics.android.Crashlytics;
 import com.squareup.leakcanary.LeakCanary;
 
 import io.realm.Realm;
