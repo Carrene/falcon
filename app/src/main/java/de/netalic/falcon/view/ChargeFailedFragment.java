@@ -10,6 +10,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,6 +19,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
@@ -39,6 +45,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private TextView mTextViewPaidAmount;
     private TextView mTextViewPaymentGateway;
     private TextView mTextViewTransactionDate;
+    private TextView mTextViewTransactionTime;
     private TextView mTextViewRrn;
     private ImageButton mButtonShare;
     private ImageButton mButtonDownload;
@@ -71,6 +78,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
         mRoot = inflater.inflate(R.layout.fragment_chargefailed, null);
         checkNotNull(getArguments());
+        setHasOptionsMenu(true);
         mDeposit = getArguments().getParcelable(ARGUMENT_DEPOSIT);
         return mRoot;
     }
@@ -101,7 +109,8 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_chargefailed_amountdollar);
         mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargefailed_paymentgateway);
         mTextViewTransactionDate = mRoot.findViewById(R.id.textview_chargefailed_transactiondate);
-        mTextViewRrn=mRoot.findViewById(R.id.textview_chargefailed_rrn);
+        mTextViewTransactionTime = mRoot.findViewById(R.id.textview_chargefailed_transactiontime);
+        mTextViewRrn = mRoot.findViewById(R.id.textview_chargefailed_rrn);
         mButtonShare = mRoot.findViewById(R.id.imagebutton_chargefailed_sharebutton);
         mButtonDownload = mRoot.findViewById(R.id.imagebutton_chargefailed_downloadbutton);
         mButtonNavigationDashboard = mRoot.findViewById(R.id.button_chargefailed_dashborad);
@@ -115,7 +124,19 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mTextViewChargeAmount.setText(String.valueOf(mDeposit.getChargeAmount()));
         mTextViewPaidAmount.setText(String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
-        mTextViewTransactionDate.setText(mDeposit.getModifiedAt());
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+            Date baseDate = dateFormat.parse(mDeposit.getModifiedAt());
+            DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+            DateFormat time = new SimpleDateFormat("hh:mm:ss");
+            mTextViewTransactionDate.setText(date.format(baseDate));
+            mTextViewTransactionTime.setText(time.format(baseDate));
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         mTextViewRrn.setText(mDeposit.getRetrievalReferenceNumber());
     }
 
@@ -137,7 +158,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mButtonDownload.setOnClickListener(v -> {
 
             ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-            SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargefailed_imagesaved),getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargefailed_imagesaved), getContext());
 
         });
 
@@ -155,6 +176,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
@@ -167,5 +189,9 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     }
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
+        inflater.inflate(R.menu.menu_chargefailed_toolbar, menu);
+    }
 }

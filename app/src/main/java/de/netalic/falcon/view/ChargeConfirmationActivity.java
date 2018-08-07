@@ -1,6 +1,8 @@
 package de.netalic.falcon.view;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
@@ -35,7 +37,6 @@ public class ChargeConfirmationActivity extends BaseActivity {
         new ChargeConfirmationPresenter(chargeConfirmationFragment);
 
     }
-
 
     @Override
     protected int getLayoutId() {

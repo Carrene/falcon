@@ -123,6 +123,8 @@
     <string name="chargecompleted_dashboard">DASHBOARD</string>
     <string name="chargecompleted_success">Success</string>
     <string name="chargecompleted_imagesaved">Image Saved</string>
+    <string name="chargecompleted_sharemenutoolbar">Share</string>
+    <string name="chargecompleted_downloadmenutoolbar">Download</string>
 
     <string name="chargefailed_failed">Charge Failed</string>
     <string name="chargefailed_failedtextview">Failed</string>
@@ -152,4 +154,7 @@
     <string name="withdrawamount_useminimum">Use minimum</string>
     <string name="withdrawamount_transferlimit">2500α daily transfer limit</string>
     <string name="withdrawamount_nextwithdrawbutton">NEXT_WITHDRAW</string>
+    <string name="chargefailed_sharemenutoolbar">Share</string>
+    <string name="chargefailed_downloadmenutoolbar">Download</string>
+
 </resources>
