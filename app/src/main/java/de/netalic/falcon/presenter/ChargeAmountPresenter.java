@@ -107,7 +107,7 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
 
         mChargeAmountView.showProgressBar();
 
-        ExchangeRateRepository.getInstance().get(rate.getCurrency().getCode(), deal -> {
+        ExchangeRateRepository.getInstance().get(rate.getCurrencyCode(), deal -> {
 
             if (deal.getThrowable() != null) {
 

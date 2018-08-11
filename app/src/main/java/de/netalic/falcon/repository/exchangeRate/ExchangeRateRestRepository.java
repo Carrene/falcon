@@ -39,6 +39,17 @@ public class ExchangeRateRestRepository implements IExchangeRate {
     @Override
     public void getAll(CallRepository<List<Rate>> callRepository) {
 
-        throw new UnsupportedOperationException();
+       ApiClient.getService().listExchangeRate().enqueue(new Callback<List<Rate>>() {
+           @Override
+           public void onResponse(Call<List<Rate>> call, Response<List<Rate>> response) {
+               callRepository.onDone(new Deal<>(response.body(),response,null));
+           }
+
+           @Override
+           public void onFailure(Call<List<Rate>> call, Throwable t) {
+
+               callRepository.onDone(new Deal<>(null,null,t));
+           }
+       });
     }
 }

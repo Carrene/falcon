@@ -61,7 +61,7 @@ android {
     productFlavors {
 
         local {
-            buildConfigField "String", "WEB_SERVICE_URL", "\"http://192.168.1.53\""
+            buildConfigField "String", "WEB_SERVICE_URL", "\"http://192.168.1.55\""
             buildConfigField "Integer", "WEB_SERVICE_PORT", "80"
             buildConfigField "Integer", "WEB_SERVICE_VERSION", "1"
         }

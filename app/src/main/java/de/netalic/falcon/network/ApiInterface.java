@@ -31,6 +31,9 @@ public interface ApiInterface {
     @GET("rates/{currency}")
     Call<Rate> exchangeRate(@Path("currency") String currency);
 
+    @HTTP(method ="LIST" ,path = "rates")
+    Call<List<Rate>> listExchangeRate();
+
     @HTTP(method = "LIST", path = "wallets")
     Call<List<Wallet>> walletList();
 

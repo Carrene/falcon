@@ -10,27 +10,20 @@ public class Rate {
     @PrimaryKey
     private String mCreatedAt;
 
-    @SerializedName("currency")
-    private Currency mCurrency;
-
     @SerializedName("buy")
     private String mBuy;
 
     @SerializedName("sell")
     private String mSell;
 
-    @SerializedName("currencyId")
-    private int mCurrencyID;
+    @SerializedName("currencyCode")
+    private String mCurrencyCode;
 
-    public Rate(Currency currency) {
+    public Rate(String usd) {
 
-        mCurrency = currency;
+        mCurrencyCode=usd;
     }
 
-    public Currency getCurrency() {
-
-        return mCurrency;
-    }
 
     public String getSell() {
 
@@ -40,6 +33,34 @@ public class Rate {
     public String getBuy() {
 
         return mBuy;
+    }
+
+    public String getCreatedAt() {
+        return mCreatedAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.mCreatedAt = createdAt;
+    }
+
+
+
+    public void setBuy(String buy) {
+        this.mBuy = buy;
+    }
+
+
+
+    public void setSell(String sell) {
+        this.mSell = sell;
+    }
+
+    public String getCurrencyCode() {
+        return mCurrencyCode;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.mCurrencyCode = currencyCode;
     }
 }
 

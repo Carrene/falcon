@@ -61,8 +61,7 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
         initUiComponent();
         initListener();
         setHasOptionsMenu(true);
-        mUsd = new UsdCurrency();
-        mRate = new Rate(mUsd);
+        mRate = new Rate("USD");
         getRate();
     }
 

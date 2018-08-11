@@ -49,8 +49,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         setHasOptionsMenu(true);
-        mUsd = new UsdCurrency();
-        mRate = new Rate(mUsd);
+        mRate = new Rate("USD");
         return mRoot;
     }
 
