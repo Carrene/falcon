@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawAmountContract;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -26,12 +27,15 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private TextView mTextViewUsemaximm;
     private TextView mTextViewUseMinimum;
     private Button mbuttonNextWithdraw;
+    private static final String ARGUMENT_WALLET="WALLET";
+    private Wallet mWallet;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot=inflater.inflate(R.layout.fragment_withdrawamount,null);
+        mWallet = getArguments().getParcelable(ARGUMENT_WALLET);
         return mRoot;
     }
 
@@ -60,9 +64,14 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
     }
 
-    public static WithdrawAmountFragment newInstance() {
+    public static WithdrawAmountFragment newInstance(Wallet wallet) {
 
-        return new WithdrawAmountFragment();
+
+        WithdrawAmountFragment fragment = new WithdrawAmountFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ARGUMENT_WALLET, wallet);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     private void initUiComponent(){

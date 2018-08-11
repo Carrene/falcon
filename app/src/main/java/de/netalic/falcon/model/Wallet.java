@@ -1,10 +1,13 @@
 package de.netalic.falcon.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import io.realm.annotations.PrimaryKey;
 
-public class Wallet {
+public class Wallet implements Parcelable {
 
     @PrimaryKey
     @SerializedName("id")
@@ -33,6 +36,18 @@ public class Wallet {
     public Wallet() {
 
     }
+
+    public static final Creator<Wallet> CREATOR = new Creator<Wallet>() {
+        @Override
+        public Wallet createFromParcel(Parcel in) {
+            return new Wallet(in);
+        }
+
+        @Override
+        public Wallet[] newArray(int size) {
+            return new Wallet[size];
+        }
+    };
 
     public int getId() {
 
@@ -72,5 +87,27 @@ public class Wallet {
     public void setSpendableBalance(double spendableBalance) {
 
         this.mSpendableBalance = spendableBalance;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeString(this.mName);
+        dest.writeDouble(this.mBalance);
+        dest.writeInt(this.mId);
+
+    }
+
+    protected Wallet(Parcel in) {
+
+        mName=in.readString();
+        mBalance=in.readDouble();
+        mId=in.readInt();
+
     }
 }
