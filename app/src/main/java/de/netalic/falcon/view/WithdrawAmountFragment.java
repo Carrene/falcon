@@ -9,16 +9,19 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Currency;
+import de.netalic.falcon.adapter.DashboardWalletSpinnerAdapter;
+import de.netalic.falcon.adapter.WithdrawAmountSpinnerAddapter;
 import de.netalic.falcon.model.Rate;
-import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawAmountContract;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -38,8 +41,9 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private static final String ARGUMENT_WALLET="WALLET";
     private Wallet mWallet;
     private Rate mRate;
-    private Currency mUsd;
     private List<Rate>mRateList;
+    private Spinner mSpinnerCurrencyCode;
+    private WithdrawAmountSpinnerAddapter mWithdrawAmountSpinnerAdapter;
 
     @Nullable
     @Override
@@ -96,6 +100,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mTextViewUsemaximm=mRoot.findViewById(R.id.textview_withdrawamount_usemaximum);
         mTextViewUseMinimum=mRoot.findViewById(R.id.textview_withdraw_useminimum);
         mbuttonNextWithdraw=mRoot.findViewById(R.id.button_withdrawamount_nextwithdraw);
+        mSpinnerCurrencyCode=mRoot.findViewById(R.id.spinner_withdrawamount_currency);
     }
 
     @Override
@@ -187,7 +192,8 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     public void setRateList(List<Rate> rateList) {
 
         mRateList=rateList;
-
-
+        mWithdrawAmountSpinnerAdapter = new WithdrawAmountSpinnerAddapter(getContext(), mRateList);
+        mSpinnerCurrencyCode.setAdapter(mWithdrawAmountSpinnerAdapter);
     }
+
 }
