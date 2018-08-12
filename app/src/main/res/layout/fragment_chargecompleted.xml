@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margintop_chargecompleted_successimageview"
-            android:src="@drawable/chargecompleted_success" />
+            android:src="@drawable/chargecompletedqrcodecompleted_success" />
 
         <TextView
             android:id="@+id/textview_chargecompleted_success"

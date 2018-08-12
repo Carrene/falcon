@@ -111,7 +111,6 @@
     <string name="chargeconfirmation_invalidbraintreenoce">Invalid braintree nonce</string>
 
 
-
     <string name="chargecompleted_chargecompleted">Charge Completed</string>
     <string name="chargecompleted_walletname">Wallet Name :</string>
     <string name="chargecompleted_amount">Charge Amount : </string>
@@ -156,5 +155,9 @@
     <string name="withdrawamount_nextwithdrawbutton">NEXT_WITHDRAW</string>
     <string name="chargefailed_sharemenutoolbar">Share</string>
     <string name="chargefailed_downloadmenutoolbar">Download</string>
+
+    <string name="qrcodecompleted_toolbar">QR Code Completed</string>
+    <string name="qrcodecompleted_success">Success</string>
+    <string name="qrcodecompleted_scanyourqrcode">Scan your QR code</string>
 
 </resources>
