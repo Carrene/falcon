@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_chargefailed_linearlayout"
-        android:background="@drawable/chargefailed_border"
+        android:background="@drawable/chargefailedqrcodefailed_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_chargefailed_linearlayout"
         >
@@ -23,10 +23,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margintop_chargefailed_failedimageview"
-            android:src="@drawable/chargefailed_failed" />
+            android:src="@drawable/chargefailedqrcodefailed_failed" />
 
         <TextView
-            android:id="@+id/textview_chargefailed_success"
+            android:id="@+id/textview_chargefailed_failed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margintop_chargefailed_failedtextview"

@@ -12,43 +12,61 @@
         android:layout_marginTop="32dp"
         android:layout_marginStart="33dp"
         android:layout_marginEnd="33dp"
-        android:background="@drawable/chargecompleted_border"
-        android:layout_centerHorizontal="true"
         android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/chargefailedqrcodefailed_border"
         >
-
         <ImageView
-            android:id="@+id/imageview_qrcodecompleted_success"
+            android:id="@+id/imageview_qrcodefailed_failed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="36dp"
-            android:src="@drawable/chargecompletedqrcodecompleted_success" />
+            android:src="@drawable/chargefailedqrcodefailed_failed" />
 
         <TextView
-            android:id="@+id/textview_qrcodecompleted_success"
+            android:id="@+id/textview_qrcodefailed_failed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="9dp"
             android:gravity="center"
-            android:text="@string/qrcodecompleted_success"
+            android:text="Failed"
             android:textColor="@color/black"
             android:textSize="20sp" />
-
         <TextView
-            android:id="@+id/textview_qrcodecompleted_scanyourqrcode"
+            android:id="@+id/textview_qrcodefailed_describe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
             android:gravity="center"
-            android:text="@string/qrcodecompleted_scanyourqrcode"
+            android:text="Lorem lpsum is simply dummy text of the printing and type setting industry"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="36dp"
+            android:textSize="14sp"
+            />
 
     </LinearLayout>
 
+
     <Button
-        android:id="@+id/button_qrcodecompleted_dashborad"
+        android:id="@+id/button_qrcodefailed_trywithdraw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorSecondary"
+        android:text="TRY WITHDRAW"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_above="@+id/button_qrcodefailed_dashborad"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="15dp"
+        />
+
+    <Button
+        android:id="@+id/button_qrcodefailed_dashborad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -56,9 +74,10 @@
         android:layout_marginBottom="27dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:background="@color/colorSecondary"
-        android:text="@string/chargecompleted_dashboard"
+        android:background="@drawable/qrcodefailed_borderbutton"
+        android:text="DASHBOARD"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        />
 
 </RelativeLayout>

@@ -160,4 +160,6 @@
     <string name="qrcodecompleted_success">Success</string>
     <string name="qrcodecompleted_scanyourqrcode">Scan your QR code</string>
 
+    <string name="qrcodefailed_toolbar">QR Code Failed</string>
+
 </resources>
