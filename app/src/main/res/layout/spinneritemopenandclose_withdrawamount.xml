@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/height_withdraw_spinneradapterrelaytivelayout"
-    android:background="@color/white"
-    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textview_withdrawamount_currencycode"
@@ -13,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:paddingBottom="@dimen/paddingbottom_withdrawamount_spinneradaptertextview"
         android:textColor="@color/black"
-        android:textSize="@dimen/textsize_withdraw_spinneradaptertextview"
-        />
+        android:textSize="@dimen/textsize_withdrawamount_spinneradaptertextview" />
 
 </RelativeLayout>

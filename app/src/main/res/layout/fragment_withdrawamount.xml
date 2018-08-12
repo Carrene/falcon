@@ -2,11 +2,13 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -27,14 +29,13 @@
 
             <EditText
                 android:id="@+id/edittext_withdrawamount_walletamount"
+                style="@style/Base.V7.Widget.AppCompat.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/marginstartend_withdrawamount_walletamount"
                 android:layout_marginStart="@dimen/marginstartend_withdrawamount_walletamount"
                 android:hint="@string/withdrawamount_alpha"
-                style="@style/Base.V7.Widget.AppCompat.EditText"
-                android:textColor="@color/colorPrimaryLight"
-                />
+                android:textColor="@color/colorPrimaryLight" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -52,15 +53,14 @@
 
             <EditText
                 android:id="@+id/edittext_withdrawamount_basecurrency"
+                style="@style/Base.V7.Widget.AppCompat.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/marginstartend_withdrawamount_basecurrency"
                 android:layout_marginStart="@dimen/marginstartend_withdrawamount_basecurrency"
-                android:hint="@string/withdrawamount_usd"
-                android:textColor="@color/colorPrimaryLight"
-                style="@style/Base.V7.Widget.AppCompat.EditText"
                 android:focusable="false"
-                />
+                android:hint="@string/withdrawamount_usd"
+                android:textColor="@color/colorPrimaryLight" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -72,7 +72,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/height_withdrawamount_relativelayout"
             android:layout_marginEnd="@dimen/marginstartend_withdrawamount_relativelayout"
             android:layout_marginStart="@dimen/marginstartend_withdrawamount_relativelayout"
             android:layout_marginTop="@dimen/margintop_withdrawamount_relativelayout"
@@ -83,8 +83,7 @@
                 style="@style/SimpleSpinnerTheme"
                 android:layout_width="@dimen/width_withdrawamount_spinner"
                 android:layout_height="@dimen/height_withdrawamount_spinner"
-                android:backgroundTint="@color/black"
-                />
+                android:backgroundTint="@color/black" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="@dimen/width_withdrawamount_textinputlayoutothercurrency"
@@ -97,9 +96,9 @@
                     android:id="@+id/edittext_withdrawamount_othercurrency"
                     style="@style/Base.V7.Widget.AppCompat.EditText"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:textColor="@color/colorPrimaryLight"
+                    android:layout_height="@dimen/height_withdrawamount_edittextothercurrency"
                     android:focusable="false"
+                    android:textColor="@color/colorPrimaryLight"
 
                     />
             </android.support.design.widget.TextInputLayout>

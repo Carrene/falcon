@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.adapter.WithdrawWalletSpinnerAdapter;
+import de.netalic.falcon.adapter.WithdrawSpinnerAdapter;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawPresenterContract;
 import de.netalic.falcon.util.MaterialDialogUtil;
@@ -28,7 +28,7 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
 
     private WithdrawPresenterContract.Presenter mPresenter;
     private View mRoot;
-    private WithdrawWalletSpinnerAdapter mWithdrawWalletSpinnerAdapter;
+    private WithdrawSpinnerAdapter mWithdrawSpinnerAdapter;
     private Spinner mSpinnerWalletList;
     private List<Wallet> mWalletList;
     private TextView mTextViewBalance;
@@ -102,8 +102,8 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
     public void setListWallet(List<Wallet> walletList) {
 
         mWalletList = walletList;
-        mWithdrawWalletSpinnerAdapter = new WithdrawWalletSpinnerAdapter(getContext(), mWalletList);
-        mSpinnerWalletList.setAdapter(mWithdrawWalletSpinnerAdapter);
+        mWithdrawSpinnerAdapter = new WithdrawSpinnerAdapter(getContext(), mWalletList);
+        mSpinnerWalletList.setAdapter(mWithdrawSpinnerAdapter);
         setFirstBalance();
     }
 

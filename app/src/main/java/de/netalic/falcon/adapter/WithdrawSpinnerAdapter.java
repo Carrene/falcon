@@ -14,14 +14,14 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Wallet;
 
-public class WithdrawWalletSpinnerAdapter extends ArrayAdapter<Wallet> {
+public class WithdrawSpinnerAdapter extends ArrayAdapter<Wallet> {
 
     private LayoutInflater mLayoutInflater;
     private static final int CLOSE = 0;
     private static final int OPEN = 1;
 
 
-    public WithdrawWalletSpinnerAdapter(Context mContext, List<Wallet> walletList) {
+    public WithdrawSpinnerAdapter(Context mContext, List<Wallet> walletList) {
 
         super(mContext, R.layout.spinneritemclose_dashbaord, walletList);
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
