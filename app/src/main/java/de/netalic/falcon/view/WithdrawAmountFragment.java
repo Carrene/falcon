@@ -9,18 +9,16 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.adapter.DashboardWalletSpinnerAdapter;
-import de.netalic.falcon.adapter.WithdrawAmountSpinnerAddapter;
+import de.netalic.falcon.adapter.WithdrawAmountSpinnerAdapter;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawAmountContract;
@@ -43,7 +41,8 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private Rate mRate;
     private List<Rate>mRateList;
     private Spinner mSpinnerCurrencyCode;
-    private WithdrawAmountSpinnerAddapter mWithdrawAmountSpinnerAdapter;
+    private WithdrawAmountSpinnerAdapter mWithdrawAmountSpinnerAdapter;
+    private int mPosition;
 
     @Nullable
     @Override
@@ -151,22 +150,42 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                 if (mEditTextWalletAmount.isFocused()) {
                     if (s.toString().equals("")) {
                         mEditTextBaseCurrency.setText("");
+                        mEditTextOtherCurrency.setText("");
 
                     } else {
 
                         double amountEnter = Double.parseDouble(s.toString());
-                        double rateBuy = Double.parseDouble(mRate.getBuy());
-                        double rateSell=Double.parseDouble(mRate.getSell());
-                        double dollar = amountEnter * rateBuy;
-                        double rial=amountEnter*rateSell;
+                        double rateOtherCurrencySell=mRateList.get(mPosition).getSell();
+                        double rateUsdSell = mRate.getSell();
+                        double otherCurrency=amountEnter*rateOtherCurrencySell;
+                        double dollar = amountEnter * rateUsdSell;
+                        double roundOtherCurrency=round(otherCurrency,2);
                         double roundDollar = round(dollar, 2);
-                        double roundRial=round(rial,2);
 
-                        mEditTextOtherCurrency.setText(String.valueOf(roundRial));
+                        mEditTextOtherCurrency.setText(String.valueOf(roundOtherCurrency));
                         mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
 
                     }
                 }
+            }
+        });
+
+        mSpinnerCurrencyCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               double rateSell=mRateList.get(position).getSell();
+               mPosition=position;
+
+               if (!mEditTextWalletAmount.getText().toString().matches("")) {
+                   double selectedCurrency = Double.parseDouble(mEditTextWalletAmount.getText().toString()) * rateSell;
+                   double roundSelectedCurrency = round(selectedCurrency, 2);
+                   mEditTextOtherCurrency.setText(String.valueOf(roundSelectedCurrency));
+               }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -192,7 +211,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     public void setRateList(List<Rate> rateList) {
 
         mRateList=rateList;
-        mWithdrawAmountSpinnerAdapter = new WithdrawAmountSpinnerAddapter(getContext(), mRateList);
+        mWithdrawAmountSpinnerAdapter = new WithdrawAmountSpinnerAdapter(getContext(), mRateList);
         mSpinnerCurrencyCode.setAdapter(mWithdrawAmountSpinnerAdapter);
     }
 

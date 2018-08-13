@@ -11,10 +11,10 @@ public class Rate {
     private String mCreatedAt;
 
     @SerializedName("buy")
-    private String mBuy;
+    private double mBuy;
 
     @SerializedName("sell")
-    private String mSell;
+    private double mSell;
 
     @SerializedName("currencyCode")
     private String mCurrencyCode;
@@ -24,15 +24,20 @@ public class Rate {
         mCurrencyCode=usd;
     }
 
+    public double getBuy() {
+        return mBuy;
+    }
 
-    public String getSell() {
+    public void setBuy(double buy) {
+        this.mBuy = buy;
+    }
 
+    public double getSell() {
         return mSell;
     }
 
-    public String getBuy() {
-
-        return mBuy;
+    public void setSell(double sell) {
+        this.mSell = sell;
     }
 
     public String getCreatedAt() {
@@ -43,17 +48,6 @@ public class Rate {
         this.mCreatedAt = createdAt;
     }
 
-
-
-    public void setBuy(String buy) {
-        this.mBuy = buy;
-    }
-
-
-
-    public void setSell(String sell) {
-        this.mSell = sell;
-    }
 
     public String getCurrencyCode() {
         return mCurrencyCode;

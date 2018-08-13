@@ -14,14 +14,14 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Rate;
 
-public class WithdrawAmountSpinnerAddapter extends ArrayAdapter<Rate> {
+public class WithdrawAmountSpinnerAdapter extends ArrayAdapter<Rate> {
 
     private LayoutInflater mLayoutInflater;
     private static final int CLOSE = 0;
     private static final int OPEN = 1;
 
 
-    public WithdrawAmountSpinnerAddapter(Context mContext, List<Rate> rateList) {
+    public WithdrawAmountSpinnerAdapter(Context mContext, List<Rate> rateList) {
 
         super(mContext, R.layout.spinneritemclose_dashbaord, rateList);
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -47,12 +47,12 @@ public class WithdrawAmountSpinnerAddapter extends ArrayAdapter<Rate> {
 
         if (type == OPEN) {
 
-            view = mLayoutInflater.inflate(R.layout.spinneritemopenandclose_withdrawamount, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinneritemopen_withdrawamount, viewGroup, false);
 
 
         } else if (type == CLOSE) {
 
-            view = mLayoutInflater.inflate(R.layout.spinneritemopenandclose_withdrawamount, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinneritemclose_withdrawamount, viewGroup, false);
         }
 
         TextView textViewChargeWalletName = view.findViewById(R.id.textview_withdrawamount_currencycode);

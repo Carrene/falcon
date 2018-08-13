@@ -159,7 +159,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
-                double roundDollar = round(mWalletList.get(position).getBalance() * Double.parseDouble(mRate.getSell()), 2);
+                double roundDollar = round(mWalletList.get(position).getBalance() * mRate.getSell(), 2);
                 mTextViewRate.setText("" + roundDollar);
             }
 
