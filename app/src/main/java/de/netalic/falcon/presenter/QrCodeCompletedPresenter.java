@@ -12,7 +12,7 @@ public class QrCodeCompletedPresenter implements QrCodeCompletedContract.Present
 
     public QrCodeCompletedPresenter(QrCodeCompletedContract.View qrCodeCompletedView) {
 
-        mQrCodeCompletedView =checkNotNull(qrCodeCompletedView);
+        mQrCodeCompletedView = checkNotNull(qrCodeCompletedView);
         mQrCodeCompletedView.setPresenter(this);
     }
 

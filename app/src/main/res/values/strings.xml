@@ -159,6 +159,7 @@
     <string name="qrcodecompleted_toolbar">QR Code Completed</string>
     <string name="qrcodecompleted_success">Success</string>
     <string name="qrcodecompleted_scanyourqrcode">Scan your QR code</string>
+    <string name="qrcodecompleted_imagesaved">Image saved</string>
 
     <string name="qrcodefailed_toolbar">QR Code Failed</string>
     <string name="qrcodefailed_failed">Failed</string>

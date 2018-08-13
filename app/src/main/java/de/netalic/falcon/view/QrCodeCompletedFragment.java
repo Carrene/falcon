@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.io.File;
 
@@ -35,6 +36,7 @@ public class QrCodeCompletedFragment extends Fragment implements QrCodeCompleted
     private static final String CHARGE_PATH = "/Charge";
     private static final int IMAGE_QUALITY = 100;
     private static final int REQUEST_PERMISSIONS = 120;
+    private Button mButtonNavigationToDashboard;
 
     @Nullable
     @Override
@@ -86,7 +88,7 @@ public class QrCodeCompletedFragment extends Fragment implements QrCodeCompleted
             case R.id.item_qrcodecompleted_download:{
 
                 ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView),IMAGE_QUALITY,ALPHA_PATH,CHARGE_PATH);
-                SnackbarUtil.showSnackbar(mRoot,"Image saved",getContext());
+                SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.qrcodecompleted_imagesaved),getContext());
                 break;
 
             }
@@ -132,5 +134,6 @@ public class QrCodeCompletedFragment extends Fragment implements QrCodeCompleted
     private void initUiComponent(){
 
         mScreenshotView=mRoot.findViewById(R.id.linearlayout_qrcodecompleted_mainview);
+        mButtonNavigationToDashboard=mRoot.findViewById(R.id.button_qrcodecompleted_dashborad);
     }
 }
