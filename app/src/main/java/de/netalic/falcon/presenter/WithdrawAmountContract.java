@@ -9,16 +9,12 @@ public interface WithdrawAmountContract {
 
     interface View extends BaseView<WithdrawAmountContract.Presenter>{
 
-        void updateExchangeRateCurrency(Rate rate);
-        void showErrorInvalidCurrency();
-        void showErrorRatesDoesNotExists();
         void setRateList(List<Rate> rateList);
 
     }
 
     interface Presenter extends BasePresenter{
 
-        void exchangeRate(Rate rate);
         void listExchangeRate();
 
 

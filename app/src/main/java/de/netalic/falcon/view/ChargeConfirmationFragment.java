@@ -19,8 +19,9 @@ import com.braintreepayments.api.dropin.DropInResult;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.presenter.ChargeConfirmationContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
 import de.netalic.falcon.util.SnackbarUtil;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ChargeConfirmationFragment extends Fragment implements ChargeConfirmationContract.View {
 
@@ -90,13 +91,19 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     @Override
     public void showProgressBar() {
 
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
+        checkNotNull(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
     }
 
     public static ChargeConfirmationFragment newInstance(Deposit deposit) {
@@ -161,37 +168,37 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     @Override
     public void showErrorInvalidWalletId() {
 
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_invalidwalletid),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invalidwalletid), getContext());
     }
 
     @Override
     public void showErrorWalletNotFound() {
 
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_walletnotfound),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_walletnotfound), getContext());
 
     }
 
     @Override
     public void showErrorDepositNotFound() {
 
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_depositnotfound),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_depositnotfound), getContext());
     }
 
     @Override
     public void showErrorInvalidDepositId() {
 
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_invaliddepositid),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invaliddepositid), getContext());
     }
 
     @Override
     public void showErrorDepositAlreadySucceed() {
 
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_depositalreadyexist),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_depositalreadyexist), getContext());
     }
 
     @Override
     public void showErrorInvalidBraintreeNonce() {
 
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_invalidbraintreenoce),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invalidbraintreenoce), getContext());
     }
 }

@@ -19,7 +19,6 @@ import android.widget.TextView;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RecoveryEmailContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 import nuesoft.helpdroid.validation.Validator;
@@ -139,13 +138,17 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public void showProgressBar() {
 
         checkNotNull(getContext());
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
 
     }
 

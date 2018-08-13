@@ -18,9 +18,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Rate;
-import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.presenter.ChargeAmountContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 
@@ -95,13 +93,18 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
     public void showProgressBar() {
 
         checkNotNull(getContext());
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
+
     }
 
     @Override
@@ -265,6 +268,7 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
     }
 
     private double round(double value, int places) {
+
         if (places < 0) {
             throw new IllegalArgumentException();
         }

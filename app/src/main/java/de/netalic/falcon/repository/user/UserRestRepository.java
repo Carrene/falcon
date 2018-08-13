@@ -90,6 +90,7 @@ public class UserRestRepository implements IUserRepository {
 
     @Override
     public void getAll(CallRepository<List<User>> callRepository) {
+
         throw new UnsupportedOperationException();
 
     }

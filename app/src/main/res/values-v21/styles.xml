@@ -15,10 +15,19 @@
 
     </style>
 
-    <style name="SimpleSpinnerTheme" parent="android:Widget.Material.Spinner.Underlined">
+    <style name="SpinnerThemeDashboard" parent="android:Widget.Holo.Spinner">
+        <item name="android:overlapAnchor">false</item>
+        <item name="android:background">@drawable/dashboard_backgroundspinner</item>
+    </style>
 
+    <style name="SpinnerThemeWithdraw" parent="android:Widget.Holo.Spinner">
+        <item name="android:overlapAnchor">false</item>
+        <item name="android:background">@drawable/withdraw_backgroundspinner</item>
+    </style>
+
+    <style name="SimpleSpinnerTheme" parent="android:Widget.Holo.Spinner">
+        <item name="android:overlapAnchor">false</item>
         <item name="android:background">@drawable/withdrawamount_backgroundspinner</item>
-
     </style>
 
 </resources>

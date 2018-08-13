@@ -28,7 +28,6 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.RegistrationContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 
@@ -193,14 +192,18 @@ public class RegistrationFragment extends Fragment implements RegistrationContra
     public void showProgressBar() {
 
         checkNotNull(getContext());
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
 
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
 
     }
 

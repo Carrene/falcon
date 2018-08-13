@@ -11,15 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.network.CheckInternetConnectivity;
-import de.netalic.falcon.util.MaterialDialogUtil;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity implements CheckInternetConnectivity.NetworkStateChangeListener {
 
     private Toolbar mToolbar;
     private CheckInternetConnectivity checkInternetConnectivity;
+    private MaterialDialog materialDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +64,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
     @Override
     protected void onPause() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
         super.onPause();
     }
 
@@ -114,6 +115,25 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
         return super.onOptionsItemSelected(item);
     }
 
+    protected void showMaterialDialog() {
+
+        Context context = this;
+        MaterialDialog.Builder mMaterialDialogBuilder = new MaterialDialog.Builder(context)
+                .title(context.getString(R.string.materialdialogutil_pleasewait))
+                .content(context.getString(R.string.materialdialogutil_isloading))
+                .progress(true, R.dimen.max_materialutil_materialutil)
+                .negativeText("Cancel")
+                .cancelable(false);
+        materialDialog = mMaterialDialogBuilder.build();
+        materialDialog.show();
+
+        materialDialog.getBuilder().onNegative((dialog, which) -> materialDialog.dismiss());
+    }
+
+    protected void dismissMaterialDialog() {
+
+        materialDialog.dismiss();
+    }
 //    @Override
 //    public void onBackPressed() {
 //

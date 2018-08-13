@@ -24,7 +24,6 @@ import de.netalic.falcon.adapter.ChargePaymentGatewayRecyclerViewAdapter;
 import de.netalic.falcon.adapter.ChargeWalletRecyclerViewAdapter;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.ChargeContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -171,14 +170,19 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
     @Override
     public void showProgressBar() {
 
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
+        checkNotNull(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
 
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
 
     }
 }

@@ -21,10 +21,8 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.adapter.DashboardWalletSpinnerAdapter;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.Rate;
-import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.DashboardContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -123,13 +121,17 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     public void showProgressBar() {
 
         checkNotNull(getContext());
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
     }
 
 

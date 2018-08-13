@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.common.collect.Collections2;
+
+import java.util.Collections;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -36,10 +39,9 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private TextView mTextViewUsemaximm;
     private TextView mTextViewUseMinimum;
     private Button mbuttonNextWithdraw;
-    private static final String ARGUMENT_WALLET="WALLET";
+    private static final String ARGUMENT_WALLET = "WALLET";
     private Wallet mWallet;
-    private Rate mRate;
-    private List<Rate>mRateList;
+    private List<Rate> mRateList;
     private Spinner mSpinnerCurrencyCode;
     private WithdrawAmountSpinnerAdapter mWithdrawAmountSpinnerAdapter;
     private int mPosition;
@@ -48,17 +50,16 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot=inflater.inflate(R.layout.fragment_withdrawamount,null);
+        mRoot = inflater.inflate(R.layout.fragment_withdrawamount, null);
         mWallet = getArguments().getParcelable(ARGUMENT_WALLET);
         return mRoot;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
-        mRate = new Rate("USD");
-        getRate();
         getRateList();
         initListener();
 
@@ -67,7 +68,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     @Override
     public void setPresenter(WithdrawAmountContract.Presenter presenter) {
 
-        mPresenter=checkNotNull(presenter);
+        mPresenter = checkNotNull(presenter);
 
     }
 
@@ -91,44 +92,19 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         return fragment;
     }
 
-    private void initUiComponent(){
+    private void initUiComponent() {
 
-        mEditTextWalletAmount=mRoot.findViewById(R.id.edittext_withdrawamount_walletamount);
-        mEditTextBaseCurrency=mRoot.findViewById(R.id.edittext_withdrawamount_basecurrency);
-        mEditTextOtherCurrency=mRoot.findViewById(R.id.edittext_withdrawamount_othercurrency);
-        mTextViewUsemaximm=mRoot.findViewById(R.id.textview_withdrawamount_usemaximum);
-        mTextViewUseMinimum=mRoot.findViewById(R.id.textview_withdraw_useminimum);
-        mbuttonNextWithdraw=mRoot.findViewById(R.id.button_withdrawamount_nextwithdraw);
-        mSpinnerCurrencyCode=mRoot.findViewById(R.id.spinner_withdrawamount_currency);
+        mEditTextWalletAmount = mRoot.findViewById(R.id.edittext_withdrawamount_walletamount);
+        mEditTextBaseCurrency = mRoot.findViewById(R.id.edittext_withdrawamount_basecurrency);
+        mEditTextOtherCurrency = mRoot.findViewById(R.id.edittext_withdrawamount_othercurrency);
+        mTextViewUsemaximm = mRoot.findViewById(R.id.textview_withdrawamount_usemaximum);
+        mTextViewUseMinimum = mRoot.findViewById(R.id.textview_withdraw_useminimum);
+        mbuttonNextWithdraw = mRoot.findViewById(R.id.button_withdrawamount_nextwithdraw);
+        mSpinnerCurrencyCode = mRoot.findViewById(R.id.spinner_withdrawamount_currency);
     }
 
-    @Override
-    public void updateExchangeRateCurrency(Rate rate) {
 
-        mRate=rate;
-    }
-
-    @Override
-    public void showErrorInvalidCurrency() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeamount_invalidcurrency), getContext());
-    }
-
-    @Override
-    public void showErrorRatesDoesNotExists() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeamount_ratedosenotexists), getContext());
-
-    }
-
-    public void getRate() {
-
-        mPresenter.exchangeRate(mRate);
-    }
-
-    private void initListener(){
+    private void initListener() {
 
         mEditTextWalletAmount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -155,11 +131,23 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                     } else {
 
                         double amountEnter = Double.parseDouble(s.toString());
-                        double rateOtherCurrencySell=mRateList.get(mPosition).getSell();
-                        double rateUsdSell = mRate.getSell();
-                        double otherCurrency=amountEnter*rateOtherCurrencySell;
+                        double rateOtherCurrencySell = mRateList.get(mPosition).getSell();
+
+                        double rateUsdSell = -1;
+                        for (Rate rate : mRateList) {
+                            if (rate.getCurrencyCode().equals("USD")) {
+                                rateUsdSell = rate.getSell();
+                            }
+
+                        }
+
+                        if (rateUsdSell == -1) {
+                            throw new IllegalStateException();
+                        }
+
+                        double otherCurrency = amountEnter * rateOtherCurrencySell;
                         double dollar = amountEnter * rateUsdSell;
-                        double roundOtherCurrency=round(otherCurrency,2);
+                        double roundOtherCurrency = round(otherCurrency, 2);
                         double roundDollar = round(dollar, 2);
 
                         mEditTextOtherCurrency.setText(String.valueOf(roundOtherCurrency));
@@ -173,14 +161,15 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mSpinnerCurrencyCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               double rateSell=mRateList.get(position).getSell();
-               mPosition=position;
 
-               if (!mEditTextWalletAmount.getText().toString().matches("")) {
-                   double selectedCurrency = Double.parseDouble(mEditTextWalletAmount.getText().toString()) * rateSell;
-                   double roundSelectedCurrency = round(selectedCurrency, 2);
-                   mEditTextOtherCurrency.setText(String.valueOf(roundSelectedCurrency));
-               }
+                double rateSell = mRateList.get(position).getSell();
+                mPosition = position;
+
+                if (!mEditTextWalletAmount.getText().toString().matches("")) {
+                    double selectedCurrency = Double.parseDouble(mEditTextWalletAmount.getText().toString()) * rateSell;
+                    double roundSelectedCurrency = round(selectedCurrency, 2);
+                    mEditTextOtherCurrency.setText(String.valueOf(roundSelectedCurrency));
+                }
             }
 
             @Override
@@ -192,6 +181,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     }
 
     private double round(double value, int places) {
+
         if (places < 0) {
             throw new IllegalArgumentException();
         }
@@ -210,7 +200,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     @Override
     public void setRateList(List<Rate> rateList) {
 
-        mRateList=rateList;
+        mRateList = rateList;
         mWithdrawAmountSpinnerAdapter = new WithdrawAmountSpinnerAdapter(getContext(), mRateList);
         mSpinnerCurrencyCode.setAdapter(mWithdrawAmountSpinnerAdapter);
     }

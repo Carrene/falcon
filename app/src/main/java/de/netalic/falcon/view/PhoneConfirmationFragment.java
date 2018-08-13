@@ -26,7 +26,6 @@ import java.util.concurrent.TimeUnit;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 
@@ -176,7 +175,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (s.toString().length()==6){
+                if (s.toString().length() == 6) {
 
                     mUser.setActivationCode(mEditTextReceiveCode.getText().toString());
                     bind();
@@ -262,13 +261,17 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     public void showProgressBar() {
 
         checkNotNull(getContext());
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
     }
 
     @Override

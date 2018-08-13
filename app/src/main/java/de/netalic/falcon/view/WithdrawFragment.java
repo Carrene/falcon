@@ -19,7 +19,6 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.adapter.WithdrawSpinnerAdapter;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawPresenterContract;
-import de.netalic.falcon.util.MaterialDialogUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -75,14 +74,19 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
     @Override
     public void showProgressBar() {
 
-        MaterialDialogUtil.getInstance().showMaterialDialog(getContext());
+        checkNotNull(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
 
     }
 
     @Override
     public void dismissProgressBar() {
 
-        MaterialDialogUtil.getInstance().dismissMaterialDialog();
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
     }
 
     private void initUiComponent() {

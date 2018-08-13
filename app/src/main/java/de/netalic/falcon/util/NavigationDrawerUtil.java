@@ -22,7 +22,6 @@ import nuesoft.helpdroid.util.Parser;
 
 public class NavigationDrawerUtil {
 
-    private static AccountHeader mHeaderResult;
     private static final String EMAIL_NOT_SET = "Email not set";
 
     public static Drawer getDrawer(final Activity activity, Toolbar toolbar, int identifier) {
@@ -42,17 +41,15 @@ public class NavigationDrawerUtil {
         String phone = (String) tokenBody.get("phone");
         String email = (String) tokenBody.get("email");
 
-
         if (email == null) {
-
             email = EMAIL_NOT_SET;
         }
-        mHeaderResult = new AccountHeaderBuilder()
+
+        AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(activity)
                 .withHeaderBackground(R.color.primary).withSelectionListEnabledForSingleProfile(false)
                 .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigationheader_profile))
                 .build();
-
 
         Drawer result = new DrawerBuilder()
                 .withActivity(activity)
@@ -62,7 +59,7 @@ public class NavigationDrawerUtil {
                 .withCloseOnClick(true)
                 .withSelectedItem(identifier)
                 .addDrawerItems(item1, item2, item3, item4, item5, item6, item7, item8)
-                .withAccountHeader(mHeaderResult)
+                .withAccountHeader(headerResult)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if (position != identifier) {
                         Intent intent = null;
