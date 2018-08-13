@@ -161,5 +161,8 @@
     <string name="qrcodecompleted_scanyourqrcode">Scan your QR code</string>
 
     <string name="qrcodefailed_toolbar">QR Code Failed</string>
+    <string name="qrcodefailed_failed">Failed</string>
+    <string name="qrcodefailed_trywithdrawbutton">TRY WITHDRAW</string>
+    <string name="qrcodefailed_dashboardbutton">DASHBOARD</string>
 
 </resources>
