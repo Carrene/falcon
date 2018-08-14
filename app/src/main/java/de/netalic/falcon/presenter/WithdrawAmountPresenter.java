@@ -1,6 +1,5 @@
 package de.netalic.falcon.presenter;
 
-import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.repository.exchangeRate.ExchangeRateRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;

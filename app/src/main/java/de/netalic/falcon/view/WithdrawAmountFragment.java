@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -42,6 +43,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private WithdrawAmountSpinnerAdapter mWithdrawAmountSpinnerAdapter;
     private int mPosition;
     private double mRateUsdSell = -1;
+    private DecimalFormat mDecimalFormat;
 
     @Nullable
     @Override
@@ -59,6 +61,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         initUiComponent();
         getRateList();
         initListener();
+        mDecimalFormat=new DecimalFormat("0.00##");
 
     }
 
@@ -148,8 +151,8 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
                         double otherCurrency = amountEnter * rateOtherCurrencySell;
                         double dollar = amountEnter * rateUsdSell;
-                        double roundOtherCurrency = round(otherCurrency, 2);
-                        double roundDollar = round(dollar, 2);
+                        String roundOtherCurrency = mDecimalFormat.format(otherCurrency);
+                        String roundDollar = mDecimalFormat.format(dollar);
 
                         mEditTextOtherCurrency.setText(String.valueOf(roundOtherCurrency));
                         mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
@@ -202,11 +205,11 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
                         double alpha = amountEnter / rateOtherCurrencySell;
                         double dollar = amountEnter * (mRateUsdSell / rateOtherCurrencySell);
-                        double roundAlpha = round(alpha, 2);
-                        double roundDollar = round(dollar, 2);
+                        String roundAlpha = mDecimalFormat.format(alpha);
+                        String roundDollar = mDecimalFormat.format(dollar);
 
-                        mEditTextWalletAmount.setText(String.valueOf(roundAlpha));
-                        mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
+                        mEditTextWalletAmount.setText(roundAlpha);
+                        mEditTextBaseCurrency.setText(roundDollar);
 
                     }
                 }
@@ -259,11 +262,11 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
                         double alpha = amountEnter / mRateUsdSell;
                         double otherCurrency = amountEnter * (rateOtherCurrencySell / mRateUsdSell);
-                        double roundAlpha = round(alpha, 2);
-                        double roundOtherCurrency = round(otherCurrency, 2);
+                        String roundAlpha = mDecimalFormat.format(alpha);
+                        String roundOtherCurrency = mDecimalFormat.format(otherCurrency);
 
-                        mEditTextWalletAmount.setText(String.valueOf(roundAlpha));
-                        mEditTextOtherCurrency.setText(String.valueOf(roundOtherCurrency));
+                        mEditTextWalletAmount.setText(roundAlpha);
+                        mEditTextOtherCurrency.setText(roundOtherCurrency);
 
                     }
                 }
@@ -281,10 +284,10 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                 if (!mEditTextOtherCurrency.getText().toString().matches("")) {
                     double alpha = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) / rateSell;
                     double dollar = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) * (mRateUsdSell / rateSell);
-                    double roundAlpha = round(alpha, 2);
-                    double roundDollar = round(dollar, 2);
-                    mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
-                    mEditTextWalletAmount.setText(String.valueOf(roundAlpha));
+                    String roundAlpha = mDecimalFormat.format(alpha);
+                    String roundDollar=mDecimalFormat.format(dollar);
+                    mEditTextBaseCurrency.setText(roundDollar);
+                    mEditTextWalletAmount.setText(roundAlpha);
                 }
             }
 
@@ -305,17 +308,6 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
         });
 
-    }
-
-    private double round(double value, int places) {
-
-        if (places < 0) {
-            throw new IllegalArgumentException();
-        }
-        long factor = (long) Math.pow(10, places);
-        value = value * factor;
-        long tmp = Math.round(value);
-        return (double) tmp / factor;
     }
 
     public void getRateList() {

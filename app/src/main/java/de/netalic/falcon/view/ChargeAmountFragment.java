@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.text.DecimalFormat;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.Deposit;
@@ -34,11 +36,9 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
     private String mChargeDataToken;
     private Rate mRate;
     private Currency mUsd;
-
-
+    private DecimalFormat mDecimalFormat;
     public static final String ARGUMENT_WALLET_ID = "walletID";
     public static final String ARGUMENT_PAYMENT_GATEWAY_NAME = "paymentGatewayName";
-
     private String mPaymentGatewayName;
     private int mWalletId;
 
@@ -60,6 +60,7 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
         initListener();
         setHasOptionsMenu(true);
         mRate = new Rate("USD");
+        mDecimalFormat = new DecimalFormat("0.00##");
         getRate();
     }
 
@@ -186,7 +187,7 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
                 if (mEditTextAmountWallet.isFocused()) {
 
-                    if (s.toString().length()==1 && s.toString().equals(".")){
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
                         s.clear();
                     }
                     if (s.toString().equals("")) {
@@ -197,7 +198,7 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
                         double amountEnter = Double.parseDouble(s.toString());
                         double rate = mRate.getBuy();
                         double dollar = amountEnter * rate;
-                        double roundDollar = round(dollar, 2);
+                        String roundDollar = mDecimalFormat.format(dollar);
 
 
                         mEditTextAmountBase.setText(String.valueOf(roundDollar));
@@ -225,7 +226,7 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
                 if (mEditTextAmountBase.isFocused()) {
 
-                    if (s.toString().length()==1 && s.toString().equals(".")){
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
                         s.clear();
                     }
                     if (s.toString().equals("")) {
@@ -236,8 +237,8 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
                         double dollar = Double.parseDouble(s.toString());
                         double rate = mRate.getBuy();
                         double alpha = dollar / rate;
-
-                        mEditTextAmountWallet.setText(String.valueOf(alpha));
+                        String roundAlpha=mDecimalFormat.format(alpha);
+                        mEditTextAmountWallet.setText(roundAlpha);
 
                     }
                 }
@@ -275,14 +276,4 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
         mChargePresenter.exchangeRate(mRate);
     }
 
-    private double round(double value, int places) {
-
-        if (places < 0) {
-            throw new IllegalArgumentException();
-        }
-        long factor = (long) Math.pow(10, places);
-        value = value * factor;
-        long tmp = Math.round(value);
-        return (double) tmp / factor;
-    }
 }
