@@ -45,6 +45,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private Spinner mSpinnerCurrencyCode;
     private WithdrawAmountSpinnerAdapter mWithdrawAmountSpinnerAdapter;
     private int mPosition;
+    private double mRateUsdSell=-1;
 
     @Nullable
     @Override
@@ -158,6 +159,108 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
             }
         });
 
+        mEditTextOtherCurrency.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                if (mEditTextOtherCurrency.isFocused()) {
+                    if (s.toString().equals("")) {
+                        mEditTextBaseCurrency.setText("");
+                        mEditTextWalletAmount.setText("");
+
+                    } else {
+
+                        double amountEnter = Double.parseDouble(s.toString());
+                        double rateOtherCurrencySell = mRateList.get(mPosition).getSell();
+
+
+                        for (Rate rate : mRateList) {
+                            if (rate.getCurrencyCode().equals("USD")) {
+                                mRateUsdSell = rate.getSell();
+                            }
+
+                        }
+
+                        if (mRateUsdSell == -1) {
+                            throw new IllegalStateException();
+                        }
+
+                        double alpha = amountEnter / rateOtherCurrencySell;
+                        double dollar = amountEnter * (mRateUsdSell/rateOtherCurrencySell);
+                        double roundAlpha = round(alpha, 2);
+                        double roundDollar = round(dollar, 2);
+
+                        mEditTextWalletAmount.setText(String.valueOf(roundAlpha));
+                        mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
+
+                    }
+                }
+
+            }
+        });
+
+        mEditTextBaseCurrency.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                if (mEditTextBaseCurrency.isFocused()) {
+                    if (s.toString().equals("")) {
+                        mEditTextOtherCurrency.setText("");
+                        mEditTextWalletAmount.setText("");
+
+                    } else {
+
+                        double amountEnter = Double.parseDouble(s.toString());
+                        double rateOtherCurrencySell = mRateList.get(mPosition).getSell();
+
+
+                        for (Rate rate : mRateList) {
+                            if (rate.getCurrencyCode().equals("USD")) {
+                                mRateUsdSell = rate.getSell();
+                            }
+
+                        }
+
+                        if (mRateUsdSell == -1) {
+                            throw new IllegalStateException();
+                        }
+
+                        double alpha = amountEnter / mRateUsdSell;
+                        double otherCurrency = amountEnter * (rateOtherCurrencySell/mRateUsdSell);
+                        double roundAlpha = round(alpha, 2);
+                        double roundOtherCurrency=round(otherCurrency,2);
+
+                        mEditTextWalletAmount.setText(String.valueOf(roundAlpha));
+                        mEditTextOtherCurrency.setText(String.valueOf(roundOtherCurrency));
+
+                    }
+                }
+
+            }
+        });
+
         mSpinnerCurrencyCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -165,10 +268,13 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                 double rateSell = mRateList.get(position).getSell();
                 mPosition = position;
 
-                if (!mEditTextWalletAmount.getText().toString().matches("")) {
-                    double selectedCurrency = Double.parseDouble(mEditTextWalletAmount.getText().toString()) * rateSell;
-                    double roundSelectedCurrency = round(selectedCurrency, 2);
-                    mEditTextOtherCurrency.setText(String.valueOf(roundSelectedCurrency));
+                if (!mEditTextOtherCurrency.getText().toString().matches("")) {
+                    double alpha=Double.parseDouble(mEditTextOtherCurrency.getText().toString())/rateSell;
+                    double dollar=Double.parseDouble(mEditTextOtherCurrency.getText().toString())*(mRateUsdSell/rateSell);
+                    double roundAlpha = round(alpha, 2);
+                    double roundDollar=round(dollar,2);
+                    mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
+                    mEditTextWalletAmount.setText(String.valueOf(roundAlpha));
                 }
             }
 
