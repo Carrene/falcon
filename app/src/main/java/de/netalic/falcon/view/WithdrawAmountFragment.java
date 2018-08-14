@@ -318,4 +318,6 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mSpinnerCurrencyCode.setAdapter(mWithdrawAmountSpinnerAdapter);
     }
 
+
+
 }
