@@ -1,5 +1,6 @@
 package de.netalic.falcon.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.github.florent37.viewtooltip.ViewTooltip;
 
 import de.netalic.falcon.R;
 
@@ -40,6 +43,8 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_authenticationdefinitionpassword, container, false);
+
+
         return mRoot;
     }
 
@@ -49,6 +54,14 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         validationPassCode();
+
+        ViewTooltip
+                .on(this, mEditTextConfirmCode)
+                .autoHide(true, 5000)
+                .corner(30)
+                .position(ViewTooltip.Position.RIGHT)
+                .text("Right")
+                .show();
     }
 
     @Override
@@ -228,4 +241,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             return password.matches(".*\\d+.*");
         }
     }
+
+
+
 }

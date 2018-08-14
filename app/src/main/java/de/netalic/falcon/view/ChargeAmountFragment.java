@@ -237,7 +237,7 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
                         double dollar = Double.parseDouble(s.toString());
                         double rate = mRate.getBuy();
                         double alpha = dollar / rate;
-                        String roundAlpha=mDecimalFormat.format(alpha);
+                        String roundAlpha = mDecimalFormat.format(alpha);
                         mEditTextAmountWallet.setText(roundAlpha);
 
                     }
