@@ -15,9 +15,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.common.collect.Collections2;
-
-import java.util.Collections;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -25,7 +22,6 @@ import de.netalic.falcon.adapter.WithdrawAmountSpinnerAdapter;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawAmountContract;
-import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -36,7 +32,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private EditText mEditTextWalletAmount;
     private EditText mEditTextBaseCurrency;
     private EditText mEditTextOtherCurrency;
-    private TextView mTextViewUsemaximm;
+    private TextView mTextViewUseMaximum;
     private TextView mTextViewUseMinimum;
     private Button mbuttonNextWithdraw;
     private static final String ARGUMENT_WALLET = "WALLET";
@@ -45,7 +41,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private Spinner mSpinnerCurrencyCode;
     private WithdrawAmountSpinnerAdapter mWithdrawAmountSpinnerAdapter;
     private int mPosition;
-    private double mRateUsdSell=-1;
+    private double mRateUsdSell = -1;
 
     @Nullable
     @Override
@@ -98,7 +94,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mEditTextWalletAmount = mRoot.findViewById(R.id.edittext_withdrawamount_walletamount);
         mEditTextBaseCurrency = mRoot.findViewById(R.id.edittext_withdrawamount_basecurrency);
         mEditTextOtherCurrency = mRoot.findViewById(R.id.edittext_withdrawamount_othercurrency);
-        mTextViewUsemaximm = mRoot.findViewById(R.id.textview_withdrawamount_usemaximum);
+        mTextViewUseMaximum = mRoot.findViewById(R.id.textview_withdrawamount_usemaximum);
         mTextViewUseMinimum = mRoot.findViewById(R.id.textview_withdraw_useminimum);
         mbuttonNextWithdraw = mRoot.findViewById(R.id.button_withdrawamount_nextwithdraw);
         mSpinnerCurrencyCode = mRoot.findViewById(R.id.spinner_withdrawamount_currency);
@@ -197,7 +193,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                         }
 
                         double alpha = amountEnter / rateOtherCurrencySell;
-                        double dollar = amountEnter * (mRateUsdSell/rateOtherCurrencySell);
+                        double dollar = amountEnter * (mRateUsdSell / rateOtherCurrencySell);
                         double roundAlpha = round(alpha, 2);
                         double roundDollar = round(dollar, 2);
 
@@ -248,9 +244,9 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                         }
 
                         double alpha = amountEnter / mRateUsdSell;
-                        double otherCurrency = amountEnter * (rateOtherCurrencySell/mRateUsdSell);
+                        double otherCurrency = amountEnter * (rateOtherCurrencySell / mRateUsdSell);
                         double roundAlpha = round(alpha, 2);
-                        double roundOtherCurrency=round(otherCurrency,2);
+                        double roundOtherCurrency = round(otherCurrency, 2);
 
                         mEditTextWalletAmount.setText(String.valueOf(roundAlpha));
                         mEditTextOtherCurrency.setText(String.valueOf(roundOtherCurrency));
@@ -269,10 +265,10 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                 mPosition = position;
 
                 if (!mEditTextOtherCurrency.getText().toString().matches("")) {
-                    double alpha=Double.parseDouble(mEditTextOtherCurrency.getText().toString())/rateSell;
-                    double dollar=Double.parseDouble(mEditTextOtherCurrency.getText().toString())*(mRateUsdSell/rateSell);
+                    double alpha = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) / rateSell;
+                    double dollar = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) * (mRateUsdSell / rateSell);
                     double roundAlpha = round(alpha, 2);
-                    double roundDollar=round(dollar,2);
+                    double roundDollar = round(dollar, 2);
                     mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
                     mEditTextWalletAmount.setText(String.valueOf(roundAlpha));
                 }
@@ -282,6 +278,17 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+        });
+
+        mTextViewUseMinimum.setOnClickListener(v -> {
+
+            mEditTextWalletAmount.setText("1");
+        });
+
+        mTextViewUseMaximum.setOnClickListener(v -> {
+
+            mEditTextWalletAmount.setText("2500");
+
         });
 
     }
