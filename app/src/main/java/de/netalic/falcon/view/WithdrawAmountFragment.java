@@ -121,6 +121,10 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
 
                 if (mEditTextWalletAmount.isFocused()) {
+
+                    if (s.toString().length()==1 && s.toString().equals(".")){
+                        s.clear();
+                    }
                     if (s.toString().equals("")) {
                         mEditTextBaseCurrency.setText("");
                         mEditTextOtherCurrency.setText("");
@@ -171,6 +175,10 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
 
                 if (mEditTextOtherCurrency.isFocused()) {
+
+                    if (s.toString().length()==1 && s.toString().equals(".")){
+                        s.clear();
+                    }
                     if (s.toString().equals("")) {
                         mEditTextBaseCurrency.setText("");
                         mEditTextWalletAmount.setText("");
@@ -215,6 +223,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+
             }
 
             @Override
@@ -222,6 +231,11 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
 
                 if (mEditTextBaseCurrency.isFocused()) {
+
+                    if (s.toString().length()==1 && s.toString().equals(".")){
+                        s.clear();
+                    }
+
                     if (s.toString().equals("")) {
                         mEditTextOtherCurrency.setText("");
                         mEditTextWalletAmount.setText("");

@@ -185,6 +185,10 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
 
                 if (mEditTextAmountWallet.isFocused()) {
+
+                    if (s.toString().length()==1 && s.toString().equals(".")){
+                        s.clear();
+                    }
                     if (s.toString().equals("")) {
                         mEditTextAmountBase.setText("");
 
@@ -220,6 +224,10 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
 
                 if (mEditTextAmountBase.isFocused()) {
+
+                    if (s.toString().length()==1 && s.toString().equals(".")){
+                        s.clear();
+                    }
                     if (s.toString().equals("")) {
                         mEditTextAmountWallet.setText("");
                     } else {
