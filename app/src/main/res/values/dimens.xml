@@ -37,10 +37,14 @@
     <dimen name="pathwidth_authenticationdefinition_pattern">2dp</dimen>
     <dimen name="marginend_authentication_textinputlayout">30dp</dimen>
     <dimen name="marginstart_authentication_textinputlayout">30dp</dimen>
+
     <dimen name="margintop_authenticationdefinitionpasswordtab_entercode">20dp</dimen>
     <dimen name="margintop_authenticationdefinitionpasswordtab_confirmcode">20dp</dimen>
     <dimen name="textsize_authenticationdefinitionpasswordtab_entercode">13sp</dimen>
     <dimen name="textsize_authenticationdefinitionpasswordtab_confirmcode">13sp</dimen>
+    <dimen name="margintop_authenticationdefinitionpasswordtab_imageviewpasswordchecker">6dp</dimen>
+    <dimen name="paddingstart_authenticationdefinitionpasswordtab_textviewpasswordchecker">5dp</dimen>
+
     <dimen name="dotnormalsize_authenticationdefinitionpatterntab_patternlockview">20dp</dimen>
     <dimen name="margintop_authenticationdefinition_segmentedgroup">38dp</dimen>
     <dimen name="borderwidth_authenticationdefinition_segmentedgroup">2dp</dimen>
