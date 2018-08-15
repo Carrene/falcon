@@ -11,6 +11,7 @@
 
     <color name="colorBlack35">#60000000</color>
     <color name="colorBlack16">#29000000</color>
+    <color name="colorPrimaryDark5">#0D1b1b1b</color>
     <color name="colorGreen">#009688</color>
     <color name="colorRed">#B92D00</color>
 
