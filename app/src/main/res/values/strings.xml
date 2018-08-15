@@ -166,4 +166,6 @@
     <string name="qrcodefailed_trywithdrawbutton">TRY WITHDRAW</string>
     <string name="qrcodefailed_dashboardbutton">DASHBOARD</string>
 
+    <string name="transactionhistory_toolbar">Transaction History</string>
+
 </resources>
