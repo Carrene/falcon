@@ -15,7 +15,7 @@ public class Deposit implements Parcelable {
     @SerializedName("id")
     private int mId;
 
-    @SerializedName("rate")
+    @SerializedName("buyRate")
     private double mRate;
 
     @SerializedName("paidAmount")
@@ -56,6 +56,9 @@ public class Deposit implements Parcelable {
 
     @SerializedName("walletId")
     private int mWalletId;
+
+    @SerializedName("transactionId")
+    private int mTransactionId;
 
     public int getId() {
 
@@ -117,6 +120,15 @@ public class Deposit implements Parcelable {
         return mPaymentGatewayName;
     }
 
+
+    public int getTransactionId() {
+        return mTransactionId;
+    }
+
+    public void setTransactionId(int transactionId) {
+        this.mTransactionId = transactionId;
+    }
+
     public String getModifiedAt() {
 
         try {
@@ -159,6 +171,7 @@ public class Deposit implements Parcelable {
         dest.writeInt(mId);
         dest.writeString(mRetrievalReferenceNumber);
         dest.writeString(mModifiedAt);
+        dest.writeInt(mTransactionId);
 
     }
 
@@ -173,6 +186,7 @@ public class Deposit implements Parcelable {
         mId = in.readInt();
         mRetrievalReferenceNumber = in.readString();
         mModifiedAt = in.readString();
+        mTransactionId=in.readInt();
     }
 
     public static final Creator<Deposit> CREATOR = new Creator<Deposit>() {
