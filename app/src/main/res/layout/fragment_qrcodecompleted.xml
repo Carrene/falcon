@@ -10,11 +10,11 @@
         android:id="@+id/linearlayout_qrcodecompleted_mainview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="33dp"
-        android:background="@drawable/chargecompleted_border"
         android:layout_centerHorizontal="true"
+        android:layout_marginEnd="33dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/chargecompleted_border"
         android:orientation="vertical"
         >
 
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="36dp"
-            android:src="@drawable/chargecompletedqrcodecompleted_success" />
+            android:src="@drawable/chargecompletedqrcodecompleted_success"/>
 
         <TextView
             android:id="@+id/textview_qrcodecompleted_success"
@@ -34,7 +34,7 @@
             android:gravity="center"
             android:text="@string/qrcodecompleted_success"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/textview_qrcodecompleted_scanyourqrcode"
@@ -44,7 +44,16 @@
             android:gravity="center"
             android:text="@string/qrcodecompleted_scanyourqrcode"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:id="@+id/imageView_withdrawqrcompleted_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/margintop_qrcodecompleted_imageqr"
+            />
 
     </LinearLayout>
 
@@ -60,6 +69,6 @@
         android:background="@color/colorSecondary"
         android:text="@string/chargecompleted_dashboard"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
 </RelativeLayout>

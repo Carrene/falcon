@@ -11,17 +11,12 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class QrCodeUtil {
 
-    public static Bitmap generateQrCode(String text, int width, int height) {
+    public static Bitmap generateQrCode(String text, int width, int height) throws WriterException {
 
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-        try {
-            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-            return bitmap;
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-        return null;
+        BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
+        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+        Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+        return bitmap;
     }
 }

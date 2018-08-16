@@ -1,5 +1,7 @@
 package de.netalic.falcon.view;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +17,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.zxing.WriterException;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -23,6 +27,7 @@ import de.netalic.falcon.adapter.WithdrawAmountSpinnerAdapter;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawAmountContract;
+import de.netalic.falcon.util.QrCodeUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -61,7 +66,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         initUiComponent();
         getRateList();
         initListener();
-        mDecimalFormat=new DecimalFormat("0.00##");
+        mDecimalFormat = new DecimalFormat("0.00##");
 
     }
 
@@ -125,7 +130,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
                 if (mEditTextWalletAmount.isFocused()) {
 
-                    if (s.toString().length()==1 && s.toString().equals(".")){
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
                         s.clear();
                     }
                     if (s.toString().equals("")) {
@@ -179,7 +184,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
                 if (mEditTextOtherCurrency.isFocused()) {
 
-                    if (s.toString().length()==1 && s.toString().equals(".")){
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
                         s.clear();
                     }
                     if (s.toString().equals("")) {
@@ -235,7 +240,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
                 if (mEditTextBaseCurrency.isFocused()) {
 
-                    if (s.toString().length()==1 && s.toString().equals(".")){
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
                         s.clear();
                     }
 
@@ -285,7 +290,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                     double alpha = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) / rateSell;
                     double dollar = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) * (mRateUsdSell / rateSell);
                     String roundAlpha = mDecimalFormat.format(alpha);
-                    String roundDollar=mDecimalFormat.format(dollar);
+                    String roundDollar = mDecimalFormat.format(dollar);
                     mEditTextBaseCurrency.setText(roundDollar);
                     mEditTextWalletAmount.setText(roundAlpha);
                 }
@@ -308,6 +313,19 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
         });
 
+        mbuttonNextWithdraw.setOnClickListener(v -> {
+
+            try {
+                Bitmap bitmap = QrCodeUtil.generateQrCode("This is sample", 300, 300);
+                Intent intent = new Intent(getContext(), WithdrawQrCompletedActivity.class);
+                intent.putExtra("qr", bitmap);
+                startActivity(intent);
+            } catch (WriterException e) {
+                Intent intent = new Intent(getContext(), WithdrawQrFailedActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void getRateList() {
@@ -323,7 +341,6 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mWithdrawAmountSpinnerAdapter = new WithdrawAmountSpinnerAdapter(getContext(), mRateList);
         mSpinnerCurrencyCode.setAdapter(mWithdrawAmountSpinnerAdapter);
     }
-
 
 
 }

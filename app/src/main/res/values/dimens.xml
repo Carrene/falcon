@@ -311,4 +311,6 @@
     <dimen name="margintop_rowtransactionhistory_view">20dp</dimen>
     <dimen name="height_rowtransactionhistory_view">1dp</dimen>
 
+    <dimen name="margintop_qrcodecompleted_imageqr">30dp</dimen>
+
 </resources>

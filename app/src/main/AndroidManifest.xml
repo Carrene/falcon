@@ -85,8 +85,8 @@
             android:name=".view.WithdrawAmountActivity"
             android:parentActivityName=".view.WithdrawActivity"
             />
-        <activity android:name=".view.QrCodeCompletedActivity"/>
-        <activity android:name=".view.QrCodeFailedActivity"/>
+        <activity android:name=".view.WithdrawQrCompletedActivity"/>
+        <activity android:name=".view.WithdrawQrFailedActivity"/>
         <activity android:name=".view.TransactionHistoryActivity"/>
     </application>
 

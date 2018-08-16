@@ -1,7 +1,9 @@
 package de.netalic.falcon.view;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import java.io.File;
 
@@ -26,7 +29,7 @@ import de.netalic.falcon.util.SnackbarUtil;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 
-public class QrCodeCompletedFragment extends Fragment implements QrCodeCompletedContract.View {
+public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompletedContract.View {
 
 
     private QrCodeCompletedContract.Presenter mQrCodeCompletedPresenter;
@@ -37,27 +40,33 @@ public class QrCodeCompletedFragment extends Fragment implements QrCodeCompleted
     private static final int IMAGE_QUALITY = 100;
     private static final int REQUEST_PERMISSIONS = 120;
     private Button mButtonNavigationToDashboard;
+    private Bitmap mBitmapQrCode;
+    private ImageView mImageViewQr;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot=inflater.inflate(R.layout.fragment_qrcodecompleted,null);
+        mRoot = inflater.inflate(R.layout.fragment_qrcodecompleted, null);
         setHasOptionsMenu(true);
+        mBitmapQrCode = getArguments().getParcelable("qr");
         return mRoot;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
         requestPermission();
         initUiComponent();
+        setImageQr();
+        initListener();
     }
 
     @Override
     public void setPresenter(QrCodeCompletedContract.Presenter presenter) {
 
-        mQrCodeCompletedPresenter=checkNotNull(presenter);
+        mQrCodeCompletedPresenter = checkNotNull(presenter);
     }
 
     @Override
@@ -70,33 +79,38 @@ public class QrCodeCompletedFragment extends Fragment implements QrCodeCompleted
 
     }
 
-    public static QrCodeCompletedFragment newInstance(){
+    public static WithDrawQrCompletedFragment newInstance(Bitmap bitmap) {
 
-
-        return new QrCodeCompletedFragment();
+        WithDrawQrCompletedFragment withDrawQrCompletedFragment = new WithDrawQrCompletedFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("qr", bitmap);
+        withDrawQrCompletedFragment.setArguments(bundle);
+        return withDrawQrCompletedFragment;
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_qrcodecompleted_toolbar,menu);
+
+        inflater.inflate(R.menu.menu_qrcodecompleted_toolbar, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
 
-            case R.id.item_qrcodecompleted_download:{
+        switch (item.getItemId()) {
 
-                ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView),IMAGE_QUALITY,ALPHA_PATH,CHARGE_PATH);
-                SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.qrcodecompleted_imagesaved),getContext());
+            case R.id.item_qrcodecompleted_download: {
+
+                ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
                 break;
 
             }
 
-            case R.id.item_qrcodecompleted_share:{
+            case R.id.item_qrcodecompleted_share: {
 
-                File file=ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView),IMAGE_QUALITY,ALPHA_PATH,CHARGE_PATH);
-                ScreenshotUtil.shareScreenshot(file,getContext());
+                File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+                ScreenshotUtil.shareScreenshot(file, getContext());
                 break;
             }
 
@@ -130,10 +144,26 @@ public class QrCodeCompletedFragment extends Fragment implements QrCodeCompleted
     }
 
 
+    private void initUiComponent() {
 
-    private void initUiComponent(){
+        mScreenshotView = mRoot.findViewById(R.id.linearlayout_qrcodecompleted_mainview);
+        mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_qrcodecompleted_dashborad);
+        mImageViewQr = mRoot.findViewById(R.id.imageView_withdrawqrcompleted_qr);
+    }
 
-        mScreenshotView=mRoot.findViewById(R.id.linearlayout_qrcodecompleted_mainview);
-        mButtonNavigationToDashboard=mRoot.findViewById(R.id.button_qrcodecompleted_dashborad);
+    public void setImageQr() {
+
+        mImageViewQr.setImageBitmap(mBitmapQrCode);
+    }
+
+    private void initListener() {
+
+        mButtonNavigationToDashboard.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getContext(), DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
+
     }
 }
