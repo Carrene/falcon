@@ -31,14 +31,14 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     private TextView mTextViewCapitalLetter;
     private TextView mTextViewDigit;
     private TextView mTextViewSpecialCharacter;
-    private boolean mIsSelected = false;
     private View mPasswordCheckerView;
     private TextInputLayout mTextInputLayoutPassword;
     private ImageView mImageViewLength;
     private ImageView mImageViewCapital;
     private ImageView mImageViewDigit;
     private ImageView mImageViewSpecial;
-
+    private ViewTooltip mViewTooltip;
+    private ViewTooltip.TooltipView mTooltipView;
 
     private NavigateToDashboardCallback mNavigateToDashboardCallback;
 
@@ -99,6 +99,16 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         mImageViewDigit = mPasswordCheckerView.findViewById(R.id.imageview_authenticationdefinitionpassword_digit);
         mImageViewLength = mPasswordCheckerView.findViewById(R.id.imageview_authenticationdefinitionpassword_length);
         mImageViewSpecial = mPasswordCheckerView.findViewById(R.id.imageview_authenticationdefinitionpassword_special);
+
+        mViewTooltip = ViewTooltip
+                .on(this, mTextInputLayoutPassword)
+                .autoHide(false, 10000)
+                .corner(20)
+                .position(ViewTooltip.Position.BOTTOM)
+                .customView(mPasswordCheckerView)
+                .color(ContextCompat.getColor(getContext(), R.color.primary))
+                .textColor(R.color.white)
+                .clickToHide(true);
     }
 
     public void initListener() {
@@ -115,11 +125,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (mIsSelected == false) {
-
-                    showPasswordChecker();
-                }
-
                 if (mEditTextPassCode.getText().toString().matches("")) {
                     mEditTextConfirmCode.setEnabled(false);
                     mEditTextConfirmCode.setText("");
@@ -131,8 +136,13 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-
                 String password = s.toString();
+
+                if (password.length() > 0 && mTooltipView == null) {
+                    mTooltipView = mViewTooltip.show();
+                }
+
+
                 int i = 0;
                 if (CustomValidator.hasCapitalLetter(password)) {
 
@@ -214,6 +224,11 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
                 String password = mEditTextPassCode.getText().toString();
+
+                if (s.toString().length() > 0) {
+                    mTooltipView = null;
+                    mViewTooltip.close();
+                }
                 if (s.toString().equals(password) && mEditTextConfirmCode.isEnabled()) {
 
                     mTextInputLayoutConfirmCode.setError(null);
@@ -264,27 +279,13 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         }
     }
 
-    public void showPasswordChecker() {
+    @Override
+    public void onPause() {
 
-        mIsSelected = true;
-
-        ViewTooltip
-                .on(this, mTextInputLayoutPassword)
-                .autoHide(false, 10000)
-                .corner(20)
-                .position(ViewTooltip.Position.BOTTOM)
-                .customView(mPasswordCheckerView)
-                .color(R.color.colorPrimary)
-                .textColor(R.color.white)
-                .clickToHide(true)
-                .onHide(view -> {
-                    ((ViewGroup) mPasswordCheckerView.getParent()).removeView(mPasswordCheckerView);
-                    mIsSelected = false;
-                })
-                .show();
-
+        super.onPause();
+        mViewTooltip.close();
+        mTooltipView = null;
     }
-
 }
 
 
