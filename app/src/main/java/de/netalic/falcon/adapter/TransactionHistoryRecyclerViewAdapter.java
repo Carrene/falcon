@@ -1,6 +1,7 @@
 package de.netalic.falcon.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,8 +42,16 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
         depositViewHolder.mTextViewWalletName.setText(deposit.getWalletName());
         depositViewHolder.mTextViewAmount.setText(String.valueOf(deposit.getPaidAmount()));
         depositViewHolder.mTextViewDateAndTime.setText(deposit.getCreatedAt());
-        depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+        if (deposit.getStatus().equals("succeed")) {
 
+            depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
+            depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+        }
+        if (deposit.getStatus().equals("failed")){
+
+            depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
+            depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+        }
 
     }
 

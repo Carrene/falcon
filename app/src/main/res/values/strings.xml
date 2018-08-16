@@ -167,5 +167,6 @@
     <string name="qrcodefailed_dashboardbutton">DASHBOARD</string>
 
     <string name="transactionhistory_toolbar">Transaction History</string>
+    <string name="rowtransactionhistory_walletname">Wallet Name :</string>
 
 </resources>

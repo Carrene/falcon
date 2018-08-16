@@ -17,6 +17,7 @@ import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.view.ChargeActivity;
 import de.netalic.falcon.view.DashboardActivity;
+import de.netalic.falcon.view.TransactionHistoryActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import nuesoft.helpdroid.util.Parser;
 
@@ -77,6 +78,14 @@ public class NavigationDrawerUtil {
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
+                            }
+                            case 5:{
+
+                                intent=new Intent(activity, TransactionHistoryActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                activity.startActivity(intent);
+                                break;
+
                             }
                         }
                     }
