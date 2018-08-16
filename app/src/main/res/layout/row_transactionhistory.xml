@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/margintop_rowtransactionhistory_linearlayout"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/textview_transactionhistory_walletnamelable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/rowtransactionhistory_walletname"
+            android:paddingStart="@dimen/marginstartend_rowtransactionhistory_alltextview"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
+            />
+        <TextView
+            android:id="@+id/textview_transactionhistory_walletname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textview_transactionhistory_walletnamelable"
+            android:text="Alpha"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
+            />
+
+        <TextView
+            android:id="@+id/textview_transactionhistory_amountsymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:layout_toLeftOf="@+id/textview_transactionhistory_amount"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
+            />
+        <TextView
+            android:id="@+id/textview_transactionhistory_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="150"
+            android:paddingEnd="@dimen/marginstartend_rowtransactionhistory_alltextview"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margintop_rowtransactionhistory_relativelayout"
+        >
+
+        <TextView
+            android:id="@+id/textview_transactionhistory_dateandtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="11/12/2018@11:12 AM"
+            android:paddingStart="@dimen/marginstartend_rowtransactionhistory_alltextview"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_rowtransactionhistory_secondlinetextview"
+            />
+
+        <TextView
+            android:id="@+id/textview_transactionhistory_transactionresult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="succeed"
+            android:paddingEnd="@dimen/marginstartend_rowtransactionhistory_alltextview"
+            android:textSize="@dimen/textsize_rowtransactionhistory_secondlinetextview"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_rowtransactionhistory_view"
+        android:background="@color/colorPrimaryDark5"
+        android:layout_marginStart="@dimen/marginstartend_rowtransactionhistory_alltextview"
+        android:layout_marginTop="@dimen/margintop_rowtransactionhistory_view"
+        />
+
+</LinearLayout>

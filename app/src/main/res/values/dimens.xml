@@ -299,4 +299,12 @@
     <dimen name="textsize_qrcodefailed_dashboardbutton">14sp</dimen>
     <dimen name="textsize_qrcodefailed_trywithdrawbutton">14sp</dimen>
 
+    <dimen name="margintop_rowtransactionhistory_linearlayout">20dp</dimen>
+    <dimen name="marginstartend_rowtransactionhistory_alltextview">18dp</dimen>
+    <dimen name="textsize_rowtransactionhistory_firstlinetextview">14sp</dimen>
+    <dimen name="textsize_rowtransactionhistory_secondlinetextview">11sp</dimen>
+    <dimen name="margintop_rowtransactionhistory_relativelayout">6dp</dimen>
+    <dimen name="margintop_rowtransactionhistory_view">20dp</dimen>
+    <dimen name="height_rowtransactionhistory_view">1dp</dimen>
+
 </resources>
