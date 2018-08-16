@@ -14,6 +14,7 @@ public class WithdrawAmountActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setupBackButton();
 
 
         if (getIntent().getExtras() == null) {
@@ -40,4 +41,5 @@ public class WithdrawAmountActivity extends BaseActivity {
     protected String getActionbarTitle() {
         return getString(R.string.withdrawamount_toolbar);
     }
+
 }

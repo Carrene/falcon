@@ -35,7 +35,9 @@
                 android:layout_marginEnd="@dimen/marginstartend_withdrawamount_walletamount"
                 android:layout_marginStart="@dimen/marginstartend_withdrawamount_walletamount"
                 android:hint="@string/withdrawamount_alpha"
-                android:textColor="@color/colorPrimaryLight" />
+                android:textColor="@color/colorPrimaryLight"
+                android:inputType="numberDecimal"
+                />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -58,9 +60,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/marginstartend_withdrawamount_basecurrency"
                 android:layout_marginStart="@dimen/marginstartend_withdrawamount_basecurrency"
-                android:focusable="false"
                 android:hint="@string/withdrawamount_usd"
-                android:textColor="@color/colorPrimaryLight" />
+                android:textColor="@color/colorPrimaryLight"
+                android:inputType="numberDecimal"
+                />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -97,9 +100,8 @@
                     style="@style/Base.V7.Widget.AppCompat.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_withdrawamount_edittextothercurrency"
-                    android:focusable="false"
                     android:textColor="@color/colorPrimaryLight"
-
+                    android:inputType="numberDecimal"
                     />
             </android.support.design.widget.TextInputLayout>
         </RelativeLayout>

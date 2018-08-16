@@ -15,9 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.common.collect.Collections2;
-
-import java.util.Collections;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -25,7 +23,6 @@ import de.netalic.falcon.adapter.WithdrawAmountSpinnerAdapter;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawAmountContract;
-import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -36,7 +33,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private EditText mEditTextWalletAmount;
     private EditText mEditTextBaseCurrency;
     private EditText mEditTextOtherCurrency;
-    private TextView mTextViewUsemaximm;
+    private TextView mTextViewUseMaximum;
     private TextView mTextViewUseMinimum;
     private Button mbuttonNextWithdraw;
     private static final String ARGUMENT_WALLET = "WALLET";
@@ -45,6 +42,8 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private Spinner mSpinnerCurrencyCode;
     private WithdrawAmountSpinnerAdapter mWithdrawAmountSpinnerAdapter;
     private int mPosition;
+    private double mRateUsdSell = -1;
+    private DecimalFormat mDecimalFormat;
 
     @Nullable
     @Override
@@ -62,6 +61,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         initUiComponent();
         getRateList();
         initListener();
+        mDecimalFormat=new DecimalFormat("0.00##");
 
     }
 
@@ -97,7 +97,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mEditTextWalletAmount = mRoot.findViewById(R.id.edittext_withdrawamount_walletamount);
         mEditTextBaseCurrency = mRoot.findViewById(R.id.edittext_withdrawamount_basecurrency);
         mEditTextOtherCurrency = mRoot.findViewById(R.id.edittext_withdrawamount_othercurrency);
-        mTextViewUsemaximm = mRoot.findViewById(R.id.textview_withdrawamount_usemaximum);
+        mTextViewUseMaximum = mRoot.findViewById(R.id.textview_withdrawamount_usemaximum);
         mTextViewUseMinimum = mRoot.findViewById(R.id.textview_withdraw_useminimum);
         mbuttonNextWithdraw = mRoot.findViewById(R.id.button_withdrawamount_nextwithdraw);
         mSpinnerCurrencyCode = mRoot.findViewById(R.id.spinner_withdrawamount_currency);
@@ -124,6 +124,10 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
 
                 if (mEditTextWalletAmount.isFocused()) {
+
+                    if (s.toString().length()==1 && s.toString().equals(".")){
+                        s.clear();
+                    }
                     if (s.toString().equals("")) {
                         mEditTextBaseCurrency.setText("");
                         mEditTextOtherCurrency.setText("");
@@ -147,14 +151,126 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
                         double otherCurrency = amountEnter * rateOtherCurrencySell;
                         double dollar = amountEnter * rateUsdSell;
-                        double roundOtherCurrency = round(otherCurrency, 2);
-                        double roundDollar = round(dollar, 2);
+                        String roundOtherCurrency = mDecimalFormat.format(otherCurrency);
+                        String roundDollar = mDecimalFormat.format(dollar);
 
                         mEditTextOtherCurrency.setText(String.valueOf(roundOtherCurrency));
                         mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
 
                     }
                 }
+            }
+        });
+
+        mEditTextOtherCurrency.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                if (mEditTextOtherCurrency.isFocused()) {
+
+                    if (s.toString().length()==1 && s.toString().equals(".")){
+                        s.clear();
+                    }
+                    if (s.toString().equals("")) {
+                        mEditTextBaseCurrency.setText("");
+                        mEditTextWalletAmount.setText("");
+
+                    } else {
+
+                        double amountEnter = Double.parseDouble(s.toString());
+                        double rateOtherCurrencySell = mRateList.get(mPosition).getSell();
+
+
+                        for (Rate rate : mRateList) {
+                            if (rate.getCurrencyCode().equals("USD")) {
+                                mRateUsdSell = rate.getSell();
+                            }
+
+                        }
+
+                        if (mRateUsdSell == -1) {
+                            throw new IllegalStateException();
+                        }
+
+                        double alpha = amountEnter / rateOtherCurrencySell;
+                        double dollar = amountEnter * (mRateUsdSell / rateOtherCurrencySell);
+                        String roundAlpha = mDecimalFormat.format(alpha);
+                        String roundDollar = mDecimalFormat.format(dollar);
+
+                        mEditTextWalletAmount.setText(roundAlpha);
+                        mEditTextBaseCurrency.setText(roundDollar);
+
+                    }
+                }
+
+            }
+        });
+
+        mEditTextBaseCurrency.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                if (mEditTextBaseCurrency.isFocused()) {
+
+                    if (s.toString().length()==1 && s.toString().equals(".")){
+                        s.clear();
+                    }
+
+                    if (s.toString().equals("")) {
+                        mEditTextOtherCurrency.setText("");
+                        mEditTextWalletAmount.setText("");
+
+                    } else {
+
+                        double amountEnter = Double.parseDouble(s.toString());
+                        double rateOtherCurrencySell = mRateList.get(mPosition).getSell();
+
+
+                        for (Rate rate : mRateList) {
+                            if (rate.getCurrencyCode().equals("USD")) {
+                                mRateUsdSell = rate.getSell();
+                            }
+
+                        }
+
+                        if (mRateUsdSell == -1) {
+                            throw new IllegalStateException();
+                        }
+
+                        double alpha = amountEnter / mRateUsdSell;
+                        double otherCurrency = amountEnter * (rateOtherCurrencySell / mRateUsdSell);
+                        String roundAlpha = mDecimalFormat.format(alpha);
+                        String roundOtherCurrency = mDecimalFormat.format(otherCurrency);
+
+                        mEditTextWalletAmount.setText(roundAlpha);
+                        mEditTextOtherCurrency.setText(roundOtherCurrency);
+
+                    }
+                }
+
             }
         });
 
@@ -165,10 +281,13 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                 double rateSell = mRateList.get(position).getSell();
                 mPosition = position;
 
-                if (!mEditTextWalletAmount.getText().toString().matches("")) {
-                    double selectedCurrency = Double.parseDouble(mEditTextWalletAmount.getText().toString()) * rateSell;
-                    double roundSelectedCurrency = round(selectedCurrency, 2);
-                    mEditTextOtherCurrency.setText(String.valueOf(roundSelectedCurrency));
+                if (!mEditTextOtherCurrency.getText().toString().matches("")) {
+                    double alpha = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) / rateSell;
+                    double dollar = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) * (mRateUsdSell / rateSell);
+                    String roundAlpha = mDecimalFormat.format(alpha);
+                    String roundDollar=mDecimalFormat.format(dollar);
+                    mEditTextBaseCurrency.setText(roundDollar);
+                    mEditTextWalletAmount.setText(roundAlpha);
                 }
             }
 
@@ -178,17 +297,17 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
             }
         });
 
-    }
+        mTextViewUseMinimum.setOnClickListener(v -> {
 
-    private double round(double value, int places) {
+            mEditTextWalletAmount.setText("1");
+        });
 
-        if (places < 0) {
-            throw new IllegalArgumentException();
-        }
-        long factor = (long) Math.pow(10, places);
-        value = value * factor;
-        long tmp = Math.round(value);
-        return (double) tmp / factor;
+        mTextViewUseMaximum.setOnClickListener(v -> {
+
+            mEditTextWalletAmount.setText("2500");
+
+        });
+
     }
 
     public void getRateList() {
@@ -204,5 +323,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mWithdrawAmountSpinnerAdapter = new WithdrawAmountSpinnerAdapter(getContext(), mRateList);
         mSpinnerCurrencyCode.setAdapter(mWithdrawAmountSpinnerAdapter);
     }
+
+
 
 }

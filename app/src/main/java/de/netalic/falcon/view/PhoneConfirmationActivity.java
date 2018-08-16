@@ -11,7 +11,7 @@ import de.netalic.falcon.model.User;
 import de.netalic.falcon.presenter.PhoneConfirmationPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
-public class PhoneConfirmationActivity extends BaseActivity {
+public class  PhoneConfirmationActivity extends BaseActivity {
 
     public static final String ARGUMENT_USER = "user";
 

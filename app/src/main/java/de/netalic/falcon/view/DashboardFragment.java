@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -39,6 +40,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private List<Wallet> mWalletList;
     private DashboardWalletSpinnerAdapter mDashboardWalletSpinnerAdapter;
     private ImageView mImageViewWithdraw;
+    private DecimalFormat mDecimalFormat;
 
 
     @Nullable
@@ -48,6 +50,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         setHasOptionsMenu(true);
         mRate = new Rate("USD");
+        mDecimalFormat = new DecimalFormat("0.00##");
         return mRoot;
     }
 
@@ -59,8 +62,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         getRate();
         getWalletList();
         initListener();
-
-
     }
 
     public static DashboardFragment newInstance() {
@@ -93,7 +94,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mTextViewRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
         mSpinnerWalletList = mRoot.findViewById(R.id.spinner_dashboard_spinner);
         mTextViewBalance = mRoot.findViewById(R.id.textview_dashboard_balance);
-        mImageViewWithdraw=mRoot.findViewById(R.id.imageview_dashboard_withdraw);
+        mImageViewWithdraw = mRoot.findViewById(R.id.imageview_dashboard_withdraw);
     }
 
     @Override
@@ -161,7 +162,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
-                double roundDollar = round(mWalletList.get(position).getBalance() * mRate.getSell(), 2);
+                String roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * mRate.getSell());
                 mTextViewRate.setText("" + roundDollar);
             }
 
@@ -174,18 +175,9 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewWithdraw.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getActivity(),WithdrawActivity.class);
+            Intent intent = new Intent(getActivity(), WithdrawActivity.class);
             startActivity(intent);
         });
     }
 
-    private double round(double value, int places) {
-        if (places < 0) {
-            throw new IllegalArgumentException();
-        }
-        long factor = (long) Math.pow(10, places);
-        value = value * factor;
-        long tmp = Math.round(value);
-        return (double) tmp / factor;
-    }
 }
