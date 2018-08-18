@@ -284,11 +284,10 @@
 
     <dimen name="margintop_qrcodefailed_linearlayout">32dp</dimen>
     <dimen name="marginstartend_qrcodefailed_linearlayout">33dp</dimen>
-    <dimen name="margintop_qrcodefailed_imageviewfailed">36dp</dimen>
     <dimen name="margintop_qrcodefailed_textvioewfailed">9dp</dimen>
-    <dimen name="textsize_qrcodefailed_textviewfailed">20sp</dimen>
-    <dimen name="margintop_qrcodefailed_describetextview">20dp</dimen>
-    <dimen name="marginbottom_qrcodefailed_describetextview">36dp</dimen>
+    <dimen name="textsize_qrcodefailed_textviewfailed">16sp</dimen>
+    <dimen name="margintop_qrcodefailed_describetextview">23dp</dimen>
+    <dimen name="marginbottom_qrcodefailed_describetextview">30dp</dimen>
     <dimen name="marginstartend_qrcodefailed_describetextview">25dp</dimen>
     <dimen name="textsize_qrcodefailed_describetextview">14sp</dimen>
     <dimen name="marginstartend_qrcodefailed_trywithdrawbutton">16dp</dimen>
@@ -297,6 +296,7 @@
     <dimen name="marginbottom_qrcodefailed_dashboardbutton">27dp</dimen>
     <dimen name="textsize_qrcodefailed_dashboardbutton">14sp</dimen>
     <dimen name="textsize_qrcodefailed_trywithdrawbutton">14sp</dimen>
+    <dimen name="height_withdrawqrfailed_header">40dp</dimen>
 
     <dimen name="margintop_rowtransactionhistory_linearlayout">20dp</dimen>
     <dimen name="marginstartend_rowtransactionhistory_alltextview">18dp</dimen>
