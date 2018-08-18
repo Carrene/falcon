@@ -306,6 +306,18 @@
     <dimen name="margintop_rowtransactionhistory_view">20dp</dimen>
     <dimen name="height_rowtransactionhistory_view">1dp</dimen>
 
-    <dimen name="margintop_qrcodecompleted_imageqr">30dp</dimen>
+    <dimen name="margintop_withdrawqrcompleted_imageqr">30dp</dimen>
+    <dimen name="marginstartend_withdrawqrcompleted_linearlayout">16dp</dimen>
+    <dimen name="margintop_withdrawqrcompleted_linearlayout">33dp</dimen>
+    <dimen name="height_withdrawqrcompleted_header">40dp</dimen>
+    <dimen name="textsize_withdrawqrcompleted_header">16dp</dimen>
+    <dimen name="widthheight_withdrawqrcompleted_imageqr">156dp</dimen>
+    <dimen name="textsize_withdrawqrcompleted_textviewscanqrcode">14sp</dimen>
+    <dimen name="margintop_withdrawqrcompleted_textviewscanqrcode">20dp</dimen>
+    <dimen name="marginbottom_withdrawqrcompleted_textviewscanqrcode">30dp</dimen>
+    <dimen name="marginstartend_withdrawqrcompleted_dashboardbutton">16dp</dimen>
+    <dimen name="marginbottom_withdrawqrcompleted_dashboardbutton">27dp</dimen>
+    <dimen name="textsize_withdrawqrcompleted_dashboardbutton">14sp</dimen>
+
 
 </resources>

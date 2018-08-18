@@ -47,7 +47,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_qrcodecompleted, null);
+        mRoot = inflater.inflate(R.layout.fragment_withdrawqrcompleted, null);
         setHasOptionsMenu(true);
         mBitmapQrCode = getArguments().getParcelable("qr");
         return mRoot;

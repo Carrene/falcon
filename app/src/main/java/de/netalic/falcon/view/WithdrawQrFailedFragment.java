@@ -25,7 +25,7 @@ public class WithdrawQrFailedFragment extends Fragment implements QrCodeFailedCo
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_qrcodefailed, null);
+        mRoot = inflater.inflate(R.layout.fragment_withdrawqrfailed, null);
         return mRoot;
     }
 
