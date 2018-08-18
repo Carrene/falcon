@@ -16,13 +16,6 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/chargefailedqrcodefailed_border"
         >
-        <ImageView
-            android:id="@+id/imageview_qrcodefailed_failed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margintop_qrcodefailed_imageviewfailed"
-            android:src="@drawable/chargefailedqrcodefailed_failed" />
 
         <TextView
             android:id="@+id/textview_qrcodefailed_failed"

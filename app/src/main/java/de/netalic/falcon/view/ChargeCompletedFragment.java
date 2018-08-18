@@ -134,7 +134,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
             Date baseDate = dateFormat.parse(mDeposit.getModifiedAt());
             DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-            DateFormat time = new SimpleDateFormat("hh:mm:ss");
+            DateFormat time = new SimpleDateFormat("h:mm a");
             mTextViewTransactionDate.setText(date.format(baseDate));
             mTextViewTransactionTime.setText(time.format(baseDate));
         } catch (ParseException e) {
