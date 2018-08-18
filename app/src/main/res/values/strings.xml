@@ -169,4 +169,7 @@
     <string name="transactionhistory_toolbar">Transaction History</string>
     <string name="rowtransactionhistory_walletname">Wallet Name :</string>
 
+    <string name="transactionhistoryrecyclerviewadapter_succeed">succeed</string>
+    <string name="transactionhistoryrecyclerviewadapter_failed">failed</string>
+
 </resources>

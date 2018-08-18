@@ -71,7 +71,6 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         initUiComponent();
         initListener();
         setPaymentInformation();
-        requestPermission();
     }
 
     @Override
@@ -169,6 +168,8 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     }
 
 
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
@@ -178,18 +179,20 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
-            case R.id.item_chargecompletedmenu_download:{
+            case R.id.item_chargecompletedmenu_download: {
 
+                requestPermission();
                 ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
                 SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargecompleted_imagesaved), getContext());
 
             }
 
-            case R.id.item_chargecompletedmenu_share:{
+            case R.id.item_chargecompletedmenu_share: {
 
-                File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+                requestPermission();
+                File file=new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH)));
                 ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
 
             }

@@ -49,8 +49,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_amountalphalable"
@@ -97,8 +96,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_relativelayout">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textview_chargeconfirmation_amountdollarlable"

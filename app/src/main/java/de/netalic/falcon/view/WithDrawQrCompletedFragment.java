@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -50,6 +51,8 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
         mRoot = inflater.inflate(R.layout.fragment_withdrawqrcompleted, null);
         setHasOptionsMenu(true);
         mBitmapQrCode = getArguments().getParcelable("qr");
+
+
         return mRoot;
     }
 
@@ -57,7 +60,6 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-        requestPermission();
         initUiComponent();
         setImageQr();
         initListener();
@@ -101,6 +103,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
 
             case R.id.item_qrcodecompleted_download: {
 
+                requestPermission();
                 ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
                 SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
                 break;
@@ -109,6 +112,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
 
             case R.id.item_qrcodecompleted_share: {
 
+                requestPermission();
                 File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
                 ScreenshotUtil.shareScreenshot(file, getContext());
                 break;
@@ -166,4 +170,6 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
         });
 
     }
+    
+
 }
