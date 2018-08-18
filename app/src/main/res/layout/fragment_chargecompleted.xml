@@ -64,7 +64,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/height_chargecompleted_view"
             android:layout_marginBottom="@dimen/margintopbottom_chargecompleted_view"
             android:layout_marginTop="@dimen/margintopbottom_chargecompleted_view"
             android:background="@color/colorPrimaryDark5" />

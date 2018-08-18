@@ -127,13 +127,13 @@
 
     <string name="chargefailed_failed">Charge Failed</string>
     <string name="chargefailed_failedtextview">Failed</string>
-    <string name="chargefailed_walletname">Wallet Name :</string>
-    <string name="chargefailed_walletamount">Charge Amount : </string>
-    <string name="chargefailed_baseamount">Paid Amount : </string>
-    <string name="chargefailed_paymentgateway">Payment Gateway :</string>
-    <string name="chargefailed_transactiondate">Transaction date :</string>
-    <string name="chargefailed_transactiontime">Transaction time :</string>
-    <string name="chargefailed_rrn">RRN :</string>
+    <string name="chargefailed_walletname">Wallet Name </string>
+    <string name="chargefailed_walletamount">Charge Amount </string>
+    <string name="chargefailed_baseamount">Paid Amount </string>
+    <string name="chargefailed_paymentgateway">Payment Gateway </string>
+    <string name="chargefailed_transactiondate">Transaction date </string>
+    <string name="chargefailed_transactiontime">Transaction time </string>
+    <string name="chargefailed_rrn">RRN </string>
     <string name="chargefailed_dashboard">Dashboard</string>
     <string name="chargefailed_imagesaved">Image Saved</string>
 

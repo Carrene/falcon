@@ -211,24 +211,18 @@
 
 
     <dimen name="width_chargefailed_linearlayout">294dp</dimen>
-    <dimen name="paddingbottom_chargefailed_linearlayout">28dp</dimen>
+    <dimen name="paddingbottom_chargefailed_linearlayout">15dp</dimen>
     <dimen name="margintop_chargefailed_linearlayout">28dp</dimen>
     <dimen name="margintop_chargefailed_failedimageview">30dp</dimen>
-    <dimen name="margintop_chargefailed_failedtextview">6dp</dimen>
     <dimen name="textsize_chargefailed_failedtextview">20sp</dimen>
-    <dimen name="margintop_chargefailed_walletnamelable">20dp</dimen>
+    <dimen name="margintop_chargefailed_walletnamelable">13dp</dimen>
     <dimen name="textsize_chargefailed_walletnamelable">14sp</dimen>
-    <dimen name="margintop_chargefailed_walletname">20dp</dimen>
-    <dimen name="paddingstart_chargefailed_walletname">140dp</dimen>
+    <dimen name="margintop_chargefailed_walletname">13dp</dimen>
     <dimen name="marginstart_chargefailed_relativelayout">40dp</dimen>
-    <dimen name="margintop_chargefailed_relativelayout">8dp</dimen>
     <dimen name="textsize_chargefailed_walletnolable">14sp</dimen>
     <dimen name="textsize_chargefailed_amountdollarlable">14sp</dimen>
-    <dimen name="paddingstart_chargefailed_amountalpha">5dp</dimen>
     <dimen name="textsize_chargefailed_paymentgatewaylable">14sp</dimen>
-    <dimen name="paddingstart_chargefailed_amountdollar">140dp</dimen>
     <dimen name="textsize_chargefailed_transactiondate">14sp</dimen>
-    <dimen name="paddingstart_chargefailed_transactiondate">140dp</dimen>
     <dimen name="marginbuttom_chargefailed_dashboard">27dp</dimen>
     <dimen name="marginstartend_chargefailed_dashboard">16dp</dimen>
     <dimen name="textsize_chargefailed_dashboardbutton">14sp</dimen>
@@ -238,8 +232,10 @@
     <dimen name="widthheight_chargefailed_sharebutton">35dp</dimen>
     <dimen name="widthheight_chargefailed_downloadbutton">35dp</dimen>
     <dimen name="marginstartend_chargefailed_downloadsharebutton">100dp</dimen>
-    <dimen name="paddingstart_chargefailed_relativelayout">27dp</dimen>
     <dimen name="paddingstart_chargefailed_linearlayout">140dp</dimen>
+    <dimen name="marginstartend_chargefailed_relativelayout">15dp</dimen>
+    <dimen name="margintopbottom_chargefailed_view">15dp</dimen>
+    <dimen name="height_chargefailed_view">1dp</dimen>
 
     <dimen name="margintop_withdraw_withdrawmethod">23dp</dimen>
     <dimen name="textsize_withdraw_withdrawmethod">16sp</dimen>
