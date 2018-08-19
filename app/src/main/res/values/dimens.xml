@@ -55,8 +55,7 @@
     
     
     
-    
-    
+
     <dimen name="margintop_recoveryemail_header">120dp</dimen>
     <dimen name="textsize_recoveryemail_header">16sp</dimen>
     <dimen name="margintop_recoveryemail_textinputlayout">155dp</dimen>
@@ -71,14 +70,14 @@
     <dimen name="width_singin_button">144dp</dimen>
     <dimen name="height_singin_button">43dp</dimen>
     <dimen name="margintop_signin_button">105dp</dimen>
+
+    <dimen name="height_dashboard_firstpart">230dp</dimen>
     <dimen name="width_dashboard_dollaricon">20dp</dimen>
     <dimen name="height_dashboard_dollaricon">20dp</dimen>
     <dimen name="width_dashboard_spinner">240dp</dimen>
     <dimen name="height_dashboard_spinner">40dp</dimen>
     <dimen name="margintop_dashboard_spinner">20dp</dimen>
     <dimen name="marginend_dashboard_spinner">98dp</dimen>
-    <dimen name="margintop_Dashboard_myblance">82dp</dimen>
-    <dimen name="textsize_dashboard_myblance">30sp</dimen>
     <dimen name="textsize_dashboard_amountalpha">55sp</dimen>
     <dimen name="height_dashboard_amountalpha">81dp</dimen>
     <dimen name="height_dashboard_border">2dp</dimen>
@@ -89,11 +88,9 @@
     <dimen name="widthheight_dashboard_withdrawimageview">136dp</dimen>
     <dimen name="widthheight_dahboard_purchaseimageview">136dp</dimen>
     <dimen name="marginstartend_dashboard_purchasewithdrawimageview">30dp</dimen>
-    <dimen name="paddingtop_dashboard_bottomlinearlayout">50dp</dimen>
     <dimen name="marginbottom_dashboard_purcahsewithdrawtextview">59dp</dimen>
     <dimen name="textsize_dashboard_purchasewithdrawtextsize">18sp</dimen>
-    <dimen name="marginbottom_dashboard_linearlayoutalphasymbol">20dp</dimen>
-    <dimen name="margintop_dashboard_linearlayoutalphasymbol">20dp</dimen>
+    <dimen name="margintop_dashboard_linearlayoutalphasymbol">40dp</dimen>
     <dimen name="height_dashboard_alphaicon">35dp</dimen>
     <dimen name="width_dashboard_alphaicon">40dp</dimen>
     <dimen name="paddingend_dashboard_alphaicon">5dp</dimen>
