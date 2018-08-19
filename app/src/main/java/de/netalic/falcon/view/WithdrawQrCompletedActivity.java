@@ -3,12 +3,9 @@ package de.netalic.falcon.view;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
-import com.google.zxing.WriterException;
-
 import de.netalic.falcon.R;
 import de.netalic.falcon.presenter.QrCodeCompletedPresenter;
 import de.netalic.falcon.util.ActivityUtil;
-import de.netalic.falcon.util.QrCodeUtil;
 
 public class WithdrawQrCompletedActivity extends BaseActivity {
 

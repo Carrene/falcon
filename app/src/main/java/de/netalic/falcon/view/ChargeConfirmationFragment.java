@@ -47,7 +47,6 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
             throw new RuntimeException("Charge response should not be null!");
         }
         mDeposit = getArguments().getParcelable(ARGUMENT_CHARGE_START);
-
         return mRoot;
     }
 
@@ -141,7 +140,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 //TODO(Milad): Payment is cancelled
             } else {
-                // an error occurred, checked the returned exception
+
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
             }
         }

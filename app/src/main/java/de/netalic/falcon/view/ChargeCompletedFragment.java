@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -122,7 +121,6 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
     }
 
-
     public void setPaymentInformation() {
 
         mTextViewWalletName.setText(mDeposit.getWalletName());
@@ -142,14 +140,32 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mTextViewRrn.setText(mDeposit.getRetrievalReferenceNumber());
     }
 
+    private void requestPermissionShare() {
 
-    private void requestPermission() {
+        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (regEX != PackageManager.PERMISSION_GRANTED) {
+
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        } else {
+
+            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH)));
+            ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
+
+        }
+    }
+
+    private void requestPermissionSave() {
 
 
         int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (regEX != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        } else {
+
+            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargecompleted_imagesaved), getContext());
+
         }
     }
 
@@ -168,8 +184,6 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     }
 
 
-
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
@@ -183,18 +197,15 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
             case R.id.item_chargecompletedmenu_download: {
 
-                requestPermission();
-                ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargecompleted_imagesaved), getContext());
+                requestPermissionSave();
+                break;
 
             }
 
             case R.id.item_chargecompletedmenu_share: {
 
-                requestPermission();
-                File file=new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH)));
-                ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
-
+                requestPermissionShare();
+                break;
             }
 
         }

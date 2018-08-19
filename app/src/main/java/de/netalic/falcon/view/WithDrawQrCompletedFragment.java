@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,7 +36,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
     private View mRoot;
     private View mScreenshotView;
     private static final String ALPHA_PATH = "/Alpha";
-    private static final String CHARGE_PATH = "/Charge";
+    private static final String CHARGE_PATH = "/Withdraw";
     private static final int IMAGE_QUALITY = 100;
     private static final int REQUEST_PERMISSIONS = 120;
     private Button mButtonNavigationToDashboard;
@@ -51,8 +50,6 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
         mRoot = inflater.inflate(R.layout.fragment_withdrawqrcompleted, null);
         setHasOptionsMenu(true);
         mBitmapQrCode = getArguments().getParcelable("qr");
-
-
         return mRoot;
     }
 
@@ -93,7 +90,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-        inflater.inflate(R.menu.menu_qrcodecompleted_toolbar, menu);
+        inflater.inflate(R.menu.menu_withdrawqrcompletedqrfailed_toolbar, menu);
     }
 
     @Override
@@ -101,20 +98,18 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
 
         switch (item.getItemId()) {
 
-            case R.id.item_qrcodecompleted_download: {
+            case R.id.item_withdrawqrcompletedqrfailed_download: {
 
-                requestPermission();
-                ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
-                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
+                requestPermissionSave();
+
+
                 break;
 
             }
 
-            case R.id.item_qrcodecompleted_share: {
+            case R.id.item_withdrawqrcompletedqrfailed_share: {
 
-                requestPermission();
-                File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
-                ScreenshotUtil.shareScreenshot(file, getContext());
+                requestPermissionShare();
                 break;
             }
 
@@ -123,21 +118,45 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
     }
 
 
-    private void requestPermission() {
+    private void requestPermissionShare() {
 
 
         int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (regEX != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        } else {
+
+            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            ScreenshotUtil.shareScreenshot(file, getContext());
+
+
         }
     }
+
+    private void requestPermissionSave() {
+
+
+        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (regEX != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        } else {
+
+            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
+
+
+        }
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
 
             SnackbarUtil.showSnackbar(mRoot, "Permission Ok", getContext());
         } else {
@@ -170,6 +189,6 @@ public class WithDrawQrCompletedFragment extends Fragment implements QrCodeCompl
         });
 
     }
-    
+
 
 }

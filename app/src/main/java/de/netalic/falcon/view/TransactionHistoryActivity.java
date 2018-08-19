@@ -3,7 +3,6 @@ package de.netalic.falcon.view;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.presenter.TransactionHistoryContract;
 import de.netalic.falcon.presenter.TransactionHistoryPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
