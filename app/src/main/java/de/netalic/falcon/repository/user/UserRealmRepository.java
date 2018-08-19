@@ -3,6 +3,7 @@ package de.netalic.falcon.repository.user;
 import java.util.List;
 
 import de.netalic.falcon.MyApp;
+import de.netalic.falcon.model.Authentication;
 import de.netalic.falcon.model.User;
 import de.netalic.falcon.repository.Deal;
 import io.realm.Realm;
@@ -46,8 +47,17 @@ public class UserRealmRepository implements IUserRepository {
     @Override
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
-        callRepository.onDone(new Deal<>(null, null, new UnsupportedOperationException()));
-
+        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
+        User user = mRealm.where(User.class).findFirst();
+        Deal deal;
+        if (user == null) {
+            deal = new Deal<>(null, null, null);
+        } else {
+            User returnUser = mRealm.copyFromRealm(user);
+            deal = new Deal<>(returnUser, null, null);
+        }
+        mRealm.close();
+        callRepository.onDone(deal);
     }
 
     @Override

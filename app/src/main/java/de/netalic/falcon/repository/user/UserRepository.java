@@ -68,7 +68,7 @@ public class UserRepository implements IUserRepository {
     @Override
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
-        mUserRestRepository.get(identifier, callRepository);
+        mUserRealmRepository.get(identifier, callRepository);
 
     }
 

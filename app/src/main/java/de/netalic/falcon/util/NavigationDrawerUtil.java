@@ -79,9 +79,9 @@ public class NavigationDrawerUtil {
                                 activity.startActivity(intent);
                                 break;
                             }
-                            case 5:{
+                            case 5: {
 
-                                intent=new Intent(activity, TransactionHistoryActivity.class);
+                                intent = new Intent(activity, TransactionHistoryActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;

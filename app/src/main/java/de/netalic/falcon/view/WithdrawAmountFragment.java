@@ -17,17 +17,32 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.common.base.Joiner;
 import com.google.zxing.WriterException;
+import com.paypal.android.sdk.onetouch.core.base.URLEncoderHelper;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
+import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.adapter.WithdrawAmountSpinnerAdapter;
 import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.model.User;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.presenter.WithdrawAmountContract;
+import de.netalic.falcon.repository.Deal;
+import de.netalic.falcon.repository.IRepository;
+import de.netalic.falcon.repository.user.UserRepository;
 import de.netalic.falcon.util.QrCodeUtil;
+import nuesoft.helpdroid.crypto.CryptoUtil;
+import nuesoft.helpdroid.crypto.HmacType;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -315,17 +330,21 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
         mbuttonNextWithdraw.setOnClickListener(v -> {
 
-            try {
-                Bitmap bitmap = QrCodeUtil.generateQrCode("This is sample", 300, 300);
-                Intent intent = new Intent(getContext(), WithdrawQrCompletedActivity.class);
-                intent.putExtra("qr", bitmap);
-                startActivity(intent);
-            } catch (WriterException e) {
-                Intent intent = new Intent(getContext(), WithdrawQrFailedActivity.class);
-                startActivity(intent);
-            }
-        });
+            Map<String, Object> map = new HashMap<>();
+            int walletId = mWallet.getId();
+            String amount = mEditTextWalletAmount.getText().toString();
+            String wantedCurrencyCode = mRateList.get(mPosition).getCurrencyCode();
+            String nonce = android.util.Base64.encodeToString(CryptoUtil.getSecureRandom(32), android.util.Base64.DEFAULT);
+            long time = System.currentTimeMillis();
 
+            map.put("walletId", walletId);
+            map.put("amount", amount);
+            map.put("wantedCurrencyCode", wantedCurrencyCode);
+            map.put("nonce", nonce);
+            map.put("time", time);
+            mPresenter.generateQrCode(map);
+
+        });
     }
 
     public void getRateList() {
@@ -342,5 +361,29 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mSpinnerCurrencyCode.setAdapter(mWithdrawAmountSpinnerAdapter);
     }
 
+    @Override
+    public void setQrCode(String qrCodeContent) {
 
+        Bitmap bitmap = null;
+        try {
+            bitmap = QrCodeUtil.generateQrCode(qrCodeContent, 300, 300);
+            navigateToWithdrawQrCompletedActivity(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+            navigateToWithdrawQrFailedActivity();
+        }
+    }
+
+    private void navigateToWithdrawQrCompletedActivity(Bitmap bitmap) {
+
+        Intent intent = new Intent(getContext(), WithdrawQrCompletedActivity.class);
+        intent.putExtra("qr", bitmap);
+        startActivity(intent);
+    }
+
+    private void navigateToWithdrawQrFailedActivity() {
+
+        Intent intent = new Intent(getContext(), WithdrawQrFailedActivity.class);
+        startActivity(intent);
+    }
 }
