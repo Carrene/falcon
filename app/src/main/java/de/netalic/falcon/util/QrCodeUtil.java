@@ -16,7 +16,6 @@ public class QrCodeUtil {
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-        Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-        return bitmap;
+        return barcodeEncoder.createBitmap(bitMatrix);
     }
 }

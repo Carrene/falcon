@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import java.util.concurrent.CountDownLatch;
 
 import de.netalic.falcon.model.Currency;
-import de.netalic.falcon.model.UsdCurrency;
 import de.netalic.falcon.repository.exchangeRate.ExchangeRateRepository;
 
 @RunWith(AndroidJUnit4.class)
@@ -22,7 +21,7 @@ public class RateRepositoryTest {
     public void testGetExchangeRate_200response() {
 
         mCountDownLatch = new CountDownLatch(1);
-        Currency currency = new UsdCurrency();
+        Currency currency = new Currency("usd");
         ExchangeRateRepository.getInstance().get(currency.getCode(), deal -> {
             Assert.assertNull(deal.getThrowable());
             Assert.assertEquals(deal.getResponse().code(), 200);
