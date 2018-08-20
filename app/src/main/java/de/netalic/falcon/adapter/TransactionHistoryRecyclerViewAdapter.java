@@ -1,6 +1,5 @@
 package de.netalic.falcon.adapter;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,24 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
+import de.netalic.falcon.util.DateUtil;
 
 public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context mContext;
     private List<Deposit> mDepositList;
 
 
-    public TransactionHistoryRecyclerViewAdapter(List<Deposit> depositList, Context context) {
+    public TransactionHistoryRecyclerViewAdapter(List<Deposit> depositList) {
 
-        mContext = context;
         mDepositList = depositList;
     }
 
@@ -43,47 +37,51 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
 
         DepositViewHolder depositViewHolder = (DepositViewHolder) holder;
         Deposit deposit = mDepositList.get(position);
+
         depositViewHolder.mTextViewWalletName.setText(deposit.getWalletName());
         depositViewHolder.mTextViewAmount.setText(String.valueOf(deposit.getPaidAmount()));
 
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
-            Date baseDate = dateFormat.parse(deposit.getModifiedAt());
-            DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-            DateFormat time = new SimpleDateFormat("h:mm a");
+        switch (deposit.getStatus()) {
 
-            depositViewHolder.mTextViewDateAndTime.setText(date.format(baseDate) + "@" + time.format(baseDate));
-        } catch (ParseException e) {
-            e.printStackTrace();
+            case "succeed": {
+                depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
+                depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getCreatedAt()) + "@" + DateUtil.isoToTime(deposit.getModifiedAt()));
+                depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+
+                break;
+            }
+
+            case "failed": {
+                depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
+                depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getModifiedAt()) + "@" + DateUtil.isoToTime(deposit.getModifiedAt()));
+                depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+
+                break;
+            }
+
+            case "new": {
+                depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+
+                break;
+            }
         }
-
-
-        if (deposit.getStatus().equals(mContext.getString(R.string.transactionhistoryrecyclerviewadapter_succeed))) {
-
-            depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
-            depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
-        }
-        if (deposit.getStatus().equals(mContext.getString(R.string.transactionhistoryrecyclerviewadapter_failed))) {
-
-            depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
-            depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
-        }
-
     }
 
     @Override
     public int getItemCount() {
+
         return mDepositList.size();
     }
 
-    public class DepositViewHolder extends RecyclerView.ViewHolder {
+    private class DepositViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTextViewWalletName;
-        public TextView mTextViewAmount;
-        public TextView mTextViewDateAndTime;
-        public TextView mTextViewTransactionResult;
+        private TextView mTextViewWalletName;
+        private TextView mTextViewAmount;
+        private TextView mTextViewDateAndTime;
+        private TextView mTextViewTransactionResult;
 
-        public DepositViewHolder(View itemView) {
+        private DepositViewHolder(View itemView) {
+
             super(itemView);
             mTextViewWalletName = itemView.findViewById(R.id.textview_transactionhistory_walletname);
             mTextViewAmount = itemView.findViewById(R.id.textview_transactionhistory_amount);

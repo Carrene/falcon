@@ -74,7 +74,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
         mDepositList=depositList;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter(mDepositList,getContext());
+        mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter(mDepositList);
         mRecyclerView.setAdapter(mTransactionHistoryRecyclerViewAdapter);
     }
     private void getDepositList(){
