@@ -88,7 +88,8 @@
         <activity android:name=".view.WithdrawQrFailedActivity" />
         <activity android:name=".view.TransactionHistoryActivity" />
         <activity android:name=".view.TransactionFiltersActivity" />
-        <activity android:name=".view.Text"></activity>
+        <activity android:name=".view.Text" />
+        <activity android:name=".view.AActivity"></activity>
     </application>
 
 </manifest>

@@ -310,4 +310,10 @@
 
     <dimen name="margintop_qrcodecompleted_imageqr">30dp</dimen>
 
+    <dimen name="paddingtop_transactionfiltersrowthathasswitch_relativelayout">5dp</dimen>
+    <dimen name="paddingbottom_transactionfiltersrowthathasswitch_relativelayout">10dp</dimen>
+    <dimen name="paddingstart_transactionfiltersrowthathasswitch_relativelayout">18dp</dimen>
+    <dimen name="paddingend_transactionfiltersrowthathasswitch_relativelayout">18dp</dimen>
+    <dimen name="textsize_transactionfiltersrowthathasswitch_textview">14sp</dimen>
+
 </resources>

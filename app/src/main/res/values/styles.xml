@@ -13,13 +13,13 @@
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
-    <style name="AppTheme" parent="Base.AppTheme"/>
+    <style name="AppTheme" parent="Base.AppTheme" />
 
-    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="RadioButton">
         <item name="android:textColor">@drawable/authenticationpasswordtab_buttontextcolor</item>
@@ -43,8 +43,11 @@
         <item name="android:background">@drawable/withdrawamount_backgroundspinner</item>
     </style>
 
+    <style name="Theme.SwitchTheme" parent="Theme.AppCompat.Light">
 
+        <item name="colorAccent">@color/colorSecondary</item>
 
+    </style>
 
 </resources>
 
