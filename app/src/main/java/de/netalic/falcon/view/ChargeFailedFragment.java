@@ -88,7 +88,6 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         initUiComponent();
         setPaymentInformation();
         initListener();
-        requestPermission();
     }
 
     public static ChargeFailedFragment newInstance(Deposit deposit) {
@@ -125,7 +124,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
             Date baseDate = dateFormat.parse(mDeposit.getModifiedAt());
             DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-            DateFormat time = new SimpleDateFormat("hh:mm:ss");
+            DateFormat time = new SimpleDateFormat("h:mm a");
             mTextViewTransactionDate.setText(date.format(baseDate));
             mTextViewTransactionTime.setText(time.format(baseDate));
 
@@ -146,13 +145,32 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
     }
 
-    private void requestPermission() {
+    private void requestPermissionShare() {
 
 
         int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (regEX != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        } else {
+
+            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
+        }
+    }
+
+    private void requestPermissionSave() {
+
+
+        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (regEX != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+        } else {
+
+
+            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargefailed_imagesaved), getContext());
         }
     }
 
@@ -184,16 +202,15 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
             case R.id.item_chargefailed_download: {
 
-                ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargefailed_imagesaved), getContext());
-
+                requestPermissionSave();
+                break;
             }
 
             case R.id.item_chargefailed_share: {
 
-                File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-                ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
+                requestPermissionShare();
 
+                break;
             }
 
         }

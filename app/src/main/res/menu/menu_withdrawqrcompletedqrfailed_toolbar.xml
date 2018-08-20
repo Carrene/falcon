@@ -3,13 +3,13 @@
 
 
     <item
-        android:id="@+id/item_qrcodecompleted_share"
+        android:id="@+id/item_withdrawqrcompletedqrfailed_share"
         android:icon="@drawable/everywhere_shareicon"
         app:showAsAction="always"
         android:title="@string/chargecompleted_sharemenutoolbar" />
 
     <item
-        android:id="@+id/item_qrcodecompleted_download"
+        android:id="@+id/item_withdrawqrcompletedqrfailed_download"
         android:icon="@drawable/everywhere_downloadicon"
         android:title="@string/chargecompleted_downloadmenutoolbar"
         app:showAsAction="always"

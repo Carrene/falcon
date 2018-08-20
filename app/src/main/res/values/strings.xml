@@ -96,10 +96,10 @@
     <string name="chargeamount_amounthint">Alpha</string>
 
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
-    <string name="chargeconfirmation_walletname">Wallet Name :</string>
-    <string name="chargeconfirmation_paymentgateway">Payment Gateway :</string>
-    <string name="chargeconfirmation_walletamount">Charge Amount : </string>
-    <string name="chargeconfirmation_baseamount">Charge Amount : </string>
+    <string name="chargeconfirmation_walletname">Wallet Name </string>
+    <string name="chargeconfirmation_paymentgateway">Payment Gateway </string>
+    <string name="chargeconfirmation_walletamount">Charge Amount  </string>
+    <string name="chargeconfirmation_baseamount">Paid Amount  </string>
     <string name="chargeconfirmation_amounttransaction">Transaction Amount(USD) :</string>
 
     <string name="chargeconfirmation_confirm">CONFIRM</string>
@@ -112,13 +112,13 @@
 
 
     <string name="chargecompleted_chargecompleted">Charge Completed</string>
-    <string name="chargecompleted_walletname">Wallet Name :</string>
-    <string name="chargecompleted_amount">Charge Amount : </string>
-    <string name="chargecompleted_baseamount">Paid Amount : </string>
-    <string name="chargecompleted_paymentgateway">Payment Gateway :</string>
-    <string name="chargecompleted_transactiondate">Transaction Date :</string>
-    <string name="chargecompleted_transactiontime">Transaction Time :</string>
-    <string name="chargecompleted_trackingcode">RRN :</string>
+    <string name="chargecompleted_walletname">Wallet name </string>
+    <string name="chargecompleted_amount">Charge amount  </string>
+    <string name="chargecompleted_baseamount">Paid amount  </string>
+    <string name="chargecompleted_paymentgateway">Payment gateway </string>
+    <string name="chargecompleted_transactiondate">Transaction date </string>
+    <string name="chargecompleted_transactiontime">Transaction time </string>
+    <string name="chargecompleted_trackingcode">RRN </string>
     <string name="chargecompleted_dashboard">DASHBOARD</string>
     <string name="chargecompleted_success">Success</string>
     <string name="chargecompleted_imagesaved">Image Saved</string>
@@ -127,13 +127,13 @@
 
     <string name="chargefailed_failed">Charge Failed</string>
     <string name="chargefailed_failedtextview">Failed</string>
-    <string name="chargefailed_walletname">Wallet Name :</string>
-    <string name="chargefailed_walletamount">Charge Amount : </string>
-    <string name="chargefailed_baseamount">Paid Amount : </string>
-    <string name="chargefailed_paymentgateway">Payment Gateway :</string>
-    <string name="chargefailed_transactiondate">Transaction date :</string>
-    <string name="chargefailed_transactiontime">Transaction time :</string>
-    <string name="chargefailed_rrn">RRN :</string>
+    <string name="chargefailed_walletname">Wallet Name </string>
+    <string name="chargefailed_walletamount">Charge Amount </string>
+    <string name="chargefailed_baseamount">Paid Amount </string>
+    <string name="chargefailed_paymentgateway">Payment Gateway </string>
+    <string name="chargefailed_transactiondate">Transaction date </string>
+    <string name="chargefailed_transactiontime">Transaction time </string>
+    <string name="chargefailed_rrn">RRN </string>
     <string name="chargefailed_dashboard">Dashboard</string>
     <string name="chargefailed_imagesaved">Image Saved</string>
 
@@ -158,7 +158,7 @@
 
     <string name="qrcodecompleted_toolbar">QR Code Completed</string>
     <string name="qrcodecompleted_success">Success</string>
-    <string name="qrcodecompleted_scanyourqrcode">Scan your QR code</string>
+    <string name="qrcodecompleted_scanyourqrcode">Scan QR code</string>
     <string name="qrcodecompleted_imagesaved">Image saved</string>
 
     <string name="qrcodefailed_toolbar">QR Code Failed</string>
@@ -168,5 +168,8 @@
 
     <string name="transactionhistory_toolbar">Transaction History</string>
     <string name="rowtransactionhistory_walletname">Wallet Name :</string>
+
+    <string name="transactionhistoryrecyclerviewadapter_succeed">succeed</string>
+    <string name="transactionhistoryrecyclerviewadapter_failed">failed</string>
 
 </resources>

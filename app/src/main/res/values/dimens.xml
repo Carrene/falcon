@@ -145,23 +145,23 @@
     <dimen name="marginstartend_chargeamount_nextpayment">16dp</dimen>
 
 
-    <dimen name="width_chargeconfirmation_linearlayout">260dp</dimen>
-    <dimen name="height_chargeconfirmation_linearlayout">175dp</dimen>
-    <dimen name="margintop_chargeconfirmation_linearlayout">42dp</dimen>
+    <dimen name="margintop_chargeconfirmation_linearlayout">33dp</dimen>
+    <dimen name="marginstartend_chargeconfirmation_linearlayout">17dp</dimen>
     <dimen name="textsize_chargeconfirmation_walletnamelable">14sp</dimen>
-    <dimen name="margintop_chargeconfirmation_walletnamelable">36dp</dimen>
-    <dimen name="margintop_chargeconfirmation_walletname">36dp</dimen>
-    <dimen name="paddingstart_chargeconfirmation_walletname">140dp</dimen>
-    <dimen name="margintop_chargeconfirmation_relativelayout">9dp</dimen>
+    <dimen name="margintop_chargeconfirmation_walletnamelable">12dp</dimen>
+    <dimen name="margintop_chargeconfirmation_walletname">12dp</dimen>
     <dimen name="textsize_chargeconfirmation_amountalphalable">14sp</dimen>
     <dimen name="textsize_chargeconfirmation_amountdollarlable">14sp</dimen>
     <dimen name="textsize_chargeconfirmation_paymentgatewaylable">14sp</dimen>
-    <dimen name="paddingstart_chargeconfirmation_paymentgateway">140dp</dimen>
     <dimen name="marginbuttom_chargeconfirmation_confirm">27dp</dimen>
     <dimen name="marginstartend_chargeconfirmation_confirm">16dp</dimen>
     <dimen name="textsize_chargeconfirmation_confirmbutton">14sp</dimen>
-    <dimen name="paddingstart_chargeconfirmation_relativelayout">36dp</dimen>
-    <dimen name="paddingstart_chargeconfirmation_linearlayout">140dp</dimen>
+    <dimen name="height_chargeconfirmation_view">1dp</dimen>
+    <dimen name="margintop_chargeconfirmation_view">16dp</dimen>
+    <dimen name="marginbottom_chargeconfirmation_view">12dp</dimen>
+    <dimen name="marginstartend_chargeconfirmation_textview">15dp</dimen>
+    <dimen name="marginbottom_chargeconfirmation_relativelayout">16dp</dimen>
+
 
 
     <dimen name="layoutheight_charge_spinner">35dp</dimen>
@@ -174,24 +174,24 @@
     <dimen name="layoutheight_charge_spinnerr">35dp</dimen>
     <dimen name="margintop_charge_spinnerr">47dp</dimen>
 
-    <dimen name="width_chargecompleted_linearlayout">300dp</dimen>
     <dimen name="paddingbottom_chargecompleted_linearlayout">28dp</dimen>
-    <dimen name="margintop_chargecompleted_linearlayout">28dp</dimen>
+    <dimen name="marginstartend_chargecompleted_linearlayout">17dp</dimen>
+    <dimen name="height_chargecompleted_header">40dp</dimen>
+    <dimen name="paddingend_chargecompleted_textview">15dp</dimen>
+    <dimen name="margintopbottom_chargecompleted_view">13dp</dimen>
+    <dimen name="height_chargecompleted_view">1dp</dimen>
+    <dimen name="margintop_chargecompleted_linearlayout">33dp</dimen>
     <dimen name="marginstart_chargecompleted_walletnamelable">26dp</dimen>
     <dimen name="margintop_chargecompleted_walletnamelable">20dp</dimen>
     <dimen name="textsize_chargecompleted_walletnamelable">14sp</dimen>
     <dimen name="margintop_chargecompleted_walletname">20dp</dimen>
-    <dimen name="paddingstart_chargecompleted_walletname">140dp</dimen>
     <dimen name="margintop_chargecompleted_relativelayout">8dp</dimen>
     <dimen name="textsize_chargecompleted_walletnolable">14sp</dimen>
     <dimen name="paddingstart_chargecompleted_walletno">140dp</dimen>
     <dimen name="textsize_chargecompleted_amountalphalable">14sp</dimen>
     <dimen name="textsize_chargecompleted_amountdollarlable">14sp</dimen>
     <dimen name="paddingstart_chargecompleted_amountalpha">140dp</dimen>
-    <dimen name="paddingstart_chargecompleted_amountdollar">140dp</dimen>
     <dimen name="paddingstart_chargecompleted_paymentgateway">14sp</dimen>
-    <dimen name="paddingstart_chargecompleted_trackingcode">140dp</dimen>
-    <dimen name="paddingstart_chargecompleted_transactiondate">140dp</dimen>
     <dimen name="textsize_chargecompleted_trackingcode">14sp</dimen>
     <dimen name="marginbuttom_chargecompleted_confirm">27dp</dimen>
     <dimen name="marginstartend_chargecompleted_confirm">16dp</dimen>
@@ -199,37 +199,29 @@
     <dimen name="textsize_chargecompleted_paymentgatewaylable">14sp</dimen>
     <dimen name="textsize_chargecompleted_transactiondate">14sp</dimen>
     <dimen name="margintop_chargecompleted_successimageview">30dp</dimen>
-    <dimen name="margintop_chargeamount_successtextview">6dp</dimen>
-    <dimen name="textsize_chargecompleted_successtextview">20sp</dimen>
+    <dimen name="textsize_chargecompleted_successtextview">16sp</dimen>
     <dimen name="marginbutton_chargecompleted_relativelayoutconsistdownloadandshare">31dp</dimen>
     <dimen name="margintop_chargecompleted_relativelayoutconsistdownloadandshare">20dp</dimen>
     <dimen name="widthheight_chargecompleted_sharebutton">35dp</dimen>
     <dimen name="widthheight_chargecompleted_downloadbutton">35dp</dimen>
     <dimen name="marginstartend_chargecompleted_downloadsharebutton">100dp</dimen>
-    <dimen name="paddingstart_chargecompleted_relativelayout">27dp</dimen>
-    <dimen name="paddingstart_chargecompleted_linearlayout">140dp</dimen>
+    <dimen name="paddingstart_chargecompleted_relativelayout">15dp</dimen>
 
 
 
     <dimen name="width_chargefailed_linearlayout">294dp</dimen>
-    <dimen name="paddingbottom_chargefailed_linearlayout">28dp</dimen>
+    <dimen name="paddingbottom_chargefailed_linearlayout">15dp</dimen>
     <dimen name="margintop_chargefailed_linearlayout">28dp</dimen>
     <dimen name="margintop_chargefailed_failedimageview">30dp</dimen>
-    <dimen name="margintop_chargefailed_failedtextview">6dp</dimen>
     <dimen name="textsize_chargefailed_failedtextview">20sp</dimen>
-    <dimen name="margintop_chargefailed_walletnamelable">20dp</dimen>
+    <dimen name="margintop_chargefailed_walletnamelable">13dp</dimen>
     <dimen name="textsize_chargefailed_walletnamelable">14sp</dimen>
-    <dimen name="margintop_chargefailed_walletname">20dp</dimen>
-    <dimen name="paddingstart_chargefailed_walletname">140dp</dimen>
+    <dimen name="margintop_chargefailed_walletname">13dp</dimen>
     <dimen name="marginstart_chargefailed_relativelayout">40dp</dimen>
-    <dimen name="margintop_chargefailed_relativelayout">8dp</dimen>
     <dimen name="textsize_chargefailed_walletnolable">14sp</dimen>
     <dimen name="textsize_chargefailed_amountdollarlable">14sp</dimen>
-    <dimen name="paddingstart_chargefailed_amountalpha">5dp</dimen>
     <dimen name="textsize_chargefailed_paymentgatewaylable">14sp</dimen>
-    <dimen name="paddingstart_chargefailed_amountdollar">140dp</dimen>
     <dimen name="textsize_chargefailed_transactiondate">14sp</dimen>
-    <dimen name="paddingstart_chargefailed_transactiondate">140dp</dimen>
     <dimen name="marginbuttom_chargefailed_dashboard">27dp</dimen>
     <dimen name="marginstartend_chargefailed_dashboard">16dp</dimen>
     <dimen name="textsize_chargefailed_dashboardbutton">14sp</dimen>
@@ -239,8 +231,10 @@
     <dimen name="widthheight_chargefailed_sharebutton">35dp</dimen>
     <dimen name="widthheight_chargefailed_downloadbutton">35dp</dimen>
     <dimen name="marginstartend_chargefailed_downloadsharebutton">100dp</dimen>
-    <dimen name="paddingstart_chargefailed_relativelayout">27dp</dimen>
     <dimen name="paddingstart_chargefailed_linearlayout">140dp</dimen>
+    <dimen name="marginstartend_chargefailed_relativelayout">15dp</dimen>
+    <dimen name="margintopbottom_chargefailed_view">15dp</dimen>
+    <dimen name="height_chargefailed_view">1dp</dimen>
 
     <dimen name="margintop_withdraw_withdrawmethod">23dp</dimen>
     <dimen name="textsize_withdraw_withdrawmethod">16sp</dimen>
@@ -289,11 +283,10 @@
 
     <dimen name="margintop_qrcodefailed_linearlayout">32dp</dimen>
     <dimen name="marginstartend_qrcodefailed_linearlayout">33dp</dimen>
-    <dimen name="margintop_qrcodefailed_imageviewfailed">36dp</dimen>
     <dimen name="margintop_qrcodefailed_textvioewfailed">9dp</dimen>
-    <dimen name="textsize_qrcodefailed_textviewfailed">20sp</dimen>
-    <dimen name="margintop_qrcodefailed_describetextview">20dp</dimen>
-    <dimen name="marginbottom_qrcodefailed_describetextview">36dp</dimen>
+    <dimen name="textsize_qrcodefailed_textviewfailed">16sp</dimen>
+    <dimen name="margintop_qrcodefailed_describetextview">23dp</dimen>
+    <dimen name="marginbottom_qrcodefailed_describetextview">30dp</dimen>
     <dimen name="marginstartend_qrcodefailed_describetextview">25dp</dimen>
     <dimen name="textsize_qrcodefailed_describetextview">14sp</dimen>
     <dimen name="marginstartend_qrcodefailed_trywithdrawbutton">16dp</dimen>
@@ -302,6 +295,7 @@
     <dimen name="marginbottom_qrcodefailed_dashboardbutton">27dp</dimen>
     <dimen name="textsize_qrcodefailed_dashboardbutton">14sp</dimen>
     <dimen name="textsize_qrcodefailed_trywithdrawbutton">14sp</dimen>
+    <dimen name="height_withdrawqrfailed_header">40dp</dimen>
 
     <dimen name="margintop_rowtransactionhistory_linearlayout">20dp</dimen>
     <dimen name="marginstartend_rowtransactionhistory_alltextview">18dp</dimen>
@@ -311,6 +305,18 @@
     <dimen name="margintop_rowtransactionhistory_view">20dp</dimen>
     <dimen name="height_rowtransactionhistory_view">1dp</dimen>
 
-    <dimen name="margintop_qrcodecompleted_imageqr">30dp</dimen>
+    <dimen name="margintop_withdrawqrcompleted_imageqr">30dp</dimen>
+    <dimen name="marginstartend_withdrawqrcompleted_linearlayout">16dp</dimen>
+    <dimen name="margintop_withdrawqrcompleted_linearlayout">33dp</dimen>
+    <dimen name="height_withdrawqrcompleted_header">40dp</dimen>
+    <dimen name="textsize_withdrawqrcompleted_header">16dp</dimen>
+    <dimen name="widthheight_withdrawqrcompleted_imageqr">156dp</dimen>
+    <dimen name="textsize_withdrawqrcompleted_textviewscanqrcode">14sp</dimen>
+    <dimen name="margintop_withdrawqrcompleted_textviewscanqrcode">20dp</dimen>
+    <dimen name="marginbottom_withdrawqrcompleted_textviewscanqrcode">30dp</dimen>
+    <dimen name="marginstartend_withdrawqrcompleted_dashboardbutton">16dp</dimen>
+    <dimen name="marginbottom_withdrawqrcompleted_dashboardbutton">27dp</dimen>
+    <dimen name="textsize_withdrawqrcompleted_dashboardbutton">14sp</dimen>
+
 
 </resources>

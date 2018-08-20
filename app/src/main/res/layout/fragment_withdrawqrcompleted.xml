@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_qrcodecompleted_mainview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/marginstartend_withdrawqrcompleted_linearlayout"
+        android:layout_marginStart="@dimen/marginstartend_withdrawqrcompleted_linearlayout"
+        android:layout_marginTop="@dimen/margintop_withdrawqrcompleted_linearlayout"
+        android:background="@drawable/chargecompleted_border"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_qrcodecompleted_success"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_withdrawqrcompleted_header"
+            android:background="@drawable/chargecompleted_headerborder"
+            android:gravity="center"
+            android:text="@string/qrcodecompleted_success"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_withdrawqrcompleted_header" />
+
+        <ImageView
+            android:id="@+id/imageView_withdrawqrcompleted_qr"
+            android:layout_width="@dimen/widthheight_withdrawqrcompleted_imageqr"
+            android:layout_height="@dimen/widthheight_withdrawqrcompleted_imageqr"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margintop_withdrawqrcompleted_imageqr" />
+
+        <TextView
+            android:id="@+id/textview_qrcodecompleted_scanyourqrcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbottom_withdrawqrcompleted_textviewscanqrcode"
+            android:layout_marginTop="@dimen/margintop_withdrawqrcompleted_textviewscanqrcode"
+            android:gravity="center"
+            android:text="@string/qrcodecompleted_scanyourqrcode"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_withdrawqrcompleted_textviewscanqrcode" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_qrcodecompleted_dashborad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbottom_withdrawqrcompleted_dashboardbutton"
+        android:layout_marginEnd="@dimen/marginstartend_withdrawqrcompleted_dashboardbutton"
+        android:layout_marginStart="@dimen/marginstartend_withdrawqrcompleted_dashboardbutton"
+        android:background="@color/colorSecondary"
+        android:text="@string/chargecompleted_dashboard"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textsize_withdrawqrcompleted_dashboardbutton" />
+
+</RelativeLayout>
