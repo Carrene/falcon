@@ -48,6 +48,14 @@
         <item name="colorAccent">@color/colorSecondary</item>
 
     </style>
+    <style name="Theme.RadioButton" parent="Theme.AppCompat.Light">
+
+        <item name="buttonTint">@drawable/radiobuttonselector_transactionfilters</item>
+
+
+    </style>
+
+
 
 </resources>
 

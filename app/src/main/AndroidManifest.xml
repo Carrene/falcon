@@ -89,7 +89,7 @@
         <activity android:name=".view.TransactionHistoryActivity" />
         <activity android:name=".view.TransactionFiltersActivity" />
         <activity android:name=".view.Text" />
-        <activity android:name=".view.AActivity"></activity>
+        <activity android:name=".view.AActivity" />
     </application>
 
 </manifest>

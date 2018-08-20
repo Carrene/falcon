@@ -170,6 +170,5 @@
     <string name="rowtransactionhistory_walletname">Wallet Name :</string>
 
     <string name="transactionfilters_toolbar">Transaction Filters</string>
-    <string name="transactionfilters_rowthathasswitchsuccess">success</string>
 
 </resources>

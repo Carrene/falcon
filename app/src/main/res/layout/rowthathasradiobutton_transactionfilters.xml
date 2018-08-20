@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/paddingbottom_transactionfiltersrowthathasradiobutton_relativelayout"
+    android:paddingStart="@dimen/paddingstart_transactionfiltersrowthathasradiobutton_relativelayout"
+    android:paddingEnd="@dimen/paddingend_transactionfiltersrowthathasradiobutton_relativelayout"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:text="Last day"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/margintop_transactionfiltersrowthathasradiobutton_textview"
+        />
+
+    <android.support.v7.widget.AppCompatRadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        style="@style/Theme.RadioButton"
+        android:textSize="@dimen/textsize_transactionfiltersrowthathasradiobutton_textview"
+        />
+
+</RelativeLayout>

@@ -315,5 +315,13 @@
     <dimen name="paddingstart_transactionfiltersrowthathasswitch_relativelayout">18dp</dimen>
     <dimen name="paddingend_transactionfiltersrowthathasswitch_relativelayout">18dp</dimen>
     <dimen name="textsize_transactionfiltersrowthathasswitch_textview">14sp</dimen>
+    <dimen name="margintop_transactionfiltersrowthathasswitch_textview">2dp</dimen>
+
+    <dimen name="paddingtop_transactionfiltersrowthathasradiobutton_relativelayout">5dp</dimen>
+    <dimen name="paddingbottom_transactionfiltersrowthathasradiobutton_relativelayout">10dp</dimen>
+    <dimen name="paddingstart_transactionfiltersrowthathasradiobutton_relativelayout">18dp</dimen>
+    <dimen name="paddingend_transactionfiltersrowthathasradiobutton_relativelayout">18dp</dimen>
+    <dimen name="textsize_transactionfiltersrowthathasradiobutton_textview">14sp</dimen>
+    <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
 </resources>
