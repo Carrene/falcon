@@ -54,7 +54,7 @@
 
     <string name="splash_textbutton">SIGN IN</string>
 
-    <string name="dashboard_myblance">My Balance</string>
+
     <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
     <string name="dashboard_purchase">Purchase</string>
     <string name="dashboard_withdraw">Withdraw</string>
@@ -169,7 +169,9 @@
     <string name="transactionhistory_toolbar">Transaction History</string>
     <string name="rowtransactionhistory_walletname">Wallet Name :</string>
 
+
     <string name="transactionhistoryrecyclerviewadapter_succeed">succeed</string>
     <string name="transactionhistoryrecyclerviewadapter_failed">failed</string>
+    <string name="transactionfilters_toolbar">Transaction Filters</string>
 
 </resources>

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import junit.framework.Test;
+
 import java.util.concurrent.atomic.AtomicReference;
 
 import de.netalic.falcon.MyApp;
@@ -34,7 +36,6 @@ public class SplashActivity extends AppCompatActivity {
             });
         }
         startActivity(intent.get());
-
         finish();
     }
 }
