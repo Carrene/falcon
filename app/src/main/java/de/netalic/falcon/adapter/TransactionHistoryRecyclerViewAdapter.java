@@ -24,6 +24,12 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
         mDepositList = depositList;
     }
 
+    public void setDataSource(List<Deposit> depositList) {
+
+        mDepositList = depositList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,34 +41,34 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        DepositViewHolder depositViewHolder = (DepositViewHolder) holder;
-        Deposit deposit = mDepositList.get(position);
+        if (mDepositList != null && !mDepositList.isEmpty()) {
 
-        depositViewHolder.mTextViewWalletName.setText(deposit.getWalletName());
-        depositViewHolder.mTextViewAmount.setText(String.valueOf(deposit.getPaidAmount()));
+            DepositViewHolder depositViewHolder = (DepositViewHolder) holder;
+            Deposit deposit = mDepositList.get(position);
 
-        switch (deposit.getStatus()) {
+            depositViewHolder.mTextViewWalletName.setText(deposit.getWalletName());
+            depositViewHolder.mTextViewAmount.setText(String.valueOf(deposit.getPaidAmount()));
 
-            case "succeed": {
-                depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
-                depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getModifiedAt()) + "@" + DateUtil.isoToTime(deposit.getModifiedAt()));
-                depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+            switch (deposit.getStatus()) {
 
-                break;
-            }
+                case "succeed": {
+                    depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
+                    depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getModifiedAt()) + "@" + DateUtil.isoToTime(deposit.getModifiedAt()));
+                    depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+                    break;
+                }
 
-            case "failed": {
-                depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
-                depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getModifiedAt()) + "@" + DateUtil.isoToTime(deposit.getModifiedAt()));
-                depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+                case "failed": {
+                    depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
+                    depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getModifiedAt()) + "@" + DateUtil.isoToTime(deposit.getModifiedAt()));
+                    depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+                    break;
+                }
 
-                break;
-            }
-
-            case "new": {
-                depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
-
-                break;
+                case "new": {
+                    depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+                    break;
+                }
             }
         }
     }

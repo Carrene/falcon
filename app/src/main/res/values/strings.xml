@@ -174,4 +174,10 @@
     <string name="transactionhistoryrecyclerviewadapter_failed">failed</string>
     <string name="transactionfilters_toolbar">Transaction Filters</string>
 
+    <string-array name="transactionfilter_headers">
+        <item>Status</item>
+        <item>Transaction Type</item>
+        <item>Date</item>
+    </string-array>
+
 </resources>
