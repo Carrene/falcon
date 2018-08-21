@@ -10,7 +10,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.State;

@@ -11,11 +11,11 @@ import java.security.NoSuchAlgorithmException;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Authentication;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
+import de.netalic.falcon.model.Authentication;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
+import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
 import nuesoft.helpdroid.util.Converter;
 

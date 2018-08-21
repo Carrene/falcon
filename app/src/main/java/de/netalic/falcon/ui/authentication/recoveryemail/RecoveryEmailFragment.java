@@ -18,9 +18,9 @@ import android.widget.TextView;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
-import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
 import nuesoft.helpdroid.UI.Keyboard;
 import nuesoft.helpdroid.validation.Validator;
 

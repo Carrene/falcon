@@ -2,8 +2,8 @@ package de.netalic.falcon.data.repository.deposit;
 
 import java.util.List;
 
-import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
+import de.netalic.falcon.model.Deposit;
 
 public class DepositRepository implements IDepositRepository {
 

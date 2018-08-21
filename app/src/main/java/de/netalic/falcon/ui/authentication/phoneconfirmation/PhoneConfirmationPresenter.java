@@ -2,8 +2,8 @@ package de.netalic.falcon.ui.authentication.phoneconfirmation;
 
 import android.support.annotation.NonNull;
 
-import de.netalic.falcon.model.User;
 import de.netalic.falcon.data.repository.user.UserRepository;
+import de.netalic.falcon.model.User;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

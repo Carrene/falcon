@@ -2,9 +2,9 @@ package de.netalic.falcon.data.repository.deposit;
 
 import java.util.List;
 
-import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.data.remote.ApiClient;
 import de.netalic.falcon.data.repository.base.Deal;
+import de.netalic.falcon.model.Deposit;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -23,8 +23,8 @@ import de.netalic.falcon.model.Currency;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.util.SnackbarUtil;
 import de.netalic.falcon.ui.withdraw.WithdrawActivity;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

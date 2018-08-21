@@ -2,9 +2,9 @@ package de.netalic.falcon.ui.charge;
 
 import android.support.annotation.NonNull;
 
-import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
+import de.netalic.falcon.model.Rate;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

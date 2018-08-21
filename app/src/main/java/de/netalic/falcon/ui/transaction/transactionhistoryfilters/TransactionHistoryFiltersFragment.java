@@ -15,8 +15,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.ui.base.HorizontalSpaceItemDecoration;
 import de.netalic.falcon.model.State;
+import de.netalic.falcon.ui.base.HorizontalSpaceItemDecoration;
 
 public class TransactionHistoryFiltersFragment extends Fragment implements TransactionHistoryFiltersContract.View {
 

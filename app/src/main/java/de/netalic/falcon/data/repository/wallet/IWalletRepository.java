@@ -1,8 +1,8 @@
 package de.netalic.falcon.data.repository.wallet;
 
+import de.netalic.falcon.data.repository.base.IRepository;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Wallet;
-import de.netalic.falcon.data.repository.base.IRepository;
 
 public interface IWalletRepository extends IRepository<Wallet, Integer> {
 

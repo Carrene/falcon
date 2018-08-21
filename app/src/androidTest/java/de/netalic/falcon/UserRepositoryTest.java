@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.CountDownLatch;
 
-import de.netalic.falcon.model.User;
 import de.netalic.falcon.data.remote.ApiClient;
 import de.netalic.falcon.data.repository.user.UserRepository;
+import de.netalic.falcon.model.User;
 import de.netalic.falcon.util.FileUtil;
 import nuesoft.helpdroid.crypto.CryptoUtil;
 import okhttp3.mockwebserver.MockResponse;

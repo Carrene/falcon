@@ -25,10 +25,10 @@ import java.util.concurrent.TimeUnit;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.ui.authentication.recoveryemail.RecoveryEmailActivity;
 import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
-import de.netalic.falcon.ui.authentication.recoveryemail.RecoveryEmailActivity;
 import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;

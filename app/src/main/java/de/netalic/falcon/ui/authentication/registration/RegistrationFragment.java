@@ -27,9 +27,9 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.User;
+import de.netalic.falcon.ui.authentication.phoneconfirmation.PhoneConfirmationActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
-import de.netalic.falcon.ui.authentication.phoneconfirmation.PhoneConfirmationActivity;
 import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
