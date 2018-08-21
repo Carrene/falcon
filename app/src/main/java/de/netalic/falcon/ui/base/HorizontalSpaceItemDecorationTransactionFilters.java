@@ -4,11 +4,11 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-public class HorizontalSpaceItemDecoration extends RecyclerView.ItemDecoration {
+public class HorizontalSpaceItemDecorationTransactionFilters extends RecyclerView.ItemDecoration {
 
     private final int mHorizontalSpaceHeight;
 
-    public HorizontalSpaceItemDecoration(int horizontalSpaceHeight) {
+    public HorizontalSpaceItemDecorationTransactionFilters(int horizontalSpaceHeight) {
 
         mHorizontalSpaceHeight = horizontalSpaceHeight;
     }

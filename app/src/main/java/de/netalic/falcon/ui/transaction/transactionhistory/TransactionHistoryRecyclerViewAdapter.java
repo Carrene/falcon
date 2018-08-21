@@ -53,14 +53,14 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
 
                 case "succeed": {
                     depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
-                    depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getModifiedAt()) + "@" + DateUtil.isoToTime(deposit.getModifiedAt()));
+                    depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getCreatedAt()) + "@" + DateUtil.isoToTime(deposit.getCreatedAt()));
                     depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
                     break;
                 }
 
                 case "failed": {
                     depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
-                    depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getModifiedAt()) + "@" + DateUtil.isoToTime(deposit.getModifiedAt()));
+                    depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getCreatedAt()) + "@" + DateUtil.isoToTime(deposit.getCreatedAt()));
                     depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
                     break;
                 }

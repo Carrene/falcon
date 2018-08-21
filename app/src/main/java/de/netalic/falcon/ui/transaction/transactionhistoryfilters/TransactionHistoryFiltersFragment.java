@@ -16,7 +16,7 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.State;
-import de.netalic.falcon.ui.base.HorizontalSpaceItemDecoration;
+import de.netalic.falcon.ui.base.HorizontalSpaceItemDecorationTransactionFilters;
 
 public class TransactionHistoryFiltersFragment extends Fragment implements TransactionHistoryFiltersContract.View {
 
@@ -60,7 +60,7 @@ public class TransactionHistoryFiltersFragment extends Fragment implements Trans
         List<String> headerList = Arrays.asList(getContext().getResources().getStringArray(R.array.transactionfilter_headers));
 
         mTransactionFilterRecyclerView = mRoot.findViewById(R.id.recyclerview_transactionfilters_filtering);
-        mTransactionFilterRecyclerView.addItemDecoration(new HorizontalSpaceItemDecoration(10));
+        mTransactionFilterRecyclerView.addItemDecoration(new HorizontalSpaceItemDecorationTransactionFilters(10));
 
         mTransactionFilterRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mTransactionHistoryFilterRecyclerViewAdapter = new TransactionHistoryFilterRecyclerViewAdapter(stateList, headerList);

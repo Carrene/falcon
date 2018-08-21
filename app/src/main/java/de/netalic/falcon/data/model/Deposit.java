@@ -82,7 +82,16 @@ public class Deposit implements Parcelable {
 
     public String getCreatedAt() {
 
-        return mCreatedAt;
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            Date date = dateFormat.parse(mCreatedAt);
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+            return dateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
     public double getChargeAmount() {
