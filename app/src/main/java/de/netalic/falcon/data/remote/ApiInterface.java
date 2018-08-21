@@ -1,6 +1,9 @@
 package de.netalic.falcon.data.remote;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Nullable;
 
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Rate;
@@ -12,6 +15,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 public interface ApiInterface {
 
@@ -31,7 +35,7 @@ public interface ApiInterface {
     @GET("rates/{currency}")
     Call<Rate> exchangeRate(@Path("currency") String currency);
 
-    @HTTP(method ="LIST" ,path = "rates")
+    @HTTP(method = "LIST", path = "rates")
     Call<List<Rate>> listExchangeRate();
 
     @HTTP(method = "LIST", path = "wallets")
@@ -43,9 +47,9 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @HTTP(method = "FINALIZE", path = "wallets/{walletId}/braintree/deposits/{depositId}", hasBody = true)
-    Call<Deposit> finalize(@Path("walletId") int walletId, @Path("depositId") int depositId, @Field("braintreeNonce") String braintreeNonce );
+    Call<Deposit> finalize(@Path("walletId") int walletId, @Path("depositId") int depositId, @Field("braintreeNonce") String braintreeNonce);
 
-    @HTTP(method = "LIST",path = "deposits")
-    Call<List<Deposit>> depositList();
+    @HTTP(method = "LIST", path = "deposits")
+    Call<List<Deposit>> depositList(@QueryMap(encoded = true) Map<String, String> options);
 
 }
