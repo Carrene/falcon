@@ -42,7 +42,7 @@
             android:enabled="false"
             android:text="@string/registration_codehint"
             android:textAlignment="textStart"
-            android:textColor="@color/black" />
+            android:textColor="@color/colorBlack" />
     </android.support.design.widget.TextInputLayout>
 
     <EditText
@@ -64,6 +64,6 @@
         android:layout_marginBottom="@dimen/marginbottom_registration_confirmtext"
         android:gravity="center"
         android:text="@string/registration_bottomtextview"
-        android:textColor="@color/black" />
+        android:textColor="@color/colorBlack" />
 
 </RelativeLayout>

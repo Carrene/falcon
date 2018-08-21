@@ -134,14 +134,4 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
 
         materialDialog.dismiss();
     }
-//    @Override
-//    public void onBackPressed() {
-//
-//        if (mDrawer != null && mDrawer.isDrawerOpen()) {
-//            mDrawer.closeDrawer();
-//        } else {
-//            super.onBackPressed();
-//
-//        }
-//    }
 }

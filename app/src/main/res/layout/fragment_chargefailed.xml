@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margintop_chargefailed_walletnamelable"
                 android:text="@string/chargefailed_walletname"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_walletnamelable"
                 />
 
@@ -54,7 +54,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/margintop_chargefailed_walletname"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_walletnamelable" />
         </RelativeLayout>
 
@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargefailed_walletamount"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_walletnolable" />
 
             <LinearLayout
@@ -91,14 +91,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="α"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textview_chargefailed_amountalpha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VALUE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textsize_chargefailed_walletnolable"
 
                     />
@@ -123,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargefailed_baseamount"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_amountdollarlable" />
 
             <LinearLayout
@@ -137,7 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textview_chargefailed_amountdollar"
@@ -145,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/textview_chargefailed_amountdollarlable"
                     android:text="VALUE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textsize_chargefailed_amountdollarlable" />
             </LinearLayout>
         </RelativeLayout>
@@ -170,7 +170,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargefailed_paymentgateway"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_paymentgatewaylable" />
 
             <TextView
@@ -179,7 +179,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_paymentgatewaylable" />
         </RelativeLayout>
 
@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargefailed_transactiondate"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_transactiondate" />
 
             <TextView
@@ -211,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_transactiondate" />
         </RelativeLayout>
 
@@ -234,7 +234,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargefailed_transactiontime"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_transactiondate" />
 
             <TextView
@@ -243,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_transactiondate" />
         </RelativeLayout>
 
@@ -266,7 +266,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargefailed_rrn"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_transactiondate" />
 
             <TextView
@@ -275,7 +275,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargefailed_transactiondate" />
         </RelativeLayout>
 
@@ -292,6 +292,6 @@
         android:layout_marginStart="@dimen/marginstartend_chargefailed_dashboard"
         android:background="@color/colorSecondary"
         android:text="@string/chargefailed_dashboard"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_chargefailed_dashboardbutton" />
 </RelativeLayout>
