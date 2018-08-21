@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 import java.util.concurrent.CountDownLatch;
 
-import de.netalic.falcon.repository.wallet.WalletRepository;
+import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 @RunWith(AndroidJUnit4.class)
 public class WalletRepositoryTest {

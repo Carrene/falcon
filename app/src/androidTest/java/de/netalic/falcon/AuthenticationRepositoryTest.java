@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.netalic.falcon.model.Authentication;
-import de.netalic.falcon.repository.authentication.AuthenticationRepository;
+import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import io.realm.Realm;
 
 @RunWith(AndroidJUnit4.class)

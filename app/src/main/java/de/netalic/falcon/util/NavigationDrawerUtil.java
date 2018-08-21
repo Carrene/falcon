@@ -15,9 +15,9 @@ import java.util.Map;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.view.ChargeActivity;
-import de.netalic.falcon.view.DashboardActivity;
-import de.netalic.falcon.view.TransactionHistoryActivity;
+import de.netalic.falcon.ui.charge.ChargeActivity;
+import de.netalic.falcon.ui.dashboard.DashboardActivity;
+import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import nuesoft.helpdroid.util.Parser;
 
