@@ -15,23 +15,17 @@
     <string name="registration_toolbartitle">Your phone</string>
     <string name="registration_bottomtextview">confirmation code will be sent to you</string>
     <string name="registration_defultcountry">Select your country</string>
-    <string name="registration_fillallbox">Fill all box</string>
-    <string name="registration_invalidudidorphone">Invalid udid or phone</string>
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
     <string name="registration_phonehint">Phone number</string>
     <string name="registration_codehint">XXXX</string>
-    <string name="registration_pleasefillalldigits">Please fill all digits</string>
 
     <string name="phoneconfirmation_Pleasefillbox">Please fill box</string>
-    <string name="authenticationdefinition_pleasefillenterpassword">Please fill enter password</string>
-    <string name="authenticationdefinition_Entervalidpassword">Enter valid password</string>
     <string name="athenticationdefinition_password">Password</string>
     <string name="authenticationdefinition_pattern">Pattern</string>
     <string name="authenticationdefinition_notmatch">Not match</string>
     <string name="authenticationdefinition_connectfordots">Connect at least four dots</string>
     <string name="authenticationdefinition_tryforsecondtime">Try for second time</string>
-    <string name="authenticationdefinition_nomatch">No match</string>
     <string name="authenticationdefinition_setsuccessful">Set successful</string>
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
     <string name="authenticationdefinition_hintpassword">Enter password</string>
@@ -42,22 +36,16 @@
     <string name="authenticationdefinition_capitalletter">At least on capital letter</string>
     <string name="authenticationdefinition_specialchar">At least one of (@  #  $  %  +  =  *  ?)</string>
 
-    <string name="recoveryemail_enterarecoveryemail">Enter a recovery email</string>
     <string name="recoveryemail_skip">SKIP</string>
     <string name="recoveryemail_thisemaildoesnotexist">Insert correct email</string>
-    <string name="recoveryemail_pleaseenteremailaddress">Please enter email address</string>
     <string name="recoveryemail_enteremailaddress">Enter email address</string>
     <string name="recoveryemail_toolbartitle">Recovery email</string>
     <string name="recoveryemail_invalidemail">Invalid email</string>
     <string name="recoveryemail_emailalreadyexists"> Email already exists</string>
     <string name="recoveryemail_menudone">Done</string>
 
-    <string name="splash_textbutton">SIGN IN</string>
-
 
     <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
-    <string name="dashboard_purchase">Purchase</string>
-    <string name="dashboard_withdraw">Withdraw</string>
     <string name="navigation_dashboard">Dashboard</string>
     <string name="dashboard_notification">Notification</string>
     <string name="navigation_charge">Charge</string>
@@ -67,7 +55,6 @@
     <string name="navigation_chart">Chart</string>
     <string name="navigation_setting">Setting</string>
     <string name="navigation_help">Help</string>
-    <string name="dashboard_dashboardicon">Dashboard</string>
     <string name="dashboard_invalidcurrency">Invalid currency</string>
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>
 
@@ -78,8 +65,6 @@
 
     <string name="chargeamount_dollar">USD</string>
     <string name="chargeamount_nextpayment">NEXT-PAYMENT</string>
-    <string name="charge_notification">Notification</string>
-    <string name="charge_toolbartitle">Charge</string>
     <string name="charge_pleasefillamount">Please fill amount</string>
     <string name="charge_invalidamount">Invalid amount</string>
     <string name="charge_amountissmallerthanlowerbound">Amount is smaller than lower bound</string>
@@ -100,7 +85,6 @@
     <string name="chargeconfirmation_paymentgateway">Payment Gateway </string>
     <string name="chargeconfirmation_walletamount">Charge Amount  </string>
     <string name="chargeconfirmation_baseamount">Paid Amount  </string>
-    <string name="chargeconfirmation_amounttransaction">Transaction Amount(USD) :</string>
 
     <string name="chargeconfirmation_confirm">CONFIRM</string>
     <string name="chargeconfirmation_invalidwalletid">Invalid wallet id</string>
@@ -152,7 +136,6 @@
     <string name="withdrawamount_usemaximum">Use maximum</string>
     <string name="withdrawamount_useminimum">Use minimum</string>
     <string name="withdrawamount_transferlimit">2500α daily transfer limit</string>
-    <string name="withdrawamount_nextwithdrawbutton">NEXT_WITHDRAW</string>
     <string name="chargefailed_sharemenutoolbar">Share</string>
     <string name="chargefailed_downloadmenutoolbar">Download</string>
 
@@ -170,8 +153,6 @@
     <string name="rowtransactionhistory_walletname">Wallet Name :</string>
 
 
-    <string name="transactionhistoryrecyclerviewadapter_succeed">succeed</string>
-    <string name="transactionhistoryrecyclerviewadapter_failed">failed</string>
     <string name="transactionfilters_toolbar">Transaction Filters</string>
 
     <string-array name="transactionfilter_headers">

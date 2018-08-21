@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="width_registration_tikicon">25dp</dimen>
-    <dimen name="height_registration_tikicon">25dp</dimen>
-    <dimen name="marginEnd_registration_tikicon">20dp</dimen>
-    <dimen name="margintop_registration_tikicon">20dp</dimen>
-    <dimen name="width_registration_border">1dp</dimen>
     <dimen name="margintop_registration_countrypicker">84dp</dimen>
-    <dimen name="width_registration_stroke">1dp</dimen>
     <dimen name="marginstart_registration_countrypicker">40dp</dimen>
     <dimen name="marginend_registration_countrypicker">40dp</dimen>
     <dimen name="marginstart_registration_code">40dp</dimen>
@@ -16,8 +10,6 @@
 
     <dimen name="margintop_phoneconfirmation_userphone">90dp</dimen>
     <dimen name="textsize_phoneconfirmation_userphone">22sp</dimen>
-    <dimen name="margintop_phoneconfirmation_header1">40dp</dimen>
-    <dimen name="textsize_phoneconfirmation_header1">16sp</dimen>
     <dimen name="marginend_phoneconfirmation_textinputlayout">50dp</dimen>
     <dimen name="marginstart_phoneconfirmation_textinputlayout">50dp</dimen>
     <dimen name="margintop_phoneconfirmation_resendtext">30dp</dimen>
@@ -26,14 +18,9 @@
     <dimen name="margintop_phoneconfirmation_changenumber">30dp</dimen>
     <dimen name="textsize_phoneconfirmation_changenumber">14sp</dimen>
 
-    <dimen name="textsize_authenticationdefinition_header">20sp</dimen>
-    <dimen name="margintop_authenticationdefinition_header">100dp</dimen>
-    <dimen name="marginstart_authenticationdefinition_enterpasscode">40dp</dimen>
-    <dimen name="paddingtop_authentictiondefinition_enterpasscode">50dp</dimen>
     <dimen name="textsize_authenticationdefinition_enterpasscode">15sp</dimen>
     <dimen name="marginend_authenticationdefinition_textinputlayout">30dp</dimen>
     <dimen name="marginstart_authenticationdefinition_textinputlayout">30dp</dimen>
-    <dimen name="margintop_authenticationdefinition_confirmpassword">40dp</dimen>
     <dimen name="pathwidth_authenticationdefinition_pattern">2dp</dimen>
     <dimen name="marginend_authentication_textinputlayout">30dp</dimen>
     <dimen name="marginstart_authentication_textinputlayout">30dp</dimen>
@@ -49,84 +36,39 @@
     <dimen name="margintop_authenticationdefinition_segmentedgroup">38dp</dimen>
     <dimen name="borderwidth_authenticationdefinition_segmentedgroup">2dp</dimen>
     <dimen name="cornerradius_authenticationdefinition_segmentedgroup">5dp</dimen>
-    <dimen name="margin_authenticationdefinition_container">10dp</dimen>
     <dimen name="width_authenticationdefinition_radiobutton">130dp</dimen>
     <dimen name="height_authenticationdefinition_radiobutton">35dp</dimen>
-    
-    
-    
 
-    <dimen name="margintop_recoveryemail_header">120dp</dimen>
-    <dimen name="textsize_recoveryemail_header">16sp</dimen>
+
     <dimen name="margintop_recoveryemail_textinputlayout">155dp</dimen>
     <dimen name="margintop_recoveryemail_skip">30dp</dimen>
     <dimen name="marginstart_recoveryemail_textinputlayout">30dp</dimen>
     <dimen name="marginend_recoveryemail_textinputlayout">30dp</dimen>
-    <dimen name="width_signin_logo">263dp</dimen>
-    <dimen name="height_singin_logo">92dp</dimen>
-    <dimen name="marginstart_singin_logo">49dp</dimen>
-    <dimen name="marginend_signin_logo">48dp</dimen>
-    <dimen name="margintop_signin_logo">180dp</dimen>
-    <dimen name="width_singin_button">144dp</dimen>
-    <dimen name="height_singin_button">43dp</dimen>
-    <dimen name="margintop_signin_button">105dp</dimen>
 
     <dimen name="height_dashboard_firstpart">230dp</dimen>
-    <dimen name="width_dashboard_dollaricon">20dp</dimen>
-    <dimen name="height_dashboard_dollaricon">20dp</dimen>
     <dimen name="width_dashboard_spinner">240dp</dimen>
     <dimen name="height_dashboard_spinner">40dp</dimen>
     <dimen name="margintop_dashboard_spinner">20dp</dimen>
-    <dimen name="marginend_dashboard_spinner">98dp</dimen>
     <dimen name="textsize_dashboard_amountalpha">55sp</dimen>
     <dimen name="height_dashboard_amountalpha">81dp</dimen>
-    <dimen name="height_dashboard_border">2dp</dimen>
     <dimen name="layoutheight_dashboard_linearlayoutmiddletextview">47dp</dimen>
     <dimen name="textsize_dashboard_equivalenttobasecurrecy">16sp</dimen>
     <dimen name="marginstart_dashboard_equivalenttobasecurrency">30dp</dimen>
-    <dimen name="textsize_dashboard_rateequivalent">13sp</dimen>
     <dimen name="widthheight_dashboard_withdrawimageview">136dp</dimen>
     <dimen name="widthheight_dahboard_purchaseimageview">136dp</dimen>
-    <dimen name="marginstartend_dashboard_purchasewithdrawimageview">30dp</dimen>
-    <dimen name="marginbottom_dashboard_purcahsewithdrawtextview">59dp</dimen>
-    <dimen name="textsize_dashboard_purchasewithdrawtextsize">18sp</dimen>
     <dimen name="margintop_dashboard_linearlayoutalphasymbol">40dp</dimen>
     <dimen name="height_dashboard_alphaicon">35dp</dimen>
     <dimen name="width_dashboard_alphaicon">40dp</dimen>
-    <dimen name="paddingend_dashboard_alphaicon">5dp</dimen>
-    <dimen name="paddingstart_dashboard_alphaicon">70dp</dimen>
-    <dimen name="paddingbottom_dashboard_alphaicon">3dp</dimen>
-    <dimen name="paddingtop_dashboard_alphaicon">20dp</dimen>
     <dimen name="width_dashboard_currencydollar">20dp</dimen>
     <dimen name="marginend_dashboard_ratecurrency">36dp</dimen>
-    <dimen name="paddingstart_dashboard_currenyicon">45dp</dimen>
     <dimen name="marginend_dashboard_withdrawimage">20dp</dimen>
     <dimen name="marginstart_dashboard_purchaseimage">20dp</dimen>
-    <dimen name="paddingend_dashboard_linearlayoutbottomtextviews">20dp</dimen>
-    <dimen name="paddingstart_dashboard_linearlayoutbottomtextviews">20dp</dimen>
-    <dimen name="paddingtop_dashboard_linearlayoutbottomtextviews">10dp</dimen>
-    <dimen name="height_dashboard_linearlayoutbottomtextviews">0dp</dimen>
     <dimen name="height_dashboard_imageviewcurrencydollar">16sp</dimen>
-    <dimen name="paddingbottom_dashboard_linearlayoutalphasymbol">30dp</dimen>
-    <dimen name="height_dashboard_navigationheader">203dp</dimen>
-    <dimen name="height_dashboard_circleimageviewinnavigation">67dp</dimen>
-    <dimen name="margintop_dashboard_circleimageviewinnavigation">40dp</dimen>
-    <dimen name="marginstart_dashboard_circleimageviewinnavigation">120dp</dimen>
-    <dimen name="marginend_dashboard_circleimageviewinnavigation">120dp</dimen>
-    <dimen name="margintop_dashboard_phonenumberinnavigation">16dp</dimen>
-    <dimen name="marginstart_dashboard_phonenumberinnavigation">58dp</dimen>
-    <dimen name="marginend_dashboard_phonenumberinnavigation">58dp</dimen>
-    <dimen name="textsize_dashboard_phonenumberinnavigation">15sp</dimen>
-    <dimen name="margintop_dashboard_emailinnavigation">10dp</dimen>
-    <dimen name="marginstart_dashboard_emailinnavigation">44dp</dimen>
-    <dimen name="marginend_dashboard_emailinnavigation">44dp</dimen>
-    <dimen name="textsize_dashboard_emialinnavigation">15sp</dimen>
     <dimen name="minheight_style_radiobutton">33dp</dimen>
     <dimen name="minwidth_style_radiobutton">70dp</dimen>
     <dimen name="paddingleft_style_radiobutton">5dp</dimen>
     <dimen name="paddingright_style_radiobutton">5dp</dimen>
     <dimen name="max_materialutil_materialutil">100</dimen>
-    <dimen name="textsize_dashboard_spinner">15sp</dimen>
 
 
     <dimen name="margintop_chargeamount_linearlayout">25dp</dimen>
@@ -136,7 +78,6 @@
     <dimen name="margintop_chargeamount_transfer">30dp</dimen>
     <dimen name="width_chargeamount_transfer">24dp</dimen>
     <dimen name="height_chargeamount_transfer">24dp</dimen>
-    <dimen name="marginendstart_charge_nextbutton">16dp</dimen>
     <dimen name="margintop_chargeamount_amountbase">27dp</dimen>
     <dimen name="marginbottom_chargeamount_nextpayment">27dp</dimen>
     <dimen name="marginstartend_chargeamount_nextpayment">16dp</dimen>
@@ -167,10 +108,6 @@
     <dimen name="padding_charge_imagview">4dp</dimen>
     <dimen name="textsize_charge_textview">19sp</dimen>
 
-    <dimen name="layoutwidth_charge_spinnerr">240dp</dimen>
-    <dimen name="layoutheight_charge_spinnerr">35dp</dimen>
-    <dimen name="margintop_charge_spinnerr">47dp</dimen>
-
     <dimen name="paddingbottom_chargecompleted_linearlayout">28dp</dimen>
     <dimen name="marginstartend_chargecompleted_linearlayout">17dp</dimen>
     <dimen name="height_chargecompleted_header">40dp</dimen>
@@ -178,30 +115,19 @@
     <dimen name="margintopbottom_chargecompleted_view">13dp</dimen>
     <dimen name="height_chargecompleted_view">1dp</dimen>
     <dimen name="margintop_chargecompleted_linearlayout">33dp</dimen>
-    <dimen name="marginstart_chargecompleted_walletnamelable">26dp</dimen>
     <dimen name="margintop_chargecompleted_walletnamelable">20dp</dimen>
     <dimen name="textsize_chargecompleted_walletnamelable">14sp</dimen>
     <dimen name="margintop_chargecompleted_walletname">20dp</dimen>
     <dimen name="margintop_chargecompleted_relativelayout">8dp</dimen>
     <dimen name="textsize_chargecompleted_walletnolable">14sp</dimen>
-    <dimen name="paddingstart_chargecompleted_walletno">140dp</dimen>
-    <dimen name="textsize_chargecompleted_amountalphalable">14sp</dimen>
     <dimen name="textsize_chargecompleted_amountdollarlable">14sp</dimen>
-    <dimen name="paddingstart_chargecompleted_amountalpha">140dp</dimen>
-    <dimen name="paddingstart_chargecompleted_paymentgateway">14sp</dimen>
     <dimen name="textsize_chargecompleted_trackingcode">14sp</dimen>
     <dimen name="marginbuttom_chargecompleted_confirm">27dp</dimen>
     <dimen name="marginstartend_chargecompleted_confirm">16dp</dimen>
     <dimen name="textsize_chargecompleted_confirmbutton">14dp</dimen>
     <dimen name="textsize_chargecompleted_paymentgatewaylable">14sp</dimen>
     <dimen name="textsize_chargecompleted_transactiondate">14sp</dimen>
-    <dimen name="margintop_chargecompleted_successimageview">30dp</dimen>
     <dimen name="textsize_chargecompleted_successtextview">16sp</dimen>
-    <dimen name="marginbutton_chargecompleted_relativelayoutconsistdownloadandshare">31dp</dimen>
-    <dimen name="margintop_chargecompleted_relativelayoutconsistdownloadandshare">20dp</dimen>
-    <dimen name="widthheight_chargecompleted_sharebutton">35dp</dimen>
-    <dimen name="widthheight_chargecompleted_downloadbutton">35dp</dimen>
-    <dimen name="marginstartend_chargecompleted_downloadsharebutton">100dp</dimen>
     <dimen name="paddingstart_chargecompleted_relativelayout">15dp</dimen>
 
 
@@ -209,12 +135,10 @@
     <dimen name="width_chargefailed_linearlayout">294dp</dimen>
     <dimen name="paddingbottom_chargefailed_linearlayout">15dp</dimen>
     <dimen name="margintop_chargefailed_linearlayout">28dp</dimen>
-    <dimen name="margintop_chargefailed_failedimageview">30dp</dimen>
     <dimen name="textsize_chargefailed_failedtextview">20sp</dimen>
     <dimen name="margintop_chargefailed_walletnamelable">13dp</dimen>
     <dimen name="textsize_chargefailed_walletnamelable">14sp</dimen>
     <dimen name="margintop_chargefailed_walletname">13dp</dimen>
-    <dimen name="marginstart_chargefailed_relativelayout">40dp</dimen>
     <dimen name="textsize_chargefailed_walletnolable">14sp</dimen>
     <dimen name="textsize_chargefailed_amountdollarlable">14sp</dimen>
     <dimen name="textsize_chargefailed_paymentgatewaylable">14sp</dimen>
@@ -222,13 +146,6 @@
     <dimen name="marginbuttom_chargefailed_dashboard">27dp</dimen>
     <dimen name="marginstartend_chargefailed_dashboard">16dp</dimen>
     <dimen name="textsize_chargefailed_dashboardbutton">14sp</dimen>
-    <dimen name="paddingstart_chargefailed_walletno">140dp</dimen>
-    <dimen name="marginbutton_chargefailed_relativelayoutconsistdownloadandshare">31dp</dimen>
-    <dimen name="margintop_chargefailed_relativelayoutconsistdownloadandshare">20dp</dimen>
-    <dimen name="widthheight_chargefailed_sharebutton">35dp</dimen>
-    <dimen name="widthheight_chargefailed_downloadbutton">35dp</dimen>
-    <dimen name="marginstartend_chargefailed_downloadsharebutton">100dp</dimen>
-    <dimen name="paddingstart_chargefailed_linearlayout">140dp</dimen>
     <dimen name="marginstartend_chargefailed_relativelayout">15dp</dimen>
     <dimen name="margintopbottom_chargefailed_view">15dp</dimen>
     <dimen name="height_chargefailed_view">1dp</dimen>
@@ -280,7 +197,6 @@
 
     <dimen name="margintop_qrcodefailed_linearlayout">32dp</dimen>
     <dimen name="marginstartend_qrcodefailed_linearlayout">33dp</dimen>
-    <dimen name="margintop_qrcodefailed_textvioewfailed">9dp</dimen>
     <dimen name="textsize_qrcodefailed_textviewfailed">16sp</dimen>
     <dimen name="margintop_qrcodefailed_describetextview">23dp</dimen>
     <dimen name="marginbottom_qrcodefailed_describetextview">30dp</dimen>
@@ -323,7 +239,6 @@
     <dimen name="textsize_transactionfiltersrowthathasswitch_textview">14sp</dimen>
     <dimen name="margintop_transactionfiltersrowthathasswitch_textview">2dp</dimen>
 
-    <dimen name="paddingtop_transactionfiltersrowthathasradiobutton_relativelayout">5dp</dimen>
     <dimen name="paddingbottom_transactionfiltersrowthathasradiobutton_relativelayout">10dp</dimen>
     <dimen name="paddingstart_transactionfiltersrowthathasradiobutton_relativelayout">18dp</dimen>
     <dimen name="paddingend_transactionfiltersrowthathasradiobutton_relativelayout">18dp</dimen>
