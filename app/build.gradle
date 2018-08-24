@@ -42,8 +42,15 @@ android {
     buildTypes {
 
         debug {
+
+//            shrinkResources true
+            minifyEnabled true
             debuggable true
-            minifyEnabled false
+            useProguard false
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles fileTree('proguard').asList().toArray()
+
             applicationIdSuffix ".debug"
             resValue "string", "app_name", "falcon-debug"
         }
@@ -52,7 +59,9 @@ android {
             signingConfig signingConfigs.releaseSign
             debuggable false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles fileTree('proguard').asList().toArray()
             applicationIdSuffix ".release"
             resValue "string", "app_name", "falcon-release"
         }
@@ -102,22 +111,20 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
-    implementation 'com.google.guava:guava:25.1-android'
+    api 'com.google.guava:guava:26.0-android'
+
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     implementation 'com.github.EhsanMashhadi:helpdroid:0.9.0'
     implementation 'com.github.mukeshsolanki:country-picker-android:1.2.4'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
     implementation 'com.braintreepayments.api:drop-in:3.4.0'
-    implementation 'com.github.florent37:viewtooltip:1.1.5'
     implementation('com.mikepenz:materialdrawer:5.9.5@aar') {
         transitive = true
         exclude group: 'com.android.support'
     }
     implementation 'info.hoang8f:android-segmented:1.0.6'
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.andrognito.patternlockview:patternlockview:1.0.0'
-    implementation 'com.ryanjeffreybrooks:indefinitepagerindicator:1.0.9'
     implementation 'com.google.zxing:core:3.2.1'
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
     implementation 'com.google.firebase:firebase-core:16.0.1'

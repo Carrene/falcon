@@ -38,20 +38,6 @@
             android:layout_height="0dp"
             android:layout_weight="0.4"/>
 
-        <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
-            android:id="@+id/charge_wallet_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.1"
-            android:visibility="gone"
-            app:dotColor="@color/colorBlack35"
-            app:dotRadius="6dp"
-            app:selectedDotColor="@color/primary_dark"
-            app:selectedDotRadius="7dp"
-            app:supportRTL="true"
-            />
-
         <TextView
             android:id="@+id/textview_charge_paymentgateway"
             android:layout_width="match_parent"
@@ -67,20 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.2"/>
-
-        <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
-            android:id="@+id/charge_paymentgateway_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.1"
-            android:visibility="gone"
-            app:dotColor="@color/colorBlack35"
-            app:dotRadius="6dp"
-            app:selectedDotColor="@color/primary_dark"
-            app:selectedDotRadius="7dp"
-            app:supportRTL="true"
-            />
 
     </LinearLayout>
 </RelativeLayout>
