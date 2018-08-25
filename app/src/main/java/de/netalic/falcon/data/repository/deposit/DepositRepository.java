@@ -49,8 +49,8 @@ public class DepositRepository implements IDepositRepository {
     }
 
     @Override
-    public void getAll(CallRepository<List<Deposit>> callRepository, Map<String, String> options) {
+    public void getAll(CallRepository<List<Deposit>> callRepository, Map<String, ?> options, int take, int skip) {
 
-        mDepositRestRepository.getAll(callRepository, options);
+        mDepositRestRepository.getAll(callRepository, options, take, skip);
     }
 }

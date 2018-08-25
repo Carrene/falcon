@@ -8,5 +8,5 @@ import de.netalic.falcon.model.Deposit;
 
 public interface IDepositRepository extends IRepository<Deposit, Integer> {
 
-    void getAll(CallRepository<List<Deposit>> callRepository, Map<String, String> options);
+    void getAll(CallRepository<List<Deposit>> callRepository, Map<String, ?> options, int take, int skip);
 }

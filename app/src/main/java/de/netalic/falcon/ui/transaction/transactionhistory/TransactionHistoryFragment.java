@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.paginate.Paginate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +37,11 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     private List<Deposit> mDepositList = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private TransactionHistoryRecyclerViewAdapter mTransactionHistoryRecyclerViewAdapter;
+    private int skip = 0;
+    private int threshold = 10;
+    private int take = threshold;
+
+    private boolean isLoading = false;
 
     @Nullable
     @Override
@@ -50,7 +57,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        getDepositList(sharedPreferences.getAll());
+//        getDepositList(sharedPreferences.getAll(), take, skip);
         setHasOptionsMenu(true);
 
     }
@@ -80,13 +87,15 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     @Override
     public void setDepositList(List<Deposit> depositList) {
 
-        mDepositList = depositList;
+        isLoading = false;
+        skip += threshold;
         mTransactionHistoryRecyclerViewAdapter.setDataSource(depositList);
+
     }
 
-    private void getDepositList(Map<String, ?> map) {
+    private void getDepositList(Map<String, ?> map, int take, int skip) {
 
-        mTransactionHistoryPresenter.getDepositList(map);
+        mTransactionHistoryPresenter.getDepositList(map, take, skip);
     }
 
     private void initUiComponent() {
@@ -104,7 +113,35 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
         mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter(mDepositList);
         mRecyclerView.setAdapter(mTransactionHistoryRecyclerViewAdapter);
 
+        Paginate.with(mRecyclerView, callbacks)
+                .setLoadingTriggerThreshold(11)
+                .addLoadingListItem(true)
+                .build();
     }
+
+    Paginate.Callbacks callbacks = new Paginate.Callbacks() {
+        @Override
+        public void onLoadMore() {
+            // Load next page of data (e.g. network or database)
+            isLoading = true;
+            getDepositList(null, take, skip);
+        }
+
+        @Override
+        public boolean isLoading() {
+            // Indicate whether new page loading is in progress or not
+            return isLoading;
+        }
+
+        @Override
+        public boolean hasLoadedAllItems() {
+            // Indicate whether all data (pages) are loaded or not
+            if (skip == 30) {
+                return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

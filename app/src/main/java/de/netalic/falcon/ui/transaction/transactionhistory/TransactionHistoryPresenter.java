@@ -1,8 +1,12 @@
 package de.netalic.falcon.ui.transaction.transactionhistory;
 
+import java.util.List;
 import java.util.Map;
 
+import de.netalic.falcon.data.repository.base.Deal;
+import de.netalic.falcon.data.repository.base.IRepository;
 import de.netalic.falcon.data.repository.deposit.DepositRepository;
+import de.netalic.falcon.model.Deposit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -22,15 +26,13 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
     }
 
     @Override
-    public void getDepositList(Map<String, ?> filterMap) {
+    public void getDepositList(Map<String, ?> filterMap, int take, int skip) {
 
-        mTransactionHistoryView.showProgressBar();
-
+//        mTransactionHistoryView.showProgressBar();
         DepositRepository.getInstance().getAll(deal -> {
-
             if (deal.getThrowable() != null) {
 
-                mTransactionHistoryView.dismissProgressBar();
+//                mTransactionHistoryView.dismissProgressBar();
             } else {
 
 
@@ -45,7 +47,7 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                     }
                 }
             }
+        }, filterMap, take, skip);
 
-        });
     }
 }

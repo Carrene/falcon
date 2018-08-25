@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -16,7 +17,7 @@ import de.netalic.falcon.util.DateUtil;
 
 public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Deposit> mDepositList;
+    private List<Deposit> mDepositList = new ArrayList<>();
 
 
     public TransactionHistoryRecyclerViewAdapter(List<Deposit> depositList) {
@@ -26,8 +27,9 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
 
     public void setDataSource(List<Deposit> depositList) {
 
-        mDepositList = depositList;
-        notifyDataSetChanged();
+        int size = mDepositList.size();
+        mDepositList.addAll(depositList);
+        notifyItemRangeChanged(size, depositList.size());
     }
 
     @NonNull

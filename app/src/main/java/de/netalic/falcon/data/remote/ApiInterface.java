@@ -15,6 +15,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface ApiInterface {
@@ -50,6 +51,6 @@ public interface ApiInterface {
     Call<Deposit> finalize(@Path("walletId") int walletId, @Path("depositId") int depositId, @Field("braintreeNonce") String braintreeNonce);
 
     @HTTP(method = "LIST", path = "deposits")
-    Call<List<Deposit>> depositList(@QueryMap(encoded = true) Map<String, String> options);
+    Call<List<Deposit>> depositList(@QueryMap(encoded = true) Map<String, String> options, @Query("take") int take,  @Query("skip") int skip);
 
 }
