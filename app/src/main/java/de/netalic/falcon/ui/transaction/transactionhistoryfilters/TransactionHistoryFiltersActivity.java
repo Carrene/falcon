@@ -1,7 +1,6 @@
 package de.netalic.falcon.ui.transaction.transactionhistoryfilters;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
@@ -16,17 +15,11 @@ public class TransactionHistoryFiltersActivity extends BaseActivity {
 
         setupBackButton();
 
-//        TransactionHistoryFiltersFragment transactionHistoryFiltersFragment = (TransactionHistoryFiltersFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transactionfilters_fragmentcontainer);
-//        if (transactionHistoryFiltersFragment == null) {
-//
-//            transactionHistoryFiltersFragment = TransactionHistoryFiltersFragment.newInstance();
-//            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), transactionHistoryFiltersFragment, R.id.framelayout_transactionfilters_fragmentcontainer);
-//        }
-//        new TransactionHistoryFiltersPresenter(transactionHistoryFiltersFragment);
-
-//        TransactionHistoryFiltersPrefrenceFragment transactionHistoryFiltersPrefrenceFragment = getSupportFragmentManager().findFragmentById(R.id.framelayout_transactionfilters_fragmentcontainer);
-        ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), new TransactionHistoryFiltersPrefrenceFragment(), R.id.framelayout_transactionfilters_fragmentcontainer);
-
+        TransactionHistoryFiltersPreferenceFragment transactionHistoryFiltersPreferenceFragment = (TransactionHistoryFiltersPreferenceFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transactionfilters_fragmentcontainer);
+        if (transactionHistoryFiltersPreferenceFragment == null) {
+            transactionHistoryFiltersPreferenceFragment = new TransactionHistoryFiltersPreferenceFragment();
+        }
+        ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), transactionHistoryFiltersPreferenceFragment, R.id.framelayout_transactionfilters_fragmentcontainer);
     }
 
     @Override

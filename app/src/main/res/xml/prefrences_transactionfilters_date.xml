@@ -33,6 +33,7 @@
         <ListPreference
             android:entries="@array/transactionfilter_date"
             android:entryValues="@array/transactionfilter_date"
+            android:summary="Always"
             android:key="date"
             android:title="Choose time"/>
     </PreferenceCategory>

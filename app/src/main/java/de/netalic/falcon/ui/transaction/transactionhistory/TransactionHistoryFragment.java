@@ -1,8 +1,10 @@
 package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
@@ -46,8 +49,10 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
-        getDepositList();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        getDepositList(sharedPreferences.getAll());
         setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -79,9 +84,9 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
         mTransactionHistoryRecyclerViewAdapter.setDataSource(depositList);
     }
 
-    private void getDepositList() {
+    private void getDepositList(Map<String, ?> map) {
 
-        mTransactionHistoryPresenter.getDepositList();
+        mTransactionHistoryPresenter.getDepositList(map);
     }
 
     private void initUiComponent() {
@@ -89,8 +94,8 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
         mRecyclerView = mRoot.findViewById(R.id.recyclerview_transactionhistory_depositlist);
         mRecyclerView.addItemDecoration(new HorizontalSpaceItemDecorationTransactionHistory(60));
 
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getContext(),layoutManager.getOrientation());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
 
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

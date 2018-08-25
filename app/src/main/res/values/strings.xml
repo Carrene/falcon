@@ -155,10 +155,12 @@
 
     <string name="transactionfilters_toolbar">Transaction Filters</string>
 
-    <string-array name="transactionfilter_headers">
-        <item>Status</item>
-        <item>Transaction Type</item>
-        <item>Date</item>
+    <string-array name="transactionfilter_date">
+        <item>Always</item>
+        <item>Last day</item>
+        <item>Last week</item>
+        <item>Last month</item>
+        <item>Custom</item>
     </string-array>
 
 </resources>

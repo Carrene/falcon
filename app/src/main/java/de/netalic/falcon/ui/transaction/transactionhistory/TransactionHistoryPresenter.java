@@ -1,13 +1,17 @@
 package de.netalic.falcon.ui.transaction.transactionhistory;
 
+import java.util.Map;
+
 import de.netalic.falcon.data.repository.deposit.DepositRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+
 public class TransactionHistoryPresenter implements TransactionHistoryContract.Presenter {
 
     private TransactionHistoryContract.View mTransactionHistoryView;
 
     public TransactionHistoryPresenter(TransactionHistoryContract.View transactionHistoryView) {
+
         mTransactionHistoryView = checkNotNull(transactionHistoryView);
         mTransactionHistoryView.setPresenter(this);
     }
@@ -18,24 +22,22 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
     }
 
     @Override
-    public void getDepositList() {
+    public void getDepositList(Map<String, ?> filterMap) {
 
         mTransactionHistoryView.showProgressBar();
 
         DepositRepository.getInstance().getAll(deal -> {
 
-            if (deal.getThrowable()!=null){
+            if (deal.getThrowable() != null) {
 
                 mTransactionHistoryView.dismissProgressBar();
-            }
-
-            else {
+            } else {
 
 
-                switch (deal.getResponse().code()){
+                switch (deal.getResponse().code()) {
 
 
-                    case 200:{
+                    case 200: {
 
                         mTransactionHistoryView.setDepositList(deal.getResponse().body());
 
