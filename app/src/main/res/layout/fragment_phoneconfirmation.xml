@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_userphone"
         android:text="@string/phoneconfirmation_phonenumber"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_phoneconfirmation_userphone" />
 
     <android.support.design.widget.TextInputLayout

@@ -41,7 +41,8 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
+
+            minifyEnabled false
             debuggable true
             useProguard false
 
@@ -116,7 +117,8 @@ dependencies {
     implementation 'com.github.EhsanMashhadi:helpdroid:0.9.0'
     implementation 'com.github.mukeshsolanki:country-picker-android:1.2.4'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
-    implementation ('com.braintreepayments.api:drop-in:3.4.0')
+    implementation'com.braintreepayments.api:drop-in:3.5.0'
+    implementation 'com.github.florent37:viewtooltip:1.1.5'
     implementation('com.mikepenz:materialdrawer:5.9.5@aar') {
         transitive = true
         exclude group: 'com.android.support'
@@ -129,6 +131,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.4'
     implementation 'com.github.florent37:viewtooltip:1.1.5'
+    implementation 'com.android.support:preference-v14:27.1.1'
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'

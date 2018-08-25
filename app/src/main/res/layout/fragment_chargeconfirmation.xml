@@ -26,7 +26,7 @@
                 android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_textview"
                 android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletnamelable"
                 android:text="@string/chargeconfirmation_walletname"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargeconfirmation_walletnamelable" />
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
                 android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletname"
                 android:text="VALUE"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorBlack" />
         </RelativeLayout>
 
         <View
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_textview"
                 android:text="@string/chargeconfirmation_walletamount"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargeconfirmation_amountalphalable" />
 
             <LinearLayout
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="α"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textview_chargeconfirmation_chargeamount"
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
                     android:text="VALUE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorBlack"
 
                     />
 
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_textview"
                 android:text="@string/chargeconfirmation_baseamount"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargeconfirmation_amountdollarlable" />
 
             <LinearLayout
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textview_chargeconfirmation_paidamount"
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
                     android:text="VALUE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorBlack"
 
                     />
             </LinearLayout>
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_textview"
                 android:text="@string/chargeconfirmation_paymentgateway"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargeconfirmation_paymentgatewaylable" />
 
             <TextView
@@ -159,7 +159,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
 
                 />
         </RelativeLayout>
@@ -176,6 +176,6 @@
         android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_confirm"
         android:background="@color/colorSecondary"
         android:text="@string/chargeconfirmation_confirm"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_chargeconfirmation_confirmbutton" />
 </RelativeLayout>

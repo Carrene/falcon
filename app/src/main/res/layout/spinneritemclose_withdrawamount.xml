@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:paddingBottom="@dimen/paddingbottom_withdrawamount_spinneradaptertextview"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_withdrawamount_spinneradaptertextview" />
 
 </RelativeLayout>

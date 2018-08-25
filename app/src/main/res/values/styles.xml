@@ -1,23 +1,21 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#38000000</item>
-        <item name="colorControlNormal">@color/dustyGray</item>
+        <item name="colorAccent">@color/colorSecondaryDark</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
-    <style name="SplashTheme" parent="Base.AppTheme">
+    <style name="SplashTheme" parent="BaseAppTheme">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
-    <style name="AppTheme" parent="Base.AppTheme" />
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
 
-    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="RadioButton">
+    <style name="RadioButtonTheme">
         <item name="android:textColor">@drawable/authenticationpasswordtab_buttontextcolor</item>
         <item name="android:minHeight">@dimen/minheight_style_radiobutton</item>
         <item name="android:minWidth">@dimen/minwidth_style_radiobutton</item>
@@ -35,23 +33,19 @@
         <item name="android:background">@drawable/withdraw_backgroundspinner</item>
     </style>
 
-    <style name="SimpleSpinnerTheme" parent="android:Widget.Holo.Spinner">
+    <style name="SpinnerThemeWithdrawAmount" parent="android:Widget.Holo.Spinner">
         <item name="android:background">@drawable/withdrawamount_backgroundspinner</item>
     </style>
 
-    <style name="Theme.SwitchTheme" parent="Theme.AppCompat.Light">
-
+    <!--TODO remove this after using prefrence fragment-->
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
         <item name="colorAccent">@color/colorSecondary</item>
-
     </style>
+
+    <!--TODO remove this after using prefrence fragment-->
     <style name="Theme.RadioButton" parent="Theme.AppCompat.Light">
-
         <item name="buttonTint">@drawable/radiobuttonselector_transactionfilters</item>
-
-
     </style>
-
-
 
 </resources>
 

@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margintop_chargecompleted_walletnamelable"
                 android:text="@string/chargecompleted_walletname"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_walletnamelable" />
 
             <TextView
@@ -58,7 +58,7 @@
                 android:layout_marginTop="@dimen/margintop_chargecompleted_walletname"
                 android:paddingEnd="@dimen/paddingend_chargecompleted_textview"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_walletnamelable" />
         </RelativeLayout>
 
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargecompleted_amount"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_walletnolable" />
 
 
@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="α"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textview_chargecompleted_amountalpha"
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/paddingend_chargecompleted_textview"
                     android:text="VALUE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textsize_chargecompleted_walletnolable" />
             </LinearLayout>
         </RelativeLayout>
@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargecompleted_baseamount"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
 
             <LinearLayout
@@ -142,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textview_chargecompleted_amountdollar"
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/paddingend_chargecompleted_textview"
                     android:text="VALUE"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textsize_chargecompleted_amountdollarlable" />
             </LinearLayout>
         </RelativeLayout>
@@ -174,7 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargecompleted_paymentgateway"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_paymentgatewaylable" />
 
             <TextView
@@ -184,7 +184,7 @@
                 android:layout_alignParentEnd="true"
                 android:paddingEnd="@dimen/paddingend_chargecompleted_textview"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_paymentgatewaylable" />
         </RelativeLayout>
 
@@ -206,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargecompleted_transactiondate"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_transactiondate" />
 
             <TextView
@@ -216,7 +216,7 @@
                 android:layout_alignParentEnd="true"
                 android:paddingEnd="@dimen/paddingend_chargecompleted_textview"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_transactiondate" />
         </RelativeLayout>
 
@@ -239,7 +239,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargecompleted_transactiontime"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_transactiondate" />
 
             <TextView
@@ -249,7 +249,7 @@
                 android:layout_alignParentEnd="true"
                 android:paddingEnd="@dimen/paddingend_chargecompleted_textview"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_transactiondate" />
         </RelativeLayout>
 
@@ -271,7 +271,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chargecompleted_trackingcode"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_trackingcode" />
 
             <TextView
@@ -281,7 +281,7 @@
                 android:layout_alignParentEnd="true"
                 android:paddingEnd="@dimen/paddingend_chargecompleted_textview"
                 android:text="VALUE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_chargecompleted_trackingcode" />
         </RelativeLayout>
 
@@ -299,6 +299,6 @@
         android:layout_marginStart="@dimen/marginstartend_chargecompleted_confirm"
         android:background="@color/colorSecondary"
         android:text="@string/chargecompleted_dashboard"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_chargecompleted_confirmbutton" />
 </RelativeLayout>

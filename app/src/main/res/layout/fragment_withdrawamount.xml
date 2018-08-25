@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margintop_withdrawamount_amount"
             android:text="@string/withdrawamount_amount"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_withdrawamount_amount" />
 
         <android.support.design.widget.TextInputLayout
@@ -83,10 +83,10 @@
 
             <Spinner
                 android:id="@+id/spinner_withdrawamount_currency"
-                style="@style/SimpleSpinnerTheme"
+                style="@style/SpinnerThemeWithdrawAmount"
                 android:layout_width="@dimen/width_withdrawamount_spinner"
                 android:layout_height="@dimen/height_withdrawamount_spinner"
-                android:backgroundTint="@color/black" />
+                android:backgroundTint="@color/colorBlack" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="@dimen/width_withdrawamount_textinputlayoutothercurrency"
