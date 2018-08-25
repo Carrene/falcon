@@ -24,7 +24,7 @@
             </item>
 
             <item android:right="20dp">
-                <bitmap android:gravity="center_vertical|right" android:src="@drawable/withdraw_arrowdown"/>
+                <bitmap android:gravity="center_vertical|right" android:src="@drawable/withdrawtransfer_arrowdown"/>
             </item>
 
         </layer-list>

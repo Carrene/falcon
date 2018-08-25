@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textview_transfer_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margintop_transfer_header"
+        android:gravity="center"
+        android:text="@string/transfer_wallet"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_transfer_header" />
+
+    <Spinner
+        android:id="@+id/spinner_transfer_walletlist"
+        style="@style/SpinnerThemeWithdrawTransfer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_transfer_spinner"
+        android:layout_below="@+id/textview_transfer_header"
+        android:layout_marginEnd="@dimen/marginstartend_transfer_spinner"
+        android:layout_marginStart="@dimen/marginstartend_transfer_spinner"
+        android:layout_marginTop="@dimen/margintop_transfer_spinner"
+        android:gravity="center" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_transfer_walletlist"
+        android:layout_marginTop="@dimen/margintop_transfer_relativelayout"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textview_transfer_balancelable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/transfer_balance"
+            android:textColor="@color/eucalyptus"
+            android:textSize="@dimen/textsize_transfer_lablebalance"
+
+            />
+
+        <TextView
+            android:id="@+id/textview_transfer_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textview_transfer_balancelable"
+            android:text="VALUE"
+            android:textColor="@color/eucalyptus"
+            android:textSize="@dimen/textsize_transfer_balance" />
+
+        <TextView
+            android:id="@+id/textview_transfer_alphaicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textview_transfer_balance"
+            android:text=" α"
+            android:textColor="@color/eucalyptus" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button_transfer_nextamount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/marginbottom_transfer_nextamountbutton"
+        android:layout_marginEnd="@dimen/marginstartend_transfer_nextamountbutton"
+        android:layout_marginStart="@dimen/marginstartend_transfer_nextamountbutton"
+        android:background="@color/colorSecondary"
+        android:text="@string/transfer_nextamount" />
+
+</RelativeLayout>
