@@ -143,20 +143,20 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                         double amountEnter = Double.parseDouble(s.toString());
                         double rateOtherCurrencySell = mRateList.get(mPosition).getSell();
 
-                        double rateUsdSell = -1;
+
                         for (Rate rate : mRateList) {
                             if (rate.getCurrencyCode().equals("USD")) {
-                                rateUsdSell = rate.getSell();
+                                mRateUsdSell = rate.getSell();
                             }
 
                         }
 
-                        if (rateUsdSell == -1) {
+                        if (mRateUsdSell == -1) {
                             throw new IllegalStateException();
                         }
 
                         double otherCurrency = amountEnter * rateOtherCurrencySell;
-                        double dollar = amountEnter * rateUsdSell;
+                        double dollar = amountEnter * mRateUsdSell;
                         String roundOtherCurrency = mDecimalFormat.format(otherCurrency);
                         String roundDollar = mDecimalFormat.format(dollar);
 
@@ -167,6 +167,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                 }
             }
         });
+
 
         mEditTextOtherCurrency.addTextChangedListener(new TextWatcher() {
             @Override
@@ -305,11 +306,14 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
         mTextViewUseMinimum.setOnClickListener(v -> {
 
+            mEditTextWalletAmount.requestFocus();
             mEditTextWalletAmount.setText("1");
+
         });
 
         mTextViewUseMaximum.setOnClickListener(v -> {
 
+            mEditTextWalletAmount.requestFocus();
             mEditTextWalletAmount.setText("2500");
 
         });

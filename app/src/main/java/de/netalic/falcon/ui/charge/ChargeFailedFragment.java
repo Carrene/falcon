@@ -165,7 +165,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (regEX != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
 
@@ -180,10 +180,10 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Ok", getContext());
+            SnackbarUtil.showSnackbar(mRoot, "Permission Allowed", getContext());
         } else {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Failed", getContext());
+            SnackbarUtil.showSnackbar(mRoot, "Permission Denied", getContext());
 
         }
     }
