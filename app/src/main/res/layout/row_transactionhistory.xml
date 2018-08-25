@@ -77,12 +77,6 @@
             />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_rowtransactionhistory_view"
-        android:background="@color/colorPrimaryDark5"
-        android:layout_marginStart="@dimen/marginstartend_rowtransactionhistory_alltextview"
-        android:layout_marginTop="@dimen/margintop_rowtransactionhistory_view"
-        />
+
 
 </LinearLayout>

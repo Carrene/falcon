@@ -13,7 +13,7 @@ public class TransactionHistoryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this,getToolbar(),0);
+        NavigationDrawerUtil.getDrawer(this,getToolbar(),5);
 
         TransactionHistoryFragment transactionHistoryFragment=(TransactionHistoryFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transactionhistory_fragmentcontainer);
         if (transactionHistoryFragment==null){

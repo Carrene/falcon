@@ -1,10 +1,12 @@
 package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +21,8 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
+import de.netalic.falcon.ui.base.HorizontalSpaceItemDecorationTransactionFilters;
+import de.netalic.falcon.ui.base.HorizontalSpaceItemDecorationTransactionHistory;
 import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
 
 public class TransactionHistoryFragment extends Fragment implements TransactionHistoryContract.View {
@@ -83,7 +87,15 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     private void initUiComponent() {
 
         mRecyclerView = mRoot.findViewById(R.id.recyclerview_transactionhistory_depositlist);
+        mRecyclerView.addItemDecoration(new HorizontalSpaceItemDecorationTransactionHistory(60));
+
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
+        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getContext(),layoutManager.getOrientation());
+
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.addItemDecoration(dividerItemDecoration);
+
         mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter(mDepositList);
         mRecyclerView.setAdapter(mTransactionHistoryRecyclerViewAdapter);
 
