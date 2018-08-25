@@ -4,17 +4,8 @@
               android:background="@color/white"
               android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <include layout="@layout/toolbar_everywhere"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Toolbar"/>
-
-    </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
         android:id="@+id/relativelayout_authenticationdefinition_header"
@@ -39,7 +30,7 @@
 
             <RadioButton
                 android:id="@+id/radiobutton_authenticationdefinition_pattern"
-                style="@style/RadioButton"
+                style="@style/RadioButtonTheme"
                 android:layout_width="@dimen/width_authenticationdefinition_radiobutton"
                 android:layout_height="@dimen/height_authenticationdefinition_radiobutton"
                 android:checked="true"
@@ -48,7 +39,7 @@
 
             <RadioButton
                 android:id="@+id/radiobutton_authenticationdefinition_password"
-                style="@style/RadioButton"
+                style="@style/RadioButtonTheme"
                 android:layout_width="@dimen/width_authenticationdefinition_radiobutton"
                 android:layout_height="@dimen/height_authenticationdefinition_radiobutton"
                 android:text="@string/athenticationdefinition_password"

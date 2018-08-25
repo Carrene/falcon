@@ -18,7 +18,7 @@
             android:layout_alignParentStart="true"
             android:text="@string/rowtransactionhistory_walletname"
             android:paddingStart="@dimen/marginstartend_rowtransactionhistory_alltextview"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
             />
         <TextView
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/textview_transactionhistory_walletnamelable"
             android:text="Alpha"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
             />
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="$"
             android:layout_toLeftOf="@+id/textview_transactionhistory_amount"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
             />
         <TextView
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:paddingEnd="@dimen/marginstartend_rowtransactionhistory_alltextview"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
             />
     </RelativeLayout>
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:paddingStart="@dimen/marginstartend_rowtransactionhistory_alltextview"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_rowtransactionhistory_secondlinetextview"
             />
 

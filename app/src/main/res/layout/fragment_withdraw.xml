@@ -16,7 +16,7 @@
             android:layout_marginTop="@dimen/margintop_withdraw_withdrawmethod"
             android:gravity="center"
             android:text="@string/withdraw_withdrawmethod"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_withdraw_withdrawmethod" />
 
         <TextView
@@ -26,7 +26,7 @@
             android:layout_marginTop="@dimen/margintop_withdraw_qrcode"
             android:gravity="center"
             android:text="@string/withdraw_qrcode"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_withdraw_qrcode" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_marginTop="@dimen/margintop_withdraw_wallet"
             android:gravity="center"
             android:text="@string/withdraw_wallet"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_withdraw_wallet" />
 
         <Spinner

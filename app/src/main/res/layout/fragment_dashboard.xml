@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/porcelain"
-
-    >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/porcelain">
 
     <RelativeLayout
-
         android:id="@+id/relativelayout_dashboard_firstpart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_dashboard_firstpart"
@@ -25,8 +22,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margintop_dashboard_spinner"
             android:spinnerMode="dropdown"
-            android:textAlignment="center" />
-
+            android:textAlignment="center"/>
 
         <RelativeLayout
             android:id="@+id/relativelayout_dashboard_alphasymbol"
@@ -43,7 +39,7 @@
                 android:layout_height="@dimen/height_dashboard_alphaicon"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/textview_dashboard_balance"
-                android:src="@drawable/dashboard_alphaicon" />
+                android:src="@drawable/dashboard_alphaicon"/>
 
             <TextView
                 android:id="@+id/textview_dashboard_balance"
@@ -52,9 +48,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="VALUE"
                 android:textColor="@color/white"
-                android:textSize="@dimen/textsize_dashboard_amountalpha"
-
-                />
+                android:textSize="@dimen/textsize_dashboard_amountalpha"/>
 
         </RelativeLayout>
 
@@ -77,8 +71,8 @@
             android:layout_marginStart="@dimen/marginstart_dashboard_equivalenttobasecurrency"
             android:text="@string/dasboard_equivalenttobasecurrency"
 
-            android:textColor="@color/black"
-            android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy"/>
 
         <TextView
             android:id="@+id/textview_dashboard_currencydollar"
@@ -89,7 +83,7 @@
             android:layout_toLeftOf="@+id/textview_dashboard_ratecurrency"
             android:layout_toStartOf="@+id/textview_dashboard_ratecurrency"
             android:text="$"
-            android:textColor="@color/black" />
+            android:textColor="@color/colorBlack"/>
 
 
         <TextView
@@ -101,8 +95,8 @@
             android:layout_marginEnd="@dimen/marginend_dashboard_ratecurrency"
             android:text="VALUE"
             android:textAlignment="textStart"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy"/>
     </RelativeLayout>
 
 
@@ -131,7 +125,7 @@
                 android:layout_weight="2"
                 android:clickable="true"
                 android:orientation="vertical"
-                android:src="@drawable/dashboard_purchase" />
+                android:src="@drawable/dashboard_purchase"/>
 
 
             <ImageView
@@ -140,7 +134,7 @@
                 android:layout_height="@dimen/widthheight_dashboard_withdrawimageview"
                 android:layout_marginEnd="@dimen/marginend_dashboard_withdrawimage"
                 android:layout_weight="2"
-                android:src="@drawable/dashboard_withdraw" />
+                android:src="@drawable/dashboard_withdraw"/>
 
         </LinearLayout>
 

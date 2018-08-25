@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@string/chargeamount_amount"
             android:textSize="@dimen/textsize_chargeamount_amount"
-            android:textColor="@color/black" />
+            android:textColor="@color/colorBlack" />
 
         <android.support.design.widget.TextInputLayout
 
@@ -36,7 +36,7 @@
             android:inputType="numberDecimal"
             android:layout_marginStart="@dimen/marginstartend_chargeamount_edittextamount"
             android:layout_marginEnd="@dimen/marginstartend_chargeamount_edittextamount"
-            android:textColor="@color/black" />
+            android:textColor="@color/colorBlack" />
         </android.support.design.widget.TextInputLayout>
         <ImageView
             android:id="@+id/imageview_chargeamount_transfer"
@@ -58,7 +58,7 @@
             android:layout_marginStart="@dimen/marginstartend_chargeamount_edittextdollar"
             android:layout_marginEnd="@dimen/marginstartend_chargeamount_edittextdollar"
             android:layout_marginTop="@dimen/margintop_chargeamount_amountbase"
-            android:textColor="@color/black" />
+            android:textColor="@color/colorBlack" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -69,9 +69,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/marginbottom_chargeamount_nextpayment"
-        android:background="@color/lightningYellow"
+        android:background="@color/colorSecondary"
         android:text="@string/chargeamount_nextpayment"
-        android:textColor="@color/black"
+        android:textColor="@color/colorBlack"
         android:layout_marginStart="@dimen/marginstartend_chargeamount_nextpayment"
         android:layout_marginEnd="@dimen/marginstartend_chargeamount_nextpayment" />
 

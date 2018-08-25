@@ -14,8 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,15 +66,10 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         mRecyclerViewWallets.setAdapter(mRecyclerViewAdapterChargeWallet);
         mRecyclerViewWallets.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
-        IndefinitePagerIndicator walletIndicator = mRoot.findViewById(R.id.charge_wallet_indicator);
-        walletIndicator.attachToRecyclerView(mRecyclerViewWallets);
-
         mRecyclerViewAdapterChargePaymentGateway = new ChargePaymentGatewayRecyclerViewAdapter(new ArrayList<>());
         mRecyclerViewPaymentGateway.setAdapter(mRecyclerViewAdapterChargePaymentGateway);
         mRecyclerViewPaymentGateway.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
-        IndefinitePagerIndicator paymentGatewayIndicator = mRoot.findViewById(R.id.charge_paymentgateway_indicator);
-        paymentGatewayIndicator.attachToRecyclerView(mRecyclerViewPaymentGateway);
 
         mWalletSnapHelper = new LinearSnapHelper();
         mWalletSnapHelper.attachToRecyclerView(mRecyclerViewWallets);
