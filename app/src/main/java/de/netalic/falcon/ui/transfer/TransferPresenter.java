@@ -25,15 +25,14 @@ public class TransferPresenter implements TransferContract.Presenter {
         mTransferView.showProgressBar();
         WalletRepository.getInstance().getAll(deal -> {
 
-            if (deal.getThrowable()!=null){
+            if (deal.getThrowable() != null) {
 
 
-            }
-            else {
+            } else {
 
-                switch (deal.getResponse().code()){
+                switch (deal.getResponse().code()) {
 
-                    case 200:{
+                    case 200: {
 
                         mTransferView.setWalletList(deal.getResponse().body());
                         break;
@@ -43,8 +42,8 @@ public class TransferPresenter implements TransferContract.Presenter {
 
                 }
             }
-
+            mTransferView.dismissProgressBar();
         });
-        mTransferView.dismissProgressBar();
+
     }
 }

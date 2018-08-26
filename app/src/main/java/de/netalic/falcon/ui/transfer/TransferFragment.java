@@ -16,6 +16,7 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.ui.base.BaseActivity;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -55,10 +56,19 @@ public class TransferFragment extends Fragment implements TransferContract.View 
     @Override
     public void showProgressBar() {
 
+        checkNotNull(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
+
     }
 
     @Override
     public void dismissProgressBar() {
+
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
 
     }
 
