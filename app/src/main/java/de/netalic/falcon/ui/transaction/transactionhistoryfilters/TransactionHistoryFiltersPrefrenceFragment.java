@@ -16,7 +16,7 @@ import android.text.TextUtils;
 import android.widget.ListView;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.ui.base.HorizontalSpaceItemDecoration;
+
 
 public class TransactionHistoryFiltersPrefrenceFragment extends PreferenceFragmentCompat {
 

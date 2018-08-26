@@ -63,8 +63,7 @@
     <string name="materialdialogutil_pleasewait">Please wait</string>
 
 
-    <string name="chargeamount_dollar">USD</string>
-    <string name="chargeamount_nextpayment">NEXT-PAYMENT</string>
+
     <string name="charge_pleasefillamount">Please fill amount</string>
     <string name="charge_invalidamount">Invalid amount</string>
     <string name="charge_amountissmallerthanlowerbound">Amount is smaller than lower bound</string>
@@ -77,8 +76,10 @@
     <string name="chargeamount_toolbartitle">Charge-Amount</string>
     <string name="chargeamount_invalidcurrency">Invalid currency</string>
     <string name="chargeamount_ratedosenotexists">Rate dose not exists</string>
-    <string name="chargeamount_amount">Amount:</string>
+    <string name="chargeamount_amount">Amount</string>
     <string name="chargeamount_amounthint">Alpha</string>
+    <string name="chargeamount_dollar">USD</string>
+    <string name="chargeamount_nextpayment">NEXT-PAYMENT</string>
 
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
     <string name="chargeconfirmation_walletname">Wallet Name </string>
@@ -160,5 +161,15 @@
         <item>Transaction Type</item>
         <item>Date</item>
     </string-array>
+
+    <string name="transferamount_toolbar">Transfer - Amount</string>
+    <string name="transferamount_invalidcurrency">Invalid currency</string>
+    <string name="transferamount_ratedosenotexists">Rate dose not exists</string>
+    <string name="transferamount_amount">Amount</string>
+    <string name="transferamount_amounthint">Alpha</string>
+    <string name="transferamount_dollar">USD</string>
+    <string name="transferamount_nexttransfer">NEXT - TRANSFER</string>
+    <string name="transferamount_usemaximum">USE MAXIMUM</string>
+    <string name="transferamount_useminimum">USE MINIMUM</string>
 
 </resources>
