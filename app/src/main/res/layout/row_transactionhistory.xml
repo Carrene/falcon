@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="@dimen/margintop_rowtransactionhistory_linearlayout"
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margintop_rowtransactionhistory_linearlayout"
         >
 
         <TextView
@@ -16,11 +17,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="@string/rowtransactionhistory_walletname"
             android:paddingStart="@dimen/marginstartend_rowtransactionhistory_alltextview"
+            android:text="@string/rowtransactionhistory_walletname"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
             />
+
         <TextView
             android:id="@+id/textview_transactionhistory_walletname"
             android:layout_width="wrap_content"
@@ -35,11 +37,12 @@
             android:id="@+id/textview_transactionhistory_amountsymbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$"
             android:layout_toLeftOf="@+id/textview_transactionhistory_amount"
+            android:text="$"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"
             />
+
         <TextView
             android:id="@+id/textview_transactionhistory_amount"
             android:layout_width="wrap_content"
@@ -76,7 +79,6 @@
             android:textSize="@dimen/textsize_rowtransactionhistory_secondlinetextview"
             />
     </RelativeLayout>
-
 
 
 </LinearLayout>

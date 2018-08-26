@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,16 +21,15 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
     private List<Deposit> mDepositList = new ArrayList<>();
 
 
-    public TransactionHistoryRecyclerViewAdapter(List<Deposit> depositList) {
+    public TransactionHistoryRecyclerViewAdapter() {
 
-        mDepositList = depositList;
     }
 
     public void setDataSource(List<Deposit> depositList) {
 
         int size = mDepositList.size();
         mDepositList.addAll(depositList);
-        notifyItemRangeChanged(size, depositList.size());
+        notifyItemRangeInserted(size, depositList.size());
     }
 
     @NonNull

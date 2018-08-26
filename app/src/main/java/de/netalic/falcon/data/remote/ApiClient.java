@@ -20,6 +20,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -37,6 +38,10 @@ public class ApiClient {
             ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getInstance()));
             okHttpClient.cookieJar(cookieJar).addInterceptor(new AuthorizationInterceptor());
             okHttpClient.addInterceptor(new NetworkErrorInterceptor());
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            okHttpClient.addInterceptor(interceptor);
+
             sRetrofit = new Retrofit.Builder().baseUrl(getUrl())
                     .client(okHttpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())

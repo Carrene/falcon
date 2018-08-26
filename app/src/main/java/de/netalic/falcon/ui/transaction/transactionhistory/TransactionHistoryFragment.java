@@ -2,7 +2,6 @@ package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -18,30 +17,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.paginate.Paginate;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
-import de.netalic.falcon.ui.base.HorizontalSpaceItemDecorationTransactionFilters;
 import de.netalic.falcon.ui.base.HorizontalSpaceItemDecorationTransactionHistory;
 import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
+import ru.alexbykov.nopaginate.callback.OnLoadMoreListener;
+import ru.alexbykov.nopaginate.paginate.NoPaginate;
 
 public class TransactionHistoryFragment extends Fragment implements TransactionHistoryContract.View {
 
     private View mRoot;
     private TransactionHistoryContract.Presenter mTransactionHistoryPresenter;
-    private List<Deposit> mDepositList = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private TransactionHistoryRecyclerViewAdapter mTransactionHistoryRecyclerViewAdapter;
-    private int skip = 0;
-    private int threshold = 10;
-    private int take = threshold;
-
-    private boolean isLoading = false;
+    private static final int THRESHOLD = 10;
+    private NoPaginate mPaginate;
 
     @Nullable
     @Override
@@ -87,61 +80,60 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     @Override
     public void setDepositList(List<Deposit> depositList) {
 
-        isLoading = false;
-        skip += threshold;
         mTransactionHistoryRecyclerViewAdapter.setDataSource(depositList);
-
     }
 
-    private void getDepositList(Map<String, ?> map, int take, int skip) {
+    @Override
+    public void showPaginationError(boolean show) {
 
-        mTransactionHistoryPresenter.getDepositList(map, take, skip);
+        mPaginate.showError(show);
+    }
+
+    @Override
+    public void showPaginationLoading(boolean loading) {
+
+        mPaginate.showLoading(loading);
+    }
+
+
+    @Override
+    public void loadNoMoreItem(boolean load) {
+
+        mPaginate.setNoMoreItems(load);
+    }
+
+    private void getDepositList(Map<String, ?> map) {
+
+        mTransactionHistoryPresenter.getDepositList(map);
     }
 
     private void initUiComponent() {
 
+        if (mPaginate != null) {
+            mPaginate.unbind();
+        }
         mRecyclerView = mRoot.findViewById(R.id.recyclerview_transactionhistory_depositlist);
         mRecyclerView.addItemDecoration(new HorizontalSpaceItemDecorationTransactionHistory(60));
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
 
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter(mDepositList);
+
+        mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter();
         mRecyclerView.setAdapter(mTransactionHistoryRecyclerViewAdapter);
 
-        Paginate.with(mRecyclerView, callbacks)
-                .setLoadingTriggerThreshold(11)
-                .addLoadingListItem(true)
-                .build();
-    }
+        mPaginate = NoPaginate.with(mRecyclerView).setLoadingTriggerThreshold(THRESHOLD).setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
 
-    Paginate.Callbacks callbacks = new Paginate.Callbacks() {
-        @Override
-        public void onLoadMore() {
-            // Load next page of data (e.g. network or database)
-            isLoading = true;
-            getDepositList(null, take, skip);
-        }
-
-        @Override
-        public boolean isLoading() {
-            // Indicate whether new page loading is in progress or not
-            return isLoading;
-        }
-
-        @Override
-        public boolean hasLoadedAllItems() {
-            // Indicate whether all data (pages) are loaded or not
-            if (skip == 30) {
-                return true;
+                getDepositList(null);
             }
-            return false;
-        }
-    };
+        }).build();
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
