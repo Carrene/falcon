@@ -7,10 +7,17 @@ public interface TransferAmountContract {
 
     interface View extends BaseView<Presenter>{
 
+        void showErrorInvalidCurrency();
+
+        void showErrorRatesDoesNotExists();
+
+        void updateExchangeRateCurrency(de.netalic.falcon.model.Rate rate);
 
     }
 
     interface Presenter  extends BasePresenter{
+
+        void exchangeRate(de.netalic.falcon.model.Rate rate);
 
 
     }

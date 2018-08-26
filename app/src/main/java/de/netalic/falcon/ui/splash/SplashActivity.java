@@ -25,21 +25,19 @@ public class SplashActivity extends AppCompatActivity {
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
         AtomicReference<Intent> intent = new AtomicReference<>();
 
-//        if (sharedPreferencesJwtPersistor.get() == null) {
-//            intent.set(new Intent(this, RegistrationActivity.class));
-//
-//        } else {
-//            AuthenticationRepository.getInstance().get(deal -> {
-//                if (deal.getModel() == null) {
-//                    intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
-//                } else {
-//                    intent.set(new Intent(this, DashboardActivity.class));
-//                }
-//            });
-//        }
-//        startActivity(intent.get());
-        Intent intent1=new Intent(this, TransferAmountActivity.class);
-        startActivity(intent1);
+        if (sharedPreferencesJwtPersistor.get() == null) {
+            intent.set(new Intent(this, RegistrationActivity.class));
+
+        } else {
+            AuthenticationRepository.getInstance().get(deal -> {
+                if (deal.getModel() == null) {
+                    intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
+                } else {
+                    intent.set(new Intent(this, DashboardActivity.class));
+                }
+            });
+        }
+        startActivity(intent.get());
         finish();
     }
 }
