@@ -31,7 +31,7 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
     private List<Wallet> mWalletList;
     private TextView mTextViewBalance;
     private Button mButtonNextAmount;
-    private static final String ARGUMENT_WALLET="WALLET";
+    private static final String ARGUMENT_WALLET = "WALLET";
     private int mPosition;
 
     @Override
@@ -92,7 +92,7 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
 
         mSpinnerWalletList = mRoot.findViewById(R.id.spinner_withdraw_spinner);
         mTextViewBalance = mRoot.findViewById(R.id.textview_withdraw_balance);
-        mButtonNextAmount=mRoot.findViewById(R.id.button_withdraw_nextamount);
+        mButtonNextAmount = mRoot.findViewById(R.id.button_withdraw_nextamount);
     }
 
 
@@ -107,17 +107,6 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
         mWalletList = walletList;
         mWithdrawSpinnerAdapter = new WithdrawSpinnerAdapter(getContext(), mWalletList);
         mSpinnerWalletList.setAdapter(mWithdrawSpinnerAdapter);
-        setFirstBalance();
-    }
-
-    private void setFirstBalance() {
-
-        if (mWalletList.size() > 0) {
-            mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance()));
-        } else {
-
-            mTextViewBalance.setText("");
-        }
     }
 
     private void initListener() {
@@ -127,19 +116,20 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
-                mPosition=position;
+                mPosition = position;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance()));
             }
         });
 
         mButtonNextAmount.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getActivity(),WithdrawAmountActivity.class);
-            intent.putExtra(ARGUMENT_WALLET,mWalletList.get(mPosition));
+            Intent intent = new Intent(getActivity(), WithdrawAmountActivity.class);
+            intent.putExtra(ARGUMENT_WALLET, mWalletList.get(mPosition));
             startActivity(intent);
 
         });
