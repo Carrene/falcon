@@ -12,6 +12,8 @@ public class TransferAmountActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setupBackButton();
+
         TransferAmountFragment transferAmountFragment=(TransferAmountFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferamount_fragmentcontainer);
         if (transferAmountFragment==null){
 
