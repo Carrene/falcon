@@ -57,6 +57,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margintop_rowtransactionhistory_linearlayout"
         android:layout_marginTop="@dimen/margintop_rowtransactionhistory_relativelayout"
         >
 
