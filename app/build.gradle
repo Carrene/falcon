@@ -136,6 +136,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     implementation 'ru.alexbykov:nopaginate:0.9.9'
+    implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'

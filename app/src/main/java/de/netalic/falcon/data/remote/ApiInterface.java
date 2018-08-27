@@ -50,7 +50,7 @@ public interface ApiInterface {
     @HTTP(method = "FINALIZE", path = "wallets/{walletId}/braintree/deposits/{depositId}", hasBody = true)
     Call<Deposit> finalize(@Path("walletId") int walletId, @Path("depositId") int depositId, @Field("braintreeNonce") String braintreeNonce);
 
-    @HTTP(method = "LIST", path = "deposits")
-    Call<List<Deposit>> depositList(@QueryMap(encoded = true) Map<String, String> options, @Query("take") int take,  @Query("skip") int skip);
+    @HTTP(method = "LIST", path = "deposits?sort=createdAt")
+    Call<List<Deposit>> depositList(@QueryMap(encoded = true) Map<String, String> options, @Query("take") int take, @Query("skip") int skip);
 
 }

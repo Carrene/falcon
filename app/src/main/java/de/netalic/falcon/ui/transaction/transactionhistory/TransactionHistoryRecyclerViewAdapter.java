@@ -20,7 +20,6 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
 
     private List<Deposit> mDepositList = new ArrayList<>();
 
-
     public TransactionHistoryRecyclerViewAdapter() {
 
     }
@@ -30,6 +29,12 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
         int size = mDepositList.size();
         mDepositList.addAll(depositList);
         notifyItemRangeInserted(size, depositList.size());
+    }
+
+    public void removeDataSource() {
+
+        mDepositList.clear();
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -50,25 +55,18 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
 
             depositViewHolder.mTextViewWalletName.setText(deposit.getWalletName());
             depositViewHolder.mTextViewAmount.setText(String.valueOf(deposit.getPaidAmount()));
+            depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getCreatedAt()) + "@" + DateUtil.isoToTime(deposit.getCreatedAt()));
+            depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
 
             switch (deposit.getStatus()) {
 
                 case "succeed": {
                     depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
-                    depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getCreatedAt()) + "@" + DateUtil.isoToTime(deposit.getCreatedAt()));
-                    depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
                     break;
                 }
 
                 case "failed": {
                     depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
-                    depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getCreatedAt()) + "@" + DateUtil.isoToTime(deposit.getCreatedAt()));
-                    depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
-                    break;
-                }
-
-                case "new": {
-                    depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
                     break;
                 }
             }

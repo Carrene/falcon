@@ -48,9 +48,9 @@ public class DepositRestRepository implements IDepositRepository {
     }
 
     @Override
-    public void getAll(CallRepository<List<Deposit>> callRepository, Map<String, ?> options, int take, int skip) {
+    public void getAll(CallRepository<List<Deposit>> callRepository, Map<String, String> options, int take, int skip) {
 
-        ApiClient.getService().depositList(new HashMap<>(), take, skip).enqueue(new Callback<List<Deposit>>() {
+        ApiClient.getService().depositList(options, take, skip).enqueue(new Callback<List<Deposit>>() {
             @Override
             public void onResponse(Call<List<Deposit>> call, Response<List<Deposit>> response) {
 

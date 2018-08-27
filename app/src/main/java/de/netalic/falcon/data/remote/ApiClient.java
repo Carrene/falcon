@@ -39,7 +39,7 @@ public class ApiClient {
             okHttpClient.cookieJar(cookieJar).addInterceptor(new AuthorizationInterceptor());
             okHttpClient.addInterceptor(new NetworkErrorInterceptor());
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
             okHttpClient.addInterceptor(interceptor);
 
             sRetrofit = new Retrofit.Builder().baseUrl(getUrl())

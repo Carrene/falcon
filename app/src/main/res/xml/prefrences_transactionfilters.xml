@@ -3,26 +3,26 @@
 
     <PreferenceCategory android:title="Status">
         <SwitchPreference
-            android:key="success"
+            android:key="succeed"
             android:title="Success"/>
         <SwitchPreference
-            android:key="Fail"
+            android:key="failed"
             android:title="Failed"/>
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/divider_preference"/>
     <PreferenceCategory android:title="Transaction Type">
 
         <SwitchPreference
-            android:key="Withdraw"
+            android:key="withdraw"
             android:title="Withdraw"/>
         <SwitchPreference
-            android:key="Charge"
+            android:key="charge"
             android:title="Charge"/>
         <SwitchPreference
-            android:key="Receive"
+            android:key="receive"
             android:title="Receive"/>
         <SwitchPreference
-            android:key="Purchase"
+            android:key="purchase"
             android:title="Purchase"/>
 
     </PreferenceCategory>

@@ -1,12 +1,12 @@
 package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,19 +22,18 @@ import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
-import de.netalic.falcon.ui.base.HorizontalSpaceItemDecorationTransactionHistory;
 import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
-import ru.alexbykov.nopaginate.callback.OnLoadMoreListener;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import ru.alexbykov.nopaginate.paginate.NoPaginate;
 
 public class TransactionHistoryFragment extends Fragment implements TransactionHistoryContract.View {
 
     private View mRoot;
     private TransactionHistoryContract.Presenter mTransactionHistoryPresenter;
-    private RecyclerView mRecyclerView;
     private TransactionHistoryRecyclerViewAdapter mTransactionHistoryRecyclerViewAdapter;
-    private static final int THRESHOLD = 10;
-    private NoPaginate mPaginate;
+    private NoPaginate mNoPaginate;
+    private Map<String, ?> mFilterMap;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Nullable
     @Override
@@ -49,8 +48,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-//        getDepositList(sharedPreferences.getAll(), take, skip);
+        mFilterMap = PreferenceManager.getDefaultSharedPreferences(getContext()).getAll();
         setHasOptionsMenu(true);
 
     }
@@ -60,6 +58,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
         mTransactionHistoryPresenter = presenter;
     }
+
 
     @Override
     public void showProgressBar() {
@@ -81,25 +80,27 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     public void setDepositList(List<Deposit> depositList) {
 
         mTransactionHistoryRecyclerViewAdapter.setDataSource(depositList);
+        if (mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
     public void showPaginationError(boolean show) {
 
-        mPaginate.showError(show);
+        mNoPaginate.showError(show);
     }
 
     @Override
     public void showPaginationLoading(boolean loading) {
 
-        mPaginate.showLoading(loading);
+        mNoPaginate.showLoading(loading);
     }
-
 
     @Override
     public void loadNoMoreItem(boolean load) {
 
-        mPaginate.setNoMoreItems(load);
+        mNoPaginate.setNoMoreItems(load);
     }
 
     private void getDepositList(Map<String, ?> map) {
@@ -109,30 +110,39 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
     private void initUiComponent() {
 
-        if (mPaginate != null) {
-            mPaginate.unbind();
+        RecyclerView recyclerView = mRoot.findViewById(R.id.recyclerview_transactionhistory);
+        mSwipeRefreshLayout = mRoot.findViewById(R.id.swiperefresh_transactionhistory);
+
+        if (mNoPaginate != null) {
+            mNoPaginate.unbind();
         }
-        mRecyclerView = mRoot.findViewById(R.id.recyclerview_transactionhistory_depositlist);
-        mRecyclerView.addItemDecoration(new HorizontalSpaceItemDecorationTransactionHistory(60));
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.addItemDecoration(dividerItemDecoration);
-
+        recyclerView.setItemAnimator(new SlideInUpAnimator());
 
         mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter();
-        mRecyclerView.setAdapter(mTransactionHistoryRecyclerViewAdapter);
+        recyclerView.setAdapter(mTransactionHistoryRecyclerViewAdapter);
 
-        mPaginate = NoPaginate.with(mRecyclerView).setLoadingTriggerThreshold(THRESHOLD).setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
+        mNoPaginate = NoPaginate.with(recyclerView).setOnLoadMoreListener(() -> getDepositList(mFilterMap)).build();
 
-                getDepositList(null);
-            }
-        }).build();
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
+
+            mTransactionHistoryPresenter.resetPagination();
+            mTransactionHistoryRecyclerViewAdapter.removeDataSource();
+
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+        mNoPaginate.unbind();
     }
 
     @Override

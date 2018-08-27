@@ -9,9 +9,15 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import android.widget.DatePicker;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryFragment;
 
 public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, DatePickerDialog.OnDateSetListener {
 
+    public static TransactionHistoryFiltersPreferenceFragment newInstance() {
+
+        TransactionHistoryFiltersPreferenceFragment fragment = new TransactionHistoryFiltersPreferenceFragment();
+        return fragment;
+    }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -54,4 +60,5 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
     }
+
 }

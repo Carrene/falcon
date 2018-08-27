@@ -11,15 +11,16 @@ public class TransactionHistoryActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this,getToolbar(),5);
+        NavigationDrawerUtil.getDrawer(this, getToolbar(), 5);
 
-        TransactionHistoryFragment transactionHistoryFragment=(TransactionHistoryFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transactionhistory_fragmentcontainer);
-        if (transactionHistoryFragment==null){
+        TransactionHistoryFragment transactionHistoryFragment = (TransactionHistoryFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transactionhistory_fragmentcontainer);
+        if (transactionHistoryFragment == null) {
 
-            transactionHistoryFragment=TransactionHistoryFragment.newInstance();
-            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),transactionHistoryFragment,R.id.framelayout_transactionhistory_fragmentcontainer);
+            transactionHistoryFragment = TransactionHistoryFragment.newInstance();
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), transactionHistoryFragment, R.id.framelayout_transactionhistory_fragmentcontainer);
 
         }
 
@@ -28,11 +29,13 @@ public class TransactionHistoryActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.activity_transactionhistory;
     }
 
     @Override
     protected String getActionbarTitle() {
+
         return getString(R.string.transactionhistory_toolbar);
     }
 }
