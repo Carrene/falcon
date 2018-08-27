@@ -10,13 +10,9 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.support.v7.preference.PreferenceFragmentCompat;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.widget.ListView;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.ui.base.HorizontalSpaceItemDecoration;
 
 public class TransactionHistoryFiltersPrefrenceFragment extends PreferenceFragmentCompat {
 

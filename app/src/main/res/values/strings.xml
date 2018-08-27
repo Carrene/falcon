@@ -161,4 +161,11 @@
         <item>Date</item>
     </string-array>
 
+    <string name="transferconfirmation_toolbar">Transfer confirmation</string>
+    <string name="transferconfirmation_walletname">Wallet name </string>
+    <string name="transferconfirmation_paymentgateway">Payee address </string>
+    <string name="transferconfirmation_walletamount">Transfer amount  </string>
+    <string name="transferconfirmation_baseamount">Paid amount  </string>
+    <string name="transferconfirmation_confirm">CONFIRM</string>
+
 </resources>

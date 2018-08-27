@@ -8,43 +8,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_linearlayout"
-        android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_linearlayout"
-        android:layout_marginTop="@dimen/margintop_chargeconfirmation_linearlayout"
+        android:layout_marginEnd="@dimen/marginstartend_transferconfirmation_linearlayout"
+        android:layout_marginStart="@dimen/marginstartend_transferconfirmation_linearlayout"
+        android:layout_marginTop="@dimen/margintop_transferconfirmation_linearlayout"
         android:background="@drawable/chargetransferconfirmation_border"
-        android:orientation="vertical"
-       >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_walletnamelable"
+                android:id="@+id/textview_transferconfirmation_walletnamelable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_textview"
-                android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletnamelable"
-                android:text="@string/chargeconfirmation_walletname"
+                android:layout_marginStart="@dimen/marginstartend_transferconfirmation_textview"
+                android:layout_marginTop="@dimen/margintop_transferconfirmation_walletnamelable"
+                android:text="@string/transferconfirmation_walletname"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_chargeconfirmation_walletnamelable" />
+                android:textSize="@dimen/textsize_transferconfirmation_walletnamelable" />
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_walletname"
+                android:id="@+id/textview_transferconfirmation_walletname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
-                android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletname"
+                android:layout_marginEnd="@dimen/marginstartend_transferconfirmation_textview"
+                android:layout_marginTop="@dimen/margintop_transferconfirmation_walletname"
                 android:text="VALUE"
                 android:textColor="@color/colorBlack" />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_chargeconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_view"
+            android:layout_height="@dimen/height_transferconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_transferconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_transferconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -52,13 +51,13 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_amountalphalable"
+                android:id="@+id/textview_transferconfirmation_amountalphalable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_textview"
-                android:text="@string/chargeconfirmation_walletamount"
+                android:layout_marginStart="@dimen/marginstartend_transferconfirmation_textview"
+                android:text="@string/transferconfirmation_walletamount"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_chargeconfirmation_amountalphalable" />
+                android:textSize="@dimen/textsize_transferconfirmation_amountalphalable" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -74,14 +73,12 @@
                     android:textColor="@color/colorBlack" />
 
                 <TextView
-                    android:id="@+id/textview_chargeconfirmation_chargeamount"
+                    android:id="@+id/textview_transferconfirmation_chargeamount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
+                    android:layout_marginEnd="@dimen/marginstartend_transferconfirmation_textview"
                     android:text="VALUE"
-                    android:textColor="@color/colorBlack"
-
-                    />
+                    android:textColor="@color/colorBlack" />
 
 
             </LinearLayout>
@@ -89,9 +86,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_chargeconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_view"
+            android:layout_height="@dimen/height_transferconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_transferconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_transferconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -99,13 +96,13 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_amountdollarlable"
+                android:id="@+id/textview_transferconfirmation_amountdollarlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_textview"
-                android:text="@string/chargeconfirmation_baseamount"
+                android:layout_marginStart="@dimen/marginstartend_transferconfirmation_textview"
+                android:text="@string/transferconfirmation_baseamount"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_chargeconfirmation_amountdollarlable" />
+                android:textSize="@dimen/textsize_transferconfirmation_amountdollarlable" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -120,10 +117,10 @@
                     android:textColor="@color/colorBlack" />
 
                 <TextView
-                    android:id="@+id/textview_chargeconfirmation_paidamount"
+                    android:id="@+id/textview_transferconfirmation_paidamount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
+                    android:layout_marginEnd="@dimen/marginstartend_transferconfirmation_textview"
                     android:text="VALUE"
                     android:textColor="@color/colorBlack"
 
@@ -133,31 +130,31 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_chargeconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
-            android:layout_marginTop="@dimen/margintop_chargeconfirmation_view"
+            android:layout_height="@dimen/height_transferconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_transferconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_transferconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_relativelayout">
+            android:layout_marginBottom="@dimen/marginbottom_transferconfirmation_relativelayout">
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_paymentgatewaylable"
+                android:id="@+id/textview_transferconfirmation_payeelable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_textview"
-                android:text="@string/chargeconfirmation_paymentgateway"
+                android:layout_marginStart="@dimen/marginstartend_transferconfirmation_textview"
+                android:text="@string/transferconfirmation_paymentgateway"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_chargeconfirmation_paymentgatewaylable" />
+                android:textSize="@dimen/textsize_transferconfirmation_paymentgatewaylable" />
 
             <TextView
-                android:id="@+id/textview_chargeconfirmation_paymentgateway"
+                android:id="@+id/textview_transferconfirmation_payee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
+                android:layout_marginEnd="@dimen/marginstartend_transferconfirmation_textview"
                 android:text="VALUE"
                 android:textColor="@color/colorBlack"
 
@@ -166,16 +163,16 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button_chargeconfirmation_confirm"
+        android:id="@+id/button_transferconfirmation_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbuttom_chargeconfirmation_confirm"
-        android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_confirm"
-        android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_confirm"
+        android:layout_marginBottom="@dimen/marginbuttom_transferconfirmation_confirm"
+        android:layout_marginEnd="@dimen/marginstartend_transferconfirmation_confirm"
+        android:layout_marginStart="@dimen/marginstartend_transferconfirmation_confirm"
         android:background="@color/colorSecondary"
-        android:text="@string/chargeconfirmation_confirm"
+        android:text="@string/transferconfirmation_confirm"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_chargeconfirmation_confirmbutton" />
+        android:textSize="@dimen/textsize_transferconfirmation_confirmbutton" />
 </RelativeLayout>

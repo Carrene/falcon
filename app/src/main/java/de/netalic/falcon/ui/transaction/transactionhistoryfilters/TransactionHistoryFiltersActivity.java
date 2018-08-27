@@ -1,7 +1,6 @@
 package de.netalic.falcon.ui.transaction.transactionhistoryfilters;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;

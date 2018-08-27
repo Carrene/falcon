@@ -245,4 +245,22 @@
     <dimen name="textsize_transactionfiltersrowthathasradiobutton_textview">14sp</dimen>
     <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
+
+    <dimen name="margintop_transferconfirmation_linearlayout">33dp</dimen>
+    <dimen name="marginstartend_transferconfirmation_linearlayout">17dp</dimen>
+    <dimen name="textsize_transferconfirmation_walletnamelable">14sp</dimen>
+    <dimen name="margintop_transferconfirmation_walletnamelable">12dp</dimen>
+    <dimen name="margintop_transferconfirmation_walletname">12dp</dimen>
+    <dimen name="textsize_transferconfirmation_amountalphalable">14sp</dimen>
+    <dimen name="textsize_transferconfirmation_amountdollarlable">14sp</dimen>
+    <dimen name="textsize_transferconfirmation_paymentgatewaylable">14sp</dimen>
+    <dimen name="marginbuttom_transferconfirmation_confirm">27dp</dimen>
+    <dimen name="marginstartend_transferconfirmation_confirm">16dp</dimen>
+    <dimen name="textsize_transferconfirmation_confirmbutton">14sp</dimen>
+    <dimen name="height_transferconfirmation_view">1dp</dimen>
+    <dimen name="margintop_transferconfirmation_view">16dp</dimen>
+    <dimen name="marginbottom_transferconfirmation_view">12dp</dimen>
+    <dimen name="marginstartend_transferconfirmation_textview">15dp</dimen>
+    <dimen name="marginbottom_transferconfirmation_relativelayout">16dp</dimen>
+
 </resources>

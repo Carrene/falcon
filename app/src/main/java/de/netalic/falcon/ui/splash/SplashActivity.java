@@ -8,10 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.concurrent.atomic.AtomicReference;
 
 import de.netalic.falcon.MyApp;
-import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
-import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
-import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
-import de.netalic.falcon.ui.dashboard.DashboardActivity;
+import de.netalic.falcon.ui.transfer.TransferConfirmationActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 
 public class SplashActivity extends AppCompatActivity {
@@ -24,19 +21,21 @@ public class SplashActivity extends AppCompatActivity {
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
         AtomicReference<Intent> intent = new AtomicReference<>();
 
-        if (sharedPreferencesJwtPersistor.get() == null) {
-            intent.set(new Intent(this, RegistrationActivity.class));
-
-        } else {
-            AuthenticationRepository.getInstance().get(deal -> {
-                if (deal.getModel() == null) {
-                    intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
-                } else {
-                    intent.set(new Intent(this, DashboardActivity.class));
-                }
-            });
-        }
-        startActivity(intent.get());
+//        if (sharedPreferencesJwtPersistor.get() == null) {
+//            intent.set(new Intent(this, RegistrationActivity.class));
+//
+//        } else {
+//            AuthenticationRepository.getInstance().get(deal -> {
+//                if (deal.getModel() == null) {
+//                    intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
+//                } else {
+//                    intent.set(new Intent(this, DashboardActivity.class));
+//                }
+//            });
+//        }
+//        startActivity(intent.get());
+        Intent intent1=new Intent(this, TransferConfirmationActivity.class);
+        startActivity(intent1);
         finish();
     }
 }
