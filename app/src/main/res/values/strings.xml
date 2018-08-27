@@ -161,4 +161,8 @@
         <item>Date</item>
     </string-array>
 
+    <string name="transferpayee_toolbar">Transfer - Payee</string>
+    <string name="transferpayee_walletaddresstextview">Wallet address</string>
+    <string name="transferpayee_nexttransferbutton">NEXT - TRANSFER</string>
+
 </resources>

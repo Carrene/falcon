@@ -1,7 +1,6 @@
 package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,7 +20,6 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Deposit;
-import de.netalic.falcon.ui.base.HorizontalSpaceItemDecorationTransactionFilters;
 import de.netalic.falcon.ui.base.HorizontalSpaceItemDecorationTransactionHistory;
 import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
 

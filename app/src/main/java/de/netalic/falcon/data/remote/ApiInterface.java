@@ -3,8 +3,6 @@ package de.netalic.falcon.data.remote;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nullable;
-
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.User;
