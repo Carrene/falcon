@@ -13,7 +13,7 @@
         android:layout_marginEnd="@dimen/marginstartend_chargecompleted_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_chargecompleted_linearlayout"
         android:layout_marginTop="@dimen/margintop_chargecompleted_linearlayout"
-        android:background="@drawable/chargecompleted_border"
+        android:background="@drawable/chargetransfercompleted_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_chargecompleted_linearlayout">
 
@@ -21,7 +21,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargecompleted_header"
-            android:background="@drawable/chargecompleted_headerborder">
+            android:background="@drawable/chargetransfercompleted_headerborder">
 
             <TextView
                 android:id="@+id/textview_chargecompleted_success"
@@ -37,9 +37,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/paddingstart_chargecompleted_relativelayout"
-
-            >
+            android:paddingStart="@dimen/paddingstart_chargecompleted_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargecompleted_walletnamelable"

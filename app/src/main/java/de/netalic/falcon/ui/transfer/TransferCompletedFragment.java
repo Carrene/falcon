@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.charge;
+package de.netalic.falcon.ui.transfer;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,31 +18,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class ChargeCompletedFragment extends Fragment implements ChargeCompletedContract.View {
+public class TransferCompletedFragment extends Fragment implements TransferCompletedContract.View {
 
-    private static final String ARGUMENT_DEPOSIT = "DEPOSIT";
+
     private static final String ALPHA_PATH = "/Alpha";
-    private static final String CHARGE_PATH = "/Charge";
-    private Deposit mDeposit;
-    private ChargeCompletedContract.Presenter mChargeCompletedPresenter;
+    private static final String CHARGE_PATH = "/Transfer";
+    private de.netalic.falcon.model.Deposit mDeposit;
+    private TransferCompletedContract.Presenter mTransferCompletedPresenter;
     private View mRoot;
-    private TextView mTextViewWalletName;
-    private TextView mTextViewAmountWallet;
-    private TextView mTextViewAmountBase;
-    private TextView mTextViewPaymentGateway;
+    private TextView mTextViewTransferAmount;
+    private TextView mTextViewPaidAmount;
     private TextView mTextViewTransactionDate;
     private TextView mTextViewTransactionTime;
     private TextView mTextViewRrn;
@@ -55,10 +48,9 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_chargecompleted, null);
-        checkNotNull(getArguments());
+        mRoot = inflater.inflate(R.layout.fragment_transfercompleted, null);
+
         setHasOptionsMenu(true);
-        mDeposit = getArguments().getParcelable(ARGUMENT_DEPOSIT);
 
         return mRoot;
     }
@@ -69,13 +61,13 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
         initListener();
-        setPaymentInformation();
+
     }
 
     @Override
-    public void setPresenter(ChargeCompletedContract.Presenter presenter) {
+    public void setPresenter(TransferCompletedContract.Presenter presenter) {
+        mTransferCompletedPresenter = presenter;
 
-        mChargeCompletedPresenter = presenter;
     }
 
     @Override
@@ -88,26 +80,21 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
     }
 
-    public static ChargeCompletedFragment newInstance(Deposit deposit) {
+    public static TransferCompletedFragment newInstance() {
 
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(ARGUMENT_DEPOSIT, deposit);
-        ChargeCompletedFragment fragment = new ChargeCompletedFragment();
-        fragment.setArguments(bundle);
-        return fragment;
+        return new TransferCompletedFragment();
     }
 
     public void initUiComponent() {
 
-        mTextViewWalletName = mRoot.findViewById(R.id.textview_chargecompleted_walletname);
-        mTextViewAmountWallet = mRoot.findViewById(R.id.textview_chargecompleted_amountalpha);
-        mTextViewAmountBase = mRoot.findViewById(R.id.textview_chargecompleted_amountdollar);
-        mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_chargecompleted_paymentgateway);
-        mTextViewTransactionDate = mRoot.findViewById(R.id.textview_chargecompleted_transactiondate);
-        mTextViewTransactionTime = mRoot.findViewById(R.id.textview_chargecompleted_transactiontime);
-        mTextViewRrn = mRoot.findViewById(R.id.textview_chargecompleted_rrn);
-        mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_chargecompleted_dashborad);
-        mScreenshotView = mRoot.findViewById(R.id.linearlayout_chargecompleted_main);
+
+        mTextViewTransferAmount = mRoot.findViewById(R.id.textview_transfercompleted_transferamountalpha);
+        mTextViewPaidAmount = mRoot.findViewById(R.id.textview_transfercompleted_paidamount);
+        mTextViewTransactionDate = mRoot.findViewById(R.id.textview_transfercompleted_transactiondate);
+        mTextViewTransactionTime = mRoot.findViewById(R.id.textview_transfercompleted_transactiontime);
+        mTextViewRrn = mRoot.findViewById(R.id.textview_transfercompleted_rrn);
+        mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_transfercompleted_dashborad);
+        mScreenshotView = mRoot.findViewById(R.id.linearlayout_transfercompleted_main);
     }
 
     public void initListener() {
@@ -119,25 +106,6 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
             startActivity(intent);
         });
 
-    }
-
-    public void setPaymentInformation() {
-
-        mTextViewWalletName.setText(mDeposit.getWalletName());
-        mTextViewAmountWallet.setText(String.valueOf(mDeposit.getChargeAmount()));
-        mTextViewAmountBase.setText(String.valueOf(mDeposit.getPaidAmount()));
-        mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
-            Date baseDate = dateFormat.parse(mDeposit.getModifiedAt());
-            DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-            DateFormat time = new SimpleDateFormat("h:mm a");
-            mTextViewTransactionDate.setText(date.format(baseDate));
-            mTextViewTransactionTime.setText(time.format(baseDate));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        mTextViewRrn.setText(mDeposit.getRetrievalReferenceNumber());
     }
 
     private void requestPermissionShare() {

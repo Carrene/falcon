@@ -12,14 +12,14 @@
         android:layout_marginEnd="@dimen/marginstartend_withdrawqrcompleted_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_withdrawqrcompleted_linearlayout"
         android:layout_marginTop="@dimen/margintop_withdrawqrcompleted_linearlayout"
-        android:background="@drawable/chargecompleted_border"
+        android:background="@drawable/chargetransfercompleted_border"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textview_qrcodecompleted_success"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_withdrawqrcompleted_header"
-            android:background="@drawable/chargecompleted_headerborder"
+            android:background="@drawable/chargetransfercompleted_headerborder"
             android:gravity="center"
             android:text="@string/qrcodecompleted_success"
             android:textColor="@color/white"

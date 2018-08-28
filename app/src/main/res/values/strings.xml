@@ -160,5 +160,17 @@
         <item>Transaction Type</item>
         <item>Date</item>
     </string-array>
+    
+    <string name="transfercompleted_toolbar">Transfer completed</string>
+    <string name="transfercompleted_paidamount">Transfer amount  </string>
+    <string name="transfercompleted_baseamount">Paid amount  </string>
+    <string name="transfercompleted_transactiondate">Transaction date </string>
+    <string name="transfercompleted_transactiontime">Transaction time </string>
+    <string name="transfercompleted_trackingcode">RRN </string>
+    <string name="transfercompleted_dashboard">DASHBOARD</string>
+    <string name="transfercompleted_success">Success</string>
+    <string name="transfercompleted_imagesaved">Image Saved</string>
+    <string name="transfercompleted_sharemenutoolbar">Share</string>
+    <string name="transfercompleted_downloadmenutoolbar">Download</string>
 
 </resources>
