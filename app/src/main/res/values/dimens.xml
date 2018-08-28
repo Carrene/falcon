@@ -245,4 +245,19 @@
     <dimen name="textsize_transactionfiltersrowthathasradiobutton_textview">14sp</dimen>
     <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
+    <dimen name="margintop_transferfailed_linearlayout">32dp</dimen>
+    <dimen name="marginstartend_transferfailed_linearlayout">33dp</dimen>
+    <dimen name="textsize_transferfailed_textviewfailed">16sp</dimen>
+    <dimen name="margintop_transferfailed_describetextview">23dp</dimen>
+    <dimen name="marginbottom_transferfailed_describetextview">30dp</dimen>
+    <dimen name="marginstartend_transferfailed_describetextview">25dp</dimen>
+    <dimen name="textsize_transferfailed_describetextview">14sp</dimen>
+    <dimen name="marginstartend_transferfailed_trywithdrawbutton">16dp</dimen>
+    <dimen name="marginbottom_transferfailed_trywithdrawbutton">15dp</dimen>
+    <dimen name="marginstartend_transferfailed_dashboardbutton">16dp</dimen>
+    <dimen name="marginbottom_transferfailed_dashboardbutton">27dp</dimen>
+    <dimen name="textsize_transferfailed_dashboardbutton">14sp</dimen>
+    <dimen name="textsize_transferfailed_trywithdrawbutton">14sp</dimen>
+    <dimen name="height_transferfailed_header">40dp</dimen>
+
 </resources>

@@ -15,7 +15,7 @@
         android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_linearlayout"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/chargefailedqrcodefailed_border"
+        android:background="@drawable/everywherefailed_border"
         >
 
         <TextView
@@ -68,7 +68,7 @@
         android:layout_marginBottom="@dimen/marginbottom_qrcodefailed_dashboardbutton"
         android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_dashboardbutton"
         android:layout_marginStart="@dimen/marginstartend_qrcodefailed_dashboardbutton"
-        android:background="@drawable/qrcodefailed_borderbutton"
+        android:background="@drawable/withdrawqrcodefailedtransferfailed_borderbutton"
         android:text="@string/qrcodefailed_dashboardbutton"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_qrcodefailed_dashboardbutton"
