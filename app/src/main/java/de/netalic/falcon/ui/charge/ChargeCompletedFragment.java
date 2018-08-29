@@ -175,10 +175,10 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Ok", getContext());
+            SnackbarUtil.showSnackbar(mRoot, "Permission Allowed", getContext());
         } else {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Failed", getContext());
+            SnackbarUtil.showSnackbar(mRoot, "Permission Denied", getContext());
 
         }
     }
