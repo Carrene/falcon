@@ -105,20 +105,20 @@ public class WithdrawQrFailedFragment extends Fragment implements WithdrawQrCode
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_withdrawqrcompletedqrfailed_toolbar, menu);
+        inflater.inflate(R.menu.menu_everywhere_sharedownloadtoolbar, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
-            case R.id.item_withdrawqrcompletedqrfailed_download: {
+            case R.id.item_everywhere_download: {
 
                 requestPermissionSave();
                 break;
             }
 
-            case R.id.item_withdrawqrcompletedqrfailed_share: {
+            case R.id.item_everywhere_share: {
 
                 requestPermissionShare();
                 break;

@@ -1,9 +1,8 @@
-package de.netalic.falcon.ui.withdraw;
+package de.netalic.falcon.ui.transfer;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,39 +16,35 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import java.io.File;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
+import de.netalic.falcon.ui.withdraw.WithdrawActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+public class TransferFailedFragment extends Fragment implements TransferFailedContract.View {
 
-public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrCodeCompletedContract.View {
 
-
-    private WithdrawQrCodeCompletedContract.Presenter mQrCodeCompletedPresenter;
+    private TransferFailedContract.Presenter mTransferFailedPresenter;
     private View mRoot;
+    private Button mButtonTryTransfer;
+    private Button mButtonDashboard;
     private View mScreenshotView;
-    private static final String ALPHA_PATH = "/Alpha";
-    private static final String CHARGE_PATH = "/Withdraw";
-    private static final int IMAGE_QUALITY = 100;
     private static final int REQUEST_PERMISSIONS = 120;
-    private Button mButtonNavigationToDashboard;
-    private Bitmap mBitmapQrCode;
-    private ImageView mImageViewQr;
+    private static final String ALPHA_PATH = "/Alpha";
+    private static final String CHARGE_PATH = "/Transfer";
+    private static final int IMAGE_QUALITY = 100;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_withdrawqrcompleted, null);
-        setHasOptionsMenu(true);
-        mBitmapQrCode = getArguments().getParcelable("qr");
+        mRoot = inflater.inflate(R.layout.fragment_transferfailed, null);
         return mRoot;
     }
 
@@ -58,14 +53,14 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
 
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
-        setImageQr();
         initListener();
+        setHasOptionsMenu(true);
     }
 
     @Override
-    public void setPresenter(WithdrawQrCodeCompletedContract.Presenter presenter) {
+    public void setPresenter(TransferFailedContract.Presenter presenter) {
 
-        mQrCodeCompletedPresenter = checkNotNull(presenter);
+        mTransferFailedPresenter = presenter;
     }
 
     @Override
@@ -78,33 +73,42 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
 
     }
 
-    public static WithDrawQrCompletedFragment newInstance(Bitmap bitmap) {
 
-        WithDrawQrCompletedFragment withDrawQrCompletedFragment = new WithDrawQrCompletedFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("qr", bitmap);
-        withDrawQrCompletedFragment.setArguments(bundle);
-        return withDrawQrCompletedFragment;
+    private void initUiComponent() {
+
+        mScreenshotView = mRoot.findViewById(R.id.linearlayout_transferfailed_forscreenshot);
+        mButtonTryTransfer = mRoot.findViewById(R.id.button_transferfailed_trywithdraw);
+        mButtonDashboard = mRoot.findViewById(R.id.button_transferfailed_dashborad);
+
+    }
+
+    private void initListener() {
+
+
+
+        mButtonDashboard.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getContext(), DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+
+        });
+
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
         inflater.inflate(R.menu.menu_everywhere_sharedownloadtoolbar, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
 
             case R.id.item_everywhere_download: {
 
                 requestPermissionSave();
-
-
                 break;
-
             }
 
             case R.id.item_everywhere_share: {
@@ -140,7 +144,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
         int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (regEX != PackageManager.PERMISSION_GRANTED) {
 
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
             ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
@@ -150,45 +154,11 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
         }
     }
 
+    public static TransferFailedFragment newInstance() {
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-
-            SnackbarUtil.showSnackbar(mRoot, "Permission Allowed", getContext());
-        } else {
-
-            SnackbarUtil.showSnackbar(mRoot, "Permission Denied", getContext());
-
-        }
+        return new TransferFailedFragment();
     }
-
-
-    private void initUiComponent() {
-
-        mScreenshotView = mRoot.findViewById(R.id.linearlayout_qrcodecompleted_mainview);
-        mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_qrcodecompleted_dashborad);
-        mImageViewQr = mRoot.findViewById(R.id.imageView_withdrawqrcompleted_qr);
-    }
-
-    public void setImageQr() {
-
-        mImageViewQr.setImageBitmap(mBitmapQrCode);
-    }
-
-    private void initListener() {
-
-        mButtonNavigationToDashboard.setOnClickListener(v -> {
-
-            Intent intent = new Intent(getContext(), DashboardActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        });
-
-    }
-
-
 }
+
+
+

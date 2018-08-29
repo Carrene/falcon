@@ -205,4 +205,9 @@
     <string name="transferconfirmation_baseamount">Paid amount  </string>
     <string name="transferconfirmation_confirm">CONFIRM</string>
 
+    <string name="transferfailed_toolbar">Transfer failed</string>
+    <string name="transferfailed_failed">Failed</string>
+    <string name="transferfailed_trywithdrawbutton">TRY TRANSFER</string>
+    <string name="transferfailed_dashboardbutton">DASHBOARD</string>
+
 </resources>
