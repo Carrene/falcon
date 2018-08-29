@@ -61,6 +61,8 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         mRecyclerViewWallets = mRoot.findViewById(R.id.recyclerViewWallets);
         mRecyclerViewPaymentGateway = mRoot.findViewById(R.id.recyclerViewPaymentGateway);
         mButtonChargeNext = mRoot.findViewById(R.id.button_charge_next);
+        mRecyclerViewWallets.addItemDecoration(new OffsetItemDecoration(getContext()));
+        mRecyclerViewPaymentGateway.addItemDecoration(new OffsetItemDecoration(getContext()));
 
         mRecyclerViewAdapterChargeWallet = new ChargeWalletRecyclerViewAdapter(new ArrayList<>());
         mRecyclerViewWallets.setAdapter(mRecyclerViewAdapterChargeWallet);
@@ -127,7 +129,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
 
         mButtonChargeNext.setOnClickListener(v -> {
 
-            if(mWalletList.size() > 0 && mSelectedWalletPosition != mWalletList.size()){
+            if (mWalletList.size() > 0 && mSelectedWalletPosition != mWalletList.size()) {
                 Intent intent = new Intent(getContext(), ChargeAmountActivity.class);
                 intent.putExtra("walletId", mWalletList.get(mSelectedWalletPosition).getId());
                 intent.putExtra("paymentGatewayName", "braintree");

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textview_transferpayee_walletaddress"
@@ -11,7 +11,7 @@
         android:layout_marginTop="@dimen/margintop_transferpayee_walletaddresstextview"
         android:text="@string/transferpayee_walletaddresstextview"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_transferpayee_walletaddresstextview" />
+        android:textSize="@dimen/textsize_transferpayee_walletaddresstextview"/>
 
     <EditText
         android:id="@+id/edittext_transferpayee_walletaddress"
@@ -22,7 +22,32 @@
         android:layout_marginStart="@dimen/marginstartend_transferpayee_walletaddressedittext"
         android:layout_marginTop="@dimen/margintop_transferpayee_walletaddressedittext"
         android:paddingStart="@dimen/paddingstart_transferpayee_walletaddressedittext"
-        android:textColor="@color/colorPrimaryLight" />
+        android:textColor="@color/colorPrimaryLight"/>
+
+    <FrameLayout
+        android:id="@+id/framelayout_transferpayee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edittext_transferpayee_walletaddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp">
+
+        <com.journeyapps.barcodescanner.DecoratedBarcodeView
+            android:id="@+id/dbv_barcode"
+            android:layout_width="400dp"
+            android:layout_height="225dp"/>
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/imagebutton_transferpayee_scanaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/framelayout_transferpayee"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_search"/>
 
     <Button
         android:id="@+id/button_transferpayee_nexttransfer"
@@ -34,6 +59,6 @@
         android:layout_marginStart="@dimen/marginstartend_transferpayee_nexttransferpayeebutton"
         android:background="@color/colorSecondary"
         android:text="@string/transferpayee_nexttransferbutton"
-        android:textColor="@color/colorBlack" />
+        android:textColor="@color/colorBlack"/>
 
 </RelativeLayout>
