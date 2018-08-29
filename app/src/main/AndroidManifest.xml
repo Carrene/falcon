@@ -106,7 +106,7 @@
 
         <activity android:name=".ui.transfer.TransferCompletedActivity"/>
 
-        <activity android:name=".ui.transfer.TransferFailedActivity"></activity>
+        <activity android:name=".ui.transfer.TransferFailedActivity"/>
 
     </application>
 
