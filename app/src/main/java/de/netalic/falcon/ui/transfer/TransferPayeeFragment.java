@@ -77,6 +77,8 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
             }
             else {
 
+                mTransferPayeePresenter.transfer(mWalletAddress,mTransferAmount,Integer.valueOf(mEditTextWalletAddress.getText().toString()));
+
 
             }
 
@@ -87,5 +89,11 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
 
         mButtonNextTransfer =mRoot.findViewById(R.id.button_transferpayee_nexttransfer);
         mEditTextWalletAddress=mRoot.findViewById(R.id.edittext_transferpayee_walletaddress);
+    }
+
+    @Override
+    public void showResponseCode() {
+
+        SnackbarUtil.showSnackbar(mRoot,"200",getContext());
     }
 }

@@ -3,6 +3,7 @@ package de.netalic.falcon.data.remote;
 import java.util.List;
 import java.util.Map;
 
+import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.model.Rate;
 import de.netalic.falcon.model.User;
@@ -50,5 +51,9 @@ public interface ApiInterface {
 
     @HTTP(method = "LIST", path = "deposits?sort=createdAt")
     Call<List<Deposit>> depositList(@QueryMap(encoded = true) Map<String, String> options, @Query("take") int take, @Query("skip") int skip);
+
+    @FormUrlEncoded
+    @HTTP(method = "TRANSFER",path = "wallets/{sourceAddress}",hasBody = true)
+    Call<Receipt>transfer(@Path("sourceAddress") int sourceAddress,@Field("destinationWalletAddress") int destinationWalletAddress,@Field("amount") double amount);
 
 }

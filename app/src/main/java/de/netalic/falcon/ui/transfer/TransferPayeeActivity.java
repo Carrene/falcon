@@ -12,7 +12,6 @@ public class TransferPayeeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupBackButton();
 
         Bundle bundle=getIntent().getExtras();
         double amountTransfer=bundle.getDouble("transferAmount");
