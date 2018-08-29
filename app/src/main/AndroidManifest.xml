@@ -52,6 +52,7 @@
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
 
@@ -96,6 +97,7 @@
         </activity>
 
 
+
         <activity android:name=".ui.transfer.TransferActivity"/>
 
         <activity android:name=".ui.transfer.TransferAmountActivity"/>
@@ -103,6 +105,8 @@
         <activity android:name=".ui.transfer.TransferPayeeActivity"/>
 
         <activity android:name=".ui.transfer.TransferConfirmationActivity"/>
+
+        <activity android:name=".ui.transfer.TransferCompletedActivity"/>
 
     </application>
 

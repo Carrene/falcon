@@ -246,6 +246,7 @@
     <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
 
+
     <dimen name="margintop_transfer_header">97dp</dimen>
     <dimen name="textsize_transfer_header">16sp</dimen>
     <dimen name="textsize_transfer_balance">14sp</dimen>
@@ -298,6 +299,26 @@
     <dimen name="marginbottom_transferconfirmation_view">12dp</dimen>
     <dimen name="marginstartend_transferconfirmation_textview">15dp</dimen>
     <dimen name="marginbottom_transferconfirmation_relativelayout">16dp</dimen>
+
+    <dimen name="paddingbottom_transfercompleted_linearlayout">18dp</dimen>
+    <dimen name="marginstartend_transfercompleted_linearlayout">17dp</dimen>
+    <dimen name="height_transfercompleted_header">40dp</dimen>
+    <dimen name="paddingend_transfercompleted_textview">15dp</dimen>
+    <dimen name="margintopbottom_transfercompleted_view">13dp</dimen>
+    <dimen name="height_transfercompleted_view">1dp</dimen>
+    <dimen name="margintop_transfercompleted_relativelayoutheader">20dp</dimen>
+    <dimen name="margintop_transfercompleted_linearlayout">33dp</dimen>
+    <dimen name="margintop_transfercompleted_relativelayout">8dp</dimen>
+    <dimen name="textsize_transfercompleted_paidamountlable">14sp</dimen>
+    <dimen name="textsize_transfercompleted_amountdollarlable">14sp</dimen>
+    <dimen name="textsize_transfercompleted_trackingcode">14sp</dimen>
+    <dimen name="marginbuttom_transfercompleted_confirm">27dp</dimen>
+    <dimen name="marginstartend_transfercompleted_confirm">16dp</dimen>
+    <dimen name="textsize_transfercompleted_confirmbutton">14dp</dimen>
+    <dimen name="textsize_transfercompleted_paymentgatewaylable">14sp</dimen>
+    <dimen name="textsize_transfercompleted_transactiondate">14sp</dimen>
+    <dimen name="textsize_transfercompleted_successtextview">16sp</dimen>
+    <dimen name="paddingstart_transfercompleted_relativelayout">15dp</dimen>
 
 
 </resources>

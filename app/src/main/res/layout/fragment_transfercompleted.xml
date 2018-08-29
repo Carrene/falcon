@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_transfercompleted_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/marginstartend_transfercompleted_linearlayout"
+        android:layout_marginStart="@dimen/marginstartend_transfercompleted_linearlayout"
+        android:layout_marginTop="@dimen/margintop_transfercompleted_linearlayout"
+        android:background="@drawable/chargetransfercompleted_border"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/paddingbottom_transfercompleted_linearlayout">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transfercompleted_header"
+            android:background="@drawable/chargetransfercompleted_headerborder">
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_success"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_transfercompleted_header"
+                android:gravity="center"
+                android:text="@string/transfercompleted_success"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize_transfercompleted_successtextview" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_transfercompleted_relativelayoutheader"
+            android:paddingStart="@dimen/paddingstart_transfercompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_transferamountlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transfercompleted_paidamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transfercompleted_paidamountlable" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="α"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/textview_transfercompleted_transferamountalpha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/paddingend_transfercompleted_textview"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_transfercompleted_paidamountlable" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transfercompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transfercompleted_view"
+            android:layout_marginTop="@dimen/margintopbottom_transfercompleted_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_transfercompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_transfercompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_paidamountlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transfercompleted_baseamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transfercompleted_amountdollarlable" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="α"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/textview_transfercompleted_paidamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/paddingend_transfercompleted_textview"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_transfercompleted_amountdollarlable" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transfercompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transfercompleted_view"
+            android:layout_marginTop="@dimen/margintopbottom_transfercompleted_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_transfercompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_chargecompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_transactiondatelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transfercompleted_transactiondate"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transfercompleted_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_transactiondate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/paddingend_transfercompleted_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transfercompleted_transactiondate" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transfercompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transfercompleted_view"
+            android:layout_marginTop="@dimen/margintopbottom_transfercompleted_view"
+            android:background="@color/colorPrimaryDark5" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_transfercompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_transfercompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_transactiontimelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transfercompleted_transactiontime"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transfercompleted_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_transactiontime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/paddingend_transfercompleted_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transfercompleted_transactiondate" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transfercompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transfercompleted_view"
+            android:layout_marginTop="@dimen/margintopbottom_transfercompleted_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_transfercompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_transfercompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_rrnlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transfercompleted_trackingcode"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transfercompleted_trackingcode" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_rrn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/paddingend_transfercompleted_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transfercompleted_trackingcode" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_transfercompleted_dashborad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbuttom_transfercompleted_confirm"
+        android:layout_marginEnd="@dimen/marginstartend_transfercompleted_confirm"
+        android:layout_marginStart="@dimen/marginstartend_transfercompleted_confirm"
+        android:background="@color/colorSecondary"
+        android:text="@string/transfercompleted_dashboard"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_transfercompleted_confirmbutton" />
+</RelativeLayout>
