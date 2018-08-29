@@ -47,7 +47,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     private TextView mTextViewTransactionTime;
     private TextView mTextViewRrn;
     private Button mButtonNavigationToDashboard;
-    private static final int REQUEST_PERMISSIONS = 120;
+    private static final int REQUEST_PERMISSIONS = 1;
     private static final int IMAGE_QUALITY = 100;
     private View mScreenshotView;
 
@@ -142,8 +142,8 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
     private void requestPermissionShare() {
 
-        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (regEX != PackageManager.PERMISSION_GRANTED) {
+        int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
@@ -157,8 +157,8 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     private void requestPermissionSave() {
 
 
-        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (regEX != PackageManager.PERMISSION_GRANTED) {
+        int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
@@ -175,10 +175,10 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Allowed", getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissionallowed), getContext());
         } else {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Denied", getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
 
         }
     }

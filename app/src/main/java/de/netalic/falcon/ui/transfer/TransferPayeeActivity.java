@@ -14,10 +14,14 @@ public class TransferPayeeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setupBackButton();
 
+        Bundle bundle=getIntent().getExtras();
+        double amountTransfer=bundle.getDouble("transferAmount");
+        int walletAddress=bundle.getInt("walletAddress");
+
         TransferPayeeFragment transferPayeeFragment = (TransferPayeeFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferpayee_fragmentcontainer);
         if (transferPayeeFragment == null) {
 
-            transferPayeeFragment = TransferPayeeFragment.newInstance();
+            transferPayeeFragment = TransferPayeeFragment.newInstance(walletAddress,amountTransfer);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), transferPayeeFragment, R.id.framelayout_transferpayee_fragmentcontainer);
 
         }

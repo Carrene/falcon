@@ -1,4 +1,9 @@
 <resources>
+
+    <string name="everywhere_pleasefillbox">Please Fill Box</string>
+    <string name="everywhere_permissionallowed">Permission Allowed</string>
+    <string name="everywhere_permissiondenied">Permission Denied</string>
+
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
@@ -55,6 +60,9 @@
     <string name="navigation_chart">Chart</string>
     <string name="navigation_setting">Setting</string>
     <string name="navigation_help">Help</string>
+    <string name="navigation_addresses">Addresses</string>
+    <string name="navigation_transfer">Transfer</string>
+
     <string name="dashboard_invalidcurrency">Invalid currency</string>
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>
 

@@ -6,7 +6,6 @@ import java.util.Map;
 import de.netalic.falcon.model.Deposit;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
-import ru.alexbykov.nopaginate.callback.PaginateView;
 
 public interface TransactionHistoryContract {
 

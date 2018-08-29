@@ -98,9 +98,11 @@
 
         <activity android:name=".ui.transfer.TransferActivity"/>
 
-        <activity android:name=".ui.transfer.TransferAmountActivity"/>
+        <activity android:name=".ui.transfer.TransferAmountActivity"
+            android:parentActivityName=".ui.transfer.TransferActivity" />
 
-        <activity android:name=".ui.transfer.TransferPayeeActivity"/>
+        <activity android:name=".ui.transfer.TransferPayeeActivity"
+            android:parentActivityName=".ui.transfer.TransferAmountActivity" />
 
         <activity android:name=".ui.transfer.TransferConfirmationActivity"/>
 

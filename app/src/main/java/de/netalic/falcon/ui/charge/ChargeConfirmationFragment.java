@@ -46,6 +46,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         if (getArguments() == null) {
             throw new RuntimeException("Charge response should not be null!");
         }
+
         mDeposit = getArguments().getParcelable(ARGUMENT_CHARGE_START);
         return mRoot;
     }
