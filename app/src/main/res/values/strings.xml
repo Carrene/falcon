@@ -163,4 +163,9 @@
         <item>Custom</item>
     </string-array>
 
+    <string name="transfer_toolbar">Transfer</string>
+    <string name="transfer_nextamount">NEXT-AMOUNT</string>
+    <string name="transfer_wallet">Wallet</string>
+    <string name="transfer_balance">Balance :</string>
+
 </resources>

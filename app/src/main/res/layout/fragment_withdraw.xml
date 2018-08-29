@@ -41,7 +41,7 @@
 
         <Spinner
             android:id="@+id/spinner_withdraw_spinner"
-            style="@style/SpinnerThemeWithdraw"
+            style="@style/SpinnerThemeWithdrawTransfer"
             android:layout_width="@dimen/width_withdraw_spinner"
             android:layout_height="@dimen/height_withdraw_spinner"
             android:layout_marginTop="@dimen/margintop_withdraw_spinner"

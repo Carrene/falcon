@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.withdraw;
+package de.netalic.falcon.ui.transfer;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,29 +14,26 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.model.Wallet;
 
-public class WithdrawSpinnerAdapter extends ArrayAdapter<Wallet> {
+public class TransferSpinnerAdapter extends ArrayAdapter<Wallet> {
 
     private LayoutInflater mLayoutInflater;
-    private static final int CLOSE = 0;
     private static final int OPEN = 1;
+    private static final int CLOSE = 0;
 
 
-    public WithdrawSpinnerAdapter(Context context, List<Wallet> walletList) {
-
-        super(context, R.layout.spinneritemclose_withdrawtransfer, walletList);
-        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public TransferSpinnerAdapter(@NonNull Context context, @NonNull List<Wallet> objects) {
+        super(context, R.layout.spinneritemclose_withdrawtransfer, objects);
+        mLayoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         return getCustomView(position, parent, CLOSE);
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         return getCustomView(position, parent, OPEN);
     }
 
@@ -44,15 +41,14 @@ public class WithdrawSpinnerAdapter extends ArrayAdapter<Wallet> {
 
         View view = null;
 
-
         if (type == OPEN) {
 
             view = mLayoutInflater.inflate(R.layout.spinneritemopen_withdrawtransfer, viewGroup, false);
 
-
         } else if (type == CLOSE) {
 
             view = mLayoutInflater.inflate(R.layout.spinneritemclose_withdrawtransfer, viewGroup, false);
+
         }
 
         TextView textViewChargeWalletName = view.findViewById(R.id.textview_withdrawtransfer_walletname);
@@ -60,4 +56,5 @@ public class WithdrawSpinnerAdapter extends ArrayAdapter<Wallet> {
 
         return view;
     }
+
 }

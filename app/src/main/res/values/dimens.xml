@@ -245,4 +245,16 @@
     <dimen name="textsize_transactionfiltersrowthathasradiobutton_textview">14sp</dimen>
     <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
+    <dimen name="margintop_transfer_header">97dp</dimen>
+    <dimen name="textsize_transfer_header">16sp</dimen>
+    <dimen name="textsize_transfer_balance">14sp</dimen>
+    <dimen name="height_transfer_spinner">40dp</dimen>
+    <dimen name="margintop_transfer_spinner">12dp</dimen>
+    <dimen name="marginstartend_transfer_spinner">74dp</dimen>
+    <dimen name="margintop_transfer_relativelayout">44dp</dimen>
+    <dimen name="textsize_transfer_lablebalance">14sp</dimen>
+    <dimen name="marginbottom_transfer_nextamountbutton">27dp</dimen>
+    <dimen name="marginstartend_transfer_nextamountbutton">16dp</dimen>
+
+
 </resources>

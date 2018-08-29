@@ -18,6 +18,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.ui.charge.ChargeActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
+import de.netalic.falcon.ui.transfer.TransferActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import nuesoft.helpdroid.util.Parser;
 
@@ -32,9 +33,9 @@ public class NavigationDrawerUtil {
         PrimaryDrawerItem item3 = new CustomPrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_requesttoreceive).withIcon(R.drawable.navigation_requesttoreceive);
         PrimaryDrawerItem item4 = new CustomPrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_walletaddress).withIcon(R.drawable.navigation_wallet);
         PrimaryDrawerItem item5 = new CustomPrimaryDrawerItem().withIdentifier(5).withName(R.string.navigation_transactionhistory).withIcon(R.drawable.navigation_transaction);
-        PrimaryDrawerItem item6 = new CustomPrimaryDrawerItem().withIdentifier(7).withName(R.string.navigation_chart).withIcon(R.drawable.navigation_chart);
-        PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(8).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
-        PrimaryDrawerItem item8 = new CustomPrimaryDrawerItem().withIdentifier(9).withName(R.string.navigation_help).withIcon(R.drawable.navigation_help);
+        PrimaryDrawerItem item6 = new CustomPrimaryDrawerItem().withIdentifier(6).withName(R.string.navigation_chart).withIcon(R.drawable.navigation_chart);
+        PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(7).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
+        PrimaryDrawerItem item8 = new CustomPrimaryDrawerItem().withIdentifier(8).withName(R.string.navigation_help).withIcon(R.drawable.navigation_help);
 
         //TODO: Inject this object
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
@@ -86,6 +87,13 @@ public class NavigationDrawerUtil {
                                 activity.startActivity(intent);
                                 break;
 
+                            }
+                            case 6:{
+
+                                intent=new Intent(activity, TransferActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                activity.startActivity(intent);
+                                break;
                             }
                         }
                     }
