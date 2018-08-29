@@ -12,7 +12,7 @@ import de.netalic.falcon.data.repository.authentication.AuthenticationRepository
 import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.transfer.TransferActivity;
+
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 
 public class SplashActivity extends AppCompatActivity {

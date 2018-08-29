@@ -245,6 +245,7 @@
     <dimen name="textsize_transactionfiltersrowthathasradiobutton_textview">14sp</dimen>
     <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
+
     <dimen name="margintop_transfer_header">97dp</dimen>
     <dimen name="textsize_transfer_header">16sp</dimen>
     <dimen name="textsize_transfer_balance">14sp</dimen>
@@ -255,6 +256,22 @@
     <dimen name="textsize_transfer_lablebalance">14sp</dimen>
     <dimen name="marginbottom_transfer_nextamountbutton">27dp</dimen>
     <dimen name="marginstartend_transfer_nextamountbutton">16dp</dimen>
+
+    <dimen name="margintop_transferamount_linearlayout">25dp</dimen>
+    <dimen name="marginstartend_transferamount_edittextamount">70dp</dimen>
+    <dimen name="marginstartend_transferamount_edittextdollar">70dp</dimen>
+    <dimen name="textsize_transferamount_amount">16sp</dimen>
+    <dimen name="margintop_transferamount_transfer">30dp</dimen>
+    <dimen name="width_transferamount_transfer">24dp</dimen>
+    <dimen name="height_transferamount_transfer">24dp</dimen>
+    <dimen name="margintop_transferamount_amountbase">27dp</dimen>
+    <dimen name="marginbottom_transferamount_nextpayment">27dp</dimen>
+    <dimen name="marginstartend_transferamount_nextpayment">16dp</dimen>
+    <dimen name="margintop_transferamount_middlerelativelayout">30dp</dimen>
+    <dimen name="marginstartend_transferamount_useminimumusemaximum">150dp</dimen>
+    <dimen name="textsize_transferamount_useminimumusemaximumtransferfee">14sp</dimen>
+    <dimen name="margintop_transferamount_transferfeetextview">19dp</dimen>
+
 
 
 </resources>
