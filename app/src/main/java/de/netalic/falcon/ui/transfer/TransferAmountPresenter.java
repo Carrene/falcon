@@ -1,7 +1,8 @@
 package de.netalic.falcon.ui.transfer;
 
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 public class TransferAmountPresenter implements TransferAmountContract.Presenter {
@@ -23,7 +24,7 @@ public class TransferAmountPresenter implements TransferAmountContract.Presenter
     public void exchangeRate(Rate rate) {
         mTransferAmountView.showProgressBar();
 
-        ExchangeRateRepository.getInstance().get(rate.getCurrencyCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).get(rate.getCurrencyCode(), deal -> {
 
             if (deal.getThrowable() != null) {
 

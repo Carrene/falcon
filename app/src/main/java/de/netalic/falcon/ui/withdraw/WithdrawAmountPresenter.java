@@ -9,6 +9,7 @@ import java.util.Map;
 
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.repository.user.UserRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import nuesoft.helpdroid.crypto.CryptoUtil;
 import nuesoft.helpdroid.crypto.HmacType;
 
@@ -35,7 +36,7 @@ public class WithdrawAmountPresenter implements WithdrawAmountContract.Presenter
 
         mViewWithdrawAmount.showProgressBar();
 
-        ExchangeRateRepository.getInstance().getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).getAll(deal -> {
 
             if (deal.getThrowable() != null) {
 
@@ -62,7 +63,7 @@ public class WithdrawAmountPresenter implements WithdrawAmountContract.Presenter
         String urlEncoded = Joiner.on("&").withKeyValueSeparator("=")
                 .join(map);
 
-        UserRepository.getInstance().get(null, deal -> {
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).get(null, deal -> {
 
             if (deal.getThrowable() == null) {
                 try {

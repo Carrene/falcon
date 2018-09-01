@@ -1,6 +1,7 @@
 package de.netalic.falcon.ui.withdraw;
 
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 public class WithdrawPresenter implements WithdrawPresenterContract.Presenter {
@@ -25,7 +26,7 @@ public class WithdrawPresenter implements WithdrawPresenterContract.Presenter {
     public void getWalletList() {
 
         mWithdrawView.showProgressBar();
-        WalletRepository.getInstance().getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
             if (deal.getThrowable()!=null){
 

@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Deposit;
+import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;

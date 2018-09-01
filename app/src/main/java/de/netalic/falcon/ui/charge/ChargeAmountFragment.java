@@ -17,9 +17,9 @@ import android.widget.EditText;
 import java.text.DecimalFormat;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Currency;
-import de.netalic.falcon.model.Deposit;
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Currency;
+import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;

@@ -3,7 +3,8 @@ package de.netalic.falcon.ui.authentication.registration;
 import android.support.annotation.NonNull;
 
 import de.netalic.falcon.data.repository.user.UserRepository;
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -24,8 +25,7 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
 
         mRegistrationView.showProgressBar();
 
-        UserRepository.getInstance().claim(user, deal -> {
-
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).claim(user, deal -> {
             if (deal.getThrowable() != null) {
 
                 mRegistrationView.dismissProgressBar();
@@ -46,7 +46,6 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
                 }
                 mRegistrationView.dismissProgressBar();
             }
-
         });
     }
 

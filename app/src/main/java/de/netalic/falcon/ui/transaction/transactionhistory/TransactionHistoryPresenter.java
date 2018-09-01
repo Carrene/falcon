@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import de.netalic.falcon.data.repository.deposit.DepositRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -36,7 +37,7 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
 
         Map<String, String> queryString = createQueryString(filterMap);
 
-        DepositRepository.getInstance().getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(DepositRepository.class).getAll(deal -> {
             if (deal.getThrowable() != null) {
                 mTransactionHistoryView.showPaginationError(true);
                 mTransactionHistoryView.showPaginationLoading(false);

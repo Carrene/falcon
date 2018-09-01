@@ -3,10 +3,10 @@ package de.netalic.falcon.data.remote;
 import java.util.List;
 import java.util.Map;
 
-import de.netalic.falcon.model.Deposit;
-import de.netalic.falcon.model.Rate;
-import de.netalic.falcon.model.User;
-import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.model.User;
+import de.netalic.falcon.data.model.Wallet;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

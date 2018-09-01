@@ -1,4 +1,4 @@
-package de.netalic.falcon.model;
+package de.netalic.falcon.data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

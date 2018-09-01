@@ -2,30 +2,21 @@ package de.netalic.falcon.data.repository.authentication;
 
 import java.util.List;
 
-import de.netalic.falcon.model.Authentication;
+import de.netalic.falcon.data.model.Authentication;
 
-public class  AuthenticationRepository implements IAuthenticationRepository {
+public class AuthenticationRepository implements IAuthenticationRepository {
 
-    private static volatile AuthenticationRepository sAuthenticationRepository;
-    private AuthenticationRealmRepository mAuthenticationRealmRepository;
+    private IAuthenticationRepository mAuthenticationRealmRepository;
+    private IAuthenticationRepository mAuthenticationRestRepository;
+
+    public AuthenticationRepository(IAuthenticationRepository restRepository, IAuthenticationRepository realmRepository) {
+
+        mAuthenticationRestRepository = restRepository;
+        mAuthenticationRealmRepository = realmRepository;
+    }
 
     private AuthenticationRepository() {
 
-        mAuthenticationRealmRepository = new AuthenticationRealmRepository();
-
-    }
-
-    public static AuthenticationRepository getInstance() {
-
-        if (sAuthenticationRepository == null) {
-
-            synchronized (AuthenticationRepository.class) {
-                if (sAuthenticationRepository == null) {
-                    sAuthenticationRepository = new AuthenticationRepository();
-                }
-            }
-        }
-        return sAuthenticationRepository;
     }
 
     @Override

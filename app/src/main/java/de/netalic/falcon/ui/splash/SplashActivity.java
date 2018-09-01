@@ -9,11 +9,10 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.transfer.TransferFailedActivity;
-import de.netalic.falcon.ui.transfer.TransferPayeeActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 
 public class SplashActivity extends AppCompatActivity {
@@ -30,16 +29,16 @@ public class SplashActivity extends AppCompatActivity {
             intent.set(new Intent(this, RegistrationActivity.class));
 
         } else {
-            AuthenticationRepository.getInstance().get(deal -> {
+            RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
                 if (deal.getModel() == null) {
                     intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
                 } else {
-                    intent.set(new Intent(this, TransferPayeeActivity.class));
+                    intent.set(new Intent(this, DashboardActivity.class));
                 }
             });
         }
-        startActivity(intent.get());
 
+        startActivity(intent.get());
         finish();
     }
 }

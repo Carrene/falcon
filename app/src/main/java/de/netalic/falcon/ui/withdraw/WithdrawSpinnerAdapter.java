@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.data.model.Wallet;
 
 public class WithdrawSpinnerAdapter extends ArrayAdapter<Wallet> {
 

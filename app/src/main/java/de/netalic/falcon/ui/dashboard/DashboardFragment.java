@@ -19,9 +19,9 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Currency;
-import de.netalic.falcon.model.Rate;
-import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.data.model.Currency;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.withdraw.WithdrawActivity;
 import de.netalic.falcon.util.SnackbarUtil;

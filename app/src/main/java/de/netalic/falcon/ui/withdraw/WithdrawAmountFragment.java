@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Map;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Rate;
-import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.util.QrCodeUtil;
 import nuesoft.helpdroid.crypto.CryptoUtil;
 

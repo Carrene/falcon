@@ -3,6 +3,7 @@ package de.netalic.falcon.ui.charge;
 import android.support.annotation.NonNull;
 
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -26,7 +27,7 @@ public class ChargePresenter implements ChargeContract.Presenter {
     public void getWalletList() {
         //TODO: (Milad) handle other status codes
         mChargeView.showProgressBar();
-        WalletRepository.getInstance().getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
             if (deal.getThrowable() == null) {
                 switch (deal.getResponse().code()) {

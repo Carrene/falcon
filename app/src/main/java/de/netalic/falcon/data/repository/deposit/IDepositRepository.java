@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.netalic.falcon.data.repository.base.IRepository;
-import de.netalic.falcon.model.Deposit;
+import de.netalic.falcon.data.model.Deposit;
 
 public interface IDepositRepository extends IRepository<Deposit, Integer> {
 

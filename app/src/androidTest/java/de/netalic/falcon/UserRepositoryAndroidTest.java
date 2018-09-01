@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.CountDownLatch;
 
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.network.ApiClient;
 import de.netalic.falcon.repository.user.UserRepository;
 import de.netalic.falcon.util.FileUtil;

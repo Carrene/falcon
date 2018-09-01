@@ -2,30 +2,22 @@ package de.netalic.falcon.data.repository.wallet;
 
 import java.util.List;
 
-import de.netalic.falcon.model.Deposit;
-import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Wallet;
 
 public class WalletRepository implements IWalletRepository {
 
-    private static volatile WalletRepository sWalletRepository;
-    private WalletRestRepository mWalletRestRepository;
+    private IWalletRepository mWalletRestRepository;
+    private IWalletRepository mWalletRealmRepository;
 
     private WalletRepository() {
 
-        mWalletRestRepository = new WalletRestRepository();
     }
 
-    public static WalletRepository getInstance() {
+    public WalletRepository(IWalletRepository restRepository, IWalletRepository realmRepository) {
 
-        if (sWalletRepository == null) {
-
-            synchronized (WalletRepository.class) {
-                if (sWalletRepository == null) {
-                    sWalletRepository = new WalletRepository();
-                }
-            }
-        }
-        return sWalletRepository;
+        mWalletRestRepository = restRepository;
+        mWalletRealmRepository = realmRepository;
     }
 
     @Override
@@ -53,8 +45,9 @@ public class WalletRepository implements IWalletRepository {
     }
 
     @Override
-    public void finalize(int walletId, int depositId,String braintreeNonce, CallRepository<Deposit> callRepository) {
-        mWalletRestRepository.finalize(walletId,depositId,braintreeNonce,callRepository);
+    public void finalize(int walletId, int depositId, String braintreeNonce, CallRepository<Deposit> callRepository) {
+
+        mWalletRestRepository.finalize(walletId, depositId, braintreeNonce, callRepository);
     }
 
 

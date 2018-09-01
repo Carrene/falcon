@@ -4,7 +4,8 @@ import android.support.annotation.NonNull;
 
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -30,7 +31,7 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
     public void getWalletList() {
 
         mChargeAmountView.showProgressBar();
-        WalletRepository.getInstance().getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
             if (deal.getThrowable() != null) {
                 mChargeAmountView.dismissProgressBar();
@@ -55,7 +56,7 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
     public void charge(int id, double amount) {
 
         mChargeAmountView.showProgressBar();
-        WalletRepository.getInstance().charge(id, amount, deal -> {
+        RepositoryLocator.getInstance().getRepository(WalletRepository.class).charge(id, amount, deal -> {
 
             if (deal.getThrowable() != null) {
 
@@ -107,7 +108,7 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
 
         mChargeAmountView.showProgressBar();
 
-        ExchangeRateRepository.getInstance().get(rate.getCurrencyCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).get(rate.getCurrencyCode(), deal -> {
 
             if (deal.getThrowable() != null) {
 

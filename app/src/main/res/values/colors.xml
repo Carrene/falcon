@@ -6,6 +6,7 @@
 
     <color name="colorSecondary">#FBC02D</color>
     <color name="colorSecondaryDark">#FF9800</color>
+    <color name="colorSecondaryDarkTransparent10">#1AFF9800</color>
 
     <color name="colorBlack">#000000</color>
     <color name="colorBlack35">#60000000</color>

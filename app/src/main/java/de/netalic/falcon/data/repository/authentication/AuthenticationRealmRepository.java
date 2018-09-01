@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.repository.base.Deal;
-import de.netalic.falcon.model.Authentication;
+import de.netalic.falcon.data.model.Authentication;
 import io.realm.Realm;
 
 public class AuthenticationRealmRepository implements IAuthenticationRepository {

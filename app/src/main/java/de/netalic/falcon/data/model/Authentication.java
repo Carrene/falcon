@@ -1,4 +1,4 @@
-package de.netalic.falcon.model;
+package de.netalic.falcon.data.model;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

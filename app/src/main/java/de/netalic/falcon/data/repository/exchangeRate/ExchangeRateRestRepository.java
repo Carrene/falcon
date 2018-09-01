@@ -4,12 +4,12 @@ import java.util.List;
 
 import de.netalic.falcon.data.remote.ApiClient;
 import de.netalic.falcon.data.repository.base.Deal;
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Rate;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ExchangeRateRestRepository implements IExchangeRate {
+public class ExchangeRateRestRepository implements IExchangeRateRepository {
 
     @Override
     public void update(Rate rate, CallRepository<Rate> callRepository) {

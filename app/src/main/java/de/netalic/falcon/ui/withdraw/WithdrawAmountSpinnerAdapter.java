@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Rate;
 
 public class WithdrawAmountSpinnerAdapter extends ArrayAdapter<Rate> {
 

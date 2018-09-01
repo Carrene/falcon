@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
 

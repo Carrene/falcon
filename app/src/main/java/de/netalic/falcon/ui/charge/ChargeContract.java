@@ -2,7 +2,7 @@ package de.netalic.falcon.ui.charge;
 
 import java.util.List;
 
-import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 

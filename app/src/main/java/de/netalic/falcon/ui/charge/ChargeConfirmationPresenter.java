@@ -1,6 +1,7 @@
 package de.netalic.falcon.ui.charge;
 
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -23,7 +24,7 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
     public void finalize(int walletId, int depositId, String braintreeNonce) {
 
         mChargeConfirmationView.showProgressBar();
-        WalletRepository.getInstance().finalize(walletId, depositId, braintreeNonce, deal -> {
+        RepositoryLocator.getInstance().getRepository(WalletRepository.class).finalize(walletId, depositId, braintreeNonce, deal -> {
 
 
             if (deal.getThrowable() != null) {

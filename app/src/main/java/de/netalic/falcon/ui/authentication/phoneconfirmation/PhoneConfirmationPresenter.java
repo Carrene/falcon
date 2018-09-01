@@ -3,7 +3,8 @@ package de.netalic.falcon.ui.authentication.phoneconfirmation;
 import android.support.annotation.NonNull;
 
 import de.netalic.falcon.data.repository.user.UserRepository;
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -30,7 +31,7 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
         mPhoneConfirmationView.showProgressBar();
 
-        UserRepository.getInstance().claim(user, deal -> {
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).claim(user, deal -> {
 
             if (deal.getThrowable() != null) {
 
@@ -67,7 +68,7 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
         mPhoneConfirmationView.showProgressBar();
 
-        UserRepository.getInstance().bind(user, deal -> {
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).bind(user, deal -> {
 
             if (deal.getThrowable() != null) {
 

@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Deposit;
+import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import ru.alexbykov.nopaginate.paginate.NoPaginate;

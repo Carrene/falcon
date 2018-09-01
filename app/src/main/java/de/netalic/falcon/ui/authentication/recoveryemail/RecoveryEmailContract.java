@@ -1,6 +1,6 @@
 package de.netalic.falcon.ui.authentication.recoveryemail;
 
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 

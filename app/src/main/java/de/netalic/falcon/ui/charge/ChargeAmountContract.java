@@ -1,7 +1,7 @@
 package de.netalic.falcon.ui.charge;
 
-import de.netalic.falcon.model.Deposit;
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 

@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;

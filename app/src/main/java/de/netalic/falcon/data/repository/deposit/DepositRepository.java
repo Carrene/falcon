@@ -3,30 +3,21 @@ package de.netalic.falcon.data.repository.deposit;
 import java.util.List;
 import java.util.Map;
 
-import de.netalic.falcon.data.repository.wallet.WalletRepository;
-import de.netalic.falcon.model.Deposit;
+import de.netalic.falcon.data.model.Deposit;
 
 public class DepositRepository implements IDepositRepository {
 
-    private static volatile DepositRepository sDepositRepository;
-    private DepositRestRepository mDepositRestRepository;
+    private IDepositRepository mDepositRestRepository;
+    private IDepositRepository mDepositRealmRepository;
 
     private DepositRepository() {
 
-        mDepositRestRepository = new DepositRestRepository();
     }
 
-    public static DepositRepository getInstance() {
+    public DepositRepository(IDepositRepository restRepository, IDepositRepository realmRepostiory) {
 
-        if (sDepositRepository == null) {
-
-            synchronized (WalletRepository.class) {
-
-                sDepositRepository = new DepositRepository();
-            }
-        }
-
-        return sDepositRepository;
+        mDepositRestRepository = restRepository;
+        mDepositRealmRepository = realmRepostiory;
     }
 
     @Override

@@ -4,7 +4,8 @@ import android.support.annotation.NonNull;
 
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -25,7 +26,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
         mDashboardView.showProgressBar();
 
-        ExchangeRateRepository.getInstance().get(rate.getCurrencyCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).get(rate.getCurrencyCode(), deal -> {
 
             if (deal.getThrowable() != null) {
 
@@ -64,7 +65,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
     public void getWalletList() {
 
         mDashboardView.showProgressBar();
-        WalletRepository.getInstance().getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
             if (deal.getThrowable()!=null){
 

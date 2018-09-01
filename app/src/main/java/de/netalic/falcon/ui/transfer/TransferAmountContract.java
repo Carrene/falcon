@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.transfer;
 
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 
@@ -11,13 +12,13 @@ public interface TransferAmountContract {
 
         void showErrorRatesDoesNotExists();
 
-        void updateExchangeRateCurrency(de.netalic.falcon.model.Rate rate);
+        void updateExchangeRateCurrency(Rate rate);
 
     }
 
     interface Presenter  extends BasePresenter{
 
-        void exchangeRate(de.netalic.falcon.model.Rate rate);
+        void exchangeRate(Rate rate);
 
 
     }

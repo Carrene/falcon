@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Deposit;
+import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;

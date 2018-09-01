@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 
 import static com.google.common.base.Preconditions.checkNotNull;

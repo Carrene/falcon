@@ -12,10 +12,11 @@ import java.security.NoSuchAlgorithmException;
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
-import de.netalic.falcon.model.Authentication;
+import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import info.hoang8f.android.segmented.SegmentedGroup;
 import nuesoft.helpdroid.util.Converter;
 
@@ -119,7 +120,7 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
 
         byte[] credentialDigest = digestSha512(credentialValue);
         Authentication authentication = new Authentication(Converter.bytesToHexString(credentialDigest), type);
-        AuthenticationRepository.getInstance().update(authentication, deal -> {
+        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).update(authentication, deal -> {
 
             if (deal.getModel() == null) {
                 throw new RuntimeException("Authentication has not been saved!");

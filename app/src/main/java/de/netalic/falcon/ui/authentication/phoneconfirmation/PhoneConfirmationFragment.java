@@ -24,7 +24,7 @@ import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.authentication.recoveryemail.RecoveryEmailActivity;
 import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
 import de.netalic.falcon.ui.base.BaseActivity;

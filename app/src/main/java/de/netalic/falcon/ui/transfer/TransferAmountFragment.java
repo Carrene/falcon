@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;

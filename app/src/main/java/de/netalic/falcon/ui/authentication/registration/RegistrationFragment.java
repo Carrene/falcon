@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.authentication.phoneconfirmation.PhoneConfirmationActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;

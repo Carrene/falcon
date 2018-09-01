@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.netalic.falcon.data.remote.ApiClient;
 import de.netalic.falcon.data.repository.base.Deal;
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

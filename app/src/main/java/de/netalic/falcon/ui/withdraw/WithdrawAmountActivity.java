@@ -3,7 +3,7 @@ package de.netalic.falcon.ui.withdraw;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.Wallet;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
 

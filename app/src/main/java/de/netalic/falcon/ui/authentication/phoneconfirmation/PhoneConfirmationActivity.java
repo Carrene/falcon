@@ -7,7 +7,7 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.model.User;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
 

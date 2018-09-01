@@ -3,7 +3,7 @@ package de.netalic.falcon.ui.withdraw;
 import java.util.List;
 import java.util.Map;
 
-import de.netalic.falcon.model.Rate;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 
