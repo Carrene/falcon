@@ -24,7 +24,7 @@ public class Deposit implements Parcelable {
     @SerializedName("createdAt")
     private String mCreatedAt;
 
-    @SerializedName("chargeAmount")
+    @SerializedName("chargedAmount")
     private double mChargeAmount;
 
     @SerializedName("walletName")
