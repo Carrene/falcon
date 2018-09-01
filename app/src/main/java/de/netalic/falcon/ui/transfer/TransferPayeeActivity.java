@@ -5,6 +5,7 @@ import android.os.Bundle;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TransferPayeeActivity extends BaseActivity {
 
@@ -13,7 +14,10 @@ public class TransferPayeeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setupBackButton();
+
         Bundle bundle=getIntent().getExtras();
+        checkNotNull(bundle);
         double amountTransfer=bundle.getDouble("transferAmount");
         int walletAddress=bundle.getInt("walletAddress");
 

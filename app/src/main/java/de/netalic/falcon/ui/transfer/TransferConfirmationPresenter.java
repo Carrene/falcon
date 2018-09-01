@@ -36,7 +36,6 @@ public class TransferConfirmationPresenter implements TransferConfirmationContra
 
                         mTransferConfirmationView.navigationToCompletedTransfer();
 
-
                     }
 
                     case 731: {

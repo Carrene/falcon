@@ -7,14 +7,10 @@ public interface TransferPayeeContract {
 
     interface View extends BaseView<Presenter>{
 
-        void showResponseCode();
-
-
     }
 
     interface Presenter extends BasePresenter{
 
-        void transfer(int sourceAddress,double amount,int walletAddress);
 
     }
 }

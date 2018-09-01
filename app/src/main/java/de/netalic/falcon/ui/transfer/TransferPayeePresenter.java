@@ -22,32 +22,5 @@ public class TransferPayeePresenter implements Presenter {
     }
 
 
-    @Override
-    public void transfer(int sourceAddress, double amount, int walletAddress) {
 
-        mTransferPayeeView.showProgressBar();
-        ReceiptRepository.getInstance().transfer(sourceAddress, walletAddress, amount, deal -> {
-
-            if (deal.getThrowable() != null) {
-
-
-            } else {
-
-
-                switch (deal.getResponse().code()) {
-
-                    case 200: {
-
-                        mTransferPayeeView.showResponseCode();
-
-
-                    }
-
-                }
-            }
-
-
-        });
-
-    }
 }

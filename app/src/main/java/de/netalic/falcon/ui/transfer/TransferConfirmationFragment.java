@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
@@ -18,18 +19,40 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class TransferConfirmationFragment extends Fragment implements TransferConfirmationContract.View {
 
     private View mRoot;
+    private int mSourceWalletAddress;
+    private int mDestinationWalletAddress;
+    private double mTransferAmount;
+    private Button mButtonConfirm;
+    private TransferConfirmationContract.Presenter mTransferConfirmationPresenter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_transferconfirmation, null);
+        checkNotNull(getArguments());
+        mSourceWalletAddress = getArguments().getInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS);
+        mDestinationWalletAddress = getArguments().getInt(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS);
+        mTransferAmount = getArguments().getDouble(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT);
         return mRoot;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        initUiComponent();
+        initListener();
+    }
+
+    private void initUiComponent() {
+
+        mButtonConfirm = mRoot.findViewById(R.id.button_transferconfirmation_confirm);
     }
 
     @Override
     public void setPresenter(TransferConfirmationContract.Presenter presenter) {
 
+        mTransferConfirmationPresenter = presenter;
     }
 
     @Override
@@ -49,9 +72,16 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
         }
     }
 
-    public static TransferConfirmationFragment newInstance() {
+    public static TransferConfirmationFragment newInstance(int sourceWalletAddress, int destinationWalletAddress, double transferAmount) {
 
-        return new TransferConfirmationFragment();
+        TransferConfirmationFragment transferConfirmationFragment = new TransferConfirmationFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS, sourceWalletAddress);
+        bundle.putInt(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS, destinationWalletAddress);
+        bundle.putDouble(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT, transferAmount);
+        transferConfirmationFragment.setArguments(bundle);
+
+        return transferConfirmationFragment;
     }
 
     @Override
@@ -129,5 +159,12 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
 
         checkNotNull(getContext());
         SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_tryingtotransferfromanotherclientwallet), getContext());
+    }
+
+    private void initListener() {
+
+        mButtonConfirm.setOnClickListener(v ->
+
+                mTransferConfirmationPresenter.transfer(mSourceWalletAddress, mTransferAmount, mDestinationWalletAddress));
     }
 }
