@@ -33,7 +33,7 @@ public class NavigationDrawerUtil {
         PrimaryDrawerItem item3 = new CustomPrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_requesttoreceive).withIcon(R.drawable.navigation_requesttoreceive);
 
         PrimaryDrawerItem item4 = new CustomPrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_addresses).withIcon(R.drawable.navigation_requesttoreceive);
-        PrimaryDrawerItem item5 = new CustomPrimaryDrawerItem().withIdentifier(5).withName(R.string.navigation_transfer).withIcon(R.drawable.navigation_requesttoreceive);
+        PrimaryDrawerItem item5 = new CustomPrimaryDrawerItem().withIdentifier(5).withName(R.string.navigation_transfer).withIcon(R.drawable.navigation_transfer);
 
         PrimaryDrawerItem item6 = new CustomPrimaryDrawerItem().withIdentifier(6).withName(R.string.navigation_walletaddress).withIcon(R.drawable.navigation_wallet);
         PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(7).withName(R.string.navigation_transactionhistory).withIcon(R.drawable.navigation_transaction);

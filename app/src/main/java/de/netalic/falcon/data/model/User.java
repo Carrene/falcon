@@ -46,7 +46,7 @@ public class User extends RealmObject implements Parcelable {
 
     @Ignore
     @SerializedName("wallets")
-    private List<Wallet> mWallets;
+    private List<de.netalic.falcon.model.Wallet> mWallets;
 
     @Ignore
     @SerializedName("isActive")
@@ -62,6 +62,9 @@ public class User extends RealmObject implements Parcelable {
 
     @SerializedName("isNewClient")
     boolean isNewClient;
+
+    @SerializedName("baseCurrencySymbol")
+    private String mBaseCurrencySymbol;
 
     @Ignore
     String mActivationCode;
@@ -161,7 +164,7 @@ public class User extends RealmObject implements Parcelable {
         this.mBalance = balance;
     }
 
-    public List<Wallet> getWallets() {
+    public List<de.netalic.falcon.model.Wallet> getWallets() {
 
         return mWallets;
     }
@@ -199,4 +202,12 @@ public class User extends RealmObject implements Parcelable {
             return new User[size];
         }
     };
+
+    public String getBaseCurrencySymbol() {
+        return mBaseCurrencySymbol;
+    }
+
+    public void setBaseCurrencySymbol(String baseCurrencySymbol) {
+        this.mBaseCurrencySymbol = baseCurrencySymbol;
+    }
 }

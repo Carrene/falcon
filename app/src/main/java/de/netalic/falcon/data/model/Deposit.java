@@ -60,6 +60,12 @@ public class Deposit implements Parcelable {
     @SerializedName("transactionId")
     private int mTransactionId;
 
+    @SerializedName("walletCurrencySymbol")
+    private String mWalletCurrencySymbol;
+
+    @SerializedName("paymentCurrencySymbol")
+    private String mPaymentCurrencySymbol;
+
     public int getId() {
 
         return mId;
@@ -211,4 +217,20 @@ public class Deposit implements Parcelable {
             return new Deposit[size];
         }
     };
+
+    public String getWalletCurrencySymbol() {
+        return mWalletCurrencySymbol;
+    }
+
+    public void setWalletCurrencySymbol(String walletCurrencySymbol) {
+        this.mWalletCurrencySymbol = walletCurrencySymbol;
+    }
+
+    public String getPaymentCurrencySymbol() {
+        return mPaymentCurrencySymbol;
+    }
+
+    public void setPaymentCurrencySymbol(String paymentCurrencySymbol) {
+        this.mPaymentCurrencySymbol = paymentCurrencySymbol;
+    }
 }

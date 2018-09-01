@@ -5,6 +5,11 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import io.realm.annotations.PrimaryKey;
 
 public class Wallet implements Parcelable {
@@ -16,8 +21,8 @@ public class Wallet implements Parcelable {
     @SerializedName("balance")
     private double mBalance;
 
-    @SerializedName("currency")
-    private Currency mCurrency;
+    @SerializedName("currencyCode")
+    private String mCurrencyCode;
 
     @SerializedName("spendableBalance")
     private double mSpendableBalance;
@@ -25,13 +30,20 @@ public class Wallet implements Parcelable {
     @SerializedName("name")
     private String mName;
 
-    public Wallet(int id, double balance, Currency currency, double spendableBalance) {
+    @SerializedName("createdAt")
+    private String mCreatedAt;
 
-        this.mId = id;
-        this.mBalance = balance;
-        this.mCurrency = currency;
-        this.mSpendableBalance = spendableBalance;
-    }
+    @SerializedName("ownerId")
+    private int mOwnerId;
+
+    @SerializedName("modifiedAt")
+    private String mModifiedAt;
+
+    @SerializedName("address")
+    private int mAddress;
+
+    @SerializedName("currencySymbol")
+    private String mCurrencySymbol;
 
     public Wallet() {
 
@@ -48,6 +60,73 @@ public class Wallet implements Parcelable {
             return new Wallet[size];
         }
     };
+
+    public String getCurrencyCode() {
+        return mCurrencyCode;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.mCurrencyCode = currencyCode;
+    }
+
+    public String getCurrencySymbol() {
+        return mCurrencySymbol;
+    }
+
+    public void setCurrencySymbol(String currencySymbol) {
+        this.mCurrencySymbol = currencySymbol;
+    }
+
+    public int getAddress() {
+        return mAddress;
+    }
+
+    public void setAddress(int address) {
+        this.mAddress = address;
+    }
+
+    public String getModifiedAt() {
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            Date date = dateFormat.parse(mModifiedAt);
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+            return dateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void setModifiedAt(String modifiedAt) {
+        this.mModifiedAt = modifiedAt;
+    }
+
+    public int getOwnerId() {
+        return mOwnerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.mOwnerId = ownerId;
+    }
+
+    public String getCreatedAt() {
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            Date date = dateFormat.parse(mCreatedAt);
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+            return dateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.mCreatedAt = createdAt;
+    }
 
     public int getId() {
 
@@ -69,15 +148,6 @@ public class Wallet implements Parcelable {
         return mName;
     }
 
-    public Currency getCurrency() {
-
-        return mCurrency;
-    }
-
-    public void setCurrency(Currency currency) {
-
-        this.mCurrency = currency;
-    }
 
     public double getSpendableBalance() {
 

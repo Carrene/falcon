@@ -11,13 +11,13 @@ public class Receipt {
     private int mPayeeId;
 
     @SerializedName("destinationWalletAddress")
-    private int mDestinationWalletAddress;
+    private String mDestinationWalletAddress;
 
     @SerializedName("amount")
     private double mAmount;
 
     @SerializedName("sourceWalletAddress")
-    private int mSourceWalletAddress;
+    private String mSourceWalletAddress;
 
     @SerializedName("transactionId")
     private int mTransactionId;
@@ -40,6 +40,15 @@ public class Receipt {
     @SerializedName("paymentGatewayName")
     private String mPaymentGatewayName;
 
+    @SerializedName(" sourceWalletCurrencySymbol")
+    private String  mSourceWalletCurrencySymbol;
+
+    @SerializedName("destinationWalletCurrencySymbol")
+    private String mDestinationWalletCurrencySymbol;
+
+    @SerializedName("RRN")
+    private String mRRN;
+
     public String getDestinationWalletCurrency() {
         return mDestinationWalletCurrency;
     }
@@ -48,15 +57,27 @@ public class Receipt {
         return mPayeeId;
     }
 
-    public int getDestinationWalletAddress() {
+    public String getDestinationWalletAddress() {
         return mDestinationWalletAddress;
+    }
+
+    public String getRRN() {
+        return mRRN;
+    }
+
+    public String getDestinationWalletCurrencySymbol() {
+        return mDestinationWalletCurrencySymbol;
+    }
+
+    public String getSourceWalletCurrencySymbol() {
+        return mSourceWalletCurrencySymbol;
     }
 
     public double getAmount() {
         return mAmount;
     }
 
-    public int getSourceWalletAddress() {
+    public String getSourceWalletAddress() {
         return mSourceWalletAddress;
     }
 
