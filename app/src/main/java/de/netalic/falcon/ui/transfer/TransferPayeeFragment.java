@@ -1,6 +1,7 @@
 package de.netalic.falcon.ui.transfer;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -21,19 +25,19 @@ import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TransferPayeeFragment extends Fragment implements TransferPayeeContract.View {
 
-
     private TransferPayeeContract.Presenter mTransferPayeePresenter;
     private View mRoot;
     private DecoratedBarcodeView mDecoratedBarcodeView;
-    private ImageButton mImageButtonScanAction;
     private EditText mEditTextWalletAddress;
     private static final int REQUEST_PERMISSIONS = 1;
+    private Menu mMenu;
 
     public static TransferPayeeFragment newInstance() {
 
@@ -53,11 +57,11 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
 
         super.onViewCreated(view, savedInstanceState);
         mDecoratedBarcodeView = mRoot.findViewById(R.id.dbv_barcode);
-        mImageButtonScanAction = mRoot.findViewById(R.id.imagebutton_transferpayee_scanaction);
         mEditTextWalletAddress = mRoot.findViewById(R.id.edittext_transferpayee_walletaddress);
         mDecoratedBarcodeView.setStatusText("");
         initListeners();
         mDecoratedBarcodeView.setVisibility(View.INVISIBLE);
+        setHasOptionsMenu(true);
 
     }
 
@@ -75,17 +79,6 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
             @Override
             public void possibleResultPoints(List<ResultPoint> resultPoints) {
 
-            }
-        });
-
-        mImageButtonScanAction.setOnClickListener(v -> {
-
-            if (mDecoratedBarcodeView.getVisibility() == View.VISIBLE) {
-                pauseScanner();
-                mDecoratedBarcodeView.setVisibility(View.INVISIBLE);
-                mImageButtonScanAction.setImageResource(R.drawable.flag_zw);
-            } else {
-                requestCameraPermission();
             }
         });
     }
@@ -128,29 +121,45 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
         } else {
 
             SnackbarUtil.showSnackbar(mRoot, "Permission Denied", getContext());
-
         }
     }
 
     protected void resumeScanner() {
 
-        if (!mDecoratedBarcodeView.isActivated()) {
+        int permission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.CAMERA);
+        if (!mDecoratedBarcodeView.isActivated() && permission == PackageManager.PERMISSION_GRANTED) {
             mDecoratedBarcodeView.resume();
             mDecoratedBarcodeView.setVisibility(View.VISIBLE);
+            if (mMenu != null) {
+                mMenu.getItem(0).setIcon(R.drawable.transactionpayee_qrclose);
+            }
         }
+
+
     }
 
     protected void pauseScanner() {
 
         mDecoratedBarcodeView.pause();
         mDecoratedBarcodeView.setVisibility(View.INVISIBLE);
+        mMenu.getItem(0).setIcon(R.drawable.transactionpayee_qropen);
+
+    }
+
+    private void handleQr() {
+
+        if (mDecoratedBarcodeView.getVisibility() == View.VISIBLE) {
+            pauseScanner();
+            mDecoratedBarcodeView.setVisibility(View.INVISIBLE);
+        } else {
+            requestCameraPermission();
+        }
     }
 
     @Override
     public void onResume() {
 
         super.onResume();
-        resumeScanner();
     }
 
     @Override
@@ -158,5 +167,26 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
 
         super.onPause();
         pauseScanner();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.menu_transferpayee_toolbar, menu);
+        mMenu = menu;
+        resumeScanner();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.item_transferpayee_qr: {
+                handleQr();
+                break;
+            }
+        }
+        return true;
     }
 }

@@ -24,30 +24,23 @@
         android:paddingStart="@dimen/paddingstart_transferpayee_walletaddressedittext"
         android:textColor="@color/colorPrimaryLight"/>
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/framelayout_transferpayee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@id/button_transferpayee_nexttransfer"
         android:layout_below="@+id/edittext_transferpayee_walletaddress"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp">
 
         <com.journeyapps.barcodescanner.DecoratedBarcodeView
             android:id="@+id/dbv_barcode"
-            android:layout_width="400dp"
-            android:layout_height="225dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    </FrameLayout>
-
-    <ImageButton
-        android:id="@+id/imagebutton_transferpayee_scanaction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/framelayout_transferpayee"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_search"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/button_transferpayee_nexttransfer"
@@ -57,6 +50,7 @@
         android:layout_marginBottom="@dimen/marginbottom_transferpayee_nexttransferpayeebtton"
         android:layout_marginEnd="@dimen/marginstartend_transferpayee_nexttransferpayeebutton"
         android:layout_marginStart="@dimen/marginstartend_transferpayee_nexttransferpayeebutton"
+        android:layout_marginTop="20dp"
         android:background="@color/colorSecondary"
         android:text="@string/transferpayee_nexttransferbutton"
         android:textColor="@color/colorBlack"/>
