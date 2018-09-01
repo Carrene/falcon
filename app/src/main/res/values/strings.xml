@@ -212,6 +212,15 @@
     <string name="transferconfirmation_walletamount">Transfer amount  </string>
     <string name="transferconfirmation_baseamount">Paid amount  </string>
     <string name="transferconfirmation_confirm">CONFIRM</string>
+    <string name="transferconfirmation_invalidsourcewalletaddress">Invalid source wallet address</string>
+    <string name="transferconfirmation_invaliddestinationwalletaddress">Invalid destination wallet address</string>
+    <string name="transferconfirmation_sourcewalletnotfound">Source wallet not found</string>
+    <string name="transferconfirmation_sourceanddestinationissame">Source and destination is same</string>
+    <string name="transferconfirmation_invalidamount">Invalid amount</string>
+    <string name="transferconfirmation_amountisnegative">Amount is negative</string>
+    <string name="transferconfirmation_insufficientbalance">Insufficient balance</string>
+    <string name="transferconfirmation_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
+
 
     <string name="transferfailed_toolbar">Transfer failed</string>
     <string name="transferfailed_failed">Failed</string>
