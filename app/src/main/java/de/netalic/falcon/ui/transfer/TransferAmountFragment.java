@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.transfer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,12 +32,16 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
     private TextView mTextViewUseMinimum;
     private Rate mRate;
     private DecimalFormat mDecimalFormat;
+    private Button mButtonNextTransfer;
+    public static final String ARGUMENT_WALLET_ADDRESS="walletAddress";
+    private int mWalletAddress;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_transferamount, null);
+        mWalletAddress=getArguments().getInt(ARGUMENT_WALLET_ADDRESS);
         return mRoot;
     }
 
@@ -54,6 +60,7 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
         mEditTextBaseCurrency = mRoot.findViewById(R.id.edittext_transferamount_amountbase);
         mTextViewUseMinimum = mRoot.findViewById(R.id.textview_transferamount_useminimum);
         mTextViewUseMaximum = mRoot.findViewById(R.id.textview_transferamount_usemaximum);
+        mButtonNextTransfer=mRoot.findViewById(R.id.button_transferamount_payment);
 
     }
 
@@ -79,9 +86,13 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
 
     }
 
-    public static TransferAmountFragment newInstance() {
+    public static TransferAmountFragment newInstance(int walletAddress) {
 
-        return new TransferAmountFragment();
+        TransferAmountFragment transferAmountFragment=new TransferAmountFragment();
+        Bundle bundle=new Bundle();
+        bundle.putInt(ARGUMENT_WALLET_ADDRESS,walletAddress);
+        transferAmountFragment.setArguments(bundle);
+        return transferAmountFragment;
     }
 
     @Override
@@ -199,6 +210,21 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
             mEditTextWalletAmount.setText("2500");
 
 
+        });
+
+        mButtonNextTransfer.setOnClickListener(v -> {
+
+            if (mEditTextWalletAmount.getText().toString().equals("")){
+
+             SnackbarUtil.showSnackbar(mRoot,"Please Fill Box",getContext());
+            }
+            else {
+                Intent intent = new Intent(getContext(), TransferPayeeActivity.class);
+                intent.putExtra(ARGUMENT_WALLET_ADDRESS,mWalletAddress);
+                intent.putExtra("transferAmount",Double.valueOf(mEditTextWalletAmount.getText().toString()));
+                startActivity(intent);
+
+            }
         });
 
     }

@@ -46,6 +46,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         if (getArguments() == null) {
             throw new RuntimeException("Charge response should not be null!");
         }
+
         mDeposit = getArguments().getParcelable(ARGUMENT_CHARGE_START);
         return mRoot;
     }
@@ -64,8 +65,8 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private void setPaymentConfirmationData() {
 
         mTextViewWalletName.setText(mDeposit.getWalletName());
-        mTextViewChargeAmount.setText(String.valueOf(mDeposit.getChargeAmount()));
-        mTextViewPaidAmount.setText(String.valueOf(mDeposit.getPaidAmount()));
+        mTextViewChargeAmount.setText(mDeposit.getWalletCurrencySymbol()+" "+String.valueOf(mDeposit.getChargeAmount()));
+        mTextViewPaidAmount.setText(mDeposit.getPaymentCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
 
     }

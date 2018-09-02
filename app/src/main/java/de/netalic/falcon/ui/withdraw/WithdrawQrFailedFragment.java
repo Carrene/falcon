@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -34,7 +33,7 @@ public class WithdrawQrFailedFragment extends Fragment implements WithdrawQrCode
     private Button mButtonTryWithdraw;
     private Button mButtonDashboard;
     private View mScreenshotView;
-    private static final int REQUEST_PERMISSIONS = 120;
+    private static final int REQUEST_PERMISSIONS = 1;
     private static final String ALPHA_PATH = "/Alpha";
     private static final String CHARGE_PATH = "/Withdraw";
     private static final int IMAGE_QUALITY = 100;
@@ -132,8 +131,8 @@ public class WithdrawQrFailedFragment extends Fragment implements WithdrawQrCode
     private void requestPermissionShare() {
 
 
-        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (regEX != PackageManager.PERMISSION_GRANTED) {
+        int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
@@ -141,22 +140,20 @@ public class WithdrawQrFailedFragment extends Fragment implements WithdrawQrCode
             File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             ScreenshotUtil.shareScreenshot(file, getContext());
 
-
         }
     }
 
     private void requestPermissionSave() {
 
 
-        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (regEX != PackageManager.PERMISSION_GRANTED) {
+        int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
             ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
-
 
         }
     }
@@ -167,10 +164,10 @@ public class WithdrawQrFailedFragment extends Fragment implements WithdrawQrCode
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Allowed", getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissionallowed), getContext());
         } else {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Denied", getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
 
         }
     }

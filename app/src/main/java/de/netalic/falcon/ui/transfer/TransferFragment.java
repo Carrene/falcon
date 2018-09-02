@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.transfer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,10 +26,11 @@ public class TransferFragment extends Fragment implements TransferContract.View 
     private View mRoot;
     private TransferContract.Presenter mTransferPresenter;
     private TransferSpinnerAdapter mTransferSpinnerAdapter;
-    private Button mbuttonNextAmount;
+    private Button mButtonNextAmount;
     private TextView mTextViewBalance;
     private Spinner mSpinnerWalletList;
     private List<Wallet> mWalletList;
+    private int mPosition;
 
     @Nullable
     @Override
@@ -85,7 +87,7 @@ public class TransferFragment extends Fragment implements TransferContract.View 
 
     private void initUiComponent() {
 
-        mbuttonNextAmount = mRoot.findViewById(R.id.button_transfer_nextamount);
+        mButtonNextAmount = mRoot.findViewById(R.id.button_transfer_nextamount);
         mTextViewBalance = mRoot.findViewById(R.id.textview_transfer_balance);
         mSpinnerWalletList = mRoot.findViewById(R.id.spinner_transfer_walletlist);
 
@@ -107,15 +109,25 @@ public class TransferFragment extends Fragment implements TransferContract.View 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance())+" "+mWalletList.get(position).getCurrencySymbol());
+                mPosition=position;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance()));
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance())+" "+mWalletList.get(0).getCurrencySymbol());
+                mPosition=0;
 
             }
+        });
+
+        mButtonNextAmount.setOnClickListener(v -> {
+
+            Intent intent=new Intent(getContext(),TransferAmountActivity.class);
+            intent.putExtra("walletAddress",mWalletList.get(mPosition).getId());
+            startActivity(intent);
+
         });
     }
 }

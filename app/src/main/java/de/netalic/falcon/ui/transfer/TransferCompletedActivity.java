@@ -12,7 +12,6 @@ public class TransferCompletedActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setupBackButton();
 
         TransferCompletedFragment transferCompletedFragment=(TransferCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transfercompleted_fragmentcontainer);
         if (transferCompletedFragment==null){

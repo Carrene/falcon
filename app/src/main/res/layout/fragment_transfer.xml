@@ -40,9 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/transfer_balance"
             android:textColor="@color/eucalyptus"
-            android:textSize="@dimen/textsize_transfer_lablebalance"
-
-            />
+            android:textSize="@dimen/textsize_transfer_lablebalance" />
 
         <TextView
             android:id="@+id/textview_transfer_balance"
@@ -52,15 +50,6 @@
             android:text="VALUE"
             android:textColor="@color/eucalyptus"
             android:textSize="@dimen/textsize_transfer_balance" />
-
-        <TextView
-            android:id="@+id/textview_transfer_alphaicon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/textview_transfer_balance"
-            android:text=" α"
-            android:textColor="@color/eucalyptus" />
-
     </RelativeLayout>
 
     <Button

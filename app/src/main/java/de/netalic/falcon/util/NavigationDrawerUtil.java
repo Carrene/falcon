@@ -30,12 +30,11 @@ public class NavigationDrawerUtil {
 
         PrimaryDrawerItem item1 = new CustomPrimaryDrawerItem().withIdentifier(1).withName(R.string.navigation_dashboard).withIcon(R.drawable.navigation_dashboard);
         PrimaryDrawerItem item2 = new CustomPrimaryDrawerItem().withIdentifier(2).withName(R.string.navigation_charge).withIcon(R.drawable.navigation_charge);
-        PrimaryDrawerItem item3 = new CustomPrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_requesttoreceive).withIcon(R.drawable.navigation_requesttoreceive);
-        PrimaryDrawerItem item4 = new CustomPrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_walletaddress).withIcon(R.drawable.navigation_wallet);
+        PrimaryDrawerItem item3 = new CustomPrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_addresses).withIcon(R.drawable.navigation_wallet);
+        PrimaryDrawerItem item4 = new CustomPrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_transfer).withIcon(R.drawable.navigation_transfer);
         PrimaryDrawerItem item5 = new CustomPrimaryDrawerItem().withIdentifier(5).withName(R.string.navigation_transactionhistory).withIcon(R.drawable.navigation_transaction);
-        PrimaryDrawerItem item6 = new CustomPrimaryDrawerItem().withIdentifier(6).withName(R.string.navigation_chart).withIcon(R.drawable.navigation_chart);
-        PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(7).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
-        PrimaryDrawerItem item8 = new CustomPrimaryDrawerItem().withIdentifier(8).withName(R.string.navigation_help).withIcon(R.drawable.navigation_help);
+        PrimaryDrawerItem item6 = new CustomPrimaryDrawerItem().withIdentifier(6).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
+        PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(7).withName(R.string.navigation_help).withIcon(R.drawable.navigation_help);
 
         //TODO: Inject this object
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
@@ -60,7 +59,7 @@ public class NavigationDrawerUtil {
                 .withActionBarDrawerToggleAnimated(true)
                 .withCloseOnClick(true)
                 .withSelectedItem(identifier)
-                .addDrawerItems(item1, item2, item3, item4, item5, item6, item7, item8)
+                .addDrawerItems(item1, item2, item3, item4, item5, item6, item7)
                 .withAccountHeader(headerResult)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if (position != identifier) {
@@ -88,7 +87,7 @@ public class NavigationDrawerUtil {
                                 break;
 
                             }
-                            case 6:{
+                            case 4:{
 
                                 intent=new Intent(activity, TransferActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

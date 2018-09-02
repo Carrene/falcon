@@ -56,13 +56,6 @@
                 android:layout_alignParentEnd="true"
                 android:orientation="horizontal">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="α"
-                    android:textColor="@color/colorBlack" />
-
                 <TextView
                     android:id="@+id/textview_transfercompleted_transferamountalpha"
                     android:layout_width="wrap_content"
@@ -100,13 +93,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="α"
-                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textview_transfercompleted_paidamount"

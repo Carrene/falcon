@@ -53,8 +53,8 @@
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
         </activity>
@@ -97,17 +97,34 @@
         </activity>
 
 
-        <activity android:name=".ui.transfer.TransferActivity"/>
+        <activity android:name=".ui.transfer.TransferActivity" />
 
-        <activity android:name=".ui.transfer.TransferAmountActivity"/>
+        <activity
+            android:name=".ui.transfer.TransferAmountActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.transfer.TransferActivity">
 
-        <activity android:name=".ui.transfer.TransferPayeeActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.transfer.TransferAmountActivity" />
+        </activity>
 
-        <activity android:name=".ui.transfer.TransferConfirmationActivity"/>
+        <activity
+            android:name=".ui.transfer.TransferPayeeActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.transfer.TransferAmountActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.transfer.TransferPayeeActivity" />
+        </activity>
 
-        <activity android:name=".ui.transfer.TransferCompletedActivity"/>
+        <activity
+            android:name=".ui.transfer.TransferConfirmationActivity"
+            android:parentActivityName=".ui.transfer.TransferPayeeActivity" />
 
-        <activity android:name=".ui.transfer.TransferFailedActivity"/>
+        <activity android:name=".ui.transfer.TransferCompletedActivity" />
+
+        <activity android:name=".ui.transfer.TransferFailedActivity" />
 
     </application>
 

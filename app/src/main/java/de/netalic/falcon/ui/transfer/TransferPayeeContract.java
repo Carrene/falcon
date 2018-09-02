@@ -7,10 +7,10 @@ public interface TransferPayeeContract {
 
     interface View extends BaseView<Presenter>{
 
-
     }
 
     interface Presenter extends BasePresenter{
+
 
     }
 }

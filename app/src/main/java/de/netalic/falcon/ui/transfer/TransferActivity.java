@@ -13,7 +13,7 @@ public class TransferActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this,getToolbar(),6);
+        NavigationDrawerUtil.getDrawer(this,getToolbar(),4);
         TransferFragment transferFragment = (TransferFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transfer_fragmentcontainer);
 
         if (transferFragment == null) {

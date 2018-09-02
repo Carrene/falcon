@@ -6,6 +6,8 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class TransferConfirmationActivity extends BaseActivity {
 
     @Override
@@ -14,10 +16,16 @@ public class TransferConfirmationActivity extends BaseActivity {
 
         setupBackButton();
 
+        Bundle bundle=getIntent().getExtras();
+        checkNotNull(bundle);
+        int sourceWalletAddress=bundle.getInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS);
+        int destinationWalletAddress=bundle.getInt(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS);
+        double transferAmount=bundle.getDouble(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT);
+
         TransferConfirmationFragment transferConfirmationFragment=(TransferConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferconfirmation_fragmentcontainer);
         if (transferConfirmationFragment==null){
 
-            transferConfirmationFragment=TransferConfirmationFragment.newInstance();
+            transferConfirmationFragment=TransferConfirmationFragment.newInstance(sourceWalletAddress,destinationWalletAddress,transferAmount);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),transferConfirmationFragment,R.id.framelayout_transferconfirmation_fragmentcontainer);
         }
         new TransferConfirmationPresenter(transferConfirmationFragment);

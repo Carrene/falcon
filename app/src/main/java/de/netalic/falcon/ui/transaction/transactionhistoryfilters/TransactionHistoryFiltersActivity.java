@@ -2,8 +2,8 @@ package de.netalic.falcon.ui.transaction.transactionhistoryfilters;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.support.v4.app.NavUtils;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;

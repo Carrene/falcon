@@ -2,15 +2,16 @@ package de.netalic.falcon.ui.transfer;
 
 import java.util.List;
 
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
-import de.netalic.falcon.data.model.Wallet;
+
 
 public interface TransferContract {
 
     interface View extends BaseView<Presenter> {
 
-        void setWalletList(List<Wallet>walletList);
+        void setWalletList(List<Wallet> walletList);
 
     }
 
