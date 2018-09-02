@@ -100,10 +100,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
             case R.id.item_everywhere_download: {
 
                 requestPermissionSave();
-
-
                 break;
-
             }
 
             case R.id.item_everywhere_share: {

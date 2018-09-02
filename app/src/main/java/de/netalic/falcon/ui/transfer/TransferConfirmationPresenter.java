@@ -26,7 +26,7 @@ public class TransferConfirmationPresenter implements TransferConfirmationContra
             mTransferConfirmationView.showProgressBar();
             if (deal.getThrowable() != null) {
 
-                mTransferConfirmationView.navigationToTransferFailed();
+                mTransferConfirmationView.dismissProgressBar();
 
             } else {
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TransferConfirmationActivity extends BaseActivity {

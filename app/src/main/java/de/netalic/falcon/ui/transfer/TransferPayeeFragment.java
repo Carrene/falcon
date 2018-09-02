@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.util.SnackbarUtil;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TransferPayeeFragment extends Fragment implements TransferPayeeContract.View {
