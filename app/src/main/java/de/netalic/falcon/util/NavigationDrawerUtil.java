@@ -15,6 +15,7 @@ import java.util.Map;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
+import de.netalic.falcon.ui.addresses.AddressesActivity;
 import de.netalic.falcon.ui.charge.ChargeActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
@@ -79,6 +80,23 @@ public class NavigationDrawerUtil {
                                 activity.startActivity(intent);
                                 break;
                             }
+
+                            case 3:{
+
+                                intent=new Intent(activity, AddressesActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                activity.startActivity(intent);
+                                break;
+                            }
+
+                            case 4:{
+
+                                intent=new Intent(activity, TransferActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                activity.startActivity(intent);
+                                break;
+                            }
+
                             case 5: {
 
                                 intent = new Intent(activity, TransactionHistoryActivity.class);
@@ -86,13 +104,6 @@ public class NavigationDrawerUtil {
                                 activity.startActivity(intent);
                                 break;
 
-                            }
-                            case 4:{
-
-                                intent=new Intent(activity, TransferActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                activity.startActivity(intent);
-                                break;
                             }
                         }
                     }
