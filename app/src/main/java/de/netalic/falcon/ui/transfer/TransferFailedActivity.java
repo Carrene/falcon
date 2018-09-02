@@ -12,7 +12,6 @@ public class TransferFailedActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setupBackButton();
 
         TransferFailedFragment transferFailedFragment=(TransferFailedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferfailed_fragmentcontainer);
         if (transferFailedFragment==null){

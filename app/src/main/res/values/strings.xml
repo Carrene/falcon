@@ -1,4 +1,9 @@
 <resources>
+
+    <string name="everywhere_pleasefillbox">Please Fill Box</string>
+    <string name="everywhere_permissionallowed">Permission Allowed</string>
+    <string name="everywhere_permissiondenied">Permission Denied</string>
+
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
@@ -55,6 +60,9 @@
     <string name="navigation_chart">Chart</string>
     <string name="navigation_setting">Setting</string>
     <string name="navigation_help">Help</string>
+    <string name="navigation_addresses">Addresses</string>
+    <string name="navigation_transfer">Transfer</string>
+
     <string name="dashboard_invalidcurrency">Invalid currency</string>
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>
 
@@ -70,8 +78,8 @@
     <string name="charge_amountisgreaterthanupperbound">Amount is greater than upper bound</string>
     <string name="charge_invalidwalletid">Invalid wallet id</string>
 
-    <string name="charge_wallet">Wallet:</string>
-    <string name="charge_paymentgateway">Payment gateway:</string>
+    <string name="charge_wallet">Wallet</string>
+    <string name="charge_paymentgateway">Payment gateway</string>
 
     <string name="chargeamount_toolbartitle">Charge-Amount</string>
     <string name="chargeamount_invalidcurrency">Invalid currency</string>
@@ -124,10 +132,10 @@
 
     <string name="withdraw_toolbar">Withdraw</string>
     <string name="withdraw_nextamount">NEXT-AMOUNT</string>
-    <string name="withdraw_balance">Balance :</string>
-    <string name="withdraw_wallet">Wallet :</string>
+    <string name="withdraw_balance">Balance : </string>
+    <string name="withdraw_wallet">Wallet</string>
     <string name="withdraw_qrcode">QR code</string>
-    <string name="withdraw_withdrawmethod">Withdraw method :</string>
+    <string name="withdraw_withdrawmethod">Withdraw method</string>
 
 
     <string name="withdrawamount_toolbar">Withdraw-Amount</string>
@@ -151,7 +159,7 @@
     <string name="qrcodefailed_dashboardbutton">DASHBOARD</string>
 
     <string name="transactionhistory_toolbar">Transaction History</string>
-    <string name="rowtransactionhistory_walletname">Wallet Name :</string>
+    <string name="rowtransactionhistory_walletname">Wallet Name</string>
 
 
     <string name="transactionfilters_toolbar">Transaction Filters</string>
@@ -181,7 +189,7 @@
     <string name="transfer_toolbar">Transfer</string>
     <string name="transfer_nextamount">NEXT-AMOUNT</string>
     <string name="transfer_wallet">Wallet</string>
-    <string name="transfer_balance">Balance :</string>
+    <string name="transfer_balance">Balance : </string>
 
     <string name="transferamount_toolbar">Transfer - Amount</string>
     <string name="transferamount_invalidcurrency">Invalid currency</string>
@@ -204,6 +212,15 @@
     <string name="transferconfirmation_walletamount">Transfer amount  </string>
     <string name="transferconfirmation_baseamount">Paid amount  </string>
     <string name="transferconfirmation_confirm">CONFIRM</string>
+    <string name="transferconfirmation_invalidsourcewalletaddress">Invalid source wallet address</string>
+    <string name="transferconfirmation_invaliddestinationwalletaddress">Invalid destination wallet address</string>
+    <string name="transferconfirmation_sourcewalletnotfound">Source wallet not found</string>
+    <string name="transferconfirmation_sourceanddestinationissame">Source and destination is same</string>
+    <string name="transferconfirmation_invalidamount">Invalid amount</string>
+    <string name="transferconfirmation_amountisnegative">Amount is negative</string>
+    <string name="transferconfirmation_insufficientbalance">Insufficient balance</string>
+    <string name="transferconfirmation_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
+
 
     <string name="transferfailed_toolbar">Transfer failed</string>
     <string name="transferfailed_failed">Failed</string>

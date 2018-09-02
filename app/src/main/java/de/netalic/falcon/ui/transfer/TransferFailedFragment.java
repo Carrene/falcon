@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -21,7 +20,6 @@ import java.io.File;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.withdraw.WithdrawActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -35,7 +33,7 @@ public class TransferFailedFragment extends Fragment implements TransferFailedCo
     private Button mButtonTryTransfer;
     private Button mButtonDashboard;
     private View mScreenshotView;
-    private static final int REQUEST_PERMISSIONS = 120;
+    private static final int REQUEST_PERMISSIONS = 1;
     private static final String ALPHA_PATH = "/Alpha";
     private static final String CHARGE_PATH = "/Transfer";
     private static final int IMAGE_QUALITY = 100;
@@ -85,7 +83,6 @@ public class TransferFailedFragment extends Fragment implements TransferFailedCo
     private void initListener() {
 
 
-
         mButtonDashboard.setOnClickListener(v -> {
 
             Intent intent = new Intent(getContext(), DashboardActivity.class);
@@ -125,15 +122,14 @@ public class TransferFailedFragment extends Fragment implements TransferFailedCo
     private void requestPermissionShare() {
 
 
-        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (regEX != PackageManager.PERMISSION_GRANTED) {
+        int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
             File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             ScreenshotUtil.shareScreenshot(file, getContext());
-
 
         }
     }
@@ -141,15 +137,30 @@ public class TransferFailedFragment extends Fragment implements TransferFailedCo
     private void requestPermissionSave() {
 
 
-        int regEX = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (regEX != PackageManager.PERMISSION_GRANTED) {
+        int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(checkNotNull(getActivity()), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
             ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
 
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissionallowed), getContext());
+        } else {
+
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
 
         }
     }

@@ -115,14 +115,14 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance())+" "+mWalletList.get(position).getCurrencySymbol());
                 mPosition = position;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance()));
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance())+" "+mWalletList.get(0).getCurrencySymbol());
             }
         });
 

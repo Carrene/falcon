@@ -72,16 +72,6 @@
                 android:layout_toRightOf="@+id/textview_withdraw_balancelable"
                 android:textColor="@color/persianGreen"
                 android:textSize="@dimen/textsize_withdraw_balance" />
-
-            <TextView
-                android:id="@+id/textview_withdraw_alphaicon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/textview_withdraw_balance"
-                android:text=" α"
-                android:textColor="@color/persianGreen"
-                android:textSize="@dimen/textsize_withdraw_alphaicon" />
-
         </RelativeLayout>
 
 

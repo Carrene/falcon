@@ -24,7 +24,7 @@ public class Deposit implements Parcelable {
     @SerializedName("createdAt")
     private String mCreatedAt;
 
-    @SerializedName("chargeAmount")
+    @SerializedName("chargedAmount")
     private double mChargeAmount;
 
     @SerializedName("walletName")
@@ -59,6 +59,12 @@ public class Deposit implements Parcelable {
 
     @SerializedName("transactionId")
     private int mTransactionId;
+
+    @SerializedName("walletCurrencySymbol")
+    private String mWalletCurrencySymbol;
+
+    @SerializedName("paymentCurrencySymbol")
+    private String mPaymentCurrencySymbol;
 
     public int getId() {
 
@@ -181,6 +187,8 @@ public class Deposit implements Parcelable {
         dest.writeString(mRetrievalReferenceNumber);
         dest.writeString(mModifiedAt);
         dest.writeInt(mTransactionId);
+        dest.writeString(mWalletCurrencySymbol);
+        dest.writeString(mPaymentCurrencySymbol);
 
     }
 
@@ -196,6 +204,8 @@ public class Deposit implements Parcelable {
         mRetrievalReferenceNumber = in.readString();
         mModifiedAt = in.readString();
         mTransactionId=in.readInt();
+        mWalletCurrencySymbol=in.readString();
+        mPaymentCurrencySymbol=in.readString();
     }
 
     public static final Creator<Deposit> CREATOR = new Creator<Deposit>() {
@@ -211,4 +221,20 @@ public class Deposit implements Parcelable {
             return new Deposit[size];
         }
     };
+
+    public String getWalletCurrencySymbol() {
+        return mWalletCurrencySymbol;
+    }
+
+    public void setWalletCurrencySymbol(String walletCurrencySymbol) {
+        this.mWalletCurrencySymbol = walletCurrencySymbol;
+    }
+
+    public String getPaymentCurrencySymbol() {
+        return mPaymentCurrencySymbol;
+    }
+
+    public void setPaymentCurrencySymbol(String paymentCurrencySymbol) {
+        this.mPaymentCurrencySymbol = paymentCurrencySymbol;
+    }
 }

@@ -14,10 +14,13 @@ public class TransferAmountActivity extends BaseActivity {
 
         setupBackButton();
 
+        Bundle bundle=getIntent().getExtras();
+        int walletAddress=bundle.getInt("walletAddress");
+
         TransferAmountFragment transferAmountFragment=(TransferAmountFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferamount_fragmentcontainer);
         if (transferAmountFragment==null){
 
-            transferAmountFragment=TransferAmountFragment.newInstance();
+            transferAmountFragment=TransferAmountFragment.newInstance(walletAddress);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),transferAmountFragment,R.id.framelayout_transferamount_fragmentcontainer);
         }
         new TransferAmountPresenter(transferAmountFragment);
