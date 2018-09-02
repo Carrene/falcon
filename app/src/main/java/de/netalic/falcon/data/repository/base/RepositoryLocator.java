@@ -5,11 +5,16 @@ import java.util.Map;
 
 public class RepositoryLocator {
 
-    private static RepositoryLocator sRepositoryLocator;
+    private static volatile RepositoryLocator sRepositoryLocator;
     private Map<String, Object> map = new HashMap<>();
 
     private RepositoryLocator() {
 
+        // To avoid reflection
+        if (sRepositoryLocator != null) {
+            throw new RuntimeException("Use getInstance() method to get the single instance of this class.");
+
+        }
     }
 
     public static RepositoryLocator getInstance() {
