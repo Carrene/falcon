@@ -158,7 +158,7 @@
     <string name="qrcodefailed_dashboardbutton">DASHBOARD</string>
 
     <string name="transactionhistory_toolbar">Transaction History</string>
-    <string name="rowtransactionhistory_walletname">Wallet Name</string>
+    <string name="rowtransactionhistory_walletname">Wallet Name :</string>
 
 
     <string name="transactionfilters_toolbar">Transaction Filters</string>
@@ -226,5 +226,6 @@
     <string name="transferfailed_dashboardbutton">DASHBOARD</string>
 
     <string name="addresses_toolbar">Addresses</string>
+    <string name="rowaddresses_walletname">Wallet Name :</string>
 
 </resources>

@@ -333,5 +333,12 @@
     <dimen name="textsize_transferfailed_trywithdrawbutton">14sp</dimen>
     <dimen name="height_transferfailed_header">40dp</dimen>
 
+    <dimen name="margintop_rowaddresses_linearlayout">20dp</dimen>
+    <dimen name="marginstartend_rowaddresses_alltextview">18dp</dimen>
+    <dimen name="textsize_rowaddresses_firstlinetextview">14sp</dimen>
+    <dimen name="textsize_rowaddresses_secondlinetextview">11sp</dimen>
+    <dimen name="margintop_rowaddresses_relativelayout">6dp</dimen>
+    <dimen name="margintop_rowaddresses_view">20dp</dimen>
+
 
 </resources>
