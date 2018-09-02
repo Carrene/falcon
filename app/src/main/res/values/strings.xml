@@ -132,7 +132,7 @@
 
     <string name="withdraw_toolbar">Withdraw</string>
     <string name="withdraw_nextamount">NEXT-AMOUNT</string>
-    <string name="withdraw_balance">Balance</string>
+    <string name="withdraw_balance">Balance : </string>
     <string name="withdraw_wallet">Wallet</string>
     <string name="withdraw_qrcode">QR code</string>
     <string name="withdraw_withdrawmethod">Withdraw method</string>
@@ -189,7 +189,7 @@
     <string name="transfer_toolbar">Transfer</string>
     <string name="transfer_nextamount">NEXT-AMOUNT</string>
     <string name="transfer_wallet">Wallet</string>
-    <string name="transfer_balance">Balance</string>
+    <string name="transfer_balance">Balance : </string>
 
     <string name="transferamount_toolbar">Transfer - Amount</string>
     <string name="transferamount_invalidcurrency">Invalid currency</string>

@@ -187,6 +187,8 @@ public class Deposit implements Parcelable {
         dest.writeString(mRetrievalReferenceNumber);
         dest.writeString(mModifiedAt);
         dest.writeInt(mTransactionId);
+        dest.writeString(mWalletCurrencySymbol);
+        dest.writeString(mPaymentCurrencySymbol);
 
     }
 
@@ -202,6 +204,8 @@ public class Deposit implements Parcelable {
         mRetrievalReferenceNumber = in.readString();
         mModifiedAt = in.readString();
         mTransactionId=in.readInt();
+        mWalletCurrencySymbol=in.readString();
+        mPaymentCurrencySymbol=in.readString();
     }
 
     public static final Creator<Deposit> CREATOR = new Creator<Deposit>() {

@@ -124,8 +124,8 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     public void setPaymentInformation() {
 
         mTextViewWalletName.setText(mDeposit.getWalletName());
-        mTextViewAmountWallet.setText(String.valueOf(mDeposit.getChargeAmount()));
-        mTextViewAmountBase.setText(String.valueOf(mDeposit.getPaidAmount()));
+        mTextViewAmountWallet.setText(mDeposit.getWalletCurrencySymbol()+" "+String.valueOf(mDeposit.getChargeAmount()));
+        mTextViewAmountBase.setText(mDeposit.getPaymentCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
         try {
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
