@@ -163,7 +163,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
                 String roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * mRate.getSell());
-                mTextViewRate.setText(mWalletList.get(position).getCurrencySymbol()+" " + roundDollar);
+                mTextViewRate.setText(getContext().getString(R.string.everywhere_dollarsymbol)+" " + roundDollar);
             }
 
             @Override

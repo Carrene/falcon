@@ -214,7 +214,6 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
                 SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
             } else {
 
-
                 Intent intent = new Intent(getContext(), TransferConfirmationActivity.class);
                 intent.putExtra(ARGUMENT_TRANSFER_AMOUNT, mTransferAmount);
                 intent.putExtra(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS, mWalletAddress);

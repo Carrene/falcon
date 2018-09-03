@@ -3,6 +3,7 @@
     <string name="everywhere_pleasefillbox">Please Fill Box</string>
     <string name="everywhere_permissionallowed">Permission Allowed</string>
     <string name="everywhere_permissiondenied">Permission Denied</string>
+    <string name="everywhere_dollarsymbol">$</string>
 
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
@@ -51,8 +52,9 @@
 
 
     <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
-    <string name="navigation_dashboard">Dashboard</string>
     <string name="dashboard_notification">Notification</string>
+
+    <string name="navigation_dashboard">Dashboard</string>
     <string name="navigation_charge">Charge</string>
     <string name="navigation_requesttoreceive">Request to receive</string>
     <string name="navigation_walletaddress">Wallet address</string>
