@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margintop_rowaddresses_linearlayout">
+        android:layout_marginTop="@dimen/margintop_rowaddresses_relativelayout">
 
         <TextView
             android:id="@+id/textview_addresses_walletnamelable"
@@ -29,7 +29,7 @@
             android:textSize="@dimen/textsize_rowaddresses_firstlinetextview" />
 
         <TextView
-            android:id="@+id/textview_addresses_amount"
+            android:id="@+id/textview_addresses_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -42,14 +42,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margintop_rowaddresses_linearlayout"
-        android:layout_marginTop="20dp">
+        android:layout_marginBottom="@dimen/marginbottom_rowaddresses_relativelayout"
+        android:layout_marginTop="@dimen/margintop_rowaddresses_relativelayout">
 
         <TextView
-            android:id="@+id/textview_addresses_dateandtime"
+            android:id="@+id/textview_addresses_walletaddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/margintop_addresses_walletaddresstextview"
             android:paddingStart="@dimen/marginstartend_rowaddresses_alltextview"
             android:text="VALUE"
             android:textColor="@color/colorBlack"
@@ -58,23 +59,18 @@
         <ImageView
             android:id="@+id/imageview_addresses_share"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="48dp"
+            android:layout_height="@dimen/height_addresses_shareandqrcodeimageview"
             android:layout_toStartOf="@+id/imageview_addresses_qrcode"
-            android:paddingEnd="20dp"
+            android:paddingEnd="@dimen/paddingend_rowaddresses_shareimageview"
             android:src="@drawable/addresses_share" />
 
         <ImageView
             android:id="@+id/imageview_addresses_qrcode"
-            android:layout_width="33dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_addresses_shareandqrcodeimageview"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="19dp"
-            android:layout_marginTop="5dp"
-            android:paddingEnd="18dp"
+            android:paddingEnd="@dimen/marginstartend_rowaddresses_alltextview"
             android:src="@drawable/addresses_qrcode" />
 
     </RelativeLayout>
