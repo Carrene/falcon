@@ -1,5 +1,7 @@
 package de.netalic.falcon.ui.addresses;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,6 +16,7 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.util.SnackbarUtil;
 
 public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -80,11 +83,10 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
             if (v.getId()==R.id.imageview_addresses_share){
 
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Wallet Address");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, mWalletList.get(getAdapterPosition()).getAddress());
-                mContext.startActivity(Intent.createChooser(sharingIntent,"share"));
+                ClipboardManager clipBoard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Wallet Address", mWalletList.get(getAdapterPosition()).getAddress());
+                clipBoard.setPrimaryClip(clip);
+                SnackbarUtil.showSnackbar(v,mContext.getString(R.string.addresses_copied),mContext);
 
             }
 

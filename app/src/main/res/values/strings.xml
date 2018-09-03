@@ -227,5 +227,6 @@
 
     <string name="addresses_toolbar">Addresses</string>
     <string name="rowaddresses_walletname">Wallet Name :</string>
+    <string name="addresses_copied">Copied to clipboard</string>
 
 </resources>
