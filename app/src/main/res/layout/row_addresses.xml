@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margintop_rowaddresses_relativelayout">
+
+        <TextView
+            android:id="@+id/textview_addresses_walletnamelable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:paddingStart="@dimen/marginstartend_rowaddresses_alltextview"
+            android:text="@string/rowaddresses_walletname"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_rowaddresses_firstlinetextview" />
+
+        <TextView
+            android:id="@+id/textview_addresses_walletname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textview_addresses_walletnamelable"
+            android:text="VALUE"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_rowaddresses_firstlinetextview" />
+
+        <TextView
+            android:id="@+id/textview_addresses_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:paddingEnd="@dimen/marginstartend_rowaddresses_alltextview"
+            android:text="VALUE"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_rowaddresses_firstlinetextview" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginbottom_rowaddresses_relativelayout"
+        android:layout_marginTop="@dimen/margintop_rowaddresses_relativelayout">
+
+        <TextView
+            android:id="@+id/textview_addresses_walletaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/margintop_addresses_walletaddresstextview"
+            android:paddingStart="@dimen/marginstartend_rowaddresses_alltextview"
+            android:text="VALUE"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_rowaddresses_secondlinetextview" />
+
+        <ImageView
+            android:id="@+id/imageview_addresses_share"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_addresses_shareandqrcodeimageview"
+            android:layout_toStartOf="@+id/imageview_addresses_qrcode"
+            android:paddingEnd="@dimen/paddingend_rowaddresses_shareimageview"
+            android:src="@drawable/addresses_share" />
+
+        <ImageView
+            android:id="@+id/imageview_addresses_qrcode"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_addresses_shareandqrcodeimageview"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:paddingEnd="@dimen/marginstartend_rowaddresses_alltextview"
+            android:src="@drawable/addresses_qrcode" />
+
+    </RelativeLayout>
+
+</LinearLayout>
