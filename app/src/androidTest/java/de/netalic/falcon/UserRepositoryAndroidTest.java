@@ -14,15 +14,16 @@ import java.io.UnsupportedEncodingException;
 import java.util.concurrent.CountDownLatch;
 
 import de.netalic.falcon.data.model.User;
-import de.netalic.falcon.network.ApiClient;
-import de.netalic.falcon.repository.user.UserRepository;
+import de.netalic.falcon.data.remote.ApiClient;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.util.FileUtil;
 import nuesoft.helpdroid.crypto.CryptoUtil;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 
 @RunWith(AndroidJUnit4.class)
-public class UserRepositoryTest {
+public class UserRepositoryAndroidTest {
 
     private static MockWebServer sMockWebServer;
 
@@ -53,7 +54,7 @@ public class UserRepositoryTest {
     @Test
     public void testClaimUser_200Response() {
 
-        UserRepository userRepository = UserRepository.getInstance();
+        UserRepository userRepository = RepositoryLocator.getInstance().getRepository(UserRepository.class);
 
         String json = null;
         try {
@@ -92,7 +93,7 @@ public class UserRepositoryTest {
         sMockWebServer.enqueue(new MockResponse().setBody(json).setResponseCode(200));
 
         CountDownLatch countDownLatch = new CountDownLatch(1);
-        UserRepository.getInstance().bind(user, deal -> {
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).bind(user, deal -> {
             Assert.assertNotNull(deal.getModel());
             try {
                 byte[] cipherText = CryptoUtil.encryptAesCbcPkcs5Padding(Base64.decode(deal.getModel().getSecret(), Base64.DEFAULT), CryptoUtil.getSecureRandom(16), "This is test".getBytes("UTF-8"));

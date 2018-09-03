@@ -14,7 +14,7 @@ import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import io.realm.Realm;
 
 @RunWith(AndroidJUnit4.class)
-public class AuthenticationRepositoryTest {
+public class AuthenticationRepositoryAndroidTest {
 
     @BeforeClass
     public static void setup() {

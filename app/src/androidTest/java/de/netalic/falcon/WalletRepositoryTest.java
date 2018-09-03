@@ -8,6 +8,8 @@ import org.junit.runner.RunWith;
 
 import java.util.concurrent.CountDownLatch;
 
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 @RunWith(AndroidJUnit4.class)
@@ -16,13 +18,13 @@ public class WalletRepositoryTest {
     private CountDownLatch mCountDownLatch;
 
     @Test
-    public void testGetListWallet_200response(){
+    public void testGetListWallet_200response() {
 
         mCountDownLatch = new CountDownLatch(1);
-        WalletRepository.getInstance().getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
             Assert.assertNull(deal.getThrowable());
-            Assert.assertEquals(deal.getResponse().code(),200);
+            Assert.assertEquals(deal.getResponse().code(), 200);
             mCountDownLatch.countDown();
         });
         try {
@@ -33,10 +35,10 @@ public class WalletRepositoryTest {
     }
 
     @Test
-    public void testGetListWallet_failure(){
+    public void testGetListWallet_failure() {
 
         mCountDownLatch = new CountDownLatch(1);
-        WalletRepository.getInstance().getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
             Assert.assertNull(deal.getThrowable());
             mCountDownLatch.countDown();

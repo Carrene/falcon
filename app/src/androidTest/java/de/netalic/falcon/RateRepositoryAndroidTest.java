@@ -8,11 +8,13 @@ import org.junit.runner.RunWith;
 
 import java.util.concurrent.CountDownLatch;
 
+import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.model.Currency;
 
 @RunWith(AndroidJUnit4.class)
-public class RateRepositoryTest {
+public class RateRepositoryAndroidTest {
 
 
     private CountDownLatch mCountDownLatch;
@@ -22,7 +24,7 @@ public class RateRepositoryTest {
 
         mCountDownLatch = new CountDownLatch(1);
         Currency currency = new Currency("usd");
-        ExchangeRateRepository.getInstance().get(currency.getCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).get(currency.getCode(), deal -> {
             Assert.assertNull(deal.getThrowable());
             Assert.assertEquals(deal.getResponse().code(), 200);
             mCountDownLatch.countDown();
@@ -40,7 +42,7 @@ public class RateRepositoryTest {
 
         mCountDownLatch = new CountDownLatch(1);
         Currency currency = new Currency("milad");
-        ExchangeRateRepository.getInstance().get(currency.getCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).get(currency.getCode(), deal -> {
 
             Assert.assertNull(deal.getThrowable());
             Assert.assertEquals(deal.getResponse().code(), 709);
@@ -63,7 +65,7 @@ public class RateRepositoryTest {
 
         mCountDownLatch = new CountDownLatch(1);
         Currency currency = new Currency("yen");
-        ExchangeRateRepository.getInstance().get(currency.getCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).get(currency.getCode(), deal -> {
 
             Assert.assertNull(deal.getThrowable());
             Assert.assertEquals(deal.getResponse().code(), 721);
