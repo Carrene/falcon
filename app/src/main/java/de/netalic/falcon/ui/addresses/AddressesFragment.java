@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Wallet;
 
 public class AddressesFragment extends Fragment implements AddressesContract.View {
 
@@ -17,6 +21,8 @@ public class AddressesFragment extends Fragment implements AddressesContract.Vie
     private View mRoot;
     private AddressesContract.Presenter mAddressesPresenter;
     private RecyclerView mRecyclerViewWalletAddress;
+    private List<Wallet>mWalletList;
+    private AddressesRecyclerViewAdapter mAddressesRecyclerViewAdapter;
 
     @Nullable
     @Override
@@ -29,6 +35,7 @@ public class AddressesFragment extends Fragment implements AddressesContract.Vie
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        getWalletList();
         initUiComponent();
     }
 
@@ -57,5 +64,22 @@ public class AddressesFragment extends Fragment implements AddressesContract.Vie
     private void initUiComponent(){
 
         mRecyclerViewWalletAddress=mRoot.findViewById(R.id.recyclerview_addresses_walletlist);
+
+    }
+
+    private void getWalletList(){
+
+        mAddressesPresenter.getWalletList();
+
+    }
+
+    @Override
+    public void setWalletList(List<Wallet> walletList) {
+
+        mWalletList=walletList;
+        mRecyclerViewWalletAddress.setLayoutManager(new LinearLayoutManager(getContext()));
+        mAddressesRecyclerViewAdapter=new AddressesRecyclerViewAdapter(mWalletList);
+        mRecyclerViewWalletAddress.setAdapter(mAddressesRecyclerViewAdapter);
+
     }
 }

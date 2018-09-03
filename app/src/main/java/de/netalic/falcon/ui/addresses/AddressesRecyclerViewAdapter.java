@@ -13,10 +13,15 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 
-public class AddressesRecyclerviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
-    private List<Wallet> mWalletList = new ArrayList<>();
+    private List<Wallet> mWalletList;
+
+
+    public AddressesRecyclerViewAdapter(List<Wallet> walletList) {
+        mWalletList = walletList;
+    }
 
     @NonNull
     @Override
