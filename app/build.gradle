@@ -3,7 +3,7 @@ apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
 
 ext.versionMajor = 00
-ext.versionMinor = 22
+ext.versionMinor = 24
 ext.versionPatch = 00
 ext.versionClassifier = ""
 ext.isSnapshot = false
