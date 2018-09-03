@@ -334,7 +334,7 @@
     <dimen name="height_transferfailed_header">40dp</dimen>
 
     <dimen name="margintop_rowaddresses_relativelayout">14dp</dimen>
-    <dimen name="marginbottom_rowaddresses_relativelayout">20dp</dimen>
+    <dimen name="marginbottom_rowaddresses_relativelayout">15dp</dimen>
     <dimen name="marginstartend_rowaddresses_alltextview">18dp</dimen>
     <dimen name="textsize_rowaddresses_firstlinetextview">14sp</dimen>
     <dimen name="textsize_rowaddresses_secondlinetextview">12sp</dimen>

@@ -70,21 +70,9 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/marginstart_dashboard_equivalenttobasecurrency"
             android:text="@string/dasboard_equivalenttobasecurrency"
-
+            android:paddingBottom="4dp"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy"/>
-
-        <TextView
-            android:id="@+id/textview_dashboard_currencydollar"
-            android:layout_width="@dimen/width_dashboard_currencydollar"
-            android:layout_height="@dimen/height_dashboard_imageviewcurrencydollar"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_toLeftOf="@+id/textview_dashboard_ratecurrency"
-            android:layout_toStartOf="@+id/textview_dashboard_ratecurrency"
-            android:text="$"
-            android:textColor="@color/colorBlack"/>
-
 
         <TextView
             android:id="@+id/textview_dashboard_ratecurrency"
@@ -96,7 +84,9 @@
             android:text="VALUE"
             android:textAlignment="textStart"
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy"/>
+            android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy"
+            android:paddingBottom="4dp"
+            />
     </RelativeLayout>
 
 

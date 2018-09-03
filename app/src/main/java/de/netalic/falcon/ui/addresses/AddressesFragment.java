@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -77,7 +78,12 @@ public class AddressesFragment extends Fragment implements AddressesContract.Vie
     public void setWalletList(List<Wallet> walletList) {
 
         mWalletList=walletList;
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerViewWalletAddress.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),layoutManager.getOrientation());
+        mRecyclerViewWalletAddress.addItemDecoration(dividerItemDecoration);
+
         mAddressesRecyclerViewAdapter=new AddressesRecyclerViewAdapter(mWalletList);
         mRecyclerViewWalletAddress.setAdapter(mAddressesRecyclerViewAdapter);
 
