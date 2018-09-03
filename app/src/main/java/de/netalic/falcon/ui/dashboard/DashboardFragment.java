@@ -172,7 +172,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             }
         });
 
-
         mImageViewWithdraw.setOnClickListener(v -> {
 
             Intent intent = new Intent(getActivity(), WithdrawActivity.class);

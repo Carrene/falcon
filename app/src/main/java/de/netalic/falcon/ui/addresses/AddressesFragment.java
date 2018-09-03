@@ -84,7 +84,7 @@ public class AddressesFragment extends Fragment implements AddressesContract.Vie
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),layoutManager.getOrientation());
         mRecyclerViewWalletAddress.addItemDecoration(dividerItemDecoration);
 
-        mAddressesRecyclerViewAdapter=new AddressesRecyclerViewAdapter(mWalletList);
+        mAddressesRecyclerViewAdapter=new AddressesRecyclerViewAdapter(mWalletList,getContext());
         mRecyclerViewWalletAddress.setAdapter(mAddressesRecyclerViewAdapter);
 
     }
