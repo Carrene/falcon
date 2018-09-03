@@ -40,7 +40,7 @@ public class Wallet implements Parcelable {
     private String mModifiedAt;
 
     @SerializedName("address")
-    private int mAddress;
+    private String mAddress;
 
     @SerializedName("currencySymbol")
     private String mCurrencySymbol;
@@ -77,11 +77,11 @@ public class Wallet implements Parcelable {
         this.mCurrencySymbol = currencySymbol;
     }
 
-    public int getAddress() {
+    public String getAddress() {
         return mAddress;
     }
 
-    public void setAddress(int address) {
+    public void setAddress(String address) {
         this.mAddress = address;
     }
 

@@ -71,7 +71,6 @@
     <string name="materialdialogutil_pleasewait">Please wait</string>
 
 
-
     <string name="charge_pleasefillamount">Please fill amount</string>
     <string name="charge_invalidamount">Invalid amount</string>
     <string name="charge_amountissmallerthanlowerbound">Amount is smaller than lower bound</string>
@@ -159,7 +158,7 @@
     <string name="qrcodefailed_dashboardbutton">DASHBOARD</string>
 
     <string name="transactionhistory_toolbar">Transaction History</string>
-    <string name="rowtransactionhistory_walletname">Wallet Name</string>
+    <string name="rowtransactionhistory_walletname">Wallet Name :</string>
 
 
     <string name="transactionfilters_toolbar">Transaction Filters</string>
@@ -171,7 +170,7 @@
         <item>Last month</item>
         <item>Custom</item>
     </string-array>
-    
+
     <string name="transfercompleted_toolbar">Transfer completed</string>
     <string name="transfercompleted_paidamount">Transfer amount  </string>
     <string name="transfercompleted_baseamount">Paid amount  </string>
@@ -183,7 +182,6 @@
     <string name="transfercompleted_imagesaved">Image Saved</string>
     <string name="transfercompleted_sharemenutoolbar">Share</string>
     <string name="transfercompleted_downloadmenutoolbar">Download</string>
-
 
 
     <string name="transfer_toolbar">Transfer</string>
@@ -226,5 +224,8 @@
     <string name="transferfailed_failed">Failed</string>
     <string name="transferfailed_trywithdrawbutton">TRY TRANSFER</string>
     <string name="transferfailed_dashboardbutton">DASHBOARD</string>
+
+    <string name="addresses_toolbar">Addresses</string>
+    <string name="rowaddresses_walletname">Wallet Name :</string>
 
 </resources>
