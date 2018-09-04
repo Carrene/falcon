@@ -231,4 +231,6 @@
     <string name="rowaddresses_walletname">Wallet Name :</string>
     <string name="addresses_copied">Copied to clipboard</string>
 
+    <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
+
 </resources>

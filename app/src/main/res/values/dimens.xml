@@ -343,5 +343,12 @@
     <dimen name="margintop_addresses_walletaddresstextview">4dp</dimen>
     <dimen name="height_addresses_shareandqrcodeimageview">30dp</dimen>
 
+    <dimen name="marginstartend_qrcodeaddresses_borderofimageview">15dp</dimen>
+    <dimen name="margintop_qrcodeaddresses_borderofimageview">47dp</dimen>
+    <dimen name="margintop_qrcodeaddresses_wallettypetextview">30dp</dimen>
+    <dimen name="textsize_qrcodeaddresses_wallettypetextview">16sp</dimen>
+    <dimen name="margintopbottom_qrcodeaddresses_qrimageview">30dp</dimen>
+    <dimen name="widthheight_qrcodeaddresses_qrimageview">250dp</dimen>
+
 
 </resources>

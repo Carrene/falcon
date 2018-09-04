@@ -15,7 +15,7 @@
         android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_linearlayout"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/everywherefailed_border"
+        android:background="@drawable/everywherefailedandqrcodeaddresses_border"
         >
 
         <TextView
