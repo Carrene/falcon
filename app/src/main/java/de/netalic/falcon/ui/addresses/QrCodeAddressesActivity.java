@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.addresses;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
@@ -14,10 +15,14 @@ public class QrCodeAddressesActivity extends BaseActivity {
 
         setupBackButton();
 
+        Bitmap bitmap = getIntent().getParcelableExtra("qr");
+        Bundle bundle=getIntent().getExtras();
+        String walletAddress=bundle.getString("currencyCode");
+
         QrCodeAddressesFragment qrCodeAddressesFragment=(QrCodeAddressesFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_qrcodeaddresses_fragmentcontainer);
         if (qrCodeAddressesFragment==null){
 
-            qrCodeAddressesFragment=QrCodeAddressesFragment.newInstance();
+            qrCodeAddressesFragment=QrCodeAddressesFragment.newInstance(bitmap,walletAddress);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),qrCodeAddressesFragment,R.id.framelayout_qrcodeaddresses_fragmentcontainer);
         }
         new QrCodeAddressesPresenter(qrCodeAddressesFragment);
