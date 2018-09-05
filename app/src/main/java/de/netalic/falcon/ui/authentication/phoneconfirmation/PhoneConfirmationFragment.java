@@ -45,6 +45,8 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private View mRoot;
     private boolean mIsRunning = true;
     private CountDownTimer mCountDownTimer;
+    //Timer time in milliseconds
+    public static int waitingTime = 120000;
 
     @Nullable
     @Override
@@ -188,7 +190,7 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void setTimer() {
 
-        mCountDownTimer = new CountDownTimer(120000, 1000) {
+        mCountDownTimer = new CountDownTimer(waitingTime, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 

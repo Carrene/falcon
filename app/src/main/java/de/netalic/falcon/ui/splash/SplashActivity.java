@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         AtomicReference<Intent> intent = new AtomicReference<>();
 
         if (sharedPreferencesJwtPersistor.get() == null) {
-            intent.set(new Intent(this, SettingActivity.class));
+            intent.set(new Intent(this, RegistrationActivity.class));
 
         } else {
             RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
