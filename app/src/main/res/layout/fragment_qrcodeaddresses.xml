@@ -34,4 +34,17 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_qrcodeaddresses_navigationtodashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/qrcodeaddresses_dashboardbutton"
+        android:textColor="@color/colorBlack"
+        android:layout_marginStart="@dimen/marginstartend_qrcodeaddresses_dashboardbutton"
+        android:layout_marginEnd="@dimen/marginstartend_qrcodeaddresses_dashboardbutton"
+        android:layout_marginBottom="@dimen/marginbottom_qrcodeaddresses_dashboardbutton"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorSecondary" />
+
 </RelativeLayout>

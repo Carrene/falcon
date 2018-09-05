@@ -1,6 +1,7 @@
 package de.netalic.falcon.ui.addresses;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -14,12 +15,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -39,15 +42,16 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
     private static final String CHARGE_PATH = "/Addresses";
     private static final int IMAGE_QUALITY = 100;
     private View mScreenshotView;
+    private Button mButtonNavigationToDashboard;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot=inflater.inflate(R.layout.fragment_qrcodeaddresses,null);
+        mRoot = inflater.inflate(R.layout.fragment_qrcodeaddresses, null);
         mBitmapQrCode = getArguments().getParcelable("qr");
-        mCurrencyCode=getArguments().getString("currencyCode");
+        mCurrencyCode = getArguments().getString("currencyCode");
         setHasOptionsMenu(true);
         return mRoot;
     }
@@ -58,12 +62,13 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
         initUiComponent();
         setImageQr();
         setWalletAddress();
+        initListener();
     }
 
     @Override
     public void setPresenter(QrCodeAddressesContract.Presenter presenter) {
 
-        mQrCodePresenter=presenter;
+        mQrCodePresenter = presenter;
 
     }
 
@@ -77,21 +82,22 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
 
     }
 
-    public static QrCodeAddressesFragment newInstance(Bitmap bitmap,String walletAddress) {
+    public static QrCodeAddressesFragment newInstance(Bitmap bitmap, String walletAddress) {
 
         QrCodeAddressesFragment fragment = new QrCodeAddressesFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable("qr", bitmap);
-        bundle.putString("currencyCode",walletAddress);
+        bundle.putString("currencyCode", walletAddress);
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    private void initUiComponent(){
+    private void initUiComponent() {
 
-        mTextViewWalletType=mRoot.findViewById(R.id.textview_qrcodeaddresses_wallettype);
-        mImageViewQrCode=mRoot.findViewById(R.id.imageview_qrcodeaddresses_qr);
+        mTextViewWalletType = mRoot.findViewById(R.id.textview_qrcodeaddresses_wallettype);
+        mImageViewQrCode = mRoot.findViewById(R.id.imageview_qrcodeaddresses_qr);
         mScreenshotView = mRoot.findViewById(R.id.imageview_qrcodeaddresses_qr);
+        mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_qrcodeaddresses_navigationtodashboard);
     }
 
     public void setImageQr() {
@@ -99,9 +105,9 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
         mImageViewQrCode.setImageBitmap(mBitmapQrCode);
     }
 
-    private void setWalletAddress(){
+    private void setWalletAddress() {
 
-        mTextViewWalletType.setText(mCurrencyCode+" "+"wallet");
+        mTextViewWalletType.setText(mCurrencyCode + " " + "wallet");
     }
 
     @Override
@@ -173,6 +179,16 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
 
         }
+    }
+
+    private void initListener() {
+
+        mButtonNavigationToDashboard.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getContext(), DashboardActivity.class);
+            startActivity(intent);
+
+        });
     }
 
 }

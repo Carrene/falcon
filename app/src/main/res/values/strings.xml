@@ -234,5 +234,6 @@
     <string name="addresses_copied">Copied to clipboard</string>
 
     <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
+    <string name="qrcodeaddresses_dashboardbutton">DASHBOARD</string>
 
 </resources>

@@ -349,6 +349,8 @@
     <dimen name="textsize_qrcodeaddresses_wallettypetextview">16sp</dimen>
     <dimen name="margintopbottom_qrcodeaddresses_qrimageview">30dp</dimen>
     <dimen name="widthheight_qrcodeaddresses_qrimageview">250dp</dimen>
+    <dimen name="marginstartend_qrcodeaddresses_dashboardbutton">16dp</dimen>
+    <dimen name="marginbottom_qrcodeaddresses_dashboardbutton">27dp</dimen>
 
 
 </resources>
