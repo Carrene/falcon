@@ -4,6 +4,8 @@ import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -13,6 +15,10 @@ import java.util.concurrent.TimeUnit;
 
 import de.netalic.falcon.BuildConfig;
 import de.netalic.falcon.MyApp;
+import de.netalic.falcon.data.model.ChargeReceipt;
+import de.netalic.falcon.data.model.Receipt;
+import de.netalic.falcon.data.model.TransferReceipt;
+import de.netalic.falcon.util.RuntimeTypeAdapterFactory;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -28,6 +34,7 @@ public class ApiClient {
 
     private static Retrofit sRetrofit = null;
     private static ApiInterface sApi;
+
 
     private static Retrofit getClient() {
 
@@ -58,6 +65,16 @@ public class ApiClient {
             okHttpClient.readTimeout(1, TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES);
             okHttpClient.addInterceptor(new AuthorizationInterceptor());
             okHttpClient.addInterceptor(new NetworkErrorInterceptor());
+
+//            RuntimeTypeAdapterFactory<Receipt> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
+//                    .of(Receipt.class, "type")
+//                    .registerSubtype(ChargeReceipt.class, "charge")
+//                    .registerSubtype(TransferReceipt.class, "transfer");
+
+//            Gson gson = new GsonBuilder()
+//                    .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
+//                    .create();
+
             sRetrofit = new Retrofit.Builder().baseUrl(url)
                     .client(okHttpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())

@@ -3,22 +3,30 @@ package de.netalic.falcon.data.repository.receipt;
 import java.util.List;
 
 import de.netalic.falcon.data.model.Receipt;
+import de.netalic.falcon.data.repository.base.IRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 public class ReceiptRepository implements IReceiptRepository {
 
 
     private static volatile ReceiptRepository sReceiptRepository;
-    private ReceiptRestRepository mReceiptRestRepository;
+    private IReceiptRepository mReceiptRestRepository;
+    private IReceiptRepository mReceiptRealmRepository;
 
     private ReceiptRepository() {
 
         mReceiptRestRepository = new ReceiptRestRepository();
     }
 
+    public ReceiptRepository(IReceiptRepository restRepository, IReceiptRepository realmRepository) {
+
+        mReceiptRestRepository = restRepository;
+        mReceiptRealmRepository = realmRepository;
+    }
+
     public static ReceiptRepository getInstance() {
 
-        if (sReceiptRepository== null) {
+        if (sReceiptRepository == null) {
 
             synchronized (WalletRepository.class) {
                 if (sReceiptRepository == null) {
@@ -30,10 +38,10 @@ public class ReceiptRepository implements IReceiptRepository {
     }
 
 
-
     @Override
     public void update(Receipt receipt, CallRepository<Receipt> callRepository) {
 
+        mReceiptRealmRepository.update(receipt, callRepository);
     }
 
     @Override
@@ -44,11 +52,12 @@ public class ReceiptRepository implements IReceiptRepository {
     @Override
     public void getAll(CallRepository<List<Receipt>> callRepository) {
 
+        mReceiptRestRepository.getAll(callRepository);
     }
 
     @Override
     public void transfer(int sourceAddress, int walletId, double amount, CallRepository<Receipt> callRepository) {
 
-        mReceiptRestRepository.transfer(sourceAddress,walletId,amount,callRepository);
+        mReceiptRestRepository.transfer(sourceAddress, walletId, amount, callRepository);
     }
 }
