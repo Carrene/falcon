@@ -6,6 +6,7 @@ import com.squareup.leakcanary.LeakCanary;
 
 import de.netalic.falcon.data.repository.authentication.AuthenticationRealmRepository;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.deposit.DepositRepository;
 import de.netalic.falcon.data.repository.deposit.DepositRestRepository;
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
@@ -15,7 +16,6 @@ import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.data.repository.user.UserRestRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRestRepository;
-import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;

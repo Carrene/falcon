@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Receipt {
 
-    @SerializedName("destinationWalletCurrency")
-    private String mDestinationWalletCurrency;
+    @SerializedName("destinationWalletCurrencyCode")
+    private String mDestinationWalletCurrencyCode;
 
     @SerializedName("payeeId")
     private int mPayeeId;
@@ -34,8 +34,8 @@ public class Receipt {
     @SerializedName("payerId")
     private int mPayerId;
 
-    @SerializedName("sourceWalletCurrency")
-    private String mSourceWalletCurrency;
+    @SerializedName("sourceWalletCurrencyCode")
+    private String mSourceWalletCurrencyCode;
 
     @SerializedName("paymentGatewayName")
     private String mPaymentGatewayName;
@@ -49,8 +49,8 @@ public class Receipt {
     @SerializedName("RRN")
     private String mRRN;
 
-    public String getDestinationWalletCurrency() {
-        return mDestinationWalletCurrency;
+    public String getDestinationWalletCurrencyCode() {
+        return mDestinationWalletCurrencyCode;
     }
 
     public int getPayeeId() {
@@ -101,8 +101,8 @@ public class Receipt {
         return mPayerId;
     }
 
-    public String getSourceWalletCurrency() {
-        return mSourceWalletCurrency;
+    public String getSourceWalletCurrencyCode() {
+        return mSourceWalletCurrencyCode;
     }
 
     public String getPaymentGatewayName() {

@@ -1,8 +1,8 @@
 package de.netalic.falcon.ui.transfer;
 
-import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 public class TransferAmountPresenter implements TransferAmountContract.Presenter {

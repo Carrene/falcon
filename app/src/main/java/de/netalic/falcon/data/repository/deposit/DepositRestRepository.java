@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.data.remote.ApiClient;
 import de.netalic.falcon.data.repository.base.Deal;
-import de.netalic.falcon.data.model.Deposit;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -21,9 +21,9 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 import de.netalic.falcon.MyApp;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.remote.ApiClient;
 import de.netalic.falcon.data.repository.user.UserRepository;
-import de.netalic.falcon.data.model.User;
 import nuesoft.helpdroid.device.DeviceUtil;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;

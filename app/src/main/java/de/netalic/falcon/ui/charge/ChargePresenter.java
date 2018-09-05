@@ -2,8 +2,8 @@ package de.netalic.falcon.ui.charge;
 
 import android.support.annotation.NonNull;
 
-import de.netalic.falcon.data.repository.wallet.WalletRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

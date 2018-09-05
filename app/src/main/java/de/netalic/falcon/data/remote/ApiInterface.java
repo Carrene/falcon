@@ -8,7 +8,6 @@ import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.model.Wallet;
-
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

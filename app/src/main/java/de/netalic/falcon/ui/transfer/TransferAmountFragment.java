@@ -18,6 +18,7 @@ import java.text.DecimalFormat;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -79,11 +80,20 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
     @Override
     public void showProgressBar() {
 
+        if (getActivity() instanceof BaseActivity){
+
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
+
     }
 
     @Override
     public void dismissProgressBar() {
 
+        if (getActivity() instanceof BaseActivity){
+
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
     }
 
     public static TransferAmountFragment newInstance(int walletAddress) {

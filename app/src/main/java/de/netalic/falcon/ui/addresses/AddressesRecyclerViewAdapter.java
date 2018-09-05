@@ -15,16 +15,12 @@ import android.widget.TextView;
 
 import com.google.zxing.WriterException;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
-import de.netalic.falcon.ui.withdraw.WithdrawQrCompletedActivity;
 import de.netalic.falcon.util.QrCodeUtil;
 import de.netalic.falcon.util.SnackbarUtil;
-import nuesoft.helpdroid.crypto.CryptoUtil;
 
 public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

@@ -7,9 +7,9 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.repository.user.UserRepository;
-import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import nuesoft.helpdroid.crypto.CryptoUtil;
 import nuesoft.helpdroid.crypto.HmacType;
 
