@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.util.ActivityUtil;
 
 public class SettingActivity extends BaseActivity {
 
@@ -18,6 +19,14 @@ public class SettingActivity extends BaseActivity {
                 "EXTRA_IMAGE");
         supportPostponeEnterTransition();
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        SettingFragment settingFragment=(SettingFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_setting_fragmentcontainer);
+        if (settingFragment==null){
+
+            settingFragment=SettingFragment.newInstance();
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),settingFragment,R.id.framelayout_setting_fragmentcontainer);
+        }
+        new SettingPresenter(settingFragment);
     }
 
     @Override
