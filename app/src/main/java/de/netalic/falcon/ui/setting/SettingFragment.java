@@ -11,8 +11,6 @@ import de.netalic.falcon.R;
 public class SettingFragment extends PreferenceFragmentCompat implements SettingContract.View {
 
     private SettingContract.Presenter mSettingPresenter;
-    private TextView mTextViewRewcoveryEmail;
-
 
     @Override
     public void setPresenter(SettingContract.Presenter presenter) {

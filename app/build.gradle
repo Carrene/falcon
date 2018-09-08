@@ -145,6 +145,7 @@ dependencies {
     implementation 'ru.alexbykov:nopaginate:0.9.9'
     implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
     implementation 'com.journeyapps:zxing-android-embedded:3.3.0@aar'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
