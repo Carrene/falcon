@@ -61,16 +61,10 @@ public class PhoneConfirmationScreenTest {
 
         launchPhoneConfirmationActivity(mUser);
         onView(withId(R.id.menu_phoneconfirmation_done)).perform(click());
-        onView(withId(R.id.textinputlayout_phoneconfirmation_receivecode)).check(matches(Util.hasTextInputLayoutHintText(mActivityTestRule.getActivity().getString(R.string.phoneconfirmation_Pleasefillbox))));
+        onView(withId(R.id.textinputlayout_phoneconfirmation_receivecode)).check(matches(Util.hasTextInputLayoutErrorText(mActivityTestRule.getActivity().getString(R.string.phoneconfirmation_Pleasefillbox))));
         onView(withId(R.id.textview_phoneconfirmation_timer)).check(matches(isDisplayed()));
     }
 
-    private void launchPhoneConfirmationActivity(@Nullable User user) {
-
-        Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), PhoneConfirmationActivity.class);
-        intent.putExtra(PhoneConfirmationActivity.ARGUMENT_USER, user);
-        mActivityTestRule.launchActivity(intent);
-    }
 
     @Test
     public void resendActivation_showTimer() {
@@ -88,5 +82,12 @@ public class PhoneConfirmationScreenTest {
         launchPhoneConfirmationActivity(mUser);
         onView(withId(R.id.textview_phoneconfirmation_changenumber)).perform(click());
         intended(hasComponent(RegistrationActivity.class.getName()));
+    }
+
+    private void launchPhoneConfirmationActivity(@Nullable User user) {
+
+        Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), PhoneConfirmationActivity.class);
+        intent.putExtra(PhoneConfirmationActivity.ARGUMENT_USER, user);
+        mActivityTestRule.launchActivity(intent);
     }
 }

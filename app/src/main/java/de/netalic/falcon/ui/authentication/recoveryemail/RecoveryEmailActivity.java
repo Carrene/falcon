@@ -10,7 +10,7 @@ import de.netalic.falcon.util.ActivityUtil;
 
 public class RecoveryEmailActivity extends BaseActivity {
 
-    private static final String ARGUMENT_USER = "USER";
+    public static final String ARGUMENT_USER = "USER";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

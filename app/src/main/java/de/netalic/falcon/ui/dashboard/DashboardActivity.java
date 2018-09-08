@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInResult;
+import com.mikepenz.materialdrawer.Drawer;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
@@ -15,13 +16,14 @@ import de.netalic.falcon.util.NavigationDrawerUtil;
 public class DashboardActivity extends BaseActivity {
 
     private static final int DROP_IN_REQUEST = 1;
+    public Drawer drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this, getToolbar(), 1);
+        drawer = NavigationDrawerUtil.getDrawer(this, getToolbar(), 1);
 
         DashboardFragment dashboardFragment = (DashboardFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_dashboard_fragmentcontainer);
         if (dashboardFragment == null) {

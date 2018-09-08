@@ -32,9 +32,9 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
                 if (deal.getModel() == null) {
-                    intent.set(new Intent(this, SettingActivity.class));
+                    intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
                 } else {
-                    intent.set(new Intent(this, SettingActivity.class));
+                    intent.set(new Intent(this, DashboardActivity.class));
                 }
             });
         }

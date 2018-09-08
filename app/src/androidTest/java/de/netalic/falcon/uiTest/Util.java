@@ -1,7 +1,10 @@
 package de.netalic.falcon.uiTest;
 
 import android.support.design.widget.TextInputLayout;
+import android.support.test.espresso.matcher.BoundedMatcher;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.TextView;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -9,7 +12,7 @@ import org.hamcrest.TypeSafeMatcher;
 
 public class Util {
 
-    public static Matcher<View> hasTextInputLayoutHintText(final String expectedErrorText) {
+    public static Matcher<View> hasTextInputLayoutErrorText(final String expectedErrorText) {
 
         return new TypeSafeMatcher<View>() {
 
@@ -33,6 +36,26 @@ public class Util {
             @Override
             public void describeTo(Description description) {
 
+            }
+        };
+    }
+
+    public static Matcher<View> withTextColor(final int expectedId) {
+
+        return new BoundedMatcher<View, TextView>(TextView.class) {
+
+            @Override
+            protected boolean matchesSafely(TextView textView) {
+
+                int colorId = ContextCompat.getColor(textView.getContext(), expectedId);
+                return textView.getCurrentTextColor() == colorId;
+            }
+
+            @Override
+            public void describeTo(Description description) {
+
+                description.appendText("with text color: ");
+                description.appendValue(expectedId);
             }
         };
     }
