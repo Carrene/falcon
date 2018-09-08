@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class SettingActivity extends BaseActivity {
 
@@ -19,6 +20,8 @@ public class SettingActivity extends BaseActivity {
                 "EXTRA_IMAGE");
         supportPostponeEnterTransition();
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        NavigationDrawerUtil.getDrawer(this,getToolbar(),6);
 
         SettingFragment settingFragment=(SettingFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_setting_fragmentcontainer);
         if (settingFragment==null){

@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (deal.getModel() == null) {
                     intent.set(new Intent(this, DashboardActivity.class));
                 } else {
-                    intent.set(new Intent(this, SettingActivity.class));
+                    intent.set(new Intent(this, DashboardActivity.class));
                 }
             });
         }

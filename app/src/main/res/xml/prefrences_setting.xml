@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <PreferenceCategory android:title="Log in method">
-
+    <PreferenceCategory android:title="Login method">
 
         <CheckBoxPreference
-            android:key="Pattern"
+            android:key="pattern"
             android:title="Pattern" />
         <CheckBoxPreference
-            android:key="Pattern"
-            android:title="Pattern" />
+            android:key="password"
+            android:title="Password" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory android:layout="@layout/divider_preference" />
+
+    <PreferenceCategory android:title="Recovery email" >
+
+        <EditTextPreference  android:clickable="true"
+            android:paddingBottom="20dp"
+            android:paddingTop="16dp"
+            android:title="VALUE"
+            android:key="recoveryemail"/>
+
+    </PreferenceCategory>
+    <PreferenceCategory android:layout="@layout/divider_preference" />
+
+    <Preference android:title="About" />
 
 </PreferenceScreen>
