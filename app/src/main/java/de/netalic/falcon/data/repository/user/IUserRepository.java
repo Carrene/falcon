@@ -1,7 +1,7 @@
 package de.netalic.falcon.data.repository.user;
 
-import de.netalic.falcon.data.repository.base.IRepository;
 import de.netalic.falcon.data.model.User;
+import de.netalic.falcon.data.repository.base.IRepository;
 
 public interface IUserRepository extends IRepository<User, Integer> {
 

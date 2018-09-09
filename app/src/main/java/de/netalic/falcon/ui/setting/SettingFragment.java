@@ -1,10 +1,7 @@
 package de.netalic.falcon.ui.setting;
 
 import android.os.Bundle;
-import android.support.v7.preference.EditTextPreference;
-import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
-import android.widget.TextView;
 
 import de.netalic.falcon.R;
 
@@ -31,13 +28,15 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
+        setHasOptionsMenu(true);
         addPreferencesFromResource(R.xml.prefrences_setting);
-        EditTextPreference editTextPreference=(EditTextPreference) findPreference("recoveryemail");
-        editTextPreference.setOnPreferenceChangeListener((preference, newValue) -> {
 
-            preference.setTitle(newValue.toString());
-            return false;
-        });
+//        EditTextPreference editTextPreference=(EditTextPreference) findPreference("recoveryEmail");
+//        editTextPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+//
+//            preference.setTitle(newValue.toString());
+//            return false;
+//        });
         initUiComponent();
 
     }

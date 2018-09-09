@@ -4,8 +4,6 @@ import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -15,10 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 import de.netalic.falcon.BuildConfig;
 import de.netalic.falcon.MyApp;
-import de.netalic.falcon.data.model.ChargeReceipt;
-import de.netalic.falcon.data.model.Receipt;
-import de.netalic.falcon.data.model.TransferReceipt;
-import de.netalic.falcon.util.RuntimeTypeAdapterFactory;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;

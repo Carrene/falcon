@@ -3,32 +3,32 @@
     <PreferenceCategory android:title="Security">
 
         <Preference
-            android:summary="Set pattern"
             android:key="pattern"
+            android:summary="Set pattern"
             android:title="Pattern" />
         <Preference
-            android:summary="Set password"
             android:key="password"
+            android:summary="Set password"
             android:title="Password" />
 
     </PreferenceCategory>
 
     <PreferenceCategory android:layout="@layout/divider_preference" />
 
-    <PreferenceCategory android:title="Recovery email" >
+    <PreferenceCategory android:title="Recovery email">
 
-        <EditTextPreference  android:clickable="true"
+        <Preference
+            android:clickable="true"
+            android:key="recoveryEmail"
             android:paddingBottom="20dp"
             android:paddingTop="16dp"
-            android:title="VALUE"
-            android:key="recoveryemail"
             android:summary="Set your recovery email"
-            />
+            android:title="VALUE" />
 
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/divider_preference" />
 
-    <PreferenceCategory android:title="About">
-    <Preference android:title="About" />
+    <PreferenceCategory android:title="Support">
+        <Preference android:title="About" />
     </PreferenceCategory>
 </PreferenceScreen>

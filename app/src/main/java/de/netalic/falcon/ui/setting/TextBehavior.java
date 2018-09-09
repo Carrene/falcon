@@ -6,21 +6,22 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.LinearLayout;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import de.netalic.falcon.R;
 
-public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageView> {
+public class TextBehavior extends CoordinatorLayout.Behavior<LinearLayout> {
 
-    private int mStartXPositionImage;
-    private int mStartYPositionImage;
+
+    private int mStartXPositionText;
+    private int mStartYPositionText;
     private int mStartHeight;
     private int mStartToolbarHeight;
 
     private boolean mInitialised = false;
 
     private float mAmountOfToolbarToMove;
-    private float mAmountOfImageToReduce;
+    private float mAmountOfTextToReduce;
     private float mAmountToMoveXPosition;
     private float mAmountToMoveYPosition;
 
@@ -29,7 +30,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
     private float mFinalYPosition;
     private float mFinalHeight;
 
-    public AvatarImageBehavior(final Context context, final AttributeSet attrs) {
+    public TextBehavior(final Context context, final AttributeSet attrs) {
 
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.AvatarImageBehavior);
@@ -42,13 +43,13 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
     }
 
     @Override
-    public boolean layoutDependsOn(final CoordinatorLayout parent, final CircleImageView child, final View dependency) {
+    public boolean layoutDependsOn(final CoordinatorLayout parent, final LinearLayout child, final View dependency) {
 
         return dependency instanceof AppBarLayout;
     }
 
     @Override
-    public boolean onDependentViewChanged(final CoordinatorLayout parent, final CircleImageView child, final View dependency) {
+    public boolean onDependentViewChanged(final CoordinatorLayout parent, final LinearLayout child, final View dependency) {
 
 
         initProperties(child, dependency);
@@ -61,7 +62,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
         final float progress = 100 * amountAlreadyMoved / mAmountOfToolbarToMove;
 
 
-        final float heightToSubtract = progress * mAmountOfImageToReduce / 100;
+        final float heightToSubtract = progress * mAmountOfTextToReduce / 100;
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) child.getLayoutParams();
         layoutParams.width = (int) (mStartHeight - heightToSubtract);
         layoutParams.height = (int) (mStartHeight - heightToSubtract);
@@ -70,29 +71,30 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
 
         final float distanceXToSubtract = progress * mAmountToMoveXPosition / 100;
         final float distanceYToSubtract = progress * mAmountToMoveYPosition / 100;
-        float newXPosition = mStartXPositionImage - distanceXToSubtract;
+        float newXPosition = mStartXPositionText - distanceXToSubtract;
 
         child.setX(newXPosition);
-        child.setY(mStartYPositionImage - distanceYToSubtract);
+        child.setY(mStartYPositionText - distanceYToSubtract);
 
         return true;
     }
 
-    private void initProperties(final CircleImageView child, final View dependency) {
+    private void initProperties(final LinearLayout child, final View dependency) {
 
         if (!mInitialised) {
 
             mStartHeight = child.getHeight();
-            mStartXPositionImage = (int) child.getX();
-            mStartYPositionImage = (int) child.getY();
+            mStartXPositionText = (int) child.getX();
+            mStartYPositionText = (int) child.getY();
             mStartToolbarHeight = dependency.getHeight();
 
             mAmountOfToolbarToMove = mStartToolbarHeight - mFinalToolbarHeight;
-            mAmountOfImageToReduce = mStartHeight - mFinalHeight;
-            mAmountToMoveXPosition = mStartXPositionImage - mFinalXPosition;
-            mAmountToMoveYPosition = mStartYPositionImage - mFinalYPosition;
+            mAmountOfTextToReduce = mStartHeight - mFinalHeight;
+            mAmountToMoveXPosition = mStartXPositionText - mFinalXPosition;
+            mAmountToMoveYPosition = mStartYPositionText - mFinalYPosition;
             mInitialised = true;
         }
     }
+
 
 }
