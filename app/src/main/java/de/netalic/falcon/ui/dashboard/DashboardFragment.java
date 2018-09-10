@@ -23,6 +23,7 @@ import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.purchase.PurchaseActivity;
 import de.netalic.falcon.ui.withdraw.WithdrawActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -40,6 +41,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private List<Wallet> mWalletList;
     private DashboardWalletSpinnerAdapter mDashboardWalletSpinnerAdapter;
     private ImageView mImageViewWithdraw;
+    private ImageView mImageViewPurchase;
     private DecimalFormat mDecimalFormat;
 
 
@@ -95,6 +97,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mSpinnerWalletList = mRoot.findViewById(R.id.spinner_dashboard_spinner);
         mTextViewBalance = mRoot.findViewById(R.id.textview_dashboard_balance);
         mImageViewWithdraw = mRoot.findViewById(R.id.imageview_dashboard_withdraw);
+        mImageViewPurchase=mRoot.findViewById(R.id.imageview_dashboard_purchase);
     }
 
     @Override
@@ -176,6 +179,13 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
             Intent intent = new Intent(getActivity(), WithdrawActivity.class);
             startActivity(intent);
+        });
+
+        mImageViewPurchase.setOnClickListener(v -> {
+
+            Intent intent=new Intent(getActivity(), PurchaseActivity.class);
+            startActivity(intent);
+
         });
     }
 

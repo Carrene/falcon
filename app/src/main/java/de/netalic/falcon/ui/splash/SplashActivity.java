@@ -13,7 +13,6 @@ import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.purchase.PurchaseActivity;
 import de.netalic.falcon.ui.setting.SettingActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 
@@ -35,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (deal.getModel() == null) {
                     intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
                 } else {
-                    intent.set(new Intent(this, PurchaseActivity.class));
+                    intent.set(new Intent(this, DashboardActivity.class));
                 }
             });
         }
