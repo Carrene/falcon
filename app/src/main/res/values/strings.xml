@@ -231,4 +231,9 @@
     <string name="rowaddresses_walletname">Wallet Name :</string>
     <string name="addresses_copied">Copied to clipboard</string>
 
+    <string name="purchase_toolbar">Purchase</string>
+    <string name="purchase_wallettextview">Wallet</string>
+    <string name="purchase_balancelable">Balance :</string>
+    <string name="purchase_nextamountbutton">NEXT-AMOUNT</string>
+
 </resources>

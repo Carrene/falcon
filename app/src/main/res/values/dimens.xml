@@ -343,5 +343,15 @@
     <dimen name="margintop_addresses_walletaddresstextview">4dp</dimen>
     <dimen name="height_addresses_shareandqrcodeimageview">30dp</dimen>
 
+    <dimen name="margintop_purchase_wallettextview">55dp</dimen>
+    <dimen name="textsize_purchase_wallettextview">16sp</dimen>
+    <dimen name="margintop_purchase_walletlistspinner">12dp</dimen>
+    <dimen name="height_purchase_walletlistspinner">40dp</dimen>
+    <dimen name="width_purchase_walletlistspinner">240dp</dimen>
+    <dimen name="margintop_purchase_relativelayout">42dp</dimen>
+    <dimen name="height_purchase_relativelayout">40dp</dimen>
+    <dimen name="textsize_purchase_balanceandbalancelabletextview">14sp</dimen>
+    <dimen name="marginstartend_purchase_nextamountbutton">16dp</dimen>
+    <dimen name="marginbottom_purchase_nextamountbutton">27dp</dimen>
 
 </resources>
