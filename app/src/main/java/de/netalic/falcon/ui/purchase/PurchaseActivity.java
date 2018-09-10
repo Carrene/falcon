@@ -5,12 +5,15 @@ import android.os.Bundle;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class PurchaseActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        NavigationDrawerUtil.getDrawer(this,getToolbar(),1);
 
 
         PurchaseFragment purchaseFragment=(PurchaseFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_purchase_fragmentcontainer);

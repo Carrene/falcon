@@ -21,6 +21,7 @@ public class PurchaseFragment extends Fragment implements PurchaseContract.View 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot=inflater.inflate(R.layout.fragment_purchase,null);
+        setHasOptionsMenu(true);
         return mRoot;
     }
 
