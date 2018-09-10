@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import de.netalic.falcon.R;
 
-public class TextBehavior extends CoordinatorLayout.Behavior<LinearLayout> {
+public class AvatarTextBehavior extends CoordinatorLayout.Behavior<LinearLayout> {
 
 
     private int mStartXPositionText;
@@ -30,7 +30,7 @@ public class TextBehavior extends CoordinatorLayout.Behavior<LinearLayout> {
     private float mFinalYPosition;
     private float mFinalHeight;
 
-    public TextBehavior(final Context context, final AttributeSet attrs) {
+    public AvatarTextBehavior(final Context context, final AttributeSet attrs) {
 
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.AvatarImageBehavior);

@@ -48,7 +48,9 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
     }
 
     @Override
-    public boolean onDependentViewChanged(final CoordinatorLayout parent, final CircleImageView child, final View dependency) {
+    public boolean onDependentViewChanged(
+            final CoordinatorLayout parent, final CircleImageView child, final View dependency
+    ) {
 
 
         initProperties(child, dependency);
@@ -56,7 +58,8 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
 
         float currentToolbarHeight = mStartToolbarHeight + dependency.getY();
 
-        currentToolbarHeight = currentToolbarHeight < mFinalToolbarHeight ? mFinalToolbarHeight : currentToolbarHeight;
+        currentToolbarHeight =
+                currentToolbarHeight < mFinalToolbarHeight ? mFinalToolbarHeight : currentToolbarHeight;
         final float amountAlreadyMoved = mStartToolbarHeight - currentToolbarHeight;
         final float progress = 100 * amountAlreadyMoved / mAmountOfToolbarToMove;
 

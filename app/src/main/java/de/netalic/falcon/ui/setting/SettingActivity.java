@@ -16,10 +16,10 @@ public class SettingActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout),
+        ViewCompat.setTransitionName(findViewById(R.id.appbarlayout_setting_appbarlayout),
                 "EXTRA_IMAGE");
         supportPostponeEnterTransition();
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar_setting_toolbar));
 
         NavigationDrawerUtil.getDrawer(this,getToolbar(),6);
 
