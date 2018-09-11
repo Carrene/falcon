@@ -216,7 +216,7 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
 
             if (mEditTextWalletAmount.getText().toString().equals("")){
 
-             SnackbarUtil.showSnackbar(mRoot,"Please Fill Box",getContext());
+             SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.everywhere_pleasefillbox),getContext());
             }
             else {
                 Intent intent = new Intent(getContext(), TransferPayeeActivity.class);

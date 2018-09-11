@@ -5,6 +5,7 @@
     <string name="everywhere_permissiondenied">Permission Denied</string>
     <string name="everywhere_dollarsymbol">$</string>
 
+
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
