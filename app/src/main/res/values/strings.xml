@@ -231,4 +231,14 @@
     <string name="rowaddresses_walletname">Wallet Name :</string>
     <string name="addresses_copied">Copied to clipboard</string>
 
+    <string name="purchaseamount_toolbar">Purchase amount</string>
+    <string name="purchaseamount_invalidcurrency">Invalid currency</string>
+    <string name="purchaseamount_ratedosenotexists">Rate dose not exists</string>
+    <string name="purchaseamount_amount">Amount</string>
+    <string name="purchaseamount_amounthint">Alpha</string>
+    <string name="purchaseamount_dollar">USD</string>
+    <string name="purchaseamount_nextscan">NEXT - SCAN</string>
+    <string name="purchaseamount_usemaximum">USE MAXIMUM</string>
+    <string name="purchaseamount_useminimum">USE MINIMUM</string>
+
 </resources>
