@@ -231,4 +231,9 @@
     <string name="rowaddresses_walletname">Wallet Name :</string>
     <string name="addresses_copied">Copied to clipboard</string>
 
+    <string name="purchasefailed_toolbar">Purchase failed</string>
+    <string name="purchasefailed_failed">Failed</string>
+    <string name="purchasefailed_trypurchasebutton">TRY PURCHASE</string>
+    <string name="purchasefailed_dashboardbutton">DASHBOARD</string>
+
 </resources>

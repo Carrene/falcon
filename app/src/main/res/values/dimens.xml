@@ -343,5 +343,20 @@
     <dimen name="margintop_addresses_walletaddresstextview">4dp</dimen>
     <dimen name="height_addresses_shareandqrcodeimageview">30dp</dimen>
 
+    <dimen name="margintop_purchasefailed_linearlayout">32dp</dimen>
+    <dimen name="marginstartend_purchasefailed_linearlayout">33dp</dimen>
+    <dimen name="textsize_purchasefailed_textviewfailed">16sp</dimen>
+    <dimen name="margintop_purchasefailed_describetextview">23dp</dimen>
+    <dimen name="marginbottom_purchasefailed_describetextview">30dp</dimen>
+    <dimen name="marginstartend_purchasefailed_describetextview">25dp</dimen>
+    <dimen name="textsize_purchasefailed_describetextview">14sp</dimen>
+    <dimen name="marginstartend_purchasefailed_trywithdrawbutton">16dp</dimen>
+    <dimen name="marginbottom_purchasefailed_trywithdrawbutton">15dp</dimen>
+    <dimen name="marginstartend_purchasefailed_dashboardbutton">16dp</dimen>
+    <dimen name="marginbottom_purchasefailed_dashboardbutton">27dp</dimen>
+    <dimen name="textsize_purchasefailed_dashboardbutton">14sp</dimen>
+    <dimen name="textsize_purchasefailed_trywithdrawbutton">14sp</dimen>
+    <dimen name="height_purchasefailed_header">40dp</dimen>
+
 
 </resources>
