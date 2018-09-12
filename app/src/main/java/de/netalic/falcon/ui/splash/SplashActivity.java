@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (deal.getModel() == null) {
                     intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
                 } else {
-                    intent.set(new Intent(this, DashboardActivity.class));
+                    intent.set(new Intent(this, PurchaseCompletedActivity.class));
                 }
             });
         }
