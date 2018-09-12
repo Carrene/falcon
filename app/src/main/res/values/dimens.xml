@@ -343,5 +343,27 @@
     <dimen name="margintop_addresses_walletaddresstextview">4dp</dimen>
     <dimen name="height_addresses_shareandqrcodeimageview">30dp</dimen>
 
+    <dimen name="paddingbottom_purchasecompleted_linearlayout">18dp</dimen>
+    <dimen name="marginstartend_purchasecompleted_linearlayout">17dp</dimen>
+    <dimen name="height_purchasecompleted_header">40dp</dimen>
+    <dimen name="paddingend_purchasecompleted_textview">15dp</dimen>
+    <dimen name="margintopbottom_purchasecompleted_view">13dp</dimen>
+    <dimen name="height_purchasecompleted_view">1dp</dimen>
+    <dimen name="margintop_purchasecompleted_relativelayoutheader">20dp</dimen>
+    <dimen name="margintop_purchasecompleted_linearlayout">33dp</dimen>
+    <dimen name="margintop_purchasecompleted_relativelayout">8dp</dimen>
+    <dimen name="textsize_purchasecompleted_paidamountlable">14sp</dimen>
+    <dimen name="textsize_purchasecompleted_amountdollarlable">14sp</dimen>
+    <dimen name="textsize_purchasecompleted_trackingcode">14sp</dimen>
+    <dimen name="marginbuttom_purchasecompleted_confirm">27dp</dimen>
+    <dimen name="marginstartend_purchasecompleted_confirm">16dp</dimen>
+    <dimen name="marginbuttom_purchasecompleted_purchaseagain">27dp</dimen>
+    <dimen name="marginstartend_purchasecompleted_purchaseagain">16dp</dimen>
+    <dimen name="textsize_purchasecompleted_confirmbutton">14dp</dimen>
+    <dimen name="textsize_purchasecompleted_paymentgatewaylable">14sp</dimen>
+    <dimen name="textsize_purchasecompleted_transactiondate">14sp</dimen>
+    <dimen name="textsize_purchasecompleted_successtextview">16sp</dimen>
+    <dimen name="paddingstart_purchasecompleted_relativelayout">15dp</dimen>
+
 
 </resources>

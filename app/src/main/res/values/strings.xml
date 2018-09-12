@@ -231,4 +231,18 @@
     <string name="rowaddresses_walletname">Wallet Name :</string>
     <string name="addresses_copied">Copied to clipboard</string>
 
+    <string name="purchasecompleted_toolbar">Purchase Completed</string>
+    <string name="purchasecompleted_paidamount">Purchase amount  </string>
+    <string name="purchasecompleted_baseamount">Paid amount  </string>
+    <string name="purchasecompleted_transactiondate">Transaction date </string>
+    <string name="purchasecompleted_transactiontime">Transaction time </string>
+    <string name="purchasecompleted_trackingcode">RRN </string>
+    <string name="purchasecompleted_dashboard">DASHBOARD</string>
+    <string name="purchasecompleted_purchaseagain">PURCHASE AGAIN</string>
+    <string name="purchasecompleted_success">Success</string>
+    <string name="purchasecompleted_imagesaved">Image Saved</string>
+    <string name="purchasecompleted_sharemenutoolbar">Share</string>
+    <string name="purchasecompleted_downloadmenutoolbar">Download</string>
+
+
 </resources>
