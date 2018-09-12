@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.purchase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -182,6 +183,9 @@ public class PurchaseAmountFragment extends Fragment implements PurchaseAmountCo
                 SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.everywhere_pleasefillbox),getContext());
             }
             else {
+
+                Intent intent=new Intent(getActivity(),PurchaseScanQrCodeActivity.class);
+                startActivity(intent);
 
 
             }

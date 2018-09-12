@@ -242,4 +242,7 @@
     <string name="purchaseamount_usemaximum">USE MAXIMUM</string>
     <string name="purchaseamount_useminimum">USE MINIMUM</string>
 
+    <string name="purchasescanqrcode_toolbar">Scan QR code</string>
+    <string name="purchasescanqrcode_textview">Scan this QR code</string>
+
 </resources>

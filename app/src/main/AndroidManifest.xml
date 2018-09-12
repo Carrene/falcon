@@ -119,8 +119,13 @@
         <activity android:name=".ui.transfer.TransferFailedActivity" />
         <activity android:name=".ui.addresses.AddressesActivity" />
         <activity android:name=".ui.setting.SettingActivity" />
-        <activity android:name=".ui.purchase.PurchaseAmountActivity"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".ui.purchase.PurchaseAmountActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.purchase.PurchaseScanQrCodeActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.purchase.PurchaseAmountActivity" />
     </application>
 
 </manifest>
