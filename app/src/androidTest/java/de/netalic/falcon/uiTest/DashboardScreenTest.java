@@ -7,7 +7,6 @@ import android.support.test.runner.AndroidJUnit4;
 import android.view.Gravity;
 import android.widget.TextView;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;

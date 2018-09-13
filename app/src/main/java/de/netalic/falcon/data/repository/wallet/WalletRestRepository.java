@@ -2,10 +2,10 @@ package de.netalic.falcon.data.repository.wallet;
 
 import java.util.List;
 
-import de.netalic.falcon.data.remote.ApiClient;
-import de.netalic.falcon.data.repository.base.Deal;
 import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.data.remote.ApiClient;
+import de.netalic.falcon.data.repository.base.Deal;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
-import de.netalic.falcon.ui.authentication.phoneconfirmation.PhoneConfirmationActivity;
 import de.netalic.falcon.ui.authentication.recoveryemail.RecoveryEmailActivity;
 
 import static android.support.test.espresso.Espresso.onView;
