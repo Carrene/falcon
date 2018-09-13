@@ -114,11 +114,18 @@
         </activity>
         <activity
             android:name=".ui.transfer.TransferConfirmationActivity"
+
             android:parentActivityName=".ui.transfer.TransferPayeeActivity"/>
-        <activity android:name=".ui.transfer.TransferCompletedActivity"/>
-        <activity android:name=".ui.transfer.TransferFailedActivity"/>
-        <activity android:name=".ui.addresses.AddressesActivity"></activity>
+
         <activity android:name=".ui.setting.SettingActivity"/>
+
+
+        <activity android:name=".ui.transfer.TransferCompletedActivity" />
+        <activity android:name=".ui.transfer.TransferFailedActivity" />
+        <activity android:name=".ui.addresses.AddressesActivity" />
+        <activity android:name=".ui.addresses.QrCodeAddressesActivity"
+            android:parentActivityName=".ui.addresses.AddressesActivity" />
+
     </application>
 
 </manifest>

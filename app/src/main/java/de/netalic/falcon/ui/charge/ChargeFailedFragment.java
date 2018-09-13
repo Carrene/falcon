@@ -116,7 +116,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
         mTextViewWalletName.setText(mDeposit.getWalletName());
         mTextViewChargeAmount.setText(mDeposit.getWalletCurrencySymbol()+" "+String.valueOf(mDeposit.getChargeAmount()));
-        mTextViewPaidAmount.setText(mDeposit.getPaymentCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
+        mTextViewPaidAmount.setText(mDeposit.getPaymentGatewayCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
 
         try {
@@ -131,7 +131,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
             e.printStackTrace();
         }
 
-        mTextViewRrn.setText(mDeposit.getRetrievalReferenceNumber());
+        mTextViewRrn.setText(mDeposit.getRrn());
     }
 
     public void initListener() {

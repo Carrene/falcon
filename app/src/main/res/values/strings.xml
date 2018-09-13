@@ -146,6 +146,8 @@
     <string name="withdrawamount_usemaximum">Use maximum</string>
     <string name="withdrawamount_useminimum">Use minimum</string>
     <string name="withdrawamount_transferlimit">2500α daily transfer limit</string>
+    <string name="withdrawamount_fillalphaamount">Fill alpha amount</string>
+
     <string name="chargefailed_sharemenutoolbar">Share</string>
     <string name="chargefailed_downloadmenutoolbar">Download</string>
 
@@ -233,6 +235,7 @@
 
 
 
+
         <string-array name="listArray">
             <item>red</item>
             <item>orange</item>
@@ -251,6 +254,10 @@
             <item>6</item>
         </string-array>
 
+
+
+    <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
+    <string name="qrcodeaddresses_dashboardbutton">DASHBOARD</string>
 
 
 </resources>

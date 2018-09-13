@@ -28,6 +28,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.util.QrCodeUtil;
+import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.crypto.CryptoUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -41,7 +42,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
     private EditText mEditTextOtherCurrency;
     private TextView mTextViewUseMaximum;
     private TextView mTextViewUseMinimum;
-    private Button mbuttonNextWithdraw;
+    private Button mButtonNextWithdraw;
     private static final String ARGUMENT_WALLET = "WALLET";
     private Wallet mWallet;
     private List<Rate> mRateList;
@@ -105,7 +106,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
         mEditTextOtherCurrency = mRoot.findViewById(R.id.edittext_withdrawamount_othercurrency);
         mTextViewUseMaximum = mRoot.findViewById(R.id.textview_withdrawamount_usemaximum);
         mTextViewUseMinimum = mRoot.findViewById(R.id.textview_withdraw_useminimum);
-        mbuttonNextWithdraw = mRoot.findViewById(R.id.button_withdrawamount_nextwithdraw);
+        mButtonNextWithdraw = mRoot.findViewById(R.id.button_withdrawamount_nextwithdraw);
         mSpinnerCurrencyCode = mRoot.findViewById(R.id.spinner_withdrawamount_currency);
     }
 
@@ -289,12 +290,10 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                 mPosition = position;
 
                 if (!mEditTextOtherCurrency.getText().toString().matches("")) {
-                    double alpha = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) / rateSell;
-                    double dollar = Double.parseDouble(mEditTextOtherCurrency.getText().toString()) * (mRateUsdSell / rateSell);
-                    String roundAlpha = mDecimalFormat.format(alpha);
-                    String roundDollar = mDecimalFormat.format(dollar);
-                    mEditTextBaseCurrency.setText(roundDollar);
-                    mEditTextWalletAmount.setText(roundAlpha);
+
+                    double otherCurrency = Double.valueOf(mEditTextBaseCurrency.getText().toString()) * (rateSell / mRateUsdSell);
+                    String roundOtherCurrency=mDecimalFormat.format(otherCurrency);
+                    mEditTextOtherCurrency.setText(roundOtherCurrency);
                 }
             }
 
@@ -318,21 +317,28 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
         });
 
-        mbuttonNextWithdraw.setOnClickListener(v -> {
+        mButtonNextWithdraw.setOnClickListener(v -> {
 
-            Map<String, Object> map = new HashMap<>();
-            int walletId = mWallet.getId();
-            String amount = mEditTextWalletAmount.getText().toString();
-            String wantedCurrencyCode = mRateList.get(mPosition).getCurrencyCode();
-            String nonce = android.util.Base64.encodeToString(CryptoUtil.getSecureRandom(32), android.util.Base64.DEFAULT);
-            long time = System.currentTimeMillis();
+            if (mEditTextWalletAmount.getText().toString().matches("")){
 
-            map.put("walletId", walletId);
-            map.put("amount", amount);
-            map.put("wantedCurrencyCode", wantedCurrencyCode);
-            map.put("nonce", nonce);
-            map.put("time", time);
-            mPresenter.generateQrCode(map);
+                SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.withdrawamount_fillalphaamount),getContext());
+
+            }
+            else {
+                Map<String, Object> map = new HashMap<>();
+                int walletId = mWallet.getId();
+                String amount = mEditTextWalletAmount.getText().toString();
+                String wantedCurrencyCode = mRateList.get(mPosition).getCurrencyCode();
+                String nonce = android.util.Base64.encodeToString(CryptoUtil.getSecureRandom(32), android.util.Base64.DEFAULT);
+                long time = System.currentTimeMillis();
+
+                map.put("walletId", walletId);
+                map.put("amount", amount);
+                map.put("wantedCurrencyCode", wantedCurrencyCode);
+                map.put("nonce", nonce);
+                map.put("time", time);
+                mPresenter.generateQrCode(map);
+            }
 
         });
     }
