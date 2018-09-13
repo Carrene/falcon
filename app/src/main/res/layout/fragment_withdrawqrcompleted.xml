@@ -12,7 +12,7 @@
         android:layout_marginEnd="@dimen/marginstartend_withdrawqrcompleted_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_withdrawqrcompleted_linearlayout"
         android:layout_marginTop="@dimen/margintop_withdrawqrcompleted_linearlayout"
-        android:background="@drawable/chargetransfercompleted_border"
+        android:background="@drawable/chargeandtransferandpurchasecompleted_border"
         android:orientation="vertical">
 
         <TextView

@@ -289,5 +289,19 @@
     <string name="purchaseconfirmation_insufficientbalance">Insufficient balance</string>
     <string name="purchaseconfirmation_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
 
+    <string name="purchasecompleted_toolbar">Purchase Completed</string>
+    <string name="purchasecompleted_paidamount">Purchase amount  </string>
+    <string name="purchasecompleted_baseamount">Paid amount  </string>
+    <string name="purchasecompleted_transactiondate">Transaction date </string>
+    <string name="purchasecompleted_transactiontime">Transaction time </string>
+    <string name="purchasecompleted_trackingcode">RRN </string>
+    <string name="purchasecompleted_dashboard">DASHBOARD</string>
+    <string name="purchasecompleted_purchaseagain">PURCHASE AGAIN</string>
+    <string name="purchasecompleted_success">Success</string>
+    <string name="purchasecompleted_imagesaved">Image Saved</string>
+    <string name="purchasecompleted_sharemenutoolbar">Share</string>
+    <string name="purchasecompleted_downloadmenutoolbar">Download</string>
+
+
 
 </resources>
