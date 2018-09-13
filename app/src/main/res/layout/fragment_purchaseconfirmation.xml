@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/marginstartend_purchaseconfirmation_linearlayout"
+        android:layout_marginStart="@dimen/marginstartend_purchaseconfirmation_linearlayout"
+        android:layout_marginTop="@dimen/margintop_purchaseconfirmation_linearlayout"
+        android:background="@drawable/chargetransferconfirmationandpurchaseconfirmation_border"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_purchaseconfirmation_walletnamelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_purchaseconfirmation_textview"
+                android:layout_marginTop="@dimen/margintop_purchaseconfirmation_walletnamelable"
+                android:text="@string/purchaseconfirmation_walletname"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_purchaseconfirmation_walletnamelable" />
+
+            <TextView
+                android:id="@+id/textview_purchaseconfirmation_walletname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/marginstartend_purchaseconfirmation_textview"
+                android:layout_marginTop="@dimen/margintop_purchaseconfirmation_walletname"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_purchaseconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_purchaseconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_purchaseconfirmation_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_purchaseconfirmation_amountalphalable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_purchaseconfirmation_textview"
+                android:text="@string/purchaseconfirmation_walletamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_purchaseconfirmation_amountalphalable" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_purchaseconfirmation_chargeamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginstartend_purchaseconfirmation_textview"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_purchaseconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_purchaseconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_purchaseconfirmation_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_purchaseconfirmation_amountdollarlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_purchaseconfirmation_textview"
+                android:text="@string/purchaseconfirmation_baseamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_purchaseconfirmation_amountdollarlable" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_purchaseconfirmation_paidamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginstartend_purchaseconfirmation_textview"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_purchaseconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_purchaseconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_purchaseconfirmation_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbottom_purchaseconfirmation_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_purchaseconfirmation_payeelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_purchaseconfirmation_textview"
+                android:text="@string/purchaseconfirmation_paymentgateway"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_purchaseconfirmation_paymentgatewaylable" />
+
+            <TextView
+                android:id="@+id/textview_purchaseconfirmation_payee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/marginstartend_purchaseconfirmation_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_purchaseconfirmation_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbuttom_purchaseconfirmation_confirm"
+        android:layout_marginEnd="@dimen/marginstartend_purchaseconfirmation_confirm"
+        android:layout_marginStart="@dimen/marginstartend_purchaseconfirmation_confirm"
+        android:background="@color/colorSecondary"
+        android:text="@string/purchaseconfirmation_confirm"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_purchaseconfirmation_confirmbutton" />
+</RelativeLayout>

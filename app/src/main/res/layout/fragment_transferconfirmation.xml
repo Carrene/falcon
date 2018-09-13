@@ -11,7 +11,7 @@
         android:layout_marginEnd="@dimen/marginstartend_transferconfirmation_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_transferconfirmation_linearlayout"
         android:layout_marginTop="@dimen/margintop_transferconfirmation_linearlayout"
-        android:background="@drawable/chargetransferconfirmation_border"
+        android:background="@drawable/chargetransferconfirmationandpurchaseconfirmation_border"
         android:orientation="vertical">
 
         <RelativeLayout

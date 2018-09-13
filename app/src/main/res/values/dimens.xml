@@ -393,4 +393,22 @@
 
 
 
+    <dimen name="margintop_purchaseconfirmation_linearlayout">33dp</dimen>
+    <dimen name="marginstartend_purchaseconfirmation_linearlayout">17dp</dimen>
+    <dimen name="textsize_purchaseconfirmation_walletnamelable">14sp</dimen>
+    <dimen name="margintop_purchaseconfirmation_walletnamelable">12dp</dimen>
+    <dimen name="margintop_purchaseconfirmation_walletname">12dp</dimen>
+    <dimen name="textsize_purchaseconfirmation_amountalphalable">14sp</dimen>
+    <dimen name="textsize_purchaseconfirmation_amountdollarlable">14sp</dimen>
+    <dimen name="textsize_purchaseconfirmation_paymentgatewaylable">14sp</dimen>
+    <dimen name="marginbuttom_purchaseconfirmation_confirm">27dp</dimen>
+    <dimen name="marginstartend_purchaseconfirmation_confirm">16dp</dimen>
+    <dimen name="textsize_purchaseconfirmation_confirmbutton">14sp</dimen>
+    <dimen name="height_purchaseconfirmation_view">1dp</dimen>
+    <dimen name="margintop_purchaseconfirmation_view">16dp</dimen>
+    <dimen name="marginbottom_purchaseconfirmation_view">12dp</dimen>
+    <dimen name="marginstartend_purchaseconfirmation_textview">15dp</dimen>
+    <dimen name="marginbottom_purchaseconfirmation_relativelayout">16dp</dimen>
+
+
 </resources>

@@ -33,9 +33,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
             android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            >
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_walletnamelable"
@@ -44,8 +43,7 @@
                 android:layout_marginTop="@dimen/margintop_chargefailed_walletnamelable"
                 android:text="@string/chargefailed_walletname"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_chargefailed_walletnamelable"
-                />
+                android:textSize="@dimen/textsize_chargefailed_walletnamelable" />
 
             <TextView
                 android:id="@+id/textview_chargefailed_walletname"
@@ -68,9 +66,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
             android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            >
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_amountalphalable"
@@ -92,11 +89,10 @@
                     android:layout_height="wrap_content"
                     android:text="VALUE"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/textsize_chargefailed_walletnolable"
-
-                    />
+                    android:textSize="@dimen/textsize_chargefailed_walletnolable" />
             </LinearLayout>
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargefailed_view"
@@ -107,9 +103,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
             android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            >
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_amountdollarlable"
@@ -147,9 +142,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
             android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            >
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_paymentgatewaylable"
@@ -179,9 +173,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
             android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            >
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_transactiondatelable"
@@ -211,9 +204,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
             android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            >
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_transactiontimelable"
@@ -243,9 +235,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
             android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            >
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_rrnlable"
