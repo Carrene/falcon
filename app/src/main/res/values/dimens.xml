@@ -39,7 +39,6 @@
     <dimen name="width_authenticationdefinition_radiobutton">130dp</dimen>
     <dimen name="height_authenticationdefinition_radiobutton">35dp</dimen>
 
-
     <dimen name="margintop_recoveryemail_textinputlayout">155dp</dimen>
     <dimen name="margintop_recoveryemail_skip">30dp</dimen>
     <dimen name="marginstart_recoveryemail_textinputlayout">30dp</dimen>
@@ -70,7 +69,6 @@
     <dimen name="paddingright_style_radiobutton">5dp</dimen>
     <dimen name="max_materialutil_materialutil">100</dimen>
 
-
     <dimen name="margintop_chargeamount_linearlayout">25dp</dimen>
     <dimen name="marginstartend_chargeamount_edittextamount">70dp</dimen>
     <dimen name="marginstartend_chargeamount_edittextdollar">70dp</dimen>
@@ -81,7 +79,6 @@
     <dimen name="margintop_chargeamount_amountbase">27dp</dimen>
     <dimen name="marginbottom_chargeamount_nextpayment">27dp</dimen>
     <dimen name="marginstartend_chargeamount_nextpayment">16dp</dimen>
-
 
     <dimen name="margintop_chargeconfirmation_linearlayout">33dp</dimen>
     <dimen name="marginstartend_chargeconfirmation_linearlayout">17dp</dimen>
@@ -99,8 +96,6 @@
     <dimen name="marginbottom_chargeconfirmation_view">12dp</dimen>
     <dimen name="marginstartend_chargeconfirmation_textview">15dp</dimen>
     <dimen name="marginbottom_chargeconfirmation_relativelayout">16dp</dimen>
-
-
 
     <dimen name="layoutheight_charge_spinner">35dp</dimen>
     <dimen name="layoutwidth_charge_imagview">70dp</dimen>
@@ -129,8 +124,6 @@
     <dimen name="textsize_chargecompleted_transactiondate">14sp</dimen>
     <dimen name="textsize_chargecompleted_successtextview">16sp</dimen>
     <dimen name="paddingstart_chargecompleted_relativelayout">15dp</dimen>
-
-
 
     <dimen name="width_chargefailed_linearlayout">294dp</dimen>
     <dimen name="paddingbottom_chargefailed_linearlayout">15dp</dimen>
@@ -231,7 +224,6 @@
     <dimen name="marginbottom_withdrawqrcompleted_dashboardbutton">27dp</dimen>
     <dimen name="textsize_withdrawqrcompleted_dashboardbutton">14sp</dimen>
 
-
     <dimen name="paddingtop_transactionfiltersrowthathasswitch_relativelayout">5dp</dimen>
     <dimen name="paddingbottom_transactionfiltersrowthathasswitch_relativelayout">10dp</dimen>
     <dimen name="paddingstart_transactionfiltersrowthathasswitch_relativelayout">18dp</dimen>
@@ -270,7 +262,6 @@
     <dimen name="marginstartend_transferamount_useminimumusemaximum">150dp</dimen>
     <dimen name="textsize_transferamount_useminimumusemaximumtransferfee">14sp</dimen>
     <dimen name="margintop_transferamount_transferfeetextview">19dp</dimen>
-
 
     <dimen name="margintop_transferpayee_walletaddresstextview">25dp</dimen>
     <dimen name="textsize_transferpayee_walletaddresstextview">16sp</dimen>
@@ -343,5 +334,18 @@
     <dimen name="margintop_addresses_walletaddresstextview">4dp</dimen>
     <dimen name="height_addresses_shareandqrcodeimageview">30dp</dimen>
 
+    <dimen name="height_setting_circleimagefinalheight">40dp</dimen>
+    <dimen name="height_setting_expandedtoolbar">220dp</dimen>
+    <dimen name="position_setting_finalxposition">82dp</dimen>
+    <dimen name="widthheight_setting_circleimageview">100dp</dimen>
+    <dimen name="marginstart_setting_circleimageview">30dp</dimen>
+    <dimen name="margintop_setting_circleimageview">90dp</dimen>
+    <dimen name="position_setting_finalyposition">12dp</dimen>
+    <dimen name="height_setting_linearlayoutofphonenumberandemailparent">200dp</dimen>
+    <dimen name="margintop_setting_linearlayoutofphonenumberandemailparent">110dp</dimen>
+    <dimen name="marginstart_setting_linearlayoutofphonenumberandemailparent">50dp</dimen>
+    <dimen name="finalheight_setting_linearlayoutofphonenumberandemailparent">400dp</dimen>
+    <dimen name="finalxposition_setting_linearlayoutofphonenumberandemailparent">100dp</dimen>
+    <dimen name="finalyposition_setting_linearlayoutofphonenumberandemailparent">12dp</dimen>
 
 </resources>

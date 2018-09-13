@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import de.netalic.falcon.data.repository.deposit.DepositRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.deposit.DepositRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
