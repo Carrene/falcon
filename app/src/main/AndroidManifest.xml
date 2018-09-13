@@ -114,13 +114,11 @@
         </activity>
         <activity
             android:name=".ui.transfer.TransferConfirmationActivity"
-
             android:parentActivityName=".ui.transfer.TransferPayeeActivity" />
 
         <activity
             android:name=".ui.addresses.QrCodeAddressesActivity"
             android:parentActivityName=".ui.addresses.AddressesActivity" />
-
 
         <activity android:name=".ui.purchase.PurchaseActivity" />
 
@@ -128,7 +126,6 @@
         <activity android:name=".ui.transfer.TransferFailedActivity" />
         <activity android:name=".ui.addresses.AddressesActivity" />
         <activity android:name=".ui.setting.SettingActivity" />
-
 
         <activity
             android:name=".ui.purchase.PurchaseAmountActivity"
@@ -142,6 +139,7 @@
 
         <activity android:name=".ui.purchase.PurchaseCompletedActivity" />
 
+        <activity android:name=".ui.purchase.PurchaseFailedActivity"/>
     </application>
 
 </manifest>

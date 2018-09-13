@@ -23,6 +23,9 @@ import java.util.concurrent.CountDownLatch;
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.model.User;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> purchase_failed
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 =======
 import de.netalic.falcon.data.remote.ApiClient;

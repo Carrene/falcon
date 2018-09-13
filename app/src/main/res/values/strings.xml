@@ -302,6 +302,10 @@
     <string name="purchasecompleted_sharemenutoolbar">Share</string>
     <string name="purchasecompleted_downloadmenutoolbar">Download</string>
 
+    <string name="purchasefailed_toolbar">Purchase failed</string>
+    <string name="purchasefailed_failed">Failed</string>
+    <string name="purchasefailed_trypurchasebutton">TRY PURCHASE</string>
+    <string name="purchasefailed_dashboardbutton">DASHBOARD</string>
 
 
 </resources>

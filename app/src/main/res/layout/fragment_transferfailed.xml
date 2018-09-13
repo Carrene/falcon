@@ -12,7 +12,7 @@
         android:layout_marginEnd="@dimen/marginstartend_transferfailed_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_transferfailed_linearlayout"
         android:layout_marginTop="@dimen/margintop_transferfailed_linearlayout"
-        android:background="@drawable/everywherefailedandqrcodeaddresses_border"
+        android:background="@drawable/everywherefailed_border"
         android:orientation="vertical">
 
         <TextView
