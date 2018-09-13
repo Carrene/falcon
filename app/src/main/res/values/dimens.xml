@@ -370,4 +370,27 @@
 
 
 
+    <dimen name="margintop_purchaseamount_linearlayout">25dp</dimen>
+    <dimen name="marginstartend_purchaseamount_edittextamount">70dp</dimen>
+    <dimen name="marginstartend_purchaseamount_edittextdollar">70dp</dimen>
+    <dimen name="textsize_purchaseamount_amount">16sp</dimen>
+    <dimen name="margintop_purchaseamount_transfer">30dp</dimen>
+    <dimen name="width_purchaseamount_transfer">24dp</dimen>
+    <dimen name="height_purchaseamount_transfer">24dp</dimen>
+    <dimen name="margintop_purchaseamount_amountbase">27dp</dimen>
+    <dimen name="marginbottom_purchaseamount_nextpayment">27dp</dimen>
+    <dimen name="marginstartend_purchaseamount_nextpayment">16dp</dimen>
+    <dimen name="margintop_purchaseamount_middlerelativelayout">30dp</dimen>
+    <dimen name="marginstartend_purchaseamount_useminimumusemaximum">150dp</dimen>
+    <dimen name="textsize_purchaseamount_useminimumusemaximumtransferfee">14sp</dimen>
+    <dimen name="margintop_purchaseamount_transferfeetextview">19dp</dimen>
+
+    <dimen name="height_purchasescanqrcode_barcodeview">350dp</dimen>
+    <dimen name="marginstartend_purchasescanqrcode_barcodeview">20dp</dimen>
+    <dimen name="margintop_purchasescanqrcode_barcodeview">32dp</dimen>
+    <dimen name="margintop_purchasescanqrcode_textview">30dp</dimen>
+    <dimen name="textsize_purchasescanqrcode_textview">16sp</dimen>
+
+
+
 </resources>

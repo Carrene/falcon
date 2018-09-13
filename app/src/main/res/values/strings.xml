@@ -5,6 +5,7 @@
     <string name="everywhere_permissiondenied">Permission Denied</string>
     <string name="everywhere_dollarsymbol">$</string>
 
+
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
@@ -233,10 +234,6 @@
     <string name="rowaddresses_walletname">Wallet Name :</string>
     <string name="addresses_copied">Copied to clipboard</string>
 
-
-
-
-
         <string-array name="listArray">
             <item>red</item>
             <item>orange</item>
@@ -255,16 +252,26 @@
             <item>6</item>
         </string-array>
 
-
-
     <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
     <string name="qrcodeaddresses_dashboardbutton">DASHBOARD</string>
-
 
     <string name="purchase_toolbar">Purchase</string>
     <string name="purchase_wallettextview">Wallet</string>
     <string name="purchase_balancelable">Balance :</string>
     <string name="purchase_nextamountbutton">NEXT-AMOUNT</string>
+
+    <string name="purchaseamount_toolbar">Purchase amount</string>
+    <string name="purchaseamount_invalidcurrency">Invalid currency</string>
+    <string name="purchaseamount_ratedosenotexists">Rate dose not exists</string>
+    <string name="purchaseamount_amount">Amount</string>
+    <string name="purchaseamount_amounthint">Alpha</string>
+    <string name="purchaseamount_dollar">USD</string>
+    <string name="purchaseamount_nextscan">NEXT - SCAN</string>
+    <string name="purchaseamount_usemaximum">USE MAXIMUM</string>
+    <string name="purchaseamount_useminimum">USE MINIMUM</string>
+
+    <string name="purchasescanqrcode_toolbar">Scan QR code</string>
+    <string name="purchasescanqrcode_textview">Scan this QR code</string>
 
 
 </resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/framelayout_transferpayee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <com.journeyapps.barcodescanner.DecoratedBarcodeView
+            android:id="@+id/barcodeview_purchasescanqrcode_barcode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_purchasescanqrcode_barcodeview"
+            android:layout_marginEnd="@dimen/marginstartend_purchasescanqrcode_barcodeview"
+            android:layout_marginStart="@dimen/marginstartend_purchasescanqrcode_barcodeview"
+            android:layout_marginTop="@dimen/margintop_purchasescanqrcode_barcodeview" />
+
+        <TextView
+            android:id="@+id/textview_purchasescanqrcode_scanthisqrcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/barcodeview_purchasescanqrcode_barcode"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margintop_purchasescanqrcode_textview"
+            android:text="@string/purchasescanqrcode_textview"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_purchasescanqrcode_textview" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

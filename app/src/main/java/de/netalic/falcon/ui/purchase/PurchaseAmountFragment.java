@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.transfer;
+package de.netalic.falcon.ui.purchase;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,14 +18,12 @@ import java.text.DecimalFormat;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Rate;
-import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
-
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class TransferAmountFragment extends Fragment implements TransferAmountContract.View {
+public class PurchaseAmountFragment extends Fragment implements PurchaseAmountContract.View {
 
-    private TransferAmountContract.Presenter mTransferAmountPresenter;
+    private PurchaseAmountContract.Presenter mPurchaseAmountPresenter;
     private View mRoot;
     private EditText mEditTextWalletAmount;
     private EditText mEditTextBaseCurrency;
@@ -33,16 +31,13 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
     private TextView mTextViewUseMinimum;
     private Rate mRate;
     private DecimalFormat mDecimalFormat;
-    private Button mButtonNextTransfer;
-    public static final String ARGUMENT_WALLET_ADDRESS="walletAddress";
-    private int mWalletAddress;
+    private Button mButtonNextScan;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_transferamount, null);
-        mWalletAddress=getArguments().getInt(ARGUMENT_WALLET_ADDRESS);
+        mRoot = inflater.inflate(R.layout.fragment_purchaseamount, null);
         return mRoot;
     }
 
@@ -52,78 +47,38 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
         initListener();
         mRate = new Rate("USD");
         mDecimalFormat = new DecimalFormat("0.00##");
-        getRate();
     }
 
     private void initUiComponent() {
 
-        mEditTextWalletAmount = mRoot.findViewById(R.id.edittext_transferamount_amountwallet);
-        mEditTextBaseCurrency = mRoot.findViewById(R.id.edittext_transferamount_amountbase);
-        mTextViewUseMinimum = mRoot.findViewById(R.id.textview_transferamount_useminimum);
-        mTextViewUseMaximum = mRoot.findViewById(R.id.textview_transferamount_usemaximum);
-        mButtonNextTransfer=mRoot.findViewById(R.id.button_transferamount_payment);
+        mEditTextWalletAmount = mRoot.findViewById(R.id.edittext_purchaseamount_amountwallet);
+        mEditTextBaseCurrency = mRoot.findViewById(R.id.edittext_purchaseamount_amountbase);
+        mTextViewUseMinimum = mRoot.findViewById(R.id.textview_purchaseamount_useminimum);
+        mTextViewUseMaximum = mRoot.findViewById(R.id.textview_purchaseamount_usemaximum);
+        mButtonNextScan =mRoot.findViewById(R.id.button_purchaseamount_payment);
 
     }
-
-    public void getRate() {
-
-        mTransferAmountPresenter.exchangeRate(mRate);
-    }
-
 
     @Override
-    public void setPresenter(TransferAmountContract.Presenter presenter) {
-
-        mTransferAmountPresenter = presenter;
+    public void setPresenter(PurchaseAmountContract.Presenter presenter) {
+        mPurchaseAmountPresenter = presenter;
     }
 
     @Override
     public void showProgressBar() {
-
-        if (getActivity() instanceof BaseActivity){
-
-            ((BaseActivity) getActivity()).showMaterialDialog();
-        }
 
     }
 
     @Override
     public void dismissProgressBar() {
 
-        if (getActivity() instanceof BaseActivity){
-
-            ((BaseActivity) getActivity()).dismissMaterialDialog();
-        }
     }
 
-    public static TransferAmountFragment newInstance(int walletAddress) {
+    public static PurchaseAmountFragment newInstance() {
 
-        TransferAmountFragment transferAmountFragment=new TransferAmountFragment();
-        Bundle bundle=new Bundle();
-        bundle.putInt(ARGUMENT_WALLET_ADDRESS,walletAddress);
-        transferAmountFragment.setArguments(bundle);
-        return transferAmountFragment;
+        PurchaseAmountFragment fragment = new PurchaseAmountFragment();
+        return fragment;
     }
-
-    @Override
-    public void showErrorInvalidCurrency() {
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferamount_invalidcurrency), getContext());
-    }
-
-    @Override
-    public void showErrorRatesDoesNotExists() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferamount_ratedosenotexists), getContext());
-    }
-
-    @Override
-    public void updateExchangeRateCurrency(Rate rate) {
-
-        mRate = rate;
-    }
-
 
     private void initListener() {
 
@@ -159,8 +114,6 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
                         double rate = mRate.getBuy();
                         double dollar = amountEnter * rate;
                         String roundDollar = mDecimalFormat.format(dollar);
-
-
                         mEditTextBaseCurrency.setText(String.valueOf(roundDollar));
 
                     }
@@ -222,22 +175,22 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
 
         });
 
-        mButtonNextTransfer.setOnClickListener(v -> {
+        mButtonNextScan.setOnClickListener(v -> {
 
             if (mEditTextWalletAmount.getText().toString().equals("")){
 
-             SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.everywhere_pleasefillbox),getContext());
+                checkNotNull(getContext());
+                SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.everywhere_pleasefillbox),getContext());
             }
             else {
-                Intent intent = new Intent(getContext(), TransferPayeeActivity.class);
-                intent.putExtra(ARGUMENT_WALLET_ADDRESS,mWalletAddress);
-                intent.putExtra("transferAmount",Double.valueOf(mEditTextWalletAmount.getText().toString()));
+
+                Intent intent=new Intent(getActivity(),PurchaseScanQrCodeActivity.class);
                 startActivity(intent);
+
 
             }
         });
 
     }
-
 
 }
