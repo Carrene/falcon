@@ -236,6 +236,7 @@
 
 
 
+
         <string-array name="listArray">
             <item>red</item>
             <item>orange</item>
@@ -258,6 +259,12 @@
 
     <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
     <string name="qrcodeaddresses_dashboardbutton">DASHBOARD</string>
+
+
+    <string name="purchase_toolbar">Purchase</string>
+    <string name="purchase_wallettextview">Wallet</string>
+    <string name="purchase_balancelable">Balance :</string>
+    <string name="purchase_nextamountbutton">NEXT-AMOUNT</string>
 
 
 </resources>

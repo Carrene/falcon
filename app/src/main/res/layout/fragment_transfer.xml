@@ -17,7 +17,7 @@
 
     <Spinner
         android:id="@+id/spinner_transfer_walletlist"
-        style="@style/SpinnerThemeWithdrawTransfer"
+        style="@style/SpinnerThemeWithdrawAndTransferAndPurchase"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_transfer_spinner"
         android:layout_below="@+id/textview_transfer_header"

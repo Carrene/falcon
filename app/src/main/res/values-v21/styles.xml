@@ -10,7 +10,7 @@
         <item name="android:background">@drawable/dashboard_backgroundspinner</item>
     </style>
 
-    <style name="SpinnerThemeWithdrawTransfer" parent="android:Widget.Holo.Spinner">
+    <style name="SpinnerThemeWithdrawAndTransferAndPurchase" parent="android:Widget.Holo.Spinner">
         <item name="android:overlapAnchor">false</item>
         <item name="android:background">@drawable/withdrawtransfer_backgroundspinner</item>
     </style>
