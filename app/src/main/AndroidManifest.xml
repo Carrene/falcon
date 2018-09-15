@@ -115,18 +115,14 @@
         <activity
             android:name=".ui.transfer.TransferConfirmationActivity"
             android:parentActivityName=".ui.transfer.TransferPayeeActivity" />
-
         <activity
             android:name=".ui.addresses.QrCodeAddressesActivity"
             android:parentActivityName=".ui.addresses.AddressesActivity" />
-
         <activity android:name=".ui.purchase.PurchaseActivity" />
-
         <activity android:name=".ui.transfer.TransferCompletedActivity" />
         <activity android:name=".ui.transfer.TransferFailedActivity" />
         <activity android:name=".ui.addresses.AddressesActivity" />
         <activity android:name=".ui.setting.SettingActivity" />
-
         <activity
             android:name=".ui.purchase.PurchaseAmountActivity"
             android:launchMode="singleTop" />
@@ -134,12 +130,10 @@
             android:name=".ui.purchase.PurchaseScanQrCodeActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".ui.purchase.PurchaseAmountActivity" />
-
         <activity android:name=".ui.purchase.PurchaseConfirmationActivity" />
-
         <activity android:name=".ui.purchase.PurchaseCompletedActivity" />
-
-        <activity android:name=".ui.purchase.PurchaseFailedActivity"/>
+        <activity android:name=".ui.purchase.PurchaseFailedActivity" />
+        <activity android:name=".ui.authentication.authentication.AuthenticationActivity"></activity>
     </application>
 
 </manifest>

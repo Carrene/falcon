@@ -63,7 +63,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         initUiComponents();
         initListener();
 
-
     }
 
     @Override
@@ -90,7 +89,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         mEditTextConfirmCode = mRoot.findViewById(R.id.edittext_authenticationdefinition_confirmcode);
         mTextInputLayoutConfirmCode = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_confirmpasscode);
         mTextInputLayoutPassword = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_enterpasscode);
-
         mTextViewMinimumLength = mPasswordCheckerView.findViewById(R.id.textView_authenticationdefinition_length);
         mTextViewCapitalLetter = mPasswordCheckerView.findViewById(R.id.textView_authenticationdefinition_capital);
         mTextViewDigit = mPasswordCheckerView.findViewById(R.id.textView_authenticationdefinition_digit);
