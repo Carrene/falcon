@@ -7,15 +7,15 @@
 
 
     <com.andrognito.patternlockview.PatternLockView
-        android:id="@+id/patternview_authenticationdefinition_pattern"
+        android:id="@+id/patternview_authentication_pattern"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         app:aspectRatioEnabled="true"
         app:dotCount="3"
-        app:dotNormalSize="@dimen/dotnormalsize_authenticationdefinitionpatterntab_patternlockview"
+        app:dotNormalSize="@dimen/dotnormalsize_authentication_pattern"
         app:normalStateColor="@color/colorBlack"
-        app:pathWidth="@dimen/pathwidth_authenticationdefinition_pattern" />
+        app:pathWidth="@dimen/pathwidth_authentication_pattern" />
 
 
 </RelativeLayout>

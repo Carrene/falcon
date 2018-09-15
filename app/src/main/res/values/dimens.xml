@@ -448,6 +448,12 @@
     <dimen name="textsize_purchasecompleted_successtextview">16sp</dimen>
     <dimen name="paddingstart_purchasecompleted_relativelayout">15dp</dimen>
 
+    <dimen name="dotnormalsize_authentication_pattern">20dp</dimen>
+    <dimen name="pathwidth_authentication_pattern">2dp</dimen>
+    <dimen name="marginstartend_authentication_enterpassword">30dp</dimen>
+    <dimen name="margintop_authentication_enterpassword">120dp</dimen>
+    <dimen name="textsize_authentication_enterpassword">13sp</dimen>
+
 
 
 </resources>

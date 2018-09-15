@@ -307,5 +307,7 @@
     <string name="purchasefailed_trypurchasebutton">TRY PURCHASE</string>
     <string name="purchasefailed_dashboardbutton">DASHBOARD</string>
 
+    <string name="authentication_hintpassword">Enter password</string>
+
 
 </resources>
