@@ -5,10 +5,10 @@ import de.netalic.falcon.data.repository.base.RepositoryLocator;
 
 public class AuthenticationPresenter implements AuthenticationContract.Presenter {
 
-    private AuthenticationContract.View mAuthenticationView;
+    private AuthenticationActivity mAuthenticationView;
 
 
-    public AuthenticationPresenter(AuthenticationContract.View authenticationView) {
+    public AuthenticationPresenter(AuthenticationActivity authenticationView) {
         mAuthenticationView = authenticationView;
         mAuthenticationView.setPresenter(this);
     }
@@ -18,25 +18,23 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
 
         RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
 
-            if (deal.getThrowable()!=null){
+            if (deal.getThrowable() != null) {
 
 
-            }
+            } else {
 
-            else {
+                switch (deal.getModel().getAuthenticationType()) {
 
-                switch (deal.getModel().getAuthenticationType()){
+                    case 0: {
 
-                    case 0:{
-
-                       mAuthenticationView.showTypeOfAuthentication(0);
+                        mAuthenticationView.showPasswordLayout();
 
                         break;
                     }
 
-                    case 1:{
+                    case 1: {
 
-                    mAuthenticationView.showTypeOfAuthentication(1);
+                        mAuthenticationView.showPatternLayout();
 
                         break;
                     }
@@ -46,6 +44,35 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
 
 
         });
+
+    }
+
+    public void checkCredentialValue(String credentialValue) {
+
+        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).checkCredentialValue(credentialValue, deal -> {
+
+            if (deal.getThrowable() != null) {
+
+
+            } else {
+
+                if (credentialValue.equals(deal.getModel().getCredential())) {
+
+                    mAuthenticationView.navigationToDashboard();
+
+
+                } else {
+
+                    mAuthenticationView.showCredentialValueError();
+
+                }
+
+
+            }
+
+
+        });
+
 
     }
 }

@@ -3,6 +3,7 @@ package de.netalic.falcon.data.repository.authentication;
 import java.util.List;
 
 import de.netalic.falcon.data.model.Authentication;
+import de.netalic.falcon.data.repository.base.IRepository;
 
 public class AuthenticationRepository implements IAuthenticationRepository {
 
@@ -23,6 +24,11 @@ public class AuthenticationRepository implements IAuthenticationRepository {
     public void get(CallRepository<Authentication> callRepository) {
 
         mAuthenticationRealmRepository.get(callRepository);
+    }
+
+    @Override
+    public void checkCredentialValue(String credentialValue, CallRepository<Authentication> callRepository) {
+        mAuthenticationRealmRepository.checkCredentialValue(credentialValue,callRepository);
     }
 
     @Override

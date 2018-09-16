@@ -5,6 +5,7 @@ import java.util.List;
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.base.Deal;
+import de.netalic.falcon.data.repository.base.IRepository;
 import io.realm.Realm;
 
 public class AuthenticationRealmRepository implements IAuthenticationRepository {
@@ -52,6 +53,11 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
         }
         mRealm.close();
         callRepository.onDone(deal);
+
+    }
+
+    @Override
+    public void checkCredentialValue(String credentialValue, CallRepository<Authentication> callRepository) {
 
     }
 }

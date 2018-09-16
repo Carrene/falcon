@@ -7,7 +7,7 @@ public interface AuthenticationContract {
 
     interface View extends BaseView<Presenter>{
 
-        void showTypeOfAuthentication(int authenticationType);
+
 
 
     }

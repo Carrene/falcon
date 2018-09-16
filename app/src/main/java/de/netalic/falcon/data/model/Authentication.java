@@ -18,6 +18,9 @@ public class Authentication extends RealmObject {
     @RealmField(name = "Value")
     private String mCredential;
 
+    public static int sPatternType=0;
+    public static int sPasswordType=1;
+
     public Authentication() {
 
     }
@@ -74,5 +77,13 @@ public class Authentication extends RealmObject {
     public int getRemainAttemptsNumber() {
 
         return mMaxAttemptNumber - mAttemptNumber;
+    }
+
+    public String getCredential() {
+        return mCredential;
+    }
+
+    public void setCredential(String credential) {
+        this.mCredential = credential;
     }
 }

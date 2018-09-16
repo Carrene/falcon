@@ -9,35 +9,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.andrognito.patternlockview.PatternLockView;
+import com.andrognito.patternlockview.listener.PatternLockViewListener;
+
+import java.util.List;
+
+import de.netalic.falcon.R;
+import de.netalic.falcon.util.SnackbarUtil;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class AuthenticationPatternFragment extends Fragment implements AuthenticationContract.View {
 
    private AuthenticationContract.Presenter mAuthenticationPresenter;
    private NavigateToDashboardCallback mNavigateToDashboardCallback;
    private int mAuthenticationType;
-
-    @Override
-    public void showTypeOfAuthentication(int authenticationType) {
-
-        mAuthenticationType=authenticationType;
-
-    }
-
+   private View mRoot;
+    private PatternLockView mPatternLockView;
+    private int mAttemptTimeNumber;
+    private String mFirstAttemptPattern;
 
     interface NavigateToDashboardCallback {
 
-       void navigationToDashboard(int authenticationType);
+       void checkCredentialValue(String credentialValue);
    }
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+
+        mRoot=inflater.inflate(R.layout.fragment_authenticationpattern,null);
+        return mRoot;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+
+        initUiComponent();
+        initUiListener();
     }
 
     @Override
@@ -80,5 +90,78 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
     public void onDetach() {
         super.onDetach();
         mNavigateToDashboardCallback=null;
+    }
+
+    private void initUiComponent(){
+
+        mPatternLockView = mRoot.findViewById(R.id.patternview_authentication_pattern);
+        mPatternLockView.setEnabled(true);
+
+    }
+
+    private void initUiListener(){
+
+        mPatternLockView.addPatternLockListener(new PatternLockViewListener() {
+            @Override
+            public void onStarted() {
+
+            }
+
+            @Override
+            public void onProgress(List<PatternLockView.Dot> progressPattern) {
+
+
+            }
+
+            @Override
+            public void onComplete(List<PatternLockView.Dot> pattern) {
+
+                String secondAttemptPattern;
+                if (mAttemptTimeNumber == 0) {
+                    mFirstAttemptPattern = pattern.toString();
+
+                    if (pattern.size() < 4) {
+                        checkNotNull(getContext());
+                        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_connectfordots), getContext());
+                    } else {
+                        mAttemptTimeNumber++;
+
+                        checkNotNull(getContext());
+                        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_tryforsecondtime), getContext());
+
+                    }
+                    mPatternLockView.clearPattern();
+                    return;
+                }
+                secondAttemptPattern = pattern.toString();
+                boolean isPatternSame = mFirstAttemptPattern.equals(secondAttemptPattern);
+                if (!isPatternSame) {
+                    mPatternLockView.clearPattern();
+                    mAttemptTimeNumber = 0;
+                    checkNotNull(getContext());
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_notmatch), getContext());
+                    return;
+                } else {
+                    checkNotNull(getContext());
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), getContext());
+
+                    String credentialValue = mPatternLockView.getPattern().toString();
+                    mPatternLockView.clearPattern();
+                    navigateToDashboard(credentialValue);
+                }
+            }
+
+            @Override
+            public void onCleared() {
+
+            }
+        });
+
+
+    }
+
+    private void navigateToDashboard(String credentialValue) {
+
+        mNavigateToDashboardCallback.checkCredentialValue(credentialValue);
     }
 }
