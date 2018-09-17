@@ -6,6 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,25 +24,26 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class AuthenticationPatternFragment extends Fragment implements AuthenticationContract.View {
 
-   private AuthenticationContract.Presenter mAuthenticationPresenter;
-   private NavigateToDashboardCallback mNavigateToDashboardCallback;
-   private int mAuthenticationType;
-   private View mRoot;
+    private AuthenticationContract.Presenter mAuthenticationPresenter;
+    private NavigateToDashboardCallback mNavigateToDashboardCallback;
+    private int mAuthenticationType;
+    private View mRoot;
     private PatternLockView mPatternLockView;
     private int mAttemptTimeNumber;
     private String mFirstAttemptPattern;
+    private String mCredentialValue;
 
     interface NavigateToDashboardCallback {
 
-       void checkCredentialValue(String credentialValue);
-   }
+        void checkCredentialValue(String credentialValue);
+    }
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot=inflater.inflate(R.layout.fragment_authenticationpattern,null);
+        mRoot = inflater.inflate(R.layout.fragment_authenticationpattern, null);
         return mRoot;
     }
 
@@ -53,7 +57,7 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
     @Override
     public void setPresenter(AuthenticationContract.Presenter presenter) {
 
-        mAuthenticationPresenter=presenter;
+        mAuthenticationPresenter = presenter;
 
     }
 
@@ -76,11 +80,10 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof NavigateToDashboardCallback){
+        if (context instanceof NavigateToDashboardCallback) {
 
-            mNavigateToDashboardCallback=(NavigateToDashboardCallback) context;
-        }
-        else {
+            mNavigateToDashboardCallback = (NavigateToDashboardCallback) context;
+        } else {
 
             throw new ClassCastException(context.toString() + " must implement NavigateToDashboardCallback");
         }
@@ -89,17 +92,17 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
     @Override
     public void onDetach() {
         super.onDetach();
-        mNavigateToDashboardCallback=null;
+        mNavigateToDashboardCallback = null;
     }
 
-    private void initUiComponent(){
+    private void initUiComponent() {
 
         mPatternLockView = mRoot.findViewById(R.id.patternview_authentication_pattern);
         mPatternLockView.setEnabled(true);
 
     }
 
-    private void initUiListener(){
+    private void initUiListener() {
 
         mPatternLockView.addPatternLockListener(new PatternLockViewListener() {
             @Override
@@ -116,7 +119,6 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
             @Override
             public void onComplete(List<PatternLockView.Dot> pattern) {
 
-                String secondAttemptPattern;
                 if (mAttemptTimeNumber == 0) {
                     mFirstAttemptPattern = pattern.toString();
 
@@ -133,23 +135,15 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
                     mPatternLockView.clearPattern();
                     return;
                 }
-                secondAttemptPattern = pattern.toString();
-                boolean isPatternSame = mFirstAttemptPattern.equals(secondAttemptPattern);
-                if (!isPatternSame) {
-                    mPatternLockView.clearPattern();
-                    mAttemptTimeNumber = 0;
-                    checkNotNull(getContext());
-                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_notmatch), getContext());
-                    return;
-                } else {
-                    checkNotNull(getContext());
-                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), getContext());
 
-                    String credentialValue = mPatternLockView.getPattern().toString();
-                    mPatternLockView.clearPattern();
-                    navigateToDashboard(credentialValue);
-                }
+                checkNotNull(getContext());
+                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), getContext());
+
+                mCredentialValue = mPatternLockView.getPattern().toString();
+                mPatternLockView.clearPattern();
+                navigateToDashboard(mCredentialValue);
             }
+
 
             @Override
             public void onCleared() {
@@ -164,4 +158,31 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
 
         mNavigateToDashboardCallback.checkCredentialValue(credentialValue);
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_everywhere_thathastick, menu);
+    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//
+//            case R.id.menu_everywhere_done: {
+//
+//                if (mEditTextPassword.toString().equals("")) {
+//
+//                    SnackbarUtil.showSnackbar(mRoot, "Please fill the box", getContext());
+//
+//                } else {
+//
+//                    navigateToDashboard(mEditTextPassword.getText().toString());
+//                }
+//
+//            }
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }

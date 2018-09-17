@@ -2,6 +2,8 @@ package de.netalic.falcon.ui.authentication.authentication;
 
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.util.DigestUtil;
+import nuesoft.helpdroid.util.Converter;
 
 public class AuthenticationPresenter implements AuthenticationContract.Presenter {
 
@@ -27,14 +29,15 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
 
                     case 0: {
 
-                        mAuthenticationView.showPasswordLayout();
+                        mAuthenticationView.showPatternLayout();
 
                         break;
                     }
 
                     case 1: {
 
-                        mAuthenticationView.showPatternLayout();
+
+                        mAuthenticationView.showPasswordLayout();
 
                         break;
                     }
@@ -49,30 +52,17 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
 
     public void checkCredentialValue(String credentialValue) {
 
-        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).checkCredentialValue(credentialValue, deal -> {
 
-            if (deal.getThrowable() != null) {
+        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
+            if (deal.getThrowable() == null) {
 
-
-            } else {
-
-                if (credentialValue.equals(deal.getModel().getCredential())) {
-
+                if (deal.getModel().getCredential().equals(Converter.bytesToHexString(DigestUtil.digestSha512(credentialValue)))) {
                     mAuthenticationView.navigationToDashboard();
-
-
                 } else {
-
                     mAuthenticationView.showCredentialValueError();
 
                 }
-
-
             }
-
-
         });
-
-
     }
 }

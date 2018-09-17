@@ -27,11 +27,6 @@ public class AuthenticationRepository implements IAuthenticationRepository {
     }
 
     @Override
-    public void checkCredentialValue(String credentialValue, CallRepository<Authentication> callRepository) {
-        mAuthenticationRealmRepository.checkCredentialValue(credentialValue,callRepository);
-    }
-
-    @Override
     public void update(Authentication authentication, CallRepository<Authentication> callRepository) {
 
         mAuthenticationRealmRepository.update(authentication, callRepository);

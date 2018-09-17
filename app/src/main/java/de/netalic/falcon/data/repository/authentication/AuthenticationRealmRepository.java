@@ -7,6 +7,7 @@ import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.base.Deal;
 import de.netalic.falcon.data.repository.base.IRepository;
 import io.realm.Realm;
+import nuesoft.helpdroid.util.Converter;
 
 public class AuthenticationRealmRepository implements IAuthenticationRepository {
 
@@ -24,6 +25,14 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
         mRealm.copyToRealmOrUpdate(authentication);
         mRealm.commitTransaction();
         mRealm.close();
+
+        try {
+            MyApp.sSensitiveRealmConfiguration.encryptionKey(Converter.hexStringToBytes(authentication.getCredential())).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            callRepository.onDone(new Deal<>(null, null, e));
+        }
+
         callRepository.onDone(new Deal<>(authentication, null, null));
     }
 
@@ -56,8 +65,4 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
     }
 
-    @Override
-    public void checkCredentialValue(String credentialValue, CallRepository<Authentication> callRepository) {
-
-    }
 }

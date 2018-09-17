@@ -1,8 +1,10 @@
 package de.netalic.falcon.data.model;
 
+import de.netalic.falcon.util.DigestUtil;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmField;
+import nuesoft.helpdroid.util.Converter;
 
 public class Authentication extends RealmObject {
 
@@ -18,16 +20,15 @@ public class Authentication extends RealmObject {
     @RealmField(name = "Value")
     private String mCredential;
 
-    public static int sPatternType=0;
-    public static int sPasswordType=1;
+    public static final int PATTERN_TYPE = 0;
+    public static final int PASSWORD_TYPE = 1;
 
     public Authentication() {
 
     }
 
     public Authentication(String credential, int authenticationType) {
-
-        this.mCredential = credential;
+        this.mCredential = Converter.bytesToHexString(DigestUtil.digestSha512(credential));
         this.mAuthenticationType = authenticationType;
     }
 
@@ -83,7 +84,5 @@ public class Authentication extends RealmObject {
         return mCredential;
     }
 
-    public void setCredential(String credential) {
-        this.mCredential = credential;
-    }
+
 }

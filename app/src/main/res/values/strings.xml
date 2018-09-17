@@ -310,5 +310,7 @@
     <string name="authentication_hintpassword">Enter password</string>
     <string name="authentication_toolbar">authentication</string>
 
+    <string name="authenticationpassword_passworddoesnotmatch">Password does not match</string>
+
 
 </resources>

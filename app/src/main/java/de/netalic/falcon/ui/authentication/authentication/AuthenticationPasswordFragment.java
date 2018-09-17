@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,17 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-
 import de.netalic.falcon.R;
 import de.netalic.falcon.util.SnackbarUtil;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class AuthenticationPasswordFragment extends Fragment implements AuthenticationContract.View {
 
     private AuthenticationContract.Presenter mAuthenticationPresenter;
     private NavigateToDashboardCallback mNavigateToDashboardCallback;
-    private int mAuthenticationType;
     private View mRoot;
     private EditText mEditTextPassword;
+    private TextInputLayout mTextInputLayoutPassword;
 
 
     interface NavigateToDashboardCallback {
@@ -36,6 +38,7 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_authenticationpassword, null);
+        setHasOptionsMenu(true);
         return mRoot;
     }
 
@@ -89,6 +92,7 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
     private void initUiComponent() {
 
         mEditTextPassword = mRoot.findViewById(R.id.edittext_authentication_entercode);
+        mTextInputLayoutPassword=mRoot.findViewById(R.id.textinputlayout_authentication_enterpasscode);
 
     }
 
@@ -121,8 +125,7 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
 
                     navigateToDashboard(mEditTextPassword.getText().toString());
                 }
-
-
+                
             }
         }
 
@@ -132,5 +135,12 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
     private void navigateToDashboard(String credentialValue) {
 
         mNavigateToDashboardCallback.checkCredentialValue(credentialValue);
+    }
+
+    public void setErrorOnTextInputLayout(){
+
+        checkNotNull(getContext());
+        mTextInputLayoutPassword.setError(getContext().getString(R.string.authenticationpassword_passworddoesnotmatch));
+
     }
 }

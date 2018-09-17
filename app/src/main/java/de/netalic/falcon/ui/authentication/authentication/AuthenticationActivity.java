@@ -2,6 +2,7 @@ package de.netalic.falcon.ui.authentication.authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.widget.FrameLayout;
 
 import de.netalic.falcon.R;
@@ -17,18 +18,18 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
     private AuthenticationPasswordFragment mAuthenticationPasswordFragment;
     private AuthenticationPatternFragment mAuthenticationPatternFragment;
     private FrameLayout mFrameLayout;
+    private TextInputLayout mTextInputLayoutpassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         mFrameLayout = findViewById(R.id.framelayout_authentication_fragmentcontainer);
-
 
         if (mAuthenticationPasswordFragment == null) {
 
             mAuthenticationPasswordFragment = new AuthenticationPasswordFragment();
             //TODO (Milad) Use activity for view in presenter
-
         }
 
         if (mAuthenticationPatternFragment == null) {
@@ -92,7 +93,9 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
 
     public void showCredentialValueError() {
 
-        SnackbarUtil.showSnackbar(mFrameLayout, "Your password is wrong", this);
+        mAuthenticationPasswordFragment.setErrorOnTextInputLayout();
+
+
     }
 
 }

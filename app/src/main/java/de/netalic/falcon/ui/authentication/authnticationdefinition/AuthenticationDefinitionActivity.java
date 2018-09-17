@@ -105,12 +105,13 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
     @Override
     public void navigationToDashboardFromPassword(String credentialValue) {
 
-
+        //TODO (Milad) Use final string type
         saveCredential(credentialValue, 0);
     }
 
     @Override
     public void navigationToDashboardFromPattern(String credentialValue) {
+        //TODO (Milad) Use final string type
 
         saveCredential(credentialValue, 1);
 
@@ -118,33 +119,16 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
 
     private void saveCredential(String credentialValue, int type) {
 
-        byte[] credentialDigest = digestSha512(credentialValue);
-        Authentication authentication = new Authentication(Converter.bytesToHexString(credentialDigest), type);
+        Authentication authentication = new Authentication(credentialValue, type);
         RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).update(authentication, deal -> {
 
-            if (deal.getModel() == null) {
+            if (deal.getThrowable() != null) {
                 throw new RuntimeException("Authentication has not been saved!");
             }
-            MyApp.sSensitiveRealmConfiguration.encryptionKey(credentialDigest).build();
             navigateToDashboard();
-
         });
     }
 
-    private byte[] digestSha512(String value) {
-
-        MessageDigest messageDigest = null;
-        try {
-            messageDigest = MessageDigest.getInstance("SHA-512");
-            messageDigest.update(value.getBytes("UTF-8"));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        byte[] digest = messageDigest.digest();
-        return digest;
-    }
 
     private void navigateToDashboard() {
 
