@@ -7,15 +7,9 @@ public interface AuthenticationContract {
 
     interface View extends BaseView<Presenter>{
 
-
-
-
     }
 
     interface Presenter extends BasePresenter{
-
-
-
 
     }
 }

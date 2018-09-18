@@ -17,7 +17,6 @@ import de.netalic.falcon.data.repository.base.Deal;
 import de.netalic.falcon.data.repository.base.IRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.receipt.ReceiptRepository;
-
 import de.netalic.falcon.util.FileUtil;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;

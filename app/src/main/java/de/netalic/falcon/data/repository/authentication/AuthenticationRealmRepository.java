@@ -5,7 +5,6 @@ import java.util.List;
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.base.Deal;
-import de.netalic.falcon.data.repository.base.IRepository;
 import io.realm.Realm;
 import nuesoft.helpdroid.util.Converter;
 

@@ -3,7 +3,6 @@ package de.netalic.falcon.data.repository.authentication;
 import java.util.List;
 
 import de.netalic.falcon.data.model.Authentication;
-import de.netalic.falcon.data.repository.base.IRepository;
 
 public class AuthenticationRepository implements IAuthenticationRepository {
 

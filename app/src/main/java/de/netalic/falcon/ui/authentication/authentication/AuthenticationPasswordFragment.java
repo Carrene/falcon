@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,8 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.util.SnackbarUtil;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class AuthenticationPasswordFragment extends Fragment implements AuthenticationContract.View {
@@ -31,7 +32,6 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
 
         void checkCredentialValue(String credentialValue);
     }
-
 
     @Nullable
     @Override
@@ -92,7 +92,7 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
     private void initUiComponent() {
 
         mEditTextPassword = mRoot.findViewById(R.id.edittext_authentication_entercode);
-        mTextInputLayoutPassword=mRoot.findViewById(R.id.textinputlayout_authentication_enterpasscode);
+        mTextInputLayoutPassword = mRoot.findViewById(R.id.textinputlayout_authentication_enterpasscode);
 
     }
 
@@ -119,13 +119,14 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
 
                 if (mEditTextPassword.toString().equals("")) {
 
-                    SnackbarUtil.showSnackbar(mRoot, "Please fill the box", getContext());
+                    checkNotNull(getContext());
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
 
                 } else {
 
                     navigateToDashboard(mEditTextPassword.getText().toString());
                 }
-                
+
             }
         }
 
@@ -137,7 +138,7 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
         mNavigateToDashboardCallback.checkCredentialValue(credentialValue);
     }
 
-    public void setErrorOnTextInputLayout(){
+    public void setErrorOnTextInputLayout() {
 
         checkNotNull(getContext());
         mTextInputLayoutPassword.setError(getContext().getString(R.string.authenticationpassword_passworddoesnotmatch));

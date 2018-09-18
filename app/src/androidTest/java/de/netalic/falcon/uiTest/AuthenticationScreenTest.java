@@ -16,7 +16,6 @@ import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.ui.authentication.authentication.AuthenticationActivity;
-import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -65,27 +64,22 @@ public class AuthenticationScreenTest {
             onView(withId(R.id.menu_everywhere_done)).perform(click());
             intended(hasComponent(DashboardActivity.class.getName()));
 
-
         });
+    }
+
+    //TODO:(Milad) find a way for UI test of pattern view
+
+    @Test
+    public void inputPattern_showError() {
+
     }
 
     @Test
-    public void inputPattern_showError(){
-
-        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).
-                update(new Authentication("[(Row = 0, Col = 0), (Row = 1, Col = 0), (Row = 2, Col = 0), (Row = 2, Col = 1)]",
-                        Authentication.PATTERN_TYPE),deal -> {
-
-                    launchAuthenticationActivity();
-                    onView(withId(R.id.patternview_authentication_pattern)).perform(typeText("[(Row = 0, Col = 0), (Row = 1, Col = 0), (Row = 2, Col = 0), (Row = 2, Col = 1)]"));
-
-
-        });
-
-
+    public void inputPattern_navigateNext() {
 
 
     }
+
 
     private void launchAuthenticationActivity() {
 

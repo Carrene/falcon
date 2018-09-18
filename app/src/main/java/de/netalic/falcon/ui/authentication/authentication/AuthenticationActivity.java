@@ -9,7 +9,6 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;
-import de.netalic.falcon.util.SnackbarUtil;
 
 public class AuthenticationActivity extends BaseActivity implements AuthenticationPatternFragment.NavigateToDashboardCallback,
         AuthenticationPasswordFragment.NavigateToDashboardCallback {
@@ -29,7 +28,6 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         if (mAuthenticationPasswordFragment == null) {
 
             mAuthenticationPasswordFragment = new AuthenticationPasswordFragment();
-            //TODO (Milad) Use activity for view in presenter
         }
 
         if (mAuthenticationPatternFragment == null) {
@@ -59,10 +57,6 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         return getString(R.string.authentication_toolbar);
     }
 
-    //TODO (Milad) Change the name
-    //TODO (Milad) Use two methods for pattern and password
-
-
     public void setPresenter(AuthenticationPresenter presenter) {
 
         mAuthenticationPresenter = presenter;
@@ -91,10 +85,16 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
         startActivity(intent);
     }
 
-    public void showCredentialValueError() {
+    public void showTextInputLayoutError() {
 
         mAuthenticationPasswordFragment.setErrorOnTextInputLayout();
 
+
+    }
+
+    public void showPatternLockError() {
+
+        mAuthenticationPatternFragment.setErrorOnSnackBar();
 
     }
 

@@ -22,14 +22,7 @@ import java.util.concurrent.CountDownLatch;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.model.User;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> purchase_failed
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-=======
-import de.netalic.falcon.data.remote.ApiClient;
->>>>>>> qrcode_addresses
 import de.netalic.falcon.data.repository.user.UserRepository;
 import nuesoft.helpdroid.device.DeviceUtil;
 import okhttp3.mockwebserver.MockResponse;
@@ -37,6 +30,13 @@ import okhttp3.mockwebserver.MockWebServer;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
+
+<<<<<<<HEAD
+        <<<<<<<HEAD
+        =======
+        >>>>>>>purchase_failed
+        =======
+        >>>>>>>qrcode_addresses
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({DeviceUtil.class, Settings.Secure.class, MyApp.class})

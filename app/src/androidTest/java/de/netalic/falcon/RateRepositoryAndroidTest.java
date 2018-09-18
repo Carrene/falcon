@@ -9,9 +9,7 @@ import org.junit.runner.RunWith;
 import java.util.concurrent.CountDownLatch;
 
 import de.netalic.falcon.data.model.Currency;
-
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 
 @RunWith(AndroidJUnit4.class)

@@ -36,7 +36,6 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
 
                     case 1: {
 
-
                         mAuthenticationView.showPasswordLayout();
 
                         break;
@@ -59,7 +58,12 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
                 if (deal.getModel().getCredential().equals(Converter.bytesToHexString(DigestUtil.digestSha512(credentialValue)))) {
                     mAuthenticationView.navigationToDashboard();
                 } else {
-                    mAuthenticationView.showCredentialValueError();
+                    if (deal.getModel().getAuthenticationType() == 1) {
+                        mAuthenticationView.showTextInputLayoutError();
+                    } else {
+
+                        mAuthenticationView.showPatternLockError();
+                    }
 
                 }
             }
