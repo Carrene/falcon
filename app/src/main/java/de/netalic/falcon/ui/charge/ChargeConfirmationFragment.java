@@ -66,7 +66,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
 
         mTextViewWalletName.setText(mDeposit.getWalletName());
         mTextViewChargeAmount.setText(mDeposit.getWalletCurrencySymbol()+" "+String.valueOf(mDeposit.getChargeAmount()));
-        mTextViewPaidAmount.setText(mDeposit.getPaymentCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
+        mTextViewPaidAmount.setText(mDeposit.getPaymentGatewayCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
 
     }

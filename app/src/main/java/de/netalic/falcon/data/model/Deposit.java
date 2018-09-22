@@ -33,8 +33,8 @@ public class Deposit implements Parcelable {
     @SerializedName("walletCurrencyCode")
     private String mWalletCurrencyCode;
 
-    @SerializedName("retrievalReferenceNumber")
-    private String mRetrievalReferenceNumber;
+    @SerializedName("RRN")
+    private String mRrn;
 
     @SerializedName("paymentGatewayCurrencyCode")
     private String mPaymentGatewayCurrencyCode;
@@ -63,8 +63,8 @@ public class Deposit implements Parcelable {
     @SerializedName("walletCurrencySymbol")
     private String mWalletCurrencySymbol;
 
-    @SerializedName("paymentCurrencySymbol")
-    private String mPaymentCurrencySymbol;
+    @SerializedName("paymentGatewayCurrencySymbol")
+    private String mPaymentGatewayCurrencySymbol;
 
     public int getId() {
 
@@ -115,9 +115,9 @@ public class Deposit implements Parcelable {
         return mWalletCurrencyCode;
     }
 
-    public String getRetrievalReferenceNumber() {
+    public String getRrn() {
 
-        return mRetrievalReferenceNumber;
+        return mRrn;
     }
 
     public String getPaymentGatewayCurrencyCode() {
@@ -184,11 +184,11 @@ public class Deposit implements Parcelable {
         dest.writeString(mPaymentGatewayName);
         dest.writeString(mBraintreeToken);
         dest.writeInt(mId);
-        dest.writeString(mRetrievalReferenceNumber);
+        dest.writeString(mRrn);
         dest.writeString(mModifiedAt);
         dest.writeInt(mTransactionId);
         dest.writeString(mWalletCurrencySymbol);
-        dest.writeString(mPaymentCurrencySymbol);
+        dest.writeString(mPaymentGatewayCurrencySymbol);
 
     }
 
@@ -201,11 +201,11 @@ public class Deposit implements Parcelable {
         mPaymentGatewayName = in.readString();
         mBraintreeToken = in.readString();
         mId = in.readInt();
-        mRetrievalReferenceNumber = in.readString();
+        mRrn = in.readString();
         mModifiedAt = in.readString();
         mTransactionId=in.readInt();
         mWalletCurrencySymbol=in.readString();
-        mPaymentCurrencySymbol=in.readString();
+        mPaymentGatewayCurrencySymbol=in.readString();
     }
 
     public static final Creator<Deposit> CREATOR = new Creator<Deposit>() {
@@ -230,11 +230,11 @@ public class Deposit implements Parcelable {
         this.mWalletCurrencySymbol = walletCurrencySymbol;
     }
 
-    public String getPaymentCurrencySymbol() {
-        return mPaymentCurrencySymbol;
+    public String getPaymentGatewayCurrencySymbol() {
+        return mPaymentGatewayCurrencySymbol;
     }
 
-    public void setPaymentCurrencySymbol(String paymentCurrencySymbol) {
-        this.mPaymentCurrencySymbol = paymentCurrencySymbol;
+    public void setPaymentGatewayCurrencySymbol(String paymentGatewayCurrencySymbol) {
+        this.mPaymentGatewayCurrencySymbol = paymentGatewayCurrencySymbol;
     }
 }

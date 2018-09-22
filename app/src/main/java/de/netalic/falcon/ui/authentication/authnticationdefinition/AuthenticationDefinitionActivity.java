@@ -5,20 +5,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.model.Authentication;
+import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;
-import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import info.hoang8f.android.segmented.SegmentedGroup;
-import nuesoft.helpdroid.util.Converter;
 
 
 public class AuthenticationDefinitionActivity extends BaseActivity implements AuthenticationDefinitionContract.View, AuthenticationDefinitionPasswordFragment.NavigateToDashboardCallback
@@ -27,6 +21,8 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
     private SegmentedGroup mSegmentedGroup;
     private AuthenticationDefinitionPasswordFragment mAuthenticationDefinitionPasswordFragment;
     private AuthenticationDefinitionPatternFragment mAuthenticationDefinitionPatternFragment;
+    public static final int PASSWORD_TYPE=0;
+    public static final int PATTERN_TYPE=1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -105,46 +101,28 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
     @Override
     public void navigationToDashboardFromPassword(String credentialValue) {
 
-
-        saveCredential(credentialValue, 0);
+        saveCredential(credentialValue, PASSWORD_TYPE);
     }
 
     @Override
     public void navigationToDashboardFromPattern(String credentialValue) {
 
-        saveCredential(credentialValue, 1);
+        saveCredential(credentialValue, PATTERN_TYPE);
 
     }
 
     private void saveCredential(String credentialValue, int type) {
 
-        byte[] credentialDigest = digestSha512(credentialValue);
-        Authentication authentication = new Authentication(Converter.bytesToHexString(credentialDigest), type);
+        Authentication authentication = new Authentication(credentialValue, type);
         RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).update(authentication, deal -> {
 
-            if (deal.getModel() == null) {
+            if (deal.getThrowable() != null) {
                 throw new RuntimeException("Authentication has not been saved!");
             }
-            MyApp.sSensitiveRealmConfiguration.encryptionKey(credentialDigest).build();
             navigateToDashboard();
-
         });
     }
 
-    private byte[] digestSha512(String value) {
-
-        MessageDigest messageDigest = null;
-        try {
-            messageDigest = MessageDigest.getInstance("SHA-512");
-            messageDigest.update(value.getBytes("UTF-8"));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        byte[] digest = messageDigest.digest();
-        return digest;
-    }
 
     private void navigateToDashboard() {
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/relativelayout_qrcodeaddresses_borderofimageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/marginstartend_qrcodeaddresses_borderofimageview"
+        android:layout_marginStart="@dimen/marginstartend_qrcodeaddresses_borderofimageview"
+        android:layout_marginTop="@dimen/margintop_qrcodeaddresses_borderofimageview"
+        android:background="@drawable/everywherefailed_border"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_qrcodeaddresses_wallettype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margintop_qrcodeaddresses_wallettypetextview"
+            android:text="VALUE"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_qrcodeaddresses_wallettypetextview" />
+
+        <ImageView
+            android:id="@+id/imageview_qrcodeaddresses_qr"
+            android:layout_width="@dimen/widthheight_qrcodeaddresses_qrimageview"
+            android:layout_height="@dimen/widthheight_qrcodeaddresses_qrimageview"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margintopbottom_qrcodeaddresses_qrimageview"
+            android:layout_marginTop="@dimen/margintopbottom_qrcodeaddresses_qrimageview" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_qrcodeaddresses_navigationtodashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/qrcodeaddresses_dashboardbutton"
+        android:textColor="@color/colorBlack"
+        android:layout_marginStart="@dimen/marginstartend_qrcodeaddresses_dashboardbutton"
+        android:layout_marginEnd="@dimen/marginstartend_qrcodeaddresses_dashboardbutton"
+        android:layout_marginBottom="@dimen/marginbottom_qrcodeaddresses_dashboardbutton"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorSecondary" />
+
+</RelativeLayout>

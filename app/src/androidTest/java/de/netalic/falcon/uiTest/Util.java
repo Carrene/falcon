@@ -6,11 +6,15 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
+import com.andrognito.patternlockview.PatternLockView;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 public class Util {
+
+    private PatternLockView mPatternLockView;
 
     public static Matcher<View> hasTextInputLayoutErrorText(final String expectedErrorText) {
 
@@ -59,4 +63,6 @@ public class Util {
             }
         };
     }
+
+
 }

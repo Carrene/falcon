@@ -13,7 +13,7 @@
         android:layout_marginEnd="@dimen/marginstartend_chargecompleted_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_chargecompleted_linearlayout"
         android:layout_marginTop="@dimen/margintop_chargecompleted_linearlayout"
-        android:background="@drawable/chargetransfercompleted_border"
+        android:background="@drawable/chargeandtransferandpurchasecompleted_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_chargecompleted_linearlayout">
 

@@ -125,7 +125,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
         mTextViewWalletName.setText(mDeposit.getWalletName());
         mTextViewAmountWallet.setText(mDeposit.getWalletCurrencySymbol()+" "+String.valueOf(mDeposit.getChargeAmount()));
-        mTextViewAmountBase.setText(mDeposit.getPaymentCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
+        mTextViewAmountBase.setText(mDeposit.getPaymentGatewayCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
         mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
         try {
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
@@ -137,7 +137,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        mTextViewRrn.setText(mDeposit.getRetrievalReferenceNumber());
+        mTextViewRrn.setText(mDeposit.getRrn());
     }
 
     private void requestPermissionShare() {

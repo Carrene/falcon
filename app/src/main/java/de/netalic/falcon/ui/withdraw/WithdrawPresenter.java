@@ -1,7 +1,7 @@
 package de.netalic.falcon.ui.withdraw;
 
-import de.netalic.falcon.data.repository.wallet.WalletRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 public class WithdrawPresenter implements WithdrawPresenterContract.Presenter {

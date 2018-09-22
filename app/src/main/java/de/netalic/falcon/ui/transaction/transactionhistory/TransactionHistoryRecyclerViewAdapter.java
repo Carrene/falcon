@@ -53,7 +53,7 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
             Deposit deposit = mDepositList.get(position);
 
             depositViewHolder.mTextViewWalletName.setText(deposit.getWalletName());
-            depositViewHolder.mTextViewAmount.setText(deposit.getPaymentCurrencySymbol()+" "+String.valueOf(deposit.getPaidAmount()));
+            depositViewHolder.mTextViewAmount.setText(deposit.getPaymentGatewayCurrencySymbol()+" "+String.valueOf(deposit.getPaidAmount()));
             depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getCreatedAt()) + "@" + DateUtil.isoToTime(deposit.getCreatedAt()));
             depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
 

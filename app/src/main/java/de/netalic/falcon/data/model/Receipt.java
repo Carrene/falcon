@@ -6,6 +6,7 @@ import io.realm.RealmObject;
 
 public class Receipt extends RealmObject {
 
+
     @SerializedName("transactionId")
     private int mTransactionId;
 

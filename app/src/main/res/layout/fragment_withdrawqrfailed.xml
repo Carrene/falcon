@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/linearlayout_withdrawqrfailed_forscreenshot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margintop_qrcodefailed_linearlayout"
-        android:layout_marginStart="@dimen/marginstartend_qrcodefailed_linearlayout"
-        android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_linearlayout"
-        android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:background="@drawable/everywherefailed_border"
-        >
+        android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_linearlayout"
+        android:layout_marginStart="@dimen/marginstartend_qrcodefailed_linearlayout"
+        android:layout_marginTop="@dimen/margintop_qrcodefailed_linearlayout"
+        android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/textview_qrcodefailed_failed"
@@ -27,19 +25,19 @@
             android:text="@string/qrcodefailed_failed"
             android:textColor="@color/white"
             android:textSize="@dimen/textsize_qrcodefailed_textviewfailed" />
+
         <TextView
             android:id="@+id/textview_qrcodefailed_describe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbottom_qrcodefailed_describetextview"
+            android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_describetextview"
+            android:layout_marginStart="@dimen/marginstartend_qrcodefailed_describetextview"
+            android:layout_marginTop="@dimen/margintop_qrcodefailed_describetextview"
             android:gravity="center"
             android:text="Lorem lpsum is simply dummy text of the printing and type setting industry"
             android:textColor="@color/colorBlack"
-            android:layout_marginTop="@dimen/margintop_qrcodefailed_describetextview"
-            android:layout_marginStart="@dimen/marginstartend_qrcodefailed_describetextview"
-            android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_describetextview"
-            android:layout_marginBottom="@dimen/marginbottom_qrcodefailed_describetextview"
-            android:textSize="@dimen/textsize_qrcodefailed_describetextview"
-            />
+            android:textSize="@dimen/textsize_qrcodefailed_describetextview" />
 
     </LinearLayout>
 
@@ -48,16 +46,15 @@
         android:id="@+id/button_qrcodefailed_trywithdraw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/button_qrcodefailed_dashborad"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbottom_qrcodefailed_trywithdrawbutton"
+        android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_trywithdrawbutton"
+        android:layout_marginStart="@dimen/marginstartend_qrcodefailed_trywithdrawbutton"
         android:background="@color/colorSecondary"
         android:text="@string/qrcodefailed_trywithdrawbutton"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_qrcodefailed_trywithdrawbutton"
-        android:layout_above="@+id/button_qrcodefailed_dashborad"
-        android:layout_marginStart="@dimen/marginstartend_qrcodefailed_trywithdrawbutton"
-        android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_trywithdrawbutton"
-        android:layout_marginBottom="@dimen/marginbottom_qrcodefailed_trywithdrawbutton"
-        />
+        android:textSize="@dimen/textsize_qrcodefailed_trywithdrawbutton" />
 
     <Button
         android:id="@+id/button_qrcodefailed_dashborad"
@@ -68,10 +65,9 @@
         android:layout_marginBottom="@dimen/marginbottom_qrcodefailed_dashboardbutton"
         android:layout_marginEnd="@dimen/marginstartend_qrcodefailed_dashboardbutton"
         android:layout_marginStart="@dimen/marginstartend_qrcodefailed_dashboardbutton"
-        android:background="@drawable/withdrawqrcodefailedtransferfailed_borderbutton"
+        android:background="@drawable/everywhere_borderbutton"
         android:text="@string/qrcodefailed_dashboardbutton"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_qrcodefailed_dashboardbutton"
-        />
+        android:textSize="@dimen/textsize_qrcodefailed_dashboardbutton" />
 
 </RelativeLayout>

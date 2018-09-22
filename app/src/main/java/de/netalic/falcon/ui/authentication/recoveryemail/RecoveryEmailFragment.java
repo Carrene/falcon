@@ -79,14 +79,14 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-        inflater.inflate(R.menu.menu_recoveryemail_toolbar, menu);
+        inflater.inflate(R.menu.menu_everywhere_thathastick, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.menu_recoveryemail_done: {
+            case R.id.menu_everywhere_done: {
 
                 Keyboard.hideKeyboard(mRoot);
                 checkEmailSyntax();

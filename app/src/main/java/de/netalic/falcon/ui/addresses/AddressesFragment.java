@@ -88,4 +88,5 @@ public class AddressesFragment extends Fragment implements AddressesContract.Vie
         mRecyclerViewWalletAddress.setAdapter(mAddressesRecyclerViewAdapter);
 
     }
+
 }

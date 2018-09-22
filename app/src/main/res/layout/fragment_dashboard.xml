@@ -108,7 +108,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageview_dashboard_purcahse"
+                android:id="@+id/imageview_dashboard_purchase"
                 android:layout_width="@dimen/widthheight_dahboard_purchaseimageview"
                 android:layout_height="@dimen/widthheight_dahboard_purchaseimageview"
                 android:layout_marginStart="@dimen/marginstart_dashboard_purchaseimage"

@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
-import de.netalic.falcon.ui.authentication.phoneconfirmation.PhoneConfirmationActivity;
 import de.netalic.falcon.ui.authentication.recoveryemail.RecoveryEmailActivity;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -38,7 +37,7 @@ public class RecoveryEmailScreenTest {
     public void noInputEmail_showError() {
 
         launchRecoveryEmailActivity(new User("981234567"));
-        onView(withId(R.id.menu_recoveryemail_done)).perform(click());
+        onView(withId(R.id.menu_everywhere_done)).perform(click());
         onView(withId(R.id.textinputlayout_recoveryemail_enterrecoveryemail)).check(matches(Util.hasTextInputLayoutErrorText(mActivityTestRule.getActivity().getString(R.string.recoveryemail_thisemaildoesnotexist))));
     }
 
@@ -47,7 +46,7 @@ public class RecoveryEmailScreenTest {
 
         launchRecoveryEmailActivity(new User("981234567"));
         onView(withId(R.id.edittext_recoveryemail_enterrecoveryemail)).perform(typeText("mockEmail.com"));
-        onView(withId(R.id.menu_recoveryemail_done)).perform(click());
+        onView(withId(R.id.menu_everywhere_done)).perform(click());
         onView(withId(R.id.textinputlayout_recoveryemail_enterrecoveryemail)).check(matches(Util.hasTextInputLayoutErrorText(mActivityTestRule.getActivity().getString(R.string.recoveryemail_thisemaildoesnotexist))));
     }
 
@@ -56,7 +55,7 @@ public class RecoveryEmailScreenTest {
 
         launchRecoveryEmailActivity(new User("981234567"));
         onView(withId(R.id.edittext_recoveryemail_enterrecoveryemail)).perform(typeText("mockEmail@mock.com"));
-        onView(withId(R.id.menu_recoveryemail_done)).perform(click());
+        onView(withId(R.id.menu_everywhere_done)).perform(click());
         intended(hasComponent(AuthenticationDefinitionActivity.class.getName()));
     }
 

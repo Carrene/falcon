@@ -17,7 +17,6 @@ public class AddressesPresenter implements AddressesContract.Presenter {
 
     }
 
-
     @Override
     public void getWalletList() {
 
@@ -43,4 +42,6 @@ public class AddressesPresenter implements AddressesContract.Presenter {
 
         });
     }
+
+
 }

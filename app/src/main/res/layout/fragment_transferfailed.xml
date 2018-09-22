@@ -64,7 +64,7 @@
         android:layout_marginBottom="@dimen/marginbottom_transferfailed_dashboardbutton"
         android:layout_marginEnd="@dimen/marginstartend_transferfailed_dashboardbutton"
         android:layout_marginStart="@dimen/marginstartend_transferfailed_dashboardbutton"
-        android:background="@drawable/withdrawqrcodefailedtransferfailed_borderbutton"
+        android:background="@drawable/everywhere_borderbutton"
         android:text="@string/transferfailed_dashboardbutton"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_transferfailed_dashboardbutton" />

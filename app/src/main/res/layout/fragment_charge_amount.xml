@@ -42,7 +42,7 @@
             android:id="@+id/imageview_chargeamount_transfer"
             android:layout_width="@dimen/width_chargeamount_transfer"
             android:layout_height="@dimen/height_chargeamount_transfer"
-            android:src="@drawable/chargeamounttransferamount_transfer"
+            android:src="@drawable/chargeamountandtransferamountandpurchaseamount_transfer"
             android:layout_marginTop="@dimen/margintop_chargeamount_transfer" />
 
         <android.support.design.widget.TextInputLayout
