@@ -15,6 +15,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.receiver.CheckInternetConnectivity;
+import de.netalic.falcon.util.ScreenLocker;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity implements CheckInternetConnectivity.NetworkStateChangeListener {
@@ -65,6 +66,12 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
     protected void onPause() {
 
         super.onPause();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+
+        super.onUserLeaveHint();
     }
 
     @Override
@@ -134,4 +141,12 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
 
         materialDialog.dismiss();
     }
+
+    @Override
+    public void onUserInteraction() {
+
+        super.onUserInteraction();
+        ScreenLocker.getInstance().restart();
+    }
+
 }

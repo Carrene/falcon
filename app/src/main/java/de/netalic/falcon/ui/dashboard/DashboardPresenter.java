@@ -1,11 +1,13 @@
 package de.netalic.falcon.ui.dashboard;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.util.ScreenLocker;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -67,12 +69,12 @@ public class DashboardPresenter implements DashboardContract.Presenter {
         mDashboardView.showProgressBar();
         RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
-            if (deal.getThrowable()!=null){
+            if (deal.getThrowable() != null) {
 
             } else {
-                switch (deal.getResponse().code()){
+                switch (deal.getResponse().code()) {
 
-                    case 200:{
+                    case 200: {
 
                         mDashboardView.setListWallet(deal.getResponse().body());
                         break;
@@ -87,5 +89,12 @@ public class DashboardPresenter implements DashboardContract.Presenter {
     @Override
     public void start() {
 
+        ScreenLocker.getInstance().start(new ScreenLocker.LockScreenInterface() {
+            @Override
+            public void lock() {
+
+                Log.d("Timer", "Stopped in presenter");
+            }
+        });
     }
 }
