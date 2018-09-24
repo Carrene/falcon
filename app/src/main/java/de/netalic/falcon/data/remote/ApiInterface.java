@@ -6,6 +6,7 @@ import java.util.Map;
 import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Receipt;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.model.Wallet;
 import retrofit2.Call;
@@ -56,7 +57,7 @@ public interface ApiInterface {
     Call<List<Deposit>> receiptList(@QueryMap(encoded = true) Map<String, String> options, @Query("take") int take, @Query("skip") int skip);
 
     @FormUrlEncoded
-    @HTTP(method = "TRANSFER", path = "wallets/{sourceAddress}", hasBody = true)
-    Call<Receipt> transfer(@Path("sourceAddress") int sourceAddress, @Field("destinationWalletAddress") int destinationWalletAddress, @Field("amount") double amount);
+    @HTTP(method = "START", path = "wallets/{wallet_id}/transfers", hasBody = true)
+    Call<Transaction> StartTransfer(@Path("wallet_id") int sourceWalletAddress, @Field("destinationWalletAddress") String destinationWalletAddress, @Field("amount") float amount);
 
 }

@@ -39,8 +39,8 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
     private static final int REQUEST_PERMISSIONS = 1;
     private Menu mMenu;
     public static final String ARGUMENT_TRANSFER_AMOUNT = "transferAmount";
-    private int mWalletAddress;
-    private double mTransferAmount;
+    private int mSourceWalletAddress;
+    private float mTransferAmount;
     public static final String ARGUMENT_DESTINATION_WALLET_ADDRESS = "destinationWalletAddress";
 
     @Nullable
@@ -49,8 +49,8 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
 
         mRoot = inflater.inflate(R.layout.fragment_transferpayee, null);
         checkNotNull(getArguments());
-        mWalletAddress = getArguments().getInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS);
-        mTransferAmount = getArguments().getDouble(ARGUMENT_TRANSFER_AMOUNT);
+        mSourceWalletAddress = getArguments().getInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS);
+        mTransferAmount =(float) getArguments().getDouble(ARGUMENT_TRANSFER_AMOUNT);
         return mRoot;
     }
 
@@ -214,11 +214,8 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
                 SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
             } else {
 
-                Intent intent = new Intent(getContext(), TransferConfirmationActivity.class);
-                intent.putExtra(ARGUMENT_TRANSFER_AMOUNT, mTransferAmount);
-                intent.putExtra(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS, mWalletAddress);
-                intent.putExtra(ARGUMENT_DESTINATION_WALLET_ADDRESS, Integer.valueOf(mEditTextWalletAddress.getText().toString()));
-                startActivity(intent);
+
+                mTransferPayeePresenter.startTransfer(mSourceWalletAddress,mEditTextWalletAddress.toString(),mTransferAmount);
 
             }
 
@@ -231,4 +228,10 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
         mEditTextWalletAddress = mRoot.findViewById(R.id.edittext_transferpayee_walletaddress);
     }
 
+    @Override
+    public void navigationToTransferConfirmation() {
+
+        Intent intent=new Intent(getContext(),TransferConfirmationActivity.class);
+        startActivity(intent);
+    }
 }

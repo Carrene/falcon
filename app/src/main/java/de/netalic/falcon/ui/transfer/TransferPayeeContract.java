@@ -7,9 +7,12 @@ public interface TransferPayeeContract {
 
     interface View extends BaseView<Presenter>{
 
+        void navigationToTransferConfirmation();
     }
 
     interface Presenter extends BasePresenter{
+
+        void startTransfer(int sourceWalletId,String destinationWalletId,float amount);
 
 
     }

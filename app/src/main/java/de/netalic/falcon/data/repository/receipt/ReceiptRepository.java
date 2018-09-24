@@ -27,7 +27,7 @@ public class ReceiptRepository implements IReceiptRepository {
 
         if (sReceiptRepository == null) {
 
-            synchronized (WalletRepository.class) {
+            synchronized (ReceiptRepository.class) {
                 if (sReceiptRepository == null) {
                     sReceiptRepository = new ReceiptRepository();
                 }
