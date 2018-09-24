@@ -95,7 +95,7 @@ public class ApiClient {
 
     public static String getUrl() {
 
-        String url = BuildConfig.WEB_SERVICE_URL + ":" + BuildConfig.WEB_SERVICE_PORT + "/apiv1/";
+        String url = BuildConfig.WEB_SERVICE_URL + ":" + "/apiv1/";
         return url;
 
     }
