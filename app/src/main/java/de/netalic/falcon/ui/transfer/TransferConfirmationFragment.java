@@ -174,6 +174,12 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
 
     private void initListener() {
 
+        mButtonConfirm.setOnClickListener(v -> {
+
+           // mTransferConfirmationPresenter.finalizeTransfer();
+
+        });
+
  }
 
  private void setTransferInformation(){

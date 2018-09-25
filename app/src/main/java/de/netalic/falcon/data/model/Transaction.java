@@ -1,12 +1,15 @@
 package de.netalic.falcon.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 import io.realm.annotations.PrimaryKey;
 
-public class Transaction {
+public class Transaction implements Parcelable {
 
     @PrimaryKey
     @SerializedName("id")
@@ -92,5 +95,26 @@ public class Transaction {
 
     public List<Action> getActionList() {
         return mActionList;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeInt(this.mId);
+        dest.writeList(mActionList);
+
+    }
+
+    protected Transaction(Parcel in){
+
+        mId=in.readInt();
+
+
+
     }
 }

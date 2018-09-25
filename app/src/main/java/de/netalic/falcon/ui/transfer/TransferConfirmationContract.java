@@ -23,7 +23,7 @@ public interface TransferConfirmationContract {
 
     interface Presenter extends BasePresenter{
 
-        void transfer(int sourceAddress,double amount,int walletAddress);
+        void finalizeTransfer(int transactionId);
 
 
     }
