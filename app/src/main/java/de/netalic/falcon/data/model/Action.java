@@ -14,7 +14,7 @@ public class Action {
     private String mType;
 
     @SerializedName("amount")
-    private double mAmount;
+    private float mAmount;
 
     @SerializedName("currencyCode")
     private String mCurrencyCode;

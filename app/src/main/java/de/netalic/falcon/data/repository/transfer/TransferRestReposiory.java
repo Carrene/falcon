@@ -1,4 +1,4 @@
-package de.netalic.falcon.data.repository.transaction;
+package de.netalic.falcon.data.repository.transfer;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TransactionRestReposiory implements ITransactionRepository {
+public class TransferRestReposiory implements ITransferRepository {
 
     @Override
     public void update(Transaction transaction, CallRepository<Transaction> callRepository) {

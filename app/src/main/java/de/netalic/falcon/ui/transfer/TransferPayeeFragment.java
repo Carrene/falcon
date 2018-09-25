@@ -25,6 +25,8 @@ import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -42,6 +44,8 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
     private int mSourceWalletAddress;
     private float mTransferAmount;
     public static final String ARGUMENT_DESTINATION_WALLET_ADDRESS = "destinationWalletAddress";
+    public static final String ARGUMENT_WALLET_NAME = "walletName";
+    public static final String ARGUMENT_CURRENCY_SYMBOL = "currencySymbol";
 
     @Nullable
     @Override
@@ -50,7 +54,7 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
         mRoot = inflater.inflate(R.layout.fragment_transferpayee, null);
         checkNotNull(getArguments());
         mSourceWalletAddress = getArguments().getInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS);
-        mTransferAmount =(float) getArguments().getDouble(ARGUMENT_TRANSFER_AMOUNT);
+        mTransferAmount = getArguments().getFloat(ARGUMENT_TRANSFER_AMOUNT);
         return mRoot;
     }
 
@@ -96,11 +100,18 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
     @Override
     public void showProgressBar() {
 
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+
+        }
     }
 
     @Override
     public void dismissProgressBar() {
 
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
     }
 
     private void requestCameraPermission() {
@@ -121,10 +132,10 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Allowed", getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissionallowed), getContext());
         } else {
 
-            SnackbarUtil.showSnackbar(mRoot, "Permission Denied", getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
         }
     }
 
@@ -138,8 +149,6 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
                 mMenu.getItem(0).setIcon(R.drawable.transactionpayee_qrclose);
             }
         }
-
-
     }
 
     protected void pauseScanner() {
@@ -194,12 +203,12 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
         return true;
     }
 
-    public static TransferPayeeFragment newInstance(int walletAddress, double transferAmount) {
+    public static TransferPayeeFragment newInstance(int walletAddress, float transferAmount) {
 
         TransferPayeeFragment transferPayeeFragment = new TransferPayeeFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putDouble(ARGUMENT_TRANSFER_AMOUNT, transferAmount);
+        bundle.putFloat(ARGUMENT_TRANSFER_AMOUNT, transferAmount);
         bundle.putInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS, walletAddress);
         transferPayeeFragment.setArguments(bundle);
         return transferPayeeFragment;
@@ -215,8 +224,7 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
             } else {
 
 
-                mTransferPayeePresenter.startTransfer(mSourceWalletAddress,mEditTextWalletAddress.toString(),mTransferAmount);
-
+                mTransferPayeePresenter.startTransfer(mSourceWalletAddress, mEditTextWalletAddress.getText().toString(), mTransferAmount);
             }
 
         });
@@ -229,9 +237,81 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
     }
 
     @Override
-    public void navigationToTransferConfirmation() {
+    public void navigationToTransferConfirmation(Transaction transaction) {
 
-        Intent intent=new Intent(getContext(),TransferConfirmationActivity.class);
+        Intent intent = new Intent(getContext(), TransferConfirmationActivity.class);
+        intent.putExtra(ARGUMENT_TRANSFER_AMOUNT, transaction.getActionList().get(1).getAmount());
+        intent.putExtra(ARGUMENT_WALLET_NAME, transaction.getActionList().get(1).getCurrencyCode());
+        intent.putExtra(ARGUMENT_DESTINATION_WALLET_ADDRESS, transaction.getActionList().get(1).getWalletAddress());
+        intent.putExtra(ARGUMENT_CURRENCY_SYMBOL, transaction.getActionList().get(1).getCurencySymbol());
         startActivity(intent);
+    }
+
+    @Override
+    public void showError700() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_invalidsourcewalletid), getContext());
+    }
+
+    @Override
+    public void showError727() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_destinationwalletaddressisnotfound), getContext());
+    }
+
+    @Override
+    public void showErrorSourceWalletNotFound404() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_sourcewalletnotfound), getContext());
+    }
+
+    @Override
+    public void showError601() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_sourceanddestinationareequal), getContext());
+    }
+
+    @Override
+    public void showErrorInvalidAmount702() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_invalidamount), getContext());
+    }
+
+    @Override
+    public void showErrorAmountIsZero702() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_amountiszero), getContext());
+    }
+
+    @Override
+    public void showErrorAmountIsNegative702() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_amountisnegative), getContext());
+    }
+
+    @Override
+    public void showError600() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_insufficientBalance), getContext());
+
+    }
+
+    @Override
+    public void showErrorTryingToTransferFromOtherWallet404() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_tryingtotransferfromanotherclientwallet), getContext());
+    }
+
+    @Override
+    public void showError602() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_walletcurrenciesaredifferent), getContext());
+    }
+
+    @Override
+    public void showError401() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_starttransferasananonymous), getContext());
+
     }
 }

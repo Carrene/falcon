@@ -42,7 +42,7 @@ public class Transaction {
     @SerializedName("braintreeToken")
     private String mBraintreeToken;
 
-    @SerializedName("action")
+    @SerializedName("actions")
     private List<Action>mActionList;
 
 

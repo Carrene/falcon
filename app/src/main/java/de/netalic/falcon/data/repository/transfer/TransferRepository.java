@@ -1,20 +1,20 @@
-package de.netalic.falcon.data.repository.transaction;
+package de.netalic.falcon.data.repository.transfer;
 
 import java.util.List;
 
 import de.netalic.falcon.data.model.Transaction;
 
-public class TransactionRepository implements ITransactionRepository {
+public class TransferRepository implements ITransferRepository {
 
 
-    private ITransactionRepository mTransactionRestRepository;
-    private ITransactionRepository mTransactionRealmRepository;
+    private ITransferRepository mTransactionRestRepository;
+    private ITransferRepository mTransactionRealmRepository;
 
-    private TransactionRepository() {
+    private TransferRepository() {
 
     }
 
-    public TransactionRepository(ITransactionRepository restRepository, ITransactionRepository realmRepository) {
+    public TransferRepository(ITransferRepository restRepository, ITransferRepository realmRepository) {
 
         mTransactionRestRepository = restRepository;
         mTransactionRealmRepository = realmRepository;

@@ -231,7 +231,7 @@ public class TransferAmountFragment extends Fragment implements TransferAmountCo
             else {
                 Intent intent = new Intent(getContext(), TransferPayeeActivity.class);
                 intent.putExtra(ARGUMENT_WALLET_ADDRESS,mWalletAddress);
-                intent.putExtra("transferAmount",Double.valueOf(mEditTextWalletAmount.getText().toString()));
+                intent.putExtra("transferAmount",Float.valueOf(mEditTextWalletAmount.getText().toString()));
                 startActivity(intent);
 
             }

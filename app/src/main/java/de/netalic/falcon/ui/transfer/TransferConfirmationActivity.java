@@ -18,14 +18,15 @@ public class TransferConfirmationActivity extends BaseActivity {
 
         Bundle bundle=getIntent().getExtras();
         checkNotNull(bundle);
-        int sourceWalletAddress=bundle.getInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS);
-        int destinationWalletAddress=bundle.getInt(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS);
-        double transferAmount=bundle.getDouble(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT);
+        float transferAmount=(float) bundle.getDouble(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT);
+        String walletName=bundle.getString(TransferPayeeFragment.ARGUMENT_WALLET_NAME);
+        String destinationWalletAddress=bundle.getString(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS);
+        String currencySymbol=bundle.getString(TransferPayeeFragment.ARGUMENT_CURRENCY_SYMBOL);
 
         TransferConfirmationFragment transferConfirmationFragment=(TransferConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferconfirmation_fragmentcontainer);
         if (transferConfirmationFragment==null){
 
-            transferConfirmationFragment=TransferConfirmationFragment.newInstance(sourceWalletAddress,destinationWalletAddress,transferAmount);
+            transferConfirmationFragment=TransferConfirmationFragment.newInstance(walletName,destinationWalletAddress,transferAmount,currencySymbol);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),transferConfirmationFragment,R.id.framelayout_transferconfirmation_fragmentcontainer);
         }
         new TransferConfirmationPresenter(transferConfirmationFragment);

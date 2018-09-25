@@ -203,11 +203,21 @@
     <string name="transferamount_nexttransfer">NEXT - TRANSFER</string>
     <string name="transferamount_usemaximum">USE MAXIMUM</string>
     <string name="transferamount_useminimum">USE MINIMUM</string>
-
-
+    
     <string name="transferpayee_toolbar">Transfer - Payee</string>
     <string name="transferpayee_walletaddresstextview">Wallet address</string>
     <string name="transferpayee_nexttransferbutton">NEXT - TRANSFER</string>
+    <string name="transferpayee_invalidsourcewalletid">Invalid source wallet id</string>
+    <string name="transferpayee_destinationwalletaddressisnotfound">Destination wallet address is not found</string>
+    <string name="transferpayee_sourcewalletnotfound">Source wallet not found</string>
+    <string name="transferpayee_sourceanddestinationareequal">Source and destination are equal</string>
+    <string name="transferpayee_invalidamount">Invalid amount</string>
+    <string name="transferpayee_amountiszero">Amount is zero</string>
+    <string name="transferpayee_amountisnegative">Amount is negative</string>
+    <string name="transferpayee_insufficientBalance">Insufficient Balance</string>
+    <string name="transferpayee_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
+    <string name="transferpayee_walletcurrenciesaredifferent">Wallet currencies are different</string>
+    <string name="transferpayee_starttransferasananonymous">Start transfer as an anonymous</string>
 
     <string name="transferconfirmation_toolbar">Transfer confirmation</string>
     <string name="transferconfirmation_walletname">Wallet name </string>

@@ -19,7 +19,7 @@ public class TransferPayeeActivity extends BaseActivity {
 
         Bundle bundle=getIntent().getExtras();
         checkNotNull(bundle);
-        double amountTransfer=bundle.getDouble("transferAmount");
+        float amountTransfer=bundle.getFloat("transferAmount");
         int walletAddress=bundle.getInt("walletAddress");
 
         TransferPayeeFragment transferPayeeFragment = (TransferPayeeFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferpayee_fragmentcontainer);

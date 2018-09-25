@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
@@ -19,10 +20,14 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class TransferConfirmationFragment extends Fragment implements TransferConfirmationContract.View {
 
     private View mRoot;
-    private int mSourceWalletAddress;
-    private int mDestinationWalletAddress;
-    private double mTransferAmount;
+    private String mWalletName;
+    private String mDestinationWalletAddress;
+    private float mTransferAmount;
     private Button mButtonConfirm;
+    private TextView mTextViewWalletName;
+    private TextView mTextViewDestinationWalletAddress;
+    private TextView mTextViewTransferAmount;
+    private String mCurrencySymbol;
     private TransferConfirmationContract.Presenter mTransferConfirmationPresenter;
 
     @Nullable
@@ -31,9 +36,10 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
 
         mRoot = inflater.inflate(R.layout.fragment_transferconfirmation, null);
         checkNotNull(getArguments());
-        mSourceWalletAddress = getArguments().getInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS);
-        mDestinationWalletAddress = getArguments().getInt(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS);
-        mTransferAmount = getArguments().getDouble(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT);
+        mWalletName = getArguments().getString(TransferPayeeFragment.ARGUMENT_WALLET_NAME);
+        mDestinationWalletAddress = getArguments().getString(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS);
+        mTransferAmount = getArguments().getFloat(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT);
+        mCurrencySymbol=getArguments().getString(TransferPayeeFragment.ARGUMENT_CURRENCY_SYMBOL);
         return mRoot;
     }
 
@@ -42,11 +48,15 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
 
         initUiComponent();
         initListener();
+        setTransferInformation();
     }
 
     private void initUiComponent() {
 
         mButtonConfirm = mRoot.findViewById(R.id.button_transferconfirmation_confirm);
+        mTextViewWalletName=mRoot.findViewById(R.id.textview_transferconfirmation_walletname);
+        mTextViewDestinationWalletAddress=mRoot.findViewById(R.id.textview_transferconfirmation_payee);
+        mTextViewTransferAmount=mRoot.findViewById(R.id.textview_transferconfirmation_transferamount);
     }
 
     @Override
@@ -72,13 +82,14 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
         }
     }
 
-    public static TransferConfirmationFragment newInstance(int sourceWalletAddress, int destinationWalletAddress, double transferAmount) {
+    public static TransferConfirmationFragment newInstance(String walletName, String destinationWalletAddress, float transferAmount,String currencySymbol) {
 
         TransferConfirmationFragment transferConfirmationFragment = new TransferConfirmationFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(TransferAmountFragment.ARGUMENT_WALLET_ADDRESS, sourceWalletAddress);
-        bundle.putInt(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS, destinationWalletAddress);
-        bundle.putDouble(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT, transferAmount);
+        bundle.putString(TransferPayeeFragment.ARGUMENT_WALLET_NAME, walletName);
+        bundle.putString(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS, destinationWalletAddress);
+        bundle.putFloat(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT, transferAmount);
+        bundle.putString(TransferPayeeFragment.ARGUMENT_CURRENCY_SYMBOL,currencySymbol);
         transferConfirmationFragment.setArguments(bundle);
 
         return transferConfirmationFragment;
@@ -163,8 +174,12 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
 
     private void initListener() {
 
-        mButtonConfirm.setOnClickListener(v ->
+ }
 
-                mTransferConfirmationPresenter.transfer(mSourceWalletAddress, mTransferAmount, mDestinationWalletAddress));
-    }
+ private void setTransferInformation(){
+
+        mTextViewWalletName.setText(mWalletName);
+        mTextViewTransferAmount.setText(mCurrencySymbol+String.valueOf(mTransferAmount));
+        mTextViewDestinationWalletAddress.setText(mDestinationWalletAddress);
+ }
 }
