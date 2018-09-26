@@ -243,7 +243,7 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
         intent.putExtra(ARGUMENT_TRANSFER_AMOUNT, transaction.getActionList().get(1).getAmount());
         intent.putExtra(ARGUMENT_WALLET_NAME, transaction.getActionList().get(1).getCurrencyCode());
         intent.putExtra(ARGUMENT_DESTINATION_WALLET_ADDRESS, transaction.getActionList().get(1).getWalletAddress());
-        intent.putExtra(ARGUMENT_CURRENCY_SYMBOL, transaction.getActionList().get(1).getCurencySymbol());
+        intent.putExtra(ARGUMENT_CURRENCY_SYMBOL, transaction.getActionList().get(1).getCurrencySymbol());
         startActivity(intent);
     }
 

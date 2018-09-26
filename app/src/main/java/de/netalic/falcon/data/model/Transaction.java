@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.annotations.PrimaryKey;
@@ -48,6 +49,18 @@ public class Transaction implements Parcelable {
     @SerializedName("actions")
     private List<Action>mActionList;
 
+
+    public static final Creator<Transaction> CREATOR = new Creator<Transaction>() {
+        @Override
+        public Transaction createFromParcel(Parcel in) {
+            return new Transaction(in);
+        }
+
+        @Override
+        public Transaction[] newArray(int size) {
+            return new Transaction[size];
+        }
+    };
 
     public int getId() {
         return mId;
@@ -106,13 +119,16 @@ public class Transaction implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeInt(this.mId);
-        dest.writeList(mActionList);
+        dest.writeTypedList(this.mActionList);
+
 
     }
 
     protected Transaction(Parcel in){
 
         mId=in.readInt();
+        mActionList = new ArrayList<Action>();
+        in.readTypedList(mActionList,Action.CREATOR);
 
 
 
