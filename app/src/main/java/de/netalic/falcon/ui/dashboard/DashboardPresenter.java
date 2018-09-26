@@ -80,8 +80,9 @@ public class DashboardPresenter implements DashboardContract.Presenter {
                 }
 
             }
+            mDashboardView.dismissProgressBar();
         });
-        mDashboardView.dismissProgressBar();
+
     }
 
     @Override

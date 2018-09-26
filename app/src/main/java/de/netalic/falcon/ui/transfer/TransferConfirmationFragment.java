@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -20,15 +21,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class TransferConfirmationFragment extends Fragment implements TransferConfirmationContract.View {
 
     private View mRoot;
-    private String mWalletName;
-    private String mDestinationWalletAddress;
-    private float mTransferAmount;
     private Button mButtonConfirm;
     private TextView mTextViewWalletName;
     private TextView mTextViewDestinationWalletAddress;
     private TextView mTextViewTransferAmount;
-    private String mCurrencySymbol;
     private TransferConfirmationContract.Presenter mTransferConfirmationPresenter;
+    private Transaction mTransaction;
 
     @Nullable
     @Override
@@ -36,10 +34,7 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
 
         mRoot = inflater.inflate(R.layout.fragment_transferconfirmation, null);
         checkNotNull(getArguments());
-        mWalletName = getArguments().getString(TransferPayeeFragment.ARGUMENT_WALLET_NAME);
-        mDestinationWalletAddress = getArguments().getString(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS);
-        mTransferAmount = getArguments().getFloat(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT);
-        mCurrencySymbol=getArguments().getString(TransferPayeeFragment.ARGUMENT_CURRENCY_SYMBOL);
+        mTransaction = getArguments().getParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION);
         return mRoot;
     }
 
@@ -54,9 +49,9 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
     private void initUiComponent() {
 
         mButtonConfirm = mRoot.findViewById(R.id.button_transferconfirmation_confirm);
-        mTextViewWalletName=mRoot.findViewById(R.id.textview_transferconfirmation_walletname);
-        mTextViewDestinationWalletAddress=mRoot.findViewById(R.id.textview_transferconfirmation_payee);
-        mTextViewTransferAmount=mRoot.findViewById(R.id.textview_transferconfirmation_transferamount);
+        mTextViewWalletName = mRoot.findViewById(R.id.textview_transferconfirmation_walletname);
+        mTextViewDestinationWalletAddress = mRoot.findViewById(R.id.textview_transferconfirmation_payee);
+        mTextViewTransferAmount = mRoot.findViewById(R.id.textview_transferconfirmation_transferamount);
     }
 
     @Override
@@ -82,25 +77,23 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
         }
     }
 
-    public static TransferConfirmationFragment newInstance(String walletName, String destinationWalletAddress, float transferAmount,String currencySymbol) {
+    public static TransferConfirmationFragment newInstance(Transaction transaction) {
 
         TransferConfirmationFragment transferConfirmationFragment = new TransferConfirmationFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(TransferPayeeFragment.ARGUMENT_WALLET_NAME, walletName);
-        bundle.putString(TransferPayeeFragment.ARGUMENT_DESTINATION_WALLET_ADDRESS, destinationWalletAddress);
-        bundle.putFloat(TransferPayeeFragment.ARGUMENT_TRANSFER_AMOUNT, transferAmount);
-        bundle.putString(TransferPayeeFragment.ARGUMENT_CURRENCY_SYMBOL,currencySymbol);
+        bundle.putParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION, transaction);
         transferConfirmationFragment.setArguments(bundle);
 
         return transferConfirmationFragment;
     }
 
+
     @Override
-    public void navigationToCompletedTransfer() {
+    public void navigationToCompletedTransfer(Transaction transaction) {
 
-        Intent intent = new Intent(getContext(), TransferCompletedActivity.class);
+        Intent intent=new Intent(getContext(),TransferCompletedActivity.class);
+        intent.putExtra(TransferPayeeFragment.ARGUMENT_TRANSACTION,transaction);
         startActivity(intent);
-
     }
 
     @Override
@@ -176,16 +169,16 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
 
         mButtonConfirm.setOnClickListener(v -> {
 
-           // mTransferConfirmationPresenter.finalizeTransfer();
+            mTransferConfirmationPresenter.finalizeTransfer(mTransaction.getId());
 
         });
 
- }
+    }
 
- private void setTransferInformation(){
+    private void setTransferInformation() {
 
-        mTextViewWalletName.setText(mWalletName);
-        mTextViewTransferAmount.setText(mCurrencySymbol+String.valueOf(mTransferAmount));
-        mTextViewDestinationWalletAddress.setText(mDestinationWalletAddress);
- }
+        mTextViewWalletName.setText(mTransaction.getActionList().get(1).getWalletName());
+        mTextViewTransferAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + mTransaction.getActionList().get(1).getAmount());
+        mTextViewDestinationWalletAddress.setText(mTransaction.getActionList().get(1).getWalletAddress());
+    }
 }

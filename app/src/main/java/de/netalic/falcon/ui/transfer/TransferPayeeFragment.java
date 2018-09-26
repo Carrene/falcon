@@ -43,9 +43,7 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
     public static final String ARGUMENT_TRANSFER_AMOUNT = "transferAmount";
     private int mSourceWalletAddress;
     private float mTransferAmount;
-    public static final String ARGUMENT_DESTINATION_WALLET_ADDRESS = "destinationWalletAddress";
-    public static final String ARGUMENT_WALLET_NAME = "walletName";
-    public static final String ARGUMENT_CURRENCY_SYMBOL = "currencySymbol";
+    public static final String ARGUMENT_TRANSACTION="transaction";
 
     @Nullable
     @Override
@@ -240,10 +238,7 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
     public void navigationToTransferConfirmation(Transaction transaction) {
 
         Intent intent = new Intent(getContext(), TransferConfirmationActivity.class);
-        intent.putExtra(ARGUMENT_TRANSFER_AMOUNT, transaction.getActionList().get(1).getAmount());
-        intent.putExtra(ARGUMENT_WALLET_NAME, transaction.getActionList().get(1).getCurrencyCode());
-        intent.putExtra(ARGUMENT_DESTINATION_WALLET_ADDRESS, transaction.getActionList().get(1).getWalletAddress());
-        intent.putExtra(ARGUMENT_CURRENCY_SYMBOL, transaction.getActionList().get(1).getCurrencySymbol());
+        intent.putExtra(ARGUMENT_TRANSACTION,transaction);
         startActivity(intent);
     }
 

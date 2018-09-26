@@ -37,19 +37,20 @@ public class TransferPayeePresenter implements TransferPayeeContract.Presenter {
                     case 200: {
 
                         mTransferPayeeView.navigationToTransferConfirmation(deal.getResponse().body());
+                        break;
                     }
 
-                    case 700:{
+                    case 700: {
 
                         mTransferPayeeView.showError700();
-
+                        break;
 
                     }
 
-                    case 727:{
+                    case 727: {
 
                         mTransferPayeeView.showError727();
-
+                        break;
                     }
 
                     case 404: {
@@ -59,15 +60,17 @@ public class TransferPayeePresenter implements TransferPayeeContract.Presenter {
                         } else {
                             mTransferPayeeView.showErrorTryingToTransferFromOtherWallet404();
                         }
+                        break;
                     }
 
-                    case 601:{
+
+                    case 601: {
 
                         mTransferPayeeView.showError601();
-
+                        break;
                     }
 
-                    case 702:{
+                    case 702: {
 
                         if (deal.getResponse().message().equals("Amount is negative")) {
 
@@ -75,26 +78,28 @@ public class TransferPayeePresenter implements TransferPayeeContract.Presenter {
                         }
                         if (deal.getResponse().message().equals("Amount is zero")) {
                             mTransferPayeeView.showErrorAmountIsZero702();
-                        }
-                        else {
+                        } else {
                             mTransferPayeeView.showErrorInvalidAmount702();
                         }
+                        break;
                     }
 
-                    case 600:{
+                    case 600: {
 
                         mTransferPayeeView.showError600();
+                        break;
                     }
 
-                    case 401:{
+                    case 401: {
 
                         mTransferPayeeView.showError401();
-
+                        break;
                     }
 
-                    case 602:{
+                    case 602: {
 
                         mTransferPayeeView.showError602();
+                        break;
                     }
                 }
                 mTransferPayeeView.dismissProgressBar();

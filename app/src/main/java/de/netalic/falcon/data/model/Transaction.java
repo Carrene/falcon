@@ -5,7 +5,11 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import io.realm.annotations.PrimaryKey;
@@ -47,7 +51,7 @@ public class Transaction implements Parcelable {
     private String mBraintreeToken;
 
     @SerializedName("actions")
-    private List<Action>mActionList;
+    private List<Action> mActionList;
 
 
     public static final Creator<Transaction> CREATOR = new Creator<Transaction>() {
@@ -79,7 +83,33 @@ public class Transaction implements Parcelable {
     }
 
     public String getCreatedAt() {
+
         return mCreatedAt;
+    }
+
+    public String getDate() {
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            Date date = dateFormat.parse(mCreatedAt);
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            return dateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getTime() {
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            Date date = dateFormat.parse(mCreatedAt);
+            dateFormat = new SimpleDateFormat("h:mm a");
+            return dateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public String getModifiedAt() {
@@ -120,16 +150,19 @@ public class Transaction implements Parcelable {
 
         dest.writeInt(this.mId);
         dest.writeTypedList(this.mActionList);
+        dest.writeString(this.mRetrievalReferenceNumber);
+        dest.writeString(this.getCreatedAt());
 
 
     }
 
-    protected Transaction(Parcel in){
+    protected Transaction(Parcel in) {
 
-        mId=in.readInt();
+        mId = in.readInt();
         mActionList = new ArrayList<Action>();
-        in.readTypedList(mActionList,Action.CREATOR);
-
+        in.readTypedList(mActionList, Action.CREATOR);
+        mRetrievalReferenceNumber = in.readString();
+        mCreatedAt = in.readString();
 
 
     }

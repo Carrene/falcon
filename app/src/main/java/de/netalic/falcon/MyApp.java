@@ -15,7 +15,7 @@ import de.netalic.falcon.data.repository.receipt.ReceiptRealmRepository;
 import de.netalic.falcon.data.repository.receipt.ReceiptRepository;
 import de.netalic.falcon.data.repository.receipt.ReceiptRestRepository;
 import de.netalic.falcon.data.repository.transfer.TransferRepository;
-import de.netalic.falcon.data.repository.transfer.TransferRestReposiory;
+import de.netalic.falcon.data.repository.transfer.TransferRestRepository;
 import de.netalic.falcon.data.repository.user.UserRealmRepository;
 import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.data.repository.user.UserRestRepository;
@@ -66,6 +66,6 @@ public class MyApp extends Application {
         RepositoryLocator.getInstance().setRepository(new DepositRepository(new DepositRestRepository(), null));
         RepositoryLocator.getInstance().setRepository(new ExchangeRateRepository(new ExchangeRateRestRepository(), null));
         RepositoryLocator.getInstance().setRepository(new ReceiptRepository(new ReceiptRestRepository(), new ReceiptRealmRepository()));
-        RepositoryLocator.getInstance().setRepository(new TransferRepository(new TransferRestReposiory(), null));
+        RepositoryLocator.getInstance().setRepository(new TransferRepository(new TransferRestRepository(), null));
     }
 }

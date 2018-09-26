@@ -58,6 +58,10 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @HTTP(method = "START", path = "wallets/{wallet_id}/transfers", hasBody = true)
-    Call<Transaction> StartTransfer(@Path("wallet_id") int sourceWalletAddress, @Field("destinationWalletAddress") String destinationWalletAddress, @Field("amount") float amount);
+    Call<Transaction> startTransfer(@Path("wallet_id") int sourceWalletAddress, @Field("destinationWalletAddress") String destinationWalletAddress, @Field("amount") float amount);
+
+    @HTTP(method = "FINALIZE",path = "transfers/{transaction_id}")
+    Call<Transaction>finalizeTransfer(@Path("transaction_id") int transactionId);
 
 }
+

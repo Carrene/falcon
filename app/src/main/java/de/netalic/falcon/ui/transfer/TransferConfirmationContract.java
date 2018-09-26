@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.transfer;
 
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 
@@ -7,7 +8,7 @@ public interface TransferConfirmationContract {
 
     interface View extends BaseView<Presenter>{
 
-        void navigationToCompletedTransfer();
+        void navigationToCompletedTransfer(Transaction transaction);
         void navigationToTransferFailed();
         void showResponseCodeInvalidSourceWalletAddress();
         void showResponseCodeInvalidDestinationWalletAddress();
