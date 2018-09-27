@@ -33,13 +33,6 @@
             android:layout_marginTop="@dimen/margintop_dashboard_linearlayoutalphasymbol"
             android:gravity="center">
 
-            <ImageView
-                android:id="@+id/imageview_dasboard_alphaicon"
-                android:layout_width="@dimen/width_dashboard_alphaicon"
-                android:layout_height="@dimen/height_dashboard_alphaicon"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/textview_dashboard_balance"
-                android:src="@drawable/dashboard_alphaicon"/>
 
             <TextView
                 android:id="@+id/textview_dashboard_balance"

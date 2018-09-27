@@ -3,13 +3,9 @@
     <PreferenceCategory android:title="Security">
 
         <Preference
-            android:key="pattern"
-            android:summary="Set pattern"
-            android:title="Pattern" />
-        <Preference
-            android:key="password"
-            android:summary="Set password"
-            android:title="Password" />
+            android:key="Login method"
+            android:summary="pattern"
+            android:title="Login method" />
 
     </PreferenceCategory>
 
@@ -23,7 +19,7 @@
             android:paddingBottom="20dp"
             android:paddingTop="16dp"
             android:summary="Set your recovery email"
-            android:title="VALUE" />
+            android:title="Not set" />
 
     </PreferenceCategory>
     <PreferenceCategory android:layout="@layout/divider_preference" />
