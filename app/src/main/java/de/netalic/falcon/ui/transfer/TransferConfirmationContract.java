@@ -9,16 +9,12 @@ public interface TransferConfirmationContract {
     interface View extends BaseView<Presenter>{
 
         void navigationToCompletedTransfer(Transaction transaction);
-        void navigationToTransferFailed();
-        void showResponseCodeInvalidSourceWalletAddress();
-        void showResponseCodeInvalidDestinationWalletAddress();
-        void showResponseCodeSourceWalletNotFound();
-        void showResponseCodeSourceAndDestinationIsSame();
-        void showResponseCodeInvalidAmount();
-        void showResponseCodeAmountIsNegative();
-        void showResponseInsufficientBalance();
-        void showResponseTryingToTransferFromAnotherClientWallet();
-
+        void showErrorTransferNotFound404();
+        void showErrorTryingToFinalizeSomeoneElseTransaction404();
+        void shoeErrorFinalizingTransactionWithStatusOfSucceed604();
+        void shoeErrorFinalizingTransactionWithStatusOfFailed604();
+        void showError600();
+        void showError401();
 
     }
 

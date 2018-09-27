@@ -91,79 +91,49 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
     @Override
     public void navigationToCompletedTransfer(Transaction transaction) {
 
-        Intent intent=new Intent(getContext(),TransferCompletedActivity.class);
-        intent.putExtra(TransferPayeeFragment.ARGUMENT_TRANSACTION,transaction);
+        Intent intent = new Intent(getContext(), TransferCompletedActivity.class);
+        intent.putExtra(TransferPayeeFragment.ARGUMENT_TRANSACTION, transaction);
         startActivity(intent);
     }
 
     @Override
-    public void navigationToTransferFailed() {
+    public void showErrorTransferNotFound404() {
 
-        Intent intent = new Intent(getContext(), TransferFailedActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void showResponseCodeInvalidSourceWalletAddress() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_invalidsourcewalletaddress), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_transfernotfound), getContext());
 
     }
 
     @Override
-    public void showResponseCodeInvalidDestinationWalletAddress() {
+    public void showErrorTryingToFinalizeSomeoneElseTransaction404() {
 
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_invaliddestinationwalletaddress), getContext());
-
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
     }
 
     @Override
-    public void showResponseCodeSourceWalletNotFound() {
+    public void shoeErrorFinalizingTransactionWithStatusOfSucceed604() {
 
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_sourcewalletnotfound), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
     }
 
     @Override
-    public void showResponseCodeSourceAndDestinationIsSame() {
+    public void shoeErrorFinalizingTransactionWithStatusOfFailed604() {
 
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_sourceanddestinationissame), getContext());
-
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_finalizingtransactionwithstatusoffailed), getContext());
     }
 
     @Override
-    public void showResponseCodeInvalidAmount() {
+    public void showError600() {
 
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_invalidamount), getContext());
-
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_balanceislowerthanbalance), getContext());
     }
 
     @Override
-    public void showResponseCodeAmountIsNegative() {
+    public void showError401() {
 
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_amountisnegative), getContext());
-
-    }
-
-    @Override
-    public void showResponseInsufficientBalance() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_insufficientbalance), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_finalizetransferasananonymous), getContext());
 
     }
 
-    @Override
-    public void showResponseTryingToTransferFromAnotherClientWallet() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_tryingtotransferfromanotherclientwallet), getContext());
-    }
 
     private void initListener() {
 

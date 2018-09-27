@@ -38,6 +38,42 @@ public class TransferConfirmationPresenter implements TransferConfirmationContra
                         mTransferConfirmationView.navigationToCompletedTransfer(deal.getResponse().body());
                         break;
                     }
+
+                    case 404: {
+
+                        if (deal.getResponse().message().equals("Transfer not found")) {
+                            mTransferConfirmationView.showErrorTransferNotFound404();
+                        } else {
+
+                            mTransferConfirmationView.showErrorTryingToFinalizeSomeoneElseTransaction404();
+                        }
+                        break;
+                    }
+
+                    case 600: {
+
+                        mTransferConfirmationView.showError600();
+                        break;
+                    }
+
+                    case 401: {
+
+                        mTransferConfirmationView.showError401();
+                        break;
+                    }
+
+                    case 604: {
+
+                        if (deal.getResponse().message().equals("Cannot Finalize Succeed Transaction")) {
+
+                            mTransferConfirmationView.shoeErrorFinalizingTransactionWithStatusOfSucceed604();
+                        } else {
+
+                            mTransferConfirmationView.shoeErrorFinalizingTransactionWithStatusOfFailed604();
+                        }
+
+                        break;
+                    }
                 }
 
                 mTransferConfirmationView.dismissProgressBar();

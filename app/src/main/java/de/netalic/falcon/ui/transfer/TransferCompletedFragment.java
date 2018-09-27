@@ -18,10 +18,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Deposit;
