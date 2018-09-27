@@ -110,7 +110,6 @@ public class NavigationDrawerUtil {
                             case 6:{
 
                                 intent=new Intent(activity, SettingActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
                             }
