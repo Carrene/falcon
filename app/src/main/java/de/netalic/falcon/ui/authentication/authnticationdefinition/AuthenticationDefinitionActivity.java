@@ -21,8 +21,6 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
     private SegmentedGroup mSegmentedGroup;
     private AuthenticationDefinitionPasswordFragment mAuthenticationDefinitionPasswordFragment;
     private AuthenticationDefinitionPatternFragment mAuthenticationDefinitionPatternFragment;
-    public static final int PASSWORD_TYPE=0;
-    public static final int PATTERN_TYPE=1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,13 +99,13 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
     @Override
     public void navigationToDashboardFromPassword(String credentialValue) {
 
-        saveCredential(credentialValue, PASSWORD_TYPE);
+        saveCredential(credentialValue, Authentication.PASSWORD_TYPE);
     }
 
     @Override
     public void navigationToDashboardFromPattern(String credentialValue) {
 
-        saveCredential(credentialValue, PATTERN_TYPE);
+        saveCredential(credentialValue, Authentication.PATTERN_TYPE);
 
     }
 

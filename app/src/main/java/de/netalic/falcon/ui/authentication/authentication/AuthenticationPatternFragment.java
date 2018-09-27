@@ -25,14 +25,13 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
     private NavigateToDashboardCallback mNavigateToDashboardCallback;
     private View mRoot;
     private PatternLockView mPatternLockView;
-    private int mAttemptTimeNumber;
     private String mCredentialValue;
-
 
     interface NavigateToDashboardCallback {
 
         void checkCredentialValue(String credentialValue);
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -73,18 +72,18 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
 
     @Override
     public void onAttach(Context context) {
+
         super.onAttach(context);
         if (context instanceof NavigateToDashboardCallback) {
-
             mNavigateToDashboardCallback = (NavigateToDashboardCallback) context;
         } else {
-
             throw new ClassCastException(context.toString() + " must implement NavigateToDashboardCallback");
         }
     }
 
     @Override
     public void onDetach() {
+
         super.onDetach();
         mNavigateToDashboardCallback = null;
     }
@@ -93,7 +92,6 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
 
         mPatternLockView = mRoot.findViewById(R.id.patternview_authentication_pattern);
         mPatternLockView.setEnabled(true);
-
     }
 
     private void initUiListener() {
@@ -113,25 +111,15 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
             @Override
             public void onComplete(List<PatternLockView.Dot> pattern) {
 
-                if (mAttemptTimeNumber == 0) {
-
-                    if (pattern.size() < 4) {
-                        checkNotNull(getContext());
-                        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_connectfordots), getContext());
-                    } else {
-                        mAttemptTimeNumber++;
-
-                    }
+                if (pattern.size() < 4) {
+                    checkNotNull(getContext());
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_connectfordots), getContext());
                     mPatternLockView.clearPattern();
-                    return;
+                } else {
+                    mCredentialValue = mPatternLockView.getPattern().toString();
+                    checkCredential(mCredentialValue);
+                    mPatternLockView.clearPattern();
                 }
-
-                checkNotNull(getContext());
-                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationdefinition_setsuccessful), getContext());
-
-                mCredentialValue = mPatternLockView.getPattern().toString();
-                mPatternLockView.clearPattern();
-                navigateToDashboard(mCredentialValue);
             }
 
             @Override
@@ -141,14 +129,14 @@ public class AuthenticationPatternFragment extends Fragment implements Authentic
         });
     }
 
-    private void navigateToDashboard(String credentialValue) {
+    private void checkCredential(String credentialValue) {
 
         mNavigateToDashboardCallback.checkCredentialValue(credentialValue);
     }
 
-    public void setErrorOnSnackBar(){
+    public void setErrorOnSnackBar() {
 
         checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.authenticationpassword_passworddoesnotmatch),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.authenticationpattern_incorrect), getContext());
     }
 }

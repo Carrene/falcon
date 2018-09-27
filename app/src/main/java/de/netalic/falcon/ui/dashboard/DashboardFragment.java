@@ -97,7 +97,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mSpinnerWalletList = mRoot.findViewById(R.id.spinner_dashboard_spinner);
         mTextViewBalance = mRoot.findViewById(R.id.textview_dashboard_balance);
         mImageViewWithdraw = mRoot.findViewById(R.id.imageview_dashboard_withdraw);
-        mImageViewPurchase=mRoot.findViewById(R.id.imageview_dashboard_purchase);
+        mImageViewPurchase = mRoot.findViewById(R.id.imageview_dashboard_purchase);
     }
 
     @Override
@@ -166,7 +166,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
                 String roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * mRate.getSell());
-                mTextViewRate.setText(getContext().getString(R.string.everywhere_dollarsymbol)+" " + roundDollar);
+                mTextViewRate.setText(getContext().getString(R.string.everywhere_dollarsymbol) + " " + roundDollar);
             }
 
             @Override
@@ -183,7 +183,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewPurchase.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getActivity(), PurchaseActivity.class);
+            Intent intent = new Intent(getActivity(), PurchaseActivity.class);
             startActivity(intent);
 
         });

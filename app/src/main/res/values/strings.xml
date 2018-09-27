@@ -203,7 +203,7 @@
     <string name="transferamount_nexttransfer">NEXT - TRANSFER</string>
     <string name="transferamount_usemaximum">USE MAXIMUM</string>
     <string name="transferamount_useminimum">USE MINIMUM</string>
-    
+
     <string name="transferpayee_toolbar">Transfer - Payee</string>
     <string name="transferpayee_walletaddresstextview">Wallet address</string>
     <string name="transferpayee_nexttransferbutton">NEXT - TRANSFER</string>
@@ -231,10 +231,6 @@
     <string name="transferconfirmation_finalizingtransactionwithstatusoffailed">Finalizing transaction with status of failed</string>
     <string name="transferconfirmation_balanceislowerthanbalance">Balance is lower than balance</string>
     <string name="transferconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
-
-
-
-
 
 
     <string name="transferfailed_toolbar">Transfer failed</string>
@@ -320,9 +316,10 @@
     <string name="purchasefailed_dashboardbutton">DASHBOARD</string>
 
     <string name="authentication_hintpassword">Enter password</string>
-    <string name="authentication_toolbar">authentication</string>
+    <string name="authentication_toolbar">Authentication</string>
 
-    <string name="authenticationpassword_passworddoesnotmatch">Password does not match</string>
+    <string name="authenticationpassword_incorrect">Password is incorrect</string>
+    <string name="authenticationpattern_incorrect">Pattern is incorrect</string>
 
 
 </resources>

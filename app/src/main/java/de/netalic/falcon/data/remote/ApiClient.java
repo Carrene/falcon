@@ -60,15 +60,6 @@ public class ApiClient {
             okHttpClient.addInterceptor(new AuthorizationInterceptor());
             okHttpClient.addInterceptor(new NetworkErrorInterceptor());
 
-//            RuntimeTypeAdapterFactory<Receipt> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
-//                    .of(Receipt.class, "type")
-//                    .registerSubtype(ChargeReceipt.class, "charge")
-//                    .registerSubtype(TransferReceipt.class, "transfer");
-
-//            Gson gson = new GsonBuilder()
-//                    .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
-//                    .create();
-
             sRetrofit = new Retrofit.Builder().baseUrl(url)
                     .client(okHttpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())
@@ -97,7 +88,6 @@ public class ApiClient {
 
         String url = BuildConfig.WEB_SERVICE_URL + ":" + "/apiv1/";
         return url;
-
     }
 
     private static class NetworkErrorInterceptor implements Interceptor {

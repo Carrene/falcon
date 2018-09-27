@@ -46,7 +46,6 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         initUiComponent();
-        initUiListener();
     }
 
     @Override
@@ -73,18 +72,18 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
 
     @Override
     public void onAttach(Context context) {
+
         super.onAttach(context);
         if (context instanceof NavigateToDashboardCallback) {
-
             mNavigateToDashboardCallback = (NavigateToDashboardCallback) context;
         } else {
-
             throw new ClassCastException(context.toString() + " must implement NavigateToDashboardCallback");
         }
     }
 
     @Override
     public void onDetach() {
+
         super.onDetach();
         mNavigateToDashboardCallback = null;
     }
@@ -93,20 +92,11 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
 
         mEditTextPassword = mRoot.findViewById(R.id.edittext_authentication_entercode);
         mTextInputLayoutPassword = mRoot.findViewById(R.id.textinputlayout_authentication_enterpasscode);
-
-    }
-
-    private void initUiListener() {
-
-        mEditTextPassword.setOnClickListener(v -> {
-
-
-        });
-
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
         inflater.inflate(R.menu.menu_everywhere_thathastick, menu);
     }
 
@@ -118,22 +108,17 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
             case R.id.menu_everywhere_done: {
 
                 if (mEditTextPassword.toString().equals("")) {
-
                     checkNotNull(getContext());
                     SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
-
                 } else {
-
-                    navigateToDashboard(mEditTextPassword.getText().toString());
+                    checkCredential(mEditTextPassword.getText().toString());
                 }
-
             }
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    private void navigateToDashboard(String credentialValue) {
+    private void checkCredential(String credentialValue) {
 
         mNavigateToDashboardCallback.checkCredentialValue(credentialValue);
     }
@@ -141,7 +126,7 @@ public class AuthenticationPasswordFragment extends Fragment implements Authenti
     public void setErrorOnTextInputLayout() {
 
         checkNotNull(getContext());
-        mTextInputLayoutPassword.setError(getContext().getString(R.string.authenticationpassword_passworddoesnotmatch));
+        mTextInputLayoutPassword.setError(getContext().getString(R.string.authenticationpassword_incorrect));
 
     }
 }

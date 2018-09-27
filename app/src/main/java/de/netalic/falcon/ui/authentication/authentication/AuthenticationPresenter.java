@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.authentication.authentication;
 
+import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.util.DigestUtil;
@@ -11,6 +12,7 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
 
 
     public AuthenticationPresenter(AuthenticationActivity authenticationView) {
+
         mAuthenticationView = authenticationView;
         mAuthenticationView.setPresenter(this);
     }
@@ -27,14 +29,14 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
 
                 switch (deal.getModel().getAuthenticationType()) {
 
-                    case 0: {
+                    case Authentication.PATTERN_TYPE: {
 
                         mAuthenticationView.showPatternLayout();
 
                         break;
                     }
 
-                    case 1: {
+                    case Authentication.PASSWORD_TYPE: {
 
                         mAuthenticationView.showPasswordLayout();
 

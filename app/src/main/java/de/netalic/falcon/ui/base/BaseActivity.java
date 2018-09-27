@@ -66,6 +66,10 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
     protected void onPause() {
 
         super.onPause();
+        if (materialDialog != null) {
+            materialDialog.dismiss();
+        }
+
     }
 
     @Override
@@ -148,5 +152,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
         super.onUserInteraction();
         ScreenLocker.getInstance().restart();
     }
+
 
 }

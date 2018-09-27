@@ -43,6 +43,7 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.activity_authentication;
     }
 
@@ -54,6 +55,7 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
 
     @Override
     protected String getActionbarTitle() {
+
         return getString(R.string.authentication_toolbar);
     }
 
@@ -82,14 +84,13 @@ public class AuthenticationActivity extends BaseActivity implements Authenticati
     public void navigationToDashboard() {
 
         Intent intent = new Intent(this, DashboardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     public void showTextInputLayoutError() {
 
         mAuthenticationPasswordFragment.setErrorOnTextInputLayout();
-
-
     }
 
     public void showPatternLockError() {
