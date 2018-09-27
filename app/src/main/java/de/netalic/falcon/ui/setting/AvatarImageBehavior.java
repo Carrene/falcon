@@ -48,9 +48,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
     }
 
     @Override
-    public boolean onDependentViewChanged(
-            final CoordinatorLayout parent, final CircleImageView child, final View dependency
-    ) {
+    public boolean onDependentViewChanged(final CoordinatorLayout parent, final CircleImageView child, final View dependency) {
 
 
         initProperties(child, dependency);

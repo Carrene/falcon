@@ -28,7 +28,7 @@ public class SettingActivity extends BaseActivity {
         ViewCompat.setTransitionName(findViewById(R.id.appbarlayout_setting_appbarlayout),
                 "EXTRA_IMAGE");
         supportPostponeEnterTransition();
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar_setting_toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar_setting_toolbar));
 
         mTextViewPhoneNumber = findViewById(R.id.textview_setting_phonenumber);
         mTextViewEmail = findViewById(R.id.textview_setting_email);
@@ -59,6 +59,7 @@ public class SettingActivity extends BaseActivity {
 
     private void setPhoneAndEmail() {
 
+        //TODO: What is this? All string should be in string.xml
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
         Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
         String phone = (String) tokenBody.get("phone");

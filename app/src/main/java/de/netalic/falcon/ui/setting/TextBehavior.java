@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import de.netalic.falcon.R;
 
+//TODO(Milad) Why this class is unused?
 public class TextBehavior extends CoordinatorLayout.Behavior<LinearLayout> {
 
 
