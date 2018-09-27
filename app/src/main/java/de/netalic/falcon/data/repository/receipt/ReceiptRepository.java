@@ -3,7 +3,6 @@ package de.netalic.falcon.data.repository.receipt;
 import java.util.List;
 
 import de.netalic.falcon.data.model.Receipt;
-import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 public class ReceiptRepository implements IReceiptRepository {
 
@@ -27,7 +26,7 @@ public class ReceiptRepository implements IReceiptRepository {
 
         if (sReceiptRepository == null) {
 
-            synchronized (WalletRepository.class) {
+            synchronized (ReceiptRepository.class) {
                 if (sReceiptRepository == null) {
                     sReceiptRepository = new ReceiptRepository();
                 }

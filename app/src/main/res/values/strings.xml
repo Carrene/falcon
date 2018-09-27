@@ -203,26 +203,38 @@
     <string name="transferamount_nexttransfer">NEXT - TRANSFER</string>
     <string name="transferamount_usemaximum">USE MAXIMUM</string>
     <string name="transferamount_useminimum">USE MINIMUM</string>
-
-
+    
     <string name="transferpayee_toolbar">Transfer - Payee</string>
     <string name="transferpayee_walletaddresstextview">Wallet address</string>
     <string name="transferpayee_nexttransferbutton">NEXT - TRANSFER</string>
+    <string name="transferpayee_invalidsourcewalletid">Invalid source wallet id</string>
+    <string name="transferpayee_destinationwalletaddressisnotfound">Destination wallet address is not found</string>
+    <string name="transferpayee_sourcewalletnotfound">Source wallet not found</string>
+    <string name="transferpayee_sourceanddestinationareequal">Source and destination are equal</string>
+    <string name="transferpayee_invalidamount">Invalid amount</string>
+    <string name="transferpayee_amountiszero">Amount is zero</string>
+    <string name="transferpayee_amountisnegative">Amount is negative</string>
+    <string name="transferpayee_insufficientBalance">Insufficient Balance</string>
+    <string name="transferpayee_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
+    <string name="transferpayee_walletcurrenciesaredifferent">Wallet currencies are different</string>
+    <string name="transferpayee_starttransferasananonymous">Start transfer as an anonymous</string>
 
     <string name="transferconfirmation_toolbar">Transfer confirmation</string>
     <string name="transferconfirmation_walletname">Wallet name </string>
     <string name="transferconfirmation_paymentgateway">Payee address </string>
     <string name="transferconfirmation_walletamount">Transfer amount  </string>
     <string name="transferconfirmation_baseamount">Paid amount  </string>
-    <string name="transferconfirmation_confirm">CONFIRM</string>
-    <string name="transferconfirmation_invalidsourcewalletaddress">Invalid source wallet address</string>
-    <string name="transferconfirmation_invaliddestinationwalletaddress">Invalid destination wallet address</string>
-    <string name="transferconfirmation_sourcewalletnotfound">Source wallet not found</string>
-    <string name="transferconfirmation_sourceanddestinationissame">Source and destination is same</string>
-    <string name="transferconfirmation_invalidamount">Invalid amount</string>
-    <string name="transferconfirmation_amountisnegative">Amount is negative</string>
-    <string name="transferconfirmation_insufficientbalance">Insufficient balance</string>
-    <string name="transferconfirmation_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
+    <string name="transferconfirmation_confirm">Confirm</string>
+    <string name="transferconfirmation_transfernotfound">Transfer not found</string>
+    <string name="transferconfirmation_tryingtofinalizesomeoneelsetransaction">Trying to finalize someone else transaction</string>
+    <string name="transferconfirmation_finalizingtransactionwithstatusofsucceed">Finalizing transaction with status of succeed</string>
+    <string name="transferconfirmation_finalizingtransactionwithstatusoffailed">Finalizing transaction with status of failed</string>
+    <string name="transferconfirmation_balanceislowerthanbalance">Balance is lower than balance</string>
+    <string name="transferconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
+
+
+
+
 
 
     <string name="transferfailed_toolbar">Transfer failed</string>

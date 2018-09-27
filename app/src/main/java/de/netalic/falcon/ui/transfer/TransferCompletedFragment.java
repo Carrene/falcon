@@ -21,6 +21,7 @@ import java.io.File;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -44,12 +45,15 @@ public class TransferCompletedFragment extends Fragment implements TransferCompl
     private static final int REQUEST_PERMISSIONS = 1;
     private static final int IMAGE_QUALITY = 100;
     private View mScreenshotView;
+    private Transaction mTransaction;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_transfercompleted, null);
+        checkNotNull(getArguments());
+        mTransaction = getArguments().getParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION);
         setHasOptionsMenu(true);
         return mRoot;
     }
@@ -60,6 +64,7 @@ public class TransferCompletedFragment extends Fragment implements TransferCompl
         super.onViewCreated(view, savedInstanceState);
         initUiComponent();
         initListener();
+        setTransactionInformation();
 
     }
 
@@ -79,9 +84,13 @@ public class TransferCompletedFragment extends Fragment implements TransferCompl
 
     }
 
-    public static TransferCompletedFragment newInstance() {
+    public static TransferCompletedFragment newInstance(Transaction transaction) {
 
-        return new TransferCompletedFragment();
+        TransferCompletedFragment transferCompletedFragment = new TransferCompletedFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION, transaction);
+        transferCompletedFragment.setArguments(bundle);
+        return transferCompletedFragment;
     }
 
     public void initUiComponent() {
@@ -104,6 +113,15 @@ public class TransferCompletedFragment extends Fragment implements TransferCompl
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
+
+    }
+
+    public void setTransactionInformation() {
+
+        mTextViewTransferAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + String.valueOf(mTransaction.getActionList().get(1).getAmount()));
+        mTextViewRrn.setText(mTransaction.getRetrievalReferenceNumber());
+        mTextViewTransactionDate.setText(mTransaction.getDate());
+        mTextViewTransactionTime.setText(mTransaction.getTime());
 
     }
 
@@ -180,4 +198,6 @@ public class TransferCompletedFragment extends Fragment implements TransferCompl
 
         return true;
     }
+
+
 }

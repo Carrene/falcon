@@ -1,6 +1,7 @@
 package de.netalic.falcon.ui.transfer;
 
-import de.netalic.falcon.data.repository.receipt.ReceiptRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.transfer.TransferRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -18,15 +19,15 @@ public class TransferConfirmationPresenter implements TransferConfirmationContra
 
     }
 
+
     @Override
-    public void transfer(int sourceAddress, double amount, int walletAddress) {
+    public void finalizeTransfer(int transactionId) {
 
-        ReceiptRepository.getInstance().transfer(sourceAddress, walletAddress, amount, deal -> {
+        mTransferConfirmationView.showProgressBar();
+        RepositoryLocator.getInstance().getRepository(TransferRepository.class).get(transactionId, deal -> {
 
-            mTransferConfirmationView.showProgressBar();
             if (deal.getThrowable() != null) {
 
-                mTransferConfirmationView.dismissProgressBar();
 
             } else {
 
@@ -34,61 +35,51 @@ public class TransferConfirmationPresenter implements TransferConfirmationContra
 
                     case 200: {
 
-                        mTransferConfirmationView.navigationToCompletedTransfer();
-
-                    }
-
-                    case 731: {
-
-                        if (deal.getResponse().message().equals("Invalid source wallet address")) {
-
-
-                            mTransferConfirmationView.showResponseCodeInvalidSourceWalletAddress();
-                        } else {
-
-                            mTransferConfirmationView.showResponseCodeInvalidDestinationWalletAddress();
-
-                        }
+                        mTransferConfirmationView.navigationToCompletedTransfer(deal.getResponse().body());
+                        break;
                     }
 
                     case 404: {
 
-                        if (deal.getResponse().message().equals("Source wallet not found")) {
-
-
-                            mTransferConfirmationView.showResponseCodeSourceWalletNotFound();
+                        if (deal.getResponse().message().equals("Transfer not found")) {
+                            mTransferConfirmationView.showErrorTransferNotFound404();
                         } else {
 
-                            mTransferConfirmationView.showResponseTryingToTransferFromAnotherClientWallet();
+                            mTransferConfirmationView.showErrorTryingToFinalizeSomeoneElseTransaction404();
                         }
-
-                    }
-                    case 707: {
-
-                        mTransferConfirmationView.showResponseInsufficientBalance();
+                        break;
                     }
 
-                    case 702: {
+                    case 600: {
 
-                        if (deal.getResponse().message().equals("Invalid amount")) {
+                        mTransferConfirmationView.showError600();
+                        break;
+                    }
 
-                            mTransferConfirmationView.showResponseCodeInvalidAmount();
+                    case 401: {
+
+                        mTransferConfirmationView.showError401();
+                        break;
+                    }
+
+                    case 604: {
+
+                        if (deal.getResponse().message().equals("Cannot Finalize Succeed Transaction")) {
+
+                            mTransferConfirmationView.shoeErrorFinalizingTransactionWithStatusOfSucceed604();
                         } else {
 
-                            mTransferConfirmationView.showResponseCodeAmountIsNegative();
+                            mTransferConfirmationView.shoeErrorFinalizingTransactionWithStatusOfFailed604();
                         }
-                    }
 
-                    case 730: {
-
-                        mTransferConfirmationView.showResponseCodeSourceAndDestinationIsSame();
+                        break;
                     }
                 }
 
+                mTransferConfirmationView.dismissProgressBar();
             }
-            mTransferConfirmationView.dismissProgressBar();
-
 
         });
+
     }
 }

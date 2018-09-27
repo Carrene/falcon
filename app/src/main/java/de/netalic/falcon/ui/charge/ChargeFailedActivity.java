@@ -42,4 +42,6 @@ public class ChargeFailedActivity extends BaseActivity {
     protected String getActionbarTitle() {
         return getString(R.string.chargefailed_failed);
     }
+
+
 }

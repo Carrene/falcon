@@ -79,7 +79,7 @@ public class TransferFragment extends Fragment implements TransferContract.View 
         return new TransferFragment();
     }
 
-    private void getListWallet(){
+    private void getListWallet() {
 
         mTransferPresenter.getWalletList();
 
@@ -103,29 +103,29 @@ public class TransferFragment extends Fragment implements TransferContract.View 
 
     }
 
-    private void initListener(){
+    private void initListener() {
 
         mSpinnerWalletList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance())+" "+mWalletList.get(position).getCurrencySymbol());
-                mPosition=position;
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()) + " " + mWalletList.get(position).getCurrencySymbol());
+                mPosition = position;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance())+" "+mWalletList.get(0).getCurrencySymbol());
-                mPosition=0;
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance()) + " " + mWalletList.get(0).getCurrencySymbol());
+                mPosition = 0;
 
             }
         });
 
         mButtonNextAmount.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getContext(),TransferAmountActivity.class);
-            intent.putExtra("walletAddress",mWalletList.get(mPosition).getId());
+            Intent intent = new Intent(getContext(), TransferAmountActivity.class);
+            intent.putExtra("walletAddress", mWalletList.get(mPosition).getId());
             startActivity(intent);
 
         });

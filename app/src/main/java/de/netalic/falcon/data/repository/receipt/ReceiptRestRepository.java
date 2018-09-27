@@ -43,20 +43,7 @@ public class ReceiptRestRepository implements IReceiptRepository {
     @Override
     public void transfer(int sourceAddress, int walletId, double amount, CallRepository<Receipt> callRepository) {
 
-        ApiClient.getService().transfer(sourceAddress, walletId, amount).enqueue(new Callback<Receipt>() {
-            @Override
-            public void onResponse(Call<Receipt> call, Response<Receipt> response) {
 
-                callRepository.onDone(new Deal<>(response.body(), response, null));
-            }
-
-            @Override
-            public void onFailure(Call<Receipt> call, Throwable t) {
-
-                callRepository.onDone(new Deal<Receipt>(null, null, t));
-
-            }
-        });
 
     }
 }
