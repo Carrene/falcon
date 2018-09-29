@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="Security">
-
+        <!--TODO(Milad) Set all of string (key and title) in string file-->
         <Preference
-            android:key="Login method"
-            android:summary="pattern"
-            android:title="Login method" />
+            android:key="@string/settingprefrence_loginmethodkey"
+            android:summary="VALUE"
+            android:title="Login method"/>
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:layout="@layout/divider_preference" />
+    <PreferenceCategory android:layout="@layout/divider_preference"/>
 
     <PreferenceCategory android:title="Recovery email">
 
         <Preference
             android:clickable="true"
-            android:key="recoveryEmail"
-            android:paddingBottom="20dp"
+            android:key="@string/settingprefrence_recoveryemailkey"
             android:paddingTop="16dp"
-            android:summary="Set your recovery email"
-            android:title="Not set" />
+            android:paddingBottom="20dp"
+            android:summary="Edit your recovery email"
+            android:title="VALUE"/>
 
     </PreferenceCategory>
-    <PreferenceCategory android:layout="@layout/divider_preference" />
+    <PreferenceCategory android:layout="@layout/divider_preference"/>
 
     <PreferenceCategory android:title="Support">
-        <Preference android:title="About" />
+        <Preference android:title="About"/>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -63,7 +63,7 @@
         app:finalToolbarHeight="?attr/actionBarSize"
         app:finalXPosition="@dimen/position_setting_finalxposition"
         app:finalYPosition="@dimen/position_setting_finalyposition"
-        app:layout_behavior="de.netalic.falcon.ui.setting.AvatarImageBehavior" />
+        app:layout_behavior="de.netalic.falcon.ui.setting.basic.AvatarImageBehavior" />
 
     <LinearLayout
         android:id="@+id/linearlayout_setting_phonenumberandemailparent"
@@ -77,7 +77,7 @@
         app:finalToolbarHeight="?attr/actionBarSize"
         app:finalXPosition="@dimen/finalxposition_setting_linearlayoutofphonenumberandemailparent"
         app:finalYPosition="@dimen/finalyposition_setting_linearlayoutofphonenumberandemailparent"
-        app:layout_behavior="de.netalic.falcon.ui.setting.TextBehavior">
+        app:layout_behavior="de.netalic.falcon.ui.setting.basic.TextBehavior">
 
         <TextView
             android:id="@+id/textview_setting_phonenumber"

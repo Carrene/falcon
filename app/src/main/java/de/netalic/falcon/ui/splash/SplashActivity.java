@@ -8,13 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.concurrent.atomic.AtomicReference;
 
 import de.netalic.falcon.MyApp;
-import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.ui.authentication.authentication.AuthenticationActivity;
-import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
-import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
-import de.netalic.falcon.ui.dashboard.DashboardActivity;
+import de.netalic.falcon.ui.registration.authentication.AuthenticationActivity;
+import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
+import de.netalic.falcon.ui.registration.phoneinput.PhoneInputActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 
 public class SplashActivity extends AppCompatActivity {
@@ -28,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         AtomicReference<Intent> intent = new AtomicReference<>();
 
         if (sharedPreferencesJwtPersistor.get() == null) {
-            intent.set(new Intent(this, RegistrationActivity.class));
+            intent.set(new Intent(this, PhoneInputActivity.class));
 
         } else {
             RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {

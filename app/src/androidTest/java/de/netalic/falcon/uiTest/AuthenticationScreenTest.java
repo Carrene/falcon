@@ -15,7 +15,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.ui.authentication.authentication.AuthenticationActivity;
+import de.netalic.falcon.ui.registration.authentication.AuthenticationActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 
 import static android.support.test.espresso.Espresso.onView;

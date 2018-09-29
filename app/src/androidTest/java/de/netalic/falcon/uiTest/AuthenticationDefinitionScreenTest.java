@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
+import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 

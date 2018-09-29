@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.ui.authentication.phoneconfirmation.PhoneConfirmationActivity;
-import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
+import de.netalic.falcon.ui.registration.phoneconfirmation.PhoneConfirmationActivity;
+import de.netalic.falcon.ui.registration.phoneinput.PhoneInputActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -28,33 +28,33 @@ import static org.hamcrest.core.AllOf.allOf;
 public class RegistrationScreenTest {
 
     @Rule
-    public IntentsTestRule<RegistrationActivity> mActivityTestRule = new IntentsTestRule<>(RegistrationActivity.class);
+    public IntentsTestRule<PhoneInputActivity> mActivityTestRule = new IntentsTestRule<>(PhoneInputActivity.class);
 
     @Test
     public void noSelectedCountry_showError() {
 
-        onView(withId(R.id.menu_registration_done)).perform(click());
-        onView(withId(R.id.textinputlayout_registration_countrypicker)).check(matches(Util.hasTextInputLayoutErrorText(mActivityTestRule.getActivity().getString(R.string.registration_pleasepickcountry))));
+        onView(withId(R.id.menu_phoneinput_done)).perform(click());
+        onView(withId(R.id.textinputlayout_phoneinput_countrypicker)).check(matches(Util.hasTextInputLayoutErrorText(mActivityTestRule.getActivity().getString(R.string.registration_pleasepickcountry))));
     }
 
     @Test
     public void emptyPhone_showError() {
 
-        onView(withId(R.id.edittext_registration_countrypicker)).perform(click());
+        onView(withId(R.id.edittext_phoneinput_countrypicker)).perform(click());
         onView(withText("Albania")).perform(click());
-        onView(withId(R.id.edittext_registration_countrypicker)).check(matches(withText("Albania")));
-        onView(withId(R.id.menu_registration_done)).perform(click());
+        onView(withId(R.id.edittext_phoneinput_countrypicker)).check(matches(withText("Albania")));
+        onView(withId(R.id.menu_phoneinput_done)).perform(click());
         onView(allOf(withId(android.support.design.R.id.snackbar_text), withText("Please fill your number"))).check(matches(isDisplayed()));
     }
 
     @Test
     public void fillForm_navigateNext() {
 
-        onView(withId(R.id.edittext_registration_countrypicker)).perform(click());
+        onView(withId(R.id.edittext_phoneinput_countrypicker)).perform(click());
         onView(withText("Albania")).perform(click());
-        onView(withId(R.id.edittext_registration_countrypicker)).check(matches(withText("Albania")));
-        onView(withId(R.id.edittext_registration_phonenumber)).perform(typeText("9121234567"));
-        onView(withId(R.id.menu_registration_done)).perform(click());
+        onView(withId(R.id.edittext_phoneinput_countrypicker)).check(matches(withText("Albania")));
+        onView(withId(R.id.edittext_phoneinput_phonenumber)).perform(typeText("9121234567"));
+        onView(withId(R.id.menu_phoneinput_done)).perform(click());
         intended(hasComponent(PhoneConfirmationActivity.class.getName()));
     }
 

@@ -13,8 +13,8 @@ import org.junit.runner.RunWith;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;
-import de.netalic.falcon.ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity;
-import de.netalic.falcon.ui.authentication.recoveryemail.RecoveryEmailActivity;
+import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
+import de.netalic.falcon.ui.registration.recoveryemail.RecoveryEmailActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;

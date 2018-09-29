@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//TODO (Milad): Remove it after charge API changes.
 public class Deposit implements Parcelable {
 
     @SerializedName("id")
@@ -137,10 +138,12 @@ public class Deposit implements Parcelable {
 
 
     public int getTransactionId() {
+
         return mTransactionId;
     }
 
     public void setTransactionId(int transactionId) {
+
         this.mTransactionId = transactionId;
     }
 
@@ -203,9 +206,9 @@ public class Deposit implements Parcelable {
         mId = in.readInt();
         mRrn = in.readString();
         mModifiedAt = in.readString();
-        mTransactionId=in.readInt();
-        mWalletCurrencySymbol=in.readString();
-        mPaymentGatewayCurrencySymbol=in.readString();
+        mTransactionId = in.readInt();
+        mWalletCurrencySymbol = in.readString();
+        mPaymentGatewayCurrencySymbol = in.readString();
     }
 
     public static final Creator<Deposit> CREATOR = new Creator<Deposit>() {
@@ -223,18 +226,22 @@ public class Deposit implements Parcelable {
     };
 
     public String getWalletCurrencySymbol() {
+
         return mWalletCurrencySymbol;
     }
 
     public void setWalletCurrencySymbol(String walletCurrencySymbol) {
+
         this.mWalletCurrencySymbol = walletCurrencySymbol;
     }
 
     public String getPaymentGatewayCurrencySymbol() {
+
         return mPaymentGatewayCurrencySymbol;
     }
 
     public void setPaymentGatewayCurrencySymbol(String paymentGatewayCurrencySymbol) {
+
         this.mPaymentGatewayCurrencySymbol = paymentGatewayCurrencySymbol;
     }
 }

@@ -20,7 +20,7 @@
 
     <string name="registration_menudone">Done</string>
     <string name="registration_toolbartitle">Your phone</string>
-    <string name="registration_bottomtextview">confirmation code will be sent to you</string>
+    <string name="registration_bottomtextview">Confirmation code will be sent to you</string>
     <string name="registration_defultcountry">Select your country</string>
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
@@ -321,5 +321,7 @@
     <string name="authenticationpassword_incorrect">Password is incorrect</string>
     <string name="authenticationpattern_incorrect">Pattern is incorrect</string>
 
+    <string name="settingprefrence_loginmethodkey">loginMethod</string>
+    <string name="settingprefrence_recoveryemailkey">recoveryEmail</string>
 
 </resources>

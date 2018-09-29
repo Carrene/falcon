@@ -84,7 +84,7 @@ public class ApiClient {
         return sApi;
     }
 
-    public static String getUrl() {
+    private static String getUrl() {
 
         String url = BuildConfig.WEB_SERVICE_URL + ":" + "/apiv1/";
         return url;
@@ -99,10 +99,6 @@ public class ApiClient {
             try {
                 Request request = chain.request();
                 response = chain.proceed(request);
-                if (response.code() == 500) {
-                    //TODO:(Milad) Display error
-                    System.out.println("ERROR");
-                }
             } catch (SocketTimeoutException socketTimeoutException) {
                 //TODO (Milad) Display error
             }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
@@ -35,7 +36,9 @@
             android:id="@+id/recyclerViewWallets"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.4"
+            tools:itemCount="16"
+            tools:listitem="@layout/recycler_view_item"/>
 
         <TextView
             android:id="@+id/textview_charge_paymentgateway"

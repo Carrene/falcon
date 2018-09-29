@@ -18,7 +18,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.ui.addresses.AddressesActivity;
 import de.netalic.falcon.ui.charge.ChargeActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.setting.SettingActivity;
+import de.netalic.falcon.ui.setting.basic.SettingActivity;
 import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
 import de.netalic.falcon.ui.transfer.TransferActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
@@ -38,7 +38,7 @@ public class NavigationDrawerUtil {
         PrimaryDrawerItem item6 = new CustomPrimaryDrawerItem().withIdentifier(6).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
         PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(7).withName(R.string.navigation_help).withIcon(R.drawable.navigation_help);
 
-        //TODO: Inject this object
+        //TODO(Ehsan): Inject this object
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
         Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
         String phone = (String) tokenBody.get("phone");

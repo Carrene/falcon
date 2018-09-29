@@ -14,9 +14,9 @@ import org.junit.runner.RunWith;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;
-import de.netalic.falcon.ui.authentication.phoneconfirmation.PhoneConfirmationActivity;
-import de.netalic.falcon.ui.authentication.phoneconfirmation.PhoneConfirmationFragment;
-import de.netalic.falcon.ui.authentication.registration.RegistrationActivity;
+import de.netalic.falcon.ui.registration.phoneconfirmation.PhoneConfirmationActivity;
+import de.netalic.falcon.ui.registration.phoneconfirmation.PhoneConfirmationFragment;
+import de.netalic.falcon.ui.registration.phoneinput.PhoneInputActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -81,7 +81,7 @@ public class PhoneConfirmationScreenTest {
 
         launchPhoneConfirmationActivity(mUser);
         onView(withId(R.id.textview_phoneconfirmation_changenumber)).perform(click());
-        intended(hasComponent(RegistrationActivity.class.getName()));
+        intended(hasComponent(PhoneInputActivity.class.getName()));
     }
 
     private void launchPhoneConfirmationActivity(@Nullable User user) {

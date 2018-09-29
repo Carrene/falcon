@@ -29,25 +29,24 @@
         </provider>
 
         <activity
-            android:name=".ui.authentication.registration.RegistrationActivity"
+            android:name=".ui.registration.phoneinput.PhoneInputActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".ui.authentication.phoneconfirmation.PhoneConfirmationActivity"
+            android:name=".ui.registration.phoneconfirmation.PhoneConfirmationActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.authentication.registration.RegistrationActivity"
+            android:parentActivityName=".ui.registration.phoneinput.PhoneInputActivity"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.authentication.registration.RegistrationActivity"/>
+                android:value=".ui.registration.phoneinput.PhoneInputActivity"/>
         </activity>
         <activity
-            android:name=".ui.authentication.authnticationdefinition.AuthenticationDefinitionActivity"
+            android:name=".ui.registration.authnticationdefinition.AuthenticationDefinitionActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".ui.authentication.recoveryemail.RecoveryEmailActivity"
+            android:name=".ui.registration.recoveryemail.RecoveryEmailActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.authentication.phoneconfirmation.PhoneConfirmationActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.splash.SplashActivity"
@@ -122,11 +121,11 @@
         <activity android:name=".ui.transfer.TransferFailedActivity"/>
         <activity android:name=".ui.addresses.AddressesActivity"/>
         <activity
-            android:name=".ui.setting.SettingActivity"
+            android:name=".ui.setting.basic.SettingActivity"
             android:parentActivityName=".ui.dashboard.DashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.authentication.registration.RegistrationActivity"/>
+                android:value=".ui.registration.phoneinput.PhoneInputActivity"/>
         </activity>
         <activity
             android:name=".ui.purchase.PurchaseAmountActivity"
@@ -138,7 +137,15 @@
         <activity android:name=".ui.purchase.PurchaseConfirmationActivity"/>
         <activity android:name=".ui.purchase.PurchaseCompletedActivity"/>
         <activity android:name=".ui.purchase.PurchaseFailedActivity"/>
-        <activity android:name=".ui.authentication.authentication.AuthenticationActivity"></activity>
+        <activity android:name=".ui.registration.authentication.AuthenticationActivity"></activity>
+        <activity
+            android:name=".ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity"
+            android:parentActivityName=".ui.setting.basic.SettingActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.setting.basic.SettingActivity"/>
+        </activity>
+
     </application>
 
 </manifest>
