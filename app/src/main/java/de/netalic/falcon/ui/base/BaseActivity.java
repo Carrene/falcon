@@ -41,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
 
     public void setupToolbar() {
 
-        mToolbar = findViewById(R.id.toolbar_setting_toolbar);
+        mToolbar = findViewById(R.id.toolbar);
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
         }

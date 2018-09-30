@@ -323,5 +323,7 @@
 
     <string name="settingprefrence_loginmethodkey">loginMethod</string>
     <string name="settingprefrence_recoveryemailkey">recoveryEmail</string>
+    <string name="settingprefrence_phonenumberkey">phoneNumber</string>
+    <string name="settingprefrence_emailnotset">Not set</string>
 
 </resources>

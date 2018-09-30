@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
+import java.util.Map;
+
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Authentication;
@@ -57,17 +59,31 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
             if (deal.getThrowable() == null) {
                 switch (deal.getModel().getAuthenticationType()) {
                     case Authentication.PATTERN_TYPE: {
-                        preference.setSummary("Pattern");
+                        preference.setTitle("Pattern");
                         break;
                     }
 
                     case Authentication.PASSWORD_TYPE: {
-                        preference.setSummary("Password");
+                        preference.setTitle("Password");
                         break;
                     }
                 }
             }
         });
+
+        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+        String phone = (String) tokenBody.get("phone");
+        String email = (String) tokenBody.get("email");
+
+        Preference phonePreference = findPreference(getString(R.string.settingprefrence_phonenumberkey));
+        Preference emailPreference = findPreference(getString(R.string.settingprefrence_recoveryemailkey));
+        phonePreference.setTitle(phone);
+        if (email == null) {
+            emailPreference.setTitle(getString(R.string.settingprefrence_emailnotset));
+        } else {
+            emailPreference.setTitle(email);
+        }
     }
 
     @Override
