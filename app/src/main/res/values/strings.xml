@@ -324,4 +324,7 @@
     <string name="settingprefrence_loginmethodkey">loginMethod</string>
     <string name="settingprefrence_recoveryemailkey">recoveryEmail</string>
 
+    <string name="settingrecoveryemail_recoveryemail">Recovery email</string>
+    <string name="settingprefrence_aboutkey">about</string>
+
 </resources>

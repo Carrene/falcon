@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinputlayout_settingrecoveryemail_enterrecoveryemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/marginend_recoveryemail_textinputlayout"
+        android:layout_marginStart="@dimen/marginstart_recoveryemail_textinputlayout"
+        android:layout_marginTop="@dimen/margintop_recoveryemail_textinputlayout">
+
+        <EditText
+            android:id="@+id/edittext_settingrecoveryemail_enterrecoveryemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/recoveryemail_enteremailaddress"
+            android:inputType="textEmailAddress"
+            android:maxLength="30" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</RelativeLayout>

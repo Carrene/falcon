@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
+import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 
 import static android.support.test.espresso.Espresso.onView;

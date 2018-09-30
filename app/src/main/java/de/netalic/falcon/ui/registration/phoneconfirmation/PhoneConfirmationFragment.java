@@ -25,9 +25,9 @@ import java.util.concurrent.TimeUnit;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;
-import de.netalic.falcon.ui.registration.recoveryemail.RecoveryEmailActivity;
-import de.netalic.falcon.ui.registration.phoneinput.PhoneInputActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.registration.phoneinput.PhoneInputActivity;
+import de.netalic.falcon.ui.registration.recoveryemail.RecoveryEmailActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 

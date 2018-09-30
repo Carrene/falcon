@@ -7,11 +7,8 @@ import android.support.v4.app.Fragment;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Authentication;
-import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
-import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.registration.recoveryemail.RecoveryEmailContract;
 import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
 

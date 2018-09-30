@@ -169,6 +169,10 @@ public class User extends RealmObject implements Parcelable {
         return mWallets;
     }
 
+    public boolean getIsActive() {
+        return mIsActive;
+    }
+
     @Override
     public int describeContents() {
 

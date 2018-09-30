@@ -25,6 +25,8 @@
     <PreferenceCategory android:layout="@layout/divider_preference"/>
 
     <PreferenceCategory android:title="Support">
-        <Preference android:title="About"/>
+        <Preference android:title="About"
+            android:key="@string/settingprefrence_aboutkey"
+            />
     </PreferenceCategory>
 </PreferenceScreen>

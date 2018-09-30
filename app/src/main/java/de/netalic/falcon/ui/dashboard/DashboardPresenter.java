@@ -5,9 +5,9 @@ import android.util.Log;
 
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.util.ScreenLocker;
 import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
+import de.netalic.falcon.util.ScreenLocker;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
