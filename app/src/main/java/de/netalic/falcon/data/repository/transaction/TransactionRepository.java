@@ -61,8 +61,8 @@ public class TransactionRepository implements ITransactionRepository {
     }
 
     @Override
-    public void finalizeCharge(int walletId, int depositId, String braintreeNonce, CallRepository<Transaction> callRepository) {
+    public void finalizeCharge(int transactionId, String braintreeNonce, CallRepository<Transaction> callRepository) {
         
-        mTransactionRestRepository.finalizeCharge(walletId, depositId, braintreeNonce, callRepository);
+        mTransactionRestRepository.finalizeCharge(transactionId, braintreeNonce, callRepository);
     }
 }

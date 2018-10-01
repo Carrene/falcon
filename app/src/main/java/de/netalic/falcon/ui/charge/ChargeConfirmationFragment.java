@@ -141,7 +141,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 String braintreeNonce = result.getPaymentMethodNonce().getNonce();
 
-                //mChargeConfirmationPresenter.finalizeCharge(mTransaction.getActionList().get(1).getWalletId(), mDeposit.getId(), braintreeNonce);
+                mChargeConfirmationPresenter.finalizeCharge(mTransaction.getId(), braintreeNonce);
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 //TODO(Milad): Payment is cancelled
             } else {

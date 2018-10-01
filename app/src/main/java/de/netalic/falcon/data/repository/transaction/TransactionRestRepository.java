@@ -89,9 +89,9 @@ public class TransactionRestRepository implements ITransactionRepository {
     }
 
     @Override
-    public void finalizeCharge(int walletId, int depositId, String braintreeNonce, CallRepository<Transaction> callRepository) {
+    public void finalizeCharge(int transactionId, String braintreeNonce, CallRepository<Transaction> callRepository) {
 
-        ApiClient.getService().finalize(walletId, depositId, braintreeNonce).enqueue(new Callback<Transaction>() {
+        ApiClient.getService().finalize(transactionId, braintreeNonce).enqueue(new Callback<Transaction>() {
             @Override
             public void onResponse(Call<Transaction> call, Response<Transaction> response) {
 

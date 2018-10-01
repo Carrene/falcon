@@ -46,8 +46,8 @@ public interface ApiInterface {
     Call<Transaction> charge(@Path("id") int id, @Field("amount") double amount, @Field("verifyRateId") int verifyRateId);
 
     @FormUrlEncoded
-    @HTTP(method = "FINALIZE", path = "wallets/{walletId}/braintree/deposits/{depositId}", hasBody = true)
-    Call<Transaction> finalize(@Path("walletId") int walletId, @Path("depositId") int depositId, @Field("braintreeNonce") String braintreeNonce);
+    @HTTP(method = "FINALIZE", path = "braintree/charges/{transaction_id}", hasBody = true)
+    Call<Transaction> finalize(@Path("transaction_id") int transaction_id, @Field("braintreeNonce") String braintreeNonce);
 
     @HTTP(method = "LIST", path = "receipts?sort=createdAt")
     Call<List<Receipt>> receiptList();
