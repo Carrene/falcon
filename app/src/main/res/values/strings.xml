@@ -90,6 +90,11 @@
     <string name="chargeamount_amounthint">Alpha</string>
     <string name="chargeamount_dollar">USD</string>
     <string name="chargeamount_nextpayment">NEXT-PAYMENT</string>
+    <string name="chargeamount_chargeisunavailable">Charge is unavailable</string>
+    <string name="chargeamount_verifyrateisoutdatedorithaswrongcurrency">Verify rate is outdated or it has wrong currency</string>
+    <string name="chargeamount_VerifyRateIdMissing">Verify rate id missing</string>
+    <string name="chargeamount_invalidverifyrateid">Invalid verify rate id</string>
+    <string name="chargeamount_startatransferasananonymous">Start a transfer as an anonymous</string>
 
     <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
     <string name="chargeconfirmation_walletname">Wallet Name </string>

@@ -24,7 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Receipt;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -36,7 +37,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
     private static final String ARGUMENT_DEPOSIT = "DEPOSIT";
     private static final String ALPHA_PATH = "/Alpha";
     private static final String CHARGE_PATH = "/Charge";
-    private Deposit mDeposit;
+    private Receipt mReceipt;
     private ChargeCompletedContract.Presenter mChargeCompletedPresenter;
     private View mRoot;
     private TextView mTextViewWalletName;
@@ -58,7 +59,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mRoot = inflater.inflate(R.layout.fragment_chargecompleted, null);
         checkNotNull(getArguments());
         setHasOptionsMenu(true);
-        mDeposit = getArguments().getParcelable(ARGUMENT_DEPOSIT);
+        mReceipt = getArguments().getParcelable(ARGUMENT_DEPOSIT);
 
         return mRoot;
     }
@@ -88,7 +89,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
     }
 
-    public static ChargeCompletedFragment newInstance(Deposit deposit) {
+    public static ChargeCompletedFragment newInstance(Transaction deposit) {
 
         Bundle bundle = new Bundle();
         bundle.putParcelable(ARGUMENT_DEPOSIT, deposit);
@@ -123,21 +124,21 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
     public void setPaymentInformation() {
 
-        mTextViewWalletName.setText(mDeposit.getWalletName());
-        mTextViewAmountWallet.setText(mDeposit.getWalletCurrencySymbol()+" "+String.valueOf(mDeposit.getChargeAmount()));
-        mTextViewAmountBase.setText(mDeposit.getPaymentGatewayCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
-        mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
-            Date baseDate = dateFormat.parse(mDeposit.getModifiedAt());
-            DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-            DateFormat time = new SimpleDateFormat("h:mm a");
-            mTextViewTransactionDate.setText(date.format(baseDate));
-            mTextViewTransactionTime.setText(time.format(baseDate));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        mTextViewRrn.setText(mDeposit.getRrn());
+//        mTextViewWalletName.setText(mReceipt.getWalletName());
+//        mTextViewAmountWallet.setText(mReceipt.getWalletCurrencySymbol() + " " + String.valueOf(mReceipt.getChargeAmount()));
+//        mTextViewAmountBase.setText(mReceipt.getPaymentGatewayCurrencySymbol() + " " + String.valueOf(mReceipt.getPaidAmount()));
+//        mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
+//        try {
+//            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+//            Date baseDate = dateFormat.parse(mReceipt.getModifiedAt());
+//            DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+//            DateFormat time = new SimpleDateFormat("h:mm a");
+//            mTextViewTransactionDate.setText(date.format(baseDate));
+//            mTextViewTransactionTime.setText(time.format(baseDate));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        mTextViewRrn.setText(mReceipt.getRrn());
     }
 
     private void requestPermissionShare() {

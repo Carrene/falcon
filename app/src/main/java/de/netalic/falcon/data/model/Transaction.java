@@ -151,6 +151,7 @@ public class Transaction implements Parcelable {
         dest.writeInt(this.mId);
         dest.writeTypedList(this.mActionList);
         dest.writeString(this.mRetrievalReferenceNumber);
+//        dest.writeString();
         dest.writeString(this.getCreatedAt());
     }
 

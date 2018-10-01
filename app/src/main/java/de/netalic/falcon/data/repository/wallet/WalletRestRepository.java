@@ -2,7 +2,6 @@ package de.netalic.falcon.data.repository.wallet;
 
 import java.util.List;
 
-import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.data.remote.ApiClient;
 import de.netalic.falcon.data.repository.base.Deal;
@@ -41,45 +40,5 @@ public class WalletRestRepository implements IWalletRepository {
             }
         });
     }
-
-    @Override
-    public void charge(int id, double amount, CallRepository<Deposit> callRepository) {
-
-        ApiClient.getService().charge(id, amount).enqueue(new Callback<Deposit>() {
-            @Override
-            public void onResponse(Call<Deposit> call, Response<Deposit> response) {
-
-                callRepository.onDone(new Deal<>(response.body(), response, null));
-
-            }
-
-            @Override
-            public void onFailure(Call<Deposit> call, Throwable t) {
-
-                callRepository.onDone(new Deal<>(null, null, t));
-
-            }
-        });
-    }
-
-    @Override
-    public void finalize(int walletId, int depositId,String braintreeNonce, CallRepository<Deposit> callRepository) {
-        ApiClient.getService().finalize(walletId,depositId,braintreeNonce).enqueue(new Callback<Deposit>() {
-            @Override
-            public void onResponse(Call<Deposit> call, Response<Deposit> response) {
-
-                callRepository.onDone(new Deal<>(response.body(),response,null));
-
-            }
-
-            @Override
-            public void onFailure(Call<Deposit> call, Throwable t) {
-
-                callRepository.onDone(new Deal<>(null,null,t));
-
-            }
-        });
-    }
-
 
 }

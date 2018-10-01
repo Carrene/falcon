@@ -22,6 +22,9 @@ public class Rate {
     @SerializedName("currencySymbol")
     private String mCurrencySymbol;
 
+    @SerializedName("id")
+    private int mVerifyRateId;
+
     public Rate(String usd) {
 
         mCurrencyCode=usd;
@@ -66,6 +69,10 @@ public class Rate {
 
     public void setCurrencySymbol(String currencySymbol) {
         this.mCurrencySymbol = currencySymbol;
+    }
+
+    public int getVerifyRateId() {
+        return mVerifyRateId;
     }
 }
 

@@ -5,81 +5,106 @@ import com.google.gson.annotations.SerializedName;
 import io.realm.RealmObject;
 
 public class Receipt extends RealmObject {
-
-
-    @SerializedName("transactionId")
-    private int mTransactionId;
-
+    @SerializedName("retrievalReferenceNumber")
+    private String mRetrievalReferenceNumber;
+    @SerializedName("senderWalletAddress")
+    private String mSenderWalletAddress;
+    @SerializedName("paymentGatewayName")
+    private String mPaymentGatewayName;
+    @SerializedName("qouteAmount")
+    private int mqQouteAmount;
     @SerializedName("type")
     private String mType;
-
+    @SerializedName("baseCurrencyCode")
+    private String mBaseCurrencyCode;
+    @SerializedName("failureCause")
+    private String mFailureCause;
+    @SerializedName("qouteCurrencySymbol")
+    private String mQouteCurrencySymbol;
+    @SerializedName("createdAt")
+    private String mCreatedAt;
+    @SerializedName("baseAmount")
+    private String mBaseAmount;
+    @SerializedName("baseCurrencySymbol")
+    private String mBaseCurrencySymbol;
     @SerializedName("status")
     private String mStatus;
+    @SerializedName("paymentGatewayId")
+    private int mPaymentGatewayId;
+    @SerializedName("qouteCurrencyCode")
+    private String mQouteCurrencyCode;
+    @SerializedName("id")
+    private int mId;
+    @SerializedName("modifiedAt")
+    private String mModifiedAt;
+    @SerializedName("recipientWalletAddress")
+    private String mRecipientWalletAddress;
 
-    @SerializedName("destinationWalletCurrency")
-    private String mDestinationWalletCurrency;
+    public String getRetrievalReferenceNumber() {
+        return mRetrievalReferenceNumber;
+    }
 
-    @SerializedName("payeeId")
-    private int mPayeeId;
+    public String getSenderWalletAddress() {
+        return mSenderWalletAddress;
+    }
 
-    @SerializedName("destinationWalletAddress")
-    private String mDestinationWalletAddress;
+    public String getPaymentGatewayName() {
+        return mPaymentGatewayName;
+    }
 
-    @SerializedName("amount")
-    private double mAmount;
-
-    @SerializedName("sourceWalletAddress")
-    private String mSourceWalletAddress;
-
-    public int getTransactionId() {
-
-        return mTransactionId;
+    public int getQouteAmount() {
+        return mqQouteAmount;
     }
 
     public String getType() {
-
         return mType;
     }
 
-    public String getStatus() {
+    public String getBaseCurrencyCode() {
+        return mBaseCurrencyCode;
+    }
 
+    public String getFailureCause() {
+        return mFailureCause;
+    }
+
+    public String getQouteCurrencySymbol() {
+        return mQouteCurrencySymbol;
+    }
+
+    public String getCreatedAt() {
+        return mCreatedAt;
+    }
+
+    public String getBaseAmount() {
+        return mBaseAmount;
+    }
+
+    public String getBaseCurrencySymbol() {
+        return mBaseCurrencySymbol;
+    }
+
+    public String getmStatus() {
         return mStatus;
     }
 
-//    @SerializedName("destinationWalletCurrency")
-//    private String mDestinationWalletCurrency;
-//
-//    @SerializedName("payeeId")
-//    private int mPayeeId;
-//
-//    @SerializedName("destinationWalletAddress")
-//    private String mDestinationWalletAddress;
+    public int getPaymentGatewayId() {
+        return mPaymentGatewayId;
+    }
 
-//    @SerializedName("amount")
-//    private double mAmount;
-//
-//    @SerializedName("sourceWalletAddress")
-//    private String mSourceWalletAddress;
+    public String getQouteCurrencyCode() {
+        return mQouteCurrencyCode;
+    }
 
-//    @SerializedName("transferredAt")
-//    private String mTransferredAt;
+    public int getId() {
+        return mId;
+    }
 
-//    @SerializedName("payerId")
-//    private int mPayerId;
-//
-//    @SerializedName("sourceWalletCurrency")
-//    private String mSourceWalletCurrency;
-//
-//    @SerializedName("paymentGatewayName")
-//    private String mPaymentGatewayName;
-//
-//    @SerializedName(" sourceWalletCurrencySymbol")
-//    private String mSourceWalletCurrencySymbol;
-//
-//    @SerializedName("destinationWalletCurrencySymbol")
-//    private String mDestinationWalletCurrencySymbol;
-//
-//    @SerializedName("RRN")
-//    private String mRRN;
+    public String getModifiedAt() {
+        return mModifiedAt;
+    }
 
+    public String getRecipientWalletAddress() {
+        return mRecipientWalletAddress;
+    }
 }

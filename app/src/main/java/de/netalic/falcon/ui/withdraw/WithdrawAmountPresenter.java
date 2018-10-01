@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
+import de.netalic.falcon.data.repository.rate.RateRepository;
 import de.netalic.falcon.data.repository.user.UserRepository;
 import nuesoft.helpdroid.crypto.CryptoUtil;
 import nuesoft.helpdroid.crypto.HmacType;
@@ -36,7 +36,7 @@ public class WithdrawAmountPresenter implements WithdrawAmountContract.Presenter
 
         mViewWithdrawAmount.showProgressBar();
 
-        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(RateRepository.class).getAll(deal -> {
 
             if (deal.getThrowable() != null) {
 

@@ -20,7 +20,6 @@ import android.widget.TextView;
 import java.io.File;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
@@ -33,7 +32,6 @@ public class TransferCompletedFragment extends Fragment implements TransferCompl
 
     private static final String ALPHA_PATH = "/Alpha";
     private static final String CHARGE_PATH = "/Transfer";
-    private Deposit mDeposit;
     private TransferCompletedContract.Presenter mTransferCompletedPresenter;
     private View mRoot;
     private TextView mTextViewTransferAmount;

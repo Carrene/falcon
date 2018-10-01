@@ -12,27 +12,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.util.DateUtil;
 
 public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Deposit> mDepositList = new ArrayList<>();
+    private List<Receipt> mReceiptList = new ArrayList<>();
 
     public TransactionHistoryRecyclerViewAdapter() {
 
     }
 
-    public void setDataSource(List<Deposit> depositList) {
+    public void setDataSource(List<Receipt> depositList) {
 
-        int size = mDepositList.size();
-        mDepositList.addAll(depositList);
+        int size = mReceiptList.size();
+        mReceiptList.addAll(depositList);
         notifyItemRangeInserted(size, depositList.size());
     }
 
     public void removeDataSource() {
 
-        mDepositList.clear();
+        mReceiptList.clear();
         notifyDataSetChanged();
     }
 
@@ -47,35 +47,35 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        if (mDepositList != null && !mDepositList.isEmpty()) {
+        if (mReceiptList != null && !mReceiptList.isEmpty()) {
 
             DepositViewHolder depositViewHolder = (DepositViewHolder) holder;
-            Deposit deposit = mDepositList.get(position);
+            Receipt receipt = mReceiptList.get(position);
 
-            depositViewHolder.mTextViewWalletName.setText(deposit.getWalletName());
-            depositViewHolder.mTextViewAmount.setText(deposit.getPaymentGatewayCurrencySymbol()+" "+String.valueOf(deposit.getPaidAmount()));
-            depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(deposit.getCreatedAt()) + "@" + DateUtil.isoToTime(deposit.getCreatedAt()));
-            depositViewHolder.mTextViewTransactionResult.setText(deposit.getStatus());
+//            depositViewHolder.mTextViewWalletName.setText(receipt.getWalletName());
+//            depositViewHolder.mTextViewAmount.setText(receipt.getPaymentGatewayCurrencySymbol() + " " + String.valueOf(receipt.getPaidAmount()));
+//            depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(receipt.getCreatedAt()) + "@" + DateUtil.isoToTime(receipt.getCreatedAt()));
+//            depositViewHolder.mTextViewTransactionResult.setText(receipt.getStatus());
 
-            switch (deposit.getStatus()) {
-
-                case "succeed": {
-                    depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
-                    break;
-                }
-
-                case "failed": {
-                    depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
-                    break;
-                }
-            }
+//            switch (receipt.getStatus()) {
+//
+//                case "succeed": {
+//                    depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
+//                    break;
+//                }
+//
+//                case "failed": {
+//                    depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
+//                    break;
+//                }
+//            }
         }
     }
 
     @Override
     public int getItemCount() {
 
-        return mDepositList.size();
+        return mReceiptList.size();
     }
 
     private class DepositViewHolder extends RecyclerView.ViewHolder {

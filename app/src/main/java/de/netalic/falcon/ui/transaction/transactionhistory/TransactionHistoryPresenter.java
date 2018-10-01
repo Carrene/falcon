@@ -7,9 +7,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.deposit.DepositRepository;
-
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TransactionHistoryPresenter implements TransactionHistoryContract.Presenter {
@@ -37,37 +34,37 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
 
         Map<String, String> queryString = createQueryString(filterMap);
 
-        RepositoryLocator.getInstance().getRepository(DepositRepository.class).getAll(deal -> {
-            if (deal.getThrowable() != null) {
-                mTransactionHistoryView.showPaginationError(true);
-                mTransactionHistoryView.showPaginationLoading(false);
-            } else {
-                switch (deal.getResponse().code()) {
-
-                    case 200: {
-
-                        mTransactionHistoryView.showPaginationLoading(false);
-                        mTransactionHistoryView.showPaginationError(false);
-                        mPaginationTake = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Take"));
-                        mPaginationSkip = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Skip"));
-                        int paginationCount = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Count"));
-
-                        mTransactionHistoryView.setDepositList(deal.getResponse().body());
-                        if (mPaginationSkip >= paginationCount) {
-                            mTransactionHistoryView.loadNoMoreItem(true);
-                            mPaginationSkip = 0;
-                        }
-
-                        mPaginationSkip += mPaginationTake;
-                        break;
-                    }
-
-                    default: {
-                        mTransactionHistoryView.showPaginationError(true);
-                    }
-                }
-            }
-        }, queryString, mPaginationTake, mPaginationSkip);
+//        RepositoryLocator.getInstance().getRepository(DepositRepository.class).getAll(deal -> {
+//            if (deal.getThrowable() != null) {
+//                mTransactionHistoryView.showPaginationError(true);
+//                mTransactionHistoryView.showPaginationLoading(false);
+//            } else {
+//                switch (deal.getResponse().code()) {
+//
+//                    case 200: {
+//
+//                        mTransactionHistoryView.showPaginationLoading(false);
+//                        mTransactionHistoryView.showPaginationError(false);
+//                        mPaginationTake = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Take"));
+//                        mPaginationSkip = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Skip"));
+//                        int paginationCount = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Count"));
+//
+//                        mTransactionHistoryView.setDepositList(deal.getResponse().body());
+//                        if (mPaginationSkip >= paginationCount) {
+//                            mTransactionHistoryView.loadNoMoreItem(true);
+//                            mPaginationSkip = 0;
+//                        }
+//
+//                        mPaginationSkip += mPaginationTake;
+//                        break;
+//                    }
+//
+//                    default: {
+//                        mTransactionHistoryView.showPaginationError(true);
+//                    }
+//                }
+//            }
+//        }, queryString, mPaginationTake, mPaginationSkip);
     }
 
     @Override
