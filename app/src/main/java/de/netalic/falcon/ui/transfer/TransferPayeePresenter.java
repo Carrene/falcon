@@ -1,7 +1,7 @@
 package de.netalic.falcon.ui.transfer;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.transfer.TransferRepository;
+import de.netalic.falcon.data.repository.transaction.TransactionRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -25,7 +25,7 @@ public class TransferPayeePresenter implements TransferPayeeContract.Presenter {
 
 
         mTransferPayeeView.showProgressBar();
-        RepositoryLocator.getInstance().getRepository(TransferRepository.class).startTransfer(sourceWalletId, destinationWalletId, amount, deal -> {
+        RepositoryLocator.getInstance().getRepository(TransactionRepository.class).startTransfer(sourceWalletId, destinationWalletId, amount, deal -> {
 
             if (deal.getThrowable() != null) {
 

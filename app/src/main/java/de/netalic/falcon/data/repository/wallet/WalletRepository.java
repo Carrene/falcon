@@ -2,7 +2,6 @@ package de.netalic.falcon.data.repository.wallet;
 
 import java.util.List;
 
-import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.data.model.Wallet;
 
 public class WalletRepository implements IWalletRepository {
@@ -37,18 +36,5 @@ public class WalletRepository implements IWalletRepository {
 
         mWalletRestRepository.getAll(callRepository);
     }
-
-    @Override
-    public void charge(int id, double amount, CallRepository<Deposit> callRepository) {
-
-        mWalletRestRepository.charge(id, amount, callRepository);
-    }
-
-    @Override
-    public void finalize(int walletId, int depositId, String braintreeNonce, CallRepository<Deposit> callRepository) {
-
-        mWalletRestRepository.finalize(walletId, depositId, braintreeNonce, callRepository);
-    }
-
 
 }

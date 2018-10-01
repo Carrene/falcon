@@ -5,7 +5,7 @@ import android.util.Log;
 
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
+import de.netalic.falcon.data.repository.rate.RateRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 import de.netalic.falcon.util.ScreenLocker;
 
@@ -28,7 +28,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
         mDashboardView.showProgressBar();
 
-        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).get(rate.getCurrencyCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(RateRepository.class).get(rate.getCurrencyCode(), deal -> {
 
             if (deal.getThrowable() != null) {
 

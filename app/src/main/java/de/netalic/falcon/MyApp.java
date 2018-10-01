@@ -7,15 +7,13 @@ import com.squareup.leakcanary.LeakCanary;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRealmRepository;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.deposit.DepositRepository;
-import de.netalic.falcon.data.repository.deposit.DepositRestRepository;
-import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
-import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRestRepository;
+import de.netalic.falcon.data.repository.rate.RateRepository;
+import de.netalic.falcon.data.repository.rate.RateRestRepository;
 import de.netalic.falcon.data.repository.receipt.ReceiptRealmRepository;
 import de.netalic.falcon.data.repository.receipt.ReceiptRepository;
 import de.netalic.falcon.data.repository.receipt.ReceiptRestRepository;
-import de.netalic.falcon.data.repository.transfer.TransferRepository;
-import de.netalic.falcon.data.repository.transfer.TransferRestRepository;
+import de.netalic.falcon.data.repository.transaction.TransactionRepository;
+import de.netalic.falcon.data.repository.transaction.TransactionRestRepository;
 import de.netalic.falcon.data.repository.user.UserRealmRepository;
 import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.data.repository.user.UserRestRepository;
@@ -63,9 +61,8 @@ public class MyApp extends Application {
         RepositoryLocator.getInstance().setRepository(new UserRepository(new UserRestRepository(), new UserRealmRepository()));
         RepositoryLocator.getInstance().setRepository(new WalletRepository(new WalletRestRepository(), null));
         RepositoryLocator.getInstance().setRepository(new AuthenticationRepository(null, new AuthenticationRealmRepository()));
-        RepositoryLocator.getInstance().setRepository(new DepositRepository(new DepositRestRepository(), null));
-        RepositoryLocator.getInstance().setRepository(new ExchangeRateRepository(new ExchangeRateRestRepository(), null));
+        RepositoryLocator.getInstance().setRepository(new RateRepository(new RateRestRepository(), null));
         RepositoryLocator.getInstance().setRepository(new ReceiptRepository(new ReceiptRestRepository(), new ReceiptRealmRepository()));
-        RepositoryLocator.getInstance().setRepository(new TransferRepository(new TransferRestRepository(), null));
+        RepositoryLocator.getInstance().setRepository(new TransactionRepository(new TransactionRestRepository(), null));
     }
 }

@@ -24,7 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Receipt;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -38,7 +39,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     private static final String CHARGE_PATH = "/Charge";
     private View mRoot;
     private static final String ARGUMENT_DEPOSIT = "DEPOSIT";
-    private Deposit mDeposit;
+    private Receipt mReceipt;
     private TextView mTextViewWalletName;
     private TextView mTextViewChargeAmount;
     private TextView mTextViewPaidAmount;
@@ -76,7 +77,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         mRoot = inflater.inflate(R.layout.fragment_chargefailed, null);
         checkNotNull(getArguments());
         setHasOptionsMenu(true);
-        mDeposit = getArguments().getParcelable(ARGUMENT_DEPOSIT);
+        mReceipt = getArguments().getParcelable(ARGUMENT_DEPOSIT);
         return mRoot;
     }
 
@@ -89,7 +90,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         initListener();
     }
 
-    public static ChargeFailedFragment newInstance(Deposit deposit) {
+    public static ChargeFailedFragment newInstance(Transaction deposit) {
 
         Bundle bundle = new Bundle();
         bundle.putParcelable(ARGUMENT_DEPOSIT, deposit);
@@ -113,15 +114,14 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     }
 
     public void setPaymentInformation() {
-
-        mTextViewWalletName.setText(mDeposit.getWalletName());
-        mTextViewChargeAmount.setText(mDeposit.getWalletCurrencySymbol()+" "+String.valueOf(mDeposit.getChargeAmount()));
-        mTextViewPaidAmount.setText(mDeposit.getPaymentGatewayCurrencySymbol()+" "+String.valueOf(mDeposit.getPaidAmount()));
-        mTextViewPaymentGateway.setText(mDeposit.getPaymentGatewayName());
+        mTextViewWalletName.setText(mReceipt.getRecipientWalletAddress());
+        mTextViewChargeAmount.setText(mReceipt.getBaseCurrencyCode() + " " + String.valueOf(mReceipt.getBaseAmount()));
+        mTextViewPaidAmount.setText(mReceipt.getQouteCurrencyCode() + " " + String.valueOf(mReceipt.getQouteAmount()));
+        mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
 
         try {
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
-            Date baseDate = dateFormat.parse(mDeposit.getModifiedAt());
+            Date baseDate = dateFormat.parse(mReceipt.getModifiedAt());
             DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
             DateFormat time = new SimpleDateFormat("h:mm a");
             mTextViewTransactionDate.setText(date.format(baseDate));
@@ -131,7 +131,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
             e.printStackTrace();
         }
 
-        mTextViewRrn.setText(mDeposit.getRrn());
+        mTextViewRrn.setText(mReceipt.getRetrievalReferenceNumber());
     }
 
     public void initListener() {
@@ -150,7 +150,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
-            requestPermissions( new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
             File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);

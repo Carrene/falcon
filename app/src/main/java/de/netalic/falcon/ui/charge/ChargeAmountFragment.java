@@ -18,8 +18,8 @@ import java.text.DecimalFormat;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Currency;
-import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
@@ -109,10 +109,10 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
     }
 
     @Override
-    public void showChargePaymentConfirmation(Deposit deposit) {
+    public void showChargePaymentConfirmation(Transaction transaction) {
 
         Intent intent = new Intent(getContext(), ChargeConfirmationActivity.class);
-        intent.putExtra(ChargeConfirmationActivity.ARGUMENT_CHARGE_START, deposit);
+        intent.putExtra(ChargeConfirmationActivity.ARGUMENT_CHARGE_START, transaction);
         startActivity(intent);
     }
 
@@ -159,6 +159,41 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
     }
 
     @Override
+    public void showErrorChargeIsUnAvailable() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_chargeisunavailable),getContext());
+    }
+
+    @Override
+    public void showErrorVerifyRateIsOutdatedOrItHasWrongCurrency() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_verifyrateisoutdatedorithaswrongcurrency),getContext());
+    }
+
+    @Override
+    public void showErrorVerifyRateIdMissing() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_VerifyRateIdMissing),getContext());
+    }
+
+    @Override
+    public void showErrorInvalidVerifyRateId() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_invalidverifyrateid),getContext());
+    }
+
+    @Override
+    public void showErrorStartATransferAsAnAnonymous() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_startatransferasananonymous),getContext());
+    }
+
+    @Override
     public void updateExchangeRateCurrency(Rate rate) {
 
         mRate = rate;
@@ -199,8 +234,6 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
                         double rate = mRate.getBuy();
                         double dollar = amountEnter * rate;
                         String roundDollar = mDecimalFormat.format(dollar);
-
-
                         mEditTextAmountBase.setText(String.valueOf(roundDollar));
 
                     }
@@ -257,7 +290,7 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
                     } else {
 
-                        mChargePresenter.charge(mWalletId, Double.parseDouble(mEditTextAmountWallet.getText().toString()));
+                        mChargePresenter.charge(mWalletId, Double.parseDouble(mEditTextAmountWallet.getText().toString()),mRate.getVerifyRateId());
                     }
                 }
         );

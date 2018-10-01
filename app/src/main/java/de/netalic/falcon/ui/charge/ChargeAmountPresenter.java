@@ -4,7 +4,8 @@ import android.support.annotation.NonNull;
 
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.exchangeRate.ExchangeRateRepository;
+import de.netalic.falcon.data.repository.rate.RateRepository;
+import de.netalic.falcon.data.repository.transaction.TransactionRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -53,10 +54,10 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
     }
 
     @Override
-    public void charge(int id, double amount) {
+    public void charge(int id, double amount, int verifyRateId) {
 
         mChargeAmountView.showProgressBar();
-        RepositoryLocator.getInstance().getRepository(WalletRepository.class).charge(id, amount, deal -> {
+        RepositoryLocator.getInstance().getRepository(TransactionRepository.class).startCharge(id, amount, verifyRateId, deal -> {
 
             if (deal.getThrowable() != null) {
 
@@ -95,6 +96,34 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
                         mChargeAmountView.showErrorAmountIsGreaterThanUpperBound();
                         break;
                     }
+
+                    case 725: {
+
+                        mChargeAmountView.showErrorChargeIsUnAvailable();
+                        break;
+                    }
+
+                    case 400: {
+
+                        mChargeAmountView.showErrorVerifyRateIdMissing();
+                        break;
+                    }
+
+                    case 401: {
+
+                        mChargeAmountView.showErrorStartATransferAsAnAnonymous();
+                        break;
+                    }
+                    case 605: {
+
+                        mChargeAmountView.showErrorVerifyRateIsOutdatedOrItHasWrongCurrency();
+                        break;
+                    }
+
+                    case 728: {
+
+                        mChargeAmountView.showErrorInvalidVerifyRateId();
+                    }
                 }
                 mChargeAmountView.dismissProgressBar();
             }
@@ -108,7 +137,7 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
 
         mChargeAmountView.showProgressBar();
 
-        RepositoryLocator.getInstance().getRepository(ExchangeRateRepository.class).get(rate.getCurrencyCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(RateRepository.class).get(rate.getCurrencyCode(), deal -> {
 
             if (deal.getThrowable() != null) {
 

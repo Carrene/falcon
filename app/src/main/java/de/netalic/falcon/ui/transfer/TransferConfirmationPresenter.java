@@ -1,7 +1,7 @@
 package de.netalic.falcon.ui.transfer;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.transfer.TransferRepository;
+import de.netalic.falcon.data.repository.transaction.TransactionRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -24,7 +24,7 @@ public class TransferConfirmationPresenter implements TransferConfirmationContra
     public void finalizeTransfer(int transactionId) {
 
         mTransferConfirmationView.showProgressBar();
-        RepositoryLocator.getInstance().getRepository(TransferRepository.class).get(transactionId, deal -> {
+        RepositoryLocator.getInstance().getRepository(TransactionRepository.class).finalizeTransfer(transactionId, deal -> {
 
             if (deal.getThrowable() != null) {
 

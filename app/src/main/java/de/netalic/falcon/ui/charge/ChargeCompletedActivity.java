@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Deposit;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;
@@ -22,7 +22,7 @@ public class ChargeCompletedActivity extends BaseActivity {
 
             throw new RuntimeException("deposit should not be null");
         }
-        Deposit deposit = getIntent().getExtras().getParcelable(ARGUMENT_DEPOSIT);
+        Transaction deposit = getIntent().getExtras().getParcelable(ARGUMENT_DEPOSIT);
 
         ChargeCompletedFragment chargeCompletedFragment = (ChargeCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_chargecompleted_fragmentcontainer);
         if (chargeCompletedFragment == null) {

@@ -1,7 +1,7 @@
 package de.netalic.falcon.ui.charge;
 
-import de.netalic.falcon.data.model.Deposit;
 import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 
@@ -10,7 +10,7 @@ public interface ChargeAmountContract {
 
     interface View extends BaseView<Presenter> {
 
-        void showChargePaymentConfirmation(Deposit deposit);
+        void showChargePaymentConfirmation(Transaction transaction);
 
         void showErrorInvalidAmount();
 
@@ -24,6 +24,16 @@ public interface ChargeAmountContract {
 
         void showErrorRatesDoesNotExists();
 
+        void showErrorChargeIsUnAvailable();
+
+        void showErrorVerifyRateIsOutdatedOrItHasWrongCurrency();
+
+        void showErrorVerifyRateIdMissing();
+
+        void showErrorInvalidVerifyRateId();
+
+        void showErrorStartATransferAsAnAnonymous();
+
         void updateExchangeRateCurrency(Rate rate);
 
     }
@@ -32,8 +42,7 @@ public interface ChargeAmountContract {
 
         void getWalletList();
 
-        void charge(int id, double amount);
-
+        void charge(int id, double amount,int verifyRateId);
 
         void exchangeRate(Rate rate);
 
