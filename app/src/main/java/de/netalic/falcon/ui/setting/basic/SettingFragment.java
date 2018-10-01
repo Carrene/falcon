@@ -4,24 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
-
-import java.util.Map;
-
-import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Authentication;
-import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
-import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.setting.recoveryemail.SettingRecoveryEmailActivity;
-import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
-import nuesoft.helpdroid.util.Parser;
+
 
 public class SettingFragment extends PreferenceFragmentCompat implements SettingContract.View {
 
     private SettingContract.Presenter mSettingPresenter;
     Preference mLoginMethodPreference;
     Preference mRecoveryEmailPreference;
+    Preference mPhonePreference;
 
     @Override
     public void setPresenter(SettingContract.Presenter presenter) {
@@ -46,9 +39,8 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
         addPreferencesFromResource(R.xml.prefrences_setting);
         initUiComponent();
         mSettingPresenter.loginMethod();
-        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance());
-        int id = (int) Parser.getTokenBody(sharedPreferencesJwtPersistor.get()).get("id");
-        mSettingPresenter.recoveryEmail(id);
+        mSettingPresenter.phoneNumber(getContext().getString(R.string.settingfragment_phone));
+        mSettingPresenter.recoveryEmail(getContext().getString(R.string.settingfragment_email));
     }
 
     public static SettingFragment newInstance() {
@@ -61,16 +53,8 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
 
         mRecoveryEmailPreference = findPreference(getString(R.string.settingprefrence_recoveryemailkey));
         mLoginMethodPreference = findPreference(getString(R.string.settingprefrence_loginmethodkey));
-        //TODO (Milad): All string should be in string
+        mPhonePreference = findPreference(getString(R.string.settingprefrence_phonenumberkey));
 
-//        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
-//        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
-//        String phone = (String) tokenBody.get("phone");
-//        String email = (String) tokenBody.get("email");
-
-        //TODO(Milad) Move phone to presenter
-        Preference phonePreference = findPreference(getString(R.string.settingprefrence_phonenumberkey));
-//        phonePreference.setTitle(phone);
 
     }
 
@@ -97,9 +81,15 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
     }
 
     @Override
-    public void setMethodType(String type) {
+    public void setPatternType() {
 
-        mLoginMethodPreference.setTitle(type);
+        mLoginMethodPreference.setTitle(getContext().getString(R.string.settingfragment_pattern));
+    }
+
+    @Override
+    public void setPasswordType() {
+
+        mLoginMethodPreference.setTitle(getContext().getString(R.string.settingfragment_password));
     }
 
     @Override
@@ -107,4 +97,23 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
 
         mRecoveryEmailPreference.setTitle(state);
     }
+
+    @Override
+    public void setEmailNotSet() {
+
+        mRecoveryEmailPreference.setTitle(getContext().getString(R.string.settingfragment_emailnotset));
+    }
+
+    @Override
+    public void setPhoneNumber(String phone) {
+
+        mPhonePreference.setTitle(phone);
+    }
+
+    @Override
+    public void setPhoneNumberNotSet() {
+
+        mPhonePreference.setTitle(getContext().getString(R.string.settingfragment_phonnumbernotset));
+    }
+
 }

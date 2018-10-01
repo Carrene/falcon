@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--TODO:(Milad) What is this?-->
+
     <style name="Base.V7.Widget.AppCompat.EditText" parent="Widget.AppCompat.EditText">
         <item name="android:backgroundTint">@color/colorBlack</item>
     </style>

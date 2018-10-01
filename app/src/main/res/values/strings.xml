@@ -324,9 +324,22 @@
     <string name="settingprefrence_loginmethodkey">loginMethod</string>
     <string name="settingprefrence_recoveryemailkey">recoveryEmail</string>
     <string name="settingprefrence_phonenumberkey">phoneNumber</string>
+    <string name="settingprefrence_phonenumbertitle">VALUE</string>
+    <string name="settingprefrence_recoveryemailtitle">VALUE</string>
+    <string name="settingprefrence_loginmethodprefrencecategorytitle">Security</string>
+    <string name="settingprefrence_loginmethodtitle">VALUE</string>
+    <string name="settingprefrence_supportprefrencecategorytitle">Support</string>
     <string name="settingprefrence_emailnotset">Not set</string>
 
     <string name="settingrecoveryemail_recoveryemail">Recovery email</string>
     <string name="settingprefrence_aboutkey">about</string>
+    <string name="settingprefrence_abouttitle">About</string>
+
+    <string name="settingfragment_phone">phone</string>
+    <string name="settingfragment_email">email</string>
+    <string name="settingfragment_pattern">pattern</string>
+    <string name="settingfragment_password">password</string>
+    <string name="settingfragment_emailnotset">Email not set</string>
+    <string name="settingfragment_phonnumbernotset">Phone number not set</string>
 
 </resources>

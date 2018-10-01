@@ -8,9 +8,17 @@ public interface SettingContract {
     interface View extends BaseView<Presenter>{
 
 
-        void setMethodType(String password);
+        void setPatternType();
+
+        void setPasswordType();
 
         void setRecoveryEmailState(String email);
+
+        void setEmailNotSet();
+
+        void setPhoneNumber(String phone);
+
+        void setPhoneNumberNotSet();
     }
 
     interface Presenter extends BasePresenter{
@@ -18,6 +26,8 @@ public interface SettingContract {
 
         void loginMethod();
 
-        void recoveryEmail(int id);
+        void recoveryEmail(String email);
+
+        void phoneNumber(String phone);
     }
 }

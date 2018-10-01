@@ -1,13 +1,20 @@
 package de.netalic.falcon.ui.setting.basic;
 
+import java.util.Map;
+
+import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.user.UserRepository;
+import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
+import nuesoft.helpdroid.util.Parser;
 
 public class SettingPresenter implements SettingContract.Presenter {
 
     private SettingContract.View mSettingView;
+    SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+    Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
 
     public SettingPresenter(SettingContract.View settingView) {
         mSettingView = settingView;
@@ -26,13 +33,12 @@ public class SettingPresenter implements SettingContract.Presenter {
             if (deal.getThrowable() == null) {
                 switch (deal.getModel().getAuthenticationType()) {
                     case Authentication.PATTERN_TYPE: {
-                        //TODO(Milad) Use Authentication.type to view and view use the string file resource
-                        mSettingView.setMethodType("pattern");
+                        mSettingView.setPatternType();
                         break;
                     }
 
                     case Authentication.PASSWORD_TYPE: {
-                        mSettingView.setMethodType("password");
+                        mSettingView.setPasswordType();
                         break;
                     }
                 }
@@ -41,23 +47,32 @@ public class SettingPresenter implements SettingContract.Presenter {
     }
 
     @Override
-    public void recoveryEmail(int id) {
+    public void recoveryEmail(String recoveryEmail) {
 
-        //TODO(Milad) Use token for getting email
-        RepositoryLocator.getInstance().getRepository(UserRepository.class).get(id, deal -> {
 
-            if (deal.getThrowable() == null) {
+        String email = (String) tokenBody.get(recoveryEmail);
 
-                if (deal.getModel().getIsActive()) {
+        if (email == null) {
 
-                    mSettingView.setRecoveryEmailState(deal.getModel().getEmail());
+            mSettingView.setEmailNotSet();
+        } else {
 
-                } else {
-                    //TODO (Milad) Move view logic to view
-                    mSettingView.setRecoveryEmailState("Email not set");
-                }
-            }
+            mSettingView.setRecoveryEmailState(email);
+        }
 
-        });
+    }
+
+    @Override
+    public void phoneNumber(String phoneNumber) {
+
+        String phone = (String) tokenBody.get(phoneNumber);
+
+        if (phone == null) {
+
+            mSettingView.setPhoneNumberNotSet();
+        } else {
+
+            mSettingView.setPhoneNumber(phone);
+        }
     }
 }
