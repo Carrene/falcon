@@ -115,7 +115,7 @@ public class SettingAuthenticationDefinitionActivity extends BaseActivity implem
     }
 
     @Override
-    public void navigationToSetting() {
+    public void navigationToAuthentication() {
 
         Intent intent = new Intent(this, AuthenticationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

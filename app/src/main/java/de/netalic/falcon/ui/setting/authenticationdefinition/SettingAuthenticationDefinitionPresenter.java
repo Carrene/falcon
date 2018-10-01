@@ -23,7 +23,7 @@ public class SettingAuthenticationDefinitionPresenter implements SettingAuthenti
             if (deal.getThrowable() != null) {
                 throw new RuntimeException("Authentication has not been saved!");
             }
-            mSettingAuthenticationDefinitionView.navigationToSetting();
+            mSettingAuthenticationDefinitionView.navigationToAuthentication();
         });
     }
 

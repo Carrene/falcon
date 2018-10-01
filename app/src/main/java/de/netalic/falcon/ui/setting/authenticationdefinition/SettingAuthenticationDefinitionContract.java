@@ -7,7 +7,7 @@ public interface SettingAuthenticationDefinitionContract {
 
     interface View extends BaseView<Presenter>{
 
-        void navigationToSetting();
+        void navigationToAuthentication();
 
 
     }

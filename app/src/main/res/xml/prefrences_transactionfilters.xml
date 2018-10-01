@@ -19,8 +19,8 @@
             android:key="charge"
             android:title="Charge"/>
         <SwitchPreference
-            android:key="receive"
-            android:title="Receive"/>
+            android:key="transfer"
+            android:title="Transfer"/>
         <SwitchPreference
             android:key="purchase"
             android:title="Purchase"/>

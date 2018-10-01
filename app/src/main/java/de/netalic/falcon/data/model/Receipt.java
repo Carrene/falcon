@@ -5,106 +5,156 @@ import com.google.gson.annotations.SerializedName;
 import io.realm.RealmObject;
 
 public class Receipt extends RealmObject {
+
     @SerializedName("retrievalReferenceNumber")
     private String mRetrievalReferenceNumber;
+
     @SerializedName("senderWalletAddress")
     private String mSenderWalletAddress;
+
     @SerializedName("paymentGatewayName")
     private String mPaymentGatewayName;
-    @SerializedName("qouteAmount")
-    private int mqQouteAmount;
+
+    @SerializedName("quoteAmount")
+    private double mqQuoteAmount;
+
     @SerializedName("type")
     private String mType;
+
     @SerializedName("baseCurrencyCode")
     private String mBaseCurrencyCode;
+
     @SerializedName("failureCause")
     private String mFailureCause;
-    @SerializedName("qouteCurrencySymbol")
-    private String mQouteCurrencySymbol;
+
+    @SerializedName("quoteCurrencySymbol")
+    private String mQuoteCurrencySymbol;
+
     @SerializedName("createdAt")
     private String mCreatedAt;
+
     @SerializedName("baseAmount")
-    private String mBaseAmount;
+    private double mBaseAmount;
+
     @SerializedName("baseCurrencySymbol")
     private String mBaseCurrencySymbol;
+
     @SerializedName("status")
     private String mStatus;
+
     @SerializedName("paymentGatewayId")
     private int mPaymentGatewayId;
-    @SerializedName("qouteCurrencyCode")
+
+    @SerializedName("quoteCurrencyCode")
     private String mQouteCurrencyCode;
+
     @SerializedName("id")
     private int mId;
+
     @SerializedName("modifiedAt")
     private String mModifiedAt;
+
     @SerializedName("recipientWalletAddress")
     private String mRecipientWalletAddress;
 
+    @SerializedName("senderWalletName")
+    private String mSenderWalletName;
+
+    @SerializedName("recipientWalletName")
+    private String mRecipientWalletName;
+
+    public String getSenderWalletName() {
+
+        return mSenderWalletName;
+    }
+
+    public String getRecipientWalletName() {
+
+        return mRecipientWalletName;
+    }
+
     public String getRetrievalReferenceNumber() {
+
         return mRetrievalReferenceNumber;
     }
 
     public String getSenderWalletAddress() {
+
         return mSenderWalletAddress;
     }
 
     public String getPaymentGatewayName() {
+
         return mPaymentGatewayName;
     }
 
-    public int getQouteAmount() {
-        return mqQouteAmount;
+    public double getQouteAmount() {
+
+        return mqQuoteAmount;
     }
 
     public String getType() {
+
         return mType;
     }
 
     public String getBaseCurrencyCode() {
+
         return mBaseCurrencyCode;
     }
 
     public String getFailureCause() {
+
         return mFailureCause;
     }
 
-    public String getQouteCurrencySymbol() {
-        return mQouteCurrencySymbol;
+    public String getQuoteCurrencySymbol() {
+
+        return mQuoteCurrencySymbol;
     }
 
     public String getCreatedAt() {
+
         return mCreatedAt;
     }
 
-    public String getBaseAmount() {
+    public double getBaseAmount() {
+
         return mBaseAmount;
     }
 
     public String getBaseCurrencySymbol() {
+
         return mBaseCurrencySymbol;
     }
 
-    public String getmStatus() {
+    public String getStatus() {
+
         return mStatus;
     }
 
     public int getPaymentGatewayId() {
+
         return mPaymentGatewayId;
     }
 
-    public String getQouteCurrencyCode() {
+    public String getQuoteCurrencyCode() {
+
         return mQouteCurrencyCode;
     }
 
     public int getId() {
+
         return mId;
     }
 
     public String getModifiedAt() {
+
         return mModifiedAt;
     }
 
     public String getRecipientWalletAddress() {
+
         return mRecipientWalletAddress;
     }
 }

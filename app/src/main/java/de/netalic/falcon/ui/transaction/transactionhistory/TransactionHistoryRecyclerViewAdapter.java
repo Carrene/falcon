@@ -41,7 +41,7 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_transactionhistory, parent, false);
-        return new DepositViewHolder(view);
+        return new ReceiptViewHolder(view);
     }
 
     @Override
@@ -49,26 +49,32 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
 
         if (mReceiptList != null && !mReceiptList.isEmpty()) {
 
-            DepositViewHolder depositViewHolder = (DepositViewHolder) holder;
+            ReceiptViewHolder receiptViewHolder = (ReceiptViewHolder) holder;
             Receipt receipt = mReceiptList.get(position);
 
-//            depositViewHolder.mTextViewWalletName.setText(receipt.getWalletName());
-//            depositViewHolder.mTextViewAmount.setText(receipt.getPaymentGatewayCurrencySymbol() + " " + String.valueOf(receipt.getPaidAmount()));
-//            depositViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(receipt.getCreatedAt()) + "@" + DateUtil.isoToTime(receipt.getCreatedAt()));
-//            depositViewHolder.mTextViewTransactionResult.setText(receipt.getStatus());
+            receiptViewHolder.mTextViewWalletName.setText(receipt.getRecipientWalletName());
+            receiptViewHolder.mTextViewAmount.setText(receipt.getQuoteCurrencySymbol() + " " + String.valueOf(receipt.getQouteAmount()));
+            receiptViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(receipt.getCreatedAt()) + "@" + DateUtil.isoToTime(receipt.getCreatedAt()));
+            receiptViewHolder.mTextViewTransactionType.setText(receipt.getType());
+            receiptViewHolder.mTextViewTransactionResult.setText(receipt.getStatus());
 
-//            switch (receipt.getStatus()) {
-//
-//                case "succeed": {
-//                    depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
-//                    break;
-//                }
-//
-//                case "failed": {
-//                    depositViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
-//                    break;
-//                }
-//            }
+            switch (receipt.getStatus()) {
+
+                case "succeed": {
+                    receiptViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#009688"));
+                    break;
+                }
+
+                case "failed": {
+                    receiptViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#DC3545"));
+                    break;
+                }
+
+                default: {
+                    receiptViewHolder.mTextViewTransactionResult.setTextColor(Color.parseColor("#000000"));
+
+                }
+            }
         }
     }
 
@@ -78,20 +84,23 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
         return mReceiptList.size();
     }
 
-    private class DepositViewHolder extends RecyclerView.ViewHolder {
+    private class ReceiptViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mTextViewWalletName;
         private TextView mTextViewAmount;
         private TextView mTextViewDateAndTime;
         private TextView mTextViewTransactionResult;
+        private TextView mTextViewTransactionType;
 
-        private DepositViewHolder(View itemView) {
+
+        private ReceiptViewHolder(View itemView) {
 
             super(itemView);
             mTextViewWalletName = itemView.findViewById(R.id.textview_transactionhistory_walletname);
             mTextViewAmount = itemView.findViewById(R.id.textview_transactionhistory_amount);
             mTextViewDateAndTime = itemView.findViewById(R.id.textview_transactionhistory_dateandtime);
             mTextViewTransactionResult = itemView.findViewById(R.id.textview_transactionhistory_transactionresult);
+            mTextViewTransactionType = itemView.findViewById(R.id.textview_transactionhistory_type);
 
         }
     }

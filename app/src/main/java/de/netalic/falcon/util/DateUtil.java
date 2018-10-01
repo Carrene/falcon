@@ -10,7 +10,7 @@ public class DateUtil {
 
     public static String isoToDate(String isoDate) {
 
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.getDefault());
         Date baseDate = null;
         try {
             baseDate = dateFormat.parse(isoDate);
@@ -23,7 +23,7 @@ public class DateUtil {
 
     public static String isoToTime(String isoDate) {
 
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.getDefault());
         Date baseDate = null;
         try {
             baseDate = dateFormat.parse(isoDate);

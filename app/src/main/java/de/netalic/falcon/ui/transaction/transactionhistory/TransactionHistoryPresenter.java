@@ -7,12 +7,15 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.receipt.ReceiptRepository;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TransactionHistoryPresenter implements TransactionHistoryContract.Presenter {
 
     private TransactionHistoryContract.View mTransactionHistoryView;
-    private int mPaginationTake = 10;
+    private int mPaginationTake = 20;
     private int mPaginationSkip = 0;
 
     public TransactionHistoryPresenter(TransactionHistoryContract.View transactionHistoryView) {
@@ -34,37 +37,37 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
 
         Map<String, String> queryString = createQueryString(filterMap);
 
-//        RepositoryLocator.getInstance().getRepository(DepositRepository.class).getAll(deal -> {
-//            if (deal.getThrowable() != null) {
-//                mTransactionHistoryView.showPaginationError(true);
-//                mTransactionHistoryView.showPaginationLoading(false);
-//            } else {
-//                switch (deal.getResponse().code()) {
-//
-//                    case 200: {
-//
-//                        mTransactionHistoryView.showPaginationLoading(false);
-//                        mTransactionHistoryView.showPaginationError(false);
-//                        mPaginationTake = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Take"));
-//                        mPaginationSkip = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Skip"));
-//                        int paginationCount = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Count"));
-//
-//                        mTransactionHistoryView.setDepositList(deal.getResponse().body());
-//                        if (mPaginationSkip >= paginationCount) {
-//                            mTransactionHistoryView.loadNoMoreItem(true);
-//                            mPaginationSkip = 0;
-//                        }
-//
-//                        mPaginationSkip += mPaginationTake;
-//                        break;
-//                    }
-//
-//                    default: {
-//                        mTransactionHistoryView.showPaginationError(true);
-//                    }
-//                }
-//            }
-//        }, queryString, mPaginationTake, mPaginationSkip);
+        RepositoryLocator.getInstance().getRepository(ReceiptRepository.class).getAll(deal -> {
+            if (deal.getThrowable() != null) {
+                mTransactionHistoryView.showPaginationError(true);
+                mTransactionHistoryView.showPaginationLoading(false);
+            } else {
+                switch (deal.getResponse().code()) {
+
+                    case 200: {
+
+                        mTransactionHistoryView.showPaginationLoading(false);
+                        mTransactionHistoryView.showPaginationError(false);
+                        mPaginationTake = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Take"));
+                        mPaginationSkip = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Skip"));
+                        int paginationCount = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Count"));
+
+                        mTransactionHistoryView.setDepositList(deal.getResponse().body());
+                        if (mPaginationSkip >= paginationCount) {
+                            mTransactionHistoryView.loadNoMoreItem(true);
+                            mPaginationSkip = 0;
+                        }
+
+                        mPaginationSkip += mPaginationTake;
+                        break;
+                    }
+
+                    default: {
+                        mTransactionHistoryView.showPaginationError(true);
+                    }
+                }
+            }
+        }, queryString, mPaginationTake, mPaginationSkip);
     }
 
     @Override
@@ -75,7 +78,7 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
     }
 
     private Map<String, String> createQueryString(Map<String, ?> filterMap) {
-
+        //TODO(Ehsan) Complete time filtering
         Map<String, String> queryString = new HashMap<>();
         Map<String, Set<String>> queryStringMap = new HashMap<>();
 
@@ -86,14 +89,18 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         queryStringMap.put("status", new HashSet<>());
                     }
                     queryStringMap.get("status").add(entry.getKey());
+                } else if (entry.getKey().equals("withdraw") || entry.getKey().equals("charge") || entry.getKey().equals("transfer") || entry.getKey().equals("purchase")) {
+                    if (queryStringMap.get("type") == null) {
+                        queryStringMap.put("type", new HashSet<>());
+                    }
+                    queryStringMap.get("type").add(entry.getKey());
                 }
             }
         }
 
         for (String key : queryStringMap.keySet()) {
-            queryString.put(key, "IN(" + Joiner.on(",").join(queryStringMap.get("status").iterator()) + ")");
+            queryString.put(key, "IN(" + Joiner.on(",").join(queryStringMap.get(key).iterator()) + ")");
         }
-
         return queryString;
     }
 }

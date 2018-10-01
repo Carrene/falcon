@@ -1,6 +1,7 @@
 package de.netalic.falcon.data.repository.receipt;
 
 import java.util.List;
+import java.util.Map;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.model.Receipt;
@@ -13,6 +14,11 @@ public class ReceiptRealmRepository implements IReceiptRepository {
 
     @Override
     public void transfer(int sourceAddress, int walletId, double amount, CallRepository<Receipt> callRepository) {
+
+    }
+
+    @Override
+    public void getAll(CallRepository<List<Receipt>> callRepository, Map<String, String> query, int take, int skip) {
 
     }
 

@@ -116,7 +116,7 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
     public void setPaymentInformation() {
         mTextViewWalletName.setText(mReceipt.getRecipientWalletAddress());
         mTextViewChargeAmount.setText(mReceipt.getBaseCurrencyCode() + " " + String.valueOf(mReceipt.getBaseAmount()));
-        mTextViewPaidAmount.setText(mReceipt.getQouteCurrencyCode() + " " + String.valueOf(mReceipt.getQouteAmount()));
+        mTextViewPaidAmount.setText(mReceipt.getQuoteCurrencyCode() + " " + String.valueOf(mReceipt.getQouteAmount()));
         mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
 
         try {

@@ -52,7 +52,7 @@ public interface ApiInterface {
     @HTTP(method = "LIST", path = "receipts?sort=createdAt")
     Call<List<Receipt>> receiptList();
 
-    @HTTP(method = "LIST", path = "deposits?sort=createdAt")
+    @HTTP(method = "LIST", path = "receipts?sort=createdAt")
     Call<List<Receipt>> receiptList(@QueryMap(encoded = true) Map<String, String> options, @Query("take") int take, @Query("skip") int skip);
 
     @FormUrlEncoded

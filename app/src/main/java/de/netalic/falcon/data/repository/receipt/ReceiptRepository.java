@@ -1,6 +1,7 @@
 package de.netalic.falcon.data.repository.receipt;
 
 import java.util.List;
+import java.util.Map;
 
 import de.netalic.falcon.data.model.Receipt;
 
@@ -57,5 +58,11 @@ public class ReceiptRepository implements IReceiptRepository {
     public void transfer(int sourceAddress, int walletId, double amount, CallRepository<Receipt> callRepository) {
 
         mReceiptRestRepository.transfer(sourceAddress, walletId, amount, callRepository);
+    }
+
+    @Override
+    public void getAll(CallRepository<List<Receipt>> callRepository, Map<String, String> query, int take, int skip) {
+
+        mReceiptRestRepository.getAll(callRepository, query, take, skip);
     }
 }
