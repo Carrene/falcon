@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.charge;
+package de.netalic.falcon.ui.util;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 public class OffsetItemDecoration extends RecyclerView.ItemDecoration {
@@ -21,22 +22,24 @@ public class OffsetItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
 
         super.getItemOffsets(outRect, view, parent, state);
-        int nCols = parent.getAdapter().getItemCount() + 1;
-        int colWidth = (int) (getScreenWidth() / (float) (nCols));
-
+        View nextChild = ((ViewGroup) view).getChildAt(0);
+        int offset = (int) (getScreenWidth() / (float) (2)) - nextChild.getLayoutParams().width / 2;
         if (parent.getChildAdapterPosition(view) == 0) {
-            int offset = Math.round(getScreenWidth() / 3f - colWidth / 3f);
+            ((ViewGroup.MarginLayoutParams) nextChild.getLayoutParams()).setMarginStart(0);
             setupOutRect(outRect, offset, true);
         } else if (parent.getChildAdapterPosition(view) == state.getItemCount() - 1) {
-            int offset = Math.round(getScreenWidth() / 3f - colWidth / 3f);
+            ((ViewGroup.MarginLayoutParams) nextChild.getLayoutParams()).setMarginEnd(0);
             setupOutRect(outRect, offset, false);
         }
     }
 
     private void setupOutRect(Rect rect, int offset, boolean start) {
 
-        if (start) rect.left = offset;
-        else rect.right = offset;
+        if (start) {
+            rect.left = offset;
+        } else {
+            rect.right = offset;
+        }
     }
 
     private int getScreenWidth() {

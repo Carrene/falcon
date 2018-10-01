@@ -2,8 +2,8 @@ package de.netalic.falcon.ui.setting.basic;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
-import android.widget.TextView;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 
 import java.util.Map;
 
@@ -16,23 +16,19 @@ import nuesoft.helpdroid.util.Parser;
 
 public class SettingActivity extends BaseActivity {
 
-    private TextView mTextViewPhoneNumber;
-    private TextView mTextViewEmail;
+    private CollapsingToolbarLayout mCollapsingToolbarLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        ViewCompat.setTransitionName(findViewById(R.id.appbarlayout_setting_appbarlayout),
-                "EXTRA_IMAGE");
-        supportPostponeEnterTransition();
-        setSupportActionBar(findViewById(R.id.toolbar_setting_toolbar));
+        mCollapsingToolbarLayout = findViewById(R.id.toolbar_layout);
 
-        mTextViewPhoneNumber = findViewById(R.id.textview_setting_phonenumber);
-        mTextViewEmail = findViewById(R.id.textview_setting_email);
-
-        setPhoneAndEmail();
+        setupToolbar();
         setupBackButton();
+        initUiComponent();
+        setPhoneAndEmail();
+        setName();
 
         SettingFragment settingFragment = (SettingFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_setting_fragmentcontainer);
         if (settingFragment == null) {
@@ -52,30 +48,43 @@ public class SettingActivity extends BaseActivity {
     @Override
     protected String getActionbarTitle() {
 
-        return "Title";
+        return "";
+    }
+
+    private void initUiComponent() {
+
+        mCollapsingToolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.white));
+        mCollapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.white));
+
+    }
+
+    private void setName() {
+
+        mCollapsingToolbarLayout.setTitle("Ehsan");
     }
 
     private void setPhoneAndEmail() {
 
-        //TODO(Milad): What is this? All string should be in string.xml
-        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
-        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
-        String phone = (String) tokenBody.get("phone");
-        String email = (String) tokenBody.get("email");
-
-
-        if (email == null) {
-            mTextViewEmail.setText("Email not set");
-        } else {
-            mTextViewEmail.setText(email);
-        }
-
-        if (phone == null) {
-
-            mTextViewPhoneNumber.setText("phoneNumber not set");
-        } else {
-
-            mTextViewPhoneNumber.setText(phone);
-        }
+//        //TODO(Milad): What is this? All string should be in string.xml
+//        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+//        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+//        String phone = (String) tokenBody.get("phone");
+//        String email = (String) tokenBody.get("email");
+//
+//        String phoneEmail;
+//        if (email == null) {
+//            phoneEmail = "Email not set";
+//        } else {
+//            phoneEmail = email;
+//        }
+//        phoneEmail += "\n";
+//
+//        if (phone == null) {
+//            phoneEmail += "no phone";
+//        } else {
+//
+//            phoneEmail += phone;
+//        }
+//        mCollapsingToolbarLayout.setTitle(phoneEmail);
     }
 }

@@ -5,8 +5,13 @@ import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
+import java.util.Map;
+
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Authentication;
+import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.setting.recoveryemail.SettingRecoveryEmailActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
@@ -41,8 +46,8 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
         addPreferencesFromResource(R.xml.prefrences_setting);
         initUiComponent();
         mSettingPresenter.loginMethod();
-        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor=new SharedPreferencesJwtPersistor(MyApp.getInstance());
-        int id= (int)Parser.getTokenBody(sharedPreferencesJwtPersistor.get()).get("id");
+        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance());
+        int id = (int) Parser.getTokenBody(sharedPreferencesJwtPersistor.get()).get("id");
         mSettingPresenter.recoveryEmail(id);
     }
 
@@ -54,14 +59,18 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
 
     private void initUiComponent() {
 
+        mRecoveryEmailPreference = findPreference(getString(R.string.settingprefrence_recoveryemailkey));
         mLoginMethodPreference = findPreference(getString(R.string.settingprefrence_loginmethodkey));
+        //TODO (Milad): All string should be in string
 
+//        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+//        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+//        String phone = (String) tokenBody.get("phone");
+//        String email = (String) tokenBody.get("email");
 
-
-
-
-        mRecoveryEmailPreference=findPreference(getString(R.string.settingprefrence_recoveryemailkey));
-
+        //TODO(Milad) Move phone to presenter
+        Preference phonePreference = findPreference(getString(R.string.settingprefrence_phonenumberkey));
+//        phonePreference.setTitle(phone);
 
     }
 
@@ -69,26 +78,28 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
     public boolean onPreferenceTreeClick(Preference preference) {
 
         String key = preference.getKey();
+
         if (key.equals(getString(R.string.settingprefrence_loginmethodkey))) {
+
             Intent intent = new Intent(getContext(), SettingAuthenticationDefinitionActivity.class);
             startActivity(intent);
+
         } else if (key.equals(getString(R.string.settingprefrence_recoveryemailkey))) {
+
             Intent intent = new Intent(getContext(), SettingRecoveryEmailActivity.class);
+            startActivity(intent);
 
-                startActivity(intent);
-
-        }
-        else if (key.equals(getString(R.string.settingprefrence_aboutkey))){
-
+        } else if (key.equals(getString(R.string.settingprefrence_aboutkey))) {
 
         }
+
         return super.onPreferenceTreeClick(preference);
     }
 
     @Override
     public void setMethodType(String type) {
 
-        mLoginMethodPreference.setSummary(type);
+        mLoginMethodPreference.setTitle(type);
     }
 
     @Override

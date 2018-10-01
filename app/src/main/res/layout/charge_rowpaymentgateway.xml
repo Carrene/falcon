@@ -6,12 +6,11 @@
 
     <RelativeLayout
         android:id="@+id/relativelayout_charge_wallet"
-        android:layout_width="111dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/charge_wallet_border">
 
         <ImageView
