@@ -16,6 +16,8 @@ import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 
+import java.text.DecimalFormat;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
@@ -36,6 +38,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     public static final String ARGUMENT_CHARGE_START = "chargeStart";
     private static final int DROP_IN_REQUEST = 1;
     private static final String ARGUMENT_TRANSACTION = "TRANSACTION";
+    private DecimalFormat mDecimalFormat;
 
 
     @Nullable
@@ -48,6 +51,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         }
 
         mTransaction = getArguments().getParcelable(ARGUMENT_CHARGE_START);
+        mDecimalFormat = new DecimalFormat("0.00##");
         return mRoot;
     }
 
@@ -66,7 +70,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
 
         mTextViewWalletName.setText(mTransaction.getActionList().get(1).getWalletName());
         mTextViewChargeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol()+" "+String.valueOf(mTransaction.getActionList().get(1).getAmount()));
-        mTextViewPaidAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol()+" "+String.valueOf(Math.abs(mTransaction.getActionList().get(0).getAmount())));
+        mTextViewPaidAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol()+" "+String.valueOf(mDecimalFormat.format(Math.abs(mTransaction.getActionList().get(0).getAmount()))));
         mTextViewPaymentGateway.setText(mTransaction.getPaymentGatewayName());
 
     }
