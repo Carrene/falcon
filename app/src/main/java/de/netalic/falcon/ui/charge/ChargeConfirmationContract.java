@@ -10,6 +10,8 @@ public interface ChargeConfirmationContract {
 
         void navigationToChargeCompleted(Receipt receipt);
 
+        void navigationToChargeFailed(Receipt receipt);
+
         void showErrorBraintreeNonceIsMissing();
 
         void showErrorCannotFinalizeFailedTransaction();
@@ -19,6 +21,8 @@ public interface ChargeConfirmationContract {
         void showErrorInvalidTransactionId();
 
         void showErrorFinalizeTransferAsAnAnonymous();
+
+        void showErrorWhenFailed();
 
     }
 

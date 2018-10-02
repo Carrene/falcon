@@ -90,10 +90,10 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
         initListener();
     }
 
-    public static ChargeFailedFragment newInstance(Transaction deposit) {
+    public static ChargeFailedFragment newInstance(Receipt receipt) {
 
         Bundle bundle = new Bundle();
-        bundle.putParcelable(ARGUMENT_DEPOSIT, deposit);
+        bundle.putParcelable(ARGUMENT_DEPOSIT, receipt);
         ChargeFailedFragment fragment = new ChargeFailedFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -115,8 +115,8 @@ public class ChargeFailedFragment extends Fragment implements ChargeFailedContra
 
     public void setPaymentInformation() {
         mTextViewWalletName.setText(mReceipt.getRecipientWalletAddress());
-        mTextViewChargeAmount.setText(mReceipt.getBaseCurrencyCode() + " " + String.valueOf(mReceipt.getBaseAmount()));
-        mTextViewPaidAmount.setText(mReceipt.getQuoteCurrencyCode() + " " + String.valueOf(mReceipt.getQuoteAmount()));
+        mTextViewChargeAmount.setText(mReceipt.getBaseCurrencySymbol() + " " + String.valueOf(mReceipt.getBaseAmount()));
+        mTextViewPaidAmount.setText(mReceipt.getQuoteCurrencySymbol() + " " + String.valueOf(mReceipt.getQuoteAmount()));
         mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
 
         try {

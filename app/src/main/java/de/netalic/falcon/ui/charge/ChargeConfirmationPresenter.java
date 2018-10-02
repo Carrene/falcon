@@ -79,12 +79,13 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
 
                                                     case "failed": {
                                                         handler.removeCallbacks(mRunnableRequest);
-                                                        //TODO(Milad) Navigate to charge failed with receipt model
+                                                        mChargeConfirmationView.navigationToChargeFailed(deal1.getModel());
                                                         break;
                                                     }
                                                 }
                                             } else {
-                                                //TODO (Milad) Display snack bar error
+
+                                                mChargeConfirmationView.showErrorWhenFailed();
                                             }
                                         });
                             }

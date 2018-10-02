@@ -112,7 +112,12 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
         RecyclerView recyclerView = mRoot.findViewById(R.id.recyclerview_transactionhistory);
         mSwipeRefreshLayout = mRoot.findViewById(R.id.swiperefresh_transactionhistory);
+recyclerView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
 
+    }
+});
         if (mNoPaginate != null) {
             mNoPaginate.unbind();
         }

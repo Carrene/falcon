@@ -18,10 +18,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Receipt;
@@ -34,7 +30,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ChargeCompletedFragment extends Fragment implements ChargeCompletedContract.View {
 
-    private static final String ARGUMENT_DEPOSIT = "DEPOSIT";
+    private static final String ARGUMENT_RECEIPT = "receipt";
     private static final String ALPHA_PATH = "/Alpha";
     private static final String CHARGE_PATH = "/Charge";
     private Receipt mReceipt;
@@ -59,8 +55,7 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
         mRoot = inflater.inflate(R.layout.fragment_chargecompleted, null);
         checkNotNull(getArguments());
         setHasOptionsMenu(true);
-        mReceipt = getArguments().getParcelable(ARGUMENT_DEPOSIT);
-
+        mReceipt = getArguments().getParcelable(ARGUMENT_RECEIPT);
         return mRoot;
     }
 
@@ -89,10 +84,10 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
     }
 
-    public static ChargeCompletedFragment newInstance(Transaction deposit) {
+    public static ChargeCompletedFragment newInstance(Receipt receipt) {
 
         Bundle bundle = new Bundle();
-        bundle.putParcelable(ARGUMENT_DEPOSIT, deposit);
+        bundle.putParcelable(ARGUMENT_RECEIPT, receipt);
         ChargeCompletedFragment fragment = new ChargeCompletedFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -124,21 +119,13 @@ public class ChargeCompletedFragment extends Fragment implements ChargeCompleted
 
     public void setPaymentInformation() {
 
-//        mTextViewWalletName.setText(mReceipt.getWalletName());
-//        mTextViewAmountWallet.setText(mReceipt.getWalletCurrencySymbol() + " " + String.valueOf(mReceipt.getChargeAmount()));
-//        mTextViewAmountBase.setText(mReceipt.getPaymentGatewayCurrencySymbol() + " " + String.valueOf(mReceipt.getPaidAmount()));
-//        mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
-//        try {
-//            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
-//            Date baseDate = dateFormat.parse(mReceipt.getModifiedAt());
-//            DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-//            DateFormat time = new SimpleDateFormat("h:mm a");
-//            mTextViewTransactionDate.setText(date.format(baseDate));
-//            mTextViewTransactionTime.setText(time.format(baseDate));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        mTextViewRrn.setText(mReceipt.getRrn());
+        mTextViewWalletName.setText(mReceipt.getRecipientWalletName());
+        mTextViewAmountWallet.setText(mReceipt.getQuoteCurrencySymbol() + " " + String.valueOf(mReceipt.getQuoteAmount()));
+        mTextViewAmountBase.setText(mReceipt.getQuoteCurrencySymbol() + " " + String.valueOf(Math.abs(mReceipt.getBaseAmount())));
+        mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
+        mTextViewTransactionDate.setText(mReceipt.getDate());
+        mTextViewTransactionTime.setText(mReceipt.getTime());
+        mTextViewRrn.setText(mReceipt.getRetrievalReferenceNumber());
     }
 
     private void requestPermissionShare() {

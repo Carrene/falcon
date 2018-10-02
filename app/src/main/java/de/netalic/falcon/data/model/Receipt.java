@@ -5,6 +5,11 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import io.realm.RealmObject;
 
 
@@ -68,128 +73,11 @@ public class Receipt extends RealmObject implements Parcelable {
     private String mRecipientWalletName;
 
 
-    public Receipt() {
-
-    }
-
-
-    public String getSenderWalletName() {
-
-        return mSenderWalletName;
-    }
-
-    public String getRecipientWalletName() {
-
-        return mRecipientWalletName;
-
-    }
-
-    public String getRetrievalReferenceNumber() {
-
-        return mRetrievalReferenceNumber;
-    }
-
-    public String getSenderWalletAddress() {
-
-        return mSenderWalletAddress;
-    }
-
-    public String getPaymentGatewayName() {
-
-        return mPaymentGatewayName;
-    }
-
-
-    public double getQuoteAmount() {
-
-        return mQuoteAmount;
-    }
-
-    public String getType() {
-
-        return mType;
-    }
-
-    public String getBaseCurrencyCode() {
-
-        return mBaseCurrencyCode;
-    }
-
-    public String getFailureCause() {
-
-        return mFailureCause;
-    }
-
-    public String getQuoteCurrencySymbol() {
-
-        return mQuoteCurrencySymbol;
-    }
-
-    public String getCreatedAt() {
-
-        return mCreatedAt;
-    }
-
-    public double getBaseAmount() {
-
-        return mBaseAmount;
-    }
-
-    public String getBaseCurrencySymbol() {
-
-        return mBaseCurrencySymbol;
-    }
-
-    public String getStatus() {
-
-        return mStatus;
-    }
-
-    public int getPaymentGatewayId() {
-
-        return mPaymentGatewayId;
-    }
-
-    public String getQuoteCurrencyCode() {
-
-        return mQouteCurrencyCode;
-    }
-
-    public int getId() {
-
-        return mId;
-    }
-
-    public String getModifiedAt() {
-
-        return mModifiedAt;
-    }
-
-    public String getRecipientWalletAddress() {
-
-        return mRecipientWalletAddress;
-    }
-
-    public static final Creator<Receipt> CREATOR = new Creator<Receipt>() {
-        @Override
-        public Receipt createFromParcel(Parcel in) {
-
-            return new Receipt(in);
-        }
-
-        @Override
-        public Receipt[] newArray(int size) {
-
-            return new Receipt[size];
-        }
-    };
-
     protected Receipt(Parcel in) {
-
         mRetrievalReferenceNumber = in.readString();
         mSenderWalletAddress = in.readString();
         mPaymentGatewayName = in.readString();
-        mQuoteAmount = in.readInt();
+        mQuoteAmount = in.readDouble();
         mType = in.readString();
         mBaseCurrencyCode = in.readString();
         mFailureCause = in.readString();
@@ -203,11 +91,59 @@ public class Receipt extends RealmObject implements Parcelable {
         mId = in.readInt();
         mModifiedAt = in.readString();
         mRecipientWalletAddress = in.readString();
+        mSenderWalletName = in.readString();
+        mRecipientWalletName = in.readString();
+    }
+
+    public static final Creator<Receipt> CREATOR = new Creator<Receipt>() {
+        @Override
+        public Receipt createFromParcel(Parcel in) {
+            return new Receipt(in);
+        }
+
+        @Override
+        public Receipt[] newArray(int size) {
+            return new Receipt[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public Receipt() {
+
+    }
+
+    public String getTime() {
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            Date date = dateFormat.parse(mCreatedAt);
+            dateFormat = new SimpleDateFormat("h:mm a");
+            return dateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public String getDate() {
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            Date date = dateFormat.parse(mCreatedAt);
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            return dateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
         dest.writeString(mRetrievalReferenceNumber);
         dest.writeString(mSenderWalletAddress);
         dest.writeString(mPaymentGatewayName);
@@ -225,11 +161,87 @@ public class Receipt extends RealmObject implements Parcelable {
         dest.writeInt(mId);
         dest.writeString(mModifiedAt);
         dest.writeString(mRecipientWalletAddress);
+        dest.writeString(mSenderWalletName);
+        dest.writeString(mRecipientWalletName);
     }
 
-    @Override
-    public int describeContents() {
+    public String getRetrievalReferenceNumber() {
+        return mRetrievalReferenceNumber;
+    }
 
-        return 0;
+    public String getSenderWalletAddress() {
+        return mSenderWalletAddress;
+    }
+
+    public String getPaymentGatewayName() {
+        return mPaymentGatewayName;
+    }
+
+    public double getQuoteAmount() {
+        return mQuoteAmount;
+    }
+
+    public String getType() {
+        return mType;
+    }
+
+    public String getBaseCurrencyCode() {
+        return mBaseCurrencyCode;
+    }
+
+    public String getFailureCause() {
+        return mFailureCause;
+    }
+
+    public String getQuoteCurrencySymbol() {
+        return mQuoteCurrencySymbol;
+    }
+
+    public String getCreatedAt() {
+        return mCreatedAt;
+    }
+
+    public double getBaseAmount() {
+        return mBaseAmount;
+    }
+
+    public String getBaseCurrencySymbol() {
+        return mBaseCurrencySymbol;
+    }
+
+    public String getStatus() {
+        return mStatus;
+    }
+
+    public int getPaymentGatewayId() {
+        return mPaymentGatewayId;
+    }
+
+    public String getQouteCurrencyCode() {
+        return mQouteCurrencyCode;
+    }
+
+    public int getmId() {
+        return mId;
+    }
+
+    public String getModifiedAt() {
+        return mModifiedAt;
+    }
+
+    public String getRecipientWalletAddress() {
+        return mRecipientWalletAddress;
+    }
+
+    public String getSenderWalletName() {
+        return mSenderWalletName;
+    }
+
+    public String getRecipientWalletName() {
+        return mRecipientWalletName;
+    }
+
+    public static Creator<Receipt> getCREATOR() {
+        return CREATOR;
     }
 }

@@ -108,6 +108,8 @@
     <string name="chargeconfirmation_invalidtransactionid">Invalid transaction id</string>
     <string name="chargeconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
     <string name="chargeconfirmation_braintreenonceismissing">Braintree nonce is missing</string>
+    <string name="chargeconfirmation_pleasetryagain">Please try again</string>
+
 
 
     <string name="chargecompleted_chargecompleted">Charge Completed</string>

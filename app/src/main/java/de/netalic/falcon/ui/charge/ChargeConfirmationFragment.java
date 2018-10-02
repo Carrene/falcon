@@ -162,7 +162,19 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     }
 
     @Override
+    public void navigationToChargeFailed(Receipt receipt) {
+
+        Intent intent = new Intent(getActivity(), ChargeFailedActivity.class);
+        intent.putExtra(ARGUMENT_RECEIPT, receipt);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+    }
+
+    @Override
     public void showErrorBraintreeNonceIsMissing() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_braintreenonceismissing),getContext());
 
     }
 
@@ -190,5 +202,11 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     public void showErrorFinalizeTransferAsAnAnonymous() {
 
         SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_finalizetransferasananonymous), getContext());
+    }
+
+    @Override
+    public void showErrorWhenFailed() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_pleasetryagain),getContext());
     }
 }

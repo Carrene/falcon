@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.zxing.WriterException;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import de.netalic.falcon.R;
@@ -27,6 +28,7 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     private List<Wallet> mWalletList;
     private Context mContext;
+
 
 
     public AddressesRecyclerViewAdapter(List<Wallet> walletList, Context context) {
@@ -82,6 +84,9 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
         @Override
         public void onClick(View v) {
+
+
+
 
             if (v.getId() == R.id.imageview_addresses_share) {
 
