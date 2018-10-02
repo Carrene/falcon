@@ -22,12 +22,12 @@ public class ChargeCompletedActivity extends BaseActivity {
 
             throw new RuntimeException("deposit should not be null");
         }
-        Transaction deposit = getIntent().getExtras().getParcelable(ARGUMENT_DEPOSIT);
+        Transaction transaction = getIntent().getExtras().getParcelable(ARGUMENT_DEPOSIT);
 
         ChargeCompletedFragment chargeCompletedFragment = (ChargeCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_chargecompleted_fragmentcontainer);
         if (chargeCompletedFragment == null) {
 
-            chargeCompletedFragment = ChargeCompletedFragment.newInstance(deposit);
+            chargeCompletedFragment = ChargeCompletedFragment.newInstance(transaction);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), chargeCompletedFragment, R.id.framelayout_chargecompleted_fragmentcontainer);
         }
 

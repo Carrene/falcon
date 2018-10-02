@@ -9,13 +9,11 @@ public interface ChargeConfirmationContract {
     interface View extends BaseView<Presenter> {
 
         void navigationToChargeCompleted(Transaction transaction);
-        void navigationToChargeFailed(Transaction transaction);
-        void showErrorInvalidWalletId();
-        void showErrorWalletNotFound();
-        void showErrorDepositNotFound();
-        void showErrorInvalidDepositId();
-        void showErrorDepositAlreadySucceed();
-        void showErrorInvalidBraintreeNonce();
+        void showErrorBraintreeNonceIsMissing();
+        void showErrorCannotFinalizeFailedTransaction();
+        void showErrorTransactionNotFound();
+        void showErrorInvalidTransactionId();
+        void showErrorFinalizeTransferAsAnAnonymous();
 
     }
 

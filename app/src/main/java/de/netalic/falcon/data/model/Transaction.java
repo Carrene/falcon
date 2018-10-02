@@ -153,6 +153,7 @@ public class Transaction implements Parcelable {
         dest.writeString(this.mRetrievalReferenceNumber);
         dest.writeString(this.getCreatedAt());
         dest.writeString(this.mPaymentGatewayName);
+        dest.writeString(this.mBraintreeToken);
     }
 
     protected Transaction(Parcel in) {
@@ -163,5 +164,6 @@ public class Transaction implements Parcelable {
         mRetrievalReferenceNumber = in.readString();
         mCreatedAt = in.readString();
         mPaymentGatewayName=in.readString();
+        mBraintreeToken=in.readString();
     }
 }

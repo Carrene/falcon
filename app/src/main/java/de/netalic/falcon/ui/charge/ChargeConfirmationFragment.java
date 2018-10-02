@@ -161,48 +161,33 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     }
 
     @Override
-    public void navigationToChargeFailed(Transaction transaction) {
-
-        Intent intent = new Intent(getActivity(), ChargeFailedActivity.class);
-        intent.putExtra(ARGUMENT_TRANSACTION, transaction);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
-
-    @Override
-    public void showErrorInvalidWalletId() {
-
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invalidwalletid), getContext());
-    }
-
-    @Override
-    public void showErrorWalletNotFound() {
-
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_walletnotfound), getContext());
+    public void showErrorBraintreeNonceIsMissing() {
 
     }
 
-    @Override
-    public void showErrorDepositNotFound() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_depositnotfound), getContext());
+    @Override
+    public void showErrorCannotFinalizeFailedTransaction() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_cannotfinalizefailedtransaction), getContext());
     }
 
     @Override
-    public void showErrorInvalidDepositId() {
+    public void showErrorTransactionNotFound() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invaliddepositid), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_transactionnotfound), getContext());
+
     }
 
     @Override
-    public void showErrorDepositAlreadySucceed() {
+    public void showErrorInvalidTransactionId() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_depositalreadyexist), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invalidtransactionid), getContext());
     }
 
     @Override
-    public void showErrorInvalidBraintreeNonce() {
+    public void showErrorFinalizeTransferAsAnAnonymous() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invalidbraintreenoce), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_finalizetransferasananonymous), getContext());
     }
 }

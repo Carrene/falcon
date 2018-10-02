@@ -103,12 +103,11 @@
     <string name="chargeconfirmation_baseamount">Paid Amount  </string>
 
     <string name="chargeconfirmation_confirm">CONFIRM</string>
-    <string name="chargeconfirmation_invalidwalletid">Invalid wallet id</string>
-    <string name="chargeconfirmation_walletnotfound">Wallet not found</string>
-    <string name="chargeconfirmation_depositnotfound">Deposit not found</string>
-    <string name="chargeconfirmation_invaliddepositid">Invalid deposit id</string>
-    <string name="chargeconfirmation_depositalreadyexist">deposit already exist</string>
-    <string name="chargeconfirmation_invalidbraintreenoce">Invalid braintree nonce</string>
+    <string name="chargeconfirmation_cannotfinalizefailedtransaction">Cannot finalize failed transaction</string>
+    <string name="chargeconfirmation_transactionnotfound">Transaction not found</string>
+    <string name="chargeconfirmation_invalidtransactionid">Invalid transaction id</string>
+    <string name="chargeconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
+    <string name="chargeconfirmation_braintreenonceismissing">Braintree nonce is missing</string>
 
 
     <string name="chargecompleted_chargecompleted">Charge Completed</string>

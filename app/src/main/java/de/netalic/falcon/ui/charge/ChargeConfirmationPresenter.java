@@ -2,7 +2,6 @@ package de.netalic.falcon.ui.charge;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.transaction.TransactionRepository;
-import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -45,49 +44,35 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
                         break;
                     }
 
-                    case 800: {
+                    case 400: {
 
-                        mChargeConfirmationView.navigationToChargeFailed(deal.getModel());
+                        mChargeConfirmationView.showErrorBraintreeNonceIsMissing();
                         break;
 
                     }
                     case 404: {
 
-                        if (deal.getResponse().message().equals("Wallet not found")) {
+                        if (deal.getResponse().message().equals("Transaction Not Found")) {
 
-                            mChargeConfirmationView.showErrorWalletNotFound();
+                            mChargeConfirmationView.showErrorTransactionNotFound();
                         } else {
 
-                            mChargeConfirmationView.showErrorDepositNotFound();
+                            mChargeConfirmationView.showErrorInvalidTransactionId();
 
                         }
                         break;
 
                     }
 
-                    case 700: {
+                    case 604: {
 
-                        mChargeConfirmationView.showErrorInvalidWalletId();
+                        mChargeConfirmationView.showErrorCannotFinalizeFailedTransaction();
                         break;
                     }
 
-                    case 722: {
+                    case 401: {
 
-                        mChargeConfirmationView.showErrorInvalidBraintreeNonce();
-                        break;
-
-                    }
-
-                    case 723: {
-
-                        mChargeConfirmationView.showErrorInvalidDepositId();
-                        break;
-
-                    }
-
-                    case 727: {
-
-                        mChargeConfirmationView.showErrorDepositAlreadySucceed();
+                        mChargeConfirmationView.showErrorFinalizeTransferAsAnAnonymous();
                         break;
 
                     }
