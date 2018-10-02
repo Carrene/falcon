@@ -49,6 +49,9 @@ public interface ApiInterface {
     @HTTP(method = "FINALIZE", path = "braintree/charges/{transaction_id}", hasBody = true)
     Call<Transaction> finalize(@Path("transaction_id") int transaction_id, @Field("braintreeNonce") String braintreeNonce);
 
+    @GET("receipts/{id}")
+    Call<Receipt> getReceipt(@Path("id") int id);
+
     @HTTP(method = "LIST", path = "receipts?sort=createdAt")
     Call<List<Receipt>> receiptList();
 

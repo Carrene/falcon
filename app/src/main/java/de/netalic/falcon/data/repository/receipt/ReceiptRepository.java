@@ -45,6 +45,7 @@ public class ReceiptRepository implements IReceiptRepository {
     @Override
     public void get(Integer identifier, CallRepository<Receipt> callRepository) {
 
+        mReceiptRestRepository.get(identifier, callRepository);
     }
 
     @Override

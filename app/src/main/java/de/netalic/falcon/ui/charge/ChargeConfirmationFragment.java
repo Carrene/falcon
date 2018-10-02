@@ -19,6 +19,7 @@ import com.braintreepayments.api.dropin.DropInResult;
 import java.text.DecimalFormat;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -37,7 +38,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private Button mButtonConfirm;
     public static final String ARGUMENT_CHARGE_START = "chargeStart";
     private static final int DROP_IN_REQUEST = 1;
-    private static final String ARGUMENT_TRANSACTION = "TRANSACTION";
+    private static final String ARGUMENT_RECEIPT = "receipt";
     private DecimalFormat mDecimalFormat;
 
 
@@ -69,8 +70,8 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private void setPaymentConfirmationData() {
 
         mTextViewWalletName.setText(mTransaction.getActionList().get(1).getWalletName());
-        mTextViewChargeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol()+" "+String.valueOf(mTransaction.getActionList().get(1).getAmount()));
-        mTextViewPaidAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol()+" "+String.valueOf(mDecimalFormat.format(Math.abs(mTransaction.getActionList().get(0).getAmount()))));
+        mTextViewChargeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " " + String.valueOf(mTransaction.getActionList().get(1).getAmount()));
+        mTextViewPaidAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " " + String.valueOf(mDecimalFormat.format(Math.abs(mTransaction.getActionList().get(0).getAmount()))));
         mTextViewPaymentGateway.setText(mTransaction.getPaymentGatewayName());
 
     }
@@ -152,10 +153,10 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     }
 
     @Override
-    public void navigationToChargeCompleted(Transaction transaction) {
+    public void navigationToChargeCompleted(Receipt receipt) {
 
         Intent intent = new Intent(getActivity(), ChargeCompletedActivity.class);
-        intent.putExtra(ARGUMENT_TRANSACTION, transaction);
+        intent.putExtra(ARGUMENT_RECEIPT, receipt);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
