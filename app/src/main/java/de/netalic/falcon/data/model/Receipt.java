@@ -1,10 +1,14 @@
 package de.netalic.falcon.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import io.realm.RealmObject;
 
-public class Receipt extends RealmObject {
+
+public class Receipt extends RealmObject implements Parcelable {
 
     @SerializedName("retrievalReferenceNumber")
     private String mRetrievalReferenceNumber;
@@ -16,7 +20,7 @@ public class Receipt extends RealmObject {
     private String mPaymentGatewayName;
 
     @SerializedName("quoteAmount")
-    private double mqQuoteAmount;
+    private double mQuoteAmount;
 
     @SerializedName("type")
     private String mType;
@@ -63,6 +67,12 @@ public class Receipt extends RealmObject {
     @SerializedName("recipientWalletName")
     private String mRecipientWalletName;
 
+
+    public Receipt() {
+
+    }
+
+
     public String getSenderWalletName() {
 
         return mSenderWalletName;
@@ -71,6 +81,7 @@ public class Receipt extends RealmObject {
     public String getRecipientWalletName() {
 
         return mRecipientWalletName;
+
     }
 
     public String getRetrievalReferenceNumber() {
@@ -88,9 +99,10 @@ public class Receipt extends RealmObject {
         return mPaymentGatewayName;
     }
 
-    public double getQouteAmount() {
 
-        return mqQuoteAmount;
+    public double getQuoteAmount() {
+
+        return mQuoteAmount;
     }
 
     public String getType() {
@@ -156,5 +168,68 @@ public class Receipt extends RealmObject {
     public String getRecipientWalletAddress() {
 
         return mRecipientWalletAddress;
+    }
+
+    public static final Creator<Receipt> CREATOR = new Creator<Receipt>() {
+        @Override
+        public Receipt createFromParcel(Parcel in) {
+
+            return new Receipt(in);
+        }
+
+        @Override
+        public Receipt[] newArray(int size) {
+
+            return new Receipt[size];
+        }
+    };
+
+    protected Receipt(Parcel in) {
+
+        mRetrievalReferenceNumber = in.readString();
+        mSenderWalletAddress = in.readString();
+        mPaymentGatewayName = in.readString();
+        mQuoteAmount = in.readInt();
+        mType = in.readString();
+        mBaseCurrencyCode = in.readString();
+        mFailureCause = in.readString();
+        mQuoteCurrencySymbol = in.readString();
+        mCreatedAt = in.readString();
+        mBaseAmount = in.readDouble();
+        mBaseCurrencySymbol = in.readString();
+        mStatus = in.readString();
+        mPaymentGatewayId = in.readInt();
+        mQouteCurrencyCode = in.readString();
+        mId = in.readInt();
+        mModifiedAt = in.readString();
+        mRecipientWalletAddress = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeString(mRetrievalReferenceNumber);
+        dest.writeString(mSenderWalletAddress);
+        dest.writeString(mPaymentGatewayName);
+        dest.writeDouble(mQuoteAmount);
+        dest.writeString(mType);
+        dest.writeString(mBaseCurrencyCode);
+        dest.writeString(mFailureCause);
+        dest.writeString(mQuoteCurrencySymbol);
+        dest.writeString(mCreatedAt);
+        dest.writeDouble(mBaseAmount);
+        dest.writeString(mBaseCurrencySymbol);
+        dest.writeString(mStatus);
+        dest.writeInt(mPaymentGatewayId);
+        dest.writeString(mQouteCurrencyCode);
+        dest.writeInt(mId);
+        dest.writeString(mModifiedAt);
+        dest.writeString(mRecipientWalletAddress);
+    }
+
+    @Override
+    public int describeContents() {
+
+        return 0;
     }
 }

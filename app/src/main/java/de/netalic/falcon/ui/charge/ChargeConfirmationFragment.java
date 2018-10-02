@@ -16,7 +16,10 @@ import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 
+import java.text.DecimalFormat;
+
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -35,7 +38,8 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private Button mButtonConfirm;
     public static final String ARGUMENT_CHARGE_START = "chargeStart";
     private static final int DROP_IN_REQUEST = 1;
-    private static final String ARGUMENT_TRANSACTION = "TRANSACTION";
+    private static final String ARGUMENT_RECEIPT = "receipt";
+    private DecimalFormat mDecimalFormat;
 
 
     @Nullable
@@ -48,6 +52,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         }
 
         mTransaction = getArguments().getParcelable(ARGUMENT_CHARGE_START);
+        mDecimalFormat = new DecimalFormat("0.00##");
         return mRoot;
     }
 
@@ -65,8 +70,8 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private void setPaymentConfirmationData() {
 
         mTextViewWalletName.setText(mTransaction.getActionList().get(1).getWalletName());
-        mTextViewChargeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol()+" "+String.valueOf(mTransaction.getActionList().get(1).getAmount()));
-        mTextViewPaidAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol()+" "+String.valueOf(Math.abs(mTransaction.getActionList().get(0).getAmount())));
+        mTextViewChargeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " " + String.valueOf(mTransaction.getActionList().get(1).getAmount()));
+        mTextViewPaidAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " " + String.valueOf(mDecimalFormat.format(Math.abs(mTransaction.getActionList().get(0).getAmount()))));
         mTextViewPaymentGateway.setText(mTransaction.getPaymentGatewayName());
 
     }
@@ -137,7 +142,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
                 DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                 String braintreeNonce = result.getPaymentMethodNonce().getNonce();
 
-                //mChargeConfirmationPresenter.finalizeCharge(mTransaction.getActionList().get(1).getWalletId(), mDeposit.getId(), braintreeNonce);
+                mChargeConfirmationPresenter.finalizeCharge(mTransaction.getId(), braintreeNonce);
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 //TODO(Milad): Payment is cancelled
             } else {
@@ -148,57 +153,42 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     }
 
     @Override
-    public void navigationToChargeCompleted(Transaction transaction) {
+    public void navigationToChargeCompleted(Receipt receipt) {
 
         Intent intent = new Intent(getActivity(), ChargeCompletedActivity.class);
-        intent.putExtra(ARGUMENT_TRANSACTION, transaction);
+        intent.putExtra(ARGUMENT_RECEIPT, receipt);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     @Override
-    public void navigationToChargeFailed(Transaction transaction) {
-
-        Intent intent = new Intent(getActivity(), ChargeFailedActivity.class);
-        intent.putExtra(ARGUMENT_TRANSACTION, transaction);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
-
-    @Override
-    public void showErrorInvalidWalletId() {
-
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invalidwalletid), getContext());
-    }
-
-    @Override
-    public void showErrorWalletNotFound() {
-
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_walletnotfound), getContext());
+    public void showErrorBraintreeNonceIsMissing() {
 
     }
 
-    @Override
-    public void showErrorDepositNotFound() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_depositnotfound), getContext());
+    @Override
+    public void showErrorCannotFinalizeFailedTransaction() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_cannotfinalizefailedtransaction), getContext());
     }
 
     @Override
-    public void showErrorInvalidDepositId() {
+    public void showErrorTransactionNotFound() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invaliddepositid), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_transactionnotfound), getContext());
+
     }
 
     @Override
-    public void showErrorDepositAlreadySucceed() {
+    public void showErrorInvalidTransactionId() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_depositalreadyexist), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invalidtransactionid), getContext());
     }
 
     @Override
-    public void showErrorInvalidBraintreeNonce() {
+    public void showErrorFinalizeTransferAsAnAnonymous() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_invalidbraintreenoce), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_finalizetransferasananonymous), getContext());
     }
 }

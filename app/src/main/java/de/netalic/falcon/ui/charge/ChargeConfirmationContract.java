@@ -1,6 +1,6 @@
 package de.netalic.falcon.ui.charge;
 
-import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 
@@ -8,21 +8,22 @@ public interface ChargeConfirmationContract {
 
     interface View extends BaseView<Presenter> {
 
-        void navigationToChargeCompleted(Transaction transaction);
-        void navigationToChargeFailed(Transaction transaction);
-        void showErrorInvalidWalletId();
-        void showErrorWalletNotFound();
-        void showErrorDepositNotFound();
-        void showErrorInvalidDepositId();
-        void showErrorDepositAlreadySucceed();
-        void showErrorInvalidBraintreeNonce();
+        void navigationToChargeCompleted(Receipt receipt);
+
+        void showErrorBraintreeNonceIsMissing();
+
+        void showErrorCannotFinalizeFailedTransaction();
+
+        void showErrorTransactionNotFound();
+
+        void showErrorInvalidTransactionId();
+
+        void showErrorFinalizeTransferAsAnAnonymous();
 
     }
 
     interface Presenter extends BasePresenter {
 
-        //void finalizeCharge(int walletId, int depositId,String braintreeNonce);
-
-
+        void finalizeCharge(int transactionId, String braintreeNonce);
     }
 }

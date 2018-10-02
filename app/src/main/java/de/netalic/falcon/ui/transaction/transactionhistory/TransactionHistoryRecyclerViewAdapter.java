@@ -53,7 +53,7 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
             Receipt receipt = mReceiptList.get(position);
 
             receiptViewHolder.mTextViewWalletName.setText(receipt.getRecipientWalletName());
-            receiptViewHolder.mTextViewAmount.setText(receipt.getQuoteCurrencySymbol() + " " + String.valueOf(receipt.getQouteAmount()));
+            receiptViewHolder.mTextViewAmount.setText(receipt.getQuoteCurrencySymbol() + " " + String.valueOf(receipt.getQuoteAmount()));
             receiptViewHolder.mTextViewDateAndTime.setText(DateUtil.isoToDate(receipt.getCreatedAt()) + "@" + DateUtil.isoToTime(receipt.getCreatedAt()));
             receiptViewHolder.mTextViewTransactionType.setText(receipt.getType());
             receiptViewHolder.mTextViewTransactionResult.setText(receipt.getStatus());

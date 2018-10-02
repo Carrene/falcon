@@ -11,5 +11,5 @@ public interface ITransactionRepository extends IRepository<Transaction, Integer
 
     void startCharge(int id, double amount, int verifyRateId, CallRepository<Transaction> callRepository);
 
-    void finalizeCharge(int walletId, int depositId, String braintreeNonce, CallRepository<Transaction> callRepository);
+    void finalizeCharge(int transactionId, String braintreeNonce, CallRepository<Transaction> callRepository);
 }

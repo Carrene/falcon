@@ -19,6 +19,19 @@ public class ReceiptRestRepository implements IReceiptRepository {
     @Override
     public void get(Integer identifier, CallRepository<Receipt> callRepository) {
 
+        ApiClient.getService().getReceipt(identifier).enqueue(new Callback<Receipt>() {
+            @Override
+            public void onResponse(Call<Receipt> call, Response<Receipt> response) {
+
+                callRepository.onDone(new Deal<>(response.body(), response, null));
+            }
+
+            @Override
+            public void onFailure(Call<Receipt> call, Throwable t) {
+
+                callRepository.onDone(new Deal<>(null, null, t));
+            }
+        });
     }
 
     @Override
@@ -64,5 +77,4 @@ public class ReceiptRestRepository implements IReceiptRepository {
             }
         });
     }
-
 }
