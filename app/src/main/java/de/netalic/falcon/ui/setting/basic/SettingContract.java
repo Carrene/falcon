@@ -19,6 +19,11 @@ public interface SettingContract {
         void setPhoneNumber(String phone);
 
         void setPhoneNumberNotSet();
+
+        void setBaseCurrency(String currency);
+
+        void setBaseCurrencyNotSet();
+
     }
 
     interface Presenter extends BasePresenter{
@@ -29,5 +34,7 @@ public interface SettingContract {
         void recoveryEmail(String email);
 
         void phoneNumber(String phone);
+
+        void baseCurrency();
     }
 }

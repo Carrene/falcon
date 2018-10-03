@@ -164,6 +164,7 @@
     <dimen name="height_withdraw_spinneradapterimageview">45dp</dimen>
     <dimen name="padding_withdraw_spinneradapterimageview">4dp</dimen>
     <dimen name="textsize_withdraw_spinneradaptertextview">19sp</dimen>
+    <dimen name="marginstart_withdraw_spinneradaptertextview">20dp</dimen>
 
     <dimen name="margintop_withdrawamount_amount">23dp</dimen>
     <dimen name="textsize_withdrawamount_amount">16sp</dimen>

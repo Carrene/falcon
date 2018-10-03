@@ -58,9 +58,9 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
                         break;
                     }
                 }
-                mRecoveryEmailView.dismissProgressBar();
-            }
 
+            }
+            mRecoveryEmailView.dismissProgressBar();
         });
 
     }

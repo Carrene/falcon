@@ -28,7 +28,7 @@ public class TransferPresenter implements TransferContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
-
+                mTransferView.dismissProgressBar();
             } else {
 
                 switch (deal.getResponse().code()) {

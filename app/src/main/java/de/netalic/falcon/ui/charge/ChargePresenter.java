@@ -35,12 +35,13 @@ public class ChargePresenter implements ChargeContract.Presenter {
                     case 200: {
 
                         mChargeView.setListWallet(deal.getModel());
-                        mChargeView.dismissProgressBar();
+
                     }
                 }
             } else {
                 //TODO: handle status codes
             }
+            mChargeView.dismissProgressBar();
         });
     }
 }

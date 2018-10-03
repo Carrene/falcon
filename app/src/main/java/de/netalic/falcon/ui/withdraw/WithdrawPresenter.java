@@ -4,13 +4,13 @@ import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-public class WithdrawPresenter implements WithdrawPresenterContract.Presenter {
+public class WithdrawPresenter implements WithdrawContract.Presenter {
 
-    private final WithdrawPresenterContract.View mWithdrawView;
+    private final WithdrawContract.View mWithdrawView;
 
 
 
-    public WithdrawPresenter(WithdrawPresenterContract.View withdrawView) {
+    public WithdrawPresenter(WithdrawContract.View withdrawView) {
 
         mWithdrawView = checkNotNull(withdrawView);
         mWithdrawView.setPresenter(this);
@@ -30,6 +30,8 @@ public class WithdrawPresenter implements WithdrawPresenterContract.Presenter {
 
             if (deal.getThrowable()!=null){
 
+                mWithdrawView.dismissProgressBar();
+
             } else {
                 switch (deal.getResponse().code()){
 
@@ -41,7 +43,8 @@ public class WithdrawPresenter implements WithdrawPresenterContract.Presenter {
                 }
 
             }
+            mWithdrawView.dismissProgressBar();
         });
-        mWithdrawView.dismissProgressBar();
+
     }
 }

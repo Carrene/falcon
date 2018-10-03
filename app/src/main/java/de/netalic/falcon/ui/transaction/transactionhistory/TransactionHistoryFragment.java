@@ -22,6 +22,7 @@ import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Receipt;
+import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import ru.alexbykov.nopaginate.paginate.NoPaginate;
@@ -63,11 +64,13 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     @Override
     public void showProgressBar() {
 
+        ((BaseActivity)getActivity()).showMaterialDialog();
     }
 
     @Override
     public void dismissProgressBar() {
 
+        ((BaseActivity)getActivity()).dismissMaterialDialog();
     }
 
     public static TransactionHistoryFragment newInstance() {

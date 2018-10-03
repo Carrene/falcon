@@ -13,6 +13,12 @@
             android:key="@string/settingprefrence_recoveryemailkey"
             android:summary="Recovery email"
             android:title="@string/settingprefrence_recoveryemailtitle" />
+
+        <Preference
+            android:clickable="true"
+            android:key="@string/settingprefrence_basecurrencykey"
+            android:summary="Base currency"
+            android:title="@string/settingprefrence_basecurrencytitle" />
     </PreferenceCategory>
 
     <PreferenceCategory android:layout="@layout/divider_preference" />

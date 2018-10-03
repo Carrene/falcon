@@ -29,6 +29,7 @@ public class TransferPayeePresenter implements TransferPayeeContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
+                mTransferPayeeView.dismissProgressBar();
 
             } else {
 
@@ -102,8 +103,9 @@ public class TransferPayeePresenter implements TransferPayeeContract.Presenter {
                         break;
                     }
                 }
-                mTransferPayeeView.dismissProgressBar();
+
             }
+            mTransferPayeeView.dismissProgressBar();
         });
 
     }

@@ -11,9 +11,9 @@ import com.mikepenz.materialdrawer.Drawer;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
-import de.netalic.falcon.util.IsoFormatTime;
+
 import de.netalic.falcon.util.NavigationDrawerUtil;
-import de.netalic.falcon.util.SnackbarUtil;
+
 
 public class DashboardActivity extends BaseActivity {
 
@@ -34,7 +34,6 @@ public class DashboardActivity extends BaseActivity {
         }
 
         new DashboardPresenter(dashboardFragment);
-
 
 
     }

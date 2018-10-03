@@ -6,7 +6,7 @@ import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 
-public interface WithdrawPresenterContract {
+public interface WithdrawContract {
 
     interface View extends BaseView<Presenter>{
 

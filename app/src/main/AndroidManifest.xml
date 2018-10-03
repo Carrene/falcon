@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="de.netalic.falcon">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="de.netalic.falcon">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".MyApp"
@@ -25,13 +25,13 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
 
         <activity
             android:name=".ui.registration.phoneinput.PhoneInputActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.registration.phoneconfirmation.PhoneConfirmationActivity"
             android:launchMode="singleTop"
@@ -39,26 +39,26 @@
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.registration.phoneinput.PhoneInputActivity"/>
+                android:value=".ui.registration.phoneinput.PhoneInputActivity" />
         </activity>
         <activity
             android:name=".ui.registration.authnticationdefinition.AuthenticationDefinitionActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.registration.recoveryemail.RecoveryEmailActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.dashboard.DashboardActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.charge.ChargeAmountActivity"
             android:launchMode="singleTop"
@@ -66,41 +66,48 @@
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.charge.ChargeActivity"/>
+                android:value=".ui.charge.ChargeActivity" />
         </activity>
-        <activity android:name=".ui.charge.ChargeActivity"/>
-        <activity android:name=".ui.charge.ChargeCompletedActivity"/>
+        <activity android:name=".ui.charge.ChargeActivity" />
+        <activity android:name=".ui.charge.ChargeCompletedActivity" />
         <activity
             android:name=".ui.charge.ChargeConfirmationActivity"
             android:parentActivityName=".ui.charge.ChargeAmountActivity"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.charge.ChargeAmountActivity"/>
+                android:value=".ui.charge.ChargeAmountActivity" />
         </activity>
-        <activity android:name=".ui.charge.ChargeFailedActivity"/>
-        <activity android:name=".ui.withdraw.WithdrawActivity"/>
+        <activity android:name=".ui.charge.ChargeFailedActivity" />
+        <activity
+            android:name=".ui.withdraw.WithdrawActivity"
+            android:parentActivityName=".ui.dashboard.DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.withdraw.WithdrawActivity" />
+        </activity>
+
         <activity
             android:name=".ui.withdraw.WithdrawAmountActivity"
-            android:parentActivityName=".ui.withdraw.WithdrawActivity"/>
-        <activity android:name=".ui.withdraw.WithdrawQrCompletedActivity"/>
-        <activity android:name=".ui.withdraw.WithdrawQrFailedActivity"/>
-        <activity android:name=".ui.transaction.transactionhistory.TransactionHistoryActivity"/>
+            android:parentActivityName=".ui.withdraw.WithdrawActivity" />
+        <activity android:name=".ui.withdraw.WithdrawQrCompletedActivity" />
+        <activity android:name=".ui.withdraw.WithdrawQrFailedActivity" />
+        <activity android:name=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         <activity
             android:name=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity"
             android:parentActivityName=".ui.transaction.transactionhistory.TransactionHistoryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity"/>
+                android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         </activity>
-        <activity android:name=".ui.transfer.TransferActivity"/>
+        <activity android:name=".ui.transfer.TransferActivity" />
         <activity
             android:name=".ui.transfer.TransferAmountActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".ui.transfer.TransferActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.transfer.TransferAmountActivity"/>
+                android:value=".ui.transfer.TransferAmountActivity" />
         </activity>
         <activity
             android:name=".ui.transfer.TransferPayeeActivity"
@@ -108,46 +115,52 @@
             android:parentActivityName=".ui.transfer.TransferAmountActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.transfer.TransferPayeeActivity"/>
+                android:value=".ui.transfer.TransferPayeeActivity" />
         </activity>
         <activity
             android:name=".ui.transfer.TransferConfirmationActivity"
-            android:parentActivityName=".ui.transfer.TransferPayeeActivity"/>
+            android:parentActivityName=".ui.transfer.TransferPayeeActivity" />
         <activity
             android:name=".ui.addresses.QrCodeAddressesActivity"
-            android:parentActivityName=".ui.addresses.AddressesActivity"/>
-        <activity android:name=".ui.purchase.PurchaseActivity"/>
-        <activity android:name=".ui.transfer.TransferCompletedActivity"/>
-        <activity android:name=".ui.transfer.TransferFailedActivity"/>
-        <activity android:name=".ui.addresses.AddressesActivity"/>
+            android:parentActivityName=".ui.addresses.AddressesActivity" />
+        <activity
+            android:name=".ui.purchase.PurchaseActivity"
+            android:parentActivityName=".ui.dashboard.DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.dashboard.DashboardActivity" />
+        </activity>
+        <activity android:name=".ui.transfer.TransferCompletedActivity" />
+        <activity android:name=".ui.transfer.TransferFailedActivity" />
+        <activity android:name=".ui.addresses.AddressesActivity" />
         <activity
             android:name=".ui.setting.basic.SettingActivity"
             android:parentActivityName=".ui.dashboard.DashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.registration.phoneinput.PhoneInputActivity"/>
+                android:value=".ui.registration.phoneinput.PhoneInputActivity" />
         </activity>
         <activity
             android:name=".ui.purchase.PurchaseAmountActivity"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop" />
         <activity
             android:name=".ui.purchase.PurchaseScanQrCodeActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.purchase.PurchaseAmountActivity"/>
-        <activity android:name=".ui.purchase.PurchaseConfirmationActivity"/>
-        <activity android:name=".ui.purchase.PurchaseCompletedActivity"/>
-        <activity android:name=".ui.purchase.PurchaseFailedActivity"/>
+            android:parentActivityName=".ui.purchase.PurchaseAmountActivity" />
+        <activity android:name=".ui.purchase.PurchaseConfirmationActivity" />
+        <activity android:name=".ui.purchase.PurchaseCompletedActivity" />
+        <activity android:name=".ui.purchase.PurchaseFailedActivity" />
         <activity android:name=".ui.registration.authentication.AuthenticationActivity"></activity>
         <activity
             android:name=".ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity"
             android:parentActivityName=".ui.setting.basic.SettingActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.setting.basic.SettingActivity"/>
+                android:value=".ui.setting.basic.SettingActivity" />
         </activity>
-<activity android:name=".ui.setting.recoveryemail.SettingRecoveryEmailActivity"
-    android:parentActivityName=".ui.setting.basic.SettingActivity"
-    />
+        <activity
+            android:name=".ui.setting.recoveryemail.SettingRecoveryEmailActivity"
+            android:parentActivityName=".ui.setting.basic.SettingActivity" />
     </application>
 
 </manifest>

@@ -28,7 +28,7 @@ public class SettingRecoveryEmailPresenter implements SettingRecoveryEmailContra
 
             if (deal.getThrowable() != null) {
 
-
+                mSettingRecoveryEmailView.dismissProgressBar();
             } else {
 
                 switch (deal.getResponse().code()) {
@@ -50,8 +50,9 @@ public class SettingRecoveryEmailPresenter implements SettingRecoveryEmailContra
                     }
                 }
 
-                mSettingRecoveryEmailView.dismissProgressBar();
+
             }
+            mSettingRecoveryEmailView.dismissProgressBar();
 
         });
     }

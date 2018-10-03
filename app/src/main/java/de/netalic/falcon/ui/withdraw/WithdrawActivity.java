@@ -14,7 +14,7 @@ public class WithdrawActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
 
-        NavigationDrawerUtil.getDrawer(this, getToolbar(),0);
+        setupBackButton();
 
         WithdrawFragment withdrawFragment=(WithdrawFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_withdraw_fragmentcontainer);
         if (withdrawFragment==null){

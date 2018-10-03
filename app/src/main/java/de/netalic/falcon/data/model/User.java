@@ -66,6 +66,10 @@ public class User extends RealmObject implements Parcelable {
     @SerializedName("baseCurrencySymbol")
     private String mBaseCurrencySymbol;
 
+    @RealmField(name = "baseCurrency")
+    @SerializedName("baseCurrency")
+    private String mBaseCurrency;
+
     @Ignore
     String mActivationCode;
 
@@ -213,5 +217,9 @@ public class User extends RealmObject implements Parcelable {
 
     public void setBaseCurrencySymbol(String baseCurrencySymbol) {
         this.mBaseCurrencySymbol = baseCurrencySymbol;
+    }
+
+    public String getBaseCurrency() {
+        return mBaseCurrency;
     }
 }

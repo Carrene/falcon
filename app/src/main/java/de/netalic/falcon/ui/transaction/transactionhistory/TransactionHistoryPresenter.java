@@ -38,6 +38,8 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
         Map<String, String> queryString = createQueryString(filterMap);
 
         RepositoryLocator.getInstance().getRepository(ReceiptRepository.class).getAll(deal -> {
+
+            mTransactionHistoryView.showProgressBar();
             if (deal.getThrowable() != null) {
                 mTransactionHistoryView.showPaginationError(true);
                 mTransactionHistoryView.showPaginationLoading(false);
@@ -67,6 +69,8 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                     }
                 }
             }
+
+            mTransactionHistoryView.dismissProgressBar();
         }, queryString, mPaginationTake, mPaginationSkip);
     }
 

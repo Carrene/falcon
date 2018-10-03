@@ -15,6 +15,7 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.ui.base.BaseActivity;
 
 public class AddressesFragment extends Fragment implements AddressesContract.View {
 
@@ -49,11 +50,13 @@ public class AddressesFragment extends Fragment implements AddressesContract.Vie
     @Override
     public void showProgressBar() {
 
+        ((BaseActivity)getActivity()).showMaterialDialog();
     }
 
     @Override
     public void dismissProgressBar() {
 
+        ((BaseActivity)getActivity()).dismissMaterialDialog();
     }
 
     public static AddressesFragment newInstance() {

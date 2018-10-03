@@ -15,13 +15,12 @@
         />
 
     <TextView
-        android:id="@+id/textview_withdrawtransfer_walletname"
+        android:id="@+id/textview_withdrawtransferpurchase_walletname"
         style="?android:attr/spinnerItemStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toEndOf="@+id/imageview_withdraw_spinner"
-        android:gravity="center_vertical"
+        android:layout_marginStart="@dimen/marginstart_withdraw_spinneradaptertextview"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_withdraw_spinneradaptertextview"
-        />
+        android:textSize="@dimen/textsize_withdraw_spinneradaptertextview" />
 </RelativeLayout>

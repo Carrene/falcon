@@ -125,9 +125,9 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
                         mChargeAmountView.showErrorInvalidVerifyRateId();
                     }
                 }
-                mChargeAmountView.dismissProgressBar();
-            }
 
+            }
+            mChargeAmountView.dismissProgressBar();
         });
     }
 
@@ -166,10 +166,8 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
                     }
 
                 }
-                mChargeAmountView.dismissProgressBar();
-
             }
-
+            mChargeAmountView.dismissProgressBar();
         });
 
     }

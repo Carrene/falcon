@@ -22,7 +22,7 @@ public class TransferSpinnerAdapter extends ArrayAdapter<Wallet> {
 
 
     public TransferSpinnerAdapter(@NonNull Context context, @NonNull List<Wallet> objects) {
-        super(context, R.layout.spinneritemclose_withdrawtransfer, objects);
+        super(context, R.layout.spinneritemclose_withdrawtransferpurchase, objects);
         mLayoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -43,15 +43,15 @@ public class TransferSpinnerAdapter extends ArrayAdapter<Wallet> {
 
         if (type == OPEN) {
 
-            view = mLayoutInflater.inflate(R.layout.spinneritemopen_withdrawtransfer, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinneritemopen_withdrawtransferpurchase, viewGroup, false);
 
         } else if (type == CLOSE) {
 
-            view = mLayoutInflater.inflate(R.layout.spinneritemclose_withdrawtransfer, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinneritemclose_withdrawtransferpurchase, viewGroup, false);
 
         }
 
-        TextView textViewChargeWalletName = view.findViewById(R.id.textview_withdrawtransfer_walletname);
+        TextView textViewChargeWalletName = view.findViewById(R.id.textview_withdrawtransferpurchase_walletname);
         textViewChargeWalletName.setText(getItem(position).getName());
 
         return view;

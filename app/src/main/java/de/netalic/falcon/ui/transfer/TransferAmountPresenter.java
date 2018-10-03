@@ -51,10 +51,10 @@ public class TransferAmountPresenter implements TransferAmountContract.Presenter
                     }
 
                 }
-                mTransferAmountView.dismissProgressBar();
+
 
             }
-
+            mTransferAmountView.dismissProgressBar();
         });
     }
 }

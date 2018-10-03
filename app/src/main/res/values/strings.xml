@@ -329,6 +329,8 @@
     <string name="settingprefrence_recoveryemailkey">recoveryEmail</string>
     <string name="settingprefrence_phonenumberkey">phoneNumber</string>
     <string name="settingprefrence_phonenumbertitle">VALUE</string>
+    <string name="settingprefrence_basecurrencykey">baseCurrency</string>
+    <string name="settingprefrence_basecurrencytitle">VALUE</string>
     <string name="settingprefrence_recoveryemailtitle">VALUE</string>
     <string name="settingprefrence_loginmethodprefrencecategorytitle">Security</string>
     <string name="settingprefrence_loginmethodtitle">VALUE</string>
@@ -345,5 +347,6 @@
     <string name="settingfragment_password">password</string>
     <string name="settingfragment_emailnotset">Email not set</string>
     <string name="settingfragment_phonnumbernotset">Phone number not set</string>
+    <string name="settingfragment_basecurrencynotset">Base currency not set</string>
 
 </resources>
