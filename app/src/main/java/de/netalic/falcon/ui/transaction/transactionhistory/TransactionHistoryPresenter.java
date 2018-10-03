@@ -2,6 +2,7 @@ package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import com.google.common.base.Joiner;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.receipt.ReceiptRepository;
+import de.netalic.falcon.util.DateUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -99,11 +101,42 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                     }
                     queryStringMap.get("type").add(entry.getKey());
                 }
+            } else if (entry.getKey().equals("date") && entry.getValue() != null) {
+                if (queryStringMap.get("createdAt") == null) {
+                    queryStringMap.put("createdAt", new HashSet<>());
+                }
+                switch (entry.getValue().toString()) {
+                    case "Last day": {
+                        HashSet hashSet = new HashSet();
+                        hashSet.add(DateUtil.nowToIso());
+                        hashSet.add(DateUtil.lastDayToIso());
+                        queryStringMap.put("createdAt", hashSet);
+                        break;
+                    }
+                    case "Last week": {
+                        HashSet hashSet = new HashSet();
+                        hashSet.add(DateUtil.nowToIso());
+                        hashSet.add(DateUtil.lastWeekToIso());
+                        queryStringMap.put("createdAt", hashSet);
+                        break;
+                    }
+
+                    case "Last month": {
+                        HashSet hashSet = new HashSet();
+                        hashSet.add(DateUtil.nowToIso());
+                        hashSet.add(DateUtil.lastMonthToIso());
+                        queryStringMap.put("createdAt", hashSet);
+                        break;
+                    }
+                }
             }
         }
-
         for (String key : queryStringMap.keySet()) {
-            queryString.put(key, "IN(" + Joiner.on(",").join(queryStringMap.get(key).iterator()) + ")");
+            if (key.equals("createdAt")) {
+                queryString.put(key, "BETWEEN(" + Joiner.on(",").join(queryStringMap.get(key).iterator()) + ")");
+            } else {
+                queryString.put(key, "IN(" + Joiner.on(",").join(queryStringMap.get(key).iterator()) + ")");
+            }
         }
         return queryString;
     }
