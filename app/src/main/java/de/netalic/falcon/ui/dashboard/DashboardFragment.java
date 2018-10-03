@@ -25,6 +25,7 @@ import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.purchase.PurchaseActivity;
 import de.netalic.falcon.ui.withdraw.WithdrawActivity;
+import de.netalic.falcon.util.IsoFormatTime;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -64,6 +65,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         getRate();
         getWalletList();
         initListener();
+
     }
 
     public static DashboardFragment newInstance() {
