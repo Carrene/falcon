@@ -166,7 +166,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
+                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue()));
                 String roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * mRate.getSell());
                 mTextViewRate.setText(getContext().getString(R.string.everywhere_dollarsymbol) + " " + roundDollar);
             }

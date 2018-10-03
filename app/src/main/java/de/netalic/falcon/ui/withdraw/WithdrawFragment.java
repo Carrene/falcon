@@ -115,7 +115,7 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance())+" "+mWalletList.get(position).getCurrencySymbol());
+                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue())+" "+mWalletList.get(position).getCurrencySymbol());
                 mPosition = position;
             }
 
