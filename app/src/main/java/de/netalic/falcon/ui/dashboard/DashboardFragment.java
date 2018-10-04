@@ -65,8 +65,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         getRate();
-        getWalletList();
         getRatesList();
+        getWalletList();
         initListener();
 
     }
