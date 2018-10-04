@@ -78,8 +78,7 @@
             android:textAlignment="textStart"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy"
-            android:paddingBottom="4dp"
-            />
+            android:paddingBottom="4dp"/>
     </RelativeLayout>
 
 

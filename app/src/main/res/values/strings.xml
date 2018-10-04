@@ -51,10 +51,6 @@
     <string name="recoveryemail_emailalreadyexists"> Email already exists</string>
     <string name="recoveryemail_menudone">Done</string>
 
-
-    <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
-    <string name="dashboard_notification">Notification</string>
-
     <string name="navigation_dashboard">Dashboard</string>
     <string name="navigation_charge">Charge</string>
     <string name="navigation_requesttoreceive">Request to receive</string>
@@ -68,7 +64,9 @@
 
     <string name="dashboard_invalidcurrency">Invalid currency</string>
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>
-
+    <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
+    <string name="dashboard_notification">Notification</string>
+    <string name="dashboard_sorryicantcalculatenow">Sorry i cant calculate now</string>
 
     <string name="materialdialogutil_isloading">Is loading ...</string>
     <string name="materialdialogutil_pleasewait">Please wait</string>
