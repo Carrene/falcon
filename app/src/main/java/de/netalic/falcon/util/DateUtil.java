@@ -35,27 +35,34 @@ public class DateUtil {
         return time.format(baseDate);
     }
 
+    public static String dateToIso(Date date) {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        return simpleDateFormat.format(date);
+    }
+
     public static String nowToIso() {
 
         Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat simpleDateFormat;
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        String now = simpleDateFormat.format(date);
-        return now;
+        return dateToIso(date);
+    }
+
+    public static String lastDayToIso() {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date date = calendar.getTime();
+        return dateToIso(date);
     }
 
     public static String lastWeekToIso() {
 
-
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_YEAR, -7);
-        Date sevenDaysBeforeDate = calendar.getTime();
-
-        SimpleDateFormat simpleDateFormat;
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        String lastWeek = simpleDateFormat.format(sevenDaysBeforeDate);
-        return lastWeek;
+        Date date = calendar.getTime();
+        return dateToIso(date);
     }
 
     public static String lastMonthToIso() {
@@ -63,12 +70,7 @@ public class DateUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_YEAR, -30);
-        Date thirtyBeforeDate = calendar.getTime();
-
-        SimpleDateFormat simpleDateFormat;
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        String lastMonth = simpleDateFormat.format(thirtyBeforeDate);
-        return lastMonth;
+        Date date = calendar.getTime();
+        return dateToIso(date);
     }
-
 }

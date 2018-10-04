@@ -2,20 +2,23 @@ package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import com.google.common.base.Joiner;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.receipt.ReceiptRepository;
+import de.netalic.falcon.util.DateUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TransactionHistoryPresenter implements TransactionHistoryContract.Presenter {
 
     private TransactionHistoryContract.View mTransactionHistoryView;
-    private int mPaginationTake = 20;
+    private int mPaginationTake = 25;
     private int mPaginationSkip = 0;
 
     public TransactionHistoryPresenter(TransactionHistoryContract.View transactionHistoryView) {
@@ -55,12 +58,12 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         int paginationCount = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Count"));
 
                         mTransactionHistoryView.setDepositList(deal.getResponse().body());
+                        mPaginationSkip += mPaginationTake;
+
                         if (mPaginationSkip >= paginationCount) {
                             mTransactionHistoryView.loadNoMoreItem(true);
                             mPaginationSkip = 0;
                         }
-
-                        mPaginationSkip += mPaginationTake;
                         break;
                     }
 
@@ -99,11 +102,42 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                     }
                     queryStringMap.get("type").add(entry.getKey());
                 }
+            } else if (entry.getKey().equals("date") && entry.getValue() != null && !entry.getValue().equals("Always")) {
+                if (queryStringMap.get("createdAt") == null) {
+                    queryStringMap.put("createdAt", new HashSet<>());
+                }
+                switch (entry.getValue().toString()) {
+                    case "Last day": {
+                        LinkedHashSet linkedHashSet = new LinkedHashSet();
+                        linkedHashSet.add(DateUtil.lastDayToIso());
+                        linkedHashSet.add(DateUtil.nowToIso());
+                        queryStringMap.put("createdAt", linkedHashSet);
+                        break;
+                    }
+                    case "Last week": {
+                        LinkedHashSet linkedHashSet = new LinkedHashSet();
+                        linkedHashSet.add(DateUtil.lastWeekToIso());
+                        linkedHashSet.add(DateUtil.nowToIso());
+                        queryStringMap.put("createdAt", linkedHashSet);
+                        break;
+                    }
+
+                    case "Last month": {
+                        LinkedHashSet linkedHashSet = new LinkedHashSet();
+                        linkedHashSet.add(DateUtil.lastMonthToIso());
+                        linkedHashSet.add(DateUtil.nowToIso());
+                        queryStringMap.put("createdAt", linkedHashSet);
+                        break;
+                    }
+                }
             }
         }
-
         for (String key : queryStringMap.keySet()) {
-            queryString.put(key, "IN(" + Joiner.on(",").join(queryStringMap.get(key).iterator()) + ")");
+            if (key.equals("createdAt")) {
+                queryString.put(key, "BETWEEN(" + Joiner.on(",").join(queryStringMap.get(key).iterator()) + ")");
+            } else {
+                queryString.put(key, "IN(" + Joiner.on(",").join(queryStringMap.get(key).iterator()) + ")");
+            }
         }
         return queryString;
     }
