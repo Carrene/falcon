@@ -62,7 +62,7 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             }
 
             ((WalletHolder) holder).mTextViewWalletName.setText(mWalletList.get(position).getName());
-            ((WalletHolder) holder).mTextViewWalletBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
+            ((WalletHolder) holder).mTextViewWalletBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue()));
         }
     }
 

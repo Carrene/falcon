@@ -27,7 +27,7 @@ public class TransferConfirmationPresenter implements TransferConfirmationContra
         RepositoryLocator.getInstance().getRepository(TransactionRepository.class).finalizeTransfer(transactionId, deal -> {
 
             if (deal.getThrowable() != null) {
-
+                mTransferConfirmationView.dismissProgressBar();
 
             } else {
 
@@ -76,9 +76,9 @@ public class TransferConfirmationPresenter implements TransferConfirmationContra
                     }
                 }
 
-                mTransferConfirmationView.dismissProgressBar();
-            }
 
+            }
+            mTransferConfirmationView.dismissProgressBar();
         });
 
     }

@@ -75,4 +75,26 @@ public class SettingPresenter implements SettingContract.Presenter {
             mSettingView.setPhoneNumber(phone);
         }
     }
+
+    @Override
+    public void baseCurrency() {
+
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).get((Integer) tokenBody.get("id"), deal -> {
+
+            if (deal.getThrowable()==null){
+
+                 mSettingView.setBaseCurrency(deal.getModel().getBaseCurrency());
+            }
+
+            else {
+
+                mSettingView.setBaseCurrencyNotSet();
+            }
+
+
+
+
+        });
+
+    }
 }

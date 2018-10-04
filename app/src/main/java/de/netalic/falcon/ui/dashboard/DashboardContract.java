@@ -15,6 +15,7 @@ public interface DashboardContract {
         void showErrorRatesDoesNotExists();
         void updateExchangeRateCurrency(Rate rate);
         void setListWallet(List<Wallet>walletList);
+        void setListRates(List<Rate> listRates);
 
     }
 
@@ -22,6 +23,7 @@ public interface DashboardContract {
 
         void exchangeRate(Rate rate);
         void getWalletList();
+        void getListRates();
 
     }
 }

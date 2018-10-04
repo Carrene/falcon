@@ -55,9 +55,9 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
 
 
                 }
-                mPhoneConfirmationView.dismissProgressBar();
-            }
 
+            }
+            mPhoneConfirmationView.dismissProgressBar();
 
         });
 
@@ -99,7 +99,7 @@ public class PhoneConfirmationPresenter implements PhoneConfirmationContract.Pre
                     }
                 }
             }
-
+            mPhoneConfirmationView.dismissProgressBar();
         });
     }
 }

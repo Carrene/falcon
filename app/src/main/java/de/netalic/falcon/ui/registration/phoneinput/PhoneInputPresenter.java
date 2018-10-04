@@ -44,8 +44,9 @@ public class PhoneInputPresenter implements PhoneInputContract.Presenter {
                         break;
                     }
                 }
-                mPhoneInputView.dismissProgressBar();
+
             }
+            mPhoneInputView.dismissProgressBar();
         });
     }
 

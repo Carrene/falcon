@@ -13,7 +13,7 @@ public class PurchaseActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this,getToolbar(),1);
+        setupBackButton();
 
 
         PurchaseFragment purchaseFragment=(PurchaseFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_purchase_fragmentcontainer);

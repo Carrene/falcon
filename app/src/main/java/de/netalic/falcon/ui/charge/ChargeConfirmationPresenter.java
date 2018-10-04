@@ -120,6 +120,7 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
                     }
                 }
             }
+            mChargeConfirmationView.dismissProgressBar();
         });
     }
 }

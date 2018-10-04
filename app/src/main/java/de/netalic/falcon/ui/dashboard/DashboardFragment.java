@@ -25,6 +25,7 @@ import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.purchase.PurchaseActivity;
 import de.netalic.falcon.ui.withdraw.WithdrawActivity;
+
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -34,7 +35,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private DashboardContract.Presenter mPresenter;
     private View mRoot;
     private Spinner mSpinnerWalletList;
-    private TextView mTextViewRate;
+    private TextView mTextViewEquivalentToBaseCurrency;
     private Currency mUsd;
     private Rate mRate;
     private TextView mTextViewBalance;
@@ -43,6 +44,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ImageView mImageViewWithdraw;
     private ImageView mImageViewPurchase;
     private DecimalFormat mDecimalFormat;
+    private List<Rate> mRateList;
+    private double mRateIrrSell;
 
 
     @Nullable
@@ -63,7 +66,9 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         initUiComponents();
         getRate();
         getWalletList();
+        getRatesList();
         initListener();
+
     }
 
     public static DashboardFragment newInstance() {
@@ -93,11 +98,16 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void initUiComponents() {
 
-        mTextViewRate = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
+        mTextViewEquivalentToBaseCurrency = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
         mSpinnerWalletList = mRoot.findViewById(R.id.spinner_dashboard_spinner);
         mTextViewBalance = mRoot.findViewById(R.id.textview_dashboard_balance);
         mImageViewWithdraw = mRoot.findViewById(R.id.imageview_dashboard_withdraw);
         mImageViewPurchase = mRoot.findViewById(R.id.imageview_dashboard_purchase);
+    }
+
+    private void getRatesList() {
+
+        mPresenter.getListRates();
     }
 
     @Override
@@ -118,7 +128,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     public void updateExchangeRateCurrency(Rate rate) {
 
         mRate = rate;
-        mTextViewRate.setText(String.valueOf(rate));
+        mTextViewEquivalentToBaseCurrency.setText(String.valueOf(rate));
     }
 
     @Override
@@ -147,6 +157,13 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mSpinnerWalletList.setAdapter(mDashboardWalletSpinnerAdapter);
     }
 
+    @Override
+    public void setListRates(List<Rate> listRates) {
+
+        mRateList = listRates;
+
+    }
+
     public void getRate() {
 
         mPresenter.exchangeRate(mRate);
@@ -164,9 +181,29 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance()));
-                String roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * mRate.getSell());
-                mTextViewRate.setText(getContext().getString(R.string.everywhere_dollarsymbol) + " " + roundDollar);
+                String roundDollar = getContext().getString(R.string.dashboard_sorryicantcalculatenow);
+                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue()));
+
+
+                for (Rate rate : mRateList) {
+                    if (rate.getCurrencyCode().equals("IRR")) {
+                        mRateIrrSell = rate.getSell();
+                    }
+
+                }
+
+
+                if (mWalletList.get(position).getCurrencyCode().equals("ALP")) {
+                    roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * mRate.getSell());
+                } else if (mWalletList.get(position).getCurrencyCode().equals("USD")) {
+                    roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance());
+
+                } else if (mWalletList.get(position).getCurrencyCode().equals("IRR")) {
+                    roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * (mRate.getSell() / mRateIrrSell));
+
+                }
+
+                mTextViewEquivalentToBaseCurrency.setText(getContext().getString(R.string.everywhere_dollarsymbol) + " " + roundDollar);
             }
 
             @Override

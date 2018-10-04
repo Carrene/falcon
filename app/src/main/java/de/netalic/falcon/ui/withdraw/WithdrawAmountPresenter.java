@@ -53,6 +53,7 @@ public class WithdrawAmountPresenter implements WithdrawAmountContract.Presenter
 
                 }
             }
+            mViewWithdrawAmount.dismissProgressBar();
 
         });
     }

@@ -21,10 +21,10 @@ import de.netalic.falcon.ui.base.BaseActivity;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class WithdrawFragment extends Fragment implements WithdrawPresenterContract.View {
+public class WithdrawFragment extends Fragment implements WithdrawContract.View {
 
 
-    private WithdrawPresenterContract.Presenter mPresenter;
+    private WithdrawContract.Presenter mPresenter;
     private View mRoot;
     private WithdrawSpinnerAdapter mWithdrawSpinnerAdapter;
     private Spinner mSpinnerWalletList;
@@ -35,7 +35,7 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
     private int mPosition;
 
     @Override
-    public void setPresenter(WithdrawPresenterContract.Presenter presenter) {
+    public void setPresenter(WithdrawContract.Presenter presenter) {
 
         mPresenter = checkNotNull(presenter);
 
@@ -115,7 +115,7 @@ public class WithdrawFragment extends Fragment implements WithdrawPresenterContr
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(position).getBalance())+" "+mWalletList.get(position).getCurrencySymbol());
+                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue())+" "+mWalletList.get(position).getCurrencySymbol());
                 mPosition = position;
             }
 
