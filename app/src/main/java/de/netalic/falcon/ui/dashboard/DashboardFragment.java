@@ -185,13 +185,14 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
                 mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue()));
 
 
-                for (Rate rate : mRateList) {
-                    if (rate.getCurrencyCode().equals("IRR")) {
-                        mRateIrrSell = rate.getSell();
+                if (mRateList!=null) {
+                    for (Rate rate : mRateList) {
+                        if (rate.getCurrencyCode().equals("IRR")) {
+                            mRateIrrSell = rate.getSell();
+                        }
+
                     }
-
                 }
-
 
                 if (mWalletList.get(position).getCurrencyCode().equals("ALP")) {
                     roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * mRate.getSell());
