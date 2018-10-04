@@ -58,11 +58,12 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         int paginationCount = Integer.parseInt(deal.getResponse().headers().get("X-Pagination-Count"));
 
                         mTransactionHistoryView.setDepositList(deal.getResponse().body());
+                        mPaginationSkip += mPaginationTake;
+
                         if (mPaginationSkip >= paginationCount) {
                             mTransactionHistoryView.loadNoMoreItem(true);
                             mPaginationSkip = 0;
                         }
-                        mPaginationSkip += mPaginationTake;
                         break;
                     }
 
