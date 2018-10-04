@@ -217,7 +217,7 @@
     <dimen name="margintop_withdrawqrcompleted_linearlayout">33dp</dimen>
     <dimen name="height_withdrawqrcompleted_header">40dp</dimen>
     <dimen name="textsize_withdrawqrcompleted_header">16dp</dimen>
-    <dimen name="widthheight_withdrawqrcompleted_imageqr">156dp</dimen>
+    <dimen name="widthheight_withdrawqrcompleted_imageqr">300dp</dimen>
     <dimen name="textsize_withdrawqrcompleted_textviewscanqrcode">14sp</dimen>
     <dimen name="margintop_withdrawqrcompleted_textviewscanqrcode">20dp</dimen>
     <dimen name="marginbottom_withdrawqrcompleted_textviewscanqrcode">30dp</dimen>

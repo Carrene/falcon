@@ -49,7 +49,7 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         WalletViewHolder walletViewHolder = (WalletViewHolder) holder;
         Wallet wallet = mWalletList.get(position);
         walletViewHolder.mTextViewWalletName.setText(wallet.getName());
-        walletViewHolder.mTextViewBalance.setText(wallet.getCurrencySymbol() + " " + String.valueOf(wallet.getBalance()));
+        walletViewHolder.mTextViewBalance.setText(wallet.getCurrencySymbol() + " " + String.valueOf(Double.valueOf(wallet.getBalance()).longValue()));
         walletViewHolder.mTextViewAddress.setText(wallet.getAddress());
 
     }
