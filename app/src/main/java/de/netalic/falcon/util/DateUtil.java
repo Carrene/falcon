@@ -49,7 +49,6 @@ public class DateUtil {
 
     public static String lastDayToIso() {
 
-
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_YEAR, -1);
@@ -58,7 +57,6 @@ public class DateUtil {
     }
 
     public static String lastWeekToIso() {
-
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());

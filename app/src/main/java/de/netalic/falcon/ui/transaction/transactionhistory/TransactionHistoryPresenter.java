@@ -5,6 +5,7 @@ import com.google.common.base.Joiner;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class TransactionHistoryPresenter implements TransactionHistoryContract.Presenter {
 
     private TransactionHistoryContract.View mTransactionHistoryView;
-    private int mPaginationTake = 20;
+    private int mPaginationTake = 25;
     private int mPaginationSkip = 0;
 
     public TransactionHistoryPresenter(TransactionHistoryContract.View transactionHistoryView) {
@@ -61,7 +62,6 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                             mTransactionHistoryView.loadNoMoreItem(true);
                             mPaginationSkip = 0;
                         }
-
                         mPaginationSkip += mPaginationTake;
                         break;
                     }
@@ -101,31 +101,31 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                     }
                     queryStringMap.get("type").add(entry.getKey());
                 }
-            } else if (entry.getKey().equals("date") && entry.getValue() != null) {
+            } else if (entry.getKey().equals("date") && entry.getValue() != null && !entry.getValue().equals("Always")) {
                 if (queryStringMap.get("createdAt") == null) {
                     queryStringMap.put("createdAt", new HashSet<>());
                 }
                 switch (entry.getValue().toString()) {
                     case "Last day": {
-                        HashSet hashSet = new HashSet();
-                        hashSet.add(DateUtil.nowToIso());
-                        hashSet.add(DateUtil.lastDayToIso());
-                        queryStringMap.put("createdAt", hashSet);
+                        LinkedHashSet linkedHashSet = new LinkedHashSet();
+                        linkedHashSet.add(DateUtil.lastDayToIso());
+                        linkedHashSet.add(DateUtil.nowToIso());
+                        queryStringMap.put("createdAt", linkedHashSet);
                         break;
                     }
                     case "Last week": {
-                        HashSet hashSet = new HashSet();
-                        hashSet.add(DateUtil.nowToIso());
-                        hashSet.add(DateUtil.lastWeekToIso());
-                        queryStringMap.put("createdAt", hashSet);
+                        LinkedHashSet linkedHashSet = new LinkedHashSet();
+                        linkedHashSet.add(DateUtil.lastWeekToIso());
+                        linkedHashSet.add(DateUtil.nowToIso());
+                        queryStringMap.put("createdAt", linkedHashSet);
                         break;
                     }
 
                     case "Last month": {
-                        HashSet hashSet = new HashSet();
-                        hashSet.add(DateUtil.nowToIso());
-                        hashSet.add(DateUtil.lastMonthToIso());
-                        queryStringMap.put("createdAt", hashSet);
+                        LinkedHashSet linkedHashSet = new LinkedHashSet();
+                        linkedHashSet.add(DateUtil.lastMonthToIso());
+                        linkedHashSet.add(DateUtil.nowToIso());
+                        queryStringMap.put("createdAt", linkedHashSet);
                         break;
                     }
                 }
