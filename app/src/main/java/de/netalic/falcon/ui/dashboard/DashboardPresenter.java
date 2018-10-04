@@ -88,6 +88,33 @@ public class DashboardPresenter implements DashboardContract.Presenter {
     }
 
     @Override
+    public void getListRates() {
+
+        mDashboardView.showProgressBar();
+        RepositoryLocator.getInstance().getRepository(RateRepository.class).getAll(deal -> {
+
+            if (deal.getThrowable() != null) {
+
+
+            } else {
+
+                switch (deal.getResponse().code()) {
+
+                    case 200: {
+
+                        mDashboardView.setListRates(deal.getResponse().body());
+
+                        break;
+                    }
+                }
+
+            }
+            mDashboardView.dismissProgressBar();
+
+        });
+    }
+
+    @Override
     public void start() {
 
         ScreenLocker.getInstance().start(new ScreenLocker.LockScreenInterface() {

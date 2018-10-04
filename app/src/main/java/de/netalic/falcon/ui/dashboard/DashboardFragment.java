@@ -44,6 +44,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ImageView mImageViewWithdraw;
     private ImageView mImageViewPurchase;
     private DecimalFormat mDecimalFormat;
+    private List<Rate> mRateList;
 
 
     @Nullable
@@ -64,6 +65,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         initUiComponents();
         getRate();
         getWalletList();
+        getRatesList();
         initListener();
 
     }
@@ -100,6 +102,11 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mTextViewBalance = mRoot.findViewById(R.id.textview_dashboard_balance);
         mImageViewWithdraw = mRoot.findViewById(R.id.imageview_dashboard_withdraw);
         mImageViewPurchase = mRoot.findViewById(R.id.imageview_dashboard_purchase);
+    }
+
+    private void getRatesList(){
+
+        mPresenter.getListRates();
     }
 
     @Override
@@ -147,6 +154,13 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mWalletList = walletList;
         mDashboardWalletSpinnerAdapter = new DashboardWalletSpinnerAdapter(getContext(), mWalletList);
         mSpinnerWalletList.setAdapter(mDashboardWalletSpinnerAdapter);
+    }
+
+    @Override
+    public void setListRates(List<Rate> listRates) {
+
+        mRateList=listRates;
+
     }
 
     public void getRate() {
