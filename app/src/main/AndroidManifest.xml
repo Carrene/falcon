@@ -53,6 +53,7 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -86,7 +87,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.withdraw.WithdrawActivity" />
         </activity>
-
         <activity
             android:name=".ui.withdraw.WithdrawAmountActivity"
             android:parentActivityName=".ui.withdraw.WithdrawActivity" />
@@ -150,7 +150,7 @@
         <activity android:name=".ui.purchase.PurchaseConfirmationActivity" />
         <activity android:name=".ui.purchase.PurchaseCompletedActivity" />
         <activity android:name=".ui.purchase.PurchaseFailedActivity" />
-        <activity android:name=".ui.registration.authentication.AuthenticationActivity"></activity>
+        <activity android:name=".ui.registration.authentication.AuthenticationActivity" />
         <activity
             android:name=".ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity"
             android:parentActivityName=".ui.setting.basic.SettingActivity">
@@ -161,6 +161,12 @@
         <activity
             android:name=".ui.setting.recoveryemail.SettingRecoveryEmailActivity"
             android:parentActivityName=".ui.setting.basic.SettingActivity" />
+        <activity android:name=".ui.transaction.transactionhistory.TransactionDetailCompletedActivity"
+            android:parentActivityName=".ui.transaction.transactionhistory.TransactionHistoryActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
+        </activity>
     </application>
 
 </manifest>

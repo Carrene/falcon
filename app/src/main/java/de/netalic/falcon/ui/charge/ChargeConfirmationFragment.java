@@ -38,7 +38,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private Button mButtonConfirm;
     public static final String ARGUMENT_CHARGE_START = "chargeStart";
     private static final int DROP_IN_REQUEST = 1;
-    private static final String ARGUMENT_RECEIPT = "receipt";
+    public static final String ARGUMENT_RECEIPT = "receipt";
     private DecimalFormat mDecimalFormat;
 
 

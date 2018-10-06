@@ -109,7 +109,6 @@
     <string name="chargeconfirmation_pleasetryagain">Please try again</string>
 
 
-
     <string name="chargecompleted_chargecompleted">Charge Completed</string>
     <string name="chargecompleted_walletname">Wallet name </string>
     <string name="chargecompleted_amount">Charge amount  </string>
@@ -348,5 +347,20 @@
     <string name="settingfragment_emailnotset">Email not set</string>
     <string name="settingfragment_phonnumbernotset">Phone number not set</string>
     <string name="settingfragment_basecurrencynotset">Base currency not set</string>
+
+    <string name="transactiondetail_transactiondetail">Transaction detail</string>
+    <string name="transactiondetail_walletname">Wallet name </string>
+    <string name="transactiondetail_amount">Charge amount  </string>
+    <string name="transactiondetail_baseamount">Paid amount  </string>
+    <string name="transactiondetail_paymentgateway">Payment gateway </string>
+    <string name="transactiondetail_transactiondate">Transaction date </string>
+    <string name="transactiondetail_transactiontime">Transaction time </string>
+    <string name="transactiondetail_trackingcode">RRN </string>
+    <string name="transactiondetail_dashboard">DASHBOARD</string>
+    <string name="transactiondetail_success">Success</string>
+    <string name="transactiondetail_imagesaved">Image Saved</string>
+    <string name="transactiondetail_sharemenutoolbar">Share</string>
+    <string name="transactiondetail_downloadmenutoolbar">Download</string>
+    <string name="transactiondetail_succeed">succeed</string>
 
 </resources>

@@ -1,5 +1,7 @@
 package de.netalic.falcon.ui.transaction.transactionhistory;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,19 +9,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Receipt;
+import de.netalic.falcon.ui.charge.ChargeCompletedActivity;
+import de.netalic.falcon.ui.charge.ChargeConfirmationFragment;
+import de.netalic.falcon.ui.charge.ChargeFailedActivity;
+import de.netalic.falcon.ui.transfer.TransferCompletedActivity;
+import de.netalic.falcon.ui.transfer.TransferFailedActivity;
 import de.netalic.falcon.util.DateUtil;
+import de.netalic.falcon.util.SnackbarUtil;
 
 public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Receipt> mReceiptList = new ArrayList<>();
+    private Context mContext;
 
-    public TransactionHistoryRecyclerViewAdapter() {
+    public TransactionHistoryRecyclerViewAdapter(Context context) {
+
+        mContext=context;
 
     }
 
@@ -75,7 +87,23 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
 
                 }
             }
-        }
+            holder.itemView.setOnClickListener(v -> {
+
+                    if (receiptViewHolder.mTextViewTransactionResult.getText().toString().equals(mContext.getString(R.string.transactiondetail_succeed))) {
+                        Intent intent = new Intent(mContext, TransactionDetailCompletedActivity.class);
+                        intent.putExtra(TransactionDetailCompletedFragment.ARGUMENT_RECEIPT, mReceiptList.get(position));
+                        mContext.startActivity(intent);
+
+                    } else {
+
+                        Intent intent = new Intent(mContext, ChargeFailedActivity.class);
+                        intent.putExtra(TransactionDetailCompletedFragment.ARGUMENT_RECEIPT, mReceiptList.get(position));
+                        mContext.startActivity(intent);
+
+                    }
+
+            });
+            }
     }
 
     @Override

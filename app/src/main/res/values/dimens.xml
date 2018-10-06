@@ -455,6 +455,26 @@
     <dimen name="margintop_authentication_enterpassword">120dp</dimen>
     <dimen name="textsize_authentication_enterpassword">13sp</dimen>
 
-
+    <dimen name="paddingbottom_transactiondetail_linearlayout">28dp</dimen>
+    <dimen name="marginstartend_transactiondetail_linearlayout">17dp</dimen>
+    <dimen name="height_transactiondetail_header">40dp</dimen>
+    <dimen name="paddingend_transactiondetail_textview">15dp</dimen>
+    <dimen name="margintopbottom_transactiondetail_view">13dp</dimen>
+    <dimen name="height_transactiondetail_view">1dp</dimen>
+    <dimen name="margintop_transactiondetail_linearlayout">33dp</dimen>
+    <dimen name="margintop_transactiondetail_walletnamelable">20dp</dimen>
+    <dimen name="textsize_transactiondetail_walletnamelable">14sp</dimen>
+    <dimen name="margintop_transactiondetail_walletname">20dp</dimen>
+    <dimen name="margintop_transactiondetail_relativelayout">8dp</dimen>
+    <dimen name="textsize_transactiondetail_walletnolable">14sp</dimen>
+    <dimen name="textsize_transactiondetail_amountdollarlable">14sp</dimen>
+    <dimen name="textsize_transactiondetail_trackingcode">14sp</dimen>
+    <dimen name="marginbuttom_transactiondetail_confirm">27dp</dimen>
+    <dimen name="marginstartend_transactiondetail_confirm">16dp</dimen>
+    <dimen name="textsize_transactiondetail_confirmbutton">14dp</dimen>
+    <dimen name="textsize_transactiondetail_paymentgatewaylable">14sp</dimen>
+    <dimen name="textsize_transactiondetail_transactiondate">14sp</dimen>
+    <dimen name="textsize_transactiondetail_successtextview">16sp</dimen>
+    <dimen name="paddingstart_transactiondetail_relativelayout">15dp</dimen>
 
 </resources>

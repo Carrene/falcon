@@ -35,6 +35,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     private NoPaginate mNoPaginate;
     private Map<String, ?> mFilterMap;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private RecyclerView mRecyclerViewTransactionHistory;
 
     @Nullable
     @Override
@@ -64,13 +65,13 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     @Override
     public void showProgressBar() {
 
-        ((BaseActivity)getActivity()).showMaterialDialog();
+        ((BaseActivity) getActivity()).showMaterialDialog();
     }
 
     @Override
     public void dismissProgressBar() {
 
-        ((BaseActivity)getActivity()).dismissMaterialDialog();
+        ((BaseActivity) getActivity()).dismissMaterialDialog();
     }
 
     public static TransactionHistoryFragment newInstance() {
@@ -113,30 +114,27 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
     private void initUiComponent() {
 
-        RecyclerView recyclerView = mRoot.findViewById(R.id.recyclerview_transactionhistory);
+        mRecyclerViewTransactionHistory = mRoot.findViewById(R.id.recyclerview_transactionhistory);
         mSwipeRefreshLayout = mRoot.findViewById(R.id.swiperefresh_transactionhistory);
-recyclerView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
+        mRecyclerViewTransactionHistory.setOnClickListener(v -> {
 
-    }
-});
+        });
         if (mNoPaginate != null) {
             mNoPaginate.unbind();
         }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerViewTransactionHistory.setLayoutManager(new LinearLayoutManager(getContext()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
+        mRecyclerViewTransactionHistory.addItemDecoration(dividerItemDecoration);
 
-        recyclerView.setItemAnimator(new SlideInUpAnimator());
+        mRecyclerViewTransactionHistory.setItemAnimator(new SlideInUpAnimator());
 
-        mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter();
-        recyclerView.setAdapter(mTransactionHistoryRecyclerViewAdapter);
+        mTransactionHistoryRecyclerViewAdapter = new TransactionHistoryRecyclerViewAdapter(getContext());
+        mRecyclerViewTransactionHistory.setAdapter(mTransactionHistoryRecyclerViewAdapter);
 
-        mNoPaginate = NoPaginate.with(recyclerView).setOnLoadMoreListener(() -> getDepositList(mFilterMap)).build();
+        mNoPaginate = NoPaginate.with(mRecyclerViewTransactionHistory).setOnLoadMoreListener(() -> getDepositList(mFilterMap)).build();
 
         mSwipeRefreshLayout.setOnRefreshListener(() -> {
 
