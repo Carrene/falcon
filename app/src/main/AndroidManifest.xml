@@ -161,11 +161,18 @@
         <activity
             android:name=".ui.setting.recoveryemail.SettingRecoveryEmailActivity"
             android:parentActivityName=".ui.setting.basic.SettingActivity" />
-        <activity android:name=".ui.transaction.transactionhistory.TransactionDetailCompletedActivity"
+        <activity
+            android:name=".ui.transaction.transactionhistory.TransactionDetailCompletedActivity"
             android:parentActivityName=".ui.transaction.transactionhistory.TransactionHistoryActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
+        </activity>
+        <activity android:name=".ui.transaction.transactionhistory.TransactionDetailFailedActivity"
+            android:parentActivityName=".ui.transaction.transactionhistory.TransactionHistoryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         </activity>
     </application>
 

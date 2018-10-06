@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_transactiondetailfailed_main"
+        android:layout_width="@dimen/width_transactiondetailfailed_linearlayout"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margintop_transactiondetailfailed_linearlayout"
+        android:background="@drawable/everywherefailed_border"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/paddingbottom_transactiondetailfailed_linearlayout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/chargefailed_headerborder">
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_failed"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="@string/transactiondetailfailed_failedtextview"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize_transactiondetailfailed_failedtextview" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_walletnamelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margintop_transactiondetailfailed_walletnamelable"
+                android:text="@string/transactiondetailfailed_walletname"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_walletnamelable" />
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_walletname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/margintop_transactiondetailfailed_walletname"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_walletnamelable" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_amountalphalable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transactiondetailfailed_walletamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_walletnolable" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_transactiondetailfailed_amountalpha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_transactiondetailfailed_walletnolable" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_amountdollarlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transactiondetailfailed_baseamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_amountdollarlable" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_transactiondetailfailed_amountdollar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/textview_transactiondetailfailed_amountdollarlable"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textsize_transactiondetailfailed_amountdollarlable" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <View
+            android:id="@+id/view_transactiondetailfailed_paymentgatewaylineview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_transactiondetailfailed_paymentgatewaybox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_paymentgatewaylable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transactiondetailfailed_paymentgateway"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_paymentgatewaylable" />
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_paymentgateway"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_paymentgatewaylable" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_transactiondatelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transactiondetailfailed_transactiondate"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_transactiondate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_transactiondate" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_transactiontimelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transactiondetailfailed_transactiontime"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_transactiontime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_transactiondate" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_transactiondetailfailed_rrnlineview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_transactiondetailfailed_rrnbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_rrnlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transactiondetailfailed_rrn"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_transactiondetailfailed_rrn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetailfailed_transactiondate" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_transactiondetailfailed_dashborad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbuttom_transactiondetailfailed_dashboard"
+        android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_dashboard"
+        android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_dashboard"
+        android:background="@color/colorSecondary"
+        android:text="@string/transactiondetailfailed_dashboard"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_transactiondetailfailed_dashboardbutton" />
+</RelativeLayout>

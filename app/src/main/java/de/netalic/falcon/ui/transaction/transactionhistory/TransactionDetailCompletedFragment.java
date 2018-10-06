@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.File;
@@ -45,6 +46,9 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
     private static final int REQUEST_PERMISSIONS = 1;
     private static final int IMAGE_QUALITY = 100;
     private View mScreenshotView;
+    private String mTransactionType;
+    private RelativeLayout mRelativeLayoutRrnBox;
+    private View mViewRrrnLine;
 
     @Nullable
     @Override
@@ -54,6 +58,7 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
         checkNotNull(getArguments());
         setHasOptionsMenu(true);
         mReceipt = getArguments().getParcelable(ARGUMENT_RECEIPT);
+        mTransactionType = getArguments().getString(TransactionHistoryRecyclerViewAdapter.TRANSACTION_TYPE);
         return mRoot;
     }
 
@@ -82,9 +87,10 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
 
     }
 
-    public static TransactionDetailCompletedFragment newInstance(Receipt receipt) {
+    public static TransactionDetailCompletedFragment newInstance(Receipt receipt, String transactionType) {
 
         Bundle bundle = new Bundle();
+        bundle.putString(TransactionHistoryRecyclerViewAdapter.TRANSACTION_TYPE, transactionType);
         bundle.putParcelable(ARGUMENT_RECEIPT, receipt);
         TransactionDetailCompletedFragment fragment = new TransactionDetailCompletedFragment();
         fragment.setArguments(bundle);
@@ -92,8 +98,8 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
     }
 
 
-
     public void initUiComponent() {
+
 
         mTextViewWalletName = mRoot.findViewById(R.id.textview_transactiondetail_walletname);
         mTextViewAmountWallet = mRoot.findViewById(R.id.textview_transactiondetail_amountalpha);
@@ -104,6 +110,14 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
         mTextViewRrn = mRoot.findViewById(R.id.textview_transactiondetail_rrn);
         mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_transactiondetail_dashborad);
         mScreenshotView = mRoot.findViewById(R.id.linearlayout_transactiondetail_main);
+        mRelativeLayoutRrnBox = mRoot.findViewById(R.id.relativelayout_transactiondetailcompleted_rrnbox);
+        mViewRrrnLine = mRoot.findViewById(R.id.view_transactiondetailcompleted_rrnlineview);
+
+        if (mTransactionType.equals(getContext().getString(R.string.transactiondetail_forchecktransferorcharge))) {
+
+            mRelativeLayoutRrnBox.setVisibility(mRoot.GONE);
+            mViewRrrnLine.setVisibility(mRoot.GONE);
+        }
     }
 
     public void initListener() {

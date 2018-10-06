@@ -28,6 +28,7 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
 
     private List<Receipt> mReceiptList = new ArrayList<>();
     private Context mContext;
+    public static final String TRANSACTION_TYPE="transactionType";
 
     public TransactionHistoryRecyclerViewAdapter(Context context) {
 
@@ -92,12 +93,14 @@ public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<
                     if (receiptViewHolder.mTextViewTransactionResult.getText().toString().equals(mContext.getString(R.string.transactiondetail_succeed))) {
                         Intent intent = new Intent(mContext, TransactionDetailCompletedActivity.class);
                         intent.putExtra(TransactionDetailCompletedFragment.ARGUMENT_RECEIPT, mReceiptList.get(position));
+                        intent.putExtra(TRANSACTION_TYPE,mReceiptList.get(position).getType());
                         mContext.startActivity(intent);
 
                     } else {
 
-                        Intent intent = new Intent(mContext, ChargeFailedActivity.class);
+                        Intent intent = new Intent(mContext, TransactionDetailFailedActivity.class);
                         intent.putExtra(TransactionDetailCompletedFragment.ARGUMENT_RECEIPT, mReceiptList.get(position));
+                        intent.putExtra(TRANSACTION_TYPE,mReceiptList.get(position).getType());
                         mContext.startActivity(intent);
 
                     }

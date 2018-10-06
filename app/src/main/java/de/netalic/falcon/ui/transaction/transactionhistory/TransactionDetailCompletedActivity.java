@@ -19,13 +19,17 @@ public class TransactionDetailCompletedActivity extends BaseActivity {
 
             throw new RuntimeException("deposit should not be null");
         }
+
+        Bundle bundle=getIntent().getExtras();
+
+        String transactionType=bundle.getString(TransactionHistoryRecyclerViewAdapter.TRANSACTION_TYPE);
         Receipt receipt = getIntent().getExtras().getParcelable(ARGUMENT_RECEIPT);
 
 
         TransactionDetailCompletedFragment transactiondetailCompletedFragment = (TransactionDetailCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transactiondetailcompleted_fragmentcontainer);
         if (transactiondetailCompletedFragment == null) {
 
-            transactiondetailCompletedFragment = TransactionDetailCompletedFragment.newInstance(receipt);
+            transactiondetailCompletedFragment = TransactionDetailCompletedFragment.newInstance(receipt,transactionType);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), transactiondetailCompletedFragment, R.id.framelayout_transactiondetailcompleted_fragmentcontainer);
         }
 

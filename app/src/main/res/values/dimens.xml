@@ -477,4 +477,22 @@
     <dimen name="textsize_transactiondetail_successtextview">16sp</dimen>
     <dimen name="paddingstart_transactiondetail_relativelayout">15dp</dimen>
 
+    <dimen name="width_transactiondetailfailed_linearlayout">294dp</dimen>
+    <dimen name="paddingbottom_transactiondetailfailed_linearlayout">15dp</dimen>
+    <dimen name="margintop_transactiondetailfailed_linearlayout">28dp</dimen>
+    <dimen name="textsize_transactiondetailfailed_failedtextview">20sp</dimen>
+    <dimen name="margintop_transactiondetailfailed_walletnamelable">13dp</dimen>
+    <dimen name="textsize_transactiondetailfailed_walletnamelable">14sp</dimen>
+    <dimen name="margintop_transactiondetailfailed_walletname">13dp</dimen>
+    <dimen name="textsize_transactiondetailfailed_walletnolable">14sp</dimen>
+    <dimen name="textsize_transactiondetailfailed_amountdollarlable">14sp</dimen>
+    <dimen name="textsize_transactiondetailfailed_paymentgatewaylable">14sp</dimen>
+    <dimen name="textsize_transactiondetailfailed_transactiondate">14sp</dimen>
+    <dimen name="marginbuttom_transactiondetailfailed_dashboard">27dp</dimen>
+    <dimen name="marginstartend_transactiondetailfailed_dashboard">16dp</dimen>
+    <dimen name="textsize_transactiondetailfailed_dashboardbutton">14sp</dimen>
+    <dimen name="marginstartend_transactiondetailfailed_relativelayout">15dp</dimen>
+    <dimen name="margintopbottom_transactiondetailfailed_view">15dp</dimen>
+    <dimen name="height_transactiondetailfailed_view">1dp</dimen>
+
 </resources>

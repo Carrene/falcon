@@ -126,6 +126,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
             }
 
+            //TODO:(EHSAN)please check this code
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -292,7 +293,7 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
                 if (!mEditTextOtherCurrency.getText().toString().matches("")) {
 
                     double otherCurrency = Double.valueOf(mEditTextBaseCurrency.getText().toString()) * (rateSell / mRateUsdSell);
-                    String roundOtherCurrency=mDecimalFormat.format(otherCurrency);
+                    String roundOtherCurrency = mDecimalFormat.format(otherCurrency);
                     mEditTextOtherCurrency.setText(roundOtherCurrency);
                 }
             }
@@ -319,12 +320,11 @@ public class WithdrawAmountFragment extends Fragment implements WithdrawAmountCo
 
         mButtonNextWithdraw.setOnClickListener(v -> {
 
-            if (mEditTextWalletAmount.getText().toString().matches("")){
+            if (mEditTextWalletAmount.getText().toString().matches("")) {
 
-                SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.withdrawamount_fillalphaamount),getContext());
+                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.withdrawamount_fillalphaamount), getContext());
 
-            }
-            else {
+            } else {
                 Map<String, Object> map = new HashMap<>();
                 int walletId = mWallet.getId();
                 String amount = mEditTextWalletAmount.getText().toString();

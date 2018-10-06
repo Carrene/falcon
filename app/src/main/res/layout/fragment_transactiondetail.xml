@@ -140,6 +140,7 @@
         </RelativeLayout>
 
         <View
+            android:id="@+id/view_transactiondetailcompleted_rrnlineview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_transactiondetail_view"
             android:layout_marginBottom="@dimen/margintopbottom_transactiondetail_view"
@@ -148,6 +149,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/relativelayout_transactiondetailcompleted_rrnbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margintop_transactiondetail_relativelayout"

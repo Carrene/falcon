@@ -362,5 +362,17 @@
     <string name="transactiondetail_sharemenutoolbar">Share</string>
     <string name="transactiondetail_downloadmenutoolbar">Download</string>
     <string name="transactiondetail_succeed">succeed</string>
+    <string name="transactiondetail_forchecktransferorcharge">transfer</string>
+
+    <string name="transactiondetailfailed_failedtextview">Failed</string>
+    <string name="transactiondetailfailed_walletname">Wallet name </string>
+    <string name="transactiondetailfailed_walletamount">Base amount </string>
+    <string name="transactiondetailfailed_baseamount">Paid amount </string>
+    <string name="transactiondetailfailed_paymentgateway">Payment gateway </string>
+    <string name="transactiondetailfailed_transactiondate">Transaction date </string>
+    <string name="transactiondetailfailed_transactiontime">Transaction time </string>
+    <string name="transactiondetailfailed_rrn">RRN </string>
+    <string name="transactiondetailfailed_dashboard">Dashboard</string>
+    <string name="transactiondetailfailed_imagesaved">Image Saved</string>
 
 </resources>
