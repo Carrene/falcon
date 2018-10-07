@@ -269,7 +269,7 @@
     <string name="purchase_toolbar">Purchase</string>
     <string name="purchase_wallettextview">Wallet</string>
     <string name="purchase_balancelable">Balance :</string>
-    <string name="purchase_nextamountbutton">NEXT-AMOUNT</string>
+    <string name="purchase_nextamountbutton">NEXT</string>
 
     <string name="purchaseamount_toolbar">Purchase amount</string>
     <string name="purchaseamount_invalidcurrency">Invalid currency</string>

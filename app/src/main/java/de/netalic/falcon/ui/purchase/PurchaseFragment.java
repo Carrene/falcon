@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -105,6 +107,13 @@ public class PurchaseFragment extends Fragment implements PurchaseContract.View 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance()+" "+mWalletList.get(0).getCurrencySymbol()));
             }
         });
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.menu_purchase_toolbar,menu);
 
     }
 }
