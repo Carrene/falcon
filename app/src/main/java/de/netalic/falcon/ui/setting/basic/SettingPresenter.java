@@ -81,18 +81,13 @@ public class SettingPresenter implements SettingContract.Presenter {
 
         RepositoryLocator.getInstance().getRepository(UserRepository.class).get((Integer) tokenBody.get("id"), deal -> {
 
-            if (deal.getThrowable()==null){
+            if (deal.getThrowable() == null) {
 
-                 mSettingView.setBaseCurrency(deal.getModel().getBaseCurrency());
-            }
-
-            else {
+                mSettingView.setBaseCurrency(deal.getModel().getBaseCurrency());
+            } else {
 
                 mSettingView.setBaseCurrencyNotSet();
             }
-
-
-
 
         });
 

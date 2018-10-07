@@ -38,6 +38,7 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
 
             if (deal.getThrowable() != null) {
                 //TODO: (Milad) Display error
+                //TODO:(Ehsan) what error?
                 mChargeConfirmationView.dismissProgressBar();
 
             } else {

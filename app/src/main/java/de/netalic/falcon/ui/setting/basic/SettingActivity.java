@@ -66,6 +66,7 @@ public class SettingActivity extends BaseActivity {
     private void setPhoneAndEmail() {
 
 //        //TODO(Milad): What is this? All string should be in string.xml
+          //TODO(Ehsan):you have wrote this codes!
 //        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
 //        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
 //        String phone = (String) tokenBody.get("phone");

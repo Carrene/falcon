@@ -144,7 +144,8 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
 
                 mChargeConfirmationPresenter.finalizeCharge(mTransaction.getId(), braintreeNonce);
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                //TODO(Milad): Payment is cancelled
+
+                SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_paymentiscanceled),getContext());
             } else {
 
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);

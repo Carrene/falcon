@@ -25,7 +25,7 @@ public class ChargePresenter implements ChargeContract.Presenter {
 
     @Override
     public void getWalletList() {
-        //TODO: (Milad) handle other status codes
+        //TODO: (Ehsan) we dont have anymore status code
         mChargeView.showProgressBar();
         RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
@@ -39,7 +39,7 @@ public class ChargePresenter implements ChargeContract.Presenter {
                     }
                 }
             } else {
-                //TODO: handle status codes
+
             }
             mChargeView.dismissProgressBar();
         });

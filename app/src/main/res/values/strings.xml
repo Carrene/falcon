@@ -66,7 +66,9 @@
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>
     <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
     <string name="dashboard_notification">Notification</string>
-    <string name="dashboard_sorryicantcalculatenow">Sorry i cant calculate now</string>
+    <string name="dashboard_sorryicantcalculatenow">I cant calculate now</string>
+    <string name="dashboard_basecurrencydoesnotset">Base currency does not set</string>
+    <string name="dashboard_forruninitlistener">123</string>
 
     <string name="materialdialogutil_isloading">Is loading ...</string>
     <string name="materialdialogutil_pleasewait">Please wait</string>
@@ -107,6 +109,7 @@
     <string name="chargeconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
     <string name="chargeconfirmation_braintreenonceismissing">Braintree nonce is missing</string>
     <string name="chargeconfirmation_pleasetryagain">Please try again</string>
+    <string name="chargeconfirmation_paymentiscanceled">Payment is canceled</string>
 
 
     <string name="chargecompleted_chargecompleted">Charge Completed</string>

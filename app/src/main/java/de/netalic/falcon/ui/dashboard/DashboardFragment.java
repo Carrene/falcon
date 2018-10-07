@@ -19,13 +19,11 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.purchase.PurchaseActivity;
 import de.netalic.falcon.ui.withdraw.WithdrawActivity;
-
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -36,8 +34,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private View mRoot;
     private Spinner mSpinnerWalletList;
     private TextView mTextViewEquivalentToBaseCurrency;
-    private Currency mUsd;
-    private Rate mRate;
     private TextView mTextViewBalance;
     private List<Wallet> mWalletList;
     private DashboardWalletSpinnerAdapter mDashboardWalletSpinnerAdapter;
@@ -45,8 +41,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ImageView mImageViewPurchase;
     private DecimalFormat mDecimalFormat;
     private List<Rate> mRateList;
-    private double mRateIrrSell;
-
+    private String mBaseCurrency;
+    private double mBaseCurrencyRateSell;
 
     @Nullable
     @Override
@@ -54,7 +50,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mRoot = inflater.inflate(R.layout.fragment_dashboard, null);
         setHasOptionsMenu(true);
-        mRate = new Rate("USD");
         mDecimalFormat = new DecimalFormat("0.00##");
         return mRoot;
     }
@@ -64,17 +59,19 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         super.onViewCreated(view, savedInstanceState);
         initUiComponents();
-        getRate();
-        getRatesList();
+        getBaseCurrency();
         getWalletList();
-        initListener();
-
     }
 
     public static DashboardFragment newInstance() {
 
         DashboardFragment dashboardFragment = new DashboardFragment();
         return dashboardFragment;
+    }
+
+    private void getBaseCurrency() {
+
+        mPresenter.baseCurrency();
     }
 
     @Override
@@ -111,27 +108,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     }
 
     @Override
-    public void showErrorInvalidCurrency() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.dashboard_invalidcurrency), getContext());
-    }
-
-    @Override
-    public void showErrorRatesDoesNotExists() {
-
-        checkNotNull(getContext());
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.dashboard_ratedosenotexists), getContext());
-    }
-
-    @Override
-    public void updateExchangeRateCurrency(Rate rate) {
-
-        mRate = rate;
-        mTextViewEquivalentToBaseCurrency.setText(String.valueOf(rate));
-    }
-
-    @Override
     public void showProgressBar() {
 
         checkNotNull(getContext());
@@ -148,26 +124,38 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         }
     }
 
-
     @Override
     public void setListWallet(List<Wallet> walletList) {
 
         mWalletList = walletList;
-        mDashboardWalletSpinnerAdapter = new DashboardWalletSpinnerAdapter(getContext(), mWalletList);
-        mSpinnerWalletList.setAdapter(mDashboardWalletSpinnerAdapter);
+        getRatesList();
     }
 
+    //TODO(Ehsan) We should use live data here
     @Override
     public void setListRates(List<Rate> listRates) {
 
         mRateList = listRates;
-
+        findRateBaseCurrency();
+        initListener();
+        initSpinnerAdapter();
     }
 
-    public void getRate() {
+    private void initSpinnerAdapter() {
+        mDashboardWalletSpinnerAdapter = new DashboardWalletSpinnerAdapter(getActivity(), mWalletList);
+        mSpinnerWalletList.setAdapter(mDashboardWalletSpinnerAdapter);
+    }
 
-        mPresenter.exchangeRate(mRate);
+    @Override
+    public void setBaseCurrency(String currency) {
 
+        mBaseCurrency = currency;
+    }
+
+    @Override
+    public void setBaseCurrencyNotSet() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.dashboard_basecurrencydoesnotset), getContext());
     }
 
     public void getWalletList() {
@@ -184,24 +172,12 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
                 String roundDollar = getContext().getString(R.string.dashboard_sorryicantcalculatenow);
                 mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue()));
 
+                for (Rate rate : mRateList) {
 
-                if (mRateList!=null) {
-                    for (Rate rate : mRateList) {
-                        if (rate.getCurrencyCode().equals("IRR")) {
-                            mRateIrrSell = rate.getSell();
-                        }
+                    if (mWalletList.get(position).getCurrencyCode().equals(rate.getCurrencyCode())) {
 
+                        roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * (mBaseCurrencyRateSell / rate.getSell()));
                     }
-                }
-
-                if (mWalletList.get(position).getCurrencyCode().equals("ALP")) {
-                    roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * mRate.getSell());
-                } else if (mWalletList.get(position).getCurrencyCode().equals("USD")) {
-                    roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance());
-
-                } else if (mWalletList.get(position).getCurrencyCode().equals("IRR")) {
-                    roundDollar = mDecimalFormat.format(mWalletList.get(position).getBalance() * (mRate.getSell() / mRateIrrSell));
-
                 }
 
                 mTextViewEquivalentToBaseCurrency.setText(getContext().getString(R.string.everywhere_dollarsymbol) + " " + roundDollar);
@@ -210,6 +186,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(0).getBalance()).longValue()));
             }
         });
 
@@ -225,6 +202,18 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             startActivity(intent);
 
         });
+    }
+
+    private void findRateBaseCurrency() {
+
+        for (Rate rate : mRateList) {
+
+            if (rate.getCurrencyCode().equals(mBaseCurrency)) {
+
+                mBaseCurrencyRateSell = rate.getSell();
+            }
+        }
+
     }
 
 }

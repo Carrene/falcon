@@ -101,6 +101,7 @@ public class ApiClient {
                 response = chain.proceed(request);
             } catch (SocketTimeoutException socketTimeoutException) {
                 //TODO (Milad) Display error
+                //TODO:(Ehsan):Error about what
             }
             return response;
         }

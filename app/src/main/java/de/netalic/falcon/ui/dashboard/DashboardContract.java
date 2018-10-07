@@ -11,19 +11,17 @@ public interface DashboardContract {
 
     interface View extends BaseView<Presenter>{
 
-        void showErrorInvalidCurrency();
-        void showErrorRatesDoesNotExists();
-        void updateExchangeRateCurrency(Rate rate);
         void setListWallet(List<Wallet>walletList);
         void setListRates(List<Rate> listRates);
-
+        void setBaseCurrency(String currency);
+        void setBaseCurrencyNotSet();
     }
 
     interface Presenter extends BasePresenter {
 
-        void exchangeRate(Rate rate);
         void getWalletList();
         void getListRates();
+        void baseCurrency();
 
     }
 }
