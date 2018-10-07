@@ -1,6 +1,7 @@
 package de.netalic.falcon.ui.purchase;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,9 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.zxing.ResultPoint;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
+import java.util.List;
+
 import de.netalic.falcon.R;
+import de.netalic.falcon.ui.transfer.TransferConfirmationActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -24,6 +31,7 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
     private DecoratedBarcodeView mDecoratedBarcodeView;
     private PurchaseScanQrCodeContract.Presenter mPurchaseScanQrCodePresenter;
     private static final int REQUEST_PERMISSIONS = 1;
+    public static final String QR_CODE_RESULT="scanQRCode";
 
 
     @Nullable
@@ -40,6 +48,7 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
 
         initUiComponent();
         requestCameraPermission();
+        initListener();
 
     }
 
@@ -93,10 +102,12 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
 
             checkNotNull(getContext());
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissionallowed), getContext());
+
         } else {
 
             checkNotNull(getContext());
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
+
         }
     }
 
@@ -107,5 +118,26 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
             mDecoratedBarcodeView.resume();
             mDecoratedBarcodeView.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void initListener(){
+
+        mDecoratedBarcodeView.decodeContinuous(new BarcodeCallback() {
+            @Override
+            public void barcodeResult(BarcodeResult result) {
+
+                if (result != null) {
+
+                    Intent intent=new Intent(getContext(),TransferConfirmationActivity.class);
+                    intent.putExtra(QR_CODE_RESULT,result.getText());
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void possibleResultPoints(List<ResultPoint> resultPoints) {
+
+            }
+        });
     }
 }
