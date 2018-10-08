@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
@@ -20,10 +22,14 @@ import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Purchase;
+import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.transfer.TransferConfirmationActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static de.netalic.falcon.ui.transfer.TransferPayeeFragment.ARGUMENT_TRANSACTION;
 
 public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScanQrCodeContract.View {
 
@@ -31,7 +37,9 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
     private DecoratedBarcodeView mDecoratedBarcodeView;
     private PurchaseScanQrCodeContract.Presenter mPurchaseScanQrCodePresenter;
     private static final int REQUEST_PERMISSIONS = 1;
-    public static final String QR_CODE_RESULT="scanQRCode";
+    public static final String QR_CODE_RESULT = "scanQRCode";
+    private int mWalletId;
+    private long mLongLastSnackBarTime = 0;
 
 
     @Nullable
@@ -40,6 +48,7 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
 
         mRoot = inflater.inflate(R.layout.fragment_purchasescanqrcode, null);
         setHasOptionsMenu(true);
+        mWalletId = getArguments().getInt(PurchaseFragment.WALLET_ADDRESS);
         return mRoot;
     }
 
@@ -61,16 +70,23 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
     @Override
     public void showProgressBar() {
 
+
+        ((BaseActivity) getActivity()).showMaterialDialog();
     }
 
     @Override
     public void dismissProgressBar() {
 
+        ((BaseActivity) getActivity()).dismissMaterialDialog();
     }
 
-    public static PurchaseScanQrCodeFragment newInstance() {
 
+    public static PurchaseScanQrCodeFragment newInstance(int walletId) {
+
+        Bundle bundle = new Bundle();
+        bundle.putInt(PurchaseFragment.WALLET_ADDRESS, walletId);
         PurchaseScanQrCodeFragment fragment = new PurchaseScanQrCodeFragment();
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -120,7 +136,7 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
         }
     }
 
-    private void initListener(){
+    private void initListener() {
 
         mDecoratedBarcodeView.decodeContinuous(new BarcodeCallback() {
             @Override
@@ -128,9 +144,26 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
 
                 if (result != null) {
 
-                    Intent intent=new Intent(getContext(),TransferConfirmationActivity.class);
-                    intent.putExtra(QR_CODE_RESULT,result.getText());
-                    startActivity(intent);
+                    mDecoratedBarcodeView.pause();
+
+                    Gson gson = new Gson();
+                    try {
+                        Purchase purchase = gson.fromJson(result.getText(), Purchase.class);
+
+                        mPurchaseScanQrCodePresenter.startTransfer(mWalletId, purchase.getWalletAddress(), purchase.getAmount());
+
+                    } catch (JsonSyntaxException jsonSyntaxException) {
+
+                        if ((System.currentTimeMillis() - mLongLastSnackBarTime) > 2) {
+
+                            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.purchasescanqrcode_qrcodedoesnotmatch), getContext());
+                            mDecoratedBarcodeView.resume();
+                        } else {
+
+                            mLongLastSnackBarTime = System.currentTimeMillis();
+                        }
+                    }
+
                 }
             }
 
@@ -140,4 +173,102 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
             }
         });
     }
+
+    @Override
+    public void navigationToTransferConfirmation(Transaction transaction) {
+
+        Intent intent = new Intent(getContext(), TransferConfirmationActivity.class);
+        intent.putExtra(ARGUMENT_TRANSACTION, transaction);
+        startActivity(intent);
+    }
+
+    @Override
+    public void showError700() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_invalidsourcewalletid), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showError727() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_destinationwalletaddressisnotfound), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showErrorSourceWalletNotFound404() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_sourcewalletnotfound), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showError601() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_sourceanddestinationareequal), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showErrorInvalidAmount702() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_invalidamount), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showErrorAmountIsZero702() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_amountiszero), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showErrorAmountIsNegative702() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_amountisnegative), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showError600() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_insufficientBalance), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showErrorTryingToTransferFromOtherWallet404() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_tryingtotransferfromanotherclientwallet), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showError602() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_walletcurrenciesaredifferent), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+    @Override
+    public void showError401() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_starttransferasananonymous), getContext());
+        mDecoratedBarcodeView.resume();
+
+    }
+
+
 }

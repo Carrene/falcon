@@ -14,10 +14,13 @@ public class PurchaseScanQrCodeActivity extends BaseActivity {
 
         setupBackButton();
 
+        Bundle bundle=getIntent().getExtras();
+        int walletId=bundle.getInt(PurchaseFragment.WALLET_ADDRESS);
+
         PurchaseScanQrCodeFragment purchaseScanQrCodeFragment=(PurchaseScanQrCodeFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_purchasescanqrcode_fragmentcontainer);
         if (purchaseScanQrCodeFragment==null){
 
-            purchaseScanQrCodeFragment=PurchaseScanQrCodeFragment.newInstance();
+            purchaseScanQrCodeFragment=PurchaseScanQrCodeFragment.newInstance(walletId);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),purchaseScanQrCodeFragment,R.id.framelayout_purchasescanqrcode_fragmentcontainer);
 
         }

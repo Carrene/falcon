@@ -5,26 +5,26 @@ import com.google.gson.annotations.SerializedName;
 public class Purchase {
 
     @SerializedName("amount")
-    private double mAmount;
+    private float mAmount;
 
     @SerializedName("walletAddress")
-    private int mWalletAddress;
+    private String mWalletAddress;
 
     @SerializedName("codeCurrency")
     private String mCodeCurrency;
 
 
-    public Purchase(double amount, int walletAddress, String codeCurrency) {
+    public Purchase(float amount, String walletAddress, String codeCurrency) {
         mAmount = amount;
         mWalletAddress = walletAddress;
         mCodeCurrency = codeCurrency;
     }
 
-    public double getAmount() {
+    public float getAmount() {
         return mAmount;
     }
 
-    public int getWalletAddress() {
+    public String getWalletAddress() {
         return mWalletAddress;
     }
 

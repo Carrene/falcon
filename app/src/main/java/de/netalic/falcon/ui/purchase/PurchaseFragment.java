@@ -31,6 +31,8 @@ public class PurchaseFragment extends Fragment implements PurchaseContract.View 
     private PurchaseSpinnerAdapter mPurchaseSpinnerAdapter;
     private TextView mTextViewBalance;
     private Button mButtonNext;
+    public static final String WALLET_ADDRESS="walletAddress";
+    private int mWalletId;
 
 
     @Nullable
@@ -102,19 +104,21 @@ public class PurchaseFragment extends Fragment implements PurchaseContract.View 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue())+" "+mWalletList.get(position).getCurrencySymbol());
-
+                mWalletId =mWalletList.get(position).getId();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance()+" "+mWalletList.get(0).getCurrencySymbol()));
+                mWalletId =mWalletList.get(0).getId();
             }
         });
 
         mButtonNext.setOnClickListener(v -> {
 
             Intent intent=new Intent(getContext(),PurchaseScanQrCodeActivity.class);
+            intent.putExtra(WALLET_ADDRESS, mWalletId);
             startActivity(intent);
 
         });

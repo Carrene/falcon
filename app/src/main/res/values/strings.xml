@@ -283,6 +283,7 @@
 
     <string name="purchasescanqrcode_toolbar">Scan QR code</string>
     <string name="purchasescanqrcode_textview">Scan this QR code</string>
+    <string name="purchasescanqrcode_qrcodedoesnotmatch">QR code does not match</string>
 
 
     <string name="purchaseconfirmation_toolbar">Purchase confirmation</string>
