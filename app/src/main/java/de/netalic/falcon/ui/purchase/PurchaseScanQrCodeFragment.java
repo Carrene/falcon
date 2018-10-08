@@ -62,6 +62,12 @@ public class PurchaseScanQrCodeFragment extends Fragment implements PurchaseScan
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mDecoratedBarcodeView.resume();
+    }
+
+    @Override
     public void setPresenter(PurchaseScanQrCodeContract.Presenter presenter) {
 
         mPurchaseScanQrCodePresenter = presenter;

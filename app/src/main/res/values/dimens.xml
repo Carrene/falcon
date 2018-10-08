@@ -495,4 +495,17 @@
     <dimen name="margintopbottom_transactiondetailfailed_view">15dp</dimen>
     <dimen name="height_transactiondetailfailed_view">1dp</dimen>
 
+    <dimen name="margintop_purchasegenerateqrcode_imageqr">30dp</dimen>
+    <dimen name="marginstartend_purchasegenerateqrcode_linearlayout">16dp</dimen>
+    <dimen name="margintop_purchasegenerateqrcode_linearlayout">33dp</dimen>
+    <dimen name="height_purchasegenerateqrcode_header">40dp</dimen>
+    <dimen name="textsize_purchasegenerateqrcode_header">16dp</dimen>
+    <dimen name="widthheight_purchasegenerateqrcode_imageqr">300dp</dimen>
+    <dimen name="textsize_purchasegenerateqrcode_textviewscanqrcode">14sp</dimen>
+    <dimen name="margintop_purchasegenerateqrcode_textviewscanqrcode">20dp</dimen>
+    <dimen name="marginbottom_purchasegenerateqrcode_textviewscanqrcode">30dp</dimen>
+    <dimen name="marginstartend_purchasegenerateqrcode_dashboardbutton">16dp</dimen>
+    <dimen name="marginbottom_purchasegenerateqrcode_dashboardbutton">27dp</dimen>
+    <dimen name="textsize_purchasegenerateqrcode_dashboardbutton">14sp</dimen>
+
 </resources>

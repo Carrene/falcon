@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,8 +32,12 @@ public class PurchaseFragment extends Fragment implements PurchaseContract.View 
     private PurchaseSpinnerAdapter mPurchaseSpinnerAdapter;
     private TextView mTextViewBalance;
     private Button mButtonNext;
+    public static final String WALLET_ID="walletId";
     public static final String WALLET_ADDRESS="walletAddress";
+    public static final String CURRENCY_CODE="currencyCode";
     private int mWalletId;
+    private String mWalletAddress;
+    private String mCurrencyCode;
 
 
     @Nullable
@@ -105,6 +110,8 @@ public class PurchaseFragment extends Fragment implements PurchaseContract.View 
 
                 mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue())+" "+mWalletList.get(position).getCurrencySymbol());
                 mWalletId =mWalletList.get(position).getId();
+                mWalletAddress=mWalletList.get(position).getAddress();
+                mCurrencyCode=mWalletList.get(position).getCurrencyCode();
             }
 
             @Override
@@ -112,13 +119,15 @@ public class PurchaseFragment extends Fragment implements PurchaseContract.View 
 
                 mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance()+" "+mWalletList.get(0).getCurrencySymbol()));
                 mWalletId =mWalletList.get(0).getId();
+                mWalletAddress=mWalletList.get(0).getAddress();
+                mCurrencyCode=mWalletList.get(0).getCurrencyCode();
             }
         });
 
         mButtonNext.setOnClickListener(v -> {
 
             Intent intent=new Intent(getContext(),PurchaseScanQrCodeActivity.class);
-            intent.putExtra(WALLET_ADDRESS, mWalletId);
+            intent.putExtra(WALLET_ID, mWalletId);
             startActivity(intent);
 
         });
@@ -130,5 +139,23 @@ public class PurchaseFragment extends Fragment implements PurchaseContract.View 
 
         inflater.inflate(R.menu.menu_purchase_toolbar,menu);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.item_transferpayeepurchasegenerateqrcode_qr:{
+
+                Intent intent=new Intent(getContext(),PurchaseAmountActivity.class);
+                intent.putExtra(WALLET_ADDRESS,mWalletAddress);
+                intent.putExtra(CURRENCY_CODE,mCurrencyCode);
+                startActivity(intent);
+                break;
+            }
+
+        }
+        return false;
     }
 }

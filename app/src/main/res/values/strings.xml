@@ -137,7 +137,7 @@
 
     <string name="withdraw_toolbar">Withdraw</string>
     <string name="withdraw_nextamount">NEXT-AMOUNT</string>
-    <string name="withdraw_balance">Balance : </string>
+    <string name="withdraw_balance">"Balance : "</string>
     <string name="withdraw_wallet">Wallet</string>
     <string name="withdraw_qrcode">QR code</string>
     <string name="withdraw_withdrawmethod">Withdraw method</string>
@@ -195,7 +195,7 @@
     <string name="transfer_toolbar">Transfer</string>
     <string name="transfer_nextamount">NEXT-AMOUNT</string>
     <string name="transfer_wallet">Wallet</string>
-    <string name="transfer_balance">Balance : </string>
+    <string name="transfer_balance">"Balance : "</string>
 
     <string name="transferamount_toolbar">Transfer - Amount</string>
     <string name="transferamount_invalidcurrency">Invalid currency</string>
@@ -242,7 +242,7 @@
     <string name="transferfailed_dashboardbutton">DASHBOARD</string>
 
     <string name="addresses_toolbar">Addresses</string>
-    <string name="rowaddresses_walletname">Wallet Name :</string>
+    <string name="rowaddresses_walletname">"Wallet Name : "</string>
     <string name="addresses_copied">Copied to clipboard</string>
 
     <string-array name="listArray">
@@ -268,7 +268,7 @@
 
     <string name="purchase_toolbar">Purchase</string>
     <string name="purchase_wallettextview">Wallet</string>
-    <string name="purchase_balancelable">Balance :</string>
+    <string name="purchase_balancelable">"Balance : "</string>
     <string name="purchase_nextamountbutton">NEXT</string>
 
     <string name="purchaseamount_toolbar">Purchase amount</string>
@@ -343,8 +343,8 @@
 
     <string name="settingfragment_phone">phone</string>
     <string name="settingfragment_email">email</string>
-    <string name="settingfragment_pattern">pattern</string>
-    <string name="settingfragment_password">password</string>
+    <string name="settingfragment_pattern">Pattern</string>
+    <string name="settingfragment_password">Password</string>
     <string name="settingfragment_emailnotset">Email not set</string>
     <string name="settingfragment_phonnumbernotset">Phone number not set</string>
     <string name="settingfragment_basecurrencynotset">Base currency not set</string>
@@ -375,5 +375,10 @@
     <string name="transactiondetailfailed_rrn">RRN </string>
     <string name="transactiondetailfailed_dashboard">Dashboard</string>
     <string name="transactiondetailfailed_imagesaved">Image Saved</string>
+
+    <string name="purchasegenerateqrcode_toolbar">QR Code Completed</string>
+    <string name="purchasegenerateqrcode_success">Success</string>
+    <string name="purchasegenerateqrcode_scanyourqrcode">Scan QR code</string>
+    <string name="purchasegenerateqrcode_imagesaved">Image saved</string>
 
 </resources>

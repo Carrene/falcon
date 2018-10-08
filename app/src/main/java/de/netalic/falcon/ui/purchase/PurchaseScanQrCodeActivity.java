@@ -15,7 +15,7 @@ public class PurchaseScanQrCodeActivity extends BaseActivity {
         setupBackButton();
 
         Bundle bundle=getIntent().getExtras();
-        int walletId=bundle.getInt(PurchaseFragment.WALLET_ADDRESS);
+        int walletId=bundle.getInt(PurchaseFragment.WALLET_ID);
 
         PurchaseScanQrCodeFragment purchaseScanQrCodeFragment=(PurchaseScanQrCodeFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_purchasescanqrcode_fragmentcontainer);
         if (purchaseScanQrCodeFragment==null){

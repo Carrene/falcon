@@ -10,7 +10,7 @@ public class Purchase {
     @SerializedName("walletAddress")
     private String mWalletAddress;
 
-    @SerializedName("codeCurrency")
+    @SerializedName("currencyCode")
     private String mCodeCurrency;
 
 

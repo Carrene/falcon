@@ -1,6 +1,7 @@
 package de.netalic.falcon.ui.purchase;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,10 +15,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.zxing.WriterException;
+
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Purchase;
 import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.ui.withdraw.WithdrawQrCompletedActivity;
+import de.netalic.falcon.util.QrCodeUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -33,12 +41,16 @@ public class PurchaseAmountFragment extends Fragment implements PurchaseAmountCo
     private Rate mRate;
     private DecimalFormat mDecimalFormat;
     private Button mButtonNextScan;
+    private String mWalletAddress;
+    private String mCurrencyCode;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_purchaseamount, null);
+        mWalletAddress =getArguments().getString(PurchaseFragment.WALLET_ADDRESS);
+        mCurrencyCode=getArguments().getString(PurchaseFragment.CURRENCY_CODE);
         return mRoot;
     }
 
@@ -48,6 +60,7 @@ public class PurchaseAmountFragment extends Fragment implements PurchaseAmountCo
         initListener();
         mRate = new Rate("USD");
         mDecimalFormat = new DecimalFormat("0.00##");
+        getRate();
     }
 
     private void initUiComponent() {
@@ -58,6 +71,11 @@ public class PurchaseAmountFragment extends Fragment implements PurchaseAmountCo
         mTextViewUseMaximum = mRoot.findViewById(R.id.textview_purchaseamount_usemaximum);
         mButtonNextScan =mRoot.findViewById(R.id.button_purchaseamount_payment);
 
+    }
+
+    public void getRate() {
+
+        mPurchaseAmountPresenter.exchangeRate(mRate);
     }
 
     @Override
@@ -75,9 +93,14 @@ public class PurchaseAmountFragment extends Fragment implements PurchaseAmountCo
 
     }
 
-    public static PurchaseAmountFragment newInstance() {
+    public static PurchaseAmountFragment newInstance(String walletAddress,String currencyCode) {
+
+        Bundle bundle = new Bundle();
+        bundle.putString(PurchaseFragment.WALLET_ADDRESS,walletAddress);
+        bundle.putString(PurchaseFragment.CURRENCY_CODE,currencyCode);
 
         PurchaseAmountFragment fragment = new PurchaseAmountFragment();
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -185,8 +208,8 @@ public class PurchaseAmountFragment extends Fragment implements PurchaseAmountCo
             }
             else {
 
-                Intent intent=new Intent(getActivity(),PurchaseScanQrCodeActivity.class);
-                startActivity(intent);
+                Purchase purchase=new Purchase(Float.valueOf(mEditTextWalletAmount.getText().toString()),mWalletAddress,mCurrencyCode);
+                mPurchaseAmountPresenter.generateQrCode(purchase);
 
 
             }
@@ -194,4 +217,42 @@ public class PurchaseAmountFragment extends Fragment implements PurchaseAmountCo
 
     }
 
+    @Override
+    public void setQrCode(String qrCodeContent) {
+        Bitmap bitmap = null;
+        try {
+            bitmap = QrCodeUtil.generateQrCode(qrCodeContent, 300, 300);
+            navigateToPurchaseGenerateQrCode(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    @Override
+    public void showErrorInvalidCurrency() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeamount_invalidcurrency), getContext());
+    }
+
+    @Override
+    public void showErrorRatesDoesNotExists() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeamount_ratedosenotexists), getContext());
+    }
+
+    @Override
+    public void updateExchangeRateCurrency(Rate rate) {
+
+        mRate = rate;
+    }
+
+    private void navigateToPurchaseGenerateQrCode(Bitmap bitmap) {
+
+        Intent intent = new Intent(getContext(), WithdrawQrCompletedActivity.class);
+        intent.putExtra("qr", bitmap);
+        startActivity(intent);
+    }
 }
