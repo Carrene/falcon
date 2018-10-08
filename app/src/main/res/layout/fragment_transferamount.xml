@@ -90,16 +90,6 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textview_transferamount_transferfee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margintop_transferamount_transferfeetextview"
-            android:gravity="center"
-            android:text="Transfer fee α20($30)"
-            android:textColor="@color/punch"
-            android:textSize="@dimen/textsize_transferamount_useminimumusemaximumtransferfee" />
-
     </LinearLayout>
 
     <Button

@@ -153,7 +153,7 @@ public class TransferPayeeFragment extends Fragment implements TransferPayeeCont
 
         mDecoratedBarcodeView.pause();
         mDecoratedBarcodeView.setVisibility(View.INVISIBLE);
-        mMenu.getItem(0).setIcon(R.drawable.transactionpayee_qropen);
+        mMenu.getItem(0).setIcon(R.drawable.transactionpayeeandpurchase_qropen);
 
     }
 

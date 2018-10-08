@@ -13,12 +13,15 @@ public class PurchaseAmountActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setupBackButton();
+        Bundle bundle=getIntent().getExtras();
+        String currencyCode=bundle.getString(PurchaseFragment.CURRENCY_CODE);
+        String walletAddress=bundle.getString(PurchaseFragment.WALLET_ADDRESS);
 
 
         PurchaseAmountFragment purchaseAmountFragment=(PurchaseAmountFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_purchaseamount_fragmentcontainer);
         if (purchaseAmountFragment==null){
 
-            purchaseAmountFragment=PurchaseAmountFragment.newInstance();
+            purchaseAmountFragment=PurchaseAmountFragment.newInstance(walletAddress,currencyCode);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),purchaseAmountFragment,R.id.framelayout_purchaseamount_fragmentcontainer);
         }
         new PurchaseAmountPresenter(purchaseAmountFragment);

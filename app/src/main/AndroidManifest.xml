@@ -142,7 +142,12 @@
         </activity>
         <activity
             android:name=".ui.purchase.PurchaseAmountActivity"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.purchase.PurchaseActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.purchase.PurchaseActivity" />
+        </activity>
         <activity
             android:name=".ui.purchase.PurchaseScanQrCodeActivity"
             android:launchMode="singleTop"
@@ -168,12 +173,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         </activity>
-        <activity android:name=".ui.transaction.transactionhistory.TransactionDetailFailedActivity"
+        <activity
+            android:name=".ui.transaction.transactionhistory.TransactionDetailFailedActivity"
             android:parentActivityName=".ui.transaction.transactionhistory.TransactionHistoryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         </activity>
+        <activity android:name=".ui.purchase.PurchaseGenerateQrCodeActivity"></activity>
     </application>
 
 </manifest>
