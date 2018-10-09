@@ -13,6 +13,7 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Currency;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
 
 public class SettingBaseCurrencyFragment extends Fragment implements SettingBaseCurrencyContract.View {
@@ -36,6 +37,7 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
 
         initUiComponent();
         getCurrencyList();
+        getBaseCurrency();
     }
 
     @Override
@@ -80,8 +82,18 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
         mCurrencyList=currencyList;
     }
 
+    @Override
+    public void setBaseCurrency(User currency) {
+
+    }
+
     private void getCurrencyList(){
 
         mBaseCurrencyPresenter.getCurrencyList();
+    }
+
+    private void getBaseCurrency(){
+
+        mBaseCurrencyPresenter.changeBaseCurrency(2,"USD");
     }
 }

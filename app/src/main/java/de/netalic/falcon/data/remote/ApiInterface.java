@@ -68,5 +68,8 @@ public interface ApiInterface {
 
     @HTTP(method ="LIST" ,path ="currencies")
     Call<List<Currency>>currencyList();
+
+    @HTTP(method = "UPDATE",path = "clients/{id}/basecurrencies")
+    Call<User>changeBaseCurrency(@Path("id") int id,@Field("baseCurrencyCode") String baseCurrencyCode);
 }
 

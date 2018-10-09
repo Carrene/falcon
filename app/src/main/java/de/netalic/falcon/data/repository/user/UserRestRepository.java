@@ -75,6 +75,24 @@ public class UserRestRepository implements IUserRepository {
     }
 
     @Override
+    public void updateCurrency(int userId, String baseCurrencyCode, CallRepository<User> callRepository) {
+
+        ApiClient.getService().changeBaseCurrency(userId,baseCurrencyCode).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                callRepository.onDone(new Deal<>(response.body(),response,null));
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+                callRepository.onDone(new Deal<>(null,null,t));
+            }
+        });
+
+    }
+
+    @Override
     public void update(User user, CallRepository<User> callRepository) {
 
         callRepository.onDone(new Deal<>(null, null, new UnsupportedOperationException()));

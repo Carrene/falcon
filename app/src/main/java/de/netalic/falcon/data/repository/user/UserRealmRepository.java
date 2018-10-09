@@ -33,6 +33,11 @@ public class UserRealmRepository implements IUserRepository {
     }
 
     @Override
+    public void updateCurrency(int userId, String baseCurrencyCode, CallRepository<User> callRepository) {
+
+    }
+
+    @Override
     public void update(User user, CallRepository<User> callRepository) {
 
         mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());

@@ -46,6 +46,11 @@ public class UserRepository implements IUserRepository {
         mUserRestRepository.setEmail(user, callRepository);
     }
 
+    @Override
+    public void updateCurrency(int userId,String baseCurrencyCode, CallRepository<User> callRepository) {
+        mUserRestRepository.updateCurrency(userId,baseCurrencyCode,callRepository);
+    }
+
 
     @Override
     public void update(User user, CallRepository<User> callRepository) {
