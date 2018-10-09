@@ -7,6 +7,7 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity;
+import de.netalic.falcon.ui.setting.basecurrency.SettingBaseCurrencyActivity;
 import de.netalic.falcon.ui.setting.recoveryemail.SettingRecoveryEmailActivity;
 
 
@@ -81,6 +82,8 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
 
         } else if (key.equals(getContext().getString(R.string.settingprefrence_basecurrencykey))) {
 
+            Intent intent=new Intent(getContext(),SettingBaseCurrencyActivity.class);
+            startActivity(intent);
 
         }
 

@@ -384,4 +384,6 @@
     <string name="purchasegenerateqrcode_scanyourqrcode">Scan QR code</string>
     <string name="purchasegenerateqrcode_imagesaved">Image saved</string>
 
+    <string name="basecurrency_changebaecurrency">Change base currency</string>
+
 </resources>

@@ -180,7 +180,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         </activity>
-        <activity android:name=".ui.purchase.PurchaseGenerateQrCodeActivity"></activity>
+        <activity android:name=".ui.purchase.PurchaseGenerateQrCodeActivity" />
+        <activity android:name=".ui.setting.basecurrency.SettingBaseCurrencyActivity"
+            android:parentActivityName=".ui.setting.basic.SettingActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.setting.basic.SettingActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.setting.basecurrency.SettingBaseCurrencyFragment;
+import de.netalic.falcon.ui.setting.basecurrency.SettingBaseCurrencyPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class SettingRecoveryEmailActivity extends BaseActivity {
@@ -14,11 +16,11 @@ public class SettingRecoveryEmailActivity extends BaseActivity {
 
         setupBackButton();
 
-        SettingRecoveryEmailFragment settingRecoveryEmailFragment=(SettingRecoveryEmailFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_settingrecoveryemail_fragmentcontainer);
-        if (settingRecoveryEmailFragment==null){
+        SettingRecoveryEmailFragment settingRecoveryEmailFragment =(SettingRecoveryEmailFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_settingrecoveryemail_fragmentcontainer);
+        if (settingRecoveryEmailFragment ==null){
 
-            settingRecoveryEmailFragment=SettingRecoveryEmailFragment.newInstance();
-            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),settingRecoveryEmailFragment,R.id.framelayout_settingrecoveryemail_fragmentcontainer);
+            settingRecoveryEmailFragment =SettingRecoveryEmailFragment.newInstance();
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), settingRecoveryEmailFragment,R.id.framelayout_settingrecoveryemail_fragmentcontainer);
         }
             new SettingRecoveryEmailPresenter(settingRecoveryEmailFragment);
     }
