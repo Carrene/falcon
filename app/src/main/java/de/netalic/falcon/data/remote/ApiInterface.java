@@ -3,6 +3,7 @@ package de.netalic.falcon.data.remote;
 import java.util.List;
 import java.util.Map;
 
+import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.data.model.Transaction;
@@ -65,5 +66,7 @@ public interface ApiInterface {
     @HTTP(method = "FINALIZE", path = "transfers/{transaction_id}")
     Call<Transaction> finalizeTransfer(@Path("transaction_id") int transactionId);
 
+    @HTTP(method ="LIST" ,path ="currencies")
+    Call<List<Currency>>currencyList();
 }
 

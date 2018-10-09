@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.ui.base.BaseActivity;
 
 public class SettingBaseCurrencyFragment extends Fragment implements SettingBaseCurrencyContract.View {
@@ -17,6 +20,7 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     private SettingBaseCurrencyContract.Presenter mBaseCurrencyPresenter;
     private View mRoot;
     private RecyclerView mRecyclerViewCurrencyList;
+    private List<Currency> mCurrencyList;
 
 
     @Nullable
@@ -31,6 +35,7 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         initUiComponent();
+        getCurrencyList();
     }
 
     @Override
@@ -66,5 +71,17 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
         SettingBaseCurrencyFragment fragment = new SettingBaseCurrencyFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+
+    @Override
+    public void setCurrencyList(List<Currency> currencyList) {
+
+        mCurrencyList=currencyList;
+    }
+
+    private void getCurrencyList(){
+
+        mBaseCurrencyPresenter.getCurrencyList();
     }
 }
