@@ -14,7 +14,6 @@ import io.realm.annotations.PrimaryKey;
 
 public class Wallet implements Parcelable {
 
-    @PrimaryKey
     @SerializedName("id")
     private int mId;
 

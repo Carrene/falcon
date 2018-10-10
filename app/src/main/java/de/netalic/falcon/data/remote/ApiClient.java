@@ -29,7 +29,6 @@ public class ApiClient {
     private static Retrofit sRetrofit = null;
     private static ApiInterface sApi;
 
-
     private static Retrofit getClient() {
 
         if (sRetrofit == null) {

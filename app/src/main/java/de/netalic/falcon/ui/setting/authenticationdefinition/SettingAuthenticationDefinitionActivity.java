@@ -14,7 +14,6 @@ import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationD
 import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
 
-//TODO(Ehsan) Add back button
 public class SettingAuthenticationDefinitionActivity extends BaseActivity implements SettingAuthenticationDefinitionContract.View, AuthenticationDefinitionPasswordFragment.SaveCredentialCallback
         , AuthenticationDefinitionPatternFragment.SaveCredentialCallback {
 

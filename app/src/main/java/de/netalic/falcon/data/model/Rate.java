@@ -7,7 +7,6 @@ import io.realm.annotations.PrimaryKey;
 public class Rate {
 
     @SerializedName("createdAt")
-    @PrimaryKey
     private String mCreatedAt;
 
     @SerializedName("buy")
