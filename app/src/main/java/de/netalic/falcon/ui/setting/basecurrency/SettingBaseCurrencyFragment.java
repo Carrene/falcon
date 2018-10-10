@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.util.SnackbarUtil;
 
 public class SettingBaseCurrencyFragment extends Fragment implements SettingBaseCurrencyContract.View {
 
@@ -23,6 +26,9 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     private RecyclerView mRecyclerViewCurrencyList;
     private List<Currency> mCurrencyList;
     private String mBaseCurrency;
+    private CurrenciesRecyclerViewAdapter mCurrenciesRecyclerViewAdapter;
+    private String mUpdateBaseCurrency;
+
 
 
     @Nullable
@@ -37,8 +43,11 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         initUiComponent();
-        getCurrencyList();
+
         getBaseCurrency();
+        getCurrencyList();
+        initListener();
+
     }
 
     @Override
@@ -46,11 +55,20 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
 
         mBaseCurrencyPresenter = presenter;
     }
+    private void getBaseCurrency(){
+
+        mBaseCurrencyPresenter.getBaseCurrency();
+    }
 
     @Override
     public void showProgressBar() {
 
         ((BaseActivity) getActivity()).showMaterialDialog();
+
+    }
+
+    private void initListener(){
+
 
     }
 
@@ -69,44 +87,69 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
 
     public static SettingBaseCurrencyFragment newInstance() {
 
-        Bundle args = new Bundle();
+        Bundle bundle = new Bundle();
 
         SettingBaseCurrencyFragment fragment = new SettingBaseCurrencyFragment();
-        fragment.setArguments(args);
+        fragment.setArguments(bundle);
         return fragment;
     }
-
 
     @Override
     public void setCurrencyList(List<Currency> currencyList) {
 
         mCurrencyList = currencyList;
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mRecyclerViewCurrencyList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),layoutManager.getOrientation());
+        mRecyclerViewCurrencyList.addItemDecoration(dividerItemDecoration);
+
+        mCurrenciesRecyclerViewAdapter=new CurrenciesRecyclerViewAdapter(mCurrencyList,mBaseCurrency,mBaseCurrencyPresenter);
+        mRecyclerViewCurrencyList.setAdapter(mCurrenciesRecyclerViewAdapter);
     }
 
     @Override
-    public void setBaseCurrency(User user) {
+    public void updateBaseCurrency(User user) {
 
+        mBaseCurrencyPresenter.updateUser(user);
         mBaseCurrency = user.getBaseCurrency();
     }
 
     @Override
     public void baseCurrencyCodeMissingInForm() {
 
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.basecurrency_basecurrencycodemissinginform),getContext());
     }
 
     @Override
     public void clientNotFoundOrClientIdIsInvalid() {
 
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.basecurrency_clientnotfoundorclientidisinvalid),getContext());
     }
 
     @Override
     public void invalidCurrencyCode() {
 
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.basecurrency_invalidcurrencycode),getContext());
     }
 
     @Override
     public void tryingToPassWithUnauthorizedMember() {
 
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.basecurrency_tryingtopasswithunauthorizedmember),getContext());
+    }
+
+    @Override
+    public void setBaseCurrency(String baseCurrency) {
+
+        mBaseCurrency=baseCurrency;
+    }
+
+    @Override
+    public void updateUser(User user) {
+
+        mUpdateBaseCurrency=user.getBaseCurrency();
     }
 
     private void getCurrencyList() {
@@ -114,8 +157,4 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
         mBaseCurrencyPresenter.getCurrencyList();
     }
 
-    private void getBaseCurrency() {
-
-        mBaseCurrencyPresenter.changeBaseCurrency(2, "USD");
-    }
 }

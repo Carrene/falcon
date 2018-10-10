@@ -385,5 +385,9 @@
     <string name="purchasegenerateqrcode_imagesaved">Image saved</string>
 
     <string name="basecurrency_changebaecurrency">Change base currency</string>
+    <string name="basecurrency_basecurrencycodemissinginform">BaseCurrency Code missing in form</string>
+    <string name="basecurrency_clientnotfoundorclientidisinvalid">Client not Found or client id is invalid</string>
+    <string name="basecurrency_invalidcurrencycode">Invalid currency code</string>
+    <string name="basecurrency_tryingtopasswithunauthorizedmember">Trying to pass with unauthorized member</string>
 
 </resources>
