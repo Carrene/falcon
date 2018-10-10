@@ -508,4 +508,8 @@
     <dimen name="marginbottom_purchasegenerateqrcode_dashboardbutton">27dp</dimen>
     <dimen name="textsize_purchasegenerateqrcode_dashboardbutton">14sp</dimen>
 
+    <dimen name="marginstart_rowbasecurrency_tetview">85dp</dimen>
+    <dimen name="height_rowbasecurrency_relativelayout">60dp</dimen>
+
+
 </resources>
