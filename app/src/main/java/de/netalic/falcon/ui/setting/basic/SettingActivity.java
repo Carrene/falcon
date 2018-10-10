@@ -27,7 +27,6 @@ public class SettingActivity extends BaseActivity {
         setupToolbar();
         setupBackButton();
         initUiComponent();
-        setPhoneAndEmail();
         setName();
 
         SettingFragment settingFragment = (SettingFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_setting_fragmentcontainer);
@@ -61,31 +60,5 @@ public class SettingActivity extends BaseActivity {
     private void setName() {
 
         mCollapsingToolbarLayout.setTitle("Ehsan");
-    }
-
-    private void setPhoneAndEmail() {
-
-//        //TODO(Milad): What is this? All string should be in string.xml
-          //TODO(Ehsan):you have wrote this codes!
-//        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
-//        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
-//        String phone = (String) tokenBody.get("phone");
-//        String email = (String) tokenBody.get("email");
-//
-//        String phoneEmail;
-//        if (email == null) {
-//            phoneEmail = "Email not set";
-//        } else {
-//            phoneEmail = email;
-//        }
-//        phoneEmail += "\n";
-//
-//        if (phone == null) {
-//            phoneEmail += "no phone";
-//        } else {
-//
-//            phoneEmail += phone;
-//        }
-//        mCollapsingToolbarLayout.setTitle(phoneEmail);
     }
 }
