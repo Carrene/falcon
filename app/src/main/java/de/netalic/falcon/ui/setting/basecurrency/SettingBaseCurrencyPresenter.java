@@ -22,47 +22,78 @@ public class SettingBaseCurrencyPresenter implements SettingBaseCurrencyContract
     @Override
     public void getCurrencyList() {
 
-      RepositoryLocator.getInstance().getRepository(CurrencyRepository.class).getAll(deal -> {
+        mSettingBaseCurrencyView.showProgressBar();
+        RepositoryLocator.getInstance().getRepository(CurrencyRepository.class).getAll(deal -> {
 
-          if (deal.getThrowable()==null){
+            if (deal.getThrowable() == null) {
 
-              switch (deal.getResponse().code()){
+                switch (deal.getResponse().code()) {
 
-                  case 200:{
-                      mSettingBaseCurrencyView.setCurrencyList(deal.getResponse().body());
-                      break;
-                  }
-              }
-
-          }
-
-      });
-
-    }
-
-    @Override
-    public void changeBaseCurrency(int userId,String baseCurrency) {
-
-        RepositoryLocator.getInstance().getRepository(UserRepository.class).updateCurrency(userId,baseCurrency,deal -> {
-
-            if (deal.getThrowable()==null){
-
-                switch (deal.getResponse().code()){
-
-                    case 200:{
-
-                        mSettingBaseCurrencyView.setBaseCurrency(deal.getModel());
+                    case 200: {
+                        mSettingBaseCurrencyView.setCurrencyList(deal.getResponse().body());
                         break;
                     }
+
                 }
 
             }
 
-            else {
+
+        });
+        mSettingBaseCurrencyView.dismissProgressBar();
+    }
+
+    @Override
+    public void changeBaseCurrency(int userId, String baseCurrency) {
+
+
+        mSettingBaseCurrencyView.showProgressBar();
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).updateCurrency(userId, baseCurrency, deal -> {
+
+            if (deal.getThrowable() == null) {
+
+                switch (deal.getResponse().code()) {
+
+                    case 200: {
+
+                        mSettingBaseCurrencyView.setBaseCurrency(deal.getModel());
+                        break;
+                    }
+
+                    case 400: {
+
+                        mSettingBaseCurrencyView.baseCurrencyCodeMissingInForm();
+                        break;
+
+                    }
+
+                    case 401: {
+
+                        mSettingBaseCurrencyView.tryingToPassWithUnauthorizedMember();
+                        break;
+                    }
+
+                    case 404: {
+
+                        mSettingBaseCurrencyView.clientNotFoundOrClientIdIsInvalid();
+                        break;
+                    }
+
+                    case 732: {
+
+                        mSettingBaseCurrencyView.invalidCurrencyCode();
+                        break;
+                    }
+                }
+
+            } else {
 
 
             }
 
+
+            mSettingBaseCurrencyView.dismissProgressBar();
         });
+
     }
 }

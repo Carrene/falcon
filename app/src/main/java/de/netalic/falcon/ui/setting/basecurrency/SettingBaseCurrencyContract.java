@@ -12,7 +12,15 @@ public interface SettingBaseCurrencyContract {
 
         void setCurrencyList(List<de.netalic.falcon.data.model.Currency>currencyList);
 
-        void setBaseCurrency(User currency);
+        void setBaseCurrency(User user);
+
+        void baseCurrencyCodeMissingInForm();
+
+        void clientNotFoundOrClientIdIsInvalid();
+
+        void invalidCurrencyCode();
+
+        void tryingToPassWithUnauthorizedMember();
     }
 
     interface Presenter extends BasePresenter {

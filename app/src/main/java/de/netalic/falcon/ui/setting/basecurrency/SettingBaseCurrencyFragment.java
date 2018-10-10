@@ -22,6 +22,7 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     private View mRoot;
     private RecyclerView mRecyclerViewCurrencyList;
     private List<Currency> mCurrencyList;
+    private String mBaseCurrency;
 
 
     @Nullable
@@ -79,21 +80,42 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     @Override
     public void setCurrencyList(List<Currency> currencyList) {
 
-        mCurrencyList=currencyList;
+        mCurrencyList = currencyList;
     }
 
     @Override
-    public void setBaseCurrency(User currency) {
+    public void setBaseCurrency(User user) {
+
+        mBaseCurrency = user.getBaseCurrency();
+    }
+
+    @Override
+    public void baseCurrencyCodeMissingInForm() {
 
     }
 
-    private void getCurrencyList(){
+    @Override
+    public void clientNotFoundOrClientIdIsInvalid() {
+
+    }
+
+    @Override
+    public void invalidCurrencyCode() {
+
+    }
+
+    @Override
+    public void tryingToPassWithUnauthorizedMember() {
+
+    }
+
+    private void getCurrencyList() {
 
         mBaseCurrencyPresenter.getCurrencyList();
     }
 
-    private void getBaseCurrency(){
+    private void getBaseCurrency() {
 
-        mBaseCurrencyPresenter.changeBaseCurrency(2,"USD");
+        mBaseCurrencyPresenter.changeBaseCurrency(2, "USD");
     }
 }
