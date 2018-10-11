@@ -12,14 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+import java.util.Map;
 
+import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
+import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
+import nuesoft.helpdroid.util.Parser;
 
-public class SettingBaseCurrencyFragment extends Fragment implements SettingBaseCurrencyContract.View {
+public class SettingBaseCurrencyFragment extends Fragment implements SettingBaseCurrencyContract.View,CurrenciesRecyclerViewAdapter.Callback {
 
     private SettingBaseCurrencyContract.Presenter mBaseCurrencyPresenter;
     private View mRoot;
@@ -28,6 +32,7 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     private String mBaseCurrency;
     private CurrenciesRecyclerViewAdapter mCurrenciesRecyclerViewAdapter;
     private String mUpdateBaseCurrency;
+    private Map<String,Object>mTokenBody;
 
 
 
@@ -44,7 +49,18 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
 
         initUiComponent();
 
-        getBaseCurrency();
+        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor=new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+        mTokenBody=Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mRecyclerViewCurrencyList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),layoutManager.getOrientation());
+        mRecyclerViewCurrencyList.addItemDecoration(dividerItemDecoration);
+
+        mCurrenciesRecyclerViewAdapter=new CurrenciesRecyclerViewAdapter(mCurrencyList,mBaseCurrency);
+        mRecyclerViewCurrencyList.setAdapter(mCurrenciesRecyclerViewAdapter);
+
         getCurrencyList();
         initListener();
 
@@ -99,14 +115,8 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
 
         mCurrencyList = currencyList;
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        mRecyclerViewCurrencyList.setLayoutManager(new LinearLayoutManager(getContext()));
+        getBaseCurrency();
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),layoutManager.getOrientation());
-        mRecyclerViewCurrencyList.addItemDecoration(dividerItemDecoration);
-
-        mCurrenciesRecyclerViewAdapter=new CurrenciesRecyclerViewAdapter(mCurrencyList,mBaseCurrency,mBaseCurrencyPresenter);
-        mRecyclerViewCurrencyList.setAdapter(mCurrenciesRecyclerViewAdapter);
     }
 
     @Override
@@ -157,4 +167,9 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
         mBaseCurrencyPresenter.getCurrencyList();
     }
 
+    @Override
+    public void changeBaseCurrency(String currencyCode) {
+
+        mBaseCurrencyPresenter.changeBaseCurrency((Integer) mTokenBody.get("id"),currencyCode);
+    }
 }

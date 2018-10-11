@@ -9,26 +9,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Map;
 
-import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Currency;
-import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
-import nuesoft.helpdroid.util.Parser;
 
 public class CurrenciesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Currency> mCurrencyList;
     private String mBaseCurrency;
-    private SettingBaseCurrencyContract.Presenter mPresenter;
-    private Map<String,Object> mTokenBody;
     private int mPosition;
+    private Callback mCallback;
 
-    public CurrenciesRecyclerViewAdapter(List<Currency> currencyList , String baseCurrency,SettingBaseCurrencyContract.Presenter presenter) {
+    public interface Callback{
+
+        void changeBaseCurrency(String currencyCode);
+    }
+
+    public CurrenciesRecyclerViewAdapter(List<Currency> currencyList , String baseCurrency) {
         mCurrencyList = currencyList;
         mBaseCurrency=baseCurrency;
-        mPresenter=presenter;
+
     }
 
     @NonNull
@@ -36,8 +36,6 @@ public class CurrenciesRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.row_currencies,parent,false);
-        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor=new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
-        mTokenBody=Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
         return new CurrencyViewHolder(view);
     }
 
@@ -84,7 +82,7 @@ public class CurrenciesRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
             itemView.setOnClickListener(v ->
 
-                    mPresenter.changeBaseCurrency((Integer) mTokenBody.get("id"), mCurrencyList.get(mPosition).getCode()));
+                    mCallback.changeBaseCurrency(mCurrencyList.get(mPosition).getCode()));
         }
 
     }

@@ -55,7 +55,7 @@ public class UserRepository implements IUserRepository {
     @Override
     public void update(User user, CallRepository<User> callRepository) {
 
-        mUserRestRepository.update(user, callRepository);
+        mUserRealmRepository.update(user,callRepository);
 
     }
 
