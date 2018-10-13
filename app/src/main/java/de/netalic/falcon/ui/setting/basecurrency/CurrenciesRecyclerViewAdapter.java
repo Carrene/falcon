@@ -17,25 +17,26 @@ public class CurrenciesRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     private List<Currency> mCurrencyList;
     private String mBaseCurrency;
-    private int mPosition;
     private Callback mCallback;
+    private CurrencyViewHolder mCurrencyViewHolder;
 
-    public interface Callback{
+    public interface Callback {
 
         void changeBaseCurrency(String currencyCode);
     }
 
-    public CurrenciesRecyclerViewAdapter(List<Currency> currencyList , String baseCurrency) {
-        mCurrencyList = currencyList;
-        mBaseCurrency=baseCurrency;
+    public CurrenciesRecyclerViewAdapter(List<Currency> currencyList, String baseCurrency, Callback callback) {
 
+        mCurrencyList = currencyList;
+        mBaseCurrency = baseCurrency;
+        mCallback = callback;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.row_currencies,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_currencies, parent, false);
         return new CurrencyViewHolder(view);
     }
 
@@ -43,25 +44,18 @@ public class CurrenciesRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
 
-        CurrencyViewHolder currencyViewHolder=(CurrencyViewHolder) holder;
-        mPosition=position;
+        mCurrencyViewHolder = (CurrencyViewHolder) holder;
 
-        currencyViewHolder.mTextViewCurrency.setText(mCurrencyList.get(position).getCode());
+        mCurrencyViewHolder.mTextViewCurrency.setText(mCurrencyList.get(position).getCode());
 
-        for (int i=0;i<mCurrencyList.size();i++){
+        if (mCurrencyList.get(position).getCode().equals(mBaseCurrency)) {
 
-            if (mCurrencyList.get(position).getCode().equals(mBaseCurrency)){
+            mCurrencyViewHolder.mImageViewCheckTik.setVisibility(View.VISIBLE);
+        } else {
 
-                currencyViewHolder.mImageViewCheckTik.setVisibility(View.VISIBLE);
-            }
-            else {
-
-                currencyViewHolder.mImageViewCheckTik.setVisibility(View.GONE);
-
-            }
+            mCurrencyViewHolder.mImageViewCheckTik.setVisibility(View.GONE);
 
         }
-
     }
 
     @Override
@@ -77,14 +71,17 @@ public class CurrenciesRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         public CurrencyViewHolder(View itemView) {
             super(itemView);
 
-            mTextViewCurrency=itemView.findViewById(R.id.textview_basecurrency_currency);
-            mImageViewCheckTik=itemView.findViewById(R.id.imageview_basecurrency_tik);
+            mTextViewCurrency = itemView.findViewById(R.id.textview_basecurrency_currency);
+            mImageViewCheckTik = itemView.findViewById(R.id.imageview_basecurrency_tik);
 
-            itemView.setOnClickListener(v ->
+            itemView.setOnClickListener(v -> {
 
-                    mCallback.changeBaseCurrency(mCurrencyList.get(mPosition).getCode()));
+                mCallback.changeBaseCurrency(mCurrencyList.get(getLayoutPosition()).getCode());
+
+            });
+
         }
-
     }
 
 }
+
