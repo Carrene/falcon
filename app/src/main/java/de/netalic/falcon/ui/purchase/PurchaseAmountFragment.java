@@ -18,8 +18,6 @@ import android.widget.TextView;
 import com.google.zxing.WriterException;
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Purchase;

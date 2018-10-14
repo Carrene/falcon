@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_addwallet_walletname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_addwallet_walletnametextview"
+            android:layout_marginTop="@dimen/margintop_addwallet_walletnametextview"
+            android:text="@string/addwallet_walletname"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_addwallet_walletnametextview" />
+
+        <EditText
+            android:id="@+id/edittext_addwallet_walletname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstartend_addwallet_walletnameedittext"
+            android:layout_marginTop="@dimen/margintop_addwallet_walletnameedittext"
+            android:layout_marginEnd="@dimen/marginstartend_addwallet_walletnameedittext" />
+
+        <TextView
+            android:id="@+id/textview_addwallet_walletcurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstart_addwallet_walletcurrencytextview"
+            android:layout_marginTop="@dimen/margintop_addwallet_walletcurrencytextview"
+            android:text="@string/addwallet_walletcurrency"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_addwallet_walletcurrencytextview" />
+
+        <Button
+            android:id="@+id/butten_addwallet_navigationtocurrencieslist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginstartend_addwallet_navigationtocurrencylistbutton"
+            android:layout_marginTop="@dimen/margintop_addwallet_navigationtocurrencylistbutton"
+            android:layout_marginEnd="@dimen/marginstartend_addwallet_navigationtocurrencylistbutton"
+            android:background="@drawable/everywhere_borderbutton" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_addwallet_addwalletrequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/marginstartend_addwallet_addwalletbutton"
+        android:layout_marginEnd="@dimen/marginstartend_addwallet_addwalletbutton"
+        android:layout_marginBottom="@dimen/marginbottom_addwallet_addwalletbutton"
+        android:background="@color/colorSecondary"
+        android:text="@string/addwallet_addwallet" />
+</RelativeLayout>

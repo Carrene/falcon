@@ -5,7 +5,6 @@ import android.os.Bundle;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
-import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class WithdrawActivity extends BaseActivity {
 

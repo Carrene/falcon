@@ -5,14 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 
-import java.util.Map;
-
-import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
-import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
-import nuesoft.helpdroid.util.Parser;
 
 public class SettingActivity extends BaseActivity {
 

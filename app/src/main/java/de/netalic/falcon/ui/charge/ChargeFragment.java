@@ -24,7 +24,7 @@ import de.netalic.falcon.ui.util.OffsetItemDecoration;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class ChargeFragment extends Fragment implements ChargeContract.View {
+public class ChargeFragment extends Fragment implements ChargeContract.View, ChargeWalletRecyclerViewAdapter.Callback {
 
     private View mRoot;
     private RecyclerView mRecyclerViewWallets;
@@ -65,7 +65,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
         mRecyclerViewWallets.addItemDecoration(new OffsetItemDecoration(getContext()));
         mRecyclerViewPaymentGateway.addItemDecoration(new OffsetItemDecoration(getContext()));
 
-        mRecyclerViewAdapterChargeWallet = new ChargeWalletRecyclerViewAdapter(new ArrayList<>());
+        mRecyclerViewAdapterChargeWallet = new ChargeWalletRecyclerViewAdapter(new ArrayList<>(), this);
         mRecyclerViewWallets.setAdapter(mRecyclerViewAdapterChargeWallet);
         mRecyclerViewWallets.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
@@ -178,5 +178,12 @@ public class ChargeFragment extends Fragment implements ChargeContract.View {
             ((BaseActivity) getActivity()).dismissMaterialDialog();
         }
 
+    }
+
+    @Override
+    public void navigationToAddWallet() {
+
+        Intent intent = new Intent(getContext(), AddWalletActivity.class);
+        startActivity(intent);
     }
 }

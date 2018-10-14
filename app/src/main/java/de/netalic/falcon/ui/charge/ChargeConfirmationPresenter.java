@@ -1,7 +1,6 @@
 package de.netalic.falcon.ui.charge;
 
 import android.os.Handler;
-import android.util.Log;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.receipt.ReceiptRepository;

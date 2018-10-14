@@ -2,7 +2,6 @@ package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import com.google.common.base.Joiner;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;

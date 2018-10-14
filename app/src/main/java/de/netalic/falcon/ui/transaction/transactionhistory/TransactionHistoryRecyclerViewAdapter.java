@@ -9,20 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Receipt;
-import de.netalic.falcon.ui.charge.ChargeCompletedActivity;
-import de.netalic.falcon.ui.charge.ChargeConfirmationFragment;
-import de.netalic.falcon.ui.charge.ChargeFailedActivity;
-import de.netalic.falcon.ui.transfer.TransferCompletedActivity;
-import de.netalic.falcon.ui.transfer.TransferFailedActivity;
 import de.netalic.falcon.util.DateUtil;
-import de.netalic.falcon.util.SnackbarUtil;
 
 public class TransactionHistoryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

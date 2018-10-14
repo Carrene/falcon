@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.google.zxing.WriterException;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import de.netalic.falcon.R;

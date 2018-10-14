@@ -508,4 +508,16 @@
     <dimen name="marginbottom_purchasegenerateqrcode_dashboardbutton">27dp</dimen>
     <dimen name="textsize_purchasegenerateqrcode_dashboardbutton">14sp</dimen>
 
+    <dimen name="marginstart_addwallet_walletnametextview">37dp</dimen>
+    <dimen name="margintop_addwallet_walletnametextview">18dp</dimen>
+    <dimen name="textsize_addwallet_walletnametextview">16sp</dimen>
+    <dimen name="marginstartend_addwallet_walletnameedittext">37dp</dimen>
+    <dimen name="margintop_addwallet_walletnameedittext">10dp</dimen>
+    <dimen name="marginstart_addwallet_walletcurrencytextview">38dp</dimen>
+    <dimen name="margintop_addwallet_walletcurrencytextview">35dp</dimen>
+    <dimen name="textsize_addwallet_walletcurrencytextview">16sp</dimen>
+    <dimen name="marginstartend_addwallet_navigationtocurrencylistbutton">37dp</dimen>
+    <dimen name="margintop_addwallet_navigationtocurrencylistbutton">10dp</dimen>
+    <dimen name="marginbottom_addwallet_addwalletbutton">27dp</dimen>
+    <dimen name="marginstartend_addwallet_addwalletbutton">16dp</dimen>
 </resources>

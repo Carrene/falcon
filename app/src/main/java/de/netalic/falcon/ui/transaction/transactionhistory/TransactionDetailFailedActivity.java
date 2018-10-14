@@ -5,8 +5,6 @@ import android.os.Bundle;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.charge.ChargeFailedFragment;
-import de.netalic.falcon.ui.charge.ChargeFailedPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class TransactionDetailFailedActivity extends BaseActivity {

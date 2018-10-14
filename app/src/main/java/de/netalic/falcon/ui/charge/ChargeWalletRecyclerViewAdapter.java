@@ -17,9 +17,16 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
     private List<Wallet> mWalletList;
     private int mSelectedPosition;
+    private Callback mCallback;
 
     private static final int ADD_WALLET = 0;
     private static final int WALLET = 1;
+
+
+    public interface Callback{
+
+        void navigationToAddWallet();
+    }
 
     @NonNull
     @Override
@@ -79,9 +86,10 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         }
     }
 
-    public ChargeWalletRecyclerViewAdapter(List<Wallet> walletList) {
+    public ChargeWalletRecyclerViewAdapter(List<Wallet> walletList,Callback callback) {
 
         mWalletList = walletList;
+        mCallback=callback;
     }
 
     public void select(int position) {
@@ -117,12 +125,22 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         }
     }
 
-    private static class AddWalletHolder extends RecyclerView.ViewHolder {
+    private class AddWalletHolder extends RecyclerView.ViewHolder {
 
         private AddWalletHolder(View itemView) {
 
             super(itemView);
 
+            itemView.setOnClickListener(v -> {
+
+            mCallback.navigationToAddWallet();
+
+            });
+
+
+
         }
+
+
     }
 }

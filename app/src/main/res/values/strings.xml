@@ -383,5 +383,12 @@
     <string name="purchasegenerateqrcode_success">Success</string>
     <string name="purchasegenerateqrcode_scanyourqrcode">Scan QR code</string>
     <string name="purchasegenerateqrcode_imagesaved">Image saved</string>
+    
+    <string name="addwallet_toolbar">Add wallet</string>
+    <string name="addwallet_walletname">Wallet name</string>
+    <string name="addwallet_walletcurrency">Wallet currency</string>
+    <string name="addwallet_addwallet">Add Wallet</string>
+
+
 
 </resources>

@@ -21,7 +21,6 @@ import java.io.File;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Receipt;
-import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;

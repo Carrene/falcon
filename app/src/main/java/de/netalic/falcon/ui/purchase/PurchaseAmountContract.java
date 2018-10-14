@@ -1,7 +1,5 @@
 package de.netalic.falcon.ui.purchase;
 
-import java.util.Map;
-
 import de.netalic.falcon.data.model.Purchase;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.ui.base.BasePresenter;
