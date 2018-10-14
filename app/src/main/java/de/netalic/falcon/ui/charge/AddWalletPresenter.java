@@ -15,4 +15,9 @@ public class AddWalletPresenter implements AddWalletContract.Presenter {
     public void start() {
 
     }
+
+    @Override
+    public void getCurrencyList() {
+        
+    }
 }

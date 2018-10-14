@@ -10,11 +10,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.List;
+
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
-public class AddWalletFragment extends Fragment implements AddWalletContract.View {
+public class AddWalletFragment extends Fragment implements AddWalletContract.View,AddWalletRecyclerViewAdapter.Callback {
 
     private AddWalletContract.Presenter mPresenter;
     private View mRoot;
@@ -88,6 +91,17 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
             }
         });
+
+    }
+
+    @Override
+    public void setCurrency(String currency) {
+
+        mButtonCurrencyCode.setText(currency);
+    }
+
+    @Override
+    public void setCurrencyList(List<Currency> currencyList) {
 
     }
 }
