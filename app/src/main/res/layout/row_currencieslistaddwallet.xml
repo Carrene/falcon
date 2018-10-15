@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/margintop_rowaddwallet_relativelayout">
 
     <TextView
@@ -13,7 +13,9 @@
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_rowaddwallet_currencynametextview"
         android:layout_marginStart="@dimen/marginstart_rowaddwallet_currencynametextview"
-        android:layout_marginTop="@dimen/margintop_rowaddwallet_currencynametextview"/>
+        android:layout_marginTop="@dimen/margintop_rowaddwallet_currencynametextview"
+        android:layout_marginBottom="@dimen/marginbottom_rowaddwallet_relativelayout"
+        />
 
     <ImageView
         android:id="@+id/imageview_rowaddwallet_selection"
@@ -22,6 +24,8 @@
         android:src="@drawable/charge_checked"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/margintop_rowaddwallet_selectionimageview"
-        android:layout_marginEnd="@dimen/marginend_rowaddwallet_selectionimageview"/>
+        android:layout_marginEnd="@dimen/marginend_rowaddwallet_selectionimageview"
+        android:layout_marginBottom="@dimen/marginbottom_rowaddwallet_relativelayout"
+        />
 
 </RelativeLayout>

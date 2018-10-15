@@ -14,17 +14,17 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Currency;
 
 
-public class AddWalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Currency>mCurrencyList;
     private Callback mCallback;
-    private String mSelectedCurrency;
 
 
-    public AddWalletRecyclerViewAdapter(List<Currency> currencyList, Callback callback,String selectedCurrency) {
+
+    public ListCurrencyRecyclerViewAdapter(List<Currency> currencyList, Callback callback) {
         mCurrencyList = currencyList;
         mCallback = callback;
-        mSelectedCurrency=selectedCurrency;
+
     }
 
     public interface Callback{
@@ -46,15 +46,15 @@ public class AddWalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         ((CurrencyViewHolder)holder).mTextViewCurrencyName.setText(mCurrencyList.get(position).getCode());
-        if (mSelectedCurrency!=null && mSelectedCurrency.equals(mCurrencyList.get(position).getCode())){
-
-            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.VISIBLE);
-        }
-
-        else {
-
-            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.GONE);
-        }
+//        if (mSelectedCurrency!=null && mSelectedCurrency.equals(mCurrencyList.get(position).getCode())){
+//
+//            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.VISIBLE);
+//        }
+//
+//        else {
+//
+//            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.GONE);
+//        }
 
     }
 

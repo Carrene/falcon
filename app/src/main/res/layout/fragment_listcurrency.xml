@@ -8,13 +8,13 @@
 
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swiperefresh_settingbasecurrency_refreshbasecurrency"
+        android:id="@+id/swiperefresh_listcurrency_refreshlistcurrency"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_basecurrency_currencylist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_listcurrency_listcurrency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

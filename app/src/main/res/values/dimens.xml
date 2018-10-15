@@ -525,9 +525,10 @@
     <dimen name="marginstart_rowaddwallet_currencynametextview">18dp</dimen>
     <dimen name="margintop_rowaddwallet_currencynametextview">12dp</dimen>
     <dimen name="textsize_rowaddwallet_currencynametextview">14sp</dimen>
-    <dimen name="margintop_rowaddwallet_selectionimageview">12dp</dimen>
+    <dimen name="margintop_rowaddwallet_selectionimageview">9dp</dimen>
     <dimen name="marginend_rowaddwallet_selectionimageview">21dp</dimen>
     <dimen name="margintop_rowaddwallet_relativelayout">8dp</dimen>
+    <dimen name="marginbottom_rowaddwallet_relativelayout">8dp</dimen>
 
     <dimen name="marginstart_rowbasecurrency_tetview">85dp</dimen>
     <dimen name="height_rowbasecurrency_relativelayout">60dp</dimen>

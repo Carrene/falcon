@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.setting.basecurrency.SettingBaseCurrencyFragment;
-import de.netalic.falcon.ui.setting.basecurrency.SettingBaseCurrencyPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class SettingRecoveryEmailActivity extends BaseActivity {

@@ -181,16 +181,20 @@
                 android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         </activity>
         <activity android:name=".ui.purchase.PurchaseGenerateQrCodeActivity" />
-
-        <activity android:name=".ui.charge.AddWalletActivity"></activity>
-
-        <activity android:name=".ui.setting.basecurrency.SettingBaseCurrencyActivity"
+        <activity android:name=".ui.charge.AddWalletActivity" />
+        <activity
+            android:name=".ui.setting.basecurrency.SettingBaseCurrencyActivity"
             android:parentActivityName=".ui.setting.basic.SettingActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.setting.basic.SettingActivity" />
         </activity>
-
+        <activity android:name=".ui.charge.ListCurrencyActivity"
+            android:parentActivityName=".ui.charge.AddWalletActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.charge.AddWalletActivity" />
+        </activity>
     </application>
 
 </manifest>

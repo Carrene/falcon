@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.charge;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,20 +11,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.List;
-
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
-public class AddWalletFragment extends Fragment implements AddWalletContract.View,AddWalletRecyclerViewAdapter.Callback {
+public class AddWalletFragment extends Fragment implements AddWalletContract.View,ListCurrencyRecyclerViewAdapter.Callback {
 
     private AddWalletContract.Presenter mPresenter;
     private View mRoot;
-    private Button mButtonCurrencyCode;
+    private Button mButtonCurrencyList;
     private EditText mEditTextWalletName;
-    private Button mButtonNavigationToCurrenciesList;
+    private Button mButtonAddWallet;
 
     @Nullable
     @Override
@@ -38,6 +36,7 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
         initUiComponent();
         initUiListener();
+
     }
 
     @Override
@@ -70,16 +69,16 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
     private void initUiComponent(){
 
-        mButtonCurrencyCode=mRoot.findViewById(R.id.butten_addwallet_navigationtocurrencieslist);
+        mButtonCurrencyList =mRoot.findViewById(R.id.butten_addwallet_navigationtocurrencieslist);
         mEditTextWalletName =mRoot.findViewById(R.id.edittext_addwallet_walletname);
-        mButtonNavigationToCurrenciesList=mRoot.findViewById(R.id.button_addwallet_addwalletrequest);
+        mButtonAddWallet =mRoot.findViewById(R.id.button_addwallet_addwalletrequest);
     }
 
     private void initUiListener(){
 
-        mButtonNavigationToCurrenciesList.setOnClickListener(v -> {
+        mButtonAddWallet.setOnClickListener(v -> {
 
-            if (mEditTextWalletName.getText().toString().equals("") || mButtonCurrencyCode.getText().toString().equals("")){
+            if (mEditTextWalletName.getText().toString().equals("") || mButtonCurrencyList.getText().toString().equals("")){
 
                 SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.everywhere_pleasefillbox),getContext());
             }
@@ -92,16 +91,20 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
             }
         });
 
+        mButtonCurrencyList.setOnClickListener(v -> {
+
+            Intent intent=new Intent(getContext(),ListCurrencyActivity.class);
+            startActivity(intent);
+
+        });
+
     }
 
     @Override
     public void setCurrency(String currency) {
 
-        mButtonCurrencyCode.setText(currency);
+        mButtonCurrencyList.setText(currency);
     }
 
-    @Override
-    public void setCurrencyList(List<Currency> currencyList) {
 
-    }
 }
