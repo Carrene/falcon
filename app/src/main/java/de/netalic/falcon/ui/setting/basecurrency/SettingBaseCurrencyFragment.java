@@ -53,7 +53,6 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
         mTokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
 
-
         initListener();
 
     }
@@ -84,7 +83,6 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     @Override
     public void dismissProgressBar() {
 
-
         ((BaseActivity) getActivity()).dismissMaterialDialog();
     }
 
@@ -92,8 +90,6 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
 
         mRecyclerViewCurrencyList = mRoot.findViewById(R.id.recyclerview_basecurrency_currencylist);
         mSwipeRefreshLayout = mRoot.findViewById(R.id.swiperefresh_settingbasecurrency_refreshbasecurrency);
-
-
     }
 
     public static SettingBaseCurrencyFragment newInstance() {
@@ -104,7 +100,6 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
         fragment.setArguments(bundle);
         return fragment;
     }
-
 
     @Override
     public void setCurrencyList(List<Currency> currencyList) {
@@ -119,7 +114,6 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
 
         mCurrenciesRecyclerViewAdapter = new CurrenciesRecyclerViewAdapter(mCurrencyList, mBaseCurrency, this);
         mRecyclerViewCurrencyList.setAdapter(mCurrenciesRecyclerViewAdapter);
-
 
     }
 
@@ -173,8 +167,6 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     private void getCurrencyList() {
 
         mBaseCurrencyPresenter.getCurrencyList();
-
-
     }
 
     @Override

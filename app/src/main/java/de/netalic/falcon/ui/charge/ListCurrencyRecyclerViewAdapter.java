@@ -18,12 +18,14 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
     private List<Currency>mCurrencyList;
     private Callback mCallback;
+    private String mSelectedCurrency;
 
 
 
-    public ListCurrencyRecyclerViewAdapter(List<Currency> currencyList, Callback callback) {
+    public ListCurrencyRecyclerViewAdapter(List<Currency> currencyList,String selectedCurrency,Callback callback) {
         mCurrencyList = currencyList;
         mCallback = callback;
+        mSelectedCurrency=selectedCurrency;
 
     }
 
@@ -46,15 +48,15 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         ((CurrencyViewHolder)holder).mTextViewCurrencyName.setText(mCurrencyList.get(position).getCode());
-//        if (mSelectedCurrency!=null && mSelectedCurrency.equals(mCurrencyList.get(position).getCode())){
-//
-//            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.VISIBLE);
-//        }
-//
-//        else {
-//
-//            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.GONE);
-//        }
+        if (mSelectedCurrency!=null && mSelectedCurrency.equals(mCurrencyList.get(position).getCode())){
+
+            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.VISIBLE);
+        }
+
+        else {
+
+            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.GONE);
+        }
 
     }
 
@@ -77,7 +79,7 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
             itemView.setOnClickListener(v -> {
 
-                mCallback.setCurrency(mCurrencyList.get(getItemCount()).getCode());
+                mCallback.setCurrency(mCurrencyList.get(getLayoutPosition()).getCode());
             });
         }
     }

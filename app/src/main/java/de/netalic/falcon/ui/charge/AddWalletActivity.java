@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.charge;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
@@ -12,18 +13,28 @@ public class AddWalletActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setupBackButton();
 
-        AddWalletFragment addWalletFragment=(AddWalletFragment)getSupportFragmentManager().findFragmentById(R.id.framelayout_addwallet_fragmentcontainer);
+        AddWalletFragment addWalletFragment = (AddWalletFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_addwallet_fragmentcontainer);
 
-        if (addWalletFragment==null){
+        if (addWalletFragment == null) {
 
-            addWalletFragment=AddWalletFragment.newInstance();
+            addWalletFragment = AddWalletFragment.newInstance();
 
-            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),addWalletFragment,R.id.framelayout_addwallet_fragmentcontainer);
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), addWalletFragment, R.id.framelayout_addwallet_fragmentcontainer);
         }
 
         new AddWalletPresenter(addWalletFragment);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String currency = data.getStringExtra("currency");
+            }
+        }
     }
 
     @Override

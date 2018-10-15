@@ -44,7 +44,8 @@
             android:layout_marginStart="@dimen/marginstartend_addwallet_navigationtocurrencylistbutton"
             android:layout_marginTop="@dimen/margintop_addwallet_navigationtocurrencylistbutton"
             android:layout_marginEnd="@dimen/marginstartend_addwallet_navigationtocurrencylistbutton"
-            android:background="@drawable/everywhere_borderbutton" />
+            android:background="@drawable/everywhere_borderbutton"
+            />
 
     </LinearLayout>
 

@@ -15,19 +15,20 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
-public class AddWalletFragment extends Fragment implements AddWalletContract.View,ListCurrencyRecyclerViewAdapter.Callback {
+public class AddWalletFragment extends Fragment implements AddWalletContract.View {
 
     private AddWalletContract.Presenter mPresenter;
     private View mRoot;
     private Button mButtonCurrencyList;
     private EditText mEditTextWalletName;
     private Button mButtonAddWallet;
+    public static final String SELECTED_CURRENCY = "selectedCurrency";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot=inflater.inflate(R.layout.fragment_addwallet,null);
+        mRoot = inflater.inflate(R.layout.fragment_addwallet, null);
         return mRoot;
     }
 
@@ -42,21 +43,21 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
     @Override
     public void setPresenter(AddWalletContract.Presenter presenter) {
 
-        mPresenter=presenter;
+        mPresenter = presenter;
     }
 
     @Override
     public void showProgressBar() {
 
-        ((BaseActivity)getActivity()).showMaterialDialog();
+        ((BaseActivity) getActivity()).showMaterialDialog();
     }
 
     @Override
     public void dismissProgressBar() {
 
-        ((BaseActivity)getActivity()).dismissMaterialDialog();
+        ((BaseActivity) getActivity()).dismissMaterialDialog();
 
-        }
+    }
 
     public static AddWalletFragment newInstance() {
 
@@ -67,25 +68,22 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
         return fragment;
     }
 
-    private void initUiComponent(){
+    private void initUiComponent() {
 
-        mButtonCurrencyList =mRoot.findViewById(R.id.butten_addwallet_navigationtocurrencieslist);
-        mEditTextWalletName =mRoot.findViewById(R.id.edittext_addwallet_walletname);
-        mButtonAddWallet =mRoot.findViewById(R.id.button_addwallet_addwalletrequest);
+        mButtonCurrencyList = mRoot.findViewById(R.id.butten_addwallet_navigationtocurrencieslist);
+        mEditTextWalletName = mRoot.findViewById(R.id.edittext_addwallet_walletname);
+        mButtonAddWallet = mRoot.findViewById(R.id.button_addwallet_addwalletrequest);
+
     }
 
-    private void initUiListener(){
+    private void initUiListener() {
 
         mButtonAddWallet.setOnClickListener(v -> {
 
-            if (mEditTextWalletName.getText().toString().equals("") || mButtonCurrencyList.getText().toString().equals("")){
+            if (mEditTextWalletName.getText().toString().equals("") || mButtonCurrencyList.getText().toString().equals("")) {
 
-                SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.everywhere_pleasefillbox),getContext());
-            }
-
-            else {
-
-
+                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
+            } else {
 
 
             }
@@ -93,18 +91,15 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
         mButtonCurrencyList.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getContext(),ListCurrencyActivity.class);
+            Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
+            intent.putExtra(SELECTED_CURRENCY, mButtonCurrencyList.getText().toString());
+
             startActivity(intent);
 
         });
 
     }
 
-    @Override
-    public void setCurrency(String currency) {
-
-        mButtonCurrencyList.setText(currency);
-    }
 
 
 }
