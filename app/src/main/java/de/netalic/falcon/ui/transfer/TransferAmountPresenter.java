@@ -5,13 +5,14 @@ import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.rate.RateRepository;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+
 public class TransferAmountPresenter implements TransferAmountContract.Presenter {
 
     private TransferAmountContract.View mTransferAmountView;
 
 
     public TransferAmountPresenter(TransferAmountContract.View transferAmountView) {
-        mTransferAmountView =checkNotNull(transferAmountView);
+        mTransferAmountView = checkNotNull(transferAmountView);
         mTransferAmountView.setPresenter(this);
     }
 

@@ -11,4 +11,6 @@ public interface IUserRepository extends IRepository<User, Integer> {
 
     void setEmail(User user, CallRepository<User> callRepository);
 
+    void updateCurrency(int userId,String baseCurrencyCode, CallRepository<User> callRepository);
+
 }

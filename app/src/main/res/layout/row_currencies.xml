@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_rowbasecurrency_relativelayout">
+
+    <TextView
+        android:id="@+id/textview_basecurrency_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VALUE"
+        android:layout_marginStart="@dimen/marginstart_rowbasecurrency_tetview"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorBlack"/>
+    <ImageView
+        android:id="@+id/imageview_basecurrency_tik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/charge_checked"
+        android:layout_toEndOf="@+id/textview_basecurrency_currency"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

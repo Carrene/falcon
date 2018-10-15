@@ -508,6 +508,7 @@
     <dimen name="marginbottom_purchasegenerateqrcode_dashboardbutton">27dp</dimen>
     <dimen name="textsize_purchasegenerateqrcode_dashboardbutton">14sp</dimen>
 
+
     <dimen name="marginstart_addwallet_walletnametextview">37dp</dimen>
     <dimen name="margintop_addwallet_walletnametextview">18dp</dimen>
     <dimen name="textsize_addwallet_walletnametextview">16sp</dimen>
@@ -527,5 +528,10 @@
     <dimen name="margintop_rowaddwallet_selectionimageview">12dp</dimen>
     <dimen name="marginend_rowaddwallet_selectionimageview">21dp</dimen>
     <dimen name="margintop_rowaddwallet_relativelayout">8dp</dimen>
+
+    <dimen name="marginstart_rowbasecurrency_tetview">85dp</dimen>
+    <dimen name="height_rowbasecurrency_relativelayout">60dp</dimen>
+
+
 
 </resources>

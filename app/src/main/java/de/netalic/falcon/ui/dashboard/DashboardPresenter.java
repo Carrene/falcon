@@ -21,8 +21,8 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
     @NonNull
     private final DashboardContract.View mDashboardView;
-    SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor=new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
-    Map<String,Object>tokenBody=Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+    SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+    Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
 
     public DashboardPresenter(@NonNull DashboardContract.View dashboardView) {
 
@@ -85,9 +85,10 @@ public class DashboardPresenter implements DashboardContract.Presenter {
     @Override
     public void baseCurrency() {
 
-        RepositoryLocator.getInstance().getRepository(UserRepository.class).get((int)tokenBody.get("id"),deal -> {
+        mDashboardView.showProgressBar();
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).get((int) tokenBody.get("id"), deal -> {
 
-            if (deal.getThrowable()==null){
+            if (deal.getThrowable() == null) {
 
                 mDashboardView.setBaseCurrency(deal.getModel().getBaseCurrency());
 
@@ -96,6 +97,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
                 mDashboardView.setBaseCurrencyNotSet();
             }
         });
+        mDashboardView.dismissProgressBar();
     }
 
     @Override

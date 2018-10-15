@@ -7,6 +7,8 @@ import com.squareup.leakcanary.LeakCanary;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRealmRepository;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.currency.CurrencyRepository;
+import de.netalic.falcon.data.repository.currency.CurrencyRestRepository;
 import de.netalic.falcon.data.repository.rate.RateRepository;
 import de.netalic.falcon.data.repository.rate.RateRestRepository;
 import de.netalic.falcon.data.repository.receipt.ReceiptRealmRepository;
@@ -64,5 +66,6 @@ public class MyApp extends Application {
         RepositoryLocator.getInstance().setRepository(new RateRepository(new RateRestRepository(), null));
         RepositoryLocator.getInstance().setRepository(new ReceiptRepository(new ReceiptRestRepository(), new ReceiptRealmRepository()));
         RepositoryLocator.getInstance().setRepository(new TransactionRepository(new TransactionRestRepository(), null));
+        RepositoryLocator.getInstance().setRepository(new CurrencyRepository(new CurrencyRestRepository(), null));
     }
 }

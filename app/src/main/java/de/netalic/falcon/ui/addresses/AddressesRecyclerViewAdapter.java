@@ -84,9 +84,6 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         @Override
         public void onClick(View v) {
 
-
-
-
             if (v.getId() == R.id.imageview_addresses_share) {
 
                 ClipboardManager clipBoard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
