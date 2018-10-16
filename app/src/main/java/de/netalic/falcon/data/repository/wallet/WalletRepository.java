@@ -37,4 +37,9 @@ public class WalletRepository implements IWalletRepository {
         mWalletRestRepository.getAll(callRepository);
     }
 
+    @Override
+    public void addWallet(String walletName, String walletCurrencyCode, CallRepository<Wallet> walletCallRepository) {
+
+        mWalletRestRepository.addWallet(walletName,walletCurrencyCode,walletCallRepository);
+    }
 }

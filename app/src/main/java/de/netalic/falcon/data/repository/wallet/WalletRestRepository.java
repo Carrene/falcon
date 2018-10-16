@@ -41,4 +41,22 @@ public class WalletRestRepository implements IWalletRepository {
         });
     }
 
+    @Override
+    public void addWallet(String walletName, String walletCurrencyCode, CallRepository<Wallet> walletCallRepository) {
+
+        ApiClient.getService().addWallet(walletName,walletCurrencyCode).enqueue(new Callback<Wallet>() {
+            @Override
+            public void onResponse(Call<Wallet> call, Response<Wallet> response) {
+
+                walletCallRepository.onDone(new Deal<>(response.body(),response,null));
+            }
+
+            @Override
+            public void onFailure(Call<Wallet> call, Throwable t) {
+
+                walletCallRepository.onDone(new Deal<>(null,null,t));
+            }
+        });
+
+    }
 }

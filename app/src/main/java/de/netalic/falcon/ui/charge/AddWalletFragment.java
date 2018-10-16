@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -23,6 +24,7 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
     private EditText mEditTextWalletName;
     private Button mButtonAddWallet;
     public static final String SELECTED_CURRENCY = "selectedCurrency";
+    private Wallet mNewWallet;
 
     @Nullable
     @Override
@@ -37,6 +39,7 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
         initUiComponent();
         initUiListener();
+
     }
 
     @Override
@@ -79,12 +82,12 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
         mButtonAddWallet.setOnClickListener(v -> {
 
-            if (mEditTextWalletName.getText().toString().equals("") || mButtonCurrencyList.getText().toString().equals("")) {
+            if (mEditTextWalletName.getText().toString().equals("") || mButtonCurrencyList.getText().toString().equals(getContext().getString(R.string.addwallet_pleaseselectcurrency))) {
 
                 SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
             } else {
 
-
+                addWallet();
             }
         });
 
@@ -111,5 +114,47 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
             mButtonCurrencyList.setText(currency);
         }
 
+    }
+
+
+    @Override
+    public void setWallet(Wallet wallet) {
+
+        mNewWallet=wallet;
+    }
+
+    @Override
+    public void errorWalletNameAlreadyExist() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.addwallet_walletnamealreadyexist),getContext());
+    }
+
+    @Override
+    public void errorWalletWithThisCurrencyAlreadyExist() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.addwallet_walletwiththiscurrencyalreadyexist),getContext());
+    }
+
+    @Override
+    public void errorInvalidCurrencyCode() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.addwallet_invalidcurrencycode),getContext());
+    }
+
+    @Override
+    public void errorInvalidWalletName() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.addwallet_invalidwalletname),getContext());
+    }
+
+    @Override
+    public void errorAddWalletAsAnAnonymous() {
+
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.addwallet_addwalletasananonymous),getContext());
+    }
+
+    private void addWallet(){
+
+        mPresenter.addWallet(mEditTextWalletName.getText().toString(),mButtonCurrencyList.getText().toString());
     }
 }

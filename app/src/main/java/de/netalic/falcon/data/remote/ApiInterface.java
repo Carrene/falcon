@@ -72,5 +72,10 @@ public interface ApiInterface {
     @FormUrlEncoded
     @HTTP(method = "UPDATE",path = "clients/{id}/basecurrencies",hasBody = true)
     Call<User>changeBaseCurrency(@Path("id") int id,@Field("baseCurrencyCode") String baseCurrencyCode);
+
+    @FormUrlEncoded
+    @HTTP(method = "CREATE",path = "wallets",hasBody = true)
+    Call<Wallet>addWallet(@Field("walletName")String walletName,@Field("walletCurrencyCode") String walletCurrencyCode);
+
 }
 

@@ -6,4 +6,6 @@ import de.netalic.falcon.data.repository.base.IRepository;
 public interface IWalletRepository extends IRepository<Wallet, Integer> {
 
 
+    void addWallet(String walletName,String walletCurrencyCode,CallRepository<Wallet>walletCallRepository);
+
 }

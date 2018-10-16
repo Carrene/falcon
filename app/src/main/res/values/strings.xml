@@ -389,6 +389,11 @@
     <string name="addwallet_walletcurrency">Wallet currency</string>
     <string name="addwallet_addwallet">Add Wallet</string>
     <string name="addwallet_pleaseselectcurrency">Please select a currency</string>
+    <string name="addwallet_walletnamealreadyexist">Wallet name already exist</string>
+    <string name="addwallet_walletwiththiscurrencyalreadyexist">Wallet with this currency already exist</string>
+    <string name="addwallet_invalidcurrencycode">Invalid currency code</string>
+    <string name="addwallet_invalidwalletname">Invalid wallet name</string>
+    <string name="addwallet_addwalletasananonymous">Add wallet as an anonymous</string>
 
 
     <string name="basecurrency_changebaecurrency">Change base currency</string>
