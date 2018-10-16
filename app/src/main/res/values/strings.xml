@@ -388,6 +388,7 @@
     <string name="addwallet_walletname">Wallet name</string>
     <string name="addwallet_walletcurrency">Wallet currency</string>
     <string name="addwallet_addwallet">Add Wallet</string>
+    <string name="addwallet_pleaseselectcurrency">Please select a currency</string>
 
 
     <string name="basecurrency_changebaecurrency">Change base currency</string>

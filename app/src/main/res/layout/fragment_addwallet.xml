@@ -17,7 +17,8 @@
             android:layout_marginTop="@dimen/margintop_addwallet_walletnametextview"
             android:text="@string/addwallet_walletname"
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/textsize_addwallet_walletnametextview" />
+            android:textSize="@dimen/textsize_addwallet_walletnametextview"
+            />
 
         <EditText
             android:id="@+id/edittext_addwallet_walletname"
@@ -45,6 +46,7 @@
             android:layout_marginTop="@dimen/margintop_addwallet_navigationtocurrencylistbutton"
             android:layout_marginEnd="@dimen/marginstartend_addwallet_navigationtocurrencylistbutton"
             android:background="@drawable/everywhere_borderbutton"
+            android:textAllCaps="false"
             />
 
     </LinearLayout>

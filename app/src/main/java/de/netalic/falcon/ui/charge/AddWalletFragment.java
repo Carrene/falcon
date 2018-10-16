@@ -37,7 +37,6 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
         initUiComponent();
         initUiListener();
-
     }
 
     @Override
@@ -59,10 +58,10 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
     }
 
-    public static AddWalletFragment newInstance() {
+    public static AddWalletFragment newInstance(String currency) {
 
         Bundle bundle = new Bundle();
-
+        bundle.putString(AddWalletFragment.SELECTED_CURRENCY, currency);
         AddWalletFragment fragment = new AddWalletFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -94,12 +93,23 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
             Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
             intent.putExtra(SELECTED_CURRENCY, mButtonCurrencyList.getText().toString());
 
-            startActivity(intent);
+            startActivityForResult(intent, 1);
 
         });
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        String currency=((AddWalletActivity)getActivity()).getCurrency();
+        if (currency==null){
+            mButtonCurrencyList.setText(getContext().getString(R.string.addwallet_pleaseselectcurrency));
+        }
+        else {
+            mButtonCurrencyList.setText(currency);
+        }
 
+    }
 }

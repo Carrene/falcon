@@ -510,7 +510,7 @@
 
 
     <dimen name="marginstart_addwallet_walletnametextview">37dp</dimen>
-    <dimen name="margintop_addwallet_walletnametextview">18dp</dimen>
+    <dimen name="margintop_addwallet_walletnametextview">68dp</dimen>
     <dimen name="textsize_addwallet_walletnametextview">16sp</dimen>
     <dimen name="marginstartend_addwallet_walletnameedittext">37dp</dimen>
     <dimen name="margintop_addwallet_walletnameedittext">10dp</dimen>

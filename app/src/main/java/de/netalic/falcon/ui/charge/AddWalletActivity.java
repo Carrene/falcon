@@ -9,32 +9,42 @@ import de.netalic.falcon.util.ActivityUtil;
 
 public class AddWalletActivity extends BaseActivity {
 
+    private String mCurrency;
+    private AddWalletFragment mAddWalletFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setupBackButton();
 
-        AddWalletFragment addWalletFragment = (AddWalletFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_addwallet_fragmentcontainer);
 
-        if (addWalletFragment == null) {
+        mAddWalletFragment = (AddWalletFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_addwallet_fragmentcontainer);
 
-            addWalletFragment = AddWalletFragment.newInstance();
+        if (mAddWalletFragment == null) {
 
-            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), addWalletFragment, R.id.framelayout_addwallet_fragmentcontainer);
+            mAddWalletFragment = AddWalletFragment.newInstance(mCurrency);
+
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), mAddWalletFragment, R.id.framelayout_addwallet_fragmentcontainer);
         }
 
-        new AddWalletPresenter(addWalletFragment);
+        new AddWalletPresenter(mAddWalletFragment);
 
+    }
+
+
+    public String getCurrency() {
+
+
+        return mCurrency;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                String currency = data.getStringExtra("currency");
-            }
-        }
+
+
+        mCurrency = data.getStringExtra(AddWalletFragment.SELECTED_CURRENCY);
+
     }
 
     @Override
