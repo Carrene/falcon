@@ -83,7 +83,7 @@ public class SettingPresenter implements SettingContract.Presenter {
 
             if (deal.getThrowable() == null) {
 
-                mSettingView.setBaseCurrency(deal.getModel().getBaseCurrency());
+                mSettingView.setBaseCurrency(deal.getModel().getBaseCurrencyCode());
             } else {
 
                 mSettingView.setBaseCurrencyNotSet();

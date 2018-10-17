@@ -121,7 +121,7 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     public void updateBaseCurrency(User user) {
 
         mBaseCurrencyPresenter.updateUser(user);
-        mBaseCurrency = user.getBaseCurrency();
+        mBaseCurrency = user.getBaseCurrencyCode();
         mCurrenciesRecyclerViewAdapter = new CurrenciesRecyclerViewAdapter(mCurrencyList, mBaseCurrency, this);
         mRecyclerViewCurrencyList.setAdapter(mCurrenciesRecyclerViewAdapter);
         mCurrenciesRecyclerViewAdapter.notifyDataSetChanged();
@@ -161,7 +161,7 @@ public class SettingBaseCurrencyFragment extends Fragment implements SettingBase
     @Override
     public void updateUser(User user) {
 
-        mUpdateBaseCurrency = user.getBaseCurrency();
+        mUpdateBaseCurrency = user.getBaseCurrencyCode();
     }
 
     private void getCurrencyList() {

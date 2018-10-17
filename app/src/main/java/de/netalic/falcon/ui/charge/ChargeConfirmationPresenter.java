@@ -51,7 +51,6 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
 
                             handler.removeCallbacks(mRunnableTimer);
                             handler.removeCallbacks(mRunnableRequest);
-                            mChargeConfirmationView.dismissProgressBar();
                             //TODO(Ehsan) what to do in this state?
                         };
 
@@ -60,6 +59,7 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
                             @Override
                             public void run() {
 
+                                mChargeConfirmationView.showProgressBar();
                                 RepositoryLocator.getInstance().getRepository(ReceiptRepository.class).get(deal.getModel().getId()
                                         , deal1 -> {
                                             if (deal1.getThrowable() == null) {
@@ -87,7 +87,10 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
 
                                                 mChargeConfirmationView.showErrorWhenFailed();
                                             }
+
+                                            mChargeConfirmationView.dismissProgressBar();
                                         });
+
                             }
                         };
                         handler.postDelayed(mRunnableRequest, mFirstRequestDelay);
@@ -122,5 +125,12 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
             }
             mChargeConfirmationView.dismissProgressBar();
         });
+
+    }
+
+    @Override
+    public void getUser() {
+
+
     }
 }

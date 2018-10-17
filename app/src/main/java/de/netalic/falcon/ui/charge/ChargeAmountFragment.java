@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +21,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
@@ -33,6 +35,8 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
     private Button mButtonPayment;
     private EditText mEditTextAmountWallet;
     private EditText mEditTextAmountBase;
+    private TextInputLayout mTextInputLayoutChargeAmount;
+    private TextInputLayout mTextInputLayoutPaidAmount;
     private String mChargeDataToken;
     private Rate mRate;
     private Currency mUsd;
@@ -41,6 +45,8 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
     public static final String ARGUMENT_PAYMENT_GATEWAY_NAME = "paymentGatewayName";
     private String mPaymentGatewayName;
     private int mWalletId;
+    private User mUser;
+    private String mBaseCurrency;
 
     @Nullable
     @Override
@@ -61,7 +67,9 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
         setHasOptionsMenu(true);
         mRate = new Rate("USD");
         mDecimalFormat = new DecimalFormat("0.00##");
+        getBaseCurrency();
         getRate();
+        mTextInputLayoutPaidAmount.setHint(mUser.getBaseCurrencyCode());
     }
 
     public static ChargeAmountFragment newInstance(int walletId, String paymentGatewayName) {
@@ -74,6 +82,10 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
         return fragment;
     }
 
+    private void getBaseCurrency(){
+
+            mChargePresenter.getBaseCurrency();
+}
 
     @Override
     public void setPresenter(ChargeAmountContract.Presenter presenter) {
@@ -86,7 +98,9 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
         mButtonPayment = mRoot.findViewById(R.id.button_charge_payment);
         mEditTextAmountWallet = mRoot.findViewById(R.id.edittext_charge_amountwallet);
-        mEditTextAmountBase = mRoot.findViewById(R.id.edittext_charge_amountbase);
+        mEditTextAmountBase = mRoot.findViewById(R.id.edittext_charge_basecurrency);
+        mTextInputLayoutChargeAmount=mRoot.findViewById(R.id.textinputlayout_chargeamount_alpha);
+        mTextInputLayoutPaidAmount=mRoot.findViewById(R.id.textinputlayout_chargeamount_basecurrency);
     }
 
 
@@ -200,6 +214,20 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
     }
 
+    @Override
+    public void setBaseCurrency(User user) {
+
+        mUser=user;
+        mBaseCurrency=mUser.getBaseCurrencyCode();
+
+    }
+
+    @Override
+    public void setBaseCurrencyNotSet() {
+
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.dashboard_basecurrencydoesnotset), getContext());
+    }
+
     public void initListener() {
 
 
@@ -279,7 +307,6 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
             }
         });
 
-
         mButtonPayment.setOnClickListener(v -> {
 
                     Keyboard.hideKeyboard(mRoot);
@@ -297,16 +324,14 @@ public class ChargeAmountFragment extends Fragment implements ChargeAmountContra
 
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         return super.onOptionsItemSelected(item);
     }
-
     public void getRate() {
 
-        mChargePresenter.exchangeRate(mRate);
+        mChargePresenter.exchangeRate(mUser.getBaseCurrencyCode());
     }
 
 }

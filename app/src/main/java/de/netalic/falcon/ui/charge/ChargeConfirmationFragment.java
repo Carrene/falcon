@@ -64,6 +64,12 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
         initUiComponent();
         setPaymentConfirmationData();
         initListener();
+        getUser();
+
+    }
+
+    private void getUser(){
+
 
     }
 
