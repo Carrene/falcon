@@ -70,14 +70,12 @@ public class NavigationDrawerUtil {
 
                             case 1: {
                                 intent = new Intent(activity, DashboardActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
                             }
 
                             case 2: {
                                 intent = new Intent(activity, ChargeActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
                             }
@@ -85,7 +83,6 @@ public class NavigationDrawerUtil {
                             case 3:{
 
                                 intent=new Intent(activity, AddressesActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
                             }
@@ -93,7 +90,6 @@ public class NavigationDrawerUtil {
                             case 4:{
 
                                 intent=new Intent(activity, TransferActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
                             }
@@ -101,7 +97,6 @@ public class NavigationDrawerUtil {
                             case 5: {
 
                                 intent = new Intent(activity, TransactionHistoryActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 activity.startActivity(intent);
                                 break;
 

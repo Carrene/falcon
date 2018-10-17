@@ -1,9 +1,11 @@
 package de.netalic.falcon.ui.transfer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
@@ -35,5 +37,13 @@ public class TransferActivity extends BaseActivity {
     @Override
     protected String getActionbarTitle() {
         return getString(R.string.transfer_toolbar);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent=new Intent(this,DashboardActivity.class);
+        startActivity(intent);
     }
 }
