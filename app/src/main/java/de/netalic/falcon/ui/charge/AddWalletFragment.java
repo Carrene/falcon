@@ -121,6 +121,8 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
     public void setWallet(Wallet wallet) {
 
         mNewWallet=wallet;
+        Intent intent=new Intent(getContext(),ChargeActivity.class);
+        startActivity(intent);
     }
 
     @Override
