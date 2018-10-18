@@ -9,7 +9,6 @@ import io.realm.annotations.PrimaryKey;
 
 public class Action implements Parcelable {
 
-    @PrimaryKey
     @SerializedName("id")
     private int mId;
 

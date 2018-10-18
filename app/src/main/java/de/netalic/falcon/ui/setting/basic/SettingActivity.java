@@ -24,7 +24,6 @@ public class SettingActivity extends BaseActivity {
         setupToolbar();
         setupBackButton();
         initUiComponent();
-        setPhoneAndEmail();
         setName();
 
         SettingFragment settingFragment = (SettingFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_setting_fragmentcontainer);
@@ -60,6 +59,7 @@ public class SettingActivity extends BaseActivity {
         mCollapsingToolbarLayout.setTitle("Ehsan");
     }
 
+
     private void setPhoneAndEmail() {
 
 //        //TODO(Milad): What is this? All string should be in string.xml
@@ -93,4 +93,5 @@ public class SettingActivity extends BaseActivity {
         Intent intent=new Intent(this,DashboardActivity.class);
         startActivity(intent);
     }
+
 }

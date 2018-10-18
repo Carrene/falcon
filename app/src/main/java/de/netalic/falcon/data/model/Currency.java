@@ -6,7 +6,6 @@ import io.realm.annotations.PrimaryKey;
 
 public class Currency {
 
-    @PrimaryKey
     @SerializedName("id")
     private int mId;
     @SerializedName("name")

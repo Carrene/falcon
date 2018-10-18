@@ -81,29 +81,24 @@ public class NavigationDrawerUtil {
                             }
 
                             case 3:{
-
                                 intent=new Intent(activity, AddressesActivity.class);
                                 activity.startActivity(intent);
                                 break;
                             }
 
                             case 4:{
-
                                 intent=new Intent(activity, TransferActivity.class);
                                 activity.startActivity(intent);
                                 break;
                             }
 
                             case 5: {
-
                                 intent = new Intent(activity, TransactionHistoryActivity.class);
                                 activity.startActivity(intent);
                                 break;
-
                             }
 
                             case 6:{
-
                                 intent=new Intent(activity, SettingActivity.class);
                                 activity.startActivity(intent);
                                 break;
