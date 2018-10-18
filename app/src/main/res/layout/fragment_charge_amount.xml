@@ -26,13 +26,13 @@
 
             android:id="@+id/textinputlayout_chargeamount_alpha"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="@string/chargeamount_amounthint">
 
         <EditText
             android:id="@+id/edittext_charge_amountwallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/chargeamount_amounthint"
             android:inputType="numberDecimal"
             android:layout_marginStart="@dimen/marginstartend_chargeamount_edittextamount"
             android:layout_marginEnd="@dimen/marginstartend_chargeamount_edittextamount"
@@ -46,14 +46,14 @@
             android:layout_marginTop="@dimen/margintop_chargeamount_transfer" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/texinputlayout_chargeamount_dollar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/edittext_charge_amountbase"
+            android:id="@+id/textinputlayout_chargeamount_basecurrency"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/chargeamount_dollar"
+            android:hint="@string/chargeamount_dollar">
+        <EditText
+            android:id="@+id/edittext_charge_basecurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:layout_marginStart="@dimen/marginstartend_chargeamount_edittextdollar"
             android:layout_marginEnd="@dimen/marginstartend_chargeamount_edittextdollar"

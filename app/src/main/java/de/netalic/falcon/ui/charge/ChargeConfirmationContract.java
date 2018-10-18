@@ -29,5 +29,6 @@ public interface ChargeConfirmationContract {
     interface Presenter extends BasePresenter {
 
         void finalizeCharge(int transactionId, String braintreeNonce);
+        void getUser();
     }
 }

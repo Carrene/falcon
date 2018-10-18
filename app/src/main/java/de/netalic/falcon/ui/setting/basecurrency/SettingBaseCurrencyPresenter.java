@@ -110,7 +110,7 @@ public class SettingBaseCurrencyPresenter implements SettingBaseCurrencyContract
 
             if (deal.getThrowable()==null){
 
-                mSettingBaseCurrencyView.setBaseCurrency(deal.getModel().getBaseCurrency());
+                mSettingBaseCurrencyView.setBaseCurrency(deal.getModel().getBaseCurrencyCode());
             } else {
 
             }

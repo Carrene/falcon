@@ -2,6 +2,7 @@ package de.netalic.falcon.ui.charge;
 
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
 
@@ -36,6 +37,10 @@ public interface ChargeAmountContract {
 
         void updateExchangeRateCurrency(Rate rate);
 
+        void setBaseCurrency(User user);
+
+        void setBaseCurrencyNotSet();
+
     }
 
     interface Presenter extends BasePresenter {
@@ -44,7 +49,9 @@ public interface ChargeAmountContract {
 
         void charge(int id, double amount,int verifyRateId);
 
-        void exchangeRate(Rate rate);
+        void exchangeRate(String codeCurrency);
+
+        void getBaseCurrency();
 
     }
 

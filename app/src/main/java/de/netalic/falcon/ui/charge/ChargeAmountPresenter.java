@@ -2,11 +2,17 @@ package de.netalic.falcon.ui.charge;
 
 import android.support.annotation.NonNull;
 
+import java.util.Map;
+
+import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.rate.RateRepository;
 import de.netalic.falcon.data.repository.transaction.TransactionRepository;
+import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
+import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
+import nuesoft.helpdroid.util.Parser;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -14,7 +20,8 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
 
     @NonNull
     private final ChargeAmountContract.View mChargeAmountView;
-
+    SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+    Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
 
     public ChargeAmountPresenter(ChargeAmountContract.View chargeView) {
 
@@ -133,11 +140,11 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
 
 
     @Override
-    public void exchangeRate(Rate rate) {
+    public void exchangeRate(String codeCurrency) {
 
         mChargeAmountView.showProgressBar();
 
-        RepositoryLocator.getInstance().getRepository(RateRepository.class).get(rate.getCurrencyCode(), deal -> {
+        RepositoryLocator.getInstance().getRepository(RateRepository.class).get(codeCurrency, deal -> {
 
             if (deal.getThrowable() != null) {
 
@@ -170,5 +177,23 @@ public class ChargeAmountPresenter implements ChargeAmountContract.Presenter {
             mChargeAmountView.dismissProgressBar();
         });
 
+    }
+
+    @Override
+    public void getBaseCurrency() {
+
+        mChargeAmountView.showProgressBar();
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).get((int) tokenBody.get("id"), deal -> {
+
+            if (deal.getThrowable() == null) {
+
+                mChargeAmountView.setBaseCurrency(deal.getModel());
+
+            } else {
+
+                mChargeAmountView.setBaseCurrencyNotSet();
+            }
+        });
+        mChargeAmountView.dismissProgressBar();
     }
 }

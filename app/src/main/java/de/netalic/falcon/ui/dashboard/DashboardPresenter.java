@@ -90,7 +90,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
             if (deal.getThrowable() == null) {
 
-                mDashboardView.setBaseCurrency(deal.getModel().getBaseCurrency());
+                mDashboardView.setBaseCurrency(deal.getModel().getBaseCurrencyCode());
 
             } else {
 
