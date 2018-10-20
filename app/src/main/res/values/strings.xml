@@ -402,4 +402,12 @@
     <string name="basecurrency_invalidcurrencycode">Invalid currency code</string>
     <string name="basecurrency_tryingtopasswithunauthorizedmember">Trying to pass with unauthorized member</string>
 
+
+    <string name="customdatepicker_choosestartdatetitle">Start</string>
+    <string name="customdatepicker_choosestartdatekey">start</string>
+    <string name="customdatepicker_chooseenddatetitle">End</string>
+    <string name="customdatepicker_chooseenddatekey">end</string>
+    <string name="customdatepicker_datepicker">Date Picker</string>
+
+
 </resources>

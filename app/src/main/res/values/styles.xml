@@ -37,6 +37,10 @@
         <item name="android:background">@drawable/withdrawamount_backgroundspinner</item>
     </style>
 
+    <style name="BaseAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="BaseAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
 
 

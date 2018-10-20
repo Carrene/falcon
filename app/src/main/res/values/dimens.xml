@@ -30,7 +30,8 @@
     <dimen name="textsize_authenticationdefinitionpasswordtab_entercode">13sp</dimen>
     <dimen name="textsize_authenticationdefinitionpasswordtab_confirmcode">13sp</dimen>
     <dimen name="margintop_authenticationdefinitionpasswordtab_imageviewpasswordchecker">6dp</dimen>
-    <dimen name="paddingstart_authenticationdefinitionpasswordtab_textviewpasswordchecker">5dp</dimen>
+    <dimen name="paddingstart_authenticationdefinitionpasswordtab_textviewpasswordchecker">5dp
+    </dimen>
 
     <dimen name="dotnormalsize_authenticationdefinitionpatterntab_patternlockview">20dp</dimen>
     <dimen name="margintop_authenticationdefinition_segmentedgroup">38dp</dimen>
@@ -386,7 +387,6 @@
     <dimen name="marginbottom_qrcodeaddresses_dashboardbutton">27dp</dimen>
 
 
-
     <dimen name="margintop_purchaseamount_linearlayout">25dp</dimen>
     <dimen name="marginstartend_purchaseamount_edittextamount">70dp</dimen>
     <dimen name="marginstartend_purchaseamount_edittextdollar">70dp</dimen>
@@ -407,7 +407,6 @@
     <dimen name="margintop_purchasescanqrcode_barcodeview">32dp</dimen>
     <dimen name="margintop_purchasescanqrcode_textview">30dp</dimen>
     <dimen name="textsize_purchasescanqrcode_textview">16sp</dimen>
-
 
 
     <dimen name="margintop_purchaseconfirmation_linearlayout">33dp</dimen>
@@ -532,7 +531,7 @@
 
     <dimen name="marginstart_rowbasecurrency_tetview">85dp</dimen>
     <dimen name="height_rowbasecurrency_relativelayout">60dp</dimen>
-
+    <dimen name="fab_margin">16dp</dimen>
 
 
 </resources>
