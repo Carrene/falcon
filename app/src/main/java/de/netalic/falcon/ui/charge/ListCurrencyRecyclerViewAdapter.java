@@ -16,20 +16,19 @@ import de.netalic.falcon.data.model.Currency;
 
 public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Currency>mCurrencyList;
+    private List<Currency> mCurrencyList;
     private Callback mCallback;
     private String mSelectedCurrency;
 
 
-
-    public ListCurrencyRecyclerViewAdapter(List<Currency> currencyList,String selectedCurrency,Callback callback) {
+    public ListCurrencyRecyclerViewAdapter(List<Currency> currencyList, String selectedCurrency, Callback callback) {
         mCurrencyList = currencyList;
         mCallback = callback;
-        mSelectedCurrency=selectedCurrency;
+        mSelectedCurrency = selectedCurrency;
 
     }
 
-    public interface Callback{
+    public interface Callback {
 
         void setCurrency(String currency);
 
@@ -40,22 +39,20 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
-        view=LayoutInflater.from(parent.getContext()).inflate(R.layout.row_currencieslistaddwallet,parent,false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_currencieslistaddwallet, parent, false);
         return new CurrencyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        ((CurrencyViewHolder)holder).mTextViewCurrencyName.setText(mCurrencyList.get(position).getCode());
-        if (mSelectedCurrency!=null && mSelectedCurrency.equals(mCurrencyList.get(position).getCode())){
+        ((CurrencyViewHolder) holder).mTextViewCurrencyName.setText(mCurrencyList.get(position).getCode());
+        if (mSelectedCurrency != null && mSelectedCurrency.equals(mCurrencyList.get(position).getCode())) {
 
-            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.VISIBLE);
-        }
+            ((CurrencyViewHolder) holder).mImageViewTick.setVisibility(View.VISIBLE);
+        } else {
 
-        else {
-
-            ((CurrencyViewHolder)holder).mImageViewTick.setVisibility(View.GONE);
+            ((CurrencyViewHolder) holder).mImageViewTick.setVisibility(View.GONE);
         }
 
     }
@@ -66,7 +63,7 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         return mCurrencyList.size();
     }
 
-    public class CurrencyViewHolder extends RecyclerView.ViewHolder{
+    public class CurrencyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mTextViewCurrencyName;
         private ImageView mImageViewTick;
@@ -74,8 +71,8 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         public CurrencyViewHolder(View itemView) {
             super(itemView);
 
-            mTextViewCurrencyName=itemView.findViewById(R.id.textview_rowaddwallet_currencyname);
-            mImageViewTick=itemView.findViewById(R.id.imageview_rowaddwallet_selection);
+            mTextViewCurrencyName = itemView.findViewById(R.id.textview_rowaddwallet_currencyname);
+            mImageViewTick = itemView.findViewById(R.id.imageview_rowaddwallet_selection);
 
             itemView.setOnClickListener(v -> {
 

@@ -6,9 +6,10 @@ import android.support.v4.app.NavUtils;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.transaction.customdatepicker.CustomDatePickerFragment;
 import de.netalic.falcon.util.ActivityUtil;
 
-public class TransactionHistoryFiltersActivity extends BaseActivity {
+public class TransactionHistoryFiltersActivity extends BaseActivity implements CustomDatePickerFragment.Callback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +43,16 @@ public class TransactionHistoryFiltersActivity extends BaseActivity {
         super.onBackPressed();
         Intent intent = NavUtils.getParentActivityIntent(this);
         NavUtils.navigateUpTo(this, intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void sendStartAndEndDate(String start, String end) {
+
+        String a=start+"_"+end;
     }
 }

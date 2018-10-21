@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <PreferenceCategory>
+    <PreferenceCategory android:title="@string/customdatepicker_choosestartandenddatetitle">
         <Preference
             android:key="@string/customdatepicker_choosestartdatekey"
             android:selectable="true"
             android:title="@string/customdatepicker_choosestartdatetitle" />
-    </PreferenceCategory>
 
-    <PreferenceCategory android:layout="@layout/divider_preference" />
-
-    <PreferenceCategory>
         <Preference
             android:key="@string/customdatepicker_chooseenddatekey"
             android:selectable="true"
             android:title="@string/customdatepicker_chooseenddatetitle" />
+
     </PreferenceCategory>
-
-
 </PreferenceScreen>

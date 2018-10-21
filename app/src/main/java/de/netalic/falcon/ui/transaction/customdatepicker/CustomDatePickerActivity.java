@@ -6,21 +6,23 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
 
-public class CustomDatePickerActivity extends BaseActivity {
+public class CustomDatePickerActivity extends BaseActivity implements CustomDatePickerFragment.Callback {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CustomDatePickerFragment customDatePickerFragment=(CustomDatePickerFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_customdatepicker_fragmentcontainer);
+        setupBackButton();
 
-        if (customDatePickerFragment==null){
+        CustomDatePickerFragment customDatePickerFragment = (CustomDatePickerFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_customdatepicker_fragmentcontainer);
 
-            customDatePickerFragment=CustomDatePickerFragment.newInstance();
+        if (customDatePickerFragment == null) {
 
-            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),customDatePickerFragment,R.id.framelayout_customdatepicker_fragmentcontainer);
+            customDatePickerFragment = CustomDatePickerFragment.newInstance();
+
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), customDatePickerFragment, R.id.framelayout_customdatepicker_fragmentcontainer);
         }
-
 
     }
 
@@ -32,5 +34,11 @@ public class CustomDatePickerActivity extends BaseActivity {
     @Override
     protected String getActionbarTitle() {
         return getString(R.string.customdatepicker_datepicker);
+    }
+
+    @Override
+    public void sendStartAndEndDate(String start, String end) {
+
+        String a = start + end;
     }
 }

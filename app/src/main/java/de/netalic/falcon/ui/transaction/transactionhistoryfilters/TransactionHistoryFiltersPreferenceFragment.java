@@ -1,6 +1,8 @@
 package de.netalic.falcon.ui.transaction.transactionhistoryfilters;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.preference.ListPreference;
@@ -9,8 +11,13 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import android.widget.DatePicker;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.ui.transaction.customdatepicker.CustomDatePickerActivity;
+import de.netalic.falcon.ui.transaction.customdatepicker.CustomDatePickerFragment;
 
 public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, DatePickerDialog.OnDateSetListener {
+
+    private ListPreference mListPreference;
+
 
     public static TransactionHistoryFiltersPreferenceFragment newInstance() {
 
@@ -31,12 +38,22 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
 
         Preference pref = findPreference(key);
         if (pref instanceof android.support.v7.preference.ListPreference) {
-            ListPreference listPreference = (android.support.v7.preference.ListPreference) pref;
-            listPreference.setSummary(listPreference.getValue());
-            if (listPreference.getValue().equals("Custom")) {
-                DatePickerDialog datePickerDialog =
-                        new DatePickerDialog(getContext(), this, 2018, 9, 10);
-                datePickerDialog.show();
+            mListPreference = (android.support.v7.preference.ListPreference) pref;
+            mListPreference.setSummary(mListPreference.getValue());
+            if (mListPreference.getValue().equals("Custom")) {
+
+                Intent intent=new Intent(getContext(),CustomDatePickerActivity.class);
+
+                startActivity(intent);
+
+                CustomDatePickerFragment.Callback callback=new CustomDatePickerFragment.Callback() {
+                    @Override
+                    public void sendStartAndEndDate(String start, String end) {
+
+                        mListPreference.setSummary(start+""+end);
+                    }
+                };
+
             }
         }
     }
@@ -60,4 +77,8 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 }

@@ -128,6 +128,13 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         queryStringMap.put("createdAt", linkedHashSet);
                         break;
                     }
+                    case "Custom": {
+
+//                        LinkedHashSet linkedHashSet=new LinkedHashSet();
+//                        linkedHashSet.add();
+//                        linkedHashSet.add();
+//                        queryString.put("createdAt",linkedHashSet);
+                    }
                 }
             }
         }
