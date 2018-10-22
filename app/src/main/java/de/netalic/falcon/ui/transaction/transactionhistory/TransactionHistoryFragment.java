@@ -74,6 +74,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
         ((BaseActivity) getActivity()).dismissMaterialDialog();
     }
 
+
     public static TransactionHistoryFragment newInstance() {
 
         TransactionHistoryFragment fragment = new TransactionHistoryFragment();
@@ -109,7 +110,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
     private void getDepositList(Map<String, ?> map) {
 
-        mTransactionHistoryPresenter.getDepositList(map);
+        mTransactionHistoryPresenter.getDepositList(map,((TransactionHistoryActivity)getActivity()).getStartDate(),((TransactionHistoryActivity) getActivity()).getEndDate());
     }
 
     private void initUiComponent() {
@@ -165,7 +166,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
             case R.id.item_transactionhistory_filter: {
 
                 Intent intent = new Intent(getContext(), TransactionHistoryFiltersActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
                 break;
             }
         }

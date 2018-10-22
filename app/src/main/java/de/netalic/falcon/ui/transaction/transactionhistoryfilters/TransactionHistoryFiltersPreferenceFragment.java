@@ -8,27 +8,32 @@ import android.os.Bundle;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.widget.DatePicker;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.transaction.customdatepicker.CustomDatePickerActivity;
-import de.netalic.falcon.ui.transaction.customdatepicker.CustomDatePickerFragment;
 
 public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, DatePickerDialog.OnDateSetListener {
 
     private ListPreference mListPreference;
+    private String mStartAndEndDate;
+    private Preference mPreference;
 
 
     public static TransactionHistoryFiltersPreferenceFragment newInstance() {
 
         TransactionHistoryFiltersPreferenceFragment fragment = new TransactionHistoryFiltersPreferenceFragment();
+
         return fragment;
     }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
-        addPreferencesFromResource(R.xml.prefrences_transactionfilters);
+        setPreferencesFromResource(R.xml.prefrences_transactionfilters, rootKey);
+
+        initUiComponent();
 
     }
 
@@ -42,18 +47,10 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
             mListPreference.setSummary(mListPreference.getValue());
             if (mListPreference.getValue().equals("Custom")) {
 
-                Intent intent=new Intent(getContext(),CustomDatePickerActivity.class);
+                Intent intent = new Intent(getContext(), CustomDatePickerActivity.class);
 
-                startActivity(intent);
-
-                CustomDatePickerFragment.Callback callback=new CustomDatePickerFragment.Callback() {
-                    @Override
-                    public void sendStartAndEndDate(String start, String end) {
-
-                        mListPreference.setSummary(start+""+end);
-                    }
-                };
-
+                startActivityForResult(intent, 1);
+//                mListPreference.setSummary(mStartAndEndDate);
             }
         }
     }
@@ -63,6 +60,10 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
 
         super.onResume();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        mPreference=getPreferenceManager().findPreference("date");
+        String a=mPreference.getSummary().toString();
+        mListPreference.setSummary(a);
+
     }
 
     @Override
@@ -80,5 +81,11 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+    }
+
+    private void initUiComponent() {
+
+        mListPreference = (ListPreference) findPreference("date");
+
     }
 }

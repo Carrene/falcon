@@ -2,6 +2,9 @@ package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import com.google.common.base.Joiner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -32,12 +35,12 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
     }
 
     @Override
-    public synchronized void getDepositList(Map<String, ?> filterMap) {
+    public synchronized void getDepositList(Map<String, ?> filterMap,String startDate,String endDate) {
 
         mTransactionHistoryView.showPaginationLoading(true);
         mTransactionHistoryView.showPaginationError(false);
 
-        Map<String, String> queryString = createQueryString(filterMap);
+        Map<String, String> queryString = createQueryString(filterMap,startDate,endDate);
 
         RepositoryLocator.getInstance().getRepository(ReceiptRepository.class).getAll(deal -> {
 
@@ -83,7 +86,7 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
         mTransactionHistoryView.loadNoMoreItem(false);
     }
 
-    private Map<String, String> createQueryString(Map<String, ?> filterMap) {
+    private Map<String, String> createQueryString(Map<String, ?> filterMap,String startDate,String endDate) {
         //TODO(Ehsan) Complete time filtering
         Map<String, String> queryString = new HashMap<>();
         Map<String, Set<String>> queryStringMap = new HashMap<>();
@@ -130,11 +133,25 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                     }
                     case "Custom": {
 
-//                        LinkedHashSet linkedHashSet=new LinkedHashSet();
-//                        linkedHashSet.add();
-//                        linkedHashSet.add();
-//                        queryString.put("createdAt",linkedHashSet);
+//                        if (startDate != null && endDate != null) {
+//                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+//                            Date firstDate = null;
+//                            Date secondDate = null;
+//                            try {
+//                                firstDate = formatter.parse(startDate);
+//                                secondDate = formatter.parse(endDate);
+//                            } catch (ParseException e) {
+//                                e.printStackTrace();
+//                            }
+//                            LinkedHashSet linkedHashSet = new LinkedHashSet();
+//                            linkedHashSet.add(DateUtil.dateToIso(firstDate));
+//                            linkedHashSet.add(DateUtil.dateToIso(secondDate));
+//                            queryStringMap.put("createdAt", linkedHashSet);
+//
+//                        }
+//                        break;
                     }
+
                 }
             }
         }

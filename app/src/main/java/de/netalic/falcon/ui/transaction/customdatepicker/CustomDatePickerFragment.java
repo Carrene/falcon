@@ -10,6 +10,8 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.widget.DatePicker;
 
+import java.util.Map;
+
 import de.netalic.falcon.R;
 
 public class CustomDatePickerFragment extends PreferenceFragmentCompat implements DatePickerDialog.OnDateSetListener {
@@ -20,7 +22,8 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
     private Callback mCallback;
     private String mStartDate;
     private String mEndDate;
-
+    private int mFindOutWhenCanCallback = 0;
+    private Map<String, ?> mFilterMap;
 
     public interface Callback {
 
@@ -33,7 +36,6 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
 
         addPreferencesFromResource(R.xml.prefrences_customdatepicker);
         mDatePickerDialog = new DatePickerDialog(getContext());
-
         initUiComponent();
 
     }
@@ -61,22 +63,36 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
 
         if (key.equals(getString(R.string.customdatepicker_choosestartdatekey))) {
 
-            mDatePickerDialog.setOnDateSetListener((view, year, month, dayOfMonth) ->
+            mDatePickerDialog.setOnDateSetListener((view, year, month, dayOfMonth) -> {
 
-                    mStartDate = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(dayOfMonth));
-            mPreferenceStart.setSummary(mStartDate);
+
+                mStartDate = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(dayOfMonth);
+                mPreferenceStart.setSummary(mStartDate);
+                mFindOutWhenCanCallback = mFindOutWhenCanCallback + 1;
+                if (mFindOutWhenCanCallback == 2) {
+                    mCallback.sendStartAndEndDate(mStartDate, mEndDate);
+
+                }
+            });
             mDatePickerDialog.show();
+
 
         } else if (key.equals(getString(R.string.customdatepicker_chooseenddatekey))) {
 
-            mDatePickerDialog.setOnDateSetListener((view, year, month, dayOfMonth) ->
-                    mEndDate = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(dayOfMonth));
-            mPreferenceEnd.setSummary(mEndDate);
+            mDatePickerDialog.setOnDateSetListener((view, year, month, dayOfMonth) -> {
 
+                mEndDate = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(dayOfMonth);
+                mPreferenceEnd.setSummary(mStartDate);
+                mFindOutWhenCanCallback = mFindOutWhenCanCallback + 1;
+                if (mFindOutWhenCanCallback == 2) {
+                    mCallback.sendStartAndEndDate(mStartDate, mEndDate);
+
+                }
+            });
             mDatePickerDialog.show();
 
         }
-        mCallback.sendStartAndEndDate(mStartDate, mEndDate);
+
         return super.onPreferenceTreeClick(preference);
     }
 
@@ -84,12 +100,13 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mCallback=(Callback) context;
+        mCallback = (Callback) context;
     }
+
+
 }

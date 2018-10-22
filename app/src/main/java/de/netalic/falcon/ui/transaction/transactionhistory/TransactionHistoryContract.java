@@ -23,7 +23,7 @@ public interface TransactionHistoryContract {
 
     interface Presenter extends BasePresenter {
 
-        void getDepositList(Map<String, ?> filterMap);
+        void getDepositList(Map<String, ?> filterMap,String startDate,String endDate);
 
         void resetPagination();
     }

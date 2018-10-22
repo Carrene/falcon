@@ -203,7 +203,11 @@
         <activity
             android:name=".ui.transaction.customdatepicker.CustomDatePickerActivity"
             android:theme="@style/BaseAppTheme"
-            android:parentActivityName=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity" />
+            android:parentActivityName=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity" />
+        </activity>
     </application>
 
 </manifest>
