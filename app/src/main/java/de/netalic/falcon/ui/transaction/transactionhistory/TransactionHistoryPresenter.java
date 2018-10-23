@@ -27,10 +27,10 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
     private int mPaginationSkip = 0;
     private Context mContext;
 
-    public TransactionHistoryPresenter(TransactionHistoryContract.View transactionHistoryView,Context context) {
+    public TransactionHistoryPresenter(TransactionHistoryContract.View transactionHistoryView, Context context) {
 
         mTransactionHistoryView = checkNotNull(transactionHistoryView);
-        mContext=context;
+        mContext = context;
         mTransactionHistoryView.setPresenter(this);
     }
 
@@ -40,12 +40,12 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
     }
 
     @Override
-    public synchronized void getDepositList(Map<String, ?> filterMap,String startDate,String endDate) {
+    public synchronized void getDepositList(Map<String, ?> filterMap, String startDate, String endDate) {
 
         mTransactionHistoryView.showPaginationLoading(true);
         mTransactionHistoryView.showPaginationError(false);
 
-        Map<String, String> queryString = createQueryString(filterMap,startDate,endDate);
+        Map<String, String> queryString = createQueryString(filterMap, startDate, endDate);
 
         RepositoryLocator.getInstance().getRepository(ReceiptRepository.class).getAll(deal -> {
 
@@ -91,7 +91,7 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
         mTransactionHistoryView.loadNoMoreItem(false);
     }
 
-    private Map<String, String> createQueryString(Map<String, ?> filterMap,String startDate,String endDate) {
+    private Map<String, String> createQueryString(Map<String, ?> filterMap, String startDate, String endDate) {
         //TODO(Ehsan) Complete time filtering
         Map<String, String> queryString = new HashMap<>();
         Map<String, Set<String>> queryStringMap = new HashMap<>();
@@ -145,19 +145,19 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                     case "Custom": {
 
 
-                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-                            Date firstDate = null;
-                            Date secondDate = null;
-                            try {
-                                firstDate = formatter.parse(startDate);
-                                secondDate = formatter.parse(endDate);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            LinkedHashSet linkedHashSet = new LinkedHashSet();
-                            linkedHashSet.add(DateUtil.dateToIso(firstDate));
-                            linkedHashSet.add(DateUtil.dateToIso(secondDate));
-                            queryStringMap.put("createdAt", linkedHashSet);
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                        Date firstDate = null;
+                        Date secondDate = null;
+                        try {
+                            firstDate = formatter.parse(startDate);
+                            secondDate = formatter.parse(endDate);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        LinkedHashSet linkedHashSet = new LinkedHashSet();
+                        linkedHashSet.add(DateUtil.dateToIso(firstDate));
+                        linkedHashSet.add(DateUtil.dateToIso(secondDate));
+                        queryStringMap.put("createdAt", linkedHashSet);
 
                         break;
                     }

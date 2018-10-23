@@ -17,8 +17,6 @@ import de.netalic.falcon.ui.transaction.customdatepicker.CustomDatePickerActivit
 public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, DatePickerDialog.OnDateSetListener {
 
     private ListPreference mListPreference;
-    private String mStartAndEndDate;
-    private Preference mPreference;
 
 
     public static TransactionHistoryFiltersPreferenceFragment newInstance() {
@@ -48,8 +46,7 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
             if (mListPreference.getValue().equals("Custom")) {
 
                 Intent intent = new Intent(getContext(), CustomDatePickerActivity.class);
-
-                startActivityForResult(intent, 1);
+                startActivity(intent);
 
             }
         }
@@ -63,9 +60,6 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
         mListPreference.setSummary(PreferenceManager.getDefaultSharedPreferences(getContext()).getString("STARTDATE", "defaultStringIfNothingFound")
                 +"_"
                 +PreferenceManager.getDefaultSharedPreferences(getContext()).getString("ENDDATE", "defaultStringIfNothingFound"));
-//        mPreference=getPreferenceManager().findPreference("date");
-//        String a=mPreference.getSummary().toString();
-//        mListPreference.setSummary(a);
 
     }
 

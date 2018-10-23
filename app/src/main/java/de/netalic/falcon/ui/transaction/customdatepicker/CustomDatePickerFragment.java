@@ -2,16 +2,14 @@ package de.netalic.falcon.ui.transaction.customdatepicker;
 
 import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.widget.DatePicker;
-
-import java.util.Map;
 
 import de.netalic.falcon.R;
 
@@ -20,16 +18,9 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
     private Preference mPreferenceStart;
     private Preference mPreferenceEnd;
     private DatePickerDialog mDatePickerDialog;
-    private Callback mCallback;
     private String mStartDate;
     private String mEndDate;
-    private int mFindOutWhenCanCallback = 0;
-    private Map<String, ?> mFilterMap;
 
-    public interface Callback {
-
-        void sendStartAndEndDate(String start, String end);
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -69,11 +60,9 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
 
                 mStartDate = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(dayOfMonth);
                 mPreferenceStart.setSummary(mStartDate);
-                mFindOutWhenCanCallback = mFindOutWhenCanCallback + 1;
-                if (mFindOutWhenCanCallback == 2) {
-                    mCallback.sendStartAndEndDate(mStartDate, mEndDate);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("STARTDATE", mStartDate).apply();
 
-                }
+
             });
             mDatePickerDialog.show();
 
@@ -84,11 +73,8 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
 
                 mEndDate = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(dayOfMonth);
                 mPreferenceEnd.setSummary(mStartDate);
-                mFindOutWhenCanCallback = mFindOutWhenCanCallback + 1;
-                if (mFindOutWhenCanCallback == 2) {
-                    mCallback.sendStartAndEndDate(mStartDate, mEndDate);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("ENDDATE", mEndDate).apply();
 
-                }
             });
             mDatePickerDialog.show();
 
@@ -108,13 +94,6 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
         super.onResume();
         SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
 
-    }
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mCallback = (Callback) context;
     }
 
 

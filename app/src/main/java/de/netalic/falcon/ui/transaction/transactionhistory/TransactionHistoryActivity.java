@@ -13,8 +13,6 @@ import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class TransactionHistoryActivity extends BaseActivity {
 
-    private String mStartDate;
-    private String mEndDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +62,4 @@ public class TransactionHistoryActivity extends BaseActivity {
         return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ENDDATE", "defaultStringIfNothingFound");
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        mStartDate = data.getStringExtra(TransactionHistoryFiltersActivity.START_AND_END_DATE);
-        mEndDate = data.getStringExtra("a");
-    }
 }

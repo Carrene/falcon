@@ -167,7 +167,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
             case R.id.item_transactionhistory_filter: {
 
                 Intent intent = new Intent(getContext(), TransactionHistoryFiltersActivity.class);
-                startActivityForResult(intent,1);
+                startActivity(intent);
                 break;
             }
         }

@@ -12,8 +12,6 @@ import de.netalic.falcon.util.ActivityUtil;
 
 public class TransactionHistoryFiltersActivity extends BaseActivity {
 
-    private String mStartDate;
-    private String mEndDate;
     public static final String START_AND_END_DATE = "startAndEndDate";
 
     @Override
@@ -42,20 +40,12 @@ public class TransactionHistoryFiltersActivity extends BaseActivity {
         return getString(R.string.transactionfilters_toolbar);
     }
 
-    public String getStartAndEndDate() {
-
-
-        return mStartDate+"_"+mEndDate;
-    }
-
     @Override
     public void onBackPressed() {
 
-        Intent intent = new Intent();
-        intent.putExtra(TransactionHistoryFiltersActivity.START_AND_END_DATE, mStartDate);
-        intent.putExtra("a", mEndDate);
-        setResult(RESULT_OK, intent);
-        finish();
+        Intent intent = NavUtils.getParentActivityIntent(this);
+        NavUtils.navigateUpTo(this, intent);
+        startActivity(intent);
     }
 
     @Override
@@ -67,10 +57,7 @@ public class TransactionHistoryFiltersActivity extends BaseActivity {
 
                 Intent intent = NavUtils.getParentActivityIntent(this);
                 NavUtils.navigateUpTo(this, intent);
-                intent.putExtra(TransactionHistoryFiltersActivity.START_AND_END_DATE, mStartDate);
-                intent.putExtra("a", mEndDate);
-                setResult(RESULT_OK, intent);
-                finish();
+                startActivity(intent);
                 break;
             }
         }
@@ -78,14 +65,5 @@ public class TransactionHistoryFiltersActivity extends BaseActivity {
         return true;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        mStartDate = data.getStringExtra(START_AND_END_DATE);
-        mEndDate=data.getStringExtra("a");
-
-        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("STARTDATE", mStartDate).apply();
-        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("ENDDATE", mEndDate).apply();
-    }
 }
 
