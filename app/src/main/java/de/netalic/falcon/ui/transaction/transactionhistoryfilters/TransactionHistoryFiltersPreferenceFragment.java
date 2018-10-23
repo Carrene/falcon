@@ -50,7 +50,7 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
                 Intent intent = new Intent(getContext(), CustomDatePickerActivity.class);
 
                 startActivityForResult(intent, 1);
-//                mListPreference.setSummary(mStartAndEndDate);
+
             }
         }
     }
@@ -60,9 +60,12 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
 
         super.onResume();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-        mPreference=getPreferenceManager().findPreference("date");
-        String a=mPreference.getSummary().toString();
-        mListPreference.setSummary(a);
+        mListPreference.setSummary(PreferenceManager.getDefaultSharedPreferences(getContext()).getString("STARTDATE", "defaultStringIfNothingFound")
+                +"_"
+                +PreferenceManager.getDefaultSharedPreferences(getContext()).getString("ENDDATE", "defaultStringIfNothingFound"));
+//        mPreference=getPreferenceManager().findPreference("date");
+//        String a=mPreference.getSummary().toString();
+//        mListPreference.setSummary(a);
 
     }
 
@@ -71,6 +74,7 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
 
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+
     }
 
     @Override

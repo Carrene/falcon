@@ -3,6 +3,7 @@ package de.netalic.falcon.ui.transaction.customdatepicker;
 import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -101,6 +102,14 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
+
+    }
+
 
     @Override
     public void onAttach(Context context) {

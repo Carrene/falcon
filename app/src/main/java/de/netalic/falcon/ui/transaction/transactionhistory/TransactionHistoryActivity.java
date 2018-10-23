@@ -2,6 +2,7 @@ package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.preference.PreferenceManager;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
@@ -30,7 +31,7 @@ public class TransactionHistoryActivity extends BaseActivity {
 
         }
 
-        new TransactionHistoryPresenter(transactionHistoryFragment);
+        new TransactionHistoryPresenter(transactionHistoryFragment,getApplicationContext());
     }
 
     @Override
@@ -55,12 +56,12 @@ public class TransactionHistoryActivity extends BaseActivity {
 
     public String getStartDate(){
 
-        return mStartDate;
+        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("STARTDATE", "defaultStringIfNothingFound");
     }
 
     public String getEndDate(){
 
-        return mEndDate;
+        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ENDDATE", "defaultStringIfNothingFound");
     }
 
     @Override

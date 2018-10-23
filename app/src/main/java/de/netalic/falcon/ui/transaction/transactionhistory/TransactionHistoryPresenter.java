@@ -1,5 +1,8 @@
 package de.netalic.falcon.ui.transaction.transactionhistory;
 
+import android.content.Context;
+import android.support.v7.preference.PreferenceManager;
+
 import com.google.common.base.Joiner;
 
 import java.text.ParseException;
@@ -22,10 +25,12 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
     private TransactionHistoryContract.View mTransactionHistoryView;
     private int mPaginationTake = 25;
     private int mPaginationSkip = 0;
+    private Context mContext;
 
-    public TransactionHistoryPresenter(TransactionHistoryContract.View transactionHistoryView) {
+    public TransactionHistoryPresenter(TransactionHistoryContract.View transactionHistoryView,Context context) {
 
         mTransactionHistoryView = checkNotNull(transactionHistoryView);
+        mContext=context;
         mTransactionHistoryView.setPresenter(this);
     }
 
@@ -114,6 +119,8 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         linkedHashSet.add(DateUtil.lastDayToIso());
                         linkedHashSet.add(DateUtil.nowToIso());
                         queryStringMap.put("createdAt", linkedHashSet);
+                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("STARTDATE", entry.getValue().toString()).apply();
+                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("ENDDATE", "Now").apply();
                         break;
                     }
                     case "Last week": {
@@ -121,6 +128,8 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         linkedHashSet.add(DateUtil.lastWeekToIso());
                         linkedHashSet.add(DateUtil.nowToIso());
                         queryStringMap.put("createdAt", linkedHashSet);
+                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("STARTDATE", entry.getValue().toString()).apply();
+                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("ENDDATE", "Now").apply();
                         break;
                     }
 
@@ -129,27 +138,28 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         linkedHashSet.add(DateUtil.lastMonthToIso());
                         linkedHashSet.add(DateUtil.nowToIso());
                         queryStringMap.put("createdAt", linkedHashSet);
+                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("STARTDATE", entry.getValue().toString()).apply();
+                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("ENDDATE", "Now").apply();
                         break;
                     }
                     case "Custom": {
 
-//                        if (startDate != null && endDate != null) {
-//                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-//                            Date firstDate = null;
-//                            Date secondDate = null;
-//                            try {
-//                                firstDate = formatter.parse(startDate);
-//                                secondDate = formatter.parse(endDate);
-//                            } catch (ParseException e) {
-//                                e.printStackTrace();
-//                            }
-//                            LinkedHashSet linkedHashSet = new LinkedHashSet();
-//                            linkedHashSet.add(DateUtil.dateToIso(firstDate));
-//                            linkedHashSet.add(DateUtil.dateToIso(secondDate));
-//                            queryStringMap.put("createdAt", linkedHashSet);
-//
-//                        }
-//                        break;
+
+                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                            Date firstDate = null;
+                            Date secondDate = null;
+                            try {
+                                firstDate = formatter.parse(startDate);
+                                secondDate = formatter.parse(endDate);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            LinkedHashSet linkedHashSet = new LinkedHashSet();
+                            linkedHashSet.add(DateUtil.dateToIso(firstDate));
+                            linkedHashSet.add(DateUtil.dateToIso(secondDate));
+                            queryStringMap.put("createdAt", linkedHashSet);
+
+                        break;
                     }
 
                 }

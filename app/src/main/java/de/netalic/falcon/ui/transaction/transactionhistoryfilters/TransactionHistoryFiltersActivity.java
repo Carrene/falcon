@@ -3,6 +3,7 @@ package de.netalic.falcon.ui.transaction.transactionhistoryfilters;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;
@@ -64,15 +65,12 @@ public class TransactionHistoryFiltersActivity extends BaseActivity {
 
             case android.R.id.home: {
 
-//                Intent intent = new Intent();
-//                intent.putExtra(TransactionHistoryFiltersActivity.START_AND_END_DATE, mStartDate);
-//                intent.putExtra("a", mEndDate);
-//                setResult(RESULT_OK, intent);
-//                finish();
-//                break;
-                        super.onBackPressed();
-        Intent intent = NavUtils.getParentActivityIntent(this);
-        NavUtils.navigateUpTo(this, intent);
+                Intent intent = NavUtils.getParentActivityIntent(this);
+                NavUtils.navigateUpTo(this, intent);
+                intent.putExtra(TransactionHistoryFiltersActivity.START_AND_END_DATE, mStartDate);
+                intent.putExtra("a", mEndDate);
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
             }
         }
@@ -85,6 +83,9 @@ public class TransactionHistoryFiltersActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         mStartDate = data.getStringExtra(START_AND_END_DATE);
         mEndDate=data.getStringExtra("a");
+
+        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("STARTDATE", mStartDate).apply();
+        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("ENDDATE", mEndDate).apply();
     }
 }
 
