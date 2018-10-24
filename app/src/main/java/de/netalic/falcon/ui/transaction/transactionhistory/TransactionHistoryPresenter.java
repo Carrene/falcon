@@ -40,12 +40,12 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
     }
 
     @Override
-    public synchronized void getDepositList(Map<String, ?> filterMap, String startDate, String endDate) {
+    public synchronized void getDepositList(Map<String, ?> filterMap) {
 
         mTransactionHistoryView.showPaginationLoading(true);
         mTransactionHistoryView.showPaginationError(false);
 
-        Map<String, String> queryString = createQueryString(filterMap, startDate, endDate);
+        Map<String, String> queryString = createQueryString(filterMap);
 
         RepositoryLocator.getInstance().getRepository(ReceiptRepository.class).getAll(deal -> {
 
@@ -91,7 +91,7 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
         mTransactionHistoryView.loadNoMoreItem(false);
     }
 
-    private Map<String, String> createQueryString(Map<String, ?> filterMap, String startDate, String endDate) {
+    private Map<String, String> createQueryString(Map<String, ?> filterMap) {
         //TODO(Ehsan) Complete time filtering
         Map<String, String> queryString = new HashMap<>();
         Map<String, Set<String>> queryStringMap = new HashMap<>();
@@ -114,13 +114,12 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                     queryStringMap.put("createdAt", new HashSet<>());
                 }
                 switch (entry.getValue().toString()) {
+
                     case "Last day": {
                         LinkedHashSet linkedHashSet = new LinkedHashSet();
                         linkedHashSet.add(DateUtil.lastDayToIso());
                         linkedHashSet.add(DateUtil.nowToIso());
                         queryStringMap.put("createdAt", linkedHashSet);
-                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("STARTDATE", entry.getValue().toString()).apply();
-                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("ENDDATE", "Now").apply();
                         break;
                     }
                     case "Last week": {
@@ -128,8 +127,6 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         linkedHashSet.add(DateUtil.lastWeekToIso());
                         linkedHashSet.add(DateUtil.nowToIso());
                         queryStringMap.put("createdAt", linkedHashSet);
-                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("STARTDATE", entry.getValue().toString()).apply();
-                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("ENDDATE", "Now").apply();
                         break;
                     }
 
@@ -138,27 +135,31 @@ public class TransactionHistoryPresenter implements TransactionHistoryContract.P
                         linkedHashSet.add(DateUtil.lastMonthToIso());
                         linkedHashSet.add(DateUtil.nowToIso());
                         queryStringMap.put("createdAt", linkedHashSet);
-                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("STARTDATE", entry.getValue().toString()).apply();
-                        PreferenceManager.getDefaultSharedPreferences(mContext).edit().putString("ENDDATE", "Now").apply();
                         break;
                     }
                     case "Custom": {
 
+                        String startAndEnd = PreferenceManager.getDefaultSharedPreferences(mContext).getString("custom", "Select a timespan");
 
-                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-                        Date firstDate = null;
-                        Date secondDate = null;
-                        try {
-                            firstDate = formatter.parse(startDate);
-                            secondDate = formatter.parse(endDate);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
+                        if (startAndEnd.matches("Select a timespan") || startAndEnd.matches("Custom")) {
+
+
+                        } else {
+                            String[] custom = startAndEnd.split("_");
+                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                            Date firstDate = null;
+                            Date secondDate = null;
+                            try {
+                                firstDate = formatter.parse(custom[0]);
+                                secondDate = formatter.parse(custom[1]);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            LinkedHashSet linkedHashSet = new LinkedHashSet();
+                            linkedHashSet.add(DateUtil.dateToIso(firstDate));
+                            linkedHashSet.add(DateUtil.dateToIso(secondDate));
+                            queryStringMap.put("createdAt", linkedHashSet);
                         }
-                        LinkedHashSet linkedHashSet = new LinkedHashSet();
-                        linkedHashSet.add(DateUtil.dateToIso(firstDate));
-                        linkedHashSet.add(DateUtil.dateToIso(secondDate));
-                        queryStringMap.put("createdAt", linkedHashSet);
-
                         break;
                     }
 

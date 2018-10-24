@@ -10,8 +10,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import io.realm.annotations.PrimaryKey;
-
 public class Wallet implements Parcelable {
 
     @SerializedName("id")

@@ -1,7 +1,6 @@
 package de.netalic.falcon.ui.transaction.transactionhistoryfilters;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -43,6 +42,8 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
         if (pref instanceof android.support.v7.preference.ListPreference) {
             mListPreference = (android.support.v7.preference.ListPreference) pref;
             mListPreference.setSummary(mListPreference.getValue());
+
+            PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("custom", mListPreference.getValue()).apply();
             if (mListPreference.getValue().equals("Custom")) {
 
                 Intent intent = new Intent(getContext(), CustomDatePickerActivity.class);
@@ -54,12 +55,12 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
 
     @Override
     public void onResume() {
-
         super.onResume();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-        mListPreference.setSummary(PreferenceManager.getDefaultSharedPreferences(getContext()).getString("STARTDATE", "defaultStringIfNothingFound")
-                +"_"
-                +PreferenceManager.getDefaultSharedPreferences(getContext()).getString("ENDDATE", "defaultStringIfNothingFound"));
+        mListPreference.setSummary(PreferenceManager.getDefaultSharedPreferences(getContext()).getString("custom", getContext().getString(R.string.transactionhistoryfilters_selecttimespan)));
+
+        //TODO:(Milad)find way for multi click on list preference
+        //mListPreference.setValueIndex(0);
 
     }
 
@@ -74,11 +75,6 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
     }
 
     private void initUiComponent() {

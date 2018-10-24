@@ -182,6 +182,9 @@
         <item>Custom</item>
     </string-array>
 
+    <string name="transactionhistoryfilters_selecttimespan">Select a timespan</string>
+
+
     <string name="transfercompleted_toolbar">Transfer completed</string>
     <string name="transfercompleted_paidamount">Transfer amount  </string>
     <string name="transfercompleted_baseamount">Paid amount  </string>

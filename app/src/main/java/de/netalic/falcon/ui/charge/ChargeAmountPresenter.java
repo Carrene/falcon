@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import java.util.Map;
 
 import de.netalic.falcon.MyApp;
-import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.rate.RateRepository;
 import de.netalic.falcon.data.repository.transaction.TransactionRepository;

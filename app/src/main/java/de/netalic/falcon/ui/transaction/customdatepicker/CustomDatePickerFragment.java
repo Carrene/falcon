@@ -1,8 +1,6 @@
 package de.netalic.falcon.ui.transaction.customdatepicker;
 
-import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -22,13 +20,13 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
     private String mEndDate;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
-        addPreferencesFromResource(R.xml.prefrences_customdatepicker);
-        mDatePickerDialog = new DatePickerDialog(getContext());
+        setPreferencesFromResource(R.xml.prefrences_customdatepicker, rootKey);
+        mDatePickerDialog = new DatePickerDialog(getContext(), this, 2018, 1, 1);
         initUiComponent();
+
 
     }
 
@@ -47,7 +45,8 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
         mPreferenceEnd = findPreference(getString(R.string.customdatepicker_chooseenddatekey));
     }
 
-    @TargetApi(Build.VERSION_CODES.N)
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
 
@@ -55,31 +54,30 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
 
         if (key.equals(getString(R.string.customdatepicker_choosestartdatekey))) {
 
+            mDatePickerDialog.show();
             mDatePickerDialog.setOnDateSetListener((view, year, month, dayOfMonth) -> {
 
 
                 mStartDate = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(dayOfMonth);
-                mPreferenceStart.setSummary(mStartDate);
-                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("STARTDATE", mStartDate).apply();
 
+                preference.setSummary(mStartDate);
+
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("custom", mStartDate +"_"+ mEndDate).apply();
 
             });
-            mDatePickerDialog.show();
 
 
         } else if (key.equals(getString(R.string.customdatepicker_chooseenddatekey))) {
 
+            mDatePickerDialog.show();
             mDatePickerDialog.setOnDateSetListener((view, year, month, dayOfMonth) -> {
 
                 mEndDate = Integer.toString(year) + "/" + Integer.toString(month) + "/" + Integer.toString(dayOfMonth);
-                mPreferenceEnd.setSummary(mStartDate);
-                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("ENDDATE", mEndDate).apply();
+                preference.setSummary(mEndDate);
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("custom", mStartDate+"_"+ mEndDate).apply();
 
             });
-            mDatePickerDialog.show();
-
         }
-
         return super.onPreferenceTreeClick(preference);
     }
 
@@ -92,9 +90,10 @@ public class CustomDatePickerFragment extends PreferenceFragmentCompat implement
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
-
     }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 }

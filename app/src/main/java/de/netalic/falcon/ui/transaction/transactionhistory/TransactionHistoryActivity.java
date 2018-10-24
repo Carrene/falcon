@@ -2,17 +2,14 @@ package de.netalic.falcon.ui.transaction.transactionhistory;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceManager;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class TransactionHistoryActivity extends BaseActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +26,7 @@ public class TransactionHistoryActivity extends BaseActivity {
 
         }
 
-        new TransactionHistoryPresenter(transactionHistoryFragment,getApplicationContext());
+        new TransactionHistoryPresenter(transactionHistoryFragment, getApplicationContext());
     }
 
     @Override
@@ -48,18 +45,8 @@ public class TransactionHistoryActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent=new Intent(this,DashboardActivity.class);
+        Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
-    }
-
-    public String getStartDate(){
-
-        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("STARTDATE", "defaultStringIfNothingFound");
-    }
-
-    public String getEndDate(){
-
-        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ENDDATE", "defaultStringIfNothingFound");
     }
 
 }

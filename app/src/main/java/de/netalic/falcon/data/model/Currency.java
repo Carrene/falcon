@@ -2,8 +2,6 @@ package de.netalic.falcon.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.realm.annotations.PrimaryKey;
-
 public class Currency {
 
     @SerializedName("id")

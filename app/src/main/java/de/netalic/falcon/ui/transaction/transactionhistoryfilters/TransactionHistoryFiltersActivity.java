@@ -3,7 +3,6 @@ package de.netalic.falcon.ui.transaction.transactionhistoryfilters;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v7.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;
@@ -11,8 +10,6 @@ import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class TransactionHistoryFiltersActivity extends BaseActivity {
-
-    public static final String START_AND_END_DATE = "startAndEndDate";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import io.realm.annotations.PrimaryKey;
-
 public class Transaction implements Parcelable {
 
     @SerializedName("id")

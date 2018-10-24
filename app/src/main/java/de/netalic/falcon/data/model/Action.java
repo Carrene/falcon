@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.realm.annotations.PrimaryKey;
-
 public class Action implements Parcelable {
 
     @SerializedName("id")

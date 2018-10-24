@@ -111,7 +111,7 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     private void getDepositList(Map<String, ?> map) {
 
 
-        mTransactionHistoryPresenter.getDepositList(map,((TransactionHistoryActivity)getActivity()).getStartDate(),((TransactionHistoryActivity) getActivity()).getEndDate());
+        mTransactionHistoryPresenter.getDepositList(map);
     }
 
     private void initUiComponent() {
