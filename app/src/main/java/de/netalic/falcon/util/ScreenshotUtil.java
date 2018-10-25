@@ -3,6 +3,7 @@ package de.netalic.falcon.util;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.view.View;
@@ -77,8 +78,8 @@ public class ScreenshotUtil {
 
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName()+".provider", file));
-        shareIntent.setType("image/png");
+        shareIntent.putExtra(Intent.EXTRA_STREAM,Uri.fromFile(file));
+        shareIntent.setType("image/jpeg");
         context.startActivity(Intent.createChooser(shareIntent, "Share Screenshot"));
 
     }
