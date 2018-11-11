@@ -16,11 +16,8 @@ import java.util.Map;
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.addresses.AddressesActivity;
-import de.netalic.falcon.ui.charge.ChargeActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.setting.basic.SettingActivity;
-import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
-import de.netalic.falcon.ui.transfer.TransferActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import nuesoft.helpdroid.util.Parser;
 
@@ -31,12 +28,10 @@ public class NavigationDrawerUtil {
     public static Drawer getDrawer(final Activity activity, Toolbar toolbar, int identifier) {
 
         PrimaryDrawerItem item1 = new CustomPrimaryDrawerItem().withIdentifier(1).withName(R.string.navigation_dashboard).withIcon(R.drawable.navigation_dashboard);
-        PrimaryDrawerItem item2 = new CustomPrimaryDrawerItem().withIdentifier(2).withName(R.string.navigation_charge).withIcon(R.drawable.navigation_charge);
-        PrimaryDrawerItem item3 = new CustomPrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_addresses).withIcon(R.drawable.navigation_wallet);
-        PrimaryDrawerItem item4 = new CustomPrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_transfer).withIcon(R.drawable.navigation_transfer);
-        PrimaryDrawerItem item5 = new CustomPrimaryDrawerItem().withIdentifier(5).withName(R.string.navigation_transactionhistory).withIcon(R.drawable.navigation_transaction);
-        PrimaryDrawerItem item6 = new CustomPrimaryDrawerItem().withIdentifier(6).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
-        PrimaryDrawerItem item7 = new CustomPrimaryDrawerItem().withIdentifier(7).withName(R.string.navigation_help).withIcon(R.drawable.navigation_help);
+        PrimaryDrawerItem item2 = new CustomPrimaryDrawerItem().withIdentifier(2).withName(R.string.navigation_wallets).withIcon(R.drawable.navigation_wallet);
+        PrimaryDrawerItem item3 = new CustomPrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_qrcodes).withIcon(R.drawable.navigation_qrcodes);
+        PrimaryDrawerItem item4 = new CustomPrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
+        PrimaryDrawerItem item5 = new CustomPrimaryDrawerItem().withIdentifier(5).withName(R.string.navigation_aboutus).withIcon(R.drawable.navigation_aboutus);
 
         //TODO(Ehsan): Inject this object
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
@@ -61,7 +56,7 @@ public class NavigationDrawerUtil {
                 .withActionBarDrawerToggleAnimated(true)
                 .withCloseOnClick(true)
                 .withSelectedItem(identifier)
-                .addDrawerItems(item1, item2, item3, item4, item5, item6, item7)
+                .addDrawerItems(item1, item2, item3, item4, item5)
                 .withAccountHeader(headerResult)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if (position != identifier) {
@@ -73,35 +68,21 @@ public class NavigationDrawerUtil {
                                 activity.startActivity(intent);
                                 break;
                             }
-
                             case 2: {
-                                intent = new Intent(activity, ChargeActivity.class);
+                                intent = new Intent(activity, AddressesActivity.class);
                                 activity.startActivity(intent);
                                 break;
                             }
+                            case 3: {
 
-                            case 3:{
-                                intent=new Intent(activity, AddressesActivity.class);
+                            }
+                            case 4: {
+                                intent = new Intent(activity, SettingActivity.class);
                                 activity.startActivity(intent);
                                 break;
                             }
-
-                            case 4:{
-                                intent=new Intent(activity, TransferActivity.class);
-                                activity.startActivity(intent);
-                                break;
-                            }
-
                             case 5: {
-                                intent = new Intent(activity, TransactionHistoryActivity.class);
-                                activity.startActivity(intent);
-                                break;
-                            }
 
-                            case 6:{
-                                intent=new Intent(activity, SettingActivity.class);
-                                activity.startActivity(intent);
-                                break;
                             }
                         }
                     }
