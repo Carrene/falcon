@@ -247,7 +247,7 @@
     <string name="transferfailed_trywithdrawbutton">TRY TRANSFER</string>
     <string name="transferfailed_dashboardbutton">DASHBOARD</string>
 
-    <string name="addresses_toolbar">Addresses</string>
+    <string name="addresses_toolbar">Wallets</string>
     <string name="rowaddresses_walletname">"Wallet Name : "</string>
     <string name="addresses_copied">Copied to clipboard</string>
 

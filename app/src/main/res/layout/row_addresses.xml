@@ -58,11 +58,11 @@
 
         <ImageView
             android:id="@+id/imageview_addresses_share"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="@dimen/height_addresses_shareandqrcodeimageview"
             android:layout_toStartOf="@+id/imageview_addresses_qrcode"
             android:paddingEnd="@dimen/paddingend_rowaddresses_shareimageview"
-            android:src="@drawable/addresses_share" />
+            android:src="@drawable/walletaddresses_copy" />
 
         <ImageView
             android:id="@+id/imageview_addresses_qrcode"
@@ -71,7 +71,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:paddingEnd="@dimen/marginstartend_rowaddresses_alltextview"
-            android:src="@drawable/addresses_qrcode" />
+            android:src="@drawable/walletaddresses_qrcode" />
 
     </RelativeLayout>
 

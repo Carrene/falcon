@@ -332,7 +332,7 @@
     <dimen name="textsize_rowaddresses_firstlinetextview">14sp</dimen>
     <dimen name="textsize_rowaddresses_secondlinetextview">12sp</dimen>
     <dimen name="margintop_rowaddresses_view">20dp</dimen>
-    <dimen name="paddingend_rowaddresses_shareimageview">20dp</dimen>
+    <dimen name="paddingend_rowaddresses_shareimageview">15dp</dimen>
     <dimen name="margintop_addresses_walletaddresstextview">4dp</dimen>
     <dimen name="height_addresses_shareandqrcodeimageview">30dp</dimen>
 
