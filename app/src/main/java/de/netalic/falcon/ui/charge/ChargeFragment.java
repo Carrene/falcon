@@ -59,9 +59,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerViewWallets = mRoot.findViewById(R.id.recyclerViewWallets);
         mRecyclerViewPaymentGateway = mRoot.findViewById(R.id.recyclerViewPaymentGateway);
-        mButtonChargeNext = mRoot.findViewById(R.id.button_charge_next);
         mRecyclerViewWallets.addItemDecoration(new OffsetItemDecoration(getContext()));
         mRecyclerViewPaymentGateway.addItemDecoration(new OffsetItemDecoration(getContext()));
 
