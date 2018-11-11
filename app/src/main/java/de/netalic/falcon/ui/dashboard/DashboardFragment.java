@@ -98,8 +98,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mTextViewEquivalentToBaseCurrency = mRoot.findViewById(R.id.textview_dashboard_ratecurrency);
         mSpinnerWalletList = mRoot.findViewById(R.id.spinner_dashboard_spinner);
         mTextViewBalance = mRoot.findViewById(R.id.textview_dashboard_balance);
-        mImageViewWithdraw = mRoot.findViewById(R.id.imageview_dashboard_withdraw);
-        mImageViewPurchase = mRoot.findViewById(R.id.imageview_dashboard_purchase);
     }
 
     private void getRatesList() {
