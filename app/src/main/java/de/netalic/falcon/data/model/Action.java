@@ -25,11 +25,17 @@ public class Action implements Parcelable {
     @SerializedName("walletAddress")
     private String mWalletAddress;
 
-    @SerializedName("amountInBaseCurrency")
-    private float mAmountInBaseCurrency;
-
     @SerializedName("walletName")
     private String mWalletName;
+
+    @SerializedName("doneAt")
+    private boolean mDoneAt;
+
+    @SerializedName("isDone")
+    private boolean mIsDone;
+
+    @SerializedName("createdAt")
+    private String mCreatedAt;
 
 
     private Action(Parcel in) {
@@ -40,8 +46,10 @@ public class Action implements Parcelable {
         mCurrencyCode = in.readString();
         mCurrencySymbol = in.readString();
         mWalletAddress = in.readString();
-        mAmountInBaseCurrency = in.readFloat();
         mWalletName = in.readString();
+        mCreatedAt=in.readString();
+        mIsDone=in.readInt()==1;
+        mDoneAt=in.readInt()==1;
     }
 
     public static final Creator<Action> CREATOR = new Creator<Action>() {
@@ -88,10 +96,6 @@ public class Action implements Parcelable {
         return mWalletAddress;
     }
 
-    public float getAmountInBaseCurrency() {
-
-        return mAmountInBaseCurrency;
-    }
 
     public String getWalletName() {
 
@@ -104,6 +108,18 @@ public class Action implements Parcelable {
         return 0;
     }
 
+    public boolean isDoneAt() {
+        return mDoneAt;
+    }
+
+    public boolean isIsDone() {
+        return mIsDone;
+    }
+
+    public String getCreatedAt() {
+        return mCreatedAt;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
 
@@ -113,7 +129,9 @@ public class Action implements Parcelable {
         dest.writeString(mCurrencyCode);
         dest.writeString(mCurrencySymbol);
         dest.writeString(mWalletAddress);
-        dest.writeFloat(mAmountInBaseCurrency);
         dest.writeString(mWalletName);
+        dest.writeString(mCreatedAt);
+        dest.writeInt(mIsDone?1:0);
+        dest.writeInt(mDoneAt?1:0);
     }
 }
