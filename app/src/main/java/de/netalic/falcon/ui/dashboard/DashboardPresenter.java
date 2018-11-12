@@ -1,7 +1,6 @@
 package de.netalic.falcon.ui.dashboard;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.util.List;
 import java.util.Map;
@@ -43,7 +42,7 @@ public class DashboardPresenter implements DashboardContract.Presenter {
 
                 switch (deal.getResponse().code()) {
                     case 200: {
-                        mDashboardView.setAdapter(deal.getResponse().body());
+                        mDashboardView.setWalletList(deal.getResponse().body());
                         break;
                     }
                 }

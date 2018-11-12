@@ -16,9 +16,15 @@ import de.netalic.falcon.data.model.Wallet;
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder> {
 
     private List<Wallet> mData;
+    private int mLastViewPosition = 1;
 
     public DashboardAdapter(List<Wallet> data){
         mData = data;
+    }
+
+    public void setData(List<Wallet> data){
+        mData = data;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -30,15 +36,25 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mTextViewName.setText(mData.get(position).getName());
-        holder.mTextViewCurrencySymbol.setText(mData.get(position).getCurrencySymbol());
-        holder.mTextViewBalance.setText(String.valueOf(mData.get(position).getBalance()));
-        holder.mTextViewAddress.setText(mData.get(position).getAddress());
+        if (mData.size() != 0){
+            position = position % mData.size();
+            holder.mTextViewName.setText(mData.get(position).getName() + " Wallet");
+            holder.mTextViewCurrencySymbol.setText(mData.get(position).getCurrencySymbol());
+            holder.mTextViewBalance.setText(String.valueOf(mData.get(position).getBalance()));
+            holder.mTextViewAddress.setText(mData.get(position).getAddress());
+//            if (mLastViewPosition != position){
+//                holder.itemView.getLayoutParams().height = 600;
+//            }else {
+//                mLastViewPosition = position;
+//                holder.itemView.getLayoutParams().height = 400;
+//            }
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return Integer.MAX_VALUE;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

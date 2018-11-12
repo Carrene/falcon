@@ -3,15 +3,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/porcelain"
     android:orientation="vertical"
-    android:id="@+id/fragment_dashboard">
+    android:id="@+id/fragment_dashboard"
+    android:baselineAligned="false">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dashboard_recyclerview">
+        android:layout_gravity="center_vertical"
+        android:id="@+id/dashboard_recyclerview"
+        android:orientation="horizontal">
     </android.support.v7.widget.RecyclerView>
+
+
+    <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:spi_dotSelectedColor="#FBC02D"
+        android:layout_gravity="center_horizontal"
+        app:spi_visibleDotCount="3"
+        app:spi_looped="true"
+        app:spi_dotColor="#6D6D6D"
+        app:spi_dotSize="8dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,61 +36,85 @@
         android:layout_marginLeft="51dp"
         android:layout_marginRight="51dp"
         android:layout_marginBottom="47.04dp"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:layout_marginTop="44dp">
 
         <LinearLayout
             android:layout_width="262dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="162dp"
             android:orientation="horizontal">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/dashboard_sendicon"/>
+                android:orientation="vertical"
+                android:baselineAligned="false">
 
-            <ImageView
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:src="@drawable/dashboard_sendicon" />
+
+                <ImageView
+                    android:layout_width="59dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="52.79dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/dashboard_withdrawicon" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/dashboard_exchangeicon"/>
+                android:orientation="vertical"
+                android:baselineAligned="false">
 
-            <ImageView
+                <ImageView
+                    android:layout_width="61dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="top|center_horizontal"
+                    android:src="@drawable/dashboard_exchangeicon" />
+
+                <ImageView
+                    android:layout_width="82dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="52.79dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="51dp"
+                    android:layout_marginRight="49dp"
+                    android:src="@drawable/dashboard_transactionsicon"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/dashboard_receiveicon"/>
+                android:orientation="vertical"
+                android:baselineAligned="false">
 
+                <ImageView
+                    android:layout_width="49dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:src="@drawable/dashboard_receiveicon" />
 
+                <ImageView
+                    android:id="@+id/s"
+                    android:layout_width="49dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="52.79dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/dashboard_chargeicon" />
+
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="262dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/dashboard_withdrawicon"
-                />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/dashboard_transactionsicon"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/dashboard_chargeicon"/>
-
-
-        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

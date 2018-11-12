@@ -10,8 +10,7 @@ public interface DashboardContract {
 
     interface View extends BaseView<Presenter>{
 
-        void setWalletList(List<Wallet> body);
-        void setAdapter(List<Wallet> body);
+        void setWalletList(List<Wallet> data);
     }
 
     interface Presenter extends BasePresenter {

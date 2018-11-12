@@ -12,7 +12,6 @@ import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class DashboardActivity extends BaseActivity {
 
-//    private static final int DROP_IN_REQUEST = 1;
     public Drawer drawer;
 
     @Override
