@@ -5,8 +5,6 @@ import android.os.Bundle;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.transfer.TransferCompletedFragment;
-import de.netalic.falcon.ui.transfer.TransferCompletedPresenter;
 import de.netalic.falcon.ui.transfer.TransferPayeeFragment;
 import de.netalic.falcon.util.ActivityUtil;
 
@@ -22,7 +20,7 @@ public class SendCompletedActivity extends BaseActivity {
             throw new RuntimeException("transaction should not be null");
         }
 
-        Transaction transaction=getIntent().getExtras().getParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION);
+        Transaction transaction=getIntent().getExtras().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
         SendCompletedFragment sendCompletedFragment=(SendCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transfercompleted_fragmentcontainer);
         if (sendCompletedFragment==null){
 

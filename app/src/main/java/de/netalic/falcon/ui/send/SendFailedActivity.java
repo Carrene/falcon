@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.transfer.TransferFailedFragment;
-import de.netalic.falcon.ui.transfer.TransferFailedPresenter;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class SendFailedActivity extends BaseActivity {

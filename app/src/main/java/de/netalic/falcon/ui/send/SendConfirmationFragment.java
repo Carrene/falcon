@@ -6,16 +6,16 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.transfer.TransferCompletedActivity;
-import de.netalic.falcon.ui.transfer.TransferConfirmationContract;
 import de.netalic.falcon.ui.transfer.TransferPayeeFragment;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -24,7 +24,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class SendConfirmationFragment extends Fragment implements SendConfirmationContract.View {
 
     private View mRoot;
-    private Button mButtonConfirm;
     private TextView mTextViewWalletName;
     private TextView mTextViewDestinationWalletAddress;
     private TextView mTextViewTransferAmount;
@@ -37,7 +36,7 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
 
         mRoot = inflater.inflate(R.layout.fragment_transferconfirmation, null);
         checkNotNull(getArguments());
-        mTransaction = getArguments().getParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION);
+        mTransaction = getArguments().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
         return mRoot;
     }
 
@@ -45,13 +44,12 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         initUiComponent();
-        initListener();
         setTransferInformation();
+        setHasOptionsMenu(true);
     }
 
     private void initUiComponent() {
 
-        mButtonConfirm = mRoot.findViewById(R.id.button_transferconfirmation_confirm);
         mTextViewWalletName = mRoot.findViewById(R.id.textview_transferconfirmation_walletname);
         mTextViewDestinationWalletAddress = mRoot.findViewById(R.id.textview_transferconfirmation_payee);
         mTextViewTransferAmount = mRoot.findViewById(R.id.textview_transferconfirmation_transferamount);
@@ -86,7 +84,7 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
 
         SendConfirmationFragment transferConfirmationFragment = new SendConfirmationFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION, transaction);
+        bundle.putParcelable(SendFragment.ARGUMENT_TRANSACTION, transaction);
         transferConfirmationFragment.setArguments(bundle);
 
         return transferConfirmationFragment;
@@ -96,9 +94,14 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
     @Override
     public void navigationToCompletedTransfer(Transaction transaction) {
 
-        Intent intent = new Intent(getContext(), TransferCompletedActivity.class);
-        intent.putExtra(TransferPayeeFragment.ARGUMENT_TRANSACTION, transaction);
+        Intent intent = new Intent(getContext(), SendCompletedActivity.class);
+        intent.putExtra(SendFragment.ARGUMENT_TRANSACTION, transaction);
         startActivity(intent);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_everywhere_thathastick,menu);
     }
 
     @Override
@@ -140,20 +143,24 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
     }
 
 
-    private void initListener() {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        mButtonConfirm.setOnClickListener(v -> {
+        switch (item.getItemId()){
 
-            mSendConfirmationPresenter.finalizeTransfer(mTransaction.getId());
+            case R.id.menu_everywhere_done:{
 
-        });
-
+                mSendConfirmationPresenter.finalizeTransfer(mTransaction.getId());
+            }
+            break;
+        }
+        return true;
     }
 
     private void setTransferInformation() {
 
         mTextViewWalletName.setText(mTransaction.getActionList().get(1).getWalletName());
-        mTextViewTransferAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + mTransaction.getActionList().get(1).getAmount());
+        mTextViewTransferAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + Math.abs(mTransaction.getActionList().get(1).getAmount()));
         mTextViewDestinationWalletAddress.setText(mTransaction.getActionList().get(1).getWalletAddress());
     }
 }

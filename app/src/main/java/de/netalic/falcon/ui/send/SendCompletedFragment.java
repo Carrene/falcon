@@ -22,8 +22,6 @@ import java.io.File;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.transfer.TransferCompletedContract;
-import de.netalic.falcon.ui.transfer.TransferPayeeFragment;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -33,7 +31,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
 
 
     private static final String ALPHA_PATH = "/Alpha";
-    private static final String CHARGE_PATH = "/Transfer";
+    private static final String SEND_PATH = "/Send";
     private SendCompletedContract.Presenter mSendCompletedPresenter;
     private View mRoot;
     private TextView mTextViewTransferAmount;
@@ -53,7 +51,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
 
         mRoot = inflater.inflate(R.layout.fragment_transfercompleted, null);
         checkNotNull(getArguments());
-        mTransaction = getArguments().getParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION);
+        mTransaction = getArguments().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
         setHasOptionsMenu(true);
         return mRoot;
     }
@@ -89,7 +87,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
 
         SendCompletedFragment sendCompletedFragment = new SendCompletedFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(TransferPayeeFragment.ARGUMENT_TRANSACTION, transaction);
+        bundle.putParcelable(SendFragment.ARGUMENT_TRANSACTION, transaction);
         sendCompletedFragment.setArguments(bundle);
         return sendCompletedFragment;
     }
@@ -119,7 +117,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
 
     public void setTransactionInformation() {
 
-        mTextViewTransferAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + String.valueOf(mTransaction.getActionList().get(1).getAmount()));
+        mTextViewTransferAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + Math.abs(mTransaction.getActionList().get(1).getAmount()));
         mTextViewRrn.setText(mTransaction.getRetrievalReferenceNumber());
         mTextViewTransactionDate.setText(mTransaction.getDate());
         mTextViewTransactionTime.setText(mTransaction.getTime());
@@ -134,7 +132,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH)));
+            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH)));
             ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
 
         }
@@ -149,7 +147,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargecompleted_imagesaved), getContext());
 
         }

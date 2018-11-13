@@ -16,9 +16,12 @@ public class SendActivity extends BaseActivity {
 
         NavigationDrawerUtil.getDrawer(this,getToolbar(),1);
 
-        SendFragment sendFragment=SendFragment.newInstance();
-        ActivityUtil.replaceFragmentWithFragment(getSupportFragmentManager(),sendFragment,R.id.framelayout_send_fragmentcontainer);
+        SendFragment sendFragment=(SendFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_send_fragmentcontainer);
 
+        if (sendFragment==null) {
+            sendFragment = SendFragment.newInstance();
+            ActivityUtil.replaceFragmentWithFragment(getSupportFragmentManager(), sendFragment, R.id.framelayout_send_fragmentcontainer);
+        }
         new SendPresenter(sendFragment);
 
     }

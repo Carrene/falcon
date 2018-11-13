@@ -2,7 +2,6 @@ package de.netalic.falcon.ui.send;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.transaction.TransactionRepository;
-import de.netalic.falcon.ui.transfer.TransferConfirmationContract;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

@@ -48,7 +48,6 @@ public class TransferConfirmationFragment extends Fragment implements TransferCo
 
     private void initUiComponent() {
 
-        mButtonConfirm = mRoot.findViewById(R.id.button_transferconfirmation_confirm);
         mTextViewWalletName = mRoot.findViewById(R.id.textview_transferconfirmation_walletname);
         mTextViewDestinationWalletAddress = mRoot.findViewById(R.id.textview_transferconfirmation_payee);
         mTextViewTransferAmount = mRoot.findViewById(R.id.textview_transferconfirmation_transferamount);

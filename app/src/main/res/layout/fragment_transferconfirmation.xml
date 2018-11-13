@@ -149,17 +149,4 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_transferconfirmation_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbuttom_transferconfirmation_confirm"
-        android:layout_marginEnd="@dimen/marginstartend_transferconfirmation_confirm"
-        android:layout_marginStart="@dimen/marginstartend_transferconfirmation_confirm"
-        android:background="@color/colorSecondary"
-        android:text="@string/transferconfirmation_confirm"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_transferconfirmation_confirmbutton" />
 </RelativeLayout>

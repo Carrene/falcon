@@ -61,6 +61,7 @@ public class SendFragment extends Fragment implements SendContract.View {
         setHasOptionsMenu(true);
         requestCameraPermission();
         initListener();
+
     }
 
     @Override
@@ -110,15 +111,15 @@ public class SendFragment extends Fragment implements SendContract.View {
 
             case R.id.menu_everywhere_done: {
 
-                if (mEditTextAlphaAmount.getText().toString().equals("") || mEditTextEveryCurrencyAmount.getText().toString().equals("")) {
+                if (mEditTextAlphaAmount.getText().toString().equals("")) {
 
                     SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
                 } else {
 
 
-                    mSendPresenter.startTransfer(1, mTextInputEditTextWalletAddress.getText().toString(), Float.valueOf(mEditTextAlphaAmount.getText().toString()));
-                }
+                    mSendPresenter.startTransfer(104, mTextInputEditTextWalletAddress.getText().toString(), Float.valueOf(mEditTextAlphaAmount.getText().toString()));
 
+                }
 
             }
             break;
@@ -165,7 +166,6 @@ public class SendFragment extends Fragment implements SendContract.View {
             mDecoratedBarcodeView.resume();
             mDecoratedBarcodeView.setVisibility(View.VISIBLE);
         }
-
 
     }
 

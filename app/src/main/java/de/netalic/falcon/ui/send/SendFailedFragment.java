@@ -1,13 +1,10 @@
 package de.netalic.falcon.ui.send;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,28 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import java.io.File;
-
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.transfer.TransferFailedContract;
-import de.netalic.falcon.util.ScreenshotUtil;
-import de.netalic.falcon.util.SnackbarUtil;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 public class SendFailedFragment extends Fragment implements SendFailedContract.View {
 
 
     private SendFailedContract.Presenter mSendFailedPresenter;
     private View mRoot;
-    private Button mButtonTryTransfer;
     private Button mButtonDashboard;
-    private View mScreenshotView;
-    private static final int REQUEST_PERMISSIONS = 1;
-    private static final String ALPHA_PATH = "/Alpha";
-    private static final String CHARGE_PATH = "/Transfer";
-    private static final int IMAGE_QUALITY = 100;
 
     @Nullable
     @Override
@@ -76,8 +60,6 @@ public class SendFailedFragment extends Fragment implements SendFailedContract.V
 
     private void initUiComponent() {
 
-        mScreenshotView = mRoot.findViewById(R.id.linearlayout_transferfailed_forscreenshot);
-        mButtonTryTransfer = mRoot.findViewById(R.id.button_transferfailed_trywithdraw);
         mButtonDashboard = mRoot.findViewById(R.id.button_transferfailed_dashborad);
 
     }
@@ -97,74 +79,22 @@ public class SendFailedFragment extends Fragment implements SendFailedContract.V
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_everywhere_sharedownloadtoolbar, menu);
+        inflater.inflate(R.menu.menu_sendfailed_toolbar, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
-            case R.id.item_everywhere_download: {
+            case R.id.item_sendfailed_retry: {
 
-                requestPermissionSave();
-                break;
-            }
-
-            case R.id.item_everywhere_share: {
-
-                requestPermissionShare();
+               Intent intent=new Intent(getActivity(),SendActivity.class);
+               startActivity(intent);
                 break;
             }
 
         }
         return true;
-    }
-
-
-    private void requestPermissionShare() {
-
-
-        int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
-
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
-        } else {
-
-            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
-            ScreenshotUtil.shareScreenshot(file, getContext());
-
-        }
-    }
-
-    private void requestPermissionSave() {
-
-
-        int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
-
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
-        } else {
-
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
-            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
-
-
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-
-            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissionallowed), getContext());
-        } else {
-
-            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
-
-        }
     }
 
     public static SendFailedFragment newInstance() {
