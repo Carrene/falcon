@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.dashboard;
 
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,18 +9,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.common.collect.BiMap;
+import com.google.zxing.WriterException;
+
 import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.util.QrCodeUtil;
 
-public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder> {
+public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
     private List<Wallet> mData;
-    private int mLastViewPosition = 1;
+    private int mSelectedPosition;
+    private Callback mCallback;
+    private static final int ADD_WALLET = 0;
+    private static final int WALLET = 1;
 
-    public DashboardAdapter(List<Wallet> data){
+    public DashboardAdapter(List<Wallet> data, Callback callback){
         mData = data;
+        mCallback = callback;
     }
 
     public void setData(List<Wallet> data){
@@ -29,35 +38,82 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_wallets, parent, false);
-        return new ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView;
+
+        switch (viewType) {
+
+            case ADD_WALLET: {
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_rowaddwallet, parent, false);
+                return new AddWalletHolder(itemView);
+            }
+
+            case WALLET: {
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_wallets, parent, false);
+                return new ViewHolder(itemView);
+            }
+        }
+
+        return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (mData.size() != 0){
-            position = position % mData.size();
-            holder.mTextViewName.setText(mData.get(position).getName() + " Wallet");
-            holder.mTextViewCurrencySymbol.setText(mData.get(position).getCurrencySymbol());
-            holder.mTextViewBalance.setText(String.valueOf(mData.get(position).getBalance()));
-            holder.mTextViewAddress.setText(mData.get(position).getAddress());
-//            if (mLastViewPosition != position){
-//                holder.itemView.getLayoutParams().height = 600;
-//            }else {
-//                mLastViewPosition = position;
-//                holder.itemView.getLayoutParams().height = 400;
-//            }
-        }
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (mData.size() != 0 && position != mData.size()){
 
+            if (mSelectedPosition == position) {
+                holder.itemView.setAlpha(1);
+                holder.itemView.setScaleX(1f);
+                holder.itemView.setScaleY(1f);
+
+            } else {
+                holder.itemView.setAlpha(1f);
+                holder.itemView.setScaleX(1f);
+                holder.itemView.setScaleY(0.8f);
+            }
+
+            ((ViewHolder) holder).mTextViewName.setText(mData.get(position).getName() + " Wallet");
+            ((ViewHolder) holder).mTextViewCurrencySymbol.setText(mData.get(position).getCurrencySymbol());
+            ((ViewHolder) holder).mTextViewBalance.setText(String.valueOf(mData.get(position).getBalance()));
+            ((ViewHolder) holder).mTextViewAddress.setText(mData.get(position).getAddress());
+            try {
+                Bitmap bitmap = QrCodeUtil.generateQrCode(mData.get(position).getAddress(), 96, 96);
+                bitmap = Bitmap.createBitmap(bitmap, 24,24,48, 48);
+                ((ViewHolder) holder).mImageViewQrCode.setImageBitmap(bitmap);
+
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+
+        if (position == mData.size()) {
+            return ADD_WALLET;
+
+        } else {
+            return WALLET;
+        }
     }
 
     @Override
     public int getItemCount() {
-        return Integer.MAX_VALUE;
+        return mData.size() + 1 ;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public void select(int position) {
+        mSelectedPosition = position;
+        notifyDataSetChanged();
+    }
+
+    public interface Callback{
+        void navigationToAddWallet();
+    }
+
+    private class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView mTextViewName;
         private TextView mTextViewBalance;
@@ -73,5 +129,19 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
             mTextViewAddress = itemView.findViewById(R.id.textview_dashboard_walletaddress);
             mImageViewQrCode = itemView.findViewById(R.id.imageview_dashboard_qrcode);
         }
+    }
+
+    private class AddWalletHolder extends RecyclerView.ViewHolder {
+
+        private AddWalletHolder(View itemView) {
+
+            super(itemView);
+
+            itemView.setOnClickListener(v -> {
+                mCallback.navigationToAddWallet();
+            });
+        }
+
+
     }
 }

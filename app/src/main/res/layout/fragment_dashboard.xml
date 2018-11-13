@@ -6,15 +6,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/porcelain"
     android:orientation="vertical"
-    android:id="@+id/fragment_dashboard"
-    android:baselineAligned="false">
+    android:id="@+id/fragment_dashboard">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center"
         android:id="@+id/dashboard_recyclerview"
-        android:orientation="horizontal">
+        android:clipToPadding="false"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:fastScrollEnabled="false">
     </android.support.v7.widget.RecyclerView>
 
 
@@ -25,7 +27,6 @@
         app:spi_dotSelectedColor="#FBC02D"
         android:layout_gravity="center_horizontal"
         app:spi_visibleDotCount="3"
-        app:spi_looped="true"
         app:spi_dotColor="#6D6D6D"
         app:spi_dotSize="8dp"/>
 
@@ -37,7 +38,7 @@
         android:layout_marginRight="51dp"
         android:layout_marginBottom="47.04dp"
         android:layout_gravity="bottom"
-        android:layout_marginTop="44dp">
+        android:layout_marginTop="46dp">
 
         <LinearLayout
             android:layout_width="262dp"
