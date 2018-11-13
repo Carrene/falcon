@@ -413,5 +413,6 @@
     <string name="customdatepicker_datepicker">Date Picker</string>
     <string name="customdatepicker_choosestartandenddatetitle">Choose Start And End Date</string>
 
+    <string name="receive_title">Receive</string>
 
 </resources>
