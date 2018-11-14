@@ -95,27 +95,26 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void initUiComponents() {
         mRecyclerView = mViewRoot.findViewById(R.id.dashboard_recyclerview);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
-//        LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext()) {
-//
-//            @Override
-//            public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
-//                LinearSmoothScroller smoothScroller = new LinearSmoothScroller(getContext()) {
-//
-//                    private static final float SPEED = 300f;
-//
-//                    @Override
-//                    protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
-//                        return SPEED / displayMetrics.densityDpi;
-//                    }
-//
-//                };
-//                smoothScroller.setTargetPosition(position);
-//                startSmoothScroll(smoothScroller);
-//            }
-//
-//        };
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
+
+            @Override
+            public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
+                LinearSmoothScroller smoothScroller = new LinearSmoothScroller(getContext()) {
+
+                    private static final float SPEED = 1f;
+
+                    @Override
+                    protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
+                        return SPEED / displayMetrics.densityDpi;
+                    }
+
+                };
+                smoothScroller.setTargetPosition(position);
+                startSmoothScroll(smoothScroller);
+            }
+
+        };
 
         layoutManager.setSmoothScrollbarEnabled(true);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -130,7 +129,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mWalletSnapHelper.attachToRecyclerView(mRecyclerView);
     }
 
-    public void initListener(){
+    public void initListener() {
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -148,8 +147,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     }
 
     @Override
-    public void setWalletList(List<Wallet> data){
-    mDashboardAdapter.setData(data);
+    public void setWalletList(List<Wallet> data) {
+        mDashboardAdapter.setData(data);
 
     }
 

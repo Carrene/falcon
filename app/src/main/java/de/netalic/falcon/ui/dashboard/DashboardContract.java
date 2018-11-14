@@ -8,7 +8,7 @@ import de.netalic.falcon.ui.base.BaseView;
 
 public interface DashboardContract {
 
-    interface View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
 
         void setWalletList(List<Wallet> data);
     }

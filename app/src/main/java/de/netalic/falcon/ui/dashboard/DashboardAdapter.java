@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.common.collect.BiMap;
 import com.google.zxing.WriterException;
 
 import java.util.List;
@@ -18,7 +17,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.util.QrCodeUtil;
 
-public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Wallet> mData;
     private int mSelectedPosition;
@@ -26,12 +25,12 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private static final int ADD_WALLET = 0;
     private static final int WALLET = 1;
 
-    public DashboardAdapter(List<Wallet> data, Callback callback){
+    public DashboardAdapter(List<Wallet> data, Callback callback) {
         mData = data;
         mCallback = callback;
     }
 
-    public void setData(List<Wallet> data){
+    public void setData(List<Wallet> data) {
         mData = data;
         notifyDataSetChanged();
     }
@@ -59,16 +58,14 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (mData.size() != 0 && position != mData.size()){
+        if (mData.size() != 0 && position != mData.size()) {
 
             if (mSelectedPosition == position) {
-                holder.itemView.setAlpha(1);
-                holder.itemView.setScaleX(1f);
+
                 holder.itemView.setScaleY(1f);
 
             } else {
-                holder.itemView.setAlpha(1f);
-                holder.itemView.setScaleX(1f);
+
                 holder.itemView.setScaleY(0.8f);
             }
 
@@ -77,8 +74,8 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((ViewHolder) holder).mTextViewBalance.setText(String.valueOf(mData.get(position).getBalance()));
             ((ViewHolder) holder).mTextViewAddress.setText(mData.get(position).getAddress());
             try {
-                Bitmap bitmap = QrCodeUtil.generateQrCode(mData.get(position).getAddress(), 96, 96);
-                bitmap = Bitmap.createBitmap(bitmap, 24,24,48, 48);
+                Bitmap bitmap = QrCodeUtil.generateQrCode(mData.get(position).getAddress(), 48, 48);
+                bitmap = Bitmap.createBitmap(bitmap, 12, 12, 24, 24);
                 ((ViewHolder) holder).mImageViewQrCode.setImageBitmap(bitmap);
 
             } catch (WriterException e) {
@@ -101,7 +98,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return mData.size() + 1 ;
+        return mData.size() + 1;
     }
 
     public void select(int position) {
@@ -109,11 +106,11 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         notifyDataSetChanged();
     }
 
-    public interface Callback{
+    public interface Callback {
         void navigationToAddWallet();
     }
 
-    private class ViewHolder extends RecyclerView.ViewHolder{
+    private class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mTextViewName;
         private TextView mTextViewBalance;
