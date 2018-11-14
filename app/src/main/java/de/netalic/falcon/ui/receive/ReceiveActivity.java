@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.util.ActivityUtil;
+import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class ReceiveActivity extends BaseActivity {
 
@@ -11,6 +13,17 @@ public class ReceiveActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        NavigationDrawerUtil.getDrawer(this,getToolbar(),1);
+
+        ReceiveFragment receiveFragment=(ReceiveFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_receive_fragmentcontainer);
+        if (receiveFragment==null){
+
+            receiveFragment=ReceiveFragment.newInstance();
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),receiveFragment,R.id.framelayout_receive_fragmentcontainer);
+
+        }
+
+        new ReceivePresenter(receiveFragment);
     }
 
     @Override

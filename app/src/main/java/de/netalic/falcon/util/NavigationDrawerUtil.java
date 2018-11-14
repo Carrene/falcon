@@ -60,35 +60,48 @@ public class NavigationDrawerUtil {
                 .addDrawerItems(item1, item2, item3, item4, item5)
                 .withAccountHeader(headerResult)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
-                    if (position != identifier) {
-                        Intent intent = null;
-                        switch (position) {
 
-                            case 1: {
+                    Intent intent = null;
+                    switch (position) {
+
+                        case 1: {
+
+                            if (activity.getLocalClassName().equals("de.netalic.falcon.ui.dashboard.DashboardActivity")) {
+
+
+                            } else {
                                 intent = new Intent(activity, DashboardActivity.class);
                                 activity.startActivity(intent);
                                 break;
                             }
-                            case 2: {
+                        }
+                        case 2: {
+                            if (position != identifier) {
+
                                 intent = new Intent(activity, AddressesActivity.class);
                                 activity.startActivity(intent);
                                 break;
                             }
-                            case 3: {
-                                Intent intent1=new Intent(activity,ReceiveActivity.class);
-                                activity.startActivity(intent1);
+                        }
+                        case 3: {
+                            if (position != identifier) {
+                                intent = new Intent(activity, ReceiveActivity.class);
+                                activity.startActivity(intent);
                                 break;
                             }
-                            case 4: {
+                        }
+                        case 4: {
+                            if (position != identifier) {
                                 intent = new Intent(activity, SettingActivity.class);
                                 activity.startActivity(intent);
                                 break;
                             }
-                            case 5: {
+                        }
+                        case 5: {
 
-                            }
                         }
                     }
+
                     return false;
                 }).withOnDrawerNavigationListener(view -> {
 

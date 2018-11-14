@@ -20,7 +20,7 @@
         tools:replace="android:allowBackup">
         <provider
             android:name=".util.GenericFileProvider"
-            android:authorities="de.netalic.falcon.debug.provider"
+            android:authorities="de.netalic.falcon.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
