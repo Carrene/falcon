@@ -16,7 +16,6 @@ import android.widget.TextView;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.transfer.TransferPayeeFragment;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
