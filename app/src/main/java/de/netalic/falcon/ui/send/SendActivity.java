@@ -17,7 +17,7 @@ public class SendActivity extends BaseActivity {
         NavigationDrawerUtil.getDrawer(this,getToolbar(),1);
 
         Bundle bundle=getIntent().getExtras();
-        int walletId= bundle.getInt(DashboardFragment.WALLET_ADDRESS);
+        int walletId= bundle.getInt(DashboardFragment.WALLET_ID);
 
         SendFragment sendFragment=(SendFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_send_fragmentcontainer);
 

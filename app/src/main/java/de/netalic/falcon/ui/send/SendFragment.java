@@ -53,7 +53,7 @@ public class SendFragment extends Fragment implements SendContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_send, null);
-        mSourceWalletId=getArguments().getInt(DashboardFragment.WALLET_ADDRESS);
+        mSourceWalletId=getArguments().getInt(DashboardFragment.WALLET_ID);
         return mRoot;
     }
 
@@ -86,7 +86,7 @@ public class SendFragment extends Fragment implements SendContract.View {
     public static SendFragment newInstance(int walletId) {
 
         Bundle bundle = new Bundle();
-        bundle.putInt(DashboardFragment.WALLET_ADDRESS,walletId);
+        bundle.putInt(DashboardFragment.WALLET_ID,walletId);
         SendFragment fragment = new SendFragment();
         fragment.setArguments(bundle);
         return fragment;

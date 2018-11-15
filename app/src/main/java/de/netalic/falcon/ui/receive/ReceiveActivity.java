@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
@@ -15,10 +16,13 @@ public class ReceiveActivity extends BaseActivity {
 
         NavigationDrawerUtil.getDrawer(this,getToolbar(),1);
 
+        Bundle bundle=getIntent().getExtras();
+        String walletAddress=bundle.getString(DashboardFragment.WALLET_Address);
+
         ReceiveFragment receiveFragment=(ReceiveFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_receive_fragmentcontainer);
         if (receiveFragment==null){
 
-            receiveFragment=ReceiveFragment.newInstance();
+            receiveFragment=ReceiveFragment.newInstance(walletAddress);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),receiveFragment,R.id.framelayout_receive_fragmentcontainer);
 
         }

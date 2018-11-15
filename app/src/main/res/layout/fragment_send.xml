@@ -25,7 +25,9 @@
                 android:backgroundTint="@color/colorBlack"
                 android:hint="@string/send_hintalphaamount"
                 android:maxLength="6"
-                android:textColor="@color/colorPrimaryLight" />
+                android:textColor="@color/colorPrimaryLight"
+                android:inputType="numberDecimal"
+                />
 
         </android.support.design.widget.TextInputLayout>
 

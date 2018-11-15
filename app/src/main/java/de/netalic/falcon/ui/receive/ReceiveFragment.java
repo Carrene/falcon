@@ -19,11 +19,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
 import com.google.zxing.WriterException;
 
 import java.io.File;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Purchase;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.QrCodeUtil;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -41,21 +44,24 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     private View mScreenShotView;
     private TextInputEditText mTextInputEditTextAlphaAmount;
     private ImageView mImageViewGenerateQrCode;
+    private String mWalletAddress;
+    private Bitmap mBitmapQrCode;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_receive, null);
+        mWalletAddress = getArguments().getString(DashboardFragment.WALLET_Address);
         return mRoot;
     }
 
-    public static ReceiveFragment newInstance() {
+    public static ReceiveFragment newInstance(String walletAddress) {
 
-        Bundle args = new Bundle();
-
+        Bundle bundle = new Bundle();
+        bundle.putString(DashboardFragment.WALLET_Address, walletAddress);
         ReceiveFragment fragment = new ReceiveFragment();
-        fragment.setArguments(args);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -65,6 +71,7 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
         setHasOptionsMenu(true);
         initUiComponent();
         initListener();
+        generateQrCodeWithWalletAddress(mWalletAddress);
     }
 
     @Override
@@ -187,14 +194,14 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
                 if (s.toString().equals("")) {
 
-
-
                 } else {
-                    Bitmap bitmap = null;
                     try {
+                        Gson gson = new Gson();
+                        Purchase purchase = new Purchase(Float.valueOf(s.toString()), mWalletAddress);
+                        String purchaseJson = gson.toJson(purchase);
 
-                        bitmap = QrCodeUtil.generateQrCode(s.toString(), 300, 300);
-                        mImageViewGenerateQrCode.setImageBitmap(bitmap);
+                        mBitmapQrCode = QrCodeUtil.generateQrCode(purchaseJson, 300, 300);
+                        mImageViewGenerateQrCode.setImageBitmap(mBitmapQrCode);
 
                     } catch (WriterException e) {
                         e.printStackTrace();
@@ -203,6 +210,17 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
                 }
             }
         });
+    }
+
+    private void generateQrCodeWithWalletAddress(String walletAddress) {
+
+        try {
+            mBitmapQrCode = QrCodeUtil.generateQrCode(walletAddress, 300, 300);
+            mImageViewGenerateQrCode.setImageBitmap(mBitmapQrCode);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

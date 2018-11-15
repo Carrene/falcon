@@ -574,7 +574,8 @@
     <dimen name="height_fragmentdashboard_linearlayouticons">162dp</dimen>
     <dimen name="marginleft_fragmentdashboard_linearlayouticons">51dp</dimen>
     <dimen name="marginright_fragmentdashboard_linearlayouticons">51dp</dimen>
-    <dimen name="margintop_fragmentdashboard_linearlayouticons">46dp</dimen>
+    <dimen name="margintop_fragmentdashboard_linearlayouticons">60dp</dimen>
+    <dimen name="marginstartend_fragmentdashboard_linearlayouticons">20dp</dimen>
     <dimen name="width_fragmentdashboard_linearlayouticons">262dp</dimen>
     <dimen name="width_fragmentdashboard_linearlayouticoncolumn">0dp</dimen>
     <dimen name="width_fragmentdashboard_imageviewexchangeicon">61dp</dimen>

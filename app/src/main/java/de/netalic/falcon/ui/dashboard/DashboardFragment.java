@@ -25,6 +25,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.charge.AddWalletActivity;
+import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.send.SendActivity;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
@@ -39,8 +40,10 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private SnapHelper mWalletSnapHelper;
     private int mSelectedWalletPosition;
     private ImageView mImageViewSend;
+    private ImageView mImageViewReceive;
     private List<Wallet> mWalletList;
-    public static final String WALLET_ADDRESS="walletAddress";
+    public static final String WALLET_ID ="walletId";
+    public static final String WALLET_Address ="walletAddress";
 
     @Nullable
     @Override
@@ -102,6 +105,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewSend=mViewRoot.findViewById(R.id.imageview_dashboard_send);
         mRecyclerView = mViewRoot.findViewById(R.id.dashboard_recyclerview);
+        mImageViewReceive=mViewRoot.findViewById(R.id.imageview_dashboard_receive);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
 
@@ -155,11 +159,18 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mImageViewSend.setOnClickListener(v -> {
 
             Intent intent=new Intent(getActivity(),SendActivity.class);
-            intent.putExtra(WALLET_ADDRESS,mWalletList.get(mSelectedWalletPosition).getId());
+            intent.putExtra(WALLET_ID,mWalletList.get(mSelectedWalletPosition).getId());
             startActivity(intent);
 
         });
 
+        mImageViewReceive.setOnClickListener(v -> {
+
+            Intent intent=new Intent(getActivity(),ReceiveActivity.class);
+            intent.putExtra(WALLET_Address,mWalletList.get(mSelectedWalletPosition).getAddress());
+            startActivity(intent);
+
+        });
     }
 
     @Override
