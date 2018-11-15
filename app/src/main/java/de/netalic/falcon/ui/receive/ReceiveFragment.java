@@ -27,6 +27,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.util.QrCodeUtil;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ReceiveFragment extends Fragment implements ReceiveContract.View {

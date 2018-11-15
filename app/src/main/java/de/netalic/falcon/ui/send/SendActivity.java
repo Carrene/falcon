@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
@@ -13,13 +14,15 @@ public class SendActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         NavigationDrawerUtil.getDrawer(this,getToolbar(),1);
+
+        Bundle bundle=getIntent().getExtras();
+        int walletId= bundle.getInt(DashboardFragment.WALLET_ADDRESS);
 
         SendFragment sendFragment=(SendFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_send_fragmentcontainer);
 
         if (sendFragment==null) {
-            sendFragment = SendFragment.newInstance();
+            sendFragment = SendFragment.newInstance(walletId);
             ActivityUtil.replaceFragmentWithFragment(getSupportFragmentManager(), sendFragment, R.id.framelayout_send_fragmentcontainer);
         }
         new SendPresenter(sendFragment);

@@ -43,6 +43,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/imageview_dashboard_send"
                 android:layout_width="@dimen/width_fragmentdashboard_imageviewsendicon"
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewsendicon"
                 android:layout_gravity="center_horizontal|top"

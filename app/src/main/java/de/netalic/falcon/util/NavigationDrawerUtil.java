@@ -17,7 +17,6 @@ import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.addresses.AddressesActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.setting.basic.SettingActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import nuesoft.helpdroid.util.Parser;
@@ -85,11 +84,7 @@ public class NavigationDrawerUtil {
 
                         }
                         case 3: {
-                            if (position != identifier) {
-                                intent = new Intent(activity, ReceiveActivity.class);
-                                activity.startActivity(intent);
-                                break;
-                            }
+
                         }
                         case 4: {
                             if (position != identifier) {

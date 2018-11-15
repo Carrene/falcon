@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.charge.AddWalletActivity;
+import de.netalic.falcon.ui.send.SendActivity;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -36,6 +38,9 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private RecyclerView mRecyclerView;
     private SnapHelper mWalletSnapHelper;
     private int mSelectedWalletPosition;
+    private ImageView mImageViewSend;
+    private List<Wallet> mWalletList;
+    public static final String WALLET_ADDRESS="walletAddress";
 
     @Nullable
     @Override
@@ -94,6 +99,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
 
     public void initUiComponents() {
+
+        mImageViewSend=mViewRoot.findViewById(R.id.imageview_dashboard_send);
         mRecyclerView = mViewRoot.findViewById(R.id.dashboard_recyclerview);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
@@ -144,11 +151,21 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             }
 
         });
+
+        mImageViewSend.setOnClickListener(v -> {
+
+            Intent intent=new Intent(getActivity(),SendActivity.class);
+            intent.putExtra(WALLET_ADDRESS,mWalletList.get(mSelectedWalletPosition).getId());
+            startActivity(intent);
+
+        });
+
     }
 
     @Override
     public void setWalletList(List<Wallet> data) {
         mDashboardAdapter.setData(data);
+        mWalletList=data;
 
     }
 

@@ -29,6 +29,7 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Purchase;
 import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -44,6 +45,7 @@ public class SendFragment extends Fragment implements SendContract.View {
     public static final String ARGUMENT_TRANSACTION = "transaction";
     private static final int REQUEST_PERMISSION = 1;
     private long mLongLastSnackBarTime = 0;
+    private int mSourceWalletId;
 
 
     @Nullable
@@ -51,6 +53,7 @@ public class SendFragment extends Fragment implements SendContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_send, null);
+        mSourceWalletId=getArguments().getInt(DashboardFragment.WALLET_ADDRESS);
         return mRoot;
     }
 
@@ -80,12 +83,12 @@ public class SendFragment extends Fragment implements SendContract.View {
 
     }
 
-    public static SendFragment newInstance() {
+    public static SendFragment newInstance(int walletId) {
 
-        Bundle args = new Bundle();
-
+        Bundle bundle = new Bundle();
+        bundle.putInt(DashboardFragment.WALLET_ADDRESS,walletId);
         SendFragment fragment = new SendFragment();
-        fragment.setArguments(args);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -117,7 +120,7 @@ public class SendFragment extends Fragment implements SendContract.View {
                 } else {
 
 
-                    mSendPresenter.startTransfer(104, mTextInputEditTextWalletAddress.getText().toString(), Float.valueOf(mEditTextAlphaAmount.getText().toString()));
+                    mSendPresenter.startTransfer(mSourceWalletId, mTextInputEditTextWalletAddress.getText().toString(), Float.valueOf(mEditTextAlphaAmount.getText().toString()));
 
                 }
 
