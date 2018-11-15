@@ -31,11 +31,8 @@
     <LinearLayout
         android:layout_width="@dimen/width_fragmentdashboard_linearlayouticons"
         android:layout_height="@dimen/height_fragmentdashboard_linearlayouticons"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="@dimen/marginleft_fragmentdashboard_linearlayouticons"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/margintop_fragmentdashboard_linearlayouticons"
-        android:layout_marginRight="@dimen/marginright_fragmentdashboard_linearlayouticons"
-        android:layout_marginBottom="@dimen/marginbottom_fragmentdashboard_linearlayouticons"
         android:orientation="horizontal">
 
         <LinearLayout
