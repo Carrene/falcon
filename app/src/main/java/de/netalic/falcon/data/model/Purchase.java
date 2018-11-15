@@ -20,6 +20,18 @@ public class Purchase {
         mCodeCurrency = codeCurrency;
     }
 
+    public Purchase(float amount, String walletAddress) {
+        mAmount = amount;
+        mWalletAddress = walletAddress;
+
+    }
+
+    public Purchase(String walletAddress) {
+
+        mWalletAddress = walletAddress;
+
+    }
+
     public float getAmount() {
         return mAmount;
     }

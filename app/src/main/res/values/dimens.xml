@@ -533,6 +533,14 @@
     <dimen name="height_rowbasecurrency_relativelayout">60dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="margintop_receive_linearlayoutexchangerow">70dp</dimen>
+    <dimen name="margintop_receive_exchangelog">10dp</dimen>
+    <dimen name="width_receive_borderofqrcode">314dp</dimen>
+    <dimen name="height_receive_borderofqrcode">314dp</dimen>
+    <dimen name="margintop_receive_borderofqrcode">30dp</dimen>
+    <dimen name="marginstartendtopbottom_receive_qrcode">30dp</dimen>
+
+
 
     <dimen name="width_rowwallets_linearlayout">300dp</dimen>
     <dimen name="height_rowwallets_linearlayout">200dp</dimen>

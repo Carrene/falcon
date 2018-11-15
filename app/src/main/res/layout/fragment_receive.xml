@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_receive_exchangerow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margintop_receive_linearlayoutexchangerow"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputlayout_receive_alphaamount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.1">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textinputedittext_receive_alphaamount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/receive_hintalphaamount"
+                android:maxLength="6" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/imageview_receive_exchanngerowlogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_receive_exchangelog"
+            android:layout_weight="0.5"
+            android:src="@drawable/everywhere_exchangerowlogo" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textinputedittext_receive_othercurrencyamount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_receive_forscreenshot"
+        android:layout_width="@dimen/width_receive_borderofqrcode"
+        android:layout_height="@dimen/height_receive_borderofqrcode"
+        android:layout_below="@+id/linearlayout_receive_exchangerow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margintop_receive_borderofqrcode"
+        android:background="@drawable/everywherefailed_border">
+
+        <ImageView
+            android:id="@+id/imageview_receive_createqrcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/marginstartendtopbottom_receive_qrcode"
+            android:layout_marginTop="@dimen/marginstartendtopbottom_receive_qrcode"
+            android:layout_marginEnd="@dimen/marginstartendtopbottom_receive_qrcode"
+            android:layout_marginBottom="@dimen/marginstartendtopbottom_receive_qrcode" />
+    </RelativeLayout>
+
+</RelativeLayout>

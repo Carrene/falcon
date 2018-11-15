@@ -13,7 +13,7 @@ public class AddressesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this, getToolbar(), 2);
+        NavigationDrawerUtil.getDrawer(this,getToolbar(),2);
 
         AddressesFragment addressesFragment = (AddressesFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_addresses_fragmentcontainer);
         if (addressesFragment == null) {

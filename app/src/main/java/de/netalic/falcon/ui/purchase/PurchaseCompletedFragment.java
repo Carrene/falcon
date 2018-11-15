@@ -93,10 +93,8 @@ public class PurchaseCompletedFragment extends Fragment implements PurchaseCompl
 
         mButtonPurchaseAgain.setOnClickListener(v -> {
 
-
         });
     }
-
 
     private void requestPermissionShare() {
 
@@ -114,7 +112,6 @@ public class PurchaseCompletedFragment extends Fragment implements PurchaseCompl
 
     private void requestPermissionSave() {
 
-
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
@@ -122,7 +119,7 @@ public class PurchaseCompletedFragment extends Fragment implements PurchaseCompl
         } else {
 
             ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargecompleted_imagesaved), getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_imagesaved), getContext());
 
         }
     }
