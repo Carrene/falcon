@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+
     <application
         android:name=".MyApp"
         android:allowBackup="false"
@@ -202,12 +203,19 @@
         </activity>
         <activity
             android:name=".ui.transaction.customdatepicker.CustomDatePickerActivity"
-            android:theme="@style/BaseAppTheme"
-            android:parentActivityName=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity">
+            android:parentActivityName=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity"
+            android:theme="@style/BaseAppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity" />
         </activity>
+        <activity android:name=".ui.send.SendActivity"></activity>
+        <activity
+            android:name=".ui.send.SendConfirmationActivity"
+            android:parentActivityName=".ui.send.SendActivity" />
+        <activity android:name=".ui.send.SendCompletedActivity"/>
+        <activity android:name=".ui.send.SendFailedActivity"/>
+
     </application>
 
 </manifest>

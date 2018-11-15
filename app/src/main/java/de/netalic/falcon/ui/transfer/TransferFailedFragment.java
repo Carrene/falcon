@@ -30,7 +30,6 @@ public class TransferFailedFragment extends Fragment implements TransferFailedCo
 
     private TransferFailedContract.Presenter mTransferFailedPresenter;
     private View mRoot;
-    private Button mButtonTryTransfer;
     private Button mButtonDashboard;
     private View mScreenshotView;
     private static final int REQUEST_PERMISSIONS = 1;
@@ -75,7 +74,6 @@ public class TransferFailedFragment extends Fragment implements TransferFailedCo
     private void initUiComponent() {
 
         mScreenshotView = mRoot.findViewById(R.id.linearlayout_transferfailed_forscreenshot);
-        mButtonTryTransfer = mRoot.findViewById(R.id.button_transferfailed_trywithdraw);
         mButtonDashboard = mRoot.findViewById(R.id.button_transferfailed_dashborad);
 
     }

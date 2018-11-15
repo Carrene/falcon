@@ -41,19 +41,7 @@
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/button_transferfailed_trywithdraw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_transferfailed_dashborad"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbottom_transferfailed_trywithdrawbutton"
-        android:layout_marginEnd="@dimen/marginstartend_transferfailed_trywithdrawbutton"
-        android:layout_marginStart="@dimen/marginstartend_transferfailed_trywithdrawbutton"
-        android:background="@color/colorSecondary"
-        android:text="@string/transferfailed_trywithdrawbutton"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_transferfailed_trywithdrawbutton" />
+
 
     <Button
         android:id="@+id/button_transferfailed_dashborad"
@@ -67,6 +55,8 @@
         android:background="@drawable/everywhere_borderbutton"
         android:text="@string/transferfailed_dashboardbutton"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_transferfailed_dashboardbutton" />
+        android:textSize="@dimen/textsize_transferfailed_dashboardbutton"
+        android:backgroundTint="@color/colorSecondary"
+        />
 
 </RelativeLayout>

@@ -533,6 +533,7 @@
     <dimen name="height_rowbasecurrency_relativelayout">60dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+
     <dimen name="width_rowwallets_linearlayout">300dp</dimen>
     <dimen name="height_rowwallets_linearlayout">200dp</dimen>
     <dimen name="margintop_rowwallets_linearlayout">30dp</dimen>
@@ -592,4 +593,14 @@
     <dimen name="margintop_fragmentdashboard_imageviewtransactionicon">52.79dp</dimen>
     <dimen name="margintop_fragmentdashboard_imageviewwithdrawicon">52.79dp</dimen>
     <dimen name="margintop_fragmentdashboard_imageviewchargeicon">52.79dp</dimen>
+
+    <dimen name="margintop_send_linearlayout">60dp</dimen>
+    <dimen name="margintop_send_exchangelogo">10dp</dimen>
+    <dimen name="marginstartend_send_textinputlayoutwalletaddress">24dp</dimen>
+    <dimen name="margintop_send_textinputlayoutwalletaddress">40dp</dimen>
+    <dimen name="widthheight_send_barcodeview">300dp</dimen>
+    <dimen name="margintop_send_bacodeview">32dp</dimen>
+
+
+
 </resources>
