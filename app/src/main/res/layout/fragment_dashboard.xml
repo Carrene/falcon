@@ -1,124 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/porcelain">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_dashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/porcelain"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/relativelayout_dashboard_firstpart"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dashboard_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_dashboard_firstpart"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/paddingstart_fragmentdashboard_recyclerview"
+        android:paddingEnd="@dimen/paddingend_fragmentdashboard_recyclerview"
+        app:fastScrollEnabled="false" />
 
-        <Spinner
-            android:id="@+id/spinner_dashboard_spinner"
-            style="@style/SpinnerThemeDashboard"
-            android:layout_width="@dimen/width_dashboard_spinner"
-            android:layout_height="@dimen/height_dashboard_spinner"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margintop_dashboard_spinner"
-            android:spinnerMode="dropdown"
-            android:textAlignment="center"/>
-
-        <RelativeLayout
-            android:id="@+id/relativelayout_dashboard_alphasymbol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinner_dashboard_spinner"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margintop_dashboard_linearlayoutalphasymbol"
-            android:gravity="center">
-
-
-            <TextView
-                android:id="@+id/textview_dashboard_balance"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_dashboard_amountalpha"
-                android:layout_centerHorizontal="true"
-                android:text="VALUE"
-                android:textColor="@color/white"
-                android:textSize="@dimen/textsize_dashboard_amountalpha"/>
-
-        </RelativeLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/linearlayout_dashboard_middletextviews"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layoutheight_dashboard_linearlayoutmiddletextview"
-        android:layout_below="@+id/relativelayout_dashboard_firstpart"
-        android:background="@color/colorSecondary"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textview_dashboard_equivalenttobasecurrency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/marginstart_dashboard_equivalenttobasecurrency"
-            android:text="@string/dasboard_equivalenttobasecurrency"
-            android:paddingBottom="4dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy"/>
-
-        <TextView
-            android:id="@+id/textview_dashboard_ratecurrency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/marginend_dashboard_ratecurrency"
-            android:text="VALUE"
-            android:textAlignment="textStart"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/textsize_dashboard_equivalenttobasecurrecy"
-            android:paddingBottom="4dp"/>
-    </RelativeLayout>
-
+    <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:spi_dotColor="@color/primary_light"
+        app:spi_dotSelectedColor="@color/colorSecondary"
+        app:spi_dotSize="@dimen/dotsize_fragmentdashboard_scrollingpagerindicator"
+        app:spi_visibleDotCount="3" />
 
     <LinearLayout
-        android:id="@+id/linearlayout_dahboard_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/linearlayout_dashboard_middletextviews"
-        android:background="@color/porcelain"
-        android:orientation="vertical">
+        android:layout_width="@dimen/width_fragmentdashboard_linearlayouticons"
+        android:layout_height="@dimen/height_fragmentdashboard_linearlayouticons"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/marginleft_fragmentdashboard_linearlayouticons"
+        android:layout_marginTop="@dimen/margintop_fragmentdashboard_linearlayouticons"
+        android:layout_marginRight="@dimen/marginright_fragmentdashboard_linearlayouticons"
+        android:layout_marginBottom="@dimen/marginbottom_fragmentdashboard_linearlayouticons"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/width_fragmentdashboard_linearlayouticoncolumn"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/width_fragmentdashboard_imageviewsendicon"
+                android:layout_height="@dimen/height_fragmentdashboard_imageviewsendicon"
+                android:layout_gravity="center_horizontal|top"
+                android:src="@drawable/dashboard_sendicon" />
+
+            <ImageView
+                android:layout_width="@dimen/width_fragmentdashboard_imageviewwithdrawicon"
+                android:layout_height="@dimen/height_fragmentdashboard_imageviewwithdrawicon"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewwithdrawicon"
+                android:src="@drawable/dashboard_withdrawicon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/width_fragmentdashboard_linearlayouticoncolumn"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/width_fragmentdashboard_imageviewexchangeicon"
+                android:layout_height="@dimen/height_fragmentdashboard_imageviewexchangeicon"
+                android:layout_gravity="top|center_horizontal"
+                android:src="@drawable/dashboard_exchangeicon" />
+
+            <ImageView
+                android:layout_width="@dimen/width_fragmentdashboard_imageviewtransactionicon"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/marginleft_fragmentdashboard_imageviewtransactionicon"
+                android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewtransactionicon"
+                android:layout_marginRight="@dimen/marginright_fragmentdashboard_imageviewtransactionicon"
+                android:src="@drawable/dashboard_transactionsicon" />
+
+        </LinearLayout>
 
 
         <LinearLayout
-            android:id="@+id/linearlayout_dashboard_bottom"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/width_fragmentdashboard_linearlayouticoncolumn"
             android:layout_height="match_parent"
-            android:background="@color/porcelain"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageview_dashboard_purchase"
-                android:layout_width="@dimen/widthheight_dahboard_purchaseimageview"
-                android:layout_height="@dimen/widthheight_dahboard_purchaseimageview"
-                android:layout_marginStart="@dimen/marginstart_dashboard_purchaseimage"
-                android:layout_weight="2"
-                android:clickable="true"
-                android:orientation="vertical"
-                android:src="@drawable/dashboard_purchase"/>
-
+                android:layout_width="@dimen/width_fragmentdashboard_imageviewreceiveicon"
+                android:layout_height="@dimen/height_fragmentdashboard_imageviewreceiveicon"
+                android:layout_gravity="center_horizontal|top"
+                android:src="@drawable/dashboard_receiveicon" />
 
             <ImageView
-                android:id="@+id/imageview_dashboard_withdraw"
-                android:layout_width="@dimen/widthheight_dashboard_withdrawimageview"
-                android:layout_height="@dimen/widthheight_dashboard_withdrawimageview"
-                android:layout_marginEnd="@dimen/marginend_dashboard_withdrawimage"
-                android:layout_weight="2"
-                android:src="@drawable/dashboard_withdraw"/>
+                android:layout_width="@dimen/width_fragmentdashboard_imageviewchargeicon"
+                android:layout_height="@dimen/height_fragmentdashboard_imageviewchargeicon"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewchargeicon"
+                android:src="@drawable/dashboard_chargeicon" />
 
         </LinearLayout>
 
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

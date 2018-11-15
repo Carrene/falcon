@@ -533,5 +533,63 @@
     <dimen name="height_rowbasecurrency_relativelayout">60dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="width_rowwallets_linearlayout">300dp</dimen>
+    <dimen name="height_rowwallets_linearlayout">200dp</dimen>
+    <dimen name="margintop_rowwallets_linearlayout">30dp</dimen>
+    <dimen name="marginbottom_rowwallets_linearlayout">30dp</dimen>
+    <dimen name="marginleft_rowwallets_linearlayout">5dp</dimen>
+    <dimen name="marginright_rowwallets_linearlayout">5dp</dimen>
+    <dimen name="margintop_rowwallets_textviewwalletname">16dp</dimen>
+    <dimen name="marginleft_rowwallets_textviewwalletname">16dp</dimen>
+    <dimen name="height_rowwallets_textviewwalletname">19dp</dimen>
+    <dimen name="textsize_rowwallets_textviewwalletname">16sp</dimen>
+    <dimen name="height_rowwallets_textviewwalletcurrencysymbol">29dp</dimen>
+    <dimen name="textsize_rowwallets_textviewwalletcurrencysymbol">24sp</dimen>
+    <dimen name="height_rowwallets_textviewwalletbalance">29dp</dimen>
+    <dimen name="textsize_rowwallets_textviewwalletbalance">24sp</dimen>
+    <dimen name="width_rowwallets_imageviewqrcode">48dp</dimen>
+    <dimen name="height_rowwallets_imageviewqrcode">48dp</dimen>
+    <dimen name="marginleft_rowwallets_imageviewqrcode">16dp</dimen>
+    <dimen name="textsize_rowwallets_textviewwalletaddress">14sp</dimen>
+    <dimen name="width_rowwallets_linearlayoutwalletaddress">220dp</dimen>
+    <dimen name="height_rowwallets_linearlayoutwalletaddress">20dp</dimen>
+    <dimen name="marginbottom_rowwallets_linearlayoutbottom">16dp</dimen>
+    <dimen name="marginright_rowwallets_linearlayoutbottom">16dp</dimen>
+    <dimen name="height_rowwallets_linearlayoutbottom">48dp</dimen>
+    <dimen name="height_rowwallets_linearlayoutcenter">0dp</dimen>
 
+
+    <dimen name="paddingstart_fragmentdashboard_recyclerview">20dp</dimen>
+    <dimen name="paddingend_fragmentdashboard_recyclerview">20dp</dimen>
+    <dimen name="dotsize_fragmentdashboard_scrollingpagerindicator">8dp</dimen>
+    <dimen name="height_fragmentdashboard_linearlayouticons">162dp</dimen>
+    <dimen name="marginleft_fragmentdashboard_linearlayouticons">51dp</dimen>
+    <dimen name="marginright_fragmentdashboard_linearlayouticons">51dp</dimen>
+    <dimen name="margintop_fragmentdashboard_linearlayouticons">46dp</dimen>
+    <dimen name="width_fragmentdashboard_linearlayouticons">262dp</dimen>
+    <dimen name="width_fragmentdashboard_linearlayouticoncolumn">0dp</dimen>
+    <dimen name="width_fragmentdashboard_imageviewexchangeicon">61dp</dimen>
+    <dimen name="height_fragmentdashboard_imageviewexchangeicon">57dp</dimen>
+    <dimen name="width_fragmentdashboard_imageviewtransactionicon">82dp</dimen>
+    <dimen name="marginleft_fragmentdashboard_imageviewtransactionicon">51dp</dimen>
+    <dimen name="marginright_fragmentdashboard_imageviewtransactionicon">49dp</dimen>
+    <dimen name="width_fragmentdashboard_imageviewsendicon">35dp</dimen>
+    <dimen name="height_fragmentdashboard_imageviewsendicon">55dp</dimen>
+    <dimen name="width_fragmentdashboard_imageviewwithdrawicon">59dp</dimen>
+    <dimen name="height_fragmentdashboard_imageviewwithdrawicon">55dp</dimen>
+    <dimen name="width_fragmentdashboard_imageviewreceiveicon">49dp</dimen>
+    <dimen name="height_fragmentdashboard_imageviewreceiveicon">55dp</dimen>
+    <dimen name="width_fragmentdashboard_imageviewchargeicon">49dp</dimen>
+    <dimen name="height_fragmentdashboard_imageviewchargeicon">55dp</dimen>
+
+    <dimen name="width_dashboardrowaddwallet_relativelayout">300dp</dimen>
+    <dimen name="height_dashboardrowaddwallet_relativelayout">160dp</dimen>
+    <dimen name="margintop_dashboardrowaddwallet_relativelayout">50dp</dimen>
+    <dimen name="marginbottom_dashboardrowaddwallet_relativelayout">30dp</dimen>
+    <dimen name="marginleft_dashboardrowaddwallet_relativelayout">5dp</dimen>
+    <dimen name="marginright_dashboardrowaddwallet_relativelayout">5dp</dimen>
+    <dimen name="marginbottom_fragmentdashboard_linearlayouticons">47.04dp</dimen>
+    <dimen name="margintop_fragmentdashboard_imageviewtransactionicon">52.79dp</dimen>
+    <dimen name="margintop_fragmentdashboard_imageviewwithdrawicon">52.79dp</dimen>
+    <dimen name="margintop_fragmentdashboard_imageviewchargeicon">52.79dp</dimen>
 </resources>
