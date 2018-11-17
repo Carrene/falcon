@@ -24,7 +24,6 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.charge.AddWalletActivity;
 import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.send.SendActivity;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;

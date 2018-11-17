@@ -25,8 +25,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/receive_hintalphaamount"
                 android:maxLength="6"
-                android:inputType="numberDecimal"
-                />
+                android:inputType="numberDecimal"/>
 
         </android.support.design.widget.TextInputLayout>
 

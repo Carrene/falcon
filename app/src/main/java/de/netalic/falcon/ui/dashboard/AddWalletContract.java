@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.charge;
+package de.netalic.falcon.ui.dashboard;
 
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BasePresenter;

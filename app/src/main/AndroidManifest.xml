@@ -182,7 +182,7 @@
         </activity>
         <activity android:name=".ui.purchase.PurchaseGenerateQrCodeActivity" />
         <activity
-            android:name=".ui.charge.AddWalletActivity"
+            android:name=".ui.dashboard.AddWalletActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".ui.charge.ChargeActivity" />
         <activity
@@ -195,10 +195,10 @@
         <activity
             android:name=".ui.charge.ListCurrencyActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.charge.AddWalletActivity">
+            android:parentActivityName=".ui.dashboard.AddWalletActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.charge.AddWalletActivity" />
+                android:value=".ui.dashboard.AddWalletActivity" />
         </activity>
         <activity
             android:name=".ui.transaction.customdatepicker.CustomDatePickerActivity"
