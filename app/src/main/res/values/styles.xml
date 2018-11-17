@@ -37,6 +37,11 @@
         <item name="android:background">@drawable/withdrawamount_backgroundspinner</item>
     </style>
 
+    <style name="SpinnerListCurrencyCommon" parent="android:Widget.Holo.Spinner">
+
+        <item name="android:background">@drawable/common_listcurrencybackgroundspinner</item>
+    </style>
+
     <style name="BaseAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="BaseAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

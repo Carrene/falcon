@@ -16,6 +16,7 @@ import java.util.Map;
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.addresses.AddressesActivity;
+import de.netalic.falcon.ui.charge.ChargeActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.setting.basic.SettingActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
@@ -74,6 +75,9 @@ public class NavigationDrawerUtil {
                                 break;
                             }
                             case 3: {
+                                intent=new Intent(activity,ChargeActivity.class);
+                                activity.startActivity(intent);
+                                break;
 
                             }
                             case 4: {

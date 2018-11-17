@@ -6,7 +6,7 @@
     android:background="@color/white">
 
     <TextView
-        android:id="@+id/textview_withdrawamount_currencycode"
+        android:id="@+id/textview_common_currencycode"
         style="?android:attr/spinnerItemStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

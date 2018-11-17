@@ -52,7 +52,7 @@
     <string name="recoveryemail_menudone">Done</string>
 
     <string name="navigation_dashboard">Dashboard</string>
-    <string name="navigation_charge">Charge</string>
+    <string name="navigation_charge">Load</string>
     <string name="navigation_requesttoreceive">Request to receive</string>
     <string name="navigation_walletaddress">Wallet address</string>
     <string name="navigation_transactionhistory">Transaction history</string>
@@ -96,7 +96,7 @@
     <string name="chargeamount_invalidverifyrateid">Invalid verify rate id</string>
     <string name="chargeamount_startatransferasananonymous">Start a transfer as an anonymous</string>
 
-    <string name="chargeconfirmation_chargeconfirmation">Charge confirmation</string>
+    <string name="chargeconfirmation_chargeconfirmation">Load confirmation</string>
     <string name="chargeconfirmation_walletname">Wallet Name </string>
     <string name="chargeconfirmation_paymentgateway">Payment Gateway </string>
     <string name="chargeconfirmation_walletamount">Charge Amount  </string>
@@ -112,7 +112,7 @@
     <string name="chargeconfirmation_paymentiscanceled">Payment is canceled</string>
 
 
-    <string name="chargecompleted_chargecompleted">Charge Completed</string>
+    <string name="chargecompleted_chargecompleted">Load status</string>
     <string name="chargecompleted_walletname">Wallet name </string>
     <string name="chargecompleted_amount">Charge amount  </string>
     <string name="chargecompleted_baseamount">Paid amount  </string>
@@ -126,7 +126,7 @@
     <string name="chargecompleted_sharemenutoolbar">Share</string>
     <string name="chargecompleted_downloadmenutoolbar">Download</string>
 
-    <string name="chargefailed_failed">Charge Failed</string>
+    <string name="chargefailed_failed">Load status</string>
     <string name="chargefailed_failedtextview">Failed</string>
     <string name="chargefailed_walletname">Wallet Name </string>
     <string name="chargefailed_walletamount">Charge Amount </string>
