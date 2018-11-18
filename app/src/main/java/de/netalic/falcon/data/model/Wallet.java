@@ -167,6 +167,7 @@ public class Wallet implements Parcelable {
         dest.writeString(this.mName);
         dest.writeDouble(this.mBalance);
         dest.writeInt(this.mId);
+        dest.writeString(this.mCurrencyCode);
 
     }
 
@@ -175,6 +176,7 @@ public class Wallet implements Parcelable {
         mName=in.readString();
         mBalance=in.readDouble();
         mId=in.readInt();
+        mCurrencyCode=in.readString();
 
     }
 }

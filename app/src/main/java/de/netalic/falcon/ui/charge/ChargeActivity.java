@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;
@@ -19,9 +20,12 @@ public class ChargeActivity extends BaseActivity {
 
         NavigationDrawerUtil.getDrawer(this, getToolbar(),2);
 
+        Bundle bundle=getIntent().getExtras();
+        Wallet selectedWallet=bundle.getParcelable("wallet");
+
         ChargeFragment chargeFragment = (ChargeFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_charge_fragmentcontainer);
         if (chargeFragment == null) {
-            chargeFragment = ChargeFragment.newInstance();
+            chargeFragment = ChargeFragment.newInstance(selectedWallet);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), chargeFragment, R.id.framelayout_charge_fragmentcontainer);
         }
 

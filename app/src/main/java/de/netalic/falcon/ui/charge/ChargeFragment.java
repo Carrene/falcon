@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
@@ -13,10 +14,12 @@ import android.support.v7.widget.SnapHelper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.Spinner;
 
 import java.text.DecimalFormat;
@@ -26,9 +29,12 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.common.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.util.OffsetItemDecoration;
+import de.netalic.falcon.util.SnackbarUtil;
+import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -46,6 +52,9 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
     private TextInputEditText mTextInputEditTextFirstAmount;
     private TextInputEditText mTextInputEditTextSecondAmount;
     private int mSelectedPosition;
+    private Wallet mSelectedWallet;
+    private TextInputLayout mTextInputLayoutFirstAmount;
+    private Rate mRate;
 
     @Nullable
     @Override
@@ -53,17 +62,23 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
         mRoot = inflater.inflate(R.layout.fragment_charge, null);
         mDecimalFormat = new DecimalFormat("0.00##");
+        mSelectedWallet = getArguments().getParcelable("wallet");
         return mRoot;
     }
 
-    public static ChargeFragment newInstance() {
+    public static ChargeFragment newInstance(Wallet selectedWallet) {
 
-        return new ChargeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("wallet", selectedWallet);
+        ChargeFragment fragment = new ChargeFragment();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
+        initUiComponent();
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerViewPaymentGateway = mRoot.findViewById(R.id.recyclerViewPaymentGateway);
@@ -76,10 +91,13 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
         mPaymentGatewaySnapHelper = new LinearSnapHelper();
         mPaymentGatewaySnapHelper.attachToRecyclerView(mRecyclerViewPaymentGateway);
 
-        initUiComponent();
+        mTextInputLayoutFirstAmount.setHint(mSelectedWallet.getCurrencyCode());
+
+        setHasOptionsMenu(true);
         initListener();
         getWalletList();
         getListCurrency();
+        getRate();
     }
 
     private void initListener() {
@@ -101,7 +119,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
                 if (mTextInputEditTextSecondAmount.isFocused()) {
 
-                    if (s.toString().length() == 1 && s.toString().equals(".")){
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
                         s.clear();
                     }
                     if (s.toString().equals("")) {
@@ -133,7 +151,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
                 if (mTextInputEditTextFirstAmount.isFocused()) {
 
-                    if (s.toString().length() == 1 && s.toString().equals(".")){
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
 
                         s.clear();
                     }
@@ -202,6 +220,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
         mSpinnerCurrencyList = mRoot.findViewById(R.id.spinner_load_spinner);
         mTextInputEditTextFirstAmount = mRoot.findViewById(R.id.edittext_charge_firstamount);
         mTextInputEditTextSecondAmount = mRoot.findViewById(R.id.edittext_charge_secondeamount);
+        mTextInputLayoutFirstAmount = mRoot.findViewById(R.id.textinputlayout_load_firstamount);
     }
 
     public void getWalletList() {
@@ -257,6 +276,58 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
     public void navigationToAddWallet() {
 
         Intent intent = new Intent(getContext(), AddWalletActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.menu_everywhere_thathastick, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.menu_everywhere_done: {
+
+                Keyboard.hideKeyboard(mRoot);
+                if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
+
+                    checkNotNull(getContext());
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_pleasefillamount), getContext());
+
+                } else {
+
+                    mPresenter.charge(mSelectedWallet.getId(), Double.parseDouble(mTextInputEditTextFirstAmount.getText().toString()), mRate.getVerifyRateId());
+                }
+
+                break;
+            }
+        }
+
+        return true;
+    }
+
+
+    public void getRate() {
+
+        mPresenter.exchangeRate(mSelectedWallet.getCurrencyCode());
+    }
+
+    @Override
+    public void updateExchangeRateCurrency(Rate rate) {
+
+        mRate = rate;
+
+    }
+
+    @Override
+    public void showChargePaymentConfirmation(Transaction transaction) {
+
+        Intent intent = new Intent(getContext(), ChargeConfirmationActivity.class);
+        intent.putExtra(ChargeConfirmationActivity.ARGUMENT_CHARGE_START, transaction);
         startActivity(intent);
     }
 }
