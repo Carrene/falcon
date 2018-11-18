@@ -81,10 +81,10 @@ public class NavigationDrawerUtil {
                                 activity.startActivity(intent);
                                 break;
                             }
-
                         }
                         case 3: {
 
+                            break;
                         }
                         case 4: {
                             if (position != identifier) {

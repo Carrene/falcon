@@ -26,8 +26,6 @@ public class DashboardWalletSpinnerAdapter extends ArrayAdapter<Wallet> {
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

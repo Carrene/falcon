@@ -145,6 +145,7 @@ dependencies {
     implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
     implementation 'com.journeyapps:zxing-android-embedded:3.3.0@aar'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.0.6'
 
     implementation 'ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.0.6'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'

@@ -137,10 +137,7 @@ public class ChargeWalletRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
             });
 
-
-
         }
-
 
     }
 }

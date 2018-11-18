@@ -5,7 +5,7 @@
     android:id="@+id/fragment_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/porcelain"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
@@ -57,7 +57,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewwithdrawicon"
                 android:src="@drawable/dashboard_withdrawicon" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -72,7 +71,6 @@
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewexchangeicon"
                 android:layout_gravity="top|center_horizontal"
                 android:src="@drawable/dashboard_exchangeicon" />
-
             <ImageView
                 android:layout_width="@dimen/width_fragmentdashboard_imageviewtransactionicon"
                 android:layout_height="match_parent"
@@ -100,6 +98,7 @@
                 android:src="@drawable/dashboard_receiveicon" />
 
             <ImageView
+                android:id="@+id/imageview_dashboard_charge"
                 android:layout_width="@dimen/width_fragmentdashboard_imageviewchargeicon"
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewchargeicon"
                 android:layout_gravity="center_horizontal"

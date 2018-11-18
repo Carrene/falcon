@@ -15,8 +15,8 @@
 
     <color name="colorRed">#B92D00</color>
     <color name="eucalyptus">#28A745</color>
-    <color name="porcelain">#F4F5F6</color>
     <color name="persianGreen">#009688</color>
     <color name="colorSecondaryDark25">#40FF9800</color>
     <color name="punch">#DC3545</color>
+    <color name="lineColor">#E4E4E4</color>
 </resources>

@@ -612,4 +612,14 @@
 
 
 
+    <dimen name="margintop_load_exchangerow">60dp</dimen>
+    <dimen name="margintop_load_excahngelogo">15dp</dimen>
+    <dimen name="margintop_load_spinner">5dp</dimen>
+    <dimen name="width_load_spinner">75dp</dimen>
+    <dimen name="height_load_spinner">31dp</dimen>
+    <dimen name="margintop_load_linearlayout">60dp</dimen>
+    <dimen name="margintop_load_paymentgatewaytextview">16dp</dimen>
+    <dimen name="textsize_load_paymentgatewaytextview">16sp</dimen>
+    <dimen name="height_load_recyclerview">300dp</dimen>
+
 </resources>

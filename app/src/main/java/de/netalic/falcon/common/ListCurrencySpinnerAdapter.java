@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.withdraw;
+package de.netalic.falcon.common;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,29 +14,25 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Rate;
 
-public class WithdrawAmountSpinnerAdapter extends ArrayAdapter<Rate> {
+public class ListCurrencySpinnerAdapter extends ArrayAdapter<Rate> {
 
     private LayoutInflater mLayoutInflater;
-    private static final int CLOSE = 0;
-    private static final int OPEN = 1;
+    private final static int OPEN = 1;
+    private final static int CLOSE = 0;
 
-
-    public WithdrawAmountSpinnerAdapter(Context mContext, List<Rate> rateList) {
-
-        super(mContext, R.layout.spinneritemclose_dashbaord, rateList);
-        mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public ListCurrencySpinnerAdapter(@NonNull Context context, @NonNull List<Rate> objects) {
+        super(context, R.layout.spinnerlistcurrency_common, objects);
+        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         return getCustomView(position, parent, CLOSE);
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         return getCustomView(position, parent, OPEN);
     }
 
@@ -44,19 +40,18 @@ public class WithdrawAmountSpinnerAdapter extends ArrayAdapter<Rate> {
 
         View view = null;
 
+        if (type == 0) {
 
-        if (type == OPEN) {
-
-            view = mLayoutInflater.inflate(R.layout.spinnerlistcurrencyopen_common, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinnerlistcurrencyclose_common, viewGroup,false);
 
 
-        } else if (type == CLOSE) {
+        } else {
 
-            view = mLayoutInflater.inflate(R.layout.spinnerlistcurrencyclose_common, viewGroup, false);
+            view = mLayoutInflater.inflate(R.layout.spinnerlistcurrencyopen_common, viewGroup,false);
         }
 
-        TextView textViewChargeWalletName = view.findViewById(R.id.textview_common_currencycode);
-        textViewChargeWalletName.setText(getItem(position).getCurrencyCode());
+        TextView textViewWalletName = view.findViewById(R.id.textview_common_currencycode);
+        textViewWalletName.setText(getItem(position).getCurrencyCode());
 
         return view;
     }
