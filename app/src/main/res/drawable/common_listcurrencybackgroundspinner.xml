@@ -20,7 +20,7 @@
                     <stroke
                         android:dashWidth="22dp"
                         android:width="1dp"
-                        android:color="#999999" />
+                        android:color="#E4E4E4" />
                 </shape>
             </item>
 

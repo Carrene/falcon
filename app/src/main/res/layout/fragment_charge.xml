@@ -2,74 +2,85 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/linearlayout_charge_exchangeamount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/margintop_load_exchangerow"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="4">
 
-        <EditText
-            android:id="@+id/edittext_charge_alphaamount"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
-            android:maxLength="6"
-            />
+            android:layout_weight="1.2">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edittext_charge_firstamount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:backgroundTint="@color/lineColor"
+                android:inputType="numberDecimal"
+                android:maxLength="6" />
+
+        </android.support.design.widget.TextInputLayout>
 
         <ImageView
             android:id="@+id/imageview_charge_exchange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/everywhere_rowexchangelogo"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/margintop_load_excahngelogo"
             android:layout_weight="0.3"
-            />
+            android:src="@drawable/everywhere_rowexchangelogo" />
 
         <Spinner
             android:id="@+id/spinner_load_spinner"
             style="@style/SpinnerListCurrencyCommon"
-            android:layout_width="75dp"
-            android:layout_height="32dp"
-            android:spinnerMode="dropdown"
-            />
+            android:layout_width="@dimen/width_load_spinner"
+            android:layout_height="@dimen/height_load_spinner"
+            android:layout_marginTop="@dimen/margintop_load_spinner"
+            android:spinnerMode="dropdown" />
 
-        <EditText
-            android:id="@+id/edittext_charge_currencyamount"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2" />
+            android:layout_weight="1.2">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edittext_charge_secondeamount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:backgroundTint="@color/lineColor"
+                android:inputType="numberDecimal" />
+        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearlayout_charge_exchangeamount"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/margintop_load_linearlayout"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textview_charge_paymentgateway"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/margintop_load_paymentgatewaytextview"
             android:gravity="center"
             android:text="@string/charge_paymentgateway"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/textsize_load_paymentgatewaytextview" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewPaymentGateway"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="20dp"/>
+            android:layout_height="@dimen/height_load_recyclerview" />
 
     </LinearLayout>
 </RelativeLayout>
-
-

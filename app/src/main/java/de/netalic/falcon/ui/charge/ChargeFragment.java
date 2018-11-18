@@ -4,17 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,28 +35,24 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ChargeFragment extends Fragment implements ChargeContract.View, ChargeWalletRecyclerViewAdapter.Callback {
 
     private View mRoot;
-    private RecyclerView mRecyclerViewWallets;
     private RecyclerView mRecyclerViewPaymentGateway;
-
-    private ChargeWalletRecyclerViewAdapter mRecyclerViewAdapterChargeWallet;
     private ChargePaymentGatewayRecyclerViewAdapter mRecyclerViewAdapterChargePaymentGateway;
-
     private ChargeContract.Presenter mPresenter;
-    private SnapHelper mWalletSnapHelper;
     private SnapHelper mPaymentGatewaySnapHelper;
-
-    private Button mButtonChargeNext;
-    private int mSelectedWalletPosition;
-    private List<Wallet> mWalletList;
     private List<Rate> mRateList;
     private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
     private Spinner mSpinnerCurrencyList;
+    private DecimalFormat mDecimalFormat;
+    private TextInputEditText mTextInputEditTextFirstAmount;
+    private TextInputEditText mTextInputEditTextSecondAmount;
+    private int mSelectedPosition;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_charge, null);
+        mDecimalFormat = new DecimalFormat("0.00##");
         return mRoot;
     }
 
@@ -68,14 +69,9 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
         mRecyclerViewPaymentGateway = mRoot.findViewById(R.id.recyclerViewPaymentGateway);
         mRecyclerViewPaymentGateway.addItemDecoration(new OffsetItemDecoration(getContext()));
 
-
         mRecyclerViewAdapterChargePaymentGateway = new ChargePaymentGatewayRecyclerViewAdapter(new ArrayList<>());
         mRecyclerViewPaymentGateway.setAdapter(mRecyclerViewAdapterChargePaymentGateway);
         mRecyclerViewPaymentGateway.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-
-
-        mWalletSnapHelper = new LinearSnapHelper();
-        mWalletSnapHelper.attachToRecyclerView(mRecyclerViewWallets);
 
         mPaymentGatewaySnapHelper = new LinearSnapHelper();
         mPaymentGatewaySnapHelper.attachToRecyclerView(mRecyclerViewPaymentGateway);
@@ -88,26 +84,71 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
     private void initListener() {
 
-//        mRecyclerViewWallets.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//
-//                super.onScrollStateChanged(recyclerView, newState);
-//
-//                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-//
-//                    View centerView = mWalletSnapHelper.findSnapView(recyclerView.getLayoutManager());
-//                    mSelectedWalletPosition = recyclerView.getLayoutManager().getPosition(centerView);
-//                    ((ChargeWalletRecyclerViewAdapter) mRecyclerViewWallets.getAdapter()).select(mSelectedWalletPosition);
-//                }
-//            }
-//
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//
-//            }
-//        });
+        mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (mTextInputEditTextSecondAmount.isFocused()) {
+
+                    if (s.toString().length() == 1 && s.toString().equals(".")){
+                        s.clear();
+                    }
+                    if (s.toString().equals("")) {
+
+                        mTextInputEditTextFirstAmount.setText("");
+
+                    } else {
+                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy())));
+                    }
+                }
+            }
+        });
+
+
+        mTextInputEditTextFirstAmount.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (mTextInputEditTextFirstAmount.isFocused()) {
+
+                    if (s.toString().length() == 1 && s.toString().equals(".")){
+
+                        s.clear();
+                    }
+
+                    if (s.toString().equals("")) {
+
+                        mTextInputEditTextSecondAmount.setText("");
+
+                    } else {
+
+                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy())));
+                    }
+                }
+            }
+        });
 
 
         mRecyclerViewPaymentGateway.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -131,22 +172,36 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
             }
         });
 
-//        mButtonChargeNext.setOnClickListener(v -> {
-//
-//            if (mWalletList.size() > 0 && mSelectedWalletPosition != mWalletList.size()) {
-//                Intent intent = new Intent(getContext(), ChargeAmountActivity.class);
-//                intent.putExtra("walletId", mWalletList.get(mSelectedWalletPosition).getId());
-//                intent.putExtra("paymentGatewayName", "braintree");
-//                startActivity(intent);
-//            }
-//        });
-    }
+        mSpinnerCurrencyList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                mSelectedPosition = position;
+                if (mTextInputEditTextSecondAmount.getText().toString().equals("") && mTextInputEditTextFirstAmount.getText().toString().equals("")) {
+
+
+                } else if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
+                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * mRateList.get(position).getBuy()))));
+                } else if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
+
+                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * mRateList.get(position).getBuy()))));
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                mSelectedPosition = 1;
+            }
+        });
+    }
 
     private void initUiComponent() {
 
         mSpinnerCurrencyList = mRoot.findViewById(R.id.spinner_load_spinner);
-
+        mTextInputEditTextFirstAmount = mRoot.findViewById(R.id.edittext_charge_firstamount);
+        mTextInputEditTextSecondAmount = mRoot.findViewById(R.id.edittext_charge_secondeamount);
     }
 
     public void getWalletList() {
@@ -168,14 +223,11 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
     }
 
     @Override
-    public void setListWallet(List<Wallet> walletList) {
+    public void setListWallet(List<Wallet> dataList) {
 
-        mWalletList = walletList;
-//        mRecyclerViewAdapterChargeWallet.setDataSource(walletList);
         List<Integer> list = new ArrayList<>();
         list.add(R.drawable.charge_braintreelogo);
         mRecyclerViewAdapterChargePaymentGateway.setDataSource(list);
-//        mRecyclerViewAdapterChargeWallet.notifyDataSetChanged();
     }
 
     @Override
@@ -191,7 +243,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
         if (getActivity() instanceof BaseActivity) {
             ((BaseActivity) getActivity()).showMaterialDialog();
         }
-
     }
 
     @Override
@@ -200,7 +251,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
         if (getActivity() instanceof BaseActivity) {
             ((BaseActivity) getActivity()).dismissMaterialDialog();
         }
-
     }
 
     @Override

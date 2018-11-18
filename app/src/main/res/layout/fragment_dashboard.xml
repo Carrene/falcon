@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/porcelain">
+                android:background="@color/lineColor">
 
     <RelativeLayout
         android:id="@+id/relativelayout_dashboard_firstpart"
@@ -87,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/linearlayout_dashboard_middletextviews"
-        android:background="@color/porcelain"
+        android:background="@color/lineColor"
         android:orientation="vertical">
 
 
@@ -95,7 +95,7 @@
             android:id="@+id/linearlayout_dashboard_bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/porcelain"
+            android:background="@color/lineColor"
             android:gravity="center"
             android:orientation="horizontal">
 
