@@ -52,14 +52,14 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_receive, null);
-        mWalletAddress = getArguments().getString(DashboardFragment.WALLET_Address);
+        mWalletAddress = getArguments().getString(DashboardFragment.WALLET_ADDRESS);
         return mRoot;
     }
 
     public static ReceiveFragment newInstance(String walletAddress) {
 
         Bundle bundle = new Bundle();
-        bundle.putString(DashboardFragment.WALLET_Address, walletAddress);
+        bundle.putString(DashboardFragment.WALLET_ADDRESS, walletAddress);
         ReceiveFragment fragment = new ReceiveFragment();
         fragment.setArguments(bundle);
         return fragment;

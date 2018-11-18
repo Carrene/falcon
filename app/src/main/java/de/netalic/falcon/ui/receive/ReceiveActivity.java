@@ -17,7 +17,7 @@ public class ReceiveActivity extends BaseActivity {
         NavigationDrawerUtil.getDrawer(this,getToolbar(),1);
 
         Bundle bundle=getIntent().getExtras();
-        String walletAddress=bundle.getString(DashboardFragment.WALLET_Address);
+        String walletAddress=bundle.getString(DashboardFragment.WALLET_ADDRESS);
 
         ReceiveFragment receiveFragment=(ReceiveFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_receive_fragmentcontainer);
         if (receiveFragment==null){
