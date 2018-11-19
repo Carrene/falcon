@@ -19,7 +19,7 @@ public class ChargeActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this, getToolbar(),2);
+        NavigationDrawerUtil.getDrawer(this, getToolbar(),1);
 
         Bundle bundle=getIntent().getExtras();
         Wallet selectedWallet=bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
