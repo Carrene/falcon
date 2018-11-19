@@ -19,7 +19,6 @@ public class ReceiveActivity extends BaseActivity {
 
         Bundle bundle=getIntent().getExtras();
         Wallet selectedWallet=bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
-
         ReceiveFragment receiveFragment=(ReceiveFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_receive_fragmentcontainer);
         if (receiveFragment==null){
 

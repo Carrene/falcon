@@ -217,6 +217,8 @@
         <activity android:name=".ui.send.SendFailedActivity"/>
 
         <activity android:name=".ui.receive.ReceiveActivity"></activity>
+        
+        <activity android:name=".ui.exchange.ExchangeActivity"></activity>
 
     </application>
 

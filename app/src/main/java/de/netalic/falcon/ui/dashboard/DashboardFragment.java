@@ -26,6 +26,7 @@ import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.charge.AddWalletActivity;
 import de.netalic.falcon.ui.charge.ChargeActivity;
+import de.netalic.falcon.ui.exchange.ExchangeActivity;
 import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.send.SendActivity;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
@@ -43,9 +44,14 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ImageView mImageViewSend;
     private ImageView mImageViewReceive;
     private ImageView mImageViewCharge;
+    private ImageView mImageViewExchange;
     private List<Wallet> mWalletList;
     public static final String SELECTED_WALLET = "wallet";
     public static final String WALLET_Address = "walletAddress";
+    public static final String WALLET_ID = "walletId";
+    public static final String WALLET_ADDRESS = "walletAddress";
+    public static final String WALLET_CURRENCY = "walletCurrency";
+    private static final String WALLET_BALANCE = "walletBalance";
 
 
     @Nullable
@@ -110,6 +116,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mRecyclerView = mViewRoot.findViewById(R.id.dashboard_recyclerview);
         mImageViewReceive = mViewRoot.findViewById(R.id.imageview_dashboard_receive);
         mImageViewCharge = mViewRoot.findViewById(R.id.imageview_dashboard_charge);
+        mImageViewExchange = mViewRoot.findViewById(R.id.imageview_dashboard_exchange);
+
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
 
@@ -162,26 +170,40 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewSend.setOnClickListener(v -> {
 
-            Intent intent = new Intent(getActivity(), SendActivity.class);
-            intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
-            startActivity(intent);
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), SendActivity.class);
+                intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
+                startActivity(intent);
+            }
 
         });
 
         mImageViewReceive.setOnClickListener(v -> {
-
-            Intent intent = new Intent(getActivity(), ReceiveActivity.class);
-            intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
-            startActivity(intent);
-
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), ReceiveActivity.class);
+                intent.putExtra(WALLET_ADDRESS, mWalletList.get(mSelectedWalletPosition).getAddress());
+                startActivity(intent);
+            }
         });
+
 
         mImageViewCharge.setOnClickListener(v -> {
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), ReceiveActivity.class);
+                intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
+                startActivity(intent);
+            }
 
-            Intent intent = new Intent(getActivity(), ChargeActivity.class);
-            intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
-            startActivity(intent);
         });
+
+        mImageViewExchange.setOnClickListener(v -> {
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), ExchangeActivity.class);
+                intent.putExtra("wallet", mWalletList.get(mSelectedWalletPosition));
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

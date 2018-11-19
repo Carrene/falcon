@@ -422,5 +422,7 @@
 
     <string name="receive_title">Receive</string>
     <string name="receive_hintalphaamount">Alpha</string>
+    <string name="exchange_title">Exchange</string>
+    <string name="exchangecompleted_title">Exchange completed</string>
 
 </resources>
