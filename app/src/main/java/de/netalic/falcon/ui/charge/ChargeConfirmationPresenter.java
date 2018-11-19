@@ -74,12 +74,14 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
                                                         handler.removeCallbacks(mRunnableRequest);
                                                         handler.removeCallbacks(mRunnableTimer);
                                                         mChargeConfirmationView.navigationToChargeCompleted(deal1.getModel());
+                                                        mChargeConfirmationView.dismissProgressBar();
                                                         break;
                                                     }
 
                                                     case "failed": {
                                                         handler.removeCallbacks(mRunnableRequest);
                                                         mChargeConfirmationView.navigationToChargeFailed(deal1.getModel());
+                                                        mChargeConfirmationView.dismissProgressBar();
                                                         break;
                                                     }
                                                 }
@@ -88,7 +90,6 @@ public class ChargeConfirmationPresenter implements ChargeConfirmationContract.P
                                                 mChargeConfirmationView.showErrorWhenFailed();
                                             }
 
-                                            mChargeConfirmationView.dismissProgressBar();
                                         });
 
                             }

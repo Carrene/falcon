@@ -55,6 +55,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
     private Wallet mSelectedWallet;
     private TextInputLayout mTextInputLayoutFirstAmount;
     private Rate mRate;
+    private double mRateCurrencySelectedWallet;
 
     @Nullable
     @Override
@@ -93,11 +94,23 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
         mTextInputLayoutFirstAmount.setHint(mSelectedWallet.getCurrencyCode());
 
-        setHasOptionsMenu(true);
-        initListener();
         getWalletList();
         getListCurrency();
         getRate();
+        setHasOptionsMenu(true);
+        initListener();
+    }
+
+    private double getSelectedRate(String currencyCode) {
+
+        for (Rate rate : mRateList) {
+            if (rate.getCurrencyCode().equals(currencyCode)) {
+                mRateCurrencySelectedWallet = rate.getBuy();
+            }
+
+        }
+
+        return mRateCurrencySelectedWallet;
     }
 
     private void initListener() {
@@ -127,12 +140,11 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
                         mTextInputEditTextFirstAmount.setText("");
 
                     } else {
-                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy())));
+                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * ((mRateList.get(mSelectedPosition).getBuy()) / mRateCurrencySelectedWallet))));
                     }
                 }
             }
         });
-
 
         mTextInputEditTextFirstAmount.addTextChangedListener(new TextWatcher() {
 
@@ -162,12 +174,11 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
                     } else {
 
-                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy())));
+                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * (mRateList.get(mSelectedPosition).getBuy()) / mRateCurrencySelectedWallet)));
                     }
                 }
             }
         });
-
 
         mRecyclerViewPaymentGateway.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
@@ -199,10 +210,15 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
 
                 } else if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * mRateList.get(position).getBuy()))));
+                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateList.get(position).getBuy()) / mRateCurrencySelectedWallet))));
                 } else if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
 
-                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * mRateList.get(position).getBuy()))));
+                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * (mRateCurrencySelectedWallet / mRateList.get(position).getBuy())))));
+                } else {
+
+                    mTextInputEditTextSecondAmount.setText("");
+                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateList.get(position).getBuy()) / mRateCurrencySelectedWallet))));
+
                 }
 
             }
@@ -210,7 +226,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                mSelectedPosition = 1;
+                mSelectedPosition = 0;
             }
         });
     }
@@ -239,6 +255,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
         mRateList = rateList;
         mListCurrencySpinnerAdapter = new ListCurrencySpinnerAdapter(getContext(), mRateList);
         mSpinnerCurrencyList.setAdapter(mListCurrencySpinnerAdapter);
+        getSelectedRate(mSelectedWallet.getCurrencyCode());
     }
 
     @Override
@@ -296,7 +313,7 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
                 if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
 
                     checkNotNull(getContext());
-                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_pleasefillamount), getContext());
+                    SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
 
                 } else {
 
@@ -309,7 +326,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
         return true;
     }
-
 
     public void getRate() {
 

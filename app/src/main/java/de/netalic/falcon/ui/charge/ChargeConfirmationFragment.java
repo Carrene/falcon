@@ -68,7 +68,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
 
     }
 
-    private void getUser(){
+    private void getUser() {
 
 
     }
@@ -76,7 +76,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     private void setPaymentConfirmationData() {
 
         mTextViewWalletName.setText(mTransaction.getActionList().get(1).getWalletName());
-        mTextViewChargeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " " + String.valueOf(mTransaction.getActionList().get(1).getAmount()));
+        mTextViewChargeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " " + String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
         mTextViewPaidAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " " + String.valueOf(mDecimalFormat.format(Math.abs(mTransaction.getActionList().get(0).getAmount()))));
         mTextViewPaymentGateway.setText(mTransaction.getPaymentGatewayName());
 
@@ -151,7 +151,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
                 mChargeConfirmationPresenter.finalizeCharge(mTransaction.getId(), braintreeNonce);
             } else if (resultCode == Activity.RESULT_CANCELED) {
 
-                SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_paymentiscanceled),getContext());
+                SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_paymentiscanceled), getContext());
             } else {
 
                 Exception exception = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
@@ -181,7 +181,7 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     @Override
     public void showErrorBraintreeNonceIsMissing() {
 
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_braintreenonceismissing),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_braintreenonceismissing), getContext());
 
     }
 
@@ -214,6 +214,6 @@ public class ChargeConfirmationFragment extends Fragment implements ChargeConfir
     @Override
     public void showErrorWhenFailed() {
 
-        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeconfirmation_pleasetryagain),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeconfirmation_pleasetryagain), getContext());
     }
 }
