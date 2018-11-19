@@ -73,7 +73,6 @@ public class ChargePresenter implements ChargeContract.Presenter {
                 }
             }
 
-
         });
         mChargeView.dismissProgressBar();
     }
@@ -102,12 +101,12 @@ public class ChargePresenter implements ChargeContract.Presenter {
                     }
                     case 709: {
 
-//                        mChargeView.showErrorInvalidCurrency();
+                        mChargeView.showErrorInvalidCurrency();
                         break;
                     }
                     case 721: {
 
-//                        mChargeView.showErrorRatesDoesNotExists();
+                        mChargeView.showErrorRatesDoesNotExists();
                         break;
                     }
 
@@ -140,57 +139,57 @@ public class ChargePresenter implements ChargeContract.Presenter {
                         break;
                     }
 
-//                    case 700: {
-//
-//                        mChargeView.showErrorInvalidWalletId();
-//                        break;
-//                    }
-//
-//                    case 702: {
-//
-//                        mChargeView.showErrorInvalidAmount();
-//                        break;
-//                    }
-//
-//                    case 703: {
-//
-//                        mChargeView.showErrorAmountIsSmallerThanLowerBound();
-//                        break;
-//                    }
-//
-//                    case 704: {
-//
-//                        mChargeView.showErrorAmountIsGreaterThanUpperBound();
-//                        break;
-//                    }
-//
-//                    case 725: {
-//
-//                        mChargeView.showErrorChargeIsUnAvailable();
-//                        break;
-//                    }
-//
-//                    case 400: {
-//
-//                        mChargeView.showErrorVerifyRateIdMissing();
-//                        break;
-//                    }
-//
-//                    case 401: {
-//
-//                        mChargeView.showErrorStartATransferAsAnAnonymous();
-//                        break;
-//                    }
-//                    case 605: {
-//
-//                        mChargeView.showErrorVerifyRateIsOutdatedOrItHasWrongCurrency();
-//                        break;
-//                    }
-//
-//                    case 728: {
-//
-//                        mChargeView.showErrorInvalidVerifyRateId();
-//                    }
+                    case 700: {
+
+                        mChargeView.showErrorInvalidWalletId();
+                        break;
+                    }
+
+                    case 702: {
+
+                        mChargeView.showErrorInvalidAmount();
+                        break;
+                    }
+
+                    case 703: {
+
+                        mChargeView.showErrorAmountIsSmallerThanLowerBound();
+                        break;
+                    }
+
+                    case 704: {
+
+                        mChargeView.showErrorAmountIsGreaterThanUpperBound();
+                        break;
+                    }
+
+                    case 725: {
+
+                        mChargeView.showErrorChargeIsUnAvailable();
+                        break;
+                    }
+
+                    case 400: {
+
+                        mChargeView.showErrorVerifyRateIdMissing();
+                        break;
+                    }
+
+                    case 401: {
+
+                        mChargeView.showErrorStartATransferAsAnAnonymous();
+                        break;
+                    }
+                    case 605: {
+
+                        mChargeView.showErrorVerifyRateIsOutdatedOrItHasWrongCurrency();
+                        break;
+                    }
+
+                    case 728: {
+
+                        mChargeView.showErrorInvalidVerifyRateId();
+                    }
                 }
 
             }

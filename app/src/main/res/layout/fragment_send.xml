@@ -1,80 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <LinearLayout
-        android:id="@+id/linearlayout_send_exchangerow"
+        android:id="@+id/linearlayout_send_exchangeamount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margintop_send_linearlayout"
+        android:layout_marginTop="@dimen/margintop_load_exchangerow"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="4">
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputlayout_send_firstamount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1">
+            android:layout_weight="1.2">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/textinputedittext_send_alphaamount"
+                android:id="@+id/edittext_send_firstamount"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.1"
-                android:backgroundTint="@color/colorBlack"
-                android:hint="@string/send_hintalphaamount"
-                android:maxLength="6"
-                android:textColor="@color/colorPrimaryLight"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:backgroundTint="@color/lineColor"
                 android:inputType="numberDecimal"
-                />
+                android:maxLength="6" />
 
         </android.support.design.widget.TextInputLayout>
 
         <ImageView
-            android:id="@+id/imageview_send_exchangelogo"
+            android:id="@+id/imageview_send_exchange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margintop_send_exchangelogo"
-            android:layout_weight="0.5"
-            android:src="@drawable/everywhere_horizontalexchangelogo" />
+            android:layout_marginTop="@dimen/margintop_load_excahngelogo"
+            android:layout_weight="0.3"
+            android:src="@drawable/everywhere_rowexchangelogo" />
+
+        <Spinner
+            android:id="@+id/spinner_send_spinner"
+            style="@style/SpinnerListCurrencyCommon"
+            android:layout_width="@dimen/width_load_spinner"
+            android:layout_height="@dimen/height_load_spinner"
+            android:layout_marginTop="@dimen/margintop_load_spinner"
+            android:spinnerMode="dropdown" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6">
+            android:layout_weight="1.2">
 
-            <EditText
-                android:id="@+id/edittext_send_customcurrency"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edittext_send_secondeamount"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:backgroundTint="@color/colorBlack"
-                android:textColor="@color/colorPrimaryLight" />
-
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:backgroundTint="@color/lineColor"
+                android:inputType="numberDecimal" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.1">
-
-            <EditText
-                android:id="@+id/edittext_send_everycurrencyamount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.1"
-                android:backgroundTint="@color/colorBlack"
-                android:textColor="@color/colorPrimaryLight" />
-
-        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textinputlayout_send_walletaddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearlayout_send_exchangerow"
+        android:layout_below="@+id/linearlayout_send_exchangeamount"
         android:layout_marginStart="@dimen/marginstartend_send_textinputlayoutwalletaddress"
         android:layout_marginTop="@dimen/margintop_send_textinputlayoutwalletaddress"
         android:layout_marginEnd="@dimen/marginstartend_send_textinputlayoutwalletaddress">
@@ -93,7 +85,6 @@
         android:layout_height="@dimen/widthheight_send_barcodeview"
         android:layout_below="@+id/textinputlayout_send_walletaddress"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margintop_send_bacodeview"
-        />
+        android:layout_marginTop="@dimen/margintop_send_bacodeview" />
 
 </RelativeLayout>

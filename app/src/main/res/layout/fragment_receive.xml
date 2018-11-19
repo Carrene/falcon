@@ -5,60 +5,59 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:id="@+id/linearlayout_receive_exchangerow"
+        android:id="@+id/linearlayout_receive_exchangeamount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margintop_receive_linearlayoutexchangerow"
+        android:layout_marginTop="@dimen/margintop_load_exchangerow"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="4">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textinputlayout_receive_alphaamount"
+            android:id="@+id/textinputlayout_receive_firstamount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1">
+            android:layout_weight="1.2">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/textinputedittext_receive_alphaamount"
+                android:id="@+id/edittext_receive_firstamount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/receive_hintalphaamount"
-                android:maxLength="6"
+                android:layout_weight="1.2"
+                android:backgroundTint="@color/lineColor"
                 android:inputType="numberDecimal"
-                />
+                android:maxLength="6" />
 
         </android.support.design.widget.TextInputLayout>
 
         <ImageView
-            android:id="@+id/imageview_receive_exchanngerowlogo"
+            android:id="@+id/imageview_receive_exchange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margintop_receive_exchangelog"
-            android:layout_weight="0.5"
-            android:src="@drawable/everywhere_exchangerowlogo" />
+            android:layout_marginTop="@dimen/margintop_load_excahngelogo"
+            android:layout_weight="0.3"
+            android:src="@drawable/everywhere_rowexchangelogo" />
+
+        <Spinner
+            android:id="@+id/spinner_receive_spinner"
+            style="@style/SpinnerListCurrencyCommon"
+            android:layout_width="@dimen/width_load_spinner"
+            android:layout_height="@dimen/height_load_spinner"
+            android:layout_marginTop="@dimen/margintop_load_spinner"
+            android:spinnerMode="dropdown" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7">
+            android:layout_weight="1.2">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/edittext_receive_secondeamount"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/textinputedittext_receive_othercurrencyamount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:backgroundTint="@color/lineColor"
+                android:inputType="numberDecimal" />
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
@@ -67,7 +66,7 @@
         android:id="@+id/relativelayout_receive_forscreenshot"
         android:layout_width="@dimen/width_receive_borderofqrcode"
         android:layout_height="@dimen/height_receive_borderofqrcode"
-        android:layout_below="@+id/linearlayout_receive_exchangerow"
+        android:layout_below="@+id/linearlayout_receive_exchangeamount"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_receive_borderofqrcode"
         android:background="@drawable/everywherefailed_border">

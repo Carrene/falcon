@@ -1,5 +1,8 @@
 package de.netalic.falcon.ui.send;
 
+import java.util.List;
+
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BasePresenter;
 import de.netalic.falcon.ui.base.BaseView;
@@ -20,12 +23,14 @@ public interface SendContract {
         void showErrorTryingToTransferFromOtherWallet404();
         void showError602();
         void showError401();
+        void setRateList(List<Rate> rateList);
 
     }
 
     interface Presenter extends BasePresenter{
 
         void startTransfer(int sourceWalletId,String destinationWalletId,float amount);
+        void listExchangeRate();
 
     }
 }

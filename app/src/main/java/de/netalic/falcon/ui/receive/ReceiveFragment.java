@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
@@ -17,15 +18,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.google.gson.Gson;
 import com.google.zxing.WriterException;
 
 import java.io.File;
+import java.text.DecimalFormat;
+import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.common.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Purchase;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.QrCodeUtil;
 import de.netalic.falcon.util.ScreenshotUtil;
@@ -42,24 +51,33 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     private static final String RECEIVE_PATH = "/Receive";
     private static final int IMAGE_QUALITY = 100;
     private View mScreenShotView;
-    private TextInputEditText mTextInputEditTextAlphaAmount;
     private ImageView mImageViewGenerateQrCode;
-    private String mWalletAddress;
     private Bitmap mBitmapQrCode;
+    private DecimalFormat mDecimalFormat;
+    private TextInputEditText mTextInputEditTextFirstAmount;
+    private TextInputEditText mTextInputEditTextSecondAmount;
+    private int mSelectedPosition;
+    private TextInputLayout mTextInputLayoutFirstAmount;
+    private Spinner mSpinnerCurrencyList;
+    private Wallet mSelectedWallet;
+    private List<Rate> mRateList;
+    private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
+    private double mRateCurrencySelectedWallet;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_receive, null);
-        mWalletAddress = getArguments().getString(DashboardFragment.WALLET_Address);
+        mDecimalFormat = new DecimalFormat("0.00##");
+        mSelectedWallet = getArguments().getParcelable(DashboardFragment.SELECTED_WALLET);
         return mRoot;
     }
 
-    public static ReceiveFragment newInstance(String walletAddress) {
+    public static ReceiveFragment newInstance(Wallet selectedWallet) {
 
         Bundle bundle = new Bundle();
-        bundle.putString(DashboardFragment.WALLET_Address, walletAddress);
+        bundle.putParcelable(DashboardFragment.SELECTED_WALLET, selectedWallet);
         ReceiveFragment fragment = new ReceiveFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -69,9 +87,16 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
+        getListCurrency();
         initUiComponent();
+        mTextInputLayoutFirstAmount.setHint(mSelectedWallet.getCurrencyCode());
         initListener();
-        generateQrCodeWithWalletAddress(mWalletAddress);
+        generateQrCodeWithWalletAddress(mSelectedWallet.getAddress());
+    }
+
+    private void getListCurrency() {
+
+        mReceivePresenter.listExchangeRate();
     }
 
     @Override
@@ -83,11 +108,18 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     @Override
     public void showProgressBar() {
 
+        checkNotNull(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
     }
 
     @Override
     public void dismissProgressBar() {
 
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).dismissMaterialDialog();
+        }
     }
 
     @Override
@@ -104,19 +136,14 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
             case R.id.item_everywhere_share: {
 
                 requestPermissionShare();
-
                 break;
             }
             case R.id.item_everywhere_download: {
 
                 requestPermissionSave();
-
                 break;
             }
-
         }
-
-
         return true;
     }
 
@@ -150,7 +177,6 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
@@ -169,15 +195,47 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     private void initUiComponent() {
 
         mScreenShotView = mRoot.findViewById(R.id.relativelayout_receive_forscreenshot);
-        mTextInputEditTextAlphaAmount = mRoot.findViewById(R.id.textinputedittext_receive_alphaamount);
+        mSpinnerCurrencyList = mRoot.findViewById(R.id.spinner_receive_spinner);
+        mTextInputEditTextFirstAmount = mRoot.findViewById(R.id.edittext_receive_firstamount);
+        mTextInputEditTextSecondAmount = mRoot.findViewById(R.id.edittext_receive_secondeamount);
+        mTextInputLayoutFirstAmount = mRoot.findViewById(R.id.textinputlayout_receive_firstamount);
         mImageViewGenerateQrCode = mRoot.findViewById(R.id.imageview_receive_createqrcode);
 
     }
 
     private void initListener() {
 
+        mSpinnerCurrencyList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        mTextInputEditTextAlphaAmount.addTextChangedListener(new TextWatcher() {
+                mSelectedPosition = position;
+                if (mTextInputEditTextSecondAmount.getText().toString().equals("") && mTextInputEditTextFirstAmount.getText().toString().equals("")) {
+
+
+                } else if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
+                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateCurrencySelectedWallet / mRateList.get(position).getBuy())))));
+                } else if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
+
+                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * (mRateList.get(position).getBuy() / mRateCurrencySelectedWallet)))));
+                } else {
+
+                    mTextInputEditTextSecondAmount.clearComposingText();
+                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateCurrencySelectedWallet / mRateList.get(position).getBuy())))));
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                mSelectedPosition = 0;
+            }
+        });
+
+        mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -191,22 +249,64 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
             @Override
             public void afterTextChanged(Editable s) {
 
+                if (mTextInputEditTextSecondAmount.isFocused()) {
 
-                if (s.toString().equals("")) {
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
+                        s.clear();
+                    }
+                    if (s.toString().equals("")) {
 
-                } else {
-                    try {
-                        Gson gson = new Gson();
-                        Purchase purchase = new Purchase(Float.valueOf(s.toString()), mWalletAddress);
-                        String purchaseJson = gson.toJson(purchase);
+                        mTextInputEditTextFirstAmount.setText("");
 
-                        mBitmapQrCode = QrCodeUtil.generateQrCode(purchaseJson, 300, 300);
-                        mImageViewGenerateQrCode.setImageBitmap(mBitmapQrCode);
+                    } else {
+                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * ((mRateList.get(mSelectedPosition).getBuy()) / mRateCurrencySelectedWallet))));
+                    }
+                }
+            }
+        });
 
-                    } catch (WriterException e) {
-                        e.printStackTrace();
+        mTextInputEditTextFirstAmount.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (mTextInputEditTextFirstAmount.isFocused()) {
+
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
+
+                        s.clear();
                     }
 
+                    if (s.toString().equals("")) {
+
+                        mTextInputEditTextSecondAmount.setText("");
+
+                    } else {
+
+                        try {
+                            Gson gson = new Gson();
+                            Purchase purchase = new Purchase(Float.valueOf(s.toString()), mSelectedWallet.getAddress());
+                            String purchaseJson = gson.toJson(purchase);
+
+                            mBitmapQrCode = QrCodeUtil.generateQrCode(purchaseJson, 300, 300);
+                            mImageViewGenerateQrCode.setImageBitmap(mBitmapQrCode);
+
+                        } catch (WriterException e) {
+                            e.printStackTrace();
+                        }
+
+                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * (mRateCurrencySelectedWallet / mRateList.get(mSelectedPosition).getBuy()))));
+                    }
                 }
             }
         });
@@ -220,7 +320,23 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-
     }
 
+    private double getSelectedRate(String currencyCode) {
+
+        for (Rate rate : mRateList) {
+            if (rate.getCurrencyCode().equals(currencyCode)) {
+                mRateCurrencySelectedWallet = rate.getBuy();
+            }
+        }
+        return mRateCurrencySelectedWallet;
+    }
+
+    @Override
+    public void setRateList(List<Rate> rateList) {
+        mRateList = rateList;
+        mListCurrencySpinnerAdapter = new ListCurrencySpinnerAdapter(getContext(), mRateList);
+        mSpinnerCurrencyList.setAdapter(mListCurrencySpinnerAdapter);
+        getSelectedRate(mSelectedWallet.getCurrencyCode());
+    }
 }

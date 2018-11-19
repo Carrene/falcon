@@ -16,6 +16,28 @@ public interface ChargeContract {
         void updateExchangeRateCurrency(Rate rate);
         void showChargePaymentConfirmation(Transaction transaction);
 
+        void showErrorInvalidAmount();
+
+        void showErrorInvalidWalletId();
+
+        void showErrorAmountIsSmallerThanLowerBound();
+
+        void showErrorAmountIsGreaterThanUpperBound();
+
+        void showErrorInvalidCurrency();
+
+        void showErrorRatesDoesNotExists();
+
+        void showErrorChargeIsUnAvailable();
+
+        void showErrorVerifyRateIsOutdatedOrItHasWrongCurrency();
+
+        void showErrorVerifyRateIdMissing();
+
+        void showErrorInvalidVerifyRateId();
+
+        void showErrorStartATransferAsAnAnonymous();
+
     }
 
     interface Presenter extends BasePresenter {

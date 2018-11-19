@@ -1,6 +1,7 @@
 package de.netalic.falcon.ui.send;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.rate.RateRepository;
 import de.netalic.falcon.data.repository.transaction.TransactionRepository;
 
 public class SendPresenter implements SendContract.Presenter {
@@ -106,5 +107,33 @@ public class SendPresenter implements SendContract.Presenter {
         });
 
 
+    }
+
+    @Override
+    public void listExchangeRate() {
+
+        mSendView.showProgressBar();
+
+        RepositoryLocator.getInstance().getRepository(RateRepository.class).getAll(deal -> {
+
+            if (deal.getThrowable() != null) {
+
+
+                mSendView.dismissProgressBar();
+            } else {
+
+                switch (deal.getResponse().code()) {
+
+                    case 200: {
+
+                        mSendView.setRateList(deal.getResponse().body());
+                        break;
+                    }
+
+                }
+            }
+
+        });
+        mSendView.dismissProgressBar();
     }
 }

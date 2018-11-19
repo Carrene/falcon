@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSmoothScroller;
@@ -45,8 +44,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ImageView mImageViewReceive;
     private ImageView mImageViewCharge;
     private List<Wallet> mWalletList;
-    public static final String WALLET_ID ="walletId";
-    public static final String WALLET_Address ="walletAddress";
+    public static final String SELECTED_WALLET = "wallet";
+    public static final String WALLET_Address = "walletAddress";
 
 
     @Nullable
@@ -107,10 +106,10 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
     public void initUiComponents() {
 
-        mImageViewSend=mViewRoot.findViewById(R.id.imageview_dashboard_send);
+        mImageViewSend = mViewRoot.findViewById(R.id.imageview_dashboard_send);
         mRecyclerView = mViewRoot.findViewById(R.id.dashboard_recyclerview);
-        mImageViewReceive=mViewRoot.findViewById(R.id.imageview_dashboard_receive);
-        mImageViewCharge=mViewRoot.findViewById(R.id.imageview_dashboard_charge);
+        mImageViewReceive = mViewRoot.findViewById(R.id.imageview_dashboard_receive);
+        mImageViewCharge = mViewRoot.findViewById(R.id.imageview_dashboard_charge);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
 
@@ -163,24 +162,24 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewSend.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getActivity(),SendActivity.class);
-            intent.putExtra(WALLET_ID,mWalletList.get(mSelectedWalletPosition).getId());
+            Intent intent = new Intent(getActivity(), SendActivity.class);
+            intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
             startActivity(intent);
 
         });
 
         mImageViewReceive.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getActivity(),ReceiveActivity.class);
-            intent.putExtra(WALLET_Address,mWalletList.get(mSelectedWalletPosition).getAddress());
+            Intent intent = new Intent(getActivity(), ReceiveActivity.class);
+            intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
             startActivity(intent);
 
         });
 
         mImageViewCharge.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getActivity(),ChargeActivity.class);
-            intent.putExtra("wallet",mWalletList.get(mSelectedWalletPosition));
+            Intent intent = new Intent(getActivity(), ChargeActivity.class);
+            intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
             startActivity(intent);
         });
     }
@@ -188,7 +187,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     @Override
     public void setWalletList(List<Wallet> data) {
         mDashboardAdapter.setData(data);
-        mWalletList=data;
+        mWalletList = data;
 
     }
 

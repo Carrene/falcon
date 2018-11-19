@@ -32,6 +32,7 @@ import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.ui.util.OffsetItemDecoration;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
@@ -63,14 +64,14 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
         mRoot = inflater.inflate(R.layout.fragment_charge, null);
         mDecimalFormat = new DecimalFormat("0.00##");
-        mSelectedWallet = getArguments().getParcelable("wallet");
+        mSelectedWallet = getArguments().getParcelable(DashboardFragment.SELECTED_WALLET);
         return mRoot;
     }
 
     public static ChargeFragment newInstance(Wallet selectedWallet) {
 
         Bundle bundle = new Bundle();
-        bundle.putParcelable("wallet", selectedWallet);
+        bundle.putParcelable(DashboardFragment.SELECTED_WALLET, selectedWallet);
         ChargeFragment fragment = new ChargeFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -115,36 +116,6 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
     private void initListener() {
 
-        mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if (mTextInputEditTextSecondAmount.isFocused()) {
-
-                    if (s.toString().length() == 1 && s.toString().equals(".")) {
-                        s.clear();
-                    }
-                    if (s.toString().equals("")) {
-
-                        mTextInputEditTextFirstAmount.setText("");
-
-                    } else {
-                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * ((mRateList.get(mSelectedPosition).getBuy()) / mRateCurrencySelectedWallet))));
-                    }
-                }
-            }
-        });
 
         mTextInputEditTextFirstAmount.addTextChangedListener(new TextWatcher() {
 
@@ -174,7 +145,38 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
                     } else {
 
-                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * (mRateList.get(mSelectedPosition).getBuy()) / mRateCurrencySelectedWallet)));
+                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * (mRateCurrencySelectedWallet/mRateList.get(mSelectedPosition).getBuy()))));
+                    }
+                }
+            }
+        });
+
+        mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (mTextInputEditTextSecondAmount.isFocused()) {
+
+                    if (s.toString().length() == 1 && s.toString().equals(".")) {
+                        s.clear();
+                    }
+                    if (s.toString().equals("")) {
+
+                        mTextInputEditTextFirstAmount.setText("");
+
+                    } else {
+                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * ((mRateList.get(mSelectedPosition).getBuy())/mRateCurrencySelectedWallet))));
                     }
                 }
             }
@@ -210,14 +212,14 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
 
 
                 } else if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateList.get(position).getBuy()) / mRateCurrencySelectedWallet))));
+                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateCurrencySelectedWallet/mRateList.get(position).getBuy())))));
                 } else if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
 
-                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * (mRateCurrencySelectedWallet / mRateList.get(position).getBuy())))));
+                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * (mRateList.get(position).getBuy()/mRateCurrencySelectedWallet)))));
                 } else {
 
-                    mTextInputEditTextSecondAmount.setText("");
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateList.get(position).getBuy()) / mRateCurrencySelectedWallet))));
+                    mTextInputEditTextSecondAmount.clearComposingText();
+                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateCurrencySelectedWallet/mRateList.get(position).getBuy())))));
 
                 }
 
@@ -346,4 +348,82 @@ public class ChargeFragment extends Fragment implements ChargeContract.View, Cha
         intent.putExtra(ChargeConfirmationActivity.ARGUMENT_CHARGE_START, transaction);
         startActivity(intent);
     }
+
+    @Override
+    public void showErrorInvalidAmount() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_invalidamount), getContext());
+    }
+
+    @Override
+    public void showErrorInvalidWalletId() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_invalidwalletid), getContext());
+    }
+
+    @Override
+    public void showErrorAmountIsSmallerThanLowerBound() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_amountissmallerthanlowerbound), getContext());
+    }
+
+    @Override
+    public void showErrorAmountIsGreaterThanUpperBound() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.charge_amountisgreaterthanupperbound), getContext());
+    }
+
+    @Override
+    public void showErrorInvalidCurrency() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeamount_invalidcurrency), getContext());
+    }
+
+    @Override
+    public void showErrorRatesDoesNotExists() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargeamount_ratedosenotexists), getContext());
+    }
+
+    @Override
+    public void showErrorChargeIsUnAvailable() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_chargeisunavailable),getContext());
+    }
+
+    @Override
+    public void showErrorVerifyRateIsOutdatedOrItHasWrongCurrency() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_verifyrateisoutdatedorithaswrongcurrency),getContext());
+    }
+
+    @Override
+    public void showErrorVerifyRateIdMissing() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_VerifyRateIdMissing),getContext());
+    }
+
+    @Override
+    public void showErrorInvalidVerifyRateId() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_invalidverifyrateid),getContext());
+    }
+
+    @Override
+    public void showErrorStartATransferAsAnAnonymous() {
+
+        checkNotNull(getContext());
+        SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.chargeamount_startatransferasananonymous),getContext());
+    }
+
 }
