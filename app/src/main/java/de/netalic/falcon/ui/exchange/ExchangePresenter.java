@@ -68,13 +68,13 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
                     }
 
                     case 700: {
-                        //TODO(Hanieh) error handel
+                        
                         break;
 
                     }
 
                     case 727: {
-                        //TODO(Hanieh) error handel
+
                         break;
                     }
 
@@ -90,12 +90,12 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
 
 
                     case 601: {
-                        //TODO(Hanieh) error handel
+
                         break;
                     }
 
                     case 702: {
-                        //TODO(Hanieh) error handel
+
                         if (deal.getResponse().message().equals("Amount is negative")) {
 
                         }
@@ -107,17 +107,17 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
                     }
 
                     case 600: {
-                        //TODO(Hanieh) error handel
+
                         break;
                     }
 
                     case 401: {
-                        //TODO(Hanieh) error handel
+
                         break;
                     }
 
                     case 602: {
-                        //TODO(Hanieh) error handel
+
                         break;
                     }
                 }

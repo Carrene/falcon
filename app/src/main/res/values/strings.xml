@@ -242,6 +242,12 @@
     <string name="transferconfirmation_balanceislowerthanbalance">Balance is lower than balance</string>
     <string name="transferconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
 
+    <string name="exchangeconfirmation_tryingtofinalizesomeoneelsetransaction">Trying to finalize someone else transaction</string>
+    <string name="exchangeconfirmation_finalizingtransactionwithstatusofsucceed">Finalizing transaction with status of succeed</string>
+    <string name="exchangeconfirmation_finalizingtransactionwithstatusoffailed">Finalizing transaction with status of failed</string>
+    <string name="exchangeconfirmation_balanceislowerthanbalance">Balance is lower than balance</string>
+    <string name="exchangeconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
+
 
     <string name="transferfailed_toolbar">Send failed</string>
     <string name="transferfailed_failed">Failed</string>

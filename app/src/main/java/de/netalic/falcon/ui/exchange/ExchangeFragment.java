@@ -27,10 +27,11 @@ import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.charge.AddWalletActivity;
+import de.netalic.falcon.ui.exchange.exchangeresult.ExchangeConfirmationActivity;
 import de.netalic.falcon.ui.send.SendConfirmationActivity;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static de.netalic.falcon.ui.send.SendFragment.ARGUMENT_TRANSACTION;
 
 public class ExchangeFragment extends Fragment implements ExchangeContract.View {
 
@@ -47,6 +48,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
     private ExchangeContract.Presenter mPresenter;
     public static final String WALLET = "wallet";
+    public static final String ARGUMENT_TRANSACTION = "transaction";
 
     @Nullable
     @Override
@@ -182,7 +184,12 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        mPresenter.getWalletList();
+        if (mTextInputEditTextSecondAmount.getText().toString().equals("")){
+            SnackbarUtil.showSnackbar(mViewRoot, "Amount is empty", getContext());
+        }else {
+            mPresenter.getWalletList();
+        }
+
         return true;
     }
 
@@ -271,7 +278,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
     @Override
     public void navigationToExchangeConfirmation(Transaction body) {
-        Intent intent = new Intent(getContext(), SendConfirmationActivity.class);
+        Intent intent = new Intent(getContext(), ExchangeConfirmationActivity.class);
         intent.putExtra(ARGUMENT_TRANSACTION, body);
         startActivity(intent);
     }

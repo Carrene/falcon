@@ -23,7 +23,6 @@ import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.exchange.ExchangeFragment;
-import de.netalic.falcon.ui.send.SendFragment;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -53,7 +52,7 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
         mRoot = inflater.inflate(R.layout.fragment_exchangecompleted, null);
         checkNotNull(getArguments());
-        mTransaction = getArguments().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
+        mTransaction = getArguments().getParcelable(ExchangeFragment.ARGUMENT_TRANSACTION);
         setHasOptionsMenu(true);
         return mRoot;
     }
@@ -89,7 +88,7 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
         ExchangeCompletedFragment exchangeCompletedFragment = new ExchangeCompletedFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(SendFragment.ARGUMENT_TRANSACTION, transaction);
+        bundle.putParcelable(ExchangeFragment.ARGUMENT_TRANSACTION, transaction);
         exchangeCompletedFragment.setArguments(bundle);
         return exchangeCompletedFragment;
     }
