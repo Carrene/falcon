@@ -1,6 +1,5 @@
 package de.netalic.falcon.ui.exchange;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,11 +23,14 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.common.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.charge.AddWalletActivity;
+import de.netalic.falcon.ui.send.SendConfirmationActivity;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static de.netalic.falcon.ui.send.SendFragment.ARGUMENT_TRANSACTION;
 
 public class ExchangeFragment extends Fragment implements ExchangeContract.View {
 
@@ -38,7 +40,9 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private Spinner mSpinnerCurrencyList;
     private Wallet mWallet;
     private List<Rate> mRateList;
+    private List<Wallet> mWalletList;
     private int mSelectedPosition;
+    private double mWalletRate;
     private DecimalFormat mDecimalFormat;
     private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
     private ExchangeContract.Presenter mPresenter;
@@ -73,7 +77,6 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         mSpinnerCurrencyList = mViewRoot.findViewById(R.id.spinner_exchange_spinner);
 
         mTextInputEditTextFirstAmount.setHint(mWallet.getCurrencyCode());
-
     }
 
     private void initListener() {
@@ -102,8 +105,9 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
                         mTextInputEditTextFirstAmount.setText("");
 
-                    } else {
-                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy())));
+                    } else if (!mTextInputEditTextFirstAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mWalletRate))) {
+                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                                format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mWalletRate)));
                     }
                 }
             }
@@ -136,10 +140,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
                         mTextInputEditTextSecondAmount.setText("");
 
-                    } else {
+                    } else if (!mTextInputEditTextSecondAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mWalletRate))) {
 
                         mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
-                                format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy())));
+                                format(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mWalletRate)));
                     }
                 }
             }
@@ -154,22 +158,21 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
 
                 } else if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.
-                            format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * mRateList.get(position).getBuy()))));
+                    mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                            format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) / mRateList.get(mSelectedPosition).getBuy() * mWalletRate)));
                 } else if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
 
-                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.
-                            format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * mRateList.get(position).getBuy()))));
-                } else{
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.
-                            format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * mRateList.get(position).getBuy()))));
+                    mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                            format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * mRateList.get(mSelectedPosition).getBuy() / mWalletRate)));
+                } else {
+                    mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                            format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) / mRateList.get(mSelectedPosition).getBuy() * mWalletRate)));
                 }
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
                 mSelectedPosition = 1;
             }
         });
@@ -179,9 +182,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        mPresenter.transfer();
+        mPresenter.getWalletList();
         return true;
     }
+
 
     @Override
     public void setPresenter(ExchangeContract.Presenter presenter) {
@@ -232,6 +236,44 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         ExchangeFragment fragment = new ExchangeFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void setWalletRate() {
+        for (Rate rate : mRateList) {
+            if (mWallet.getCurrencyCode().equals(rate.getCurrencyCode())) {
+                mWalletRate = rate.getBuy();
+            }
+        }
+    }
+
+    @Override
+    public void setListWallet(List<Wallet> model) {
+        mWalletList = model;
+        findDestinationWallet();
+    }
+
+    public void findDestinationWallet(){
+        String selectedCurrency = mRateList.get(mSelectedPosition).getCurrencyCode();
+        String destinationAddress = "";
+        int walletId = 0;
+        for (Wallet wallet : mWalletList) {
+            if (wallet.getCurrencyCode().equals(selectedCurrency)) {
+                destinationAddress = wallet.getAddress();
+                walletId = mWallet.getId();
+                mPresenter.transfer(walletId, destinationAddress, Float.valueOf(mTextInputEditTextSecondAmount.getText().toString()));
+            }
+        }
+        if (destinationAddress.equals("")) {
+            navigationToAddWallet();
+        }
+    }
+
+    @Override
+    public void navigationToExchangeConfirmation(Transaction body) {
+        Intent intent = new Intent(getContext(), SendConfirmationActivity.class);
+        intent.putExtra(ARGUMENT_TRANSACTION, body);
+        startActivity(intent);
     }
 
 }

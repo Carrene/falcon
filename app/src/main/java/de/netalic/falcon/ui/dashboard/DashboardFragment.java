@@ -166,32 +166,36 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         });
 
         mImageViewSend.setOnClickListener(v -> {
-
-            Intent intent = new Intent(getActivity(), SendActivity.class);
-            intent.putExtra(WALLET_ID, mWalletList.get(mSelectedWalletPosition).getId());
-            startActivity(intent);
-
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), SendActivity.class);
+                intent.putExtra(WALLET_ID, mWalletList.get(mSelectedWalletPosition).getId());
+                startActivity(intent);
+            }
         });
 
         mImageViewReceive.setOnClickListener(v -> {
-
-            Intent intent = new Intent(getActivity(), ReceiveActivity.class);
-            intent.putExtra(WALLET_ADDRESS, mWalletList.get(mSelectedWalletPosition).getAddress());
-            startActivity(intent);
-
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), ReceiveActivity.class);
+                intent.putExtra(WALLET_ADDRESS, mWalletList.get(mSelectedWalletPosition).getAddress());
+                startActivity(intent);
+            }
         });
 
         mImageViewCharge.setOnClickListener(v -> {
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), ChargeActivity.class);
+                startActivity(intent);
+            }
 
-            Intent intent = new Intent(getActivity(), ChargeActivity.class);
-            startActivity(intent);
         });
 
         mImageViewExchange.setOnClickListener(v -> {
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), ExchangeActivity.class);
+                intent.putExtra("wallet", mWalletList.get(mSelectedWalletPosition));
+                startActivity(intent);
+            }
 
-            Intent intent = new Intent(getActivity(), ExchangeActivity.class);
-            intent.putExtra("wallet", mWalletList.get(mSelectedWalletPosition));
-            startActivity(intent);
         });
 
     }

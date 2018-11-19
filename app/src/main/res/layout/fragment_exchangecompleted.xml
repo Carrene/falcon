@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_exchangecompleted_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/chargeandtransferandpurchasecompleted_border"
+        android:orientation="vertical"
+        android:paddingBottom="18dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/chargetransfercompleted_headerborder">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_success"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="Success"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop= "20dp"
+            android:paddingStart="15dp">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_exchangeamountlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exchange amount"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_exchangecompleted_exchangeamountalpha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="15dp"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="15dp">
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_paidamountlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paid amount"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_exchangecompleted_paidamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="15dp"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="15dp">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_exchamgedatelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exchange Date"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_exchangedate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="15dp"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/colorPrimaryDark5" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="15dp">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_exchangetimelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exchange time"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_exchangetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="15dp"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="15dp">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_rrnlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RNN"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_rrn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="15dp"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_exchangecompleted_dashborad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/colorSecondary"
+        android:text="@string/transfercompleted_dashboard"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp" />
+</RelativeLayout>
