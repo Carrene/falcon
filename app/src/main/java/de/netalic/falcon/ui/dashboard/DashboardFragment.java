@@ -181,7 +181,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mImageViewReceive.setOnClickListener(v -> {
             if (mSelectedWalletPosition < mWalletList.size()){
                 Intent intent = new Intent(getActivity(), ReceiveActivity.class);
-                intent.putExtra(WALLET_ADDRESS, mWalletList.get(mSelectedWalletPosition).getAddress());
+                intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
             }
         });
