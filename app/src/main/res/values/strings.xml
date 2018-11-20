@@ -229,6 +229,21 @@
     <string name="transferpayee_walletcurrenciesaredifferent">Wallet currencies are different</string>
     <string name="transferpayee_starttransferasananonymous">Start transfer as an anonymous</string>
 
+    <string name="exchangepayee_toolbar">Transfer - Payee</string>
+    <string name="exchangepayee_walletaddresstextview">Wallet address</string>
+    <string name="exchangepayee_nexttransferbutton">NEXT - TRANSFER</string>
+    <string name="exchangepayee_invalidsourcewalletid">Invalid source wallet id</string>
+    <string name="exchangepayee_destinationwalletaddressisnotfound">Destination wallet address is not found</string>
+    <string name="exchangepayee_sourcewalletnotfound">Source wallet not found</string>
+    <string name="exchangepayee_sourceanddestinationareequal">Source and destination are equal</string>
+    <string name="exchangepayee_invalidamount">Invalid amount</string>
+    <string name="exchangepayee_amountiszero">Amount is zero</string>
+    <string name="exchangepayee_amountisnegative">Amount is negative</string>
+    <string name="exchangepayee_insufficientBalance">Insufficient Balance</string>
+    <string name="exchangepayee_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
+    <string name="exchangepayee_walletcurrenciesaredifferent">Wallet currencies are different</string>
+    <string name="exchangepayee_starttransferasananonymous">Start transfer as an anonymous</string>
+
     <string name="transferconfirmation_toolbar">Transfer confirmation</string>
     <string name="transferconfirmation_walletname">Wallet name </string>
     <string name="transferconfirmation_paymentgateway">Payee address </string>
@@ -241,6 +256,12 @@
     <string name="transferconfirmation_finalizingtransactionwithstatusoffailed">Finalizing transaction with status of failed</string>
     <string name="transferconfirmation_balanceislowerthanbalance">Balance is lower than balance</string>
     <string name="transferconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
+
+    <string name="exchangeconfirmation_tryingtofinalizesomeoneelsetransaction">Trying to finalize someone else transaction</string>
+    <string name="exchangeconfirmation_finalizingtransactionwithstatusofsucceed">Finalizing transaction with status of succeed</string>
+    <string name="exchangeconfirmation_finalizingtransactionwithstatusoffailed">Finalizing transaction with status of failed</string>
+    <string name="exchangeconfirmation_balanceislowerthanbalance">Balance is lower than balance</string>
+    <string name="exchangeconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
 
 
     <string name="transferfailed_toolbar">Send failed</string>
@@ -422,8 +443,35 @@
 
     <string name="receive_title">Receive</string>
     <string name="receive_hintalphaamount">Alpha</string>
+
     <string name="exchange_title">Exchange</string>
+
     <string name="exchangecompleted_title">Exchange completed</string>
     <string name="text_rowtransactionhistory_textviewdivider">" / "</string>
+    <string name="text_exchangecompleted_textviewamount">VALUE</string>
+    <string name="text_exchangecompleted_textviewpaidamountlable">Paid amount</string>
+    <string name="text_exchangecompleted_textviewpaidamount">VALUE</string>
+    <string name="text_exchangecompleted_textviewdatelabel">Exchange Date</string>
+    <string name="text_exchangecompleted_textviewdate">VALUE</string>
+    <string name="text_exchangecompleted_textviewtimelabel">Exchange time</string>
+    <string name="text_exchangecompleted_textviewrnnlabel">RNN</string>
+    <string name="text_exchangecompleted_textviewrnn">VALUE</string>
+
+    <string name="text_exchangeconfirmation_textviewnamelabel">Wallet name</string>
+    <string name="text_exchangeconfirmation_textviewname">VALUE</string>
+    <string name="text_exchangeconfirmation_textviewamountlabel">Exchange amount</string>
+    <string name="text_exchangeconfirmation_textviewamount">VALUE</string>
+    <string name="text_exchangeconfirmation_textviewpaidamountlabel">Paid aount</string>
+    <string name="text_exchangeconfirmation_textviewpaidamount">VALUE</string>
+    <string name="text_exchangeconfirmation_textviewpayeeaddresslabel">Payee address</string>
+    <string name="text_exchangeconfirmation_textviewpayeeaddress">VALUE</string>
+
+    <string name="text_exchangefailed_textviewfailtitle">Failed</string>
+    <string name="text_exchangefailed_textviewfail">Lorem lpsum is simply dummy text of the printing and type setting industry</string>
+    <string name="text_exchangefailed_buttondashboard">DASHBOARD</string>
+    <string name="exchangeconfirmation_title">Exchange Confirmation</string>
+    <string name="exchangefailed_title">Exchange failed</string>
+    <string name="exchangefragment_amountisempty">Amount is empty</string>
+    <string name="dashboard_snackbarwalletnotselected">Please select a wallet</string>
 
 </resources>

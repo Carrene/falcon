@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.exchange.exchangeresult;
+package de.netalic.falcon.ui.exchange;
 
 import android.Manifest;
 import android.content.Intent;
@@ -22,8 +22,6 @@ import java.io.File;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.exchange.ExchangeFragment;
-import de.netalic.falcon.ui.send.SendFragment;
 import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
@@ -46,6 +44,7 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
     private static final int IMAGE_QUALITY = 100;
     private View mScreenshotView;
     private Transaction mTransaction;
+    private String mPaidAmount;
 
     @Nullable
     @Override
@@ -53,7 +52,8 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
         mRoot = inflater.inflate(R.layout.fragment_exchangecompleted, null);
         checkNotNull(getArguments());
-        mTransaction = getArguments().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
+        mTransaction = getArguments().getParcelable(ExchangeFragment.ARGUMENT_TRANSACTION);
+        mPaidAmount = getArguments().getString(ExchangeFragment.ARGUMENT_PAIDAMOUNT);
         setHasOptionsMenu(true);
         return mRoot;
     }
@@ -85,11 +85,12 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
     }
 
-    public static ExchangeCompletedFragment newInstance(Transaction transaction) {
+    public static ExchangeCompletedFragment newInstance(Transaction transaction, String amount) {
 
         ExchangeCompletedFragment exchangeCompletedFragment = new ExchangeCompletedFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(SendFragment.ARGUMENT_TRANSACTION, transaction);
+        bundle.putParcelable(ExchangeFragment.ARGUMENT_TRANSACTION, transaction);
+        bundle.putString(ExchangeFragment.ARGUMENT_PAIDAMOUNT, amount);
         exchangeCompletedFragment.setArguments(bundle);
         return exchangeCompletedFragment;
     }
@@ -121,6 +122,7 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
         mTextViewExchangeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + Math.abs(mTransaction.getActionList().get(1).getAmount()));
         mTextViewRrn.setText(mTransaction.getRetrievalReferenceNumber());
+        mTextViewPaidAmount.setText(mPaidAmount);
         mTextViewExchangeDate.setText(mTransaction.getDate());
         mTextViewExchangeTime.setText(mTransaction.getTime());
 

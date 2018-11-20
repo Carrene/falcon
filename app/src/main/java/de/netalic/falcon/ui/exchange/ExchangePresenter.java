@@ -9,8 +9,8 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
 
     private ExchangeContract.View mExchangeView;
 
-    public ExchangePresenter(ExchangeFragment exchangeFragment) {
-        mExchangeView = exchangeFragment;
+    public ExchangePresenter(ExchangeContract.View exchangeView) {
+        mExchangeView = exchangeView;
         mExchangeView.setPresenter(this);
     }
 
@@ -68,56 +68,57 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
                     }
 
                     case 700: {
-                        //TODO(Hanieh) error handel
+                        mExchangeView.showError700();
                         break;
 
                     }
 
                     case 727: {
-                        //TODO(Hanieh) error handel
+                        mExchangeView.showError727();
                         break;
                     }
 
                     case 404: {
 
                         if (deal.getResponse().message().equals("Source wallet not found")) {
-
+                            mExchangeView.showErrorSourceWalletNotFound404();
                         } else {
-
+                            mExchangeView.showErrorTryingToTransferFromOtherWallet404();
                         }
                         break;
                     }
 
 
                     case 601: {
-                        //TODO(Hanieh) error handel
+                        mExchangeView.showError601();
                         break;
                     }
 
                     case 702: {
-                        //TODO(Hanieh) error handel
-                        if (deal.getResponse().message().equals("Amount is negative")) {
 
+                        if (deal.getResponse().message().equals("Amount is negative")) {
+                            mExchangeView.showErrorAmountIsNegative702();
                         }
                         if (deal.getResponse().message().equals("Amount is zero")) {
-
+                            mExchangeView.showErrorAmountIsZero702();
                         } else {
+                            mExchangeView.showErrorInvalidAmount702();
                         }
                         break;
                     }
 
                     case 600: {
-                        //TODO(Hanieh) error handel
+                        mExchangeView.showError600();
                         break;
                     }
 
                     case 401: {
-                        //TODO(Hanieh) error handel
+                        mExchangeView.showError401();
                         break;
                     }
 
                     case 602: {
-                        //TODO(Hanieh) error handel
+                        mExchangeView.showError602();
                         break;
                     }
                 }
@@ -139,7 +140,6 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
                 switch (deal.getResponse().code()) {
 
                     case 200: {
-
                         mExchangeView.setListWallet(deal.getModel());
                         break;
 

@@ -169,7 +169,7 @@ public class Wallet implements Parcelable {
         dest.writeInt(this.mId);
         dest.writeString(this.mCurrencyCode);
         dest.writeString(this.mAddress);
-
+        dest.writeString(this.mCurrencySymbol);
 
     }
 
@@ -180,5 +180,7 @@ public class Wallet implements Parcelable {
         mId=in.readInt();
         mCurrencyCode=in.readString();
         mAddress=in.readString();
+        mCurrencySymbol = in.readString();
+
     }
 }

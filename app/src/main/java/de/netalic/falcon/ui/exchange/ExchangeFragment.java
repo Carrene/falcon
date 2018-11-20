@@ -28,11 +28,10 @@ import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.AddWalletActivity;
-import de.netalic.falcon.ui.send.SendConfirmationActivity;
+
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static de.netalic.falcon.ui.send.SendFragment.ARGUMENT_TRANSACTION;
 
 public class ExchangeFragment extends Fragment implements ExchangeContract.View {
 
@@ -50,6 +49,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private ExchangeContract.Presenter mPresenter;
     public static final String WALLET = "wallet";
     private TextInputLayout mTextInputLayoutFirstAmount;
+
+    public static final String ARGUMENT_TRANSACTION = "transaction";
+    public static final String ARGUMENT_PAIDAMOUNT = "amount";
+
 
     @Nullable
     @Override
@@ -186,6 +189,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+
         if (mTextInputEditTextFirstAmount.getText().toString().equals("")){
 
             SnackbarUtil.showSnackbar(mViewRoot,getString(R.string.everywhere_pleasefillbox),getContext());
@@ -193,6 +197,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         else {
             mPresenter.getWalletList();
         }
+
         return true;
     }
 
@@ -252,7 +257,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     public void setWalletRate() {
         for (Rate rate : mRateList) {
             if (mWallet.getCurrencyCode().equals(rate.getCurrencyCode())) {
-                mWalletRate = rate.getBuy();
+                mWalletRate = rate.getSell();
             }
         }
     }
@@ -263,7 +268,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         findDestinationWallet();
     }
 
-    public void findDestinationWallet(){
+    public void findDestinationWallet() {
         String selectedCurrency = mRateList.get(mSelectedPosition).getCurrencyCode();
         String destinationAddress = "";
         int walletId = 0;
@@ -281,9 +286,77 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
     @Override
     public void navigationToExchangeConfirmation(Transaction body) {
-        Intent intent = new Intent(getContext(), SendConfirmationActivity.class);
+        Intent intent = new Intent(getContext(), ExchangeConfirmationActivity.class);
         intent.putExtra(ARGUMENT_TRANSACTION, body);
+        intent.putExtra(ARGUMENT_PAIDAMOUNT, (mWallet.getCurrencySymbol() + mTextInputEditTextFirstAmount.getText().toString()));
         startActivity(intent);
     }
 
+    @Override
+    public void showError700() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_invalidsourcewalletid), getContext());
+    }
+
+    @Override
+    public void showError727() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_destinationwalletaddressisnotfound), getContext());
+    }
+
+    @Override
+    public void showErrorSourceWalletNotFound404() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_sourcewalletnotfound), getContext());
+    }
+
+    @Override
+    public void showError601() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_sourceanddestinationareequal), getContext());
+    }
+
+    @Override
+    public void showErrorInvalidAmount702() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_invalidamount), getContext());
+    }
+
+    @Override
+    public void showErrorAmountIsZero702() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_amountiszero), getContext());
+    }
+
+    @Override
+    public void showErrorAmountIsNegative702() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_amountisnegative), getContext());
+    }
+
+    @Override
+    public void showError600() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_insufficientBalance), getContext());
+
+    }
+
+    @Override
+    public void showErrorTryingToTransferFromOtherWallet404() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_tryingtotransferfromanotherclientwallet), getContext());
+    }
+
+    @Override
+    public void showError602() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_walletcurrenciesaredifferent), getContext());
+    }
+
+    @Override
+    public void showError401() {
+
+        SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_starttransferasananonymous), getContext());
+
+    }
 }

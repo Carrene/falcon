@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.exchange.exchangeresult;
+package de.netalic.falcon.ui.exchange;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,12 +15,11 @@ import android.widget.Button;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.send.SendActivity;
 
 public class ExchangeFailedFragment extends Fragment implements ExchangeFailedContract.View {
 
 
-    private ExchangeFailedContract.Presenter mSendFailedPresenter;
+    private ExchangeFailedContract.Presenter mExchangeFailedPresenter;
     private View mRoot;
     private Button mButtonDashboard;
 
@@ -28,7 +27,7 @@ public class ExchangeFailedFragment extends Fragment implements ExchangeFailedCo
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_transferfailed, null);
+        mRoot = inflater.inflate(R.layout.fragment_exchangefailed, container, false);
         return mRoot;
     }
 
@@ -45,7 +44,7 @@ public class ExchangeFailedFragment extends Fragment implements ExchangeFailedCo
     @Override
     public void setPresenter(ExchangeFailedContract.Presenter presenter) {
 
-        mSendFailedPresenter = presenter;
+        mExchangeFailedPresenter = presenter;
     }
 
     @Override
@@ -61,7 +60,7 @@ public class ExchangeFailedFragment extends Fragment implements ExchangeFailedCo
 
     private void initUiComponent() {
 
-        mButtonDashboard = mRoot.findViewById(R.id.button_transferfailed_dashborad);
+        mButtonDashboard = mRoot.findViewById(R.id.button_exchangefailed_dashborad);
 
     }
 
@@ -80,17 +79,17 @@ public class ExchangeFailedFragment extends Fragment implements ExchangeFailedCo
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_sendfailed_toolbar, menu);
+        inflater.inflate(R.menu.menu_exchangefailed_toolbar, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
-            case R.id.item_sendfailed_retry: {
+            case R.id.item_exchangefailed_retry: {
 
-               Intent intent=new Intent(getActivity(),SendActivity.class);
-               startActivity(intent);
+                Intent intent = new Intent(getActivity(), ExchangeActivity.class);
+                startActivity(intent);
                 break;
             }
 

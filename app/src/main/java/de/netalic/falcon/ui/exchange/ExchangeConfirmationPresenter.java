@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.exchange.exchangeresult;
+package de.netalic.falcon.ui.exchange;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.transaction.TransactionRepository;
@@ -7,11 +7,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ExchangeConfirmationPresenter implements ExchangeConfirmationContract.Presenter {
 
-    private ExchangeConfirmationContract.View mSendConfirmationView;
+    private ExchangeConfirmationContract.View mExchangeConfirmationView;
 
-    public ExchangeConfirmationPresenter(ExchangeConfirmationContract.View transferConfirmationView) {
-        mSendConfirmationView = checkNotNull(transferConfirmationView);
-        mSendConfirmationView.setPresenter(this);
+    public ExchangeConfirmationPresenter(ExchangeConfirmationContract.View exchangeConfirmationView) {
+        mExchangeConfirmationView = checkNotNull(exchangeConfirmationView);
+        mExchangeConfirmationView.setPresenter(this);
     }
 
     @Override
@@ -23,11 +23,11 @@ public class ExchangeConfirmationPresenter implements ExchangeConfirmationContra
     @Override
     public void finalizeTransfer(int transactionId) {
 
-        mSendConfirmationView.showProgressBar();
+        mExchangeConfirmationView.showProgressBar();
         RepositoryLocator.getInstance().getRepository(TransactionRepository.class).finalizeTransfer(transactionId, deal -> {
 
             if (deal.getThrowable() != null) {
-                mSendConfirmationView.dismissProgressBar();
+                mExchangeConfirmationView.dismissProgressBar();
 
             } else {
 
@@ -35,30 +35,30 @@ public class ExchangeConfirmationPresenter implements ExchangeConfirmationContra
 
                     case 200: {
 
-                        mSendConfirmationView.navigationToCompletedTransfer(deal.getResponse().body());
+                        mExchangeConfirmationView.navigationToCompletedTransfer(deal.getResponse().body());
                         break;
                     }
 
                     case 404: {
 
                         if (deal.getResponse().message().equals("Transfer not found")) {
-                            mSendConfirmationView.showErrorTransferNotFound404();
+                            mExchangeConfirmationView.showErrorTransferNotFound404();
                         } else {
 
-                            mSendConfirmationView.showErrorTryingToFinalizeSomeoneElseTransaction404();
+                            mExchangeConfirmationView.showErrorTryingToFinalizeSomeoneElseTransaction404();
                         }
                         break;
                     }
 
                     case 600: {
 
-                        mSendConfirmationView.showError600();
+                        mExchangeConfirmationView.showError600();
                         break;
                     }
 
                     case 401: {
 
-                        mSendConfirmationView.showError401();
+                        mExchangeConfirmationView.showError401();
                         break;
                     }
 
@@ -66,10 +66,10 @@ public class ExchangeConfirmationPresenter implements ExchangeConfirmationContra
 
                         if (deal.getResponse().message().equals("Cannot Finalize Succeed Transaction")) {
 
-                            mSendConfirmationView.shoeErrorFinalizingTransactionWithStatusOfSucceed604();
+                            mExchangeConfirmationView.shoeErrorFinalizingTransactionWithStatusOfSucceed604();
                         } else {
 
-                            mSendConfirmationView.shoeErrorFinalizingTransactionWithStatusOfFailed604();
+                            mExchangeConfirmationView.shoeErrorFinalizingTransactionWithStatusOfFailed604();
                         }
 
                         break;
@@ -78,7 +78,7 @@ public class ExchangeConfirmationPresenter implements ExchangeConfirmationContra
 
 
             }
-            mSendConfirmationView.dismissProgressBar();
+            mExchangeConfirmationView.dismissProgressBar();
         });
 
     }

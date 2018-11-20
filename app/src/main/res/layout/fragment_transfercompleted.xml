@@ -81,7 +81,7 @@
             android:paddingStart="@dimen/paddingstart_transfercompleted_relativelayout">
 
             <TextView
-                android:id="@+id/textview_transfercompleted_paidamountlable"
+                android:id="@+id/textview_exchangecompleted_paidamountlabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/transfercompleted_baseamount"

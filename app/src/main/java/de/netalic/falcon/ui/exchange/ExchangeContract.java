@@ -20,6 +20,28 @@ public interface ExchangeContract {
         void setListWallet(List<Wallet> model);
 
         void navigationToExchangeConfirmation(Transaction body);
+
+        void showError700();
+
+        void showError727();
+
+        void showErrorSourceWalletNotFound404();
+
+        void showError601();
+
+        void showErrorInvalidAmount702();
+
+        void showErrorAmountIsZero702();
+
+        void showErrorAmountIsNegative702();
+
+        void showError600();
+
+        void showErrorTryingToTransferFromOtherWallet404();
+
+        void showError602();
+
+        void showError401();
     }
 
     interface Presenter extends BasePresenter {
