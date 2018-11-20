@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.charge;
+package de.netalic.falcon.ui.dashboard;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;

@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.charge;
+package de.netalic.falcon.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.EditText;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.charge.ListCurrencyActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 public class AddWalletFragment extends Fragment implements AddWalletContract.View {
@@ -121,7 +122,7 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
     public void setWallet(Wallet wallet) {
 
         mNewWallet=wallet;
-        Intent intent=new Intent(getContext(),ChargeActivity.class);
+        Intent intent=new Intent(getContext(),DashboardActivity.class);
         startActivity(intent);
     }
 

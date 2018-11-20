@@ -28,6 +28,7 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6" />
 
+
         </android.support.design.widget.TextInputLayout>
 
         <ImageView

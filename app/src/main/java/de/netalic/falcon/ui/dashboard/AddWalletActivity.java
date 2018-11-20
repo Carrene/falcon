@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.charge;
+package de.netalic.falcon.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;

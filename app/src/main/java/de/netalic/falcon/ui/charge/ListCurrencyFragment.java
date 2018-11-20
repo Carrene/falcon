@@ -17,6 +17,7 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.AddWalletFragment;
 
 public class ListCurrencyFragment extends Fragment implements ListCurrencyContract.View, ListCurrencyRecyclerViewAdapter.Callback {
     private ListCurrencyContract.Presenter mListCurrencyPresenter;
