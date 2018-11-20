@@ -29,6 +29,7 @@ import de.netalic.falcon.ui.charge.ChargeActivity;
 import de.netalic.falcon.ui.exchange.ExchangeActivity;
 import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.send.SendActivity;
+import de.netalic.falcon.util.SnackbarUtil;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -48,8 +49,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private List<Wallet> mWalletList;
     public static final String WALLET_ID = "walletId";
     public static final String WALLET_ADDRESS = "walletAddress";
-    public static final String WALLET_CURRENCY = "walletCurrency";
-    private static final String WALLET_BALANCE = "walletBalance";
 
     @Nullable
     @Override
@@ -166,34 +165,42 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         });
 
         mImageViewSend.setOnClickListener(v -> {
-            if (mSelectedWalletPosition < mWalletList.size()){
+            if (mSelectedWalletPosition < mWalletList.size()) {
                 Intent intent = new Intent(getActivity(), SendActivity.class);
                 intent.putExtra(WALLET_ID, mWalletList.get(mSelectedWalletPosition).getId());
                 startActivity(intent);
+            } else {
+                SnackbarUtil.showSnackbar(mViewRoot, getString(R.string.dashboard_snackbarwalletnotselected), getContext());
             }
         });
 
         mImageViewReceive.setOnClickListener(v -> {
-            if (mSelectedWalletPosition < mWalletList.size()){
+            if (mSelectedWalletPosition < mWalletList.size()) {
                 Intent intent = new Intent(getActivity(), ReceiveActivity.class);
                 intent.putExtra(WALLET_ADDRESS, mWalletList.get(mSelectedWalletPosition).getAddress());
                 startActivity(intent);
+            } else {
+                SnackbarUtil.showSnackbar(mViewRoot, getString(R.string.dashboard_snackbarwalletnotselected), getContext());
             }
         });
 
         mImageViewCharge.setOnClickListener(v -> {
-            if (mSelectedWalletPosition < mWalletList.size()){
+            if (mSelectedWalletPosition < mWalletList.size()) {
                 Intent intent = new Intent(getActivity(), ChargeActivity.class);
                 startActivity(intent);
+            } else {
+                SnackbarUtil.showSnackbar(mViewRoot, getString(R.string.dashboard_snackbarwalletnotselected), getContext());
             }
 
         });
 
         mImageViewExchange.setOnClickListener(v -> {
-            if (mSelectedWalletPosition < mWalletList.size()){
+            if (mSelectedWalletPosition < mWalletList.size()) {
                 Intent intent = new Intent(getActivity(), ExchangeActivity.class);
                 intent.putExtra("wallet", mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
+            } else {
+                SnackbarUtil.showSnackbar(mViewRoot, getString(R.string.dashboard_snackbarwalletnotselected), getContext());
             }
 
         });

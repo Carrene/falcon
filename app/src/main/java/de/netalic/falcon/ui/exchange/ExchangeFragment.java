@@ -184,7 +184,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
-            SnackbarUtil.showSnackbar(mViewRoot, "Amount is empty", getContext());
+            SnackbarUtil.showSnackbar(mViewRoot, getString(R.string.exchangefragment_amountisempty), getContext());
         } else {
             mPresenter.getWalletList();
         }
@@ -248,7 +248,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     public void setWalletRate() {
         for (Rate rate : mRateList) {
             if (mWallet.getCurrencyCode().equals(rate.getCurrencyCode())) {
-                mWalletRate = rate.getBuy();
+                mWalletRate = rate.getSell();
             }
         }
     }

@@ -470,5 +470,7 @@
     <string name="text_exchangefailed_buttondashboard">DASHBOARD</string>
     <string name="exchangeconfirmation_title">Exchange Confirmation</string>
     <string name="exchangefailed_title">Exchange failed</string>
+    <string name="exchangefragment_amountisempty">Amount is empty</string>
+    <string name="dashboard_snackbarwalletnotselected">Please select a wallet</string>
 
 </resources>
