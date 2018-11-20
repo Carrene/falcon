@@ -32,10 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margintop_fragmentdashboard_linearlayouticons"
-        android:orientation="horizontal"
         android:layout_marginStart="@dimen/marginstartend_fragmentdashboard_linearlayouticons"
-        android:layout_marginEnd="@dimen/marginstartend_fragmentdashboard_linearlayouticons">
+        android:layout_marginTop="@dimen/margintop_fragmentdashboard_linearlayouticons"
+        android:layout_marginEnd="@dimen/marginstartend_fragmentdashboard_linearlayouticons"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="@dimen/width_fragmentdashboard_linearlayouticoncolumn"
@@ -72,15 +72,16 @@
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewexchangeicon"
                 android:layout_gravity="top|center_horizontal"
                 android:src="@drawable/dashboard_exchangeicon" />
+
             <ImageView
+                android:id="@+id/imageview_dashboard_transactionicon"
                 android:layout_width="@dimen/width_fragmentdashboard_imageviewtransactionicon"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/marginleft_fragmentdashboard_imageviewtransactionicon"
                 android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewtransactionicon"
                 android:layout_marginRight="@dimen/marginright_fragmentdashboard_imageviewtransactionicon"
-                android:src="@drawable/dashboard_transactionsicon"
-                android:id="@+id/imageview_dashboard_transaction"/>
+                android:src="@drawable/dashboard_transactionsicon"/>
 
         </LinearLayout>
 

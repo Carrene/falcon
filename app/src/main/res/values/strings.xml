@@ -424,5 +424,6 @@
     <string name="receive_hintalphaamount">Alpha</string>
     <string name="exchange_title">Exchange</string>
     <string name="exchangecompleted_title">Exchange completed</string>
+    <string name="text_rowtransactionhistory_textviewdivider">" / "</string>
 
 </resources>

@@ -27,6 +27,7 @@ import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.exchange.ExchangeActivity;
 import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.send.SendActivity;
+import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -43,6 +44,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ImageView mImageViewReceive;
     private ImageView mImageViewCharge;
     private ImageView mImageViewExchange;
+    private ImageView mImageViewTransaction;
+
     private List<Wallet> mWalletList;
     public static final String SELECTED_WALLET = "wallet";
     public static final String WALLET_Address = "walletAddress";
@@ -115,6 +118,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mImageViewReceive = mViewRoot.findViewById(R.id.imageview_dashboard_receive);
         mImageViewCharge = mViewRoot.findViewById(R.id.imageview_dashboard_charge);
         mImageViewExchange = mViewRoot.findViewById(R.id.imageview_dashboard_exchange);
+        mImageViewTransaction = mViewRoot.findViewById(R.id.imageview_dashboard_transactionicon);
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
@@ -202,6 +206,10 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             }
         });
 
+        mImageViewTransaction.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), TransactionHistoryActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
