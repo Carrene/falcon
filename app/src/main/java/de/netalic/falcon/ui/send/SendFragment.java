@@ -224,7 +224,7 @@ public class SendFragment extends Fragment implements SendContract.View {
 
                         if (System.currentTimeMillis() - mLongLastSnackBarTime > 2) {
 
-                            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.purchasescanqrcode_qrcodedoesnotmatch), getContext());
+                            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_qrcodedoesnotmatch), getContext());
                             mDecoratedBarcodeView.resume();
                         } else {
 
@@ -354,68 +354,68 @@ public class SendFragment extends Fragment implements SendContract.View {
     @Override
     public void showError700() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_invalidsourcewalletid), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_invalidsourcewalletid), getContext());
     }
 
     @Override
     public void showError727() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_destinationwalletaddressisnotfound), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_destinationwalletaddressisnotfound), getContext());
     }
 
     @Override
     public void showErrorSourceWalletNotFound404() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_sourcewalletnotfound), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_sourcewalletnotfound), getContext());
     }
 
     @Override
     public void showError601() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_sourceanddestinationareequal), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_sourceanddestinationareequal), getContext());
     }
 
     @Override
     public void showErrorInvalidAmount702() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_invalidamount), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_invalidamount), getContext());
     }
 
     @Override
     public void showErrorAmountIsZero702() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_amountiszero), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_amountiszero), getContext());
     }
 
     @Override
     public void showErrorAmountIsNegative702() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_amountisnegative), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_amountisnegative), getContext());
     }
 
     @Override
     public void showError600() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_insufficientBalance), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_insufficientBalance), getContext());
 
     }
 
     @Override
     public void showErrorTryingToTransferFromOtherWallet404() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_tryingtotransferfromanotherclientwallet), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_tryingtotransferfromanotherclientwallet), getContext());
     }
 
     @Override
     public void showError602() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_walletcurrenciesaredifferent), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_walletcurrenciesaredifferent), getContext());
     }
 
     @Override
     public void showError401() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferpayee_starttransferasananonymous), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.send_starttransferasananonymous), getContext());
 
     }
 

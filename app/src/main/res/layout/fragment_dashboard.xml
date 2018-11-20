@@ -105,7 +105,7 @@
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewchargeicon"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewchargeicon"
-                android:src="@drawable/dashboard_chargeicon" />
+                android:src="@drawable/dashboard_loadicon" />
 
         </LinearLayout>
 

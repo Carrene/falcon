@@ -25,11 +25,11 @@ public class SendFailedActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_transferfailed;
+        return R.layout.activity_sendfailed;
     }
 
     @Override
     protected String getActionbarTitle() {
-        return getString(R.string.transferfailed_toolbar);
+        return getString(R.string.sendfailed_toolbar);
     }
 }

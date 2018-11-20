@@ -8,7 +8,7 @@
         android:id="@+id/linearlayout_send_exchangeamount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margintop_load_exchangerow"
+        android:layout_marginTop="@dimen/margintop_send_exchangerow"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="4">
@@ -34,16 +34,16 @@
             android:id="@+id/imageview_send_exchange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margintop_load_excahngelogo"
+            android:layout_marginTop="@dimen/margintop_send_excahngelogo"
             android:layout_weight="0.3"
             android:src="@drawable/everywhere_rowexchangelogo" />
 
         <Spinner
             android:id="@+id/spinner_send_spinner"
             style="@style/SpinnerListCurrencyCommon"
-            android:layout_width="@dimen/width_load_spinner"
-            android:layout_height="@dimen/height_load_spinner"
-            android:layout_marginTop="@dimen/margintop_load_spinner"
+            android:layout_width="@dimen/width_send_spinner"
+            android:layout_height="@dimen/height_send_spinner"
+            android:layout_marginTop="@dimen/margintop_send_spinner"
             android:spinnerMode="dropdown" />
 
         <android.support.design.widget.TextInputLayout

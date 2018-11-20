@@ -12,14 +12,14 @@
         android:layout_marginEnd="@dimen/marginstartend_withdrawqrcompleted_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_withdrawqrcompleted_linearlayout"
         android:layout_marginTop="@dimen/margintop_withdrawqrcompleted_linearlayout"
-        android:background="@drawable/chargeandtransferandpurchasecompleted_border"
+        android:background="@drawable/loadandsendandwithdrawcompleted_border"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textview_qrcodecompleted_success"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_withdrawqrcompleted_header"
-            android:background="@drawable/chargetransfercompleted_headerborder"
+            android:background="@drawable/loadsendcompleted_headerborder"
             android:gravity="center"
             android:text="@string/qrcodecompleted_success"
             android:textColor="@color/white"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="@dimen/marginstartend_withdrawqrcompleted_dashboardbutton"
         android:layout_marginStart="@dimen/marginstartend_withdrawqrcompleted_dashboardbutton"
         android:background="@color/colorSecondary"
-        android:text="@string/chargecompleted_dashboard"
+        android:text="@string/loadcompleted_dashboard"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_withdrawqrcompleted_dashboardbutton" />
 

@@ -239,92 +239,57 @@
     <dimen name="textsize_transactionfiltersrowthathasradiobutton_textview">14sp</dimen>
     <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
-    <dimen name="margintop_transfer_header">97dp</dimen>
-    <dimen name="textsize_transfer_header">16sp</dimen>
-    <dimen name="textsize_transfer_balance">14sp</dimen>
-    <dimen name="height_transfer_spinner">40dp</dimen>
-    <dimen name="margintop_transfer_spinner">12dp</dimen>
-    <dimen name="marginstartend_transfer_spinner">74dp</dimen>
-    <dimen name="margintop_transfer_relativelayout">44dp</dimen>
-    <dimen name="textsize_transfer_lablebalance">14sp</dimen>
-    <dimen name="marginbottom_transfer_nextamountbutton">27dp</dimen>
-    <dimen name="marginstartend_transfer_nextamountbutton">16dp</dimen>
+    <dimen name="margintop_sendconfirmation_linearlayout">33dp</dimen>
+    <dimen name="marginstartend_sendconfirmation_linearlayout">17dp</dimen>
+    <dimen name="textsize_sendconfirmation_walletnamelable">14sp</dimen>
+    <dimen name="margintop_sendconfirmation_walletnamelable">12dp</dimen>
+    <dimen name="margintop_sendconfirmation_walletname">12dp</dimen>
+    <dimen name="textsize_sendconfirmation_amountalphalable">14sp</dimen>
+    <dimen name="textsize_sendconfirmation_amountdollarlable">14sp</dimen>
+    <dimen name="textsize_sendconfirmation_paymentgatewaylable">14sp</dimen>
+    <dimen name="marginbuttom_sendconfirmation_confirm">27dp</dimen>
+    <dimen name="marginstartend_sendconfirmation_confirm">16dp</dimen>
+    <dimen name="textsize_sendconfirmation_confirmbutton">14sp</dimen>
+    <dimen name="height_sendconfirmation_view">1dp</dimen>
+    <dimen name="margintop_sendconfirmation_view">16dp</dimen>
+    <dimen name="marginbottom_sendconfirmation_view">12dp</dimen>
+    <dimen name="marginstartend_sendconfirmation_textview">15dp</dimen>
+    <dimen name="marginbottom_sendconfirmation_relativelayout">16dp</dimen>
 
-    <dimen name="margintop_transferamount_linearlayout">25dp</dimen>
-    <dimen name="marginstartend_transferamount_edittextamount">70dp</dimen>
-    <dimen name="marginstartend_transferamount_edittextdollar">70dp</dimen>
-    <dimen name="textsize_transferamount_amount">16sp</dimen>
-    <dimen name="margintop_transferamount_transfer">30dp</dimen>
-    <dimen name="width_transferamount_transfer">24dp</dimen>
-    <dimen name="height_transferamount_transfer">24dp</dimen>
-    <dimen name="margintop_transferamount_amountbase">27dp</dimen>
-    <dimen name="marginbottom_transferamount_nextpayment">27dp</dimen>
-    <dimen name="marginstartend_transferamount_nextpayment">16dp</dimen>
-    <dimen name="margintop_transferamount_middlerelativelayout">30dp</dimen>
-    <dimen name="marginstartend_transferamount_useminimumusemaximum">150dp</dimen>
-    <dimen name="textsize_transferamount_useminimumusemaximumtransferfee">14sp</dimen>
-    <dimen name="margintop_transferamount_transferfeetextview">19dp</dimen>
+    <dimen name="paddingbottom_sendcompleted_linearlayout">18dp</dimen>
+    <dimen name="marginstartend_sendcompleted_linearlayout">17dp</dimen>
+    <dimen name="height_sendcompleted_header">40dp</dimen>
+    <dimen name="paddingend_sendcompleted_textview">15dp</dimen>
+    <dimen name="margintopbottom_sendcompleted_view">13dp</dimen>
+    <dimen name="height_sendcompleted_view">1dp</dimen>
+    <dimen name="margintop_sendcompleted_relativelayoutheader">20dp</dimen>
+    <dimen name="margintop_sendcompleted_linearlayout">33dp</dimen>
+    <dimen name="margintop_sendcompleted_relativelayout">8dp</dimen>
+    <dimen name="textsize_sendcompleted_paidamountlable">14sp</dimen>
+    <dimen name="textsize_sendcompleted_amountdollarlable">14sp</dimen>
+    <dimen name="textsize_sendcompleted_trackingcode">14sp</dimen>
+    <dimen name="marginbuttom_sendcompleted_confirm">27dp</dimen>
+    <dimen name="marginstartend_sendcompleted_confirm">16dp</dimen>
+    <dimen name="textsize_sendcompleted_confirmbutton">14dp</dimen>
+    <dimen name="textsize_sendcompleted_paymentgatewaylable">14sp</dimen>
+    <dimen name="textsize_sendcompleted_transactiondate">14sp</dimen>
+    <dimen name="textsize_sendcompleted_successtextview">16sp</dimen>
+    <dimen name="paddingstart_sendcompleted_relativelayout">15dp</dimen>
 
-    <dimen name="margintop_transferpayee_walletaddresstextview">25dp</dimen>
-    <dimen name="textsize_transferpayee_walletaddresstextview">16sp</dimen>
-    <dimen name="margintop_transferpayee_walletaddressedittext">5dp</dimen>
-    <dimen name="marginstartend_transferpayee_walletaddressedittext">60dp</dimen>
-    <dimen name="paddingstart_transferpayee_walletaddressedittext">15dp</dimen>
-    <dimen name="marginstartend_transferpayee_nexttransferpayeebutton">16dp</dimen>
-    <dimen name="marginbottom_transferpayee_nexttransferpayeebtton">27dp</dimen>
-
-
-    <dimen name="margintop_transferconfirmation_linearlayout">33dp</dimen>
-    <dimen name="marginstartend_transferconfirmation_linearlayout">17dp</dimen>
-    <dimen name="textsize_transferconfirmation_walletnamelable">14sp</dimen>
-    <dimen name="margintop_transferconfirmation_walletnamelable">12dp</dimen>
-    <dimen name="margintop_transferconfirmation_walletname">12dp</dimen>
-    <dimen name="textsize_transferconfirmation_amountalphalable">14sp</dimen>
-    <dimen name="textsize_transferconfirmation_amountdollarlable">14sp</dimen>
-    <dimen name="textsize_transferconfirmation_paymentgatewaylable">14sp</dimen>
-    <dimen name="marginbuttom_transferconfirmation_confirm">27dp</dimen>
-    <dimen name="marginstartend_transferconfirmation_confirm">16dp</dimen>
-    <dimen name="textsize_transferconfirmation_confirmbutton">14sp</dimen>
-    <dimen name="height_transferconfirmation_view">1dp</dimen>
-    <dimen name="margintop_transferconfirmation_view">16dp</dimen>
-    <dimen name="marginbottom_transferconfirmation_view">12dp</dimen>
-    <dimen name="marginstartend_transferconfirmation_textview">15dp</dimen>
-    <dimen name="marginbottom_transferconfirmation_relativelayout">16dp</dimen>
-
-    <dimen name="paddingbottom_transfercompleted_linearlayout">18dp</dimen>
-    <dimen name="marginstartend_transfercompleted_linearlayout">17dp</dimen>
-    <dimen name="height_transfercompleted_header">40dp</dimen>
-    <dimen name="paddingend_transfercompleted_textview">15dp</dimen>
-    <dimen name="margintopbottom_transfercompleted_view">13dp</dimen>
-    <dimen name="height_transfercompleted_view">1dp</dimen>
-    <dimen name="margintop_transfercompleted_relativelayoutheader">20dp</dimen>
-    <dimen name="margintop_transfercompleted_linearlayout">33dp</dimen>
-    <dimen name="margintop_transfercompleted_relativelayout">8dp</dimen>
-    <dimen name="textsize_transfercompleted_paidamountlable">14sp</dimen>
-    <dimen name="textsize_transfercompleted_amountdollarlable">14sp</dimen>
-    <dimen name="textsize_transfercompleted_trackingcode">14sp</dimen>
-    <dimen name="marginbuttom_transfercompleted_confirm">27dp</dimen>
-    <dimen name="marginstartend_transfercompleted_confirm">16dp</dimen>
-    <dimen name="textsize_transfercompleted_confirmbutton">14dp</dimen>
-    <dimen name="textsize_transfercompleted_paymentgatewaylable">14sp</dimen>
-    <dimen name="textsize_transfercompleted_transactiondate">14sp</dimen>
-    <dimen name="textsize_transfercompleted_successtextview">16sp</dimen>
-    <dimen name="paddingstart_transfercompleted_relativelayout">15dp</dimen>
-
-    <dimen name="margintop_transferfailed_linearlayout">32dp</dimen>
-    <dimen name="marginstartend_transferfailed_linearlayout">33dp</dimen>
-    <dimen name="textsize_transferfailed_textviewfailed">16sp</dimen>
-    <dimen name="margintop_transferfailed_describetextview">23dp</dimen>
-    <dimen name="marginbottom_transferfailed_describetextview">30dp</dimen>
-    <dimen name="marginstartend_transferfailed_describetextview">25dp</dimen>
-    <dimen name="textsize_transferfailed_describetextview">14sp</dimen>
-    <dimen name="marginstartend_transferfailed_trywithdrawbutton">16dp</dimen>
-    <dimen name="marginbottom_transferfailed_trywithdrawbutton">15dp</dimen>
-    <dimen name="marginstartend_transferfailed_dashboardbutton">16dp</dimen>
-    <dimen name="marginbottom_transferfailed_dashboardbutton">27dp</dimen>
-    <dimen name="textsize_transferfailed_dashboardbutton">14sp</dimen>
-    <dimen name="textsize_transferfailed_trywithdrawbutton">14sp</dimen>
-    <dimen name="height_transferfailed_header">40dp</dimen>
+    <dimen name="margintop_sendfailed_linearlayout">32dp</dimen>
+    <dimen name="marginstartend_sendfailed_linearlayout">33dp</dimen>
+    <dimen name="textsize_sendfailed_textviewfailed">16sp</dimen>
+    <dimen name="margintop_sendfailed_describetextview">23dp</dimen>
+    <dimen name="marginbottom_sendfailed_describetextview">30dp</dimen>
+    <dimen name="marginstartend_sendfailed_describetextview">25dp</dimen>
+    <dimen name="textsize_sendfailed_describetextview">14sp</dimen>
+    <dimen name="marginstartend_sendfailed_trywithdrawbutton">16dp</dimen>
+    <dimen name="marginbottom_sendfailed_trywithdrawbutton">15dp</dimen>
+    <dimen name="marginstartend_sendfailed_dashboardbutton">16dp</dimen>
+    <dimen name="marginbottom_sendfailed_dashboardbutton">27dp</dimen>
+    <dimen name="textsize_sendfailed_dashboardbutton">14sp</dimen>
+    <dimen name="textsize_sendfailed_trywithdrawbutton">14sp</dimen>
+    <dimen name="height_sendfailed_header">40dp</dimen>
 
     <dimen name="margintop_rowaddresses_relativelayout">14dp</dimen>
     <dimen name="marginbottom_rowaddresses_relativelayout">15dp</dimen>
@@ -335,33 +300,6 @@
     <dimen name="paddingend_rowaddresses_shareimageview">15dp</dimen>
     <dimen name="margintop_addresses_walletaddresstextview">4dp</dimen>
     <dimen name="height_addresses_shareandqrcodeimageview">30dp</dimen>
-
-    <dimen name="margintop_purchasefailed_linearlayout">32dp</dimen>
-    <dimen name="marginstartend_purchasefailed_linearlayout">33dp</dimen>
-    <dimen name="textsize_purchasefailed_textviewfailed">16sp</dimen>
-    <dimen name="margintop_purchasefailed_describetextview">23dp</dimen>
-    <dimen name="marginbottom_purchasefailed_describetextview">30dp</dimen>
-    <dimen name="marginstartend_purchasefailed_describetextview">25dp</dimen>
-    <dimen name="textsize_purchasefailed_describetextview">14sp</dimen>
-    <dimen name="marginstartend_purchasefailed_trywithdrawbutton">16dp</dimen>
-    <dimen name="marginbottom_purchasefailed_trywithdrawbutton">15dp</dimen>
-    <dimen name="marginstartend_purchasefailed_dashboardbutton">16dp</dimen>
-    <dimen name="marginbottom_purchasefailed_dashboardbutton">27dp</dimen>
-    <dimen name="textsize_purchasefailed_dashboardbutton">14sp</dimen>
-    <dimen name="textsize_purchasefailed_trywithdrawbutton">14sp</dimen>
-    <dimen name="height_purchasefailed_header">40dp</dimen>
-
-
-    <dimen name="margintop_purchase_wallettextview">55dp</dimen>
-    <dimen name="textsize_purchase_wallettextview">16sp</dimen>
-    <dimen name="margintop_purchase_walletlistspinner">12dp</dimen>
-    <dimen name="height_purchase_walletlistspinner">40dp</dimen>
-    <dimen name="width_purchase_walletlistspinner">240dp</dimen>
-    <dimen name="margintop_purchase_relativelayout">42dp</dimen>
-    <dimen name="height_purchase_relativelayout">40dp</dimen>
-    <dimen name="textsize_purchase_balanceandbalancelabletextview">14sp</dimen>
-    <dimen name="marginstartend_purchase_nextamountbutton">16dp</dimen>
-    <dimen name="marginbottom_purchase_nextamountbutton">27dp</dimen>
 
     <dimen name="height_setting_circleimagefinalheight">40dp</dimen>
     <dimen name="height_setting_expandedtoolbar">220dp</dimen>
@@ -385,68 +323,6 @@
     <dimen name="widthheight_qrcodeaddresses_qrimageview">250dp</dimen>
     <dimen name="marginstartend_qrcodeaddresses_dashboardbutton">16dp</dimen>
     <dimen name="marginbottom_qrcodeaddresses_dashboardbutton">27dp</dimen>
-
-
-    <dimen name="margintop_purchaseamount_linearlayout">25dp</dimen>
-    <dimen name="marginstartend_purchaseamount_edittextamount">70dp</dimen>
-    <dimen name="marginstartend_purchaseamount_edittextdollar">70dp</dimen>
-    <dimen name="textsize_purchaseamount_amount">16sp</dimen>
-    <dimen name="margintop_purchaseamount_transfer">30dp</dimen>
-    <dimen name="width_purchaseamount_transfer">24dp</dimen>
-    <dimen name="height_purchaseamount_transfer">24dp</dimen>
-    <dimen name="margintop_purchaseamount_amountbase">27dp</dimen>
-    <dimen name="marginbottom_purchaseamount_nextpayment">27dp</dimen>
-    <dimen name="marginstartend_purchaseamount_nextpayment">16dp</dimen>
-    <dimen name="margintop_purchaseamount_middlerelativelayout">30dp</dimen>
-    <dimen name="marginstartend_purchaseamount_useminimumusemaximum">150dp</dimen>
-    <dimen name="textsize_purchaseamount_useminimumusemaximumtransferfee">14sp</dimen>
-    <dimen name="margintop_purchaseamount_transferfeetextview">19dp</dimen>
-
-    <dimen name="height_purchasescanqrcode_barcodeview">350dp</dimen>
-    <dimen name="marginstartend_purchasescanqrcode_barcodeview">20dp</dimen>
-    <dimen name="margintop_purchasescanqrcode_barcodeview">32dp</dimen>
-    <dimen name="margintop_purchasescanqrcode_textview">30dp</dimen>
-    <dimen name="textsize_purchasescanqrcode_textview">16sp</dimen>
-
-
-    <dimen name="margintop_purchaseconfirmation_linearlayout">33dp</dimen>
-    <dimen name="marginstartend_purchaseconfirmation_linearlayout">17dp</dimen>
-    <dimen name="textsize_purchaseconfirmation_walletnamelable">14sp</dimen>
-    <dimen name="margintop_purchaseconfirmation_walletnamelable">12dp</dimen>
-    <dimen name="margintop_purchaseconfirmation_walletname">12dp</dimen>
-    <dimen name="textsize_purchaseconfirmation_amountalphalable">14sp</dimen>
-    <dimen name="textsize_purchaseconfirmation_amountdollarlable">14sp</dimen>
-    <dimen name="textsize_purchaseconfirmation_paymentgatewaylable">14sp</dimen>
-    <dimen name="marginbuttom_purchaseconfirmation_confirm">27dp</dimen>
-    <dimen name="marginstartend_purchaseconfirmation_confirm">16dp</dimen>
-    <dimen name="textsize_purchaseconfirmation_confirmbutton">14sp</dimen>
-    <dimen name="height_purchaseconfirmation_view">1dp</dimen>
-    <dimen name="margintop_purchaseconfirmation_view">16dp</dimen>
-    <dimen name="marginbottom_purchaseconfirmation_view">12dp</dimen>
-    <dimen name="marginstartend_purchaseconfirmation_textview">15dp</dimen>
-    <dimen name="marginbottom_purchaseconfirmation_relativelayout">16dp</dimen>
-
-    <dimen name="paddingbottom_purchasecompleted_linearlayout">18dp</dimen>
-    <dimen name="marginstartend_purchasecompleted_linearlayout">17dp</dimen>
-    <dimen name="height_purchasecompleted_header">40dp</dimen>
-    <dimen name="paddingend_purchasecompleted_textview">15dp</dimen>
-    <dimen name="margintopbottom_purchasecompleted_view">13dp</dimen>
-    <dimen name="height_purchasecompleted_view">1dp</dimen>
-    <dimen name="margintop_purchasecompleted_relativelayoutheader">20dp</dimen>
-    <dimen name="margintop_purchasecompleted_linearlayout">33dp</dimen>
-    <dimen name="margintop_purchasecompleted_relativelayout">8dp</dimen>
-    <dimen name="textsize_purchasecompleted_paidamountlable">14sp</dimen>
-    <dimen name="textsize_purchasecompleted_amountdollarlable">14sp</dimen>
-    <dimen name="textsize_purchasecompleted_trackingcode">14sp</dimen>
-    <dimen name="marginbuttom_purchasecompleted_confirm">27dp</dimen>
-    <dimen name="marginstartend_purchasecompleted_confirm">16dp</dimen>
-    <dimen name="marginbuttom_purchasecompleted_purchaseagain">27dp</dimen>
-    <dimen name="marginstartend_purchasecompleted_purchaseagain">16dp</dimen>
-    <dimen name="textsize_purchasecompleted_confirmbutton">14dp</dimen>
-    <dimen name="textsize_purchasecompleted_paymentgatewaylable">14sp</dimen>
-    <dimen name="textsize_purchasecompleted_transactiondate">14sp</dimen>
-    <dimen name="textsize_purchasecompleted_successtextview">16sp</dimen>
-    <dimen name="paddingstart_purchasecompleted_relativelayout">15dp</dimen>
 
     <dimen name="dotnormalsize_authentication_pattern">20dp</dimen>
     <dimen name="pathwidth_authentication_pattern">2dp</dimen>
@@ -494,20 +370,6 @@
     <dimen name="margintopbottom_transactiondetailfailed_view">15dp</dimen>
     <dimen name="height_transactiondetailfailed_view">1dp</dimen>
 
-    <dimen name="margintop_purchasegenerateqrcode_imageqr">30dp</dimen>
-    <dimen name="marginstartend_purchasegenerateqrcode_linearlayout">16dp</dimen>
-    <dimen name="margintop_purchasegenerateqrcode_linearlayout">33dp</dimen>
-    <dimen name="height_purchasegenerateqrcode_header">40dp</dimen>
-    <dimen name="textsize_purchasegenerateqrcode_header">16dp</dimen>
-    <dimen name="widthheight_purchasegenerateqrcode_imageqr">300dp</dimen>
-    <dimen name="textsize_purchasegenerateqrcode_textviewscanqrcode">14sp</dimen>
-    <dimen name="margintop_purchasegenerateqrcode_textviewscanqrcode">20dp</dimen>
-    <dimen name="marginbottom_purchasegenerateqrcode_textviewscanqrcode">30dp</dimen>
-    <dimen name="marginstartend_purchasegenerateqrcode_dashboardbutton">16dp</dimen>
-    <dimen name="marginbottom_purchasegenerateqrcode_dashboardbutton">27dp</dimen>
-    <dimen name="textsize_purchasegenerateqrcode_dashboardbutton">14sp</dimen>
-
-
     <dimen name="marginstart_addwallet_walletnametextview">37dp</dimen>
     <dimen name="margintop_addwallet_walletnametextview">68dp</dimen>
     <dimen name="textsize_addwallet_walletnametextview">16sp</dimen>
@@ -539,7 +401,11 @@
     <dimen name="height_receive_borderofqrcode">314dp</dimen>
     <dimen name="margintop_receive_borderofqrcode">30dp</dimen>
     <dimen name="marginstartendtopbottom_receive_qrcode">30dp</dimen>
-
+    <dimen name="margintop_receive_exchangerow">60dp</dimen>
+    <dimen name="margintop_receive_excahngelogo">15dp</dimen>
+    <dimen name="margintop_receive_spinner">5dp</dimen>
+    <dimen name="width_receive_spinner">75dp</dimen>
+    <dimen name="height_receive_spinner">31dp</dimen>
 
 
     <dimen name="width_rowwallets_linearlayout">300dp</dimen>
@@ -609,7 +475,11 @@
     <dimen name="margintop_send_textinputlayoutwalletaddress">40dp</dimen>
     <dimen name="widthheight_send_barcodeview">300dp</dimen>
     <dimen name="margintop_send_bacodeview">32dp</dimen>
-
+    <dimen name="margintop_send_exchangerow">60dp</dimen>
+    <dimen name="margintop_send_excahngelogo">15dp</dimen>
+    <dimen name="margintop_send_spinner">5dp</dimen>
+    <dimen name="width_send_spinner">75dp</dimen>
+    <dimen name="height_send_spinner">31dp</dimen>
 
 
     <dimen name="margintop_load_exchangerow">60dp</dimen>

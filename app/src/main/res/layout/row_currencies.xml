@@ -16,7 +16,7 @@
         android:id="@+id/imageview_basecurrency_tik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/charge_checked"
+        android:src="@drawable/load_checked"
         android:layout_toEndOf="@+id/textview_basecurrency_currency"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"/>

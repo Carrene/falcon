@@ -23,8 +23,10 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.ui.addwallet.AddWalletActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.exchange.ExchangeActivity;
+import de.netalic.falcon.ui.load.LoadActivity;
 import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.send.SendActivity;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
@@ -45,12 +47,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ImageView mImageViewExchange;
     private List<Wallet> mWalletList;
     public static final String SELECTED_WALLET = "wallet";
-    public static final String WALLET_Address = "walletAddress";
-    public static final String WALLET_ID = "walletId";
-    public static final String WALLET_ADDRESS = "walletAddress";
-    public static final String WALLET_CURRENCY = "walletCurrency";
-    private static final String WALLET_BALANCE = "walletBalance";
-
 
     @Nullable
     @Override
@@ -143,7 +139,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mRecyclerView.setAdapter(mDashboardAdapter);
 
-
         ScrollingPagerIndicator recyclerIndicator = mViewRoot.findViewById(R.id.indicator);
         recyclerIndicator.attachToRecyclerView(mRecyclerView);
         mWalletSnapHelper = new LinearSnapHelper();
@@ -187,7 +182,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewCharge.setOnClickListener(v -> {
             if (mSelectedWalletPosition < mWalletList.size()){
-                Intent intent = new Intent(getActivity(), ReceiveActivity.class);
+                Intent intent = new Intent(getActivity(), LoadActivity.class);
                 intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
             }
@@ -197,7 +192,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mImageViewExchange.setOnClickListener(v -> {
             if (mSelectedWalletPosition < mWalletList.size()){
                 Intent intent = new Intent(getActivity(), ExchangeActivity.class);
-                intent.putExtra("wallet", mWalletList.get(mSelectedWalletPosition));
+                intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
             }
         });

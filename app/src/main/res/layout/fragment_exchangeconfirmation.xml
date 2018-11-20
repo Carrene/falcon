@@ -11,7 +11,7 @@
         android:layout_marginEnd="17dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="33dp"
-        android:background="@drawable/chargetransferconfirmationandpurchaseconfirmation_border"
+        android:background="@drawable/loadsendconfirmation_border"
         android:orientation="vertical">
 
         <RelativeLayout

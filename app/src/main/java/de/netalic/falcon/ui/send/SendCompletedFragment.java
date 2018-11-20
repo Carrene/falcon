@@ -49,7 +49,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_transfercompleted, null);
+        mRoot = inflater.inflate(R.layout.fragment_sendcompleted, null);
         checkNotNull(getArguments());
         mTransaction = getArguments().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
         setHasOptionsMenu(true);

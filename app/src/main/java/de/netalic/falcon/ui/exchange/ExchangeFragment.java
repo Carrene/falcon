@@ -27,7 +27,7 @@ import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.dashboard.AddWalletActivity;
+import de.netalic.falcon.ui.addwallet.AddWalletActivity;
 import de.netalic.falcon.ui.send.SendConfirmationActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
