@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.exchange.exchangeresult;
+package de.netalic.falcon.ui.exchange;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import android.widget.Button;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
-import de.netalic.falcon.ui.exchange.ExchangeActivity;
 
 public class ExchangeFailedFragment extends Fragment implements ExchangeFailedContract.View {
 

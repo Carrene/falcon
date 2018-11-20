@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.exchange.exchangeresult;
+package de.netalic.falcon.ui.exchange;
 
 public class ExchangeCompletedPresenter implements ExchangeCompletedContract.Presenter {
 

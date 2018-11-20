@@ -430,5 +430,24 @@
     <string name="receive_hintalphaamount">Alpha</string>
     <string name="exchange_title">Exchange</string>
     <string name="exchangecompleted_title">Exchange completed</string>
+    <string name="text_exchangecompleted_textviewamount">VALUE</string>
+    <string name="text_exchangecompleted_textviewpaidamountlable">Paid amount</string>
+    <string name="text_exchangecompleted_textviewpaidamount">VALUE</string>
+    <string name="text_exchangecompleted_textviewdatelabel">Exchange Date</string>
+    <string name="text_exchangecompleted_textviewdate">VALUE</string>
+    <string name="text_exchangecompleted_textviewtimelabel">Exchange time</string>
+    <string name="text_exchangecompleted_textviewrnnlabel">RNN</string>
+    <string name="text_exchangecompleted_textviewrnn">VALUE</string>
+    <string name="text_exchangeconfirmation_textviewnamelabel">Wallet name</string>
+    <string name="text_exchangeconfirmation_textviewname">VALUE</string>
+    <string name="text_exchangeconfirmation_textviewamountlabel">Exchange amount</string>
+    <string name="text_exchangeconfirmation_textviewamount">VALUE</string>
+    <string name="text_exchangeconfirmation_textviewpaidamountlabel">Paid aount</string>
+    <string name="text_exchangeconfirmation_textviewpaidamount">VALUE</string>
+    <string name="text_exchangeconfirmation_textviewpayeeaddresslabel">Payee address</string>
+    <string name="text_exchangeconfirmation_textviewpayeeaddress">VALUE</string>
+    <string name="text_exchangefailed_textviewfailtitle">Failed</string>
+    <string name="text_exchangefailed_textviewfail">Lorem lpsum is simply dummy text of the printing and type setting industry</string>
+    <string name="text_exchangefailed_buttondashboard">DASHBOARD</string>
 
 </resources>

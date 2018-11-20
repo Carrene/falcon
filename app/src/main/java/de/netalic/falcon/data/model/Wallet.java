@@ -168,6 +168,7 @@ public class Wallet implements Parcelable {
         dest.writeDouble(this.mBalance);
         dest.writeInt(this.mId);
         dest.writeString(this.mCurrencyCode);
+        dest.writeString(this.mCurrencySymbol);
     }
 
     protected Wallet(Parcel in) {
@@ -176,6 +177,6 @@ public class Wallet implements Parcelable {
         mBalance=in.readDouble();
         mId=in.readInt();
         mCurrencyCode = in.readString();
-
+        mCurrencySymbol = in.readString();
     }
 }

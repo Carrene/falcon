@@ -51,7 +51,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textview_transferconfirmation_amountalphalable"
+                android:id="@+id/textview_transferconfirmation_amountalphalabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginstartend_transferconfirmation_textview"
@@ -128,7 +128,7 @@
             android:layout_marginBottom="@dimen/marginbottom_transferconfirmation_relativelayout">
 
             <TextView
-                android:id="@+id/textview_transferconfirmation_payeelable"
+                android:id="@+id/textview_transferconfirmation_payeelabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginstartend_transferconfirmation_textview"

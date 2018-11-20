@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.exchange.exchangeresult;
+package de.netalic.falcon.ui.exchange;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.transaction.TransactionRepository;

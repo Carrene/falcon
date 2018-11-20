@@ -1,4 +1,4 @@
-package de.netalic.falcon.ui.exchange.exchangeresult;
+package de.netalic.falcon.ui.exchange;
 
 import android.os.Bundle;
 

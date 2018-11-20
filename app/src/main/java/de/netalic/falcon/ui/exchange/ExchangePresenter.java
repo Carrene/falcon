@@ -68,7 +68,7 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
                     }
 
                     case 700: {
-                        
+
                         break;
 
                     }

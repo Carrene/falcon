@@ -10,44 +10,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginEnd="@dimen/marginend_exchangecompleted_linearlayoutmain"
+        android:layout_marginStart="@dimen/marginstart_exchangecompleted_linearlayoutmain"
+        android:layout_marginTop="@dimen/margintop_exchangecompleted_linearlayoutmain"
         android:background="@drawable/chargeandtransferandpurchasecompleted_border"
         android:orientation="vertical"
-        android:paddingBottom="18dp">
+        android:paddingBottom="@dimen/paddingbottom_exchangecompleted_linearlayoutmain">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/height_exchangecompleted_realativelayout"
             android:background="@drawable/chargetransfercompleted_headerborder">
 
             <TextView
                 android:id="@+id/textview_exchangecompleted_success"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/height_exchangecompleted_textviewsuccess"
                 android:gravity="center"
                 android:text="Success"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="@dimen/textsize_exchangecompleted_textviewsuccess" />
         </RelativeLayout>
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop= "20dp"
-            android:paddingStart="15dp">
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_exchangecompleted_relativelayout">
 
             <TextView
-                android:id="@+id/textview_exchangecompleted_exchangeamountlable"
+                android:id="@+id/textview_exchangecompleted_exchangeamountlabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Exchange amount"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/textsize_exchangecompleted_textviewamountlabel"/>
 
 
             <LinearLayout
@@ -60,33 +60,33 @@
                     android:id="@+id/textview_exchangecompleted_exchangeamountalpha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="15dp"
-                    android:text="VALUE"
+                    android:paddingEnd="@dimen/paddingend_exchangecompleted_textviewamount"
+                    android:text="@string/text_exchangecompleted_textviewamount"
                     android:textColor="@color/colorBlack"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/textsize_exchangecompleted_textviewamount" />
             </LinearLayout>
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="13dp"
-            android:layout_marginTop="13dp"
+            android:layout_height="@dimen/height_exchangecompleted_view"
+            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:paddingStart="15dp">
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_exchangecompleted_relativelayout">
 
             <TextView
-                android:id="@+id/textview_transfercompleted_paidamountlable"
+                android:id="@+id/textview_exchangecompleted_paidamountlabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Paid amount"
+                android:text="@string/text_exchangecompleted_textviewpaidamountlable"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
+                android:textSize="@dimen/textsize_exchangecompleted_textviewpaidamountlable" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -98,73 +98,73 @@
                     android:id="@+id/textview_exchangecompleted_paidamount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="15dp"
-                    android:text="VALUE"
+                    android:paddingEnd="@dimen/paddingend_exchangecompleted_textviewpaidamount"
+                    android:text="@string/text_exchangecompleted_textviewpaidamount"
                     android:textColor="@color/colorBlack"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/textsize_exchangecompleted_textviewpaidamount" />
             </LinearLayout>
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="13dp"
-            android:layout_marginTop="13dp"
+            android:layout_height="@dimen/height_exchangecompleted_view"
+            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:paddingStart="15dp">
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_exchangecompleted_relativelayout">
 
             <TextView
-                android:id="@+id/textview_exchangecompleted_exchamgedatelable"
+                android:id="@+id/textview_exchangecompleted_exchamgedatelabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exchange Date"
+                android:text="@string/text_exchangecompleted_textviewdatelabel"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
+                android:textSize="@dimen/textsize_exchangecompleted_textviewdatelabel" />
 
             <TextView
                 android:id="@+id/textview_exchangecompleted_exchangedate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:paddingEnd="15dp"
-                android:text="VALUE"
+                android:paddingEnd="@dimen/paddingend_exchangecompleted_textviewdate"
+                android:text="@string/text_exchangecompleted_textviewdate"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/textsize_exchangecompleted_textviewdate"/>
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="13dp"
-            android:layout_marginTop="13dp"
+            android:layout_height="@dimen/height_exchangecompleted_view"
+            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:paddingStart="15dp">
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_exchangecompleted_relativelayout">
 
             <TextView
-                android:id="@+id/textview_exchangecompleted_exchangetimelable"
+                android:id="@+id/textview_exchangecompleted_exchangetimelabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exchange time"
+                android:text="@string/text_exchangecompleted_textviewtimelabel"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/textsize_exchangecompleted_textviewtimelabel"/>
 
             <TextView
                 android:id="@+id/textview_exchangecompleted_exchangetime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:paddingEnd="15dp"
+                android:paddingEnd="@dimen/paddingend_exchangecompleted_textviewdate"
                 android:text="VALUE"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
@@ -172,34 +172,34 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="13dp"
-            android:layout_marginTop="13dp"
+            android:layout_height="@dimen/height_exchangecompleted_view"
+            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:paddingStart="15dp">
+            android:layout_marginTop="@dimen/margintop_exchangecompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_exchangecompleted_relativelayout">
 
             <TextView
-                android:id="@+id/textview_exchangecompleted_rrnlable"
+                android:id="@+id/textview_exchangecompleted_rrnlabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RNN"
+                android:text="@string/text_exchangecompleted_textviewrnnlabel"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
+                android:textSize="@dimen/textsize_exchangecompleted_textviewrnnlabel" />
 
             <TextView
                 android:id="@+id/textview_exchangecompleted_rrn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:paddingEnd="15dp"
-                android:text="VALUE"
+                android:paddingEnd="@dimen/paddingend_exchangecompleted_textviewrnn"
+                android:text="@string/text_exchangecompleted_textviewrnn"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp"/>
+                android:textSize="@dimen/textsize_exchangecompleted_textviewrnn"/>
         </RelativeLayout>
 
 
@@ -211,11 +211,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="27dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_buttondashboard"
+        android:layout_marginEnd="@dimen/marginend_exchangecompleted_buttondashboard"
+        android:layout_marginStart="@dimen/marginstart_exchangecompleted_buttondashboard"
         android:background="@color/colorSecondary"
         android:text="@string/transfercompleted_dashboard"
         android:textColor="@color/colorBlack"
-        android:textSize="14sp" />
+        android:textSize="@dimen/textsize_exchangecompleted_buttondashboard" />
 </RelativeLayout>

@@ -220,9 +220,9 @@
         
         <activity android:name=".ui.exchange.ExchangeActivity"></activity>
 
-        <activity android:name=".ui.exchange.exchangeresult.ExchangeCompletedActivity"/>
-        <activity android:name=".ui.exchange.exchangeresult.ExchangeConfirmationActivity"/>
-        <activity android:name=".ui.exchange.exchangeresult.ExchangeFailedActivity"/>
+        <activity android:name=".ui.exchange.ExchangeCompletedActivity"/>
+        <activity android:name=".ui.exchange.ExchangeConfirmationActivity"/>
+        <activity android:name=".ui.exchange.ExchangeFailedActivity"/>
 
     </application>
 

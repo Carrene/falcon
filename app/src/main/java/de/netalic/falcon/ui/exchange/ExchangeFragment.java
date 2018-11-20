@@ -27,8 +27,6 @@ import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.charge.AddWalletActivity;
-import de.netalic.falcon.ui.exchange.exchangeresult.ExchangeConfirmationActivity;
-import de.netalic.falcon.ui.send.SendConfirmationActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -49,6 +47,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private ExchangeContract.Presenter mPresenter;
     public static final String WALLET = "wallet";
     public static final String ARGUMENT_TRANSACTION = "transaction";
+    public static final String ARGUMENT_PAIDAMOUNT = "amount";
 
     @Nullable
     @Override
@@ -280,7 +279,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     public void navigationToExchangeConfirmation(Transaction body) {
         Intent intent = new Intent(getContext(), ExchangeConfirmationActivity.class);
         intent.putExtra(ARGUMENT_TRANSACTION, body);
+        intent.putExtra(ARGUMENT_PAIDAMOUNT, (mWallet.getCurrencySymbol() + mTextInputEditTextFirstAmount.getText().toString()));
         startActivity(intent);
     }
-
 }
