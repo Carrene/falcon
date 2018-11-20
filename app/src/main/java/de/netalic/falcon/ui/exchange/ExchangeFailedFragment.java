@@ -27,7 +27,7 @@ public class ExchangeFailedFragment extends Fragment implements ExchangeFailedCo
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_exchangefailed, container ,false);
+        mRoot = inflater.inflate(R.layout.fragment_exchangefailed, container, false);
         return mRoot;
     }
 
@@ -88,8 +88,8 @@ public class ExchangeFailedFragment extends Fragment implements ExchangeFailedCo
 
             case R.id.item_exchangefailed_retry: {
 
-               Intent intent=new Intent(getActivity(),ExchangeActivity.class);
-               startActivity(intent);
+                Intent intent = new Intent(getActivity(), ExchangeActivity.class);
+                startActivity(intent);
                 break;
             }
 

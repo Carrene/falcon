@@ -30,6 +30,6 @@ public class ExchangeFailedActivity extends BaseActivity {
 
     @Override
     protected String getActionbarTitle() {
-        return "Exchange failed";
+        return getString(R.string.exchangefailed_title);
     }
 }

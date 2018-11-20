@@ -2,7 +2,7 @@ package de.netalic.falcon.ui.exchange;
 
 public class ExchangeCompletedPresenter implements ExchangeCompletedContract.Presenter {
 
-    private ExchangeCompletedContract.View  mExchangeCompletedView;
+    private ExchangeCompletedContract.View mExchangeCompletedView;
 
     public ExchangeCompletedPresenter(ExchangeCompletedContract.View exchangeCompletedView) {
         mExchangeCompletedView = exchangeCompletedView;

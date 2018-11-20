@@ -24,7 +24,7 @@ public class ExchangeActivity extends BaseActivity {
 
         if (exchangeFragment == null) {
 
-            exchangeFragment = ExchangeFragment.newInstance(getIntent().getParcelableExtra(WALLET ));
+            exchangeFragment = ExchangeFragment.newInstance(getIntent().getParcelableExtra(WALLET));
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), exchangeFragment, R.id.
                     framelayout_exchange_fragmentcontainer);
         }

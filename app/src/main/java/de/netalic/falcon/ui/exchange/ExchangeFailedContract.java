@@ -5,12 +5,12 @@ import de.netalic.falcon.ui.base.BaseView;
 
 public interface ExchangeFailedContract {
 
-    interface  View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
 
 
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends BasePresenter {
 
 
     }

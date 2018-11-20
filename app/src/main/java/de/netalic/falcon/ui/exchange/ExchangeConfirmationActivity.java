@@ -19,12 +19,13 @@ public class ExchangeConfirmationActivity extends BaseActivity {
 
             throw new RuntimeException("Exchange should not be null");
         }
+
         Transaction transaction = getIntent().getExtras().getParcelable(ExchangeFragment.ARGUMENT_TRANSACTION);
         String amount = getIntent().getExtras().getString(ExchangeFragment.ARGUMENT_PAIDAMOUNT);
 
         ExchangeConfirmationFragment exchangeConfirmationFragment = (ExchangeConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_exchangeconfirmation_fragmentcontainer);
-        if (exchangeConfirmationFragment == null) {
 
+        if (exchangeConfirmationFragment == null) {
             exchangeConfirmationFragment = ExchangeConfirmationFragment.newInstance(transaction, amount);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), exchangeConfirmationFragment, R.id.framelayout_exchangeconfirmation_fragmentcontainer);
         }
@@ -38,6 +39,6 @@ public class ExchangeConfirmationActivity extends BaseActivity {
 
     @Override
     protected String getActionbarTitle() {
-        return "Exchange Confirmation";
+        return getString(R.string.exchangeconfirmation_title);
     }
 }
