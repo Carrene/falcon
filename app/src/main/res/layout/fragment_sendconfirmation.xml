@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_linearlayout"
+        android:layout_marginStart="@dimen/marginstartend_sendconfirmation_linearlayout"
+        android:layout_marginTop="@dimen/margintop_sendconfirmation_linearlayout"
+        android:background="@drawable/loadsendconfirmation_border"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_transferconfirmation_walletnamelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_sendconfirmation_textview"
+                android:layout_marginTop="@dimen/margintop_sendconfirmation_walletnamelable"
+                android:text="@string/sendconfirmation_walletname"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendconfirmation_walletnamelable" />
+
+            <TextView
+                android:id="@+id/textview_transferconfirmation_walletname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_textview"
+                android:layout_marginTop="@dimen/margintop_sendconfirmation_walletname"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_sendconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_sendconfirmation_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_transferconfirmation_amountalphalabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_sendconfirmation_textview"
+                android:text="@string/sendconfirmation_walletamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendconfirmation_amountalphalable" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_transferconfirmation_transferamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_textview"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_sendconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_sendconfirmation_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_transferconfirmation_amountdollarlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_sendconfirmation_textview"
+                android:text="@string/sendconfirmation_baseamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendconfirmation_amountdollarlable" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_transferconfirmation_paidamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_textview"
+                    android:text="VALUE"
+                    android:textColor="@color/colorBlack"
+
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_sendconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
+            android:layout_marginTop="@dimen/margintop_sendconfirmation_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transferconfirmation_payeelabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginstartend_sendconfirmation_textview"
+                android:text="@string/sendconfirmation_paymentgateway"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendconfirmation_paymentgatewaylable" />
+
+            <TextView
+                android:id="@+id/textview_transferconfirmation_payee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

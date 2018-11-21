@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
-
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -27,8 +26,7 @@ import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.dashboard.AddWalletActivity;
-
+import de.netalic.falcon.ui.addwallet.AddWalletActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -51,7 +49,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private TextInputLayout mTextInputLayoutFirstAmount;
 
     public static final String ARGUMENT_TRANSACTION = "transaction";
-    public static final String ARGUMENT_PAIDAMOUNT = "amount";
+    public static final String ARGUMENT_PAID_AMOUNT = "amount";
 
 
     @Nullable
@@ -288,7 +286,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     public void navigationToExchangeConfirmation(Transaction body) {
         Intent intent = new Intent(getContext(), ExchangeConfirmationActivity.class);
         intent.putExtra(ARGUMENT_TRANSACTION, body);
-        intent.putExtra(ARGUMENT_PAIDAMOUNT, (mWallet.getCurrencySymbol() + mTextInputEditTextFirstAmount.getText().toString()));
+        intent.putExtra(ARGUMENT_PAID_AMOUNT, (mWallet.getCurrencySymbol() + mTextInputEditTextFirstAmount.getText().toString()));
         startActivity(intent);
     }
 

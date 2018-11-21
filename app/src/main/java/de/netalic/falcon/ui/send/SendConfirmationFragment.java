@@ -33,7 +33,7 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_transferconfirmation, null);
+        mRoot = inflater.inflate(R.layout.fragment_sendconfirmation, null);
         checkNotNull(getArguments());
         mTransaction = getArguments().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
         return mRoot;
@@ -106,38 +106,38 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
     @Override
     public void showErrorTransferNotFound404() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_transfernotfound), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_transfernotfound), getContext());
 
     }
 
     @Override
     public void showErrorTryingToFinalizeSomeoneElseTransaction404() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
     }
 
     @Override
     public void shoeErrorFinalizingTransactionWithStatusOfSucceed604() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
     }
 
     @Override
     public void shoeErrorFinalizingTransactionWithStatusOfFailed604() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_finalizingtransactionwithstatusoffailed), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_finalizingtransactionwithstatusoffailed), getContext());
     }
 
     @Override
     public void showError600() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_balanceislowerthanbalance), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_balanceislowerthanbalance), getContext());
     }
 
     @Override
     public void showError401() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_finalizetransferasananonymous), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_finalizetransferasananonymous), getContext());
 
     }
 

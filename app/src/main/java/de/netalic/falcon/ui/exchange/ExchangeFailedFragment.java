@@ -27,7 +27,7 @@ public class ExchangeFailedFragment extends Fragment implements ExchangeFailedCo
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_exchangefailed, container, false);
+        mRoot = inflater.inflate(R.layout.fragment_sendfailed, null);
         return mRoot;
     }
 

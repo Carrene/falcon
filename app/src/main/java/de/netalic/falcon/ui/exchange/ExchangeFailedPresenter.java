@@ -2,12 +2,12 @@ package de.netalic.falcon.ui.exchange;
 
 public class ExchangeFailedPresenter implements ExchangeFailedContract.Presenter {
 
-    private ExchangeFailedContract.View mExchangeFailedView;
+    private ExchangeFailedContract.View mSendFailedView;
 
 
-    public ExchangeFailedPresenter(ExchangeFailedContract.View exchangeFailedView) {
-        mExchangeFailedView = exchangeFailedView;
-        mExchangeFailedView.setPresenter(this);
+    public ExchangeFailedPresenter(ExchangeFailedContract.View sendFailedView) {
+        mSendFailedView = sendFailedView;
+        mSendFailedView.setPresenter(this);
     }
 
     @Override

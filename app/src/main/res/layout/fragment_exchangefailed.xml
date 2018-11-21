@@ -19,7 +19,7 @@
             android:id="@+id/textview_exchangefailed_failed"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_exchangefailed_textviewfailtitle"
-            android:background="@drawable/chargefailed_headerborder"
+            android:background="@drawable/loadfailed_headerborder"
             android:gravity="center"
             android:text="@string/text_exchangefailed_textviewfailtitle"
             android:textColor="@color/white"

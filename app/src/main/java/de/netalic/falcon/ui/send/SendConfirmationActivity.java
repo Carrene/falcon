@@ -32,11 +32,11 @@ public class SendConfirmationActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_transferconfirmation;
+        return R.layout.activity_sendconfirmation;
     }
 
     @Override
     protected String getActionbarTitle() {
-        return getString(R.string.transferconfirmation_toolbar);
+        return getString(R.string.sendconfirmation_toolbar);
     }
 }

@@ -53,7 +53,7 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
         mRoot = inflater.inflate(R.layout.fragment_exchangecompleted, null);
         checkNotNull(getArguments());
         mTransaction = getArguments().getParcelable(ExchangeFragment.ARGUMENT_TRANSACTION);
-        mPaidAmount = getArguments().getString(ExchangeFragment.ARGUMENT_PAIDAMOUNT);
+        mPaidAmount = getArguments().getString(ExchangeFragment.ARGUMENT_PAID_AMOUNT);
         setHasOptionsMenu(true);
         return mRoot;
     }
@@ -90,7 +90,7 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
         ExchangeCompletedFragment exchangeCompletedFragment = new ExchangeCompletedFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(ExchangeFragment.ARGUMENT_TRANSACTION, transaction);
-        bundle.putString(ExchangeFragment.ARGUMENT_PAIDAMOUNT, amount);
+        bundle.putString(ExchangeFragment.ARGUMENT_PAID_AMOUNT, amount);
         exchangeCompletedFragment.setArguments(bundle);
         return exchangeCompletedFragment;
     }

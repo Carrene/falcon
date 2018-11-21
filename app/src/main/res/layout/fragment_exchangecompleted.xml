@@ -13,15 +13,15 @@
         android:layout_marginEnd="@dimen/marginend_exchangecompleted_linearlayoutmain"
         android:layout_marginStart="@dimen/marginstart_exchangecompleted_linearlayoutmain"
         android:layout_marginTop="@dimen/margintop_exchangecompleted_linearlayoutmain"
-        android:background="@drawable/chargeandtransferandpurchasecompleted_border"
+        android:background="@drawable/loadsendconfirmation_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_exchangecompleted_linearlayoutmain">
-
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_exchangecompleted_realativelayout"
-            android:background="@drawable/chargetransfercompleted_headerborder">
+            android:background="@drawable/loadsendcompleted_headerborder">
+
 
             <TextView
                 android:id="@+id/textview_exchangecompleted_success"
@@ -215,7 +215,7 @@
         android:layout_marginEnd="@dimen/marginend_exchangecompleted_buttondashboard"
         android:layout_marginStart="@dimen/marginstart_exchangecompleted_buttondashboard"
         android:background="@color/colorSecondary"
-        android:text="@string/transfercompleted_dashboard"
+        android:text="@string/sendcompleted_dashboard"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_exchangecompleted_buttondashboard" />
 </RelativeLayout>

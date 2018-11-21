@@ -13,7 +13,7 @@
         android:layout_marginEnd="@dimen/marginstartend_transactiondetail_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_transactiondetail_linearlayout"
         android:layout_marginTop="@dimen/margintop_transactiondetail_linearlayout"
-        android:background="@drawable/chargeandtransferandpurchasecompleted_border"
+        android:background="@drawable/loadandsendandwithdrawcompleted_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_transactiondetail_linearlayout">
 
@@ -21,7 +21,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_transactiondetail_header"
-            android:background="@drawable/chargetransfercompleted_headerborder">
+            android:background="@drawable/loadsendcompleted_headerborder">
 
             <TextView
                 android:id="@+id/textview_transactiondetail_success"

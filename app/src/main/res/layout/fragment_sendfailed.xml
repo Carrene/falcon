@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_transferfailed_forscreenshot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/marginstartend_sendfailed_linearlayout"
+        android:layout_marginStart="@dimen/marginstartend_sendfailed_linearlayout"
+        android:layout_marginTop="@dimen/margintop_sendfailed_linearlayout"
+        android:background="@drawable/everywherefailed_border"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_transferfailed_failed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_sendfailed_header"
+            android:background="@drawable/loadfailed_headerborder"
+            android:gravity="center"
+            android:text="@string/sendfailed_failed"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_sendfailed_textviewfailed" />
+
+        <TextView
+            android:id="@+id/textview_transferfailed_describe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbottom_sendfailed_describetextview"
+            android:layout_marginEnd="@dimen/marginstartend_sendfailed_describetextview"
+            android:layout_marginStart="@dimen/marginstartend_sendfailed_describetextview"
+            android:layout_marginTop="@dimen/margintop_sendfailed_describetextview"
+            android:gravity="center"
+            android:text="Lorem lpsum is simply dummy text of the printing and type setting industry"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_sendfailed_describetextview" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_transferfailed_dashborad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/marginbottom_sendfailed_dashboardbutton"
+        android:layout_marginEnd="@dimen/marginstartend_sendfailed_dashboardbutton"
+        android:layout_marginStart="@dimen/marginstartend_sendfailed_dashboardbutton"
+        android:background="@drawable/everywhere_borderbutton"
+        android:text="@string/sendfailed_dashboardbutton"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_sendfailed_dashboardbutton"
+        android:backgroundTint="@color/colorSecondary" />
+
+</RelativeLayout>

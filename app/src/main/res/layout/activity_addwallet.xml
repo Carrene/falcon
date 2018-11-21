@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.netalic.falcon.ui.dashboard.AddWalletActivity">
+    tools:context="de.netalic.falcon.ui.addwallet.AddWalletActivity">
     <include layout="@layout/toolbar_everywhere"/>
     <FrameLayout
         android:id="@+id/framelayout_addwallet_fragmentcontainer"

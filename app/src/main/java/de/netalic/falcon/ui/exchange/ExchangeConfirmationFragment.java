@@ -38,7 +38,7 @@ public class ExchangeConfirmationFragment extends Fragment implements ExchangeCo
         mRoot = inflater.inflate(R.layout.fragment_exchangeconfirmation, null);
         checkNotNull(getArguments());
         mTransaction = getArguments().getParcelable(ExchangeFragment.ARGUMENT_TRANSACTION);
-        mPaidAmount = getArguments().getString(ExchangeFragment.ARGUMENT_PAIDAMOUNT);
+        mPaidAmount = getArguments().getString(ExchangeFragment.ARGUMENT_PAID_AMOUNT);
         return mRoot;
     }
 
@@ -87,7 +87,7 @@ public class ExchangeConfirmationFragment extends Fragment implements ExchangeCo
         ExchangeConfirmationFragment exchangeConfirmationFragment = new ExchangeConfirmationFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(ExchangeFragment.ARGUMENT_TRANSACTION, transaction);
-        bundle.putString(ExchangeFragment.ARGUMENT_PAIDAMOUNT, amount);
+        bundle.putString(ExchangeFragment.ARGUMENT_PAID_AMOUNT, amount);
         exchangeConfirmationFragment.setArguments(bundle);
 
         return exchangeConfirmationFragment;
@@ -99,7 +99,7 @@ public class ExchangeConfirmationFragment extends Fragment implements ExchangeCo
 
         Intent intent = new Intent(getContext(), ExchangeCompletedActivity.class);
         intent.putExtra(ExchangeFragment.ARGUMENT_TRANSACTION, transaction);
-        intent.putExtra(ExchangeFragment.ARGUMENT_PAIDAMOUNT, mPaidAmount);
+        intent.putExtra(ExchangeFragment.ARGUMENT_PAID_AMOUNT, mPaidAmount);
         startActivity(intent);
     }
 
@@ -111,39 +111,39 @@ public class ExchangeConfirmationFragment extends Fragment implements ExchangeCo
     @Override
     public void showErrorTransferNotFound404() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transferconfirmation_transfernotfound), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_transfernotfound), getContext());
 
     }
 
     @Override
     public void showErrorTryingToFinalizeSomeoneElseTransaction404() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.exchangeconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
     }
 
     @Override
     public void shoeErrorFinalizingTransactionWithStatusOfSucceed604() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.exchangeconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_tryingtofinalizesomeoneelsetransaction), getContext());
+
     }
 
     @Override
     public void shoeErrorFinalizingTransactionWithStatusOfFailed604() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.exchangeconfirmation_finalizingtransactionwithstatusoffailed), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_finalizingtransactionwithstatusoffailed), getContext());
     }
 
     @Override
     public void showError600() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.exchangeconfirmation_balanceislowerthanbalance), getContext());
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_balanceislowerthanbalance), getContext());
     }
 
     @Override
     public void showError401() {
 
-        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.exchangeconfirmation_finalizetransferasananonymous), getContext());
-
+        SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.sendconfirmation_finalizetransferasananonymous), getContext());
     }
 
 

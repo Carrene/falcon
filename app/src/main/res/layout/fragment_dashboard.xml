@@ -52,6 +52,7 @@
                 android:src="@drawable/dashboard_sendicon" />
 
             <ImageView
+                android:id="@+id/imageview_dashboard_withdrawicon"
                 android:layout_width="@dimen/width_fragmentdashboard_imageviewwithdrawicon"
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewwithdrawicon"
                 android:layout_gravity="center_horizontal"
@@ -106,7 +107,7 @@
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewchargeicon"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewchargeicon"
-                android:src="@drawable/dashboard_chargeicon" />
+                android:src="@drawable/dashboard_loadicon" />
 
         </LinearLayout>
 

@@ -21,7 +21,7 @@ public class ExchangeConfirmationActivity extends BaseActivity {
         }
 
         Transaction transaction = getIntent().getExtras().getParcelable(ExchangeFragment.ARGUMENT_TRANSACTION);
-        String amount = getIntent().getExtras().getString(ExchangeFragment.ARGUMENT_PAIDAMOUNT);
+        String amount = getIntent().getExtras().getString(ExchangeFragment.ARGUMENT_PAID_AMOUNT);
 
         ExchangeConfirmationFragment exchangeConfirmationFragment = (ExchangeConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_exchangeconfirmation_fragmentcontainer);
 

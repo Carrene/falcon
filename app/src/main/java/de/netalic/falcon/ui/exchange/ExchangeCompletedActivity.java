@@ -20,7 +20,7 @@ public class ExchangeCompletedActivity extends BaseActivity {
         }
 
         Transaction transaction = getIntent().getExtras().getParcelable(ExchangeFragment.ARGUMENT_TRANSACTION);
-        String amount = getIntent().getExtras().getString(ExchangeFragment.ARGUMENT_PAIDAMOUNT);
+        String amount = getIntent().getExtras().getString(ExchangeFragment.ARGUMENT_PAID_AMOUNT);
         ExchangeCompletedFragment exchangeCompletedFragment = (ExchangeCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_exchangecompleted_fragmentcontainer);
 
         if (exchangeCompletedFragment == null) {

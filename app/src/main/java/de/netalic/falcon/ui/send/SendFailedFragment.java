@@ -27,7 +27,7 @@ public class SendFailedFragment extends Fragment implements SendFailedContract.V
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_transferfailed, null);
+        mRoot = inflater.inflate(R.layout.fragment_sendfailed, null);
         return mRoot;
     }
 

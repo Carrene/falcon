@@ -174,7 +174,7 @@ public class TransactionDetailFailedFragment extends Fragment implements Transac
 
 
             ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
-            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.chargefailed_imagesaved), getContext());
+            SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.loadfailed_imagesaved), getContext());
         }
     }
 

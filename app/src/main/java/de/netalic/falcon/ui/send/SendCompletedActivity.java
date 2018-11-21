@@ -31,11 +31,11 @@ public class SendCompletedActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_transfercompleted;
+        return R.layout.activity_sendcompleted;
     }
 
     @Override
     protected String getActionbarTitle() {
-        return getString(R.string.transfercompleted_toolbar);
+        return getString(R.string.sendcompleted_toolbar);
     }
 }

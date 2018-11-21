@@ -13,23 +13,23 @@ public class ExchangeFailedActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
 
-        ExchangeFailedFragment exchangeFailedFragment = (ExchangeFailedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_exchangefailed_fragmentcontainer);
-        if (exchangeFailedFragment == null) {
+        ExchangeFailedFragment sendFailedFragment=(ExchangeFailedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferfailed_fragmentcontainer);
+        if (sendFailedFragment==null){
 
-            exchangeFailedFragment = ExchangeFailedFragment.newInstance();
-            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), exchangeFailedFragment, R.id.framelayout_exchangefailed_fragmentcontainer);
+            sendFailedFragment=ExchangeFailedFragment.newInstance();
+            ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),sendFailedFragment,R.id.framelayout_transferfailed_fragmentcontainer);
 
         }
-        new ExchangeFailedPresenter(exchangeFailedFragment);
+        new ExchangeFailedPresenter(sendFailedFragment);
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_exchangefailed;
+        return R.layout.activity_sendfailed;
     }
 
     @Override
     protected String getActionbarTitle() {
-        return getString(R.string.exchangefailed_title);
+        return getString(R.string.sendfailed_toolbar);
     }
 }

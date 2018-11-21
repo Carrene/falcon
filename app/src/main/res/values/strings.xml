@@ -6,7 +6,6 @@
     <string name="everywhere_dollarsymbol">$</string>
     <string name="everywhere_imagesaved">Image Saved</string>
 
-
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
@@ -65,7 +64,7 @@
 
     <string name="dashboard_invalidcurrency">Invalid currency</string>
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>
-    <string name="dasboard_equivalenttobasecurrency">Equivalent to base currency</string>
+    <string name="dashboard_equivalenttobasecurrency">Equivalent to base currency</string>
     <string name="dashboard_notification">Notification</string>
     <string name="dashboard_sorryicantcalculatenow">I cant calculate now</string>
     <string name="dashboard_basecurrencydoesnotset">Base currency does not set</string>
@@ -74,70 +73,62 @@
     <string name="materialdialogutil_isloading">Is loading ...</string>
     <string name="materialdialogutil_pleasewait">Please wait</string>
 
+    <string name="load_invalidamount">Invalid amount</string>
+    <string name="load_amountissmallerthanlowerbound">Amount is smaller than lower bound</string>
+    <string name="load_amountisgreaterthanupperbound">Amount is greater than upper bound</string>
+    <string name="load_invalidwalletid">Invalid wallet id</string>
 
-    <string name="charge_pleasefillamount">Please fill amount</string>
-    <string name="charge_invalidamount">Invalid amount</string>
-    <string name="charge_amountissmallerthanlowerbound">Amount is smaller than lower bound</string>
-    <string name="charge_amountisgreaterthanupperbound">Amount is greater than upper bound</string>
-    <string name="charge_invalidwalletid">Invalid wallet id</string>
+    <string name="load_paymentgateway">Payment gateway</string>
 
-    <string name="charge_wallet">Wallet</string>
-    <string name="charge_paymentgateway">Payment gateway</string>
+    <string name="load_invalidcurrency">Invalid currency</string>
+    <string name="load_ratedosenotexists">Rate dose not exists</string>
+    <string name="load_chargeisunavailable">Charge is unavailable</string>
+    <string name="load_verifyrateisoutdatedorithaswrongcurrency">Verify rate is outdated or it has wrong currency</string>
+    <string name="load_VerifyRateIdMissing">Verify rate id missing</string>
+    <string name="load_invalidverifyrateid">Invalid verify rate id</string>
+    <string name="load_startatransferasananonymous">Start a transfer as an anonymous</string>
 
-    <string name="chargeamount_toolbartitle">Charge-Amount</string>
-    <string name="chargeamount_invalidcurrency">Invalid currency</string>
-    <string name="chargeamount_ratedosenotexists">Rate dose not exists</string>
-    <string name="chargeamount_amount">Amount</string>
-    <string name="chargeamount_amounthint">ALP</string>
-    <string name="chargeamount_dollar">USD</string>
-    <string name="chargeamount_nextpayment">NEXT-PAYMENT</string>
-    <string name="chargeamount_chargeisunavailable">Charge is unavailable</string>
-    <string name="chargeamount_verifyrateisoutdatedorithaswrongcurrency">Verify rate is outdated or it has wrong currency</string>
-    <string name="chargeamount_VerifyRateIdMissing">Verify rate id missing</string>
-    <string name="chargeamount_invalidverifyrateid">Invalid verify rate id</string>
-    <string name="chargeamount_startatransferasananonymous">Start a transfer as an anonymous</string>
+    <string name="loadconfirmation_chargeconfirmation">Load confirmation</string>
+    <string name="loadconfirmation_walletname">Wallet Name </string>
+    <string name="loadconfirmation_paymentgateway">Payment Gateway </string>
+    <string name="loadconfirmation_walletamount">Charge Amount  </string>
+    <string name="loadconfirmation_baseamount">Paid Amount  </string>
 
-    <string name="chargeconfirmation_chargeconfirmation">Load confirmation</string>
-    <string name="chargeconfirmation_walletname">Wallet Name </string>
-    <string name="chargeconfirmation_paymentgateway">Payment Gateway </string>
-    <string name="chargeconfirmation_walletamount">Charge Amount  </string>
-    <string name="chargeconfirmation_baseamount">Paid Amount  </string>
-
-    <string name="chargeconfirmation_confirm">CONFIRM</string>
-    <string name="chargeconfirmation_cannotfinalizefailedtransaction">Cannot finalize failed transaction</string>
-    <string name="chargeconfirmation_transactionnotfound">Transaction not found</string>
-    <string name="chargeconfirmation_invalidtransactionid">Invalid transaction id</string>
-    <string name="chargeconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
-    <string name="chargeconfirmation_braintreenonceismissing">Braintree nonce is missing</string>
-    <string name="chargeconfirmation_pleasetryagain">Please try again</string>
-    <string name="chargeconfirmation_paymentiscanceled">Payment is canceled</string>
+    <string name="loadconfirmation_confirm">CONFIRM</string>
+    <string name="loadconfirmation_cannotfinalizefailedtransaction">Cannot finalize failed transaction</string>
+    <string name="loadconfirmation_transactionnotfound">Transaction not found</string>
+    <string name="loadconfirmation_invalidtransactionid">Invalid transaction id</string>
+    <string name="loadconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
+    <string name="loadconfirmation_braintreenonceismissing">Braintree nonce is missing</string>
+    <string name="loadconfirmation_pleasetryagain">Please try again</string>
+    <string name="loadconfirmation_paymentiscanceled">Payment is canceled</string>
 
 
-    <string name="chargecompleted_chargecompleted">Load status</string>
-    <string name="chargecompleted_walletname">Wallet name </string>
-    <string name="chargecompleted_amount">Charge amount  </string>
-    <string name="chargecompleted_baseamount">Paid amount  </string>
-    <string name="chargecompleted_paymentgateway">Payment gateway </string>
-    <string name="chargecompleted_transactiondate">Transaction date </string>
-    <string name="chargecompleted_transactiontime">Transaction time </string>
-    <string name="chargecompleted_trackingcode">RRN </string>
-    <string name="chargecompleted_dashboard">DASHBOARD</string>
-    <string name="chargecompleted_success">Success</string>
+    <string name="loadcompleted_chargecompleted">Load status</string>
+    <string name="loadcompleted_walletname">Wallet name </string>
+    <string name="loadcompleted_amount">Charge amount  </string>
+    <string name="loadcompleted_baseamount">Paid amount  </string>
+    <string name="loadcompleted_paymentgateway">Payment gateway </string>
+    <string name="loadcompleted_transactiondate">Transaction date </string>
+    <string name="loadcompleted_transactiontime">Transaction time </string>
+    <string name="loadcompleted_trackingcode">RRN </string>
+    <string name="loadcompleted_dashboard">DASHBOARD</string>
+    <string name="loadcompleted_success">Success</string>
 
-    <string name="chargecompleted_sharemenutoolbar">Share</string>
-    <string name="chargecompleted_downloadmenutoolbar">Download</string>
+    <string name="loadcompleted_sharemenutoolbar">Share</string>
+    <string name="loadcompleted_downloadmenutoolbar">Download</string>
 
-    <string name="chargefailed_failed">Load status</string>
-    <string name="chargefailed_failedtextview">Failed</string>
-    <string name="chargefailed_walletname">Wallet Name </string>
-    <string name="chargefailed_walletamount">Charge Amount </string>
-    <string name="chargefailed_baseamount">Paid Amount </string>
-    <string name="chargefailed_paymentgateway">Payment Gateway </string>
-    <string name="chargefailed_transactiondate">Transaction date </string>
-    <string name="chargefailed_transactiontime">Transaction time </string>
-    <string name="chargefailed_rrn">RRN </string>
-    <string name="chargefailed_dashboard">Dashboard</string>
-    <string name="chargefailed_imagesaved">Image Saved</string>
+    <string name="laodfailed_failed">Load status</string>
+    <string name="loadfailed_failedtextview">Failed</string>
+    <string name="loadfailed_walletname">Wallet Name </string>
+    <string name="loadfailed_walletamount">Charge Amount </string>
+    <string name="loadfailed_baseamount">Paid Amount </string>
+    <string name="loadfailed_paymentgateway">Payment Gateway </string>
+    <string name="loadfailed_transactiondate">Transaction date </string>
+    <string name="loadfailed_transactiontime">Transaction time </string>
+    <string name="loadfailed_rrn">RRN </string>
+    <string name="loadfailed_dashboard">Dashboard</string>
+    <string name="loadfailed_imagesaved">Image Saved</string>
 
     <string name="withdraw_toolbar">Withdraw</string>
     <string name="withdraw_nextamount">NEXT-AMOUNT</string>
@@ -145,7 +136,6 @@
     <string name="withdraw_wallet">Wallet</string>
     <string name="withdraw_qrcode">QR code</string>
     <string name="withdraw_withdrawmethod">Withdraw method</string>
-
 
     <string name="withdrawamount_toolbar">Withdraw-Amount</string>
     <string name="withdrawamount_amount">Amount</string>
@@ -172,7 +162,6 @@
     <string name="transactionhistory_toolbar">Transaction History</string>
     <string name="rowtransactionhistory_walletname">Wallet Name :</string>
 
-
     <string name="transactionfilters_toolbar">Transaction Filters</string>
 
     <string-array name="transactionfilter_date">
@@ -185,7 +174,6 @@
 
     <string name="transactionhistoryfilters_selecttimespan">Select a timespan</string>
 
-
     <string name="transfercompleted_toolbar">Send completed</string>
     <string name="transfercompleted_paidamount">Transfer amount  </string>
     <string name="transfercompleted_baseamount">Paid amount  </string>
@@ -197,7 +185,6 @@
     <string name="transfercompleted_imagesaved">Image Saved</string>
     <string name="transfercompleted_sharemenutoolbar">Share</string>
     <string name="transfercompleted_downloadmenutoolbar">Download</string>
-
 
     <string name="transfer_toolbar">Transfer</string>
     <string name="transfer_nextamount">NEXT-AMOUNT</string>
@@ -263,11 +250,54 @@
     <string name="exchangeconfirmation_balanceislowerthanbalance">Balance is lower than balance</string>
     <string name="exchangeconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
 
-
     <string name="transferfailed_toolbar">Send failed</string>
     <string name="transferfailed_failed">Failed</string>
     <string name="transferfailed_trywithdrawbutton">TRY TRANSFER</string>
     <string name="transferfailed_dashboardbutton">DASHBOARD</string>
+
+    <string name="sendcompleted_toolbar">Send completed</string>
+    <string name="sendcompleted_paidamount">Transfer amount  </string>
+    <string name="sendcompleted_baseamount">Paid amount  </string>
+    <string name="sendcompleted_transactiondate">Transaction date </string>
+    <string name="sendcompleted_transactiontime">Transaction time </string>
+    <string name="sendcompleted_trackingcode">RRN </string>
+    <string name="sendcompleted_dashboard">DASHBOARD</string>
+    <string name="sendcompleted_success">Success</string>
+    <string name="sendcompleted_imagesaved">Image Saved</string>
+    <string name="sendcompleted_sharemenutoolbar">Share</string>
+    <string name="sendcompleted_downloadmenutoolbar">Download</string>
+
+    <string name="send_invalidsourcewalletid">Invalid source wallet id</string>
+    <string name="send_destinationwalletaddressisnotfound">Destination wallet address is not found</string>
+    <string name="send_sourcewalletnotfound">Source wallet not found</string>
+    <string name="send_sourceanddestinationareequal">Source and destination are equal</string>
+    <string name="send_invalidamount">Invalid amount</string>
+    <string name="send_amountiszero">Amount is zero</string>
+    <string name="send_amountisnegative">Amount is negative</string>
+    <string name="send_insufficientBalance">Insufficient Balance</string>
+    <string name="send_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
+    <string name="send_walletcurrenciesaredifferent">Wallet currencies are different</string>
+    <string name="send_starttransferasananonymous">Start transfer as an anonymous</string>
+    <string name="send_qrcodedoesnotmatch">QR code does not match</string>
+
+    <string name="sendconfirmation_toolbar">Transfer confirmation</string>
+    <string name="sendconfirmation_walletname">Wallet name </string>
+    <string name="sendconfirmation_paymentgateway">Payee address </string>
+    <string name="sendconfirmation_walletamount">Transfer amount  </string>
+    <string name="sendconfirmation_baseamount">Paid amount  </string>
+    <string name="sendconfirmation_confirm">Confirm</string>
+    <string name="sendconfirmation_transfernotfound">Transfer not found</string>
+    <string name="sendconfirmation_tryingtofinalizesomeoneelsetransaction">Trying to finalize someone else transaction</string>
+    <string name="sendconfirmation_finalizingtransactionwithstatusofsucceed">Finalizing transaction with status of succeed</string>
+    <string name="sendconfirmation_finalizingtransactionwithstatusoffailed">Finalizing transaction with status of failed</string>
+    <string name="sendconfirmation_balanceislowerthanbalance">Balance is lower than balance</string>
+    <string name="sendconfirmation_finalizetransferasananonymous">Finalize transfer as an anonymous</string>
+
+    <string name="sendfailed_toolbar">Send failed</string>
+    <string name="sendfailed_failed">Failed</string>
+    <string name="sendfailed_trywithdrawbutton">TRY TRANSFER</string>
+    <string name="sendfailed_dashboardbutton">DASHBOARD</string>
+
 
     <string name="addresses_toolbar">Wallets</string>
     <string name="rowaddresses_walletname">"Wallet Name : "</string>
@@ -293,59 +323,6 @@
 
     <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
     <string name="qrcodeaddresses_dashboardbutton">DASHBOARD</string>
-
-    <string name="purchase_toolbar">Purchase</string>
-    <string name="purchase_wallettextview">Wallet</string>
-    <string name="purchase_balancelable">"Balance : "</string>
-    <string name="purchase_nextamountbutton">NEXT</string>
-
-    <string name="purchaseamount_toolbar">Purchase amount</string>
-    <string name="purchaseamount_invalidcurrency">Invalid currency</string>
-    <string name="purchaseamount_ratedosenotexists">Rate dose not exists</string>
-    <string name="purchaseamount_amount">Amount</string>
-    <string name="purchaseamount_amounthint">Alpha</string>
-    <string name="purchaseamount_dollar">USD</string>
-    <string name="purchaseamount_nextscan">NEXT - SCAN</string>
-    <string name="purchaseamount_usemaximum">USE MAXIMUM</string>
-    <string name="purchaseamount_useminimum">USE MINIMUM</string>
-
-    <string name="purchasescanqrcode_toolbar">Scan QR code</string>
-    <string name="purchasescanqrcode_textview">Scan this QR code</string>
-    <string name="purchasescanqrcode_qrcodedoesnotmatch">QR code does not match</string>
-
-
-    <string name="purchaseconfirmation_toolbar">Purchase confirmation</string>
-    <string name="purchaseconfirmation_walletname">Wallet name </string>
-    <string name="purchaseconfirmation_paymentgateway">Payee address </string>
-    <string name="purchaseconfirmation_walletamount">Purchase amount  </string>
-    <string name="purchaseconfirmation_baseamount">Paid amount  </string>
-    <string name="purchaseconfirmation_confirm">CONFIRM</string>
-    <string name="purchaseconfirmation_invalidsourcewalletaddress">Invalid source wallet address</string>
-    <string name="purchaseconfirmation_invaliddestinationwalletaddress">Invalid destination wallet address</string>
-    <string name="purchaseconfirmation_sourcewalletnotfound">Source wallet not found</string>
-    <string name="purchaseconfirmation_sourceanddestinationissame">Source and destination is same</string>
-    <string name="purchaseconfirmation_invalidamount">Invalid amount</string>
-    <string name="purchaseconfirmation_amountisnegative">Amount is negative</string>
-    <string name="purchaseconfirmation_insufficientbalance">Insufficient balance</string>
-    <string name="purchaseconfirmation_tryingtotransferfromanotherclientwallet">Trying to transfer from another client wallet</string>
-
-    <string name="purchasecompleted_toolbar">Purchase Completed</string>
-    <string name="purchasecompleted_paidamount">Purchase amount  </string>
-    <string name="purchasecompleted_baseamount">Paid amount  </string>
-    <string name="purchasecompleted_transactiondate">Transaction date </string>
-    <string name="purchasecompleted_transactiontime">Transaction time </string>
-    <string name="purchasecompleted_trackingcode">RRN </string>
-    <string name="purchasecompleted_dashboard">DASHBOARD</string>
-    <string name="purchasecompleted_purchaseagain">PURCHASE AGAIN</string>
-    <string name="purchasecompleted_success">Success</string>
-    <string name="purchasecompleted_imagesaved">Image Saved</string>
-    <string name="purchasecompleted_sharemenutoolbar">Share</string>
-    <string name="purchasecompleted_downloadmenutoolbar">Download</string>
-
-    <string name="purchasefailed_toolbar">Purchase failed</string>
-    <string name="purchasefailed_failed">Failed</string>
-    <string name="purchasefailed_trypurchasebutton">TRY PURCHASE</string>
-    <string name="purchasefailed_dashboardbutton">DASHBOARD</string>
 
     <string name="authentication_hintpassword">Enter password</string>
     <string name="authentication_toolbar">Authentication</string>
@@ -404,11 +381,6 @@
     <string name="transactiondetailfailed_dashboard">Dashboard</string>
     <string name="transactiondetailfailed_imagesaved">Image Saved</string>
 
-    <string name="purchasegenerateqrcode_toolbar">QR Code Completed</string>
-    <string name="purchasegenerateqrcode_success">Success</string>
-    <string name="purchasegenerateqrcode_scanyourqrcode">Scan QR code</string>
-    <string name="purchasegenerateqrcode_imagesaved">Image saved</string>
-
     <string name="addwallet_toolbar">Add wallet</string>
     <string name="addwallet_walletname">Wallet name</string>
     <string name="addwallet_walletcurrency">Wallet currency</string>
@@ -420,13 +392,11 @@
     <string name="addwallet_invalidwalletname">Invalid wallet name</string>
     <string name="addwallet_addwalletasananonymous">Add wallet as an anonymous</string>
 
-
     <string name="basecurrency_changebaecurrency">Change base currency</string>
     <string name="basecurrency_basecurrencycodemissinginform">BaseCurrency Code missing in form</string>
     <string name="basecurrency_clientnotfoundorclientidisinvalid">Client not Found or client id is invalid</string>
     <string name="basecurrency_invalidcurrencycode">Invalid currency code</string>
     <string name="basecurrency_tryingtopasswithunauthorizedmember">Trying to pass with unauthorized member</string>
-
 
     <string name="customdatepicker_choosestartdatetitle">Start</string>
     <string name="customdatepicker_choosestartdatekey">start</string>
@@ -435,11 +405,9 @@
     <string name="customdatepicker_datepicker">Date Picker</string>
     <string name="customdatepicker_choosestartandenddatetitle">Choose Start And End Date</string>
 
-
     <string name="send_title">Send</string>
     <string name="send_hintalphaamount">Alpha</string>
     <string name="send_hintwalletaddress">Wallet Address</string>
-
 
     <string name="receive_title">Receive</string>
     <string name="receive_hintalphaamount">Alpha</string>

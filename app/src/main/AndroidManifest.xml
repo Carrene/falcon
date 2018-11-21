@@ -60,26 +60,18 @@
         <activity
             android:name=".ui.dashboard.DashboardActivity"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".ui.load.LoadActivity" />
+        <activity android:name=".ui.load.LoadCompletedActivity" />
         <activity
-            android:name=".ui.charge.ChargeAmountActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".ui.charge.ChargeActivity"
+            android:name=".ui.load.LoadConfirmationActivity"
+            android:parentActivityName=".ui.load.LoadActivity"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.charge.ChargeActivity" />
+                android:value=".ui.load.LoadActivity" />
         </activity>
-        <activity android:name=".ui.charge.ChargeActivity" />
-        <activity android:name=".ui.charge.ChargeCompletedActivity" />
-        <activity
-            android:name=".ui.charge.ChargeConfirmationActivity"
-            android:parentActivityName=".ui.charge.ChargeAmountActivity"
-            android:windowSoftInputMode="adjustResize">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.charge.ChargeAmountActivity" />
-        </activity>
-        <activity android:name=".ui.charge.ChargeFailedActivity" />
+        <activity android:name=".ui.load.LoadFailedActivity" />
         <activity
             android:name=".ui.withdraw.WithdrawActivity"
             android:parentActivityName=".ui.dashboard.DashboardActivity">
@@ -100,38 +92,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         </activity>
-        <activity android:name=".ui.transfer.TransferActivity" />
-        <activity
-            android:name=".ui.transfer.TransferAmountActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".ui.transfer.TransferActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.transfer.TransferAmountActivity" />
-        </activity>
-        <activity
-            android:name=".ui.transfer.TransferPayeeActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".ui.transfer.TransferAmountActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.transfer.TransferPayeeActivity" />
-        </activity>
-        <activity
-            android:name=".ui.transfer.TransferConfirmationActivity"
-            android:parentActivityName=".ui.transfer.TransferPayeeActivity" />
+
         <activity
             android:name=".ui.addresses.QrCodeAddressesActivity"
             android:parentActivityName=".ui.addresses.AddressesActivity" />
-        <activity
-            android:name=".ui.purchase.PurchaseActivity"
-            android:parentActivityName=".ui.dashboard.DashboardActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.dashboard.DashboardActivity" />
-        </activity>
-        <activity android:name=".ui.transfer.TransferCompletedActivity" />
-        <activity android:name=".ui.transfer.TransferFailedActivity" />
         <activity android:name=".ui.addresses.AddressesActivity" />
         <activity
             android:name=".ui.setting.basic.SettingActivity"
@@ -140,21 +104,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.registration.phoneinput.PhoneInputActivity" />
         </activity>
-        <activity
-            android:name=".ui.purchase.PurchaseAmountActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".ui.purchase.PurchaseActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.purchase.PurchaseActivity" />
-        </activity>
-        <activity
-            android:name=".ui.purchase.PurchaseScanQrCodeActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".ui.purchase.PurchaseAmountActivity" />
-        <activity android:name=".ui.purchase.PurchaseConfirmationActivity" />
-        <activity android:name=".ui.purchase.PurchaseCompletedActivity" />
-        <activity android:name=".ui.purchase.PurchaseFailedActivity" />
         <activity android:name=".ui.registration.authentication.AuthenticationActivity" />
         <activity
             android:name=".ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity"
@@ -180,11 +129,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
         </activity>
-        <activity android:name=".ui.purchase.PurchaseGenerateQrCodeActivity" />
         <activity
-            android:name=".ui.dashboard.AddWalletActivity"
+            android:name=".ui.addwallet.AddWalletActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.charge.ChargeActivity" />
+            android:parentActivityName=".ui.dashboard.DashboardActivity" />
         <activity
             android:name=".ui.setting.basecurrency.SettingBaseCurrencyActivity"
             android:parentActivityName=".ui.setting.basic.SettingActivity">
@@ -193,12 +141,12 @@
                 android:value=".ui.setting.basic.SettingActivity" />
         </activity>
         <activity
-            android:name=".ui.charge.ListCurrencyActivity"
+            android:name=".ui.addwallet.ListCurrencyActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.dashboard.AddWalletActivity">
+            android:parentActivityName=".ui.addwallet.AddWalletActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.dashboard.AddWalletActivity" />
+                android:value=".ui.addwallet.AddWalletActivity" />
         </activity>
         <activity
             android:name=".ui.transaction.customdatepicker.CustomDatePickerActivity"

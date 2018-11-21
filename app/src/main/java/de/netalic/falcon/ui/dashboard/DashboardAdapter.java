@@ -43,7 +43,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         switch (viewType) {
 
             case ADD_WALLET: {
-                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.charge_rowaddwallet, parent, false);
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.dashboard_rowaddwallet, parent, false);
                 return new AddWalletHolder(itemView);
             }
 

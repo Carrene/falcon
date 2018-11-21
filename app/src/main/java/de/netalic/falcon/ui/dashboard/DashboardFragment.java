@@ -17,18 +17,18 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.ui.addwallet.AddWalletActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.charge.ChargeActivity;
 import de.netalic.falcon.ui.exchange.ExchangeActivity;
+import de.netalic.falcon.ui.load.LoadActivity;
 import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.send.SendActivity;
 import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
+import de.netalic.falcon.ui.withdraw.WithdrawActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
@@ -47,11 +47,9 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
     private ImageView mImageViewCharge;
     private ImageView mImageViewExchange;
     private ImageView mImageViewTransaction;
-
+    private ImageView mImageViewWithdrawIcon;
     private List<Wallet> mWalletList;
     public static final String SELECTED_WALLET = "wallet";
-    public static final String WALLET_Address = "walletAddress";
-
 
     @Nullable
     @Override
@@ -96,7 +94,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         }
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -117,7 +114,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mImageViewCharge = mViewRoot.findViewById(R.id.imageview_dashboard_charge);
         mImageViewExchange = mViewRoot.findViewById(R.id.imageview_dashboard_exchange);
         mImageViewTransaction = mViewRoot.findViewById(R.id.imageview_dashboard_transactionicon);
-
+        mImageViewWithdrawIcon=mViewRoot.findViewById(R.id.imageview_dashboard_withdrawicon);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
 
@@ -131,21 +128,16 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
                     protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
                         return SPEED / displayMetrics.densityDpi;
                     }
-
                 };
                 smoothScroller.setTargetPosition(position);
                 startSmoothScroll(smoothScroller);
             }
-
         };
 
         layoutManager.setSmoothScrollbarEnabled(true);
         mRecyclerView.setLayoutManager(layoutManager);
         mDashboardAdapter = new DashboardAdapter(new ArrayList<>(), this);
-
         mRecyclerView.setAdapter(mDashboardAdapter);
-
-
         ScrollingPagerIndicator recyclerIndicator = mViewRoot.findViewById(R.id.indicator);
         recyclerIndicator.attachToRecyclerView(mRecyclerView);
         mWalletSnapHelper = new LinearSnapHelper();
@@ -190,11 +182,10 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             }
         });
 
-
         mImageViewCharge.setOnClickListener(v -> {
 
-            if (mSelectedWalletPosition < mWalletList.size()) {
-                Intent intent = new Intent(getActivity(), ChargeActivity.class);
+            if (mSelectedWalletPosition < mWalletList.size()){
+                Intent intent = new Intent(getActivity(), LoadActivity.class);
                 intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
             } else {
@@ -217,6 +208,12 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
             Intent intent = new Intent(getActivity(), TransactionHistoryActivity.class);
             startActivity(intent);
         });
+
+        mImageViewWithdrawIcon.setOnClickListener(v -> {
+
+            Intent intent=new Intent(getActivity(),WithdrawActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -225,7 +222,6 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mWalletList = data;
 
     }
-
     @Override
     public void navigationToAddWallet() {
         Intent intent = new Intent(getContext(), AddWalletActivity.class);
