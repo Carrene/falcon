@@ -5,17 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [0.37.0-rc] - 2018-10-18
+## [0.39.0-rc] - 2018-11-21
 ### Added
-- Add exchange.
-- Add send.
-- Add receive.
-- Add exchange.
+- Add transaction history.
+- Add Withdraw.
+- Add Add wallet.
 
 ### Changed
-- Dashboard new design.
-- Charge new design.
+- Fix bug on click on charge.
 
 ### Removed
-- Purchase page.
-- Transfer page.
