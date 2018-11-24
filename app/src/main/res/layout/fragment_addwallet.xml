@@ -24,6 +24,9 @@
             android:id="@+id/edittext_addwallet_walletname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true"
             android:layout_marginStart="@dimen/marginstartend_addwallet_walletnameedittext"
             android:layout_marginTop="@dimen/margintop_addwallet_walletnameedittext"
             android:layout_marginEnd="@dimen/marginstartend_addwallet_walletnameedittext" />
