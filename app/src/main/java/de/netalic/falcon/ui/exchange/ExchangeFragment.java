@@ -1,5 +1,6 @@
 package de.netalic.falcon.ui.exchange;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,7 +18,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -25,8 +31,8 @@ import de.netalic.falcon.common.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
-import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.addwallet.AddWalletActivity;
+import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -50,6 +56,8 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
     public static final String ARGUMENT_TRANSACTION = "transaction";
     public static final String ARGUMENT_PAID_AMOUNT = "amount";
+    private AlertDialog.Builder mBuilderAddWallet;
+    private TextView mTextViewAddWalletAlert;
 
 
     @Nullable
@@ -66,9 +74,16 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initUiComponents();
-        mTextInputLayoutFirstAmount.setHint(mWallet.getCurrencyCode());
+        initAlertUi();
         getListCurrency();
         initListener();
+    }
+
+    private void initAlertUi() {
+
+        mTextViewAddWalletAlert = new TextView(getContext());
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mTextViewAddWalletAlert.setLayoutParams(layoutParams);
     }
 
     @Override
@@ -80,7 +95,9 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         mTextInputEditTextFirstAmount = mViewRoot.findViewById(R.id.textinput_exchange_sourceamount);
         mTextInputEditTextSecondAmount = mViewRoot.findViewById(R.id.textinput_exchange_destinationamount);
         mSpinnerCurrencyList = mViewRoot.findViewById(R.id.spinner_exchange_spinner);
-        mTextInputLayoutFirstAmount=mViewRoot.findViewById(R.id.textinputlayout_exchange_firstamount);
+        mTextInputLayoutFirstAmount = mViewRoot.findViewById(R.id.textinputlayout_exchange_firstamount);
+
+        mTextInputLayoutFirstAmount.setHint(mWallet.getCurrencyCode());
     }
 
     private void initListener() {
@@ -188,11 +205,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     public boolean onOptionsItemSelected(MenuItem item) {
 
 
-        if (mTextInputEditTextFirstAmount.getText().toString().equals("")){
+        if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
 
-            SnackbarUtil.showSnackbar(mViewRoot,getString(R.string.everywhere_pleasefillbox),getContext());
-        }
-        else {
+            SnackbarUtil.showSnackbar(mViewRoot, getString(R.string.everywhere_pleasefillbox), getContext());
+        } else {
             mPresenter.getWalletList();
         }
 
@@ -278,7 +294,20 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
             }
         }
         if (destinationAddress.equals("")) {
-            navigationToAddWallet();
+            AlertDialog dialog = new AlertDialog.Builder(getContext(),R.style.AlertDialogStyle).setView(mTextViewAddWalletAlert).
+                    setMessage("You don't have a " +"\"" + selectedCurrency +"\"" + " wallet, do you want to add this wallet?").
+                    setPositiveButton(R.string.positivebutton_exchangefragment, (dialogInterface, i) -> {
+                        ((ViewGroup) mTextViewAddWalletAlert.getParent()).removeView(mTextViewAddWalletAlert);
+                        navigationToAddWallet();
+                    })
+                    .setNegativeButton(R.string.negativebutton_exchangefragment, (dialogInterface, which) -> {
+                        ((ViewGroup) mTextViewAddWalletAlert.getParent()).removeView(mTextViewAddWalletAlert);
+                    }).show();
+
+            TextView textView = dialog.findViewById(android.R.id.message);
+            textView.setTextSize(18);
+
+
         }
     }
 

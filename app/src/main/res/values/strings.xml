@@ -441,5 +441,7 @@
     <string name="exchangefailed_title">Exchange failed</string>
     <string name="exchangefragment_amountisempty">Amount is empty</string>
     <string name="dashboard_snackbarwalletnotselected">Please select a wallet</string>
+    <string name="positivebutton_exchangefragment">YES</string>
+    <string name="negativebutton_exchangefragment">NO</string>
 
 </resources>

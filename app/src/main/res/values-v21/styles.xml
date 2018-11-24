@@ -25,4 +25,28 @@
         <item name="android:background">@drawable/common_listcurrencybackgroundspinner</item>
         <item name="android:overlapAnchor">false</item>
     </style>
+
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="android:colorAccent">@color/colorSecondary</item>
+        <item name="android:textColorPrimary">#9E9E9E</item>
+        <item name="windowFixedWidthMinor">280dp</item>
+        <item name="windowFixedHeightMinor">128dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">2dp</item>
+
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
