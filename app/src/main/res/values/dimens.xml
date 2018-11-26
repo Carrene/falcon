@@ -455,8 +455,8 @@
     <dimen name="height_fragmentdashboard_imageviewwithdrawicon">55dp</dimen>
     <dimen name="width_fragmentdashboard_imageviewreceiveicon">49dp</dimen>
     <dimen name="height_fragmentdashboard_imageviewreceiveicon">55dp</dimen>
-    <dimen name="width_fragmentdashboard_imageviewchargeicon">49dp</dimen>
-    <dimen name="height_fragmentdashboard_imageviewchargeicon">55dp</dimen>
+    <dimen name="width_fragmentdashboard_imageviewchargeicon">31dp</dimen>
+    <dimen name="height_fragmentdashboard_imageviewchargeicon">60dp</dimen>
 
     <dimen name="width_dashboardrowaddwallet_relativelayout">300dp</dimen>
     <dimen name="height_dashboardrowaddwallet_relativelayout">200dp</dimen>

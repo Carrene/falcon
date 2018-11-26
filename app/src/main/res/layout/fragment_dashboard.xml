@@ -49,7 +49,8 @@
                 android:layout_width="@dimen/width_fragmentdashboard_imageviewsendicon"
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewsendicon"
                 android:layout_gravity="center_horizontal|top"
-                android:src="@drawable/dashboard_sendicon" />
+                android:src="@drawable/dashboard_sendicon"
+                android:scaleType="fitXY"/>
 
             <ImageView
                 android:id="@+id/imageview_dashboard_withdrawicon"
@@ -57,7 +58,8 @@
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewwithdrawicon"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewwithdrawicon"
-                android:src="@drawable/dashboard_withdrawicon" />
+                android:src="@drawable/dashboard_withdrawicon"
+                android:scaleType="fitXY"/>
         </LinearLayout>
 
         <LinearLayout
@@ -72,7 +74,8 @@
                 android:layout_width="@dimen/width_fragmentdashboard_imageviewexchangeicon"
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewexchangeicon"
                 android:layout_gravity="top|center_horizontal"
-                android:src="@drawable/dashboard_exchangeicon" />
+                android:src="@drawable/dashboard_exchangeicon"
+                android:scaleType="fitXY"/>
 
             <ImageView
                 android:id="@+id/imageview_dashboard_transactionicon"
@@ -82,7 +85,8 @@
                 android:layout_marginLeft="@dimen/marginleft_fragmentdashboard_imageviewtransactionicon"
                 android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewtransactionicon"
                 android:layout_marginRight="@dimen/marginright_fragmentdashboard_imageviewtransactionicon"
-                android:src="@drawable/dashboard_transactionsicon"/>
+                android:src="@drawable/dashboard_transactionsicon"
+                android:scaleType="fitXY"/>
 
         </LinearLayout>
 
@@ -99,7 +103,8 @@
                 android:layout_width="@dimen/width_fragmentdashboard_imageviewreceiveicon"
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewreceiveicon"
                 android:layout_gravity="center_horizontal|top"
-                android:src="@drawable/dashboard_receiveicon" />
+                android:src="@drawable/dashboard_receiveicon"
+                android:scaleType="fitXY"/>
 
             <ImageView
                 android:id="@+id/imageview_dashboard_charge"
@@ -107,7 +112,8 @@
                 android:layout_height="@dimen/height_fragmentdashboard_imageviewchargeicon"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margintop_fragmentdashboard_imageviewchargeicon"
-                android:src="@drawable/dashboard_loadicon" />
+                android:src="@drawable/dashboard_load"
+                android:scaleType="fitXY"/>
 
         </LinearLayout>
 
