@@ -1,6 +1,5 @@
 package de.netalic.falcon.ui.exchange;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -56,7 +54,6 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
     public static final String ARGUMENT_TRANSACTION = "transaction";
     public static final String ARGUMENT_PAID_AMOUNT = "amount";
-    private AlertDialog.Builder mBuilderAddWallet;
     private TextView mTextViewAddWalletAlert;
 
 

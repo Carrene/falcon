@@ -443,5 +443,6 @@
     <string name="dashboard_snackbarwalletnotselected">Please select a wallet</string>
     <string name="positivebutton_exchangefragment">YES</string>
     <string name="negativebutton_exchangefragment">NO</string>
+    <string name="menu_addwalletbutton">add wallet</string>
 
 </resources>

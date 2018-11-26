@@ -162,7 +162,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewSend.setOnClickListener(v -> {
 
-            if (mSelectedWalletPosition < mWalletList.size()) {
+            if (mWalletList != null && mSelectedWalletPosition < mWalletList.size()) {
                 Intent intent = new Intent(getActivity(), SendActivity.class);
                 intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
@@ -173,7 +173,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         });
 
         mImageViewReceive.setOnClickListener(v -> {
-            if (mSelectedWalletPosition < mWalletList.size()) {
+            if (mWalletList != null && mSelectedWalletPosition < mWalletList.size()) {
                 Intent intent = new Intent(getActivity(), ReceiveActivity.class);
                 intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
@@ -184,7 +184,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewCharge.setOnClickListener(v -> {
 
-            if (mSelectedWalletPosition < mWalletList.size()){
+            if (mWalletList != null && mSelectedWalletPosition < mWalletList.size()){
                 Intent intent = new Intent(getActivity(), LoadActivity.class);
                 intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
@@ -195,7 +195,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         });
 
         mImageViewExchange.setOnClickListener(v -> {
-            if (mSelectedWalletPosition < mWalletList.size()) {
+            if (mWalletList != null && mSelectedWalletPosition < mWalletList.size()) {
                 Intent intent = new Intent(getActivity(), ExchangeActivity.class);
                 intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
