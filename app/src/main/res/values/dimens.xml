@@ -459,8 +459,8 @@
     <dimen name="height_fragmentdashboard_imageviewchargeicon">55dp</dimen>
 
     <dimen name="width_dashboardrowaddwallet_relativelayout">300dp</dimen>
-    <dimen name="height_dashboardrowaddwallet_relativelayout">160dp</dimen>
-    <dimen name="margintop_dashboardrowaddwallet_relativelayout">50dp</dimen>
+    <dimen name="height_dashboardrowaddwallet_relativelayout">200dp</dimen>
+    <dimen name="margintop_dashboardrowaddwallet_relativelayout">30dp</dimen>
     <dimen name="marginbottom_dashboardrowaddwallet_relativelayout">30dp</dimen>
     <dimen name="marginleft_dashboardrowaddwallet_relativelayout">5dp</dimen>
     <dimen name="marginright_dashboardrowaddwallet_relativelayout">5dp</dimen>
@@ -558,5 +558,9 @@
     <dimen name="marginend_exchangefailed_buttondashboard">16dp</dimen>
     <dimen name="marginbottom_exchangefailed_buttondashboard">27dp</dimen>
     <dimen name="textsize_exchangefailed_buttondashboard">14sp</dimen>
+    <dimen name="width_rowaddwallet_imageview">57dp</dimen>
+    <dimen name="height_rowaddwallet_imageview">57dp</dimen>
+    <dimen name="textsize_rowaddwallet_textview">19sp</dimen>
+    <dimen name="margintop_rowaddwallet_textview">8dp</dimen>
 
 </resources>

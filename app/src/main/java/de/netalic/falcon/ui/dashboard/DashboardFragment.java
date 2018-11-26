@@ -17,8 +17,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.addwallet.AddWalletActivity;
@@ -114,7 +116,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mImageViewCharge = mViewRoot.findViewById(R.id.imageview_dashboard_charge);
         mImageViewExchange = mViewRoot.findViewById(R.id.imageview_dashboard_exchange);
         mImageViewTransaction = mViewRoot.findViewById(R.id.imageview_dashboard_transactionicon);
-        mImageViewWithdrawIcon=mViewRoot.findViewById(R.id.imageview_dashboard_withdrawicon);
+        mImageViewWithdrawIcon = mViewRoot.findViewById(R.id.imageview_dashboard_withdrawicon);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) {
 
@@ -184,7 +186,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewCharge.setOnClickListener(v -> {
 
-            if (mWalletList != null && mSelectedWalletPosition < mWalletList.size()){
+            if (mWalletList != null && mSelectedWalletPosition < mWalletList.size()) {
                 Intent intent = new Intent(getActivity(), LoadActivity.class);
                 intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
                 startActivity(intent);
@@ -211,7 +213,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewWithdrawIcon.setOnClickListener(v -> {
 
-            Intent intent=new Intent(getActivity(),WithdrawActivity.class);
+            Intent intent = new Intent(getActivity(), WithdrawActivity.class);
             startActivity(intent);
         });
     }
@@ -222,6 +224,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         mWalletList = data;
 
     }
+
     @Override
     public void navigationToAddWallet() {
         Intent intent = new Intent(getContext(), AddWalletActivity.class);

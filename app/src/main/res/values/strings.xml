@@ -444,5 +444,6 @@
     <string name="positivebutton_exchangefragment">YES</string>
     <string name="negativebutton_exchangefragment">NO</string>
     <string name="menu_addwalletbutton">add wallet</string>
+    <string name="text_addwallet_textviewaddwallet">Add a new wallet</string>
 
 </resources>

@@ -58,7 +58,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (mData.size() != 0 && position != mData.size()) {
+        if (mData.size() != 0) {
 
             if (mSelectedPosition == position) {
 
@@ -69,19 +69,24 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 holder.itemView.setScaleY(0.8f);
             }
 
-            ((ViewHolder) holder).mTextViewName.setText(mData.get(position).getName() + " Wallet");
-            ((ViewHolder) holder).mTextViewCurrencySymbol.setText(mData.get(position).getCurrencySymbol());
-            ((ViewHolder) holder).mTextViewBalance.setText(String.valueOf(mData.get(position).getBalance()));
-            ((ViewHolder) holder).mTextViewAddress.setText(mData.get(position).getAddress());
-            try {
-                Bitmap bitmap = QrCodeUtil.generateQrCode(mData.get(position).getAddress(), 48, 48);
-                bitmap = Bitmap.createBitmap(bitmap, 12, 12, 24, 24);
-                ((ViewHolder) holder).mImageViewQrCode.setImageBitmap(bitmap);
+            if (position != mData.size()) {
+                ((ViewHolder) holder).mTextViewName.setText(mData.get(position).getName() + " Wallet");
+                ((ViewHolder) holder).mTextViewCurrencySymbol.setText(mData.get(position).getCurrencySymbol());
+                ((ViewHolder) holder).mTextViewBalance.setText(String.valueOf(mData.get(position).getBalance()));
+                ((ViewHolder) holder).mTextViewAddress.setText(mData.get(position).getAddress());
+                try {
+                    Bitmap bitmap = QrCodeUtil.generateQrCode(mData.get(position).getAddress(), 48, 48);
+                    bitmap = Bitmap.createBitmap(bitmap, 12, 12, 24, 24);
+                    ((ViewHolder) holder).mImageViewQrCode.setImageBitmap(bitmap);
 
-            } catch (WriterException e) {
-                e.printStackTrace();
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+
             }
+
         }
+
     }
 
 
