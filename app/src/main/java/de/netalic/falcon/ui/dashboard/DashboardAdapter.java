@@ -82,7 +82,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 } catch (WriterException e) {
                     e.printStackTrace();
                 }
-
             }
 
         }

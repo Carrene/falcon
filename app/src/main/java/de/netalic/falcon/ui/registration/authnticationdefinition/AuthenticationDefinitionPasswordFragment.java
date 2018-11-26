@@ -186,6 +186,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
                 }
                 if (i == 4) {
                     mEditTextConfirmCode.setEnabled(true);
+                    mViewTooltip.close();
                 } else {
                     mEditTextConfirmCode.setText("");
                     mEditTextConfirmCode.setEnabled(false);
@@ -281,7 +282,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     public void onPause() {
 
         super.onPause();
-        mViewTooltip.close();
         mTooltipView = null;
     }
 }

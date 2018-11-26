@@ -74,6 +74,6 @@
             android:layout_height="@dimen/height_rowwallets_imageviewqrcode"
             android:layout_gravity="top"
             android:layout_marginLeft="@dimen/marginleft_rowwallets_imageviewqrcode"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitXY" />
     </LinearLayout>
 </LinearLayout>
