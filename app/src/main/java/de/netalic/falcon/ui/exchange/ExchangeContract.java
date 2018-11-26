@@ -15,8 +15,6 @@ public interface ExchangeContract {
 
         void setRateList(List<Rate> rateList);
 
-        void setWalletRate();
-
         void setListWallet(List<Wallet> model);
 
         void navigationToExchangeConfirmation(Transaction body);

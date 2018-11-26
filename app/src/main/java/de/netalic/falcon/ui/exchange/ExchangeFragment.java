@@ -229,10 +229,21 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
     @Override
     public void setRateList(List<Rate> rateList) {
-
         mRateList = rateList;
+        setSpinnerData();
+    }
+
+    private void setSpinnerData() {
+        for (Rate rate : mRateList) {
+            if (rate.getCurrencyCode().equals(mWallet.getCurrencyCode())) {
+                setWalletRate(rate);
+                mRateList.remove(rate);
+                break;
+            }
+        }
         mListCurrencySpinnerAdapter = new ListCurrencySpinnerAdapter(getContext(), mRateList);
         mSpinnerCurrencyList.setAdapter(mListCurrencySpinnerAdapter);
+
     }
 
     @Override
@@ -267,13 +278,9 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         return fragment;
     }
 
-    @Override
-    public void setWalletRate() {
-        for (Rate rate : mRateList) {
-            if (mWallet.getCurrencyCode().equals(rate.getCurrencyCode())) {
-                mWalletRate = rate.getSell();
-            }
-        }
+
+    public void setWalletRate(Rate rate) {
+        mWalletRate = rate.getSell();
     }
 
     @Override
@@ -294,8 +301,8 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
             }
         }
         if (destinationAddress.equals("")) {
-            AlertDialog dialog = new AlertDialog.Builder(getContext(),R.style.AlertDialogStyle).setView(mTextViewAddWalletAlert).
-                    setMessage("You don't have a " +"\"" + selectedCurrency +"\"" + " wallet, do you want to add this wallet?").
+            AlertDialog dialog = new AlertDialog.Builder(getContext(), R.style.AlertDialogStyle).setView(mTextViewAddWalletAlert).
+                    setMessage("You don't have a " + "\"" + selectedCurrency + "\"" + " wallet, do you want to add this wallet?").
                     setPositiveButton(R.string.positivebutton_exchangefragment, (dialogInterface, i) -> {
                         ((ViewGroup) mTextViewAddWalletAlert.getParent()).removeView(mTextViewAddWalletAlert);
                         navigationToAddWallet();

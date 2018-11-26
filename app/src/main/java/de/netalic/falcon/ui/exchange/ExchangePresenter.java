@@ -37,7 +37,6 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
                     case 200: {
 
                         mExchangeView.setRateList(deal.getResponse().body());
-                        mExchangeView.setWalletRate();
                         break;
                     }
 
