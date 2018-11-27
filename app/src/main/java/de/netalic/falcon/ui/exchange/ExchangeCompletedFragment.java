@@ -68,7 +68,6 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
     }
 
-
     @Override
     public void setPresenter(ExchangeCompletedContract.Presenter presenter) {
 

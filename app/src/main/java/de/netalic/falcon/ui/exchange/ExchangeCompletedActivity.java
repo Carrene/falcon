@@ -1,10 +1,12 @@
 package de.netalic.falcon.ui.exchange;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class ExchangeCompletedActivity extends BaseActivity {
@@ -28,6 +30,13 @@ public class ExchangeCompletedActivity extends BaseActivity {
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), exchangeCompletedFragment, R.id.framelayout_exchangecompleted_fragmentcontainer);
         }
         new ExchangeCompletedPresenter(exchangeCompletedFragment);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, DashboardActivity.class).
+                setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override
