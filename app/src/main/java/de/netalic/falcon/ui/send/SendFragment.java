@@ -11,6 +11,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -39,6 +40,7 @@ import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardFragment;
+import de.netalic.falcon.ui.util.DecimalDigitsInputFilter;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -69,7 +71,7 @@ public class SendFragment extends Fragment implements SendContract.View {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_send, null);
-        mDecimalFormat = new DecimalFormat("0.00##");
+        mDecimalFormat = new DecimalFormat("#0.00");
         mSelectedWallet = getArguments().getParcelable(DashboardFragment.SELECTED_WALLET);
         return mRoot;
     }
@@ -271,6 +273,7 @@ public class SendFragment extends Fragment implements SendContract.View {
             }
         });
 
+        mTextInputEditTextSecondAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
         mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -302,6 +305,7 @@ public class SendFragment extends Fragment implements SendContract.View {
             }
         });
 
+        mTextInputEditTextFirstAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
         mTextInputEditTextFirstAmount.addTextChangedListener(new TextWatcher() {
 
             @Override
