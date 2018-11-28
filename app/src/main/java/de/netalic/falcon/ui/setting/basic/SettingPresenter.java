@@ -77,6 +77,22 @@ public class SettingPresenter implements SettingContract.Presenter {
     }
 
     @Override
+    public void getUserPhone() {
+
+        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance());
+        String token = sharedPreferencesJwtPersistor.get();
+        int id = (int) Parser.getTokenBody(token).get("id");
+
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).get(id, deal -> {
+            if (deal.getThrowable() == null) {
+                String phone = String.valueOf(deal.getModel().getPhone());
+                mSettingView.getTitleOfActivityToolbar(phone);
+            }
+        });
+
+    }
+
+    @Override
     public void baseCurrency() {
 
         RepositoryLocator.getInstance().getRepository(UserRepository.class).get((Integer) tokenBody.get("id"), deal -> {

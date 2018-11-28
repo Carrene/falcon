@@ -5,7 +5,7 @@ import de.netalic.falcon.ui.base.BaseView;
 
 public interface SettingContract {
 
-    interface View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
 
 
         void setPatternType();
@@ -24,10 +24,13 @@ public interface SettingContract {
 
         void setBaseCurrencyNotSet();
 
+        void getTitleOfActivityToolbar(String phone);
+
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends BasePresenter {
 
+        void getUserPhone();
 
         void loginMethod();
 

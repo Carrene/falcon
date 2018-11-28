@@ -28,7 +28,6 @@ public class SettingActivity extends BaseActivity {
         setupToolbar();
         setupBackButton();
         initUiComponent();
-        setName();
 
         SettingFragment settingFragment = (SettingFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_setting_fragmentcontainer);
         if (settingFragment == null) {
@@ -37,6 +36,7 @@ public class SettingActivity extends BaseActivity {
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), settingFragment, R.id.framelayout_setting_fragmentcontainer);
         }
         new SettingPresenter(settingFragment);
+
     }
 
     @Override
@@ -58,16 +58,8 @@ public class SettingActivity extends BaseActivity {
 
     }
 
-    private void setName() {
-        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance());
-        String token = sharedPreferencesJwtPersistor.get();
-        int id = (int) Parser.getTokenBody(token).get("id");
-        RepositoryLocator.getInstance().getRepository(UserRepository.class).get(id, deal -> {
-            if (deal.getThrowable() == null) {
-                mCollapsingToolbarLayout.setTitle("+" + deal.getModel().getPhone());
-            }
-        });
-
+    public void setName(String phone) {
+        mCollapsingToolbarLayout.setTitle("+" + phone);
     }
 
     @Override
