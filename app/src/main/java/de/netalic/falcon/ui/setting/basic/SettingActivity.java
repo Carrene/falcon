@@ -4,13 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.content.ContextCompat;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.user.UserRealmRepository;
 import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
@@ -56,8 +53,8 @@ public class SettingActivity extends BaseActivity {
 
     private void initUiComponent() {
 
-        mCollapsingToolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.white));
-        mCollapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.white));
+        mCollapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.CollapsedAppBar);
+        mCollapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
 
     }
 
@@ -67,7 +64,7 @@ public class SettingActivity extends BaseActivity {
         int id = (int) Parser.getTokenBody(token).get("id");
         RepositoryLocator.getInstance().getRepository(UserRepository.class).get(id, deal -> {
             if (deal.getThrowable() == null) {
-                mCollapsingToolbarLayout.setTitle(deal.getModel().getPhone());
+                mCollapsingToolbarLayout.setTitle("+" + deal.getModel().getPhone());
             }
         });
 

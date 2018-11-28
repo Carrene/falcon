@@ -43,6 +43,8 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private TextInputEditText mTextInputEditTextFirstAmount;
     private TextInputEditText mTextInputEditTextSecondAmount;
     private Spinner mSpinnerCurrencyList;
+    private TextView mWalletSideUnit;
+    private TextView mTargetSideUnit;
     private Wallet mWallet;
     private List<Rate> mRateList;
     private List<Wallet> mWalletList;
@@ -95,7 +97,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         mTextInputEditTextSecondAmount = mViewRoot.findViewById(R.id.textinput_exchange_destinationamount);
         mSpinnerCurrencyList = mViewRoot.findViewById(R.id.spinner_exchange_spinner);
         mTextInputLayoutFirstAmount = mViewRoot.findViewById(R.id.textinputlayout_exchange_firstamount);
+        mWalletSideUnit = mViewRoot.findViewById(R.id.textview_exchange_walletsideunit);
+        mTargetSideUnit = mViewRoot.findViewById(R.id.textview_exchange_targetsideunit);
 
+        mWalletSideUnit.setText(mWallet.getCurrencySymbol() + "1 = ");
         mTextInputLayoutFirstAmount.setHint(mWallet.getCurrencyCode());
     }
 
@@ -175,6 +180,8 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 mSelectedPosition = position;
+                mTargetSideUnit.setText(String.valueOf(mRateList.get(position).getCurrencySymbol()) + String.valueOf(mDecimalFormat.
+                        format(Double.valueOf( mWalletRate / mRateList.get(mSelectedPosition).getBuy()))));
                 if (mTextInputEditTextSecondAmount.getText().toString().equals("") && mTextInputEditTextFirstAmount.getText().toString().equals("")) {
 
 
