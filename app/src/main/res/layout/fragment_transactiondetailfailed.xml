@@ -33,8 +33,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_transactiondetailfailed_walletnamelable"
@@ -59,15 +59,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_transactiondetailfailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_transactiondetailfailed_amountalphalable"
@@ -96,15 +96,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_transactiondetailfailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_transactiondetailfailed_amountdollarlable"
@@ -136,16 +136,16 @@
             android:id="@+id/view_transactiondetailfailed_paymentgatewaylineview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_transactiondetailfailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:id="@+id/relativelayout_transactiondetailfailed_paymentgatewaybox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_transactiondetailfailed_paymentgatewaylable"
@@ -168,15 +168,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_transactiondetailfailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_transactiondetailfailed_transactiondatelable"
@@ -199,15 +199,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_transactiondetailfailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_transactiondetailfailed_transactiontimelable"
@@ -231,16 +231,16 @@
             android:id="@+id/view_transactiondetailfailed_rrnlineview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_transactiondetailfailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:layout_marginTop="@dimen/margintopbottom_transactiondetailfailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetailfailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:id="@+id/relativelayout_transactiondetailfailed_rrnbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_transactiondetailfailed_rrnlable"
@@ -268,9 +268,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbuttom_transactiondetailfailed_dashboard"
-        android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_dashboard"
         android:layout_marginStart="@dimen/marginstartend_transactiondetailfailed_dashboard"
+        android:layout_marginEnd="@dimen/marginstartend_transactiondetailfailed_dashboard"
+        android:layout_marginBottom="@dimen/marginbuttom_transactiondetailfailed_dashboard"
         android:background="@color/colorSecondary"
         android:text="@string/transactiondetailfailed_dashboard"
         android:textColor="@color/colorBlack"

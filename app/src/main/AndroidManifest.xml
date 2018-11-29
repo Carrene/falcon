@@ -193,6 +193,7 @@
         <activity
             android:name=".ui.send.SendCompletedActivity"
             android:launchMode="singleTop" />
+
         <activity
             android:name=".ui.send.SendFailedActivity"
             android:launchMode="singleTop" />
@@ -208,9 +209,11 @@
         <activity
             android:name=".ui.exchange.ExchangeCompletedActivity"
             android:launchMode="singleTop"></activity>
+
         <activity
             android:name=".ui.exchange.ExchangeConfirmationActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.exchange.ExchangeActivity">
 
         </activity>
 

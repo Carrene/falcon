@@ -431,7 +431,7 @@
     <dimen name="marginbottom_rowwallets_linearlayoutbottom">16dp</dimen>
     <dimen name="marginright_rowwallets_linearlayoutbottom">16dp</dimen>
     <dimen name="height_rowwallets_linearlayoutbottom">48dp</dimen>
-    <dimen name="height_rowwallets_linearlayoutcenter">0dp</dimen>
+    <dimen name="height_rowwallets_linearlayoutcenter">29dp</dimen>
 
 
     <dimen name="paddingstart_fragmentdashboard_recyclerview">20dp</dimen>
@@ -562,5 +562,16 @@
     <dimen name="height_rowaddwallet_imageview">57dp</dimen>
     <dimen name="textsize_rowaddwallet_textview">19sp</dimen>
     <dimen name="margintop_rowaddwallet_textview">8dp</dimen>
+    <dimen name="marginTop_settingactivity_toolbarlayout">49dp</dimen>
+    <dimen name="marginStart_settingactivity_toolbarlayout">110dp</dimen>
+    <dimen name="width_settingactivity_space">40dp</dimen>
+    <dimen name="height_settingactivity_space">40dp</dimen>
+    <dimen name="width_settingactivity_circularimageview">70dp</dimen>
+    <dimen name="height_settingactivity_circularimageview">70dp</dimen>
+    <dimen name="marginstart_settingactivity_circularimageview">20dp</dimen>
+    <dimen name="margintop_settingactivity_circularimageview">38dp</dimen>
+    <dimen name="elevation_settingactivity_circularimageview">8dp</dimen>
+    <dimen name="height_settingactivity_toolbarlayout">160dp</dimen>
+    <dimen name="minheight_settingactivity_toolbarlayout">108dp</dimen>
 
 </resources>

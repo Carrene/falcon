@@ -4,6 +4,6 @@
     <item
         android:id="@+id/menu_walletlist_addwallet"
         android:title="@string/menu_addwalletbutton"
-        android:icon="@drawable/ic_whiteaddwallet"
+        android:icon="@drawable/dashboard_whiteaddwallet"
         app:showAsAction="always"/>
 </menu>

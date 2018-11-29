@@ -5,15 +5,14 @@
     android:background="@color/white">
 
 
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textinputlayout_recoveryemail_enterrecoveryemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/marginend_recoveryemail_textinputlayout"
         android:layout_marginStart="@dimen/marginstart_recoveryemail_textinputlayout"
-        android:layout_marginTop="@dimen/margintop_recoveryemail_textinputlayout">
+        android:layout_marginTop="@dimen/margintop_recoveryemail_textinputlayout"
+        android:layout_marginEnd="@dimen/marginend_recoveryemail_textinputlayout">
 
         <EditText
             android:id="@+id/edittext_recoveryemail_enterrecoveryemail"

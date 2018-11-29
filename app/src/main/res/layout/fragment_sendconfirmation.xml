@@ -8,9 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_sendconfirmation_linearlayout"
         android:layout_marginTop="@dimen/margintop_sendconfirmation_linearlayout"
+        android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_linearlayout"
         android:background="@drawable/loadsendconfirmation_border"
         android:orientation="vertical">
 
@@ -33,8 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_textview"
                 android:layout_marginTop="@dimen/margintop_sendconfirmation_walletname"
+                android:layout_marginEnd="@dimen/marginstartend_sendconfirmation_textview"
                 android:text="VALUE"
                 android:textColor="@color/colorBlack" />
         </RelativeLayout>
@@ -42,8 +42,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_sendconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
             android:layout_marginTop="@dimen/margintop_sendconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -80,8 +80,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_sendconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
             android:layout_marginTop="@dimen/margintop_sendconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -118,8 +118,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_sendconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
             android:layout_marginTop="@dimen/margintop_sendconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_sendconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout

@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/marginstartend_sendfailed_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_sendfailed_linearlayout"
         android:layout_marginTop="@dimen/margintop_sendfailed_linearlayout"
+        android:layout_marginEnd="@dimen/marginstartend_sendfailed_linearlayout"
         android:background="@drawable/everywherefailed_border"
         android:orientation="vertical">
 
@@ -29,10 +29,10 @@
             android:id="@+id/textview_transferfailed_describe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginbottom_sendfailed_describetextview"
-            android:layout_marginEnd="@dimen/marginstartend_sendfailed_describetextview"
             android:layout_marginStart="@dimen/marginstartend_sendfailed_describetextview"
             android:layout_marginTop="@dimen/margintop_sendfailed_describetextview"
+            android:layout_marginEnd="@dimen/marginstartend_sendfailed_describetextview"
+            android:layout_marginBottom="@dimen/marginbottom_sendfailed_describetextview"
             android:gravity="center"
             android:text="Lorem lpsum is simply dummy text of the printing and type setting industry"
             android:textColor="@color/colorBlack"
@@ -45,13 +45,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbottom_sendfailed_dashboardbutton"
-        android:layout_marginEnd="@dimen/marginstartend_sendfailed_dashboardbutton"
         android:layout_marginStart="@dimen/marginstartend_sendfailed_dashboardbutton"
+        android:layout_marginEnd="@dimen/marginstartend_sendfailed_dashboardbutton"
+        android:layout_marginBottom="@dimen/marginbottom_sendfailed_dashboardbutton"
         android:background="@drawable/everywhere_borderbutton"
+        android:backgroundTint="@color/colorSecondary"
         android:text="@string/sendfailed_dashboardbutton"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_sendfailed_dashboardbutton"
-        android:backgroundTint="@color/colorSecondary" />
+        android:textSize="@dimen/textsize_sendfailed_dashboardbutton" />
 
 </RelativeLayout>

@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/marginstartend_sendcompleted_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_sendcompleted_linearlayout"
         android:layout_marginTop="@dimen/margintop_sendcompleted_linearlayout"
+        android:layout_marginEnd="@dimen/marginstartend_sendcompleted_linearlayout"
         android:background="@drawable/loadandsendandwithdrawcompleted_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_sendcompleted_linearlayout">
@@ -70,8 +70,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_sendcompleted_view"
-            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
             android:layout_marginTop="@dimen/margintopbottom_sendcompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -108,8 +108,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_sendcompleted_view"
-            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
             android:layout_marginTop="@dimen/margintopbottom_sendcompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -140,8 +140,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_sendcompleted_view"
-            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
             android:layout_marginTop="@dimen/margintopbottom_sendcompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
 
@@ -173,8 +173,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_sendcompleted_view"
-            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
             android:layout_marginTop="@dimen/margintopbottom_sendcompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -210,9 +210,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbuttom_sendcompleted_confirm"
-        android:layout_marginEnd="@dimen/marginstartend_sendcompleted_confirm"
         android:layout_marginStart="@dimen/marginstartend_sendcompleted_confirm"
+        android:layout_marginEnd="@dimen/marginstartend_sendcompleted_confirm"
+        android:layout_marginBottom="@dimen/marginbuttom_sendcompleted_confirm"
         android:background="@color/colorSecondary"
         android:text="@string/sendcompleted_dashboard"
         android:textColor="@color/colorBlack"

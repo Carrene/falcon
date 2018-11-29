@@ -17,19 +17,18 @@
             android:layout_marginTop="@dimen/margintop_addwallet_walletnametextview"
             android:text="@string/addwallet_walletname"
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/textsize_addwallet_walletnametextview"
-            />
+            android:textSize="@dimen/textsize_addwallet_walletnametextview" />
 
         <EditText
             android:id="@+id/edittext_addwallet_walletname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="1"
-            android:maxLines="1"
-            android:singleLine="true"
             android:layout_marginStart="@dimen/marginstartend_addwallet_walletnameedittext"
             android:layout_marginTop="@dimen/margintop_addwallet_walletnameedittext"
-            android:layout_marginEnd="@dimen/marginstartend_addwallet_walletnameedittext" />
+            android:layout_marginEnd="@dimen/marginstartend_addwallet_walletnameedittext"
+            android:lines="1"
+            android:maxLines="1"
+            android:singleLine="true" />
 
         <TextView
             android:id="@+id/textview_addwallet_walletcurrency"
@@ -49,8 +48,7 @@
             android:layout_marginTop="@dimen/margintop_addwallet_navigationtocurrencylistbutton"
             android:layout_marginEnd="@dimen/marginstartend_addwallet_navigationtocurrencylistbutton"
             android:background="@drawable/everywhere_borderbutton"
-            android:textAllCaps="false"
-            />
+            android:textAllCaps="false" />
 
     </LinearLayout>
 

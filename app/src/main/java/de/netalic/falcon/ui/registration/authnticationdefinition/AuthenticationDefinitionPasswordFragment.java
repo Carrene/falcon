@@ -280,7 +280,7 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
 
     @Override
     public void onPause() {
-
+        mViewTooltip.close();
         super.onPause();
         mTooltipView = null;
     }

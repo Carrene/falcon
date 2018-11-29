@@ -1,10 +1,9 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar_everywhere"/>
+    <include layout="@layout/toolbar_everywhere" />
 
 
     <android.support.design.widget.CoordinatorLayout
@@ -14,7 +13,7 @@
         <FrameLayout
             android:id="@+id/framelayout_transactiondetailcompleted_fragmentcontainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </android.support.design.widget.CoordinatorLayout>
 

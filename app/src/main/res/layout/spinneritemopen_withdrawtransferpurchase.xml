@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_withdraw_spinneradapterrelaytivelayout"
-    android:background="@color/colorPrimaryLight"
-    >
+    android:background="@color/colorPrimaryLight">
 
     <ImageView
         android:id="@+id/imageview_withdraw_spinner"
@@ -13,18 +11,16 @@
         android:layout_height="@dimen/height_withdraw_spinneradapterimageview"
         android:foregroundGravity="left"
         android:padding="@dimen/padding_withdraw_spinneradapterimageview"
-        android:src="@drawable/withdrawtransfer_spinneralphaiconopen"
-        />
+        android:src="@drawable/withdrawtransfer_spinneralphaiconopen" />
 
     <TextView
         android:id="@+id/textview_withdrawtransferpurchase_walletname"
         style="?android:attr/spinnerItemStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/imageview_withdraw_spinner"
         android:layout_marginStart="@dimen/marginstart_withdraw_spinneradaptertextview"
+        android:layout_toRightOf="@+id/imageview_withdraw_spinner"
         android:textColor="@color/white"
-        android:textSize="@dimen/textsize_withdraw_spinneradaptertextview"
-        />
+        android:textSize="@dimen/textsize_withdraw_spinneradaptertextview" />
 
 </RelativeLayout>

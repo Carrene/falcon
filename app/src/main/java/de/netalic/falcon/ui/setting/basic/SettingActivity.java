@@ -5,15 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 
-import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.ActivityUtil;
-import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
-import nuesoft.helpdroid.util.Parser;
 
 public class SettingActivity extends BaseActivity {
 

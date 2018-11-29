@@ -8,12 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_linearlayout"
         android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_linearlayout"
         android:layout_marginTop="@dimen/margintop_chargeconfirmation_linearlayout"
+        android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_linearlayout"
         android:background="@drawable/loadsendconfirmation_border"
-        android:orientation="vertical"
-       >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -34,8 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
                 android:layout_marginTop="@dimen/margintop_chargeconfirmation_walletname"
+                android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_textview"
                 android:text="VALUE"
                 android:textColor="@color/colorBlack" />
         </RelativeLayout>
@@ -43,8 +42,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargeconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
             android:layout_marginTop="@dimen/margintop_chargeconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -83,8 +82,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargeconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
             android:layout_marginTop="@dimen/margintop_chargeconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -121,8 +120,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargeconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
             android:layout_marginTop="@dimen/margintop_chargeconfirmation_view"
+            android:layout_marginBottom="@dimen/marginbottom_chargeconfirmation_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -158,9 +157,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbuttom_chargeconfirmation_confirm"
-        android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_confirm"
         android:layout_marginStart="@dimen/marginstartend_chargeconfirmation_confirm"
+        android:layout_marginEnd="@dimen/marginstartend_chargeconfirmation_confirm"
+        android:layout_marginBottom="@dimen/marginbuttom_chargeconfirmation_confirm"
         android:background="@color/colorSecondary"
         android:text="@string/loadconfirmation_confirm"
         android:textColor="@color/colorBlack"

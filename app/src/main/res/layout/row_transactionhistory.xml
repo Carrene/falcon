@@ -13,9 +13,9 @@
             android:id="@+id/textview_rowtransactionhistory_walletname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VALUE"
             android:layout_alignParentStart="true"
             android:paddingStart="@dimen/marginstartend_rowtransactionhistory_alltextview"
+            android:text="VALUE"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview" />
 
@@ -23,9 +23,9 @@
             android:id="@+id/textview_rowtransactionhistory_divider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_rowtransactionhistory_textviewdivider"
             android:layout_toRightOf="@id/textview_rowtransactionhistory_walletname"
-            android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview"/>
+            android:text="@string/text_rowtransactionhistory_textviewdivider"
+            android:textSize="@dimen/textsize_rowtransactionhistory_firstlinetextview" />
 
         <TextView
             android:id="@+id/textview_transactionhistory_type"

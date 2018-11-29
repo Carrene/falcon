@@ -33,8 +33,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_walletnamelable"
@@ -59,15 +59,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargefailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:layout_marginTop="@dimen/margintopbottom_chargefailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_amountalphalable"
@@ -96,15 +96,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargefailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:layout_marginTop="@dimen/margintopbottom_chargefailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_amountdollarlable"
@@ -135,15 +135,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargefailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:layout_marginTop="@dimen/margintopbottom_chargefailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_paymentgatewaylable"
@@ -166,15 +166,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargefailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:layout_marginTop="@dimen/margintopbottom_chargefailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_transactiondatelable"
@@ -197,15 +197,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargefailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:layout_marginTop="@dimen/margintopbottom_chargefailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_transactiontimelable"
@@ -228,15 +228,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_chargefailed_view"
-            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:layout_marginTop="@dimen/margintopbottom_chargefailed_view"
+            android:layout_marginBottom="@dimen/margintopbottom_chargefailed_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout"
-            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout">
+            android:layout_marginStart="@dimen/marginstartend_chargefailed_relativelayout"
+            android:layout_marginEnd="@dimen/marginstartend_chargefailed_relativelayout">
 
             <TextView
                 android:id="@+id/textview_chargefailed_rrnlable"
@@ -264,9 +264,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbuttom_chargefailed_dashboard"
-        android:layout_marginEnd="@dimen/marginstartend_chargefailed_dashboard"
         android:layout_marginStart="@dimen/marginstartend_chargefailed_dashboard"
+        android:layout_marginEnd="@dimen/marginstartend_chargefailed_dashboard"
+        android:layout_marginBottom="@dimen/marginbuttom_chargefailed_dashboard"
         android:background="@color/colorSecondary"
         android:text="@string/loadfailed_dashboard"
         android:textColor="@color/colorBlack"

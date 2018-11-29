@@ -19,5 +19,5 @@
     <color name="colorSecondaryDark25">#40FF9800</color>
     <color name="punch">#DC3545</color>
     <color name="lineColor">#E4E4E4</color>
-    <color name="color_rowaddwallet_textviewtext">#9E9E9E</color>
+    <color name="colorLightPrimary">#9E9E9E</color>
 </resources>

@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/marginend_exchangecompleted_linearlayoutmain"
         android:layout_marginStart="@dimen/marginstart_exchangecompleted_linearlayoutmain"
         android:layout_marginTop="@dimen/margintop_exchangecompleted_linearlayoutmain"
+        android:layout_marginEnd="@dimen/marginend_exchangecompleted_linearlayoutmain"
         android:background="@drawable/loadsendconfirmation_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_exchangecompleted_linearlayoutmain">
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="Exchange amount"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_exchangecompleted_textviewamountlabel"/>
+                android:textSize="@dimen/textsize_exchangecompleted_textviewamountlabel" />
 
 
             <LinearLayout
@@ -70,8 +70,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_exchangecompleted_view"
-            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
             android:layout_marginTop="@dimen/margintop_exchangecompleted_view"
+            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -108,8 +108,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_exchangecompleted_view"
-            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
             android:layout_marginTop="@dimen/margintop_exchangecompleted_view"
+            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -134,14 +134,14 @@
                 android:paddingEnd="@dimen/paddingend_exchangecompleted_textviewdate"
                 android:text="@string/text_exchangecompleted_textviewdate"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_exchangecompleted_textviewdate"/>
+                android:textSize="@dimen/textsize_exchangecompleted_textviewdate" />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_exchangecompleted_view"
-            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
             android:layout_marginTop="@dimen/margintop_exchangecompleted_view"
+            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
 
@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/text_exchangecompleted_textviewtimelabel"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_exchangecompleted_textviewtimelabel"/>
+                android:textSize="@dimen/textsize_exchangecompleted_textviewtimelabel" />
 
             <TextView
                 android:id="@+id/textview_exchangecompleted_exchangetime"
@@ -173,8 +173,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_exchangecompleted_view"
-            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
             android:layout_marginTop="@dimen/margintop_exchangecompleted_view"
+            android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_view"
             android:background="@color/colorPrimaryDark5" />
 
         <RelativeLayout
@@ -199,7 +199,7 @@
                 android:paddingEnd="@dimen/paddingend_exchangecompleted_textviewrnn"
                 android:text="@string/text_exchangecompleted_textviewrnn"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_exchangecompleted_textviewrnn"/>
+                android:textSize="@dimen/textsize_exchangecompleted_textviewrnn" />
         </RelativeLayout>
 
 
@@ -211,9 +211,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_buttondashboard"
-        android:layout_marginEnd="@dimen/marginend_exchangecompleted_buttondashboard"
         android:layout_marginStart="@dimen/marginstart_exchangecompleted_buttondashboard"
+        android:layout_marginEnd="@dimen/marginend_exchangecompleted_buttondashboard"
+        android:layout_marginBottom="@dimen/marginbottom_exchangecompleted_buttondashboard"
         android:background="@color/colorSecondary"
         android:text="@string/sendcompleted_dashboard"
         android:textColor="@color/colorBlack"

@@ -43,8 +43,8 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private TextInputEditText mTextInputEditTextFirstAmount;
     private TextInputEditText mTextInputEditTextSecondAmount;
     private Spinner mSpinnerCurrencyList;
-    private TextView mWalletSideUnit;
-    private TextView mTargetSideUnit;
+    private TextView mTextViewWalletSideUnit;
+    private TextView mTextViewTargetSideUnit;
     private Wallet mWallet;
     private List<Rate> mRateList;
     private List<Wallet> mWalletList;
@@ -97,16 +97,16 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         mTextInputEditTextSecondAmount = mViewRoot.findViewById(R.id.textinput_exchange_destinationamount);
         mSpinnerCurrencyList = mViewRoot.findViewById(R.id.spinner_exchange_spinner);
         mTextInputLayoutFirstAmount = mViewRoot.findViewById(R.id.textinputlayout_exchange_firstamount);
-        mWalletSideUnit = mViewRoot.findViewById(R.id.textview_exchange_walletsideunit);
-        mTargetSideUnit = mViewRoot.findViewById(R.id.textview_exchange_targetsideunit);
+        mTextViewWalletSideUnit = mViewRoot.findViewById(R.id.textview_exchange_walletsideunit);
+        mTextViewTargetSideUnit = mViewRoot.findViewById(R.id.textview_exchange_targetsideunit);
 
-        mWalletSideUnit.setText(mWallet.getCurrencySymbol() + "1 = ");
+        mTextViewWalletSideUnit.setText(mWallet.getCurrencySymbol() + "1 = ");
         mTextInputLayoutFirstAmount.setHint(mWallet.getCurrencyCode());
     }
 
     private void initListener() {
 
-        mTextInputEditTextSecondAmount.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
+        mTextInputEditTextSecondAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
         mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -139,7 +139,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
             }
         });
 
-        mTextInputEditTextFirstAmount.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
+        mTextInputEditTextFirstAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
         mTextInputEditTextFirstAmount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -180,8 +180,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 mSelectedPosition = position;
-                mTargetSideUnit.setText(String.valueOf(mRateList.get(position).getCurrencySymbol()) + String.valueOf(mDecimalFormat.
-                        format(Double.valueOf( mWalletRate / mRateList.get(mSelectedPosition).getBuy()))));
+                String targetSideAmount = String.valueOf(mRateList.get(position).getCurrencySymbol()) + String.valueOf(mDecimalFormat.
+                        format(Double.valueOf(mWalletRate / mRateList.get(mSelectedPosition).getBuy())));
+                mTextViewTargetSideUnit.setText(targetSideAmount);
+
                 if (mTextInputEditTextSecondAmount.getText().toString().equals("") && mTextInputEditTextFirstAmount.getText().toString().equals("")) {
 
 
@@ -309,7 +311,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         }
         if (destinationAddress.equals("")) {
             AlertDialog dialog = new AlertDialog.Builder(getContext(), R.style.AlertDialogStyle).setView(mTextViewAddWalletAlert).
-                    setMessage("You don't have a " + "\"" + selectedCurrency + "\"" + " wallet, do you want to add this wallet?").
+                    setMessage(getString(R.string.exchangefragment_alertmessage, selectedCurrency)).
                     setPositiveButton(R.string.positivebutton_exchangefragment, (dialogInterface, i) -> {
                         ((ViewGroup) mTextViewAddWalletAlert.getParent()).removeView(mTextViewAddWalletAlert);
                         navigationToAddWallet();

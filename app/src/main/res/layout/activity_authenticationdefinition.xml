@@ -1,21 +1,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/white"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <include layout="@layout/toolbar_everywhere"/>
+    <include layout="@layout/toolbar_everywhere" />
 
 
     <RelativeLayout
         android:id="@+id/relativelayout_authenticationdefinition_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
 
-        <info.hoang8f.android.segmented.SegmentedGroup
-            xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
             android:id="@+id/segmented_authenticationdefinition_segmentedgroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,16 +32,14 @@
                 android:layout_width="@dimen/width_authenticationdefinition_radiobutton"
                 android:layout_height="@dimen/height_authenticationdefinition_radiobutton"
                 android:checked="true"
-                android:text="@string/authenticationdefinition_pattern"
-                />
+                android:text="@string/authenticationdefinition_pattern" />
 
             <RadioButton
                 android:id="@+id/radiobutton_authenticationdefinition_password"
                 style="@style/RadioButtonTheme"
                 android:layout_width="@dimen/width_authenticationdefinition_radiobutton"
                 android:layout_height="@dimen/height_authenticationdefinition_radiobutton"
-                android:text="@string/athenticationdefinition_password"
-                />
+                android:text="@string/athenticationdefinition_password" />
         </info.hoang8f.android.segmented.SegmentedGroup>
 
     </RelativeLayout>
@@ -51,6 +47,5 @@
     <FrameLayout
         android:id="@+id/framelayout_authenticationdefinition_fragmentcontainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ></FrameLayout>
+        android:layout_height="match_parent" />
 </LinearLayout>

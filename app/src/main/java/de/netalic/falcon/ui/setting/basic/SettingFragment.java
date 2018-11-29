@@ -5,13 +5,10 @@ import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
-import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.setting.basecurrency.SettingBaseCurrencyActivity;
 import de.netalic.falcon.ui.setting.recoveryemail.SettingRecoveryEmailActivity;
-import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
-import nuesoft.helpdroid.util.Parser;
 
 
 public class SettingFragment extends PreferenceFragmentCompat implements SettingContract.View {

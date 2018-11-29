@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/layoutheight_charge_spinner">
 
@@ -11,8 +10,7 @@
         android:layout_height="@dimen/layoutheight_charge_imagview"
         android:foregroundGravity="left"
         android:padding="@dimen/padding_charge_imagview"
-        android:src="@drawable/dashboard_spinneralphaicon"
-        />
+        android:src="@drawable/dashboard_spinneralphaicon" />
 
     <TextView
         android:id="@+id/textview_charge_walletname"
@@ -22,6 +20,5 @@
         android:layout_toEndOf="@+id/imageview_charge_spinner"
         android:gravity="center_vertical"
         android:textColor="@color/white"
-        android:textSize="@dimen/textsize_charge_textview"
-        />
+        android:textSize="@dimen/textsize_charge_textview" />
 </RelativeLayout>

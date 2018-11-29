@@ -42,8 +42,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/marginbottom_rowaddresses_relativelayout"
-        android:layout_marginTop="@dimen/margintop_rowaddresses_relativelayout">
+        android:layout_marginTop="@dimen/margintop_rowaddresses_relativelayout"
+        android:layout_marginBottom="@dimen/marginbottom_rowaddresses_relativelayout">
 
         <TextView
             android:id="@+id/textview_addresses_walletaddress"
@@ -68,8 +68,8 @@
             android:id="@+id/imageview_addresses_qrcode"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/height_addresses_shareandqrcodeimageview"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:paddingEnd="@dimen/marginstartend_rowaddresses_alltextview"
             android:src="@drawable/walletaddresses_qrcode" />
 
