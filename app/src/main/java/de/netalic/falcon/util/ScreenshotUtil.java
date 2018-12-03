@@ -3,6 +3,9 @@ package de.netalic.falcon.util;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.view.View;
@@ -15,10 +18,19 @@ public class ScreenshotUtil {
 
     public static Bitmap takeScreenshot(View view) {
 
-        view.setDrawingCacheEnabled(true);
-        Bitmap viewBitmap = Bitmap.createBitmap(view.getDrawingCache());
-        view.setDrawingCacheEnabled(false);
-        return viewBitmap;
+//        view.setDrawingCacheEnabled(true);
+//        Bitmap viewBitmap = Bitmap.createBitmap(view.getDrawingCache());
+//        view.setDrawingCacheEnabled(false);
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null)
+            bgDrawable.draw(canvas);
+        else
+            canvas.drawColor(Color.WHITE);
+        view.setVisibility(View.VISIBLE);
+        view.draw(canvas);
+        return bitmap;
     }
 
 
