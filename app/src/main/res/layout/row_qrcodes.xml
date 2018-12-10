@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="@dimen/height_rowqrcodes_linearlayout"
+    android:layout_marginRight="@dimen/marginright_rowqrcodes_linearlayout"
+    android:layout_marginLeft="@dimen/marginleft_rowqrcodes_linearlayout"
+    android:layout_marginTop="@dimen/margintop_rowqrcodes_linearlayout"
+    android:layout_marginBottom="@dimen/marginbottom_rowqrcodes_linearlayout"
+    android:orientation="horizontal"
+    android:id="@+id/linearlayout_rowqrcodes">
+
+    <ImageView
+        android:layout_width="@dimen/width_rowqrcodes_imageviewqrcode"
+        android:layout_height="match_parent"
+        android:src="@drawable/addresses_qrcode"
+        android:id="@+id/imageview_rowqrcodes_qrcode"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/marginleft_rowqrcodes_linaerlayoutcenter"
+        android:layout_marginTop="@dimen/margintop_rowqrcodes_linaerlayoutcenter"
+        android:layout_marginBottom="@dimen/marginbottom_rowqrcodes_linaerlayoutcenter"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_rowqrcodes_textviewname"
+            android:textSize="@dimen/textsize_rowqrcodes_textviewname"
+            android:id="@+id/textview_rowqrcodes_name"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Name: magic "
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_rowqrcodes_linearlayoutbottom"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margintop_rowqrcodes_linearlayoutbottom"
+            android:layout_marginBottom="@dimen/marginbottom_rowqrcodes_linearlayoutbottom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:textSize="@dimen/textsize_rowqrcodes_textviewcurrnecysymbol"
+                android:text="$"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/textview_rowqrcodes_currencysymbol"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="73.00"
+                android:textSize="@dimen/textsize_rowqrcodes_textviewbalance"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/textview_rowqrcodes_balance"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/qrcodes_copyicon"
+                android:id="@+id/imageview_rowqrcodes_copyicon"/>
+
+            <ImageView
+                android:layout_width="@dimen/width_rowqrcodes_imageviewshare"
+                android:layout_height="@dimen/height_rowqrcodes_imageviewshare"
+                android:layout_gravity="end"
+                android:layout_marginRight="@dimen/marginright_rowqrcodes_imageviewshare"
+                android:layout_marginLeft="@dimen/marginleft_rowqrcodes_imageviewshare"
+                android:src="@drawable/qrcode_shareicon"
+                android:id="@+id/imageview_rowqrcodes_shareicon"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

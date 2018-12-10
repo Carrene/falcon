@@ -394,6 +394,26 @@
     <dimen name="marginstart_rowbasecurrency_tetview">85dp</dimen>
     <dimen name="height_rowbasecurrency_relativelayout">60dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="height_rowqrcodes_linearlayout">60dp</dimen>
+    <dimen name="marginright_rowqrcodes_linearlayout">18dp</dimen>
+    <dimen name="marginleft_rowqrcodes_linearlayout">18dp</dimen>
+    <dimen name="margintop_rowqrcodes_linearlayout">20dp</dimen>
+    <dimen name="marginbottom_rowqrcodes_linearlayout">10dp</dimen>
+    <dimen name="width_rowqrcodes_imageviewqrcode">60dp</dimen>
+    <dimen name="marginleft_rowqrcodes_linaerlayoutcenter">16dp</dimen>
+    <dimen name="margintop_rowqrcodes_linaerlayoutcenter">2dp</dimen>
+    <dimen name="marginbottom_rowqrcodes_linaerlayoutcenter">2dp</dimen>
+    <dimen name="height_rowqrcodes_textviewname">17dp</dimen>
+    <dimen name="textsize_rowqrcodes_textviewname">14sp</dimen>
+    <dimen name="height_rowqrcodes_linearlayoutbottom">24dp</dimen>
+    <dimen name="margintop_rowqrcodes_linearlayoutbottom">18dp</dimen>
+    <dimen name="marginbottom_rowqrcodes_linearlayoutbottom">6dp</dimen>
+    <dimen name="textsize_rowqrcodes_textviewcurrnecysymbol">14sp</dimen>
+    <dimen name="textsize_rowqrcodes_textviewbalance">14sp</dimen>
+    <dimen name="width_rowqrcodes_imageviewshare">20dp</dimen>
+    <dimen name="height_rowqrcodes_imageviewshare">20dp</dimen>
+    <dimen name="marginright_rowqrcodes_imageviewshare">3dp</dimen>
+    <dimen name="marginleft_rowqrcodes_imageviewshare">19dp</dimen>
 
     <dimen name="margintop_receive_linearlayoutexchangerow">70dp</dimen>
     <dimen name="margintop_receive_exchangelog">10dp</dimen>
