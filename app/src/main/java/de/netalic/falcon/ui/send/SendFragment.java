@@ -343,8 +343,22 @@ public class SendFragment extends Fragment implements SendContract.View {
 
     @Override
     public void onResume() {
-        super.onResume();
+
         mDecoratedBarcodeView.resume();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        mDecoratedBarcodeView.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+
+        mDecoratedBarcodeView.pause();
+        super.onStop();
     }
 
     @Override
