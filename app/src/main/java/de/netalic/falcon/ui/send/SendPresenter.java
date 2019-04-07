@@ -133,7 +133,8 @@ public class SendPresenter implements SendContract.Presenter {
                 }
             }
 
+            mSendView.dismissProgressBar();
         });
-        mSendView.dismissProgressBar();
+
     }
 }

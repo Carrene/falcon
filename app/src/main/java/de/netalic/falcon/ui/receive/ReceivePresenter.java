@@ -26,8 +26,6 @@ public class ReceivePresenter implements ReceiveContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
-
-                mReceiveView.dismissProgressBar();
             } else {
 
                 switch (deal.getResponse().code()) {
@@ -35,14 +33,16 @@ public class ReceivePresenter implements ReceiveContract.Presenter {
                     case 200: {
 
                         mReceiveView.setRateList(deal.getResponse().body());
+                        mReceiveView.dismissProgressBar();
                         break;
                     }
 
                 }
             }
 
+
         });
-        mReceiveView.dismissProgressBar();
+
     }
 
 }

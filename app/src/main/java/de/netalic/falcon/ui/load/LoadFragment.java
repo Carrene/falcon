@@ -108,7 +108,7 @@ public class LoadFragment extends Fragment implements LoadContract.View {
 
         for (Rate rate : mRateList) {
             if (rate.getCurrencyCode().equals(currencyCode)) {
-                mRateCurrencySelectedWallet = rate.getBuy();
+                mRateCurrencySelectedWallet = rate.getSell();
             }
 
         }
@@ -145,11 +145,13 @@ public class LoadFragment extends Fragment implements LoadContract.View {
 
                         mTextInputEditTextSecondAmount.setText("");
 
-                    } else {
+                    } else if (!mTextInputEditTextSecondAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet))) {
 
-                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * (mRateCurrencySelectedWallet/mRateList.get(mSelectedPosition).getBuy()))));
+                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                                format(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet)));
                     }
                 }
+
             }
         });
 
@@ -178,8 +180,9 @@ public class LoadFragment extends Fragment implements LoadContract.View {
 
                         mTextInputEditTextFirstAmount.setText("");
 
-                    } else {
-                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * ((mRateList.get(mSelectedPosition).getBuy())/mRateCurrencySelectedWallet))));
+                    } else if (!mTextInputEditTextFirstAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet))) {
+                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                                format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet)));
                     }
                 }
             }

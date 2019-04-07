@@ -112,9 +112,9 @@ public class LoadPresenter implements LoadContract.Presenter {
 
                 }
             }
-
+            mChargeView.dismissProgressBar();
         });
-        mChargeView.dismissProgressBar();
+
 
     }
 

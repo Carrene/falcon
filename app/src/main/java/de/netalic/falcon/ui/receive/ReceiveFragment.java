@@ -261,8 +261,9 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
                         mTextInputEditTextFirstAmount.setText("");
 
-                    } else {
-                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * ((mRateList.get(mSelectedPosition).getBuy()) / mRateCurrencySelectedWallet))));
+                    } else if (!mTextInputEditTextFirstAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet))) {
+                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                                format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet)));
                     }
                 }
             }
@@ -295,7 +296,7 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
                         mTextInputEditTextSecondAmount.setText("");
 
-                    } else {
+                    }  else if (!mTextInputEditTextSecondAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet))) {
 
                         try {
                             Gson gson = new Gson();
@@ -309,7 +310,8 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
                             e.printStackTrace();
                         }
 
-                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * (mRateCurrencySelectedWallet / mRateList.get(mSelectedPosition).getBuy()))));
+                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                                format(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet)));
                     }
                 }
             }
@@ -330,7 +332,7 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
         for (Rate rate : mRateList) {
             if (rate.getCurrencyCode().equals(currencyCode)) {
-                mRateCurrencySelectedWallet = rate.getBuy();
+                mRateCurrencySelectedWallet = rate.getSell();
             }
         }
         return mRateCurrencySelectedWallet;
