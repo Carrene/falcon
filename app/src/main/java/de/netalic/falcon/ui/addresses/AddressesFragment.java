@@ -53,11 +53,6 @@ public class AddressesFragment extends Fragment implements AddressesContract.Vie
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_walletlist_toolbar, menu);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         navigateToAddWalletActivity();
         return true;

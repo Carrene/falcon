@@ -298,8 +298,9 @@ public class SendFragment extends Fragment implements SendContract.View {
 
                         mTextInputEditTextFirstAmount.setText("");
 
-                    } else {
-                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * ((mRateList.get(mSelectedPosition).getBuy()/mRateCurrencySelectedWallet)))));
+                    } else if (!mTextInputEditTextFirstAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet))) {
+                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                                format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet)));
                     }
                 }
             }
@@ -332,9 +333,10 @@ public class SendFragment extends Fragment implements SendContract.View {
 
                         mTextInputEditTextSecondAmount.setText("");
 
-                    } else {
+                    } else if (!mTextInputEditTextSecondAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet))) {
 
-                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.format(Double.valueOf(s.toString()) * (mRateCurrencySelectedWallet/mRateList.get(mSelectedPosition).getBuy()))));
+                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                                format(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet)));
                     }
                 }
             }
@@ -343,8 +345,22 @@ public class SendFragment extends Fragment implements SendContract.View {
 
     @Override
     public void onResume() {
-        super.onResume();
+
         mDecoratedBarcodeView.resume();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        mDecoratedBarcodeView.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+
+        mDecoratedBarcodeView.pause();
+        super.onStop();
     }
 
     @Override
@@ -427,7 +443,7 @@ public class SendFragment extends Fragment implements SendContract.View {
 
         for (Rate rate : mRateList) {
             if (rate.getCurrencyCode().equals(currencyCode)) {
-                mRateCurrencySelectedWallet = rate.getBuy();
+                mRateCurrencySelectedWallet = rate.getSell();
             }
 
         }
@@ -441,6 +457,12 @@ public class SendFragment extends Fragment implements SendContract.View {
         mListCurrencySpinnerAdapter = new ListCurrencySpinnerAdapter(getContext(), mRateList);
         mSpinnerCurrencyList.setAdapter(mListCurrencySpinnerAdapter);
         getSelectedRate(mSelectedWallet.getCurrencyCode());
+    }
+
+    @Override
+    public void internetConnectionError() {
+
+        SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
     }
 
 

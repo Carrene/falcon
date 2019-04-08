@@ -25,17 +25,18 @@ public class DashboardPresenter implements DashboardContract.Presenter {
         RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
             if (deal.getThrowable() != null) {
-                mDashboardView.dismissProgressBar();
+
             } else {
 
                 switch (deal.getResponse().code()) {
                     case 200: {
                         mDashboardView.setWalletList(deal.getResponse().body());
+                        mDashboardView.dismissProgressBar();
                         break;
                     }
                 }
             }
-            mDashboardView.dismissProgressBar();
+
         });
 
     }

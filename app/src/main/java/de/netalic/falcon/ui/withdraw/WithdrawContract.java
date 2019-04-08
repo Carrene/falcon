@@ -11,6 +11,7 @@ public interface WithdrawContract {
     interface View extends BaseView<Presenter>{
 
         void setListWallet(List<Wallet> walletList);
+        void internetConnectionError();
 
 
     }
