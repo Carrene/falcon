@@ -402,4 +402,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         SnackbarUtil.showSnackbar(mViewRoot, getContext().getString(R.string.transferpayee_starttransferasananonymous), getContext());
 
     }
+
+    @Override
+    public void internetConnectionError() {
+
+        SnackbarUtil.showSnackbar(mViewRoot,getString(R.string.everywhere_connectionerror),getContext());
+    }
 }

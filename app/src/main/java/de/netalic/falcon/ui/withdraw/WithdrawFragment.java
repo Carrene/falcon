@@ -18,6 +18,7 @@ import java.util.List;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -107,6 +108,12 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
         mWalletList = walletList;
         mWithdrawSpinnerAdapter = new WithdrawSpinnerAdapter(getContext(), mWalletList);
         mSpinnerWalletList.setAdapter(mWithdrawSpinnerAdapter);
+    }
+
+    @Override
+    public void internetConnectionError() {
+
+        SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
     }
 
     private void initListener() {

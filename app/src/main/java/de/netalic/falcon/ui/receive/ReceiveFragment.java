@@ -345,4 +345,10 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
         mSpinnerCurrencyList.setAdapter(mListCurrencySpinnerAdapter);
         getSelectedRate(mSelectedWallet.getCurrencyCode());
     }
+
+    @Override
+    public void internetConnectionError() {
+
+        SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
+    }
 }

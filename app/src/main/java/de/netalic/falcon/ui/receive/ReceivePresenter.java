@@ -26,6 +26,8 @@ public class ReceivePresenter implements ReceiveContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
+                mReceiveView.dismissProgressBar();
+                mReceiveView.internetConnectionError();
             } else {
 
                 switch (deal.getResponse().code()) {

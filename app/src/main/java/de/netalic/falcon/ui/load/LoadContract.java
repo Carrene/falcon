@@ -38,6 +38,8 @@ public interface LoadContract {
 
         void showErrorStartATransferAsAnAnonymous();
 
+        void internetConnectionError();
+
     }
 
     interface Presenter extends BasePresenter {

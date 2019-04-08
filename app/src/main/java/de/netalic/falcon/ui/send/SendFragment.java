@@ -459,5 +459,11 @@ public class SendFragment extends Fragment implements SendContract.View {
         getSelectedRate(mSelectedWallet.getCurrencyCode());
     }
 
+    @Override
+    public void internetConnectionError() {
+
+        SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
+    }
+
 
 }

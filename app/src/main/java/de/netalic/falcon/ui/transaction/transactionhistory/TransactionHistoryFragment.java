@@ -27,6 +27,8 @@ import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHis
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import ru.alexbykov.nopaginate.paginate.NoPaginate;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class TransactionHistoryFragment extends Fragment implements TransactionHistoryContract.View {
 
     private View mRoot;
@@ -65,7 +67,10 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     @Override
     public void showProgressBar() {
 
-        ((BaseActivity) getActivity()).showMaterialDialog();
+        checkNotNull(getContext());
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).showMaterialDialog();
+        }
     }
 
     @Override

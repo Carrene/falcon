@@ -10,6 +10,7 @@ public interface ReceiveContract {
 
     interface View extends BaseView<Presenter>{
         void setRateList(List<Rate> rateList);
+        void internetConnectionError();
 
     }
 

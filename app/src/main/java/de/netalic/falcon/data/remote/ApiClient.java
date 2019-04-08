@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.netalic.falcon.BuildConfig;
 import de.netalic.falcon.MyApp;
+import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -28,6 +29,15 @@ public class ApiClient {
 
     private static Retrofit sRetrofit = null;
     private static ApiInterface sApi;
+    private static CallBack mCallBack;
+
+
+    public interface CallBack {
+
+        void internetConnectionError() throws IOException;
+
+    }
+
 
     private static Retrofit getClient() {
 
@@ -99,6 +109,9 @@ public class ApiClient {
                 Request request = chain.request();
                 response = chain.proceed(request);
             } catch (SocketTimeoutException socketTimeoutException) {
+
+                throw socketTimeoutException;
+
                 //TODO (Milad) Display error
                 //TODO:(Ehsan):Error about what
             }

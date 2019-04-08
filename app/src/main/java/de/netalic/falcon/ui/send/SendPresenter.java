@@ -29,6 +29,7 @@ public class SendPresenter implements SendContract.Presenter {
 
                 mSendView.dismissProgressBar();
 
+
             } else {
 
                 switch (deal.getResponse().code()) {
@@ -118,8 +119,8 @@ public class SendPresenter implements SendContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
-
                 mSendView.dismissProgressBar();
+                mSendView.internetConnectionError();
             } else {
 
                 switch (deal.getResponse().code()) {

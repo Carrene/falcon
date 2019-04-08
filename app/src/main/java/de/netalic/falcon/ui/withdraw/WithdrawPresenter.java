@@ -31,6 +31,7 @@ public class WithdrawPresenter implements WithdrawContract.Presenter {
             if (deal.getThrowable()!=null){
 
                 mWithdrawView.dismissProgressBar();
+                mWithdrawView.internetConnectionError();
 
             } else {
                 switch (deal.getResponse().code()){

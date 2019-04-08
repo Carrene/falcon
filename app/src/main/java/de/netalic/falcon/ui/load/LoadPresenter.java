@@ -60,6 +60,7 @@ public class LoadPresenter implements LoadContract.Presenter {
 
 
                 mChargeView.dismissProgressBar();
+                mChargeView.internetConnectionError();
             } else {
 
                 switch (deal.getResponse().code()) {

@@ -425,4 +425,10 @@ public class LoadFragment extends Fragment implements LoadContract.View {
         SnackbarUtil.showSnackbar(mRoot,getContext().getString(R.string.load_startatransferasananonymous),getContext());
     }
 
+    @Override
+    public void internetConnectionError() {
+
+        SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
+    }
+
 }

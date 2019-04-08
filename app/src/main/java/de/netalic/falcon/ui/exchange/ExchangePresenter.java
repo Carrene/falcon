@@ -28,8 +28,9 @@ public class ExchangePresenter implements ExchangeContract.Presenter {
 
             if (deal.getThrowable() != null) {
 
-
                 mExchangeView.dismissProgressBar();
+                mExchangeView.internetConnectionError();
+
             } else {
 
                 switch (deal.getResponse().code()) {

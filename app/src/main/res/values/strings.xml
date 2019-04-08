@@ -5,6 +5,7 @@
     <string name="everywhere_permissiondenied">Permission Denied</string>
     <string name="everywhere_dollarsymbol">$</string>
     <string name="everywhere_imagesaved">Image Saved</string>
+    <string name="everywhere_connectionerror">Connection Error</string>
 
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
