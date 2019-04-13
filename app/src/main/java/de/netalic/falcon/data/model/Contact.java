@@ -16,11 +16,15 @@ public class Contact {
         mName = name;
     }
 
+    public Contact() {
+
+    }
+
     public String getPhone() {
         return mPhone;
     }
 
-    public void setmPhone(String phone) {
+    public void setPhone(String phone) {
         mPhone = phone;
     }
 
@@ -29,6 +33,6 @@ public class Contact {
     }
 
     public void setName(String name) {
-        mName = mName;
+        mName = name;
     }
 }
