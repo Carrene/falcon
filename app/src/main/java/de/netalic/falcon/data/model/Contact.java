@@ -7,13 +7,15 @@ public class Contact {
     @PrimaryKey
     private String mPhone;
 
-
     private String mName;
 
+    private String mPhotoUri;
 
-    public Contact(String phone, String name) {
+
+    public Contact(String phone, String name,String photoUri) {
         mPhone = phone;
         mName = name;
+        mPhotoUri=photoUri;
     }
 
     public Contact() {

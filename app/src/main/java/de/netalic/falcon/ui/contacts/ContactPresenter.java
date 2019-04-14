@@ -1,20 +1,14 @@
 package de.netalic.falcon.ui.contacts;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashMap;
 import de.netalic.falcon.data.model.Contact;
-
-import static io.fabric.sdk.android.Fabric.TAG;
 
 public class ContactPresenter implements ContactsContract.Presenter {
 
     private ContactsContract.View mView;
+    private HashMap<String, Contact> contactDetail = new HashMap<>();
 
 
     public ContactPresenter(ContactsContract.View view) {
@@ -28,47 +22,39 @@ public class ContactPresenter implements ContactsContract.Presenter {
     }
 
     @Override
-    public void getAllContacts(Context context) {
-
-
-        ContentResolver contentResolver = context.getContentResolver();
-        Cursor cursor = contentResolver.query(android.provider.ContactsContract.Contacts.CONTENT_URI,
+    public HashMap<String, Contact> getAllContacts(Context context) {
+        Cursor cursor = context.getContentResolver().query(android.provider.ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
+        Integer contactsCount = cursor.getCount();
 
-        List<Contact> contactList=new ArrayList<>();
-
-        if ((cursor != null ? cursor.getCount() : 0) > 0) {
-            while (cursor != null && cursor.moveToNext()) {
-                String id = cursor.getString(
-                        cursor.getColumnIndex(android.provider.ContactsContract.Contacts._ID));
-                String name = cursor.getString(cursor.getColumnIndex(
-                        android.provider.ContactsContract.Contacts.DISPLAY_NAME));
-
-                if (cursor.getInt(cursor.getColumnIndex(
-                        android.provider.ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
-                    Cursor cursor1 = contentResolver.query(
-                            android.provider.ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+        String lastPhoneNumber = " ";
+        if (contactsCount > 0) {
+            while (cursor.moveToNext()) {
+                String id = cursor.getString(cursor.getColumnIndex(android.provider.ContactsContract.Contacts._ID));
+                if (Integer.parseInt(cursor.getString(cursor.getColumnIndex(android.provider.ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
+                    Cursor pCursor = context.getContentResolver().query(android.provider.ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                             null,
                             android.provider.ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
                             new String[]{id}, null);
-                    while (cursor1.moveToNext()) {
-                        String phoneNo = cursor1.getString(cursor1.getColumnIndex(
-                                android.provider.ContactsContract.CommonDataKinds.Phone.NUMBER));
+                    while (pCursor.moveToNext()) {
 
-                        Contact contact=new Contact(phoneNo,name);
-                        contactList.add(contact);
-                        Log.i(TAG, "Name: " + name);
-                        Log.i(TAG, "Phone Number: " + phoneNo);
+                        String name = pCursor.getString(pCursor.getColumnIndex(android.provider.ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+                        String phoneNumber = pCursor.getString(pCursor.getColumnIndex(android.provider.ContactsContract.CommonDataKinds.Phone.NUMBER)).replaceAll("\\s", "");
+                        String contactId = pCursor.getString(pCursor.getColumnIndex(android.provider.ContactsContract.Contacts._ID));
+                        String photoUri = pCursor.getString(pCursor.getColumnIndex(android.provider.ContactsContract.CommonDataKinds.Phone.PHOTO_URI));
+
+                        if (!phoneNumber.equalsIgnoreCase(lastPhoneNumber)) {
+                            lastPhoneNumber = phoneNumber;
+                            contactDetail.put(contactId, new Contact(phoneNumber, name, photoUri));
+                        }
                     }
-                    cursor1.close();
+                    pCursor.close();
                 }
             }
-        }
-        if(cursor!=null){
             cursor.close();
         }
 
-        mView.setAllContact(contactList);
-
+        mView.setAllContact(contactDetail);
+        return contactDetail;
     }
 }

@@ -10,9 +10,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
+import java.util.Map;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Contact;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -22,6 +23,7 @@ public class ContactsFragment extends Fragment implements ContactsContract.View 
     private View mRoot;
     private ContactsContract.Presenter mPresenter;
     private List<Contact> mContactList;
+    private Map<String, Contact> mContactMap;
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
 
     @Nullable
@@ -39,7 +41,6 @@ public class ContactsFragment extends Fragment implements ContactsContract.View 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && getContext().checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSIONS_REQUEST_READ_CONTACTS);
-            //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
         } else {
 
             mPresenter.getAllContacts(getContext());
@@ -72,19 +73,26 @@ public class ContactsFragment extends Fragment implements ContactsContract.View 
     }
 
     @Override
-    public void setAllContact(List<Contact> contactList) {
+    public void setAllContact(Map<String, Contact> contactMap) {
 
-        mContactList = contactList;
+        mContactMap = contactMap;
+
+        List<Contact> list = new ArrayList<>(contactMap.values());
+
+        if (list.size() > 0) {
+            Collections.sort(list, (object1, object2) ->
+                    object1.getName().compareTo(object2.getName()));
+        }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == PERMISSIONS_REQUEST_READ_CONTACTS) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission is granted
+
                 mPresenter.getAllContacts(getContext());
             } else {
-                SnackbarUtil.showSnackbar(mRoot, "Set permission", getContext());
+                SnackbarUtil.showSnackbar(mRoot, getString(R.string.everywhere_permissiondenied), getContext());
             }
         }
     }

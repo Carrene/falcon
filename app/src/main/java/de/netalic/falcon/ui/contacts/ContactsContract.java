@@ -2,7 +2,8 @@ package de.netalic.falcon.ui.contacts;
 
 import android.content.Context;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.netalic.falcon.data.model.Contact;
 import de.netalic.falcon.ui.base.BasePresenter;
@@ -10,16 +11,16 @@ import de.netalic.falcon.ui.base.BaseView;
 
 public interface ContactsContract {
 
-    interface View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
 
-        void setAllContact(List<Contact> contactList);
+        void setAllContact(Map<String, Contact> contactList);
 
 
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends BasePresenter {
 
-        void getAllContacts(Context context);
+        HashMap<String, Contact> getAllContacts(Context context);
 
     }
 
