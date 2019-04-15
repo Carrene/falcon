@@ -6,6 +6,7 @@
     <string name="everywhere_dollarsymbol">$</string>
     <string name="everywhere_imagesaved">Image Saved</string>
     <string name="everywhere_connectionerror">Connection Error</string>
+    <string name="everywhere_value">VALUE</string>
 
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
@@ -434,6 +435,8 @@
     <string name="text_exchangeconfirmation_textviewpaidamount">VALUE</string>
     <string name="text_exchangeconfirmation_textviewpayeeaddresslabel">Payee address</string>
     <string name="text_exchangeconfirmation_textviewpayeeaddress">VALUE</string>
+
+    <string name="contacts_toolbar">Contacts</string>
 
     <string name="text_exchangefailed_textviewfailtitle">Failed</string>
     <string name="text_exchangefailed_textviewfail">Lorem lpsum is simply dummy text of the printing and type setting industry</string>

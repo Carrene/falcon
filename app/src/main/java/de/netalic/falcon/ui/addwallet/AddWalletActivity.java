@@ -35,13 +35,11 @@ public class AddWalletActivity extends BaseActivity {
 
     public String getCurrency() {
 
-
         return mCurrency;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
 
         mCurrency = data.getStringExtra(AddWalletFragment.SELECTED_CURRENCY);
 
