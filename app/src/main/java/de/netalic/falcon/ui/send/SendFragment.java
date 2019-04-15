@@ -3,7 +3,6 @@ package de.netalic.falcon.ui.send;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,17 +12,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputFilter;
-import android.text.SpannableString;
 import android.text.TextWatcher;
-import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -37,7 +32,8 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.common.ListCurrencySpinnerAdapter;
+import de.netalic.falcon.common.listcurrency.ListCurrencyActivity;
+import de.netalic.falcon.common.spinneradapter.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Purchase;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
@@ -48,6 +44,7 @@ import de.netalic.falcon.ui.util.DecimalDigitsInputFilter;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static de.netalic.falcon.ui.addwallet.AddWalletFragment.SELECTED_CURRENCY;
 
 public class SendFragment extends Fragment implements SendContract.View {
 
@@ -143,14 +140,10 @@ public class SendFragment extends Fragment implements SendContract.View {
         mTextInputLayoutFirstAmount = mRoot.findViewById(R.id.textinputlayout_send_firstamount);
         mTextInputEditTextWalletAddress = mRoot.findViewById(R.id.textinputedittext_send_walletaddress);
         mDecoratedBarcodeView = mRoot.findViewById(R.id.decoratedbarcodeview_send_scanqrcode);
-        mTextViewWalletType=mRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
-        mTextViewCurrencySymbol=mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
-        mTextViewBalance=mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
-        mTextViewExchangeTo=mRoot.findViewById(R.id.textview_send_exchangeto);
-
-        SpannableString content = new SpannableString("Click Here to Register");
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        mTextViewExchangeTo.setText(content);
+        mTextViewWalletType = mRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
+        mTextViewCurrencySymbol = mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
+        mTextViewBalance = mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
+        mTextViewExchangeTo = mRoot.findViewById(R.id.textview_send_exchangeto);
 
         mDecoratedBarcodeView.setVisibility(View.VISIBLE);
     }
@@ -173,7 +166,10 @@ public class SendFragment extends Fragment implements SendContract.View {
                     SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
                 } else {
 
-                    mSendPresenter.startTransfer(mSelectedWallet.getId(), mTextInputEditTextWalletAddress.getText().toString(), Float.valueOf(mTextInputEditTextFirstAmount.getText().toString()));
+                    Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
+                    intent.putExtra(SELECTED_CURRENCY, mTextViewExchangeTo.getText().toString());
+                    startActivityForResult(intent, 1);
+                    // mSendPresenter.startTransfer(mSelectedWallet.getId(), mTextInputEditTextWalletAddress.getText().toString(), Float.valueOf(mTextInputEditTextFirstAmount.getText().toString()));
                 }
 
             }
@@ -336,6 +332,15 @@ public class SendFragment extends Fragment implements SendContract.View {
     public void onResume() {
 
         mDecoratedBarcodeView.resume();
+
+        Rate currency = ((SendActivity) getActivity()).getCurrency();
+        if (currency == null) {
+            mTextViewExchangeTo.setText(getContext().getString(R.string.addwallet_pleaseselectcurrency));
+        } else {
+            mTextViewExchangeTo.setText(currency.getCurrencyCode());
+        }
+
+
         super.onResume();
     }
 
@@ -434,9 +439,7 @@ public class SendFragment extends Fragment implements SendContract.View {
             if (rate.getCurrencyCode().equals(currencyCode)) {
                 mRateCurrencySelectedWallet = rate.getSell();
             }
-
         }
-
         return mRateCurrencySelectedWallet;
     }
 
@@ -450,6 +453,6 @@ public class SendFragment extends Fragment implements SendContract.View {
     @Override
     public void internetConnectionError() {
 
-        SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getString(R.string.everywhere_connectionerror), getContext());
     }
 }

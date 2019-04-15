@@ -143,7 +143,7 @@
                 android:value=".ui.setting.basic.SettingActivity" />
         </activity>
         <activity
-            android:name=".ui.addwallet.ListCurrencyActivity"
+            android:name=".common.listcurrency.ListCurrencyActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".ui.addwallet.AddWalletActivity">
             <meta-data

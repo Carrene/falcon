@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class AddWalletActivity extends BaseActivity {
 
-    private String mCurrency;
+    private Rate mCurrency;
     private AddWalletFragment mAddWalletFragment;
 
     @Override
@@ -33,7 +34,7 @@ public class AddWalletActivity extends BaseActivity {
     }
 
 
-    public String getCurrency() {
+    public Rate getCurrency() {
 
         return mCurrency;
     }
@@ -41,7 +42,7 @@ public class AddWalletActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        mCurrency = data.getStringExtra(AddWalletFragment.SELECTED_CURRENCY);
+        mCurrency = data.getParcelableExtra(AddWalletFragment.SELECTED_CURRENCY);
 
     }
 

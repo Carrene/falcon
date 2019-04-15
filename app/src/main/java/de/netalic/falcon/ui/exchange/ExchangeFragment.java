@@ -26,7 +26,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.common.ListCurrencySpinnerAdapter;
+import de.netalic.falcon.common.spinneradapter.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;

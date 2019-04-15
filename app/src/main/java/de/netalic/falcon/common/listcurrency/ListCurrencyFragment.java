@@ -1,7 +1,8 @@
-package de.netalic.falcon.ui.addwallet;
+package de.netalic.falcon.common.listcurrency;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,22 +16,23 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Currency;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.ui.addwallet.AddWalletFragment;
 import de.netalic.falcon.ui.base.BaseActivity;
 
 public class ListCurrencyFragment extends Fragment implements ListCurrencyContract.View, ListCurrencyRecyclerViewAdapter.Callback {
     private ListCurrencyContract.Presenter mListCurrencyPresenter;
     private View mRoot;
     private RecyclerView mRecyclerViewCurrencyList;
-    private List<Currency> mCurrencyList;
+    private List<Rate> mRateList;
     private ListCurrencyRecyclerViewAdapter mListCurrencyRecyclerViewAdapter;
-    private String mSelectedCurrency;
+    private Rate mSelectedCurrency;
     private Callback mCallback;
 
 
     public interface Callback {
 
-        void setCurrency(String currency);
+        void setCurrency(Rate currency);
     }
 
     @Nullable
@@ -38,8 +40,7 @@ public class ListCurrencyFragment extends Fragment implements ListCurrencyContra
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_listcurrency, null);
-        mSelectedCurrency = getArguments().getString(AddWalletFragment.SELECTED_CURRENCY);
-
+        mSelectedCurrency = getArguments().getParcelable(AddWalletFragment.SELECTED_CURRENCY);
         return mRoot;
     }
 
@@ -48,7 +49,6 @@ public class ListCurrencyFragment extends Fragment implements ListCurrencyContra
 
         initUiComponent();
         getCurrencyList();
-
         initListener();
 
     }
@@ -63,7 +63,6 @@ public class ListCurrencyFragment extends Fragment implements ListCurrencyContra
     public void showProgressBar() {
 
         ((BaseActivity) getActivity()).showMaterialDialog();
-
     }
 
     private void initListener() {
@@ -79,14 +78,12 @@ public class ListCurrencyFragment extends Fragment implements ListCurrencyContra
     private void initUiComponent() {
 
         mRecyclerViewCurrencyList = mRoot.findViewById(R.id.recyclerview_listcurrency_listcurrency);
-
     }
 
-    public static ListCurrencyFragment newInstance(String selectedCurrency) {
+    public static ListCurrencyFragment newInstance(Rate selectedCurrency) {
 
         Bundle bundle = new Bundle();
-
-        bundle.putString(AddWalletFragment.SELECTED_CURRENCY, selectedCurrency);
+        bundle.putParcelable(AddWalletFragment.SELECTED_CURRENCY, selectedCurrency);
         ListCurrencyFragment fragment = new ListCurrencyFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -94,9 +91,9 @@ public class ListCurrencyFragment extends Fragment implements ListCurrencyContra
 
 
     @Override
-    public void setCurrencyList(List<Currency> currencyList) {
+    public void setCurrencyList(List<Rate> currencyList) {
 
-        mCurrencyList = currencyList;
+        mRateList = currencyList;
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerViewCurrencyList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -104,8 +101,14 @@ public class ListCurrencyFragment extends Fragment implements ListCurrencyContra
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
         mRecyclerViewCurrencyList.addItemDecoration(dividerItemDecoration);
 
-        mListCurrencyRecyclerViewAdapter = new ListCurrencyRecyclerViewAdapter(mCurrencyList, mSelectedCurrency, this);
-        mRecyclerViewCurrencyList.setAdapter(mListCurrencyRecyclerViewAdapter);
+        if (mSelectedCurrency == null) {
+            mListCurrencyRecyclerViewAdapter = new ListCurrencyRecyclerViewAdapter(mRateList, "", this);
+            mRecyclerViewCurrencyList.setAdapter(mListCurrencyRecyclerViewAdapter);
+
+        } else {
+            mListCurrencyRecyclerViewAdapter = new ListCurrencyRecyclerViewAdapter(mRateList, mSelectedCurrency.getCurrencyCode(), this);
+            mRecyclerViewCurrencyList.setAdapter(mListCurrencyRecyclerViewAdapter);
+        }
     }
 
     private void getCurrencyList() {
@@ -114,10 +117,10 @@ public class ListCurrencyFragment extends Fragment implements ListCurrencyContra
     }
 
     @Override
-    public void setCurrency(String currency) {
+    public void setCurrency(Rate currency) {
 
         mSelectedCurrency = currency;
-        mListCurrencyRecyclerViewAdapter = new ListCurrencyRecyclerViewAdapter(mCurrencyList, mSelectedCurrency, this);
+        mListCurrencyRecyclerViewAdapter = new ListCurrencyRecyclerViewAdapter(mRateList, mSelectedCurrency.getCurrencyCode(), this);
         mRecyclerViewCurrencyList.setAdapter(mListCurrencyRecyclerViewAdapter);
         mListCurrencyRecyclerViewAdapter.notifyDataSetChanged();
         mCallback.setCurrency(currency);
@@ -127,7 +130,6 @@ public class ListCurrencyFragment extends Fragment implements ListCurrencyContra
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         mCallback = (Callback) context;
     }
 

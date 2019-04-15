@@ -1,15 +1,20 @@
 package de.netalic.falcon.ui.send;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.ui.addwallet.AddWalletFragment;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class SendActivity extends BaseActivity {
+
+    private Rate mCurrency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,19 @@ public class SendActivity extends BaseActivity {
             ActivityUtil.replaceFragmentWithFragment(getSupportFragmentManager(), sendFragment, R.id.framelayout_send_fragmentcontainer);
         }
         new SendPresenter(sendFragment);
+
+    }
+
+
+    public Rate getCurrency() {
+
+        return mCurrency;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        mCurrency = data.getParcelableExtra(AddWalletFragment.SELECTED_CURRENCY);
 
     }
 

@@ -1,8 +1,11 @@
 package de.netalic.falcon.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Rate {
+public class Rate implements Parcelable {
 
     @SerializedName("createdAt")
     private String mCreatedAt;
@@ -26,6 +29,27 @@ public class Rate {
 
         mCurrencyCode=usd;
     }
+
+    protected Rate(Parcel in) {
+        mCreatedAt = in.readString();
+        mBuy = in.readDouble();
+        mSell = in.readDouble();
+        mCurrencyCode = in.readString();
+        mCurrencySymbol = in.readString();
+        mVerifyRateId = in.readInt();
+    }
+
+    public static final Creator<Rate> CREATOR = new Creator<Rate>() {
+        @Override
+        public Rate createFromParcel(Parcel in) {
+            return new Rate(in);
+        }
+
+        @Override
+        public Rate[] newArray(int size) {
+            return new Rate[size];
+        }
+    };
 
     public double getBuy() {
         return mBuy;
@@ -70,6 +94,21 @@ public class Rate {
 
     public int getVerifyRateId() {
         return mVerifyRateId;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mCreatedAt);
+        dest.writeDouble(mBuy);
+        dest.writeDouble(mSell);
+        dest.writeString(mCurrencyCode);
+        dest.writeString(mCurrencySymbol);
+        dest.writeInt(mVerifyRateId);
     }
 }
 
