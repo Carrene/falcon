@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margintop_withdraw_wallet"
             android:gravity="center"
-            android:text="@string/withdraw_wallet"
+            android:text="@string/everywhere_walletlable"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_withdraw_wallet" />
 

@@ -23,9 +23,15 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class SendConfirmationFragment extends Fragment implements SendConfirmationContract.View {
 
     private View mRoot;
-    private TextView mTextViewWalletName;
-    private TextView mTextViewDestinationWalletAddress;
-    private TextView mTextViewTransferAmount;
+    private TextView mTextViewPayeeAddress;
+    private TextView mTextViewPayeeAmount;
+    private TextView mTextViewReceivedAmount;
+    private TextView mTextViewTransactionFee;
+    private TextView mTextViewTotal;
+    private TextView mTextViewPayeeAmountCurrencySymbol;
+    private TextView mTextViewReceivedAmountCurrencySymbol;
+    private TextView mTextViewTransactionFeeCurrencySymbol;
+    private TextView mTextViewTotalCurrencySymbol;
     private SendConfirmationContract.Presenter mSendConfirmationPresenter;
     private Transaction mTransaction;
 
@@ -49,12 +55,16 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
 
     private void initUiComponent() {
 
-        mTextViewWalletName = mRoot.findViewById(R.id.textview_transferconfirmation_walletname);
-        mTextViewDestinationWalletAddress = mRoot.findViewById(R.id.textview_transferconfirmation_payee);
-        mTextViewTransferAmount = mRoot.findViewById(R.id.textview_transferconfirmation_transferamount);
+        mTextViewPayeeAddress = mRoot.findViewById(R.id.textview_transferconfirmation_payeeaddress);
+        mTextViewPayeeAmount = mRoot.findViewById(R.id.textview_transferconfirmation_payeeamount);
+        mTextViewReceivedAmount = mRoot.findViewById(R.id.textview_transferconfirmation_receiveamount);
+        mTextViewTransactionFee=mRoot.findViewById(R.id.textview_transferconfirmation_transactionfee);
+        mTextViewTotal=mRoot.findViewById(R.id.textview_transferconfirmation_total);
+        mTextViewPayeeAmountCurrencySymbol=mRoot.findViewById(R.id.textview_transferconfirmation_payeeamountcurrencysymbol);
+        mTextViewReceivedAmountCurrencySymbol=mRoot.findViewById(R.id.textview_transferconfirmation_receiveamountcurrencysymbol);
+        mTextViewTransactionFeeCurrencySymbol=mRoot.findViewById(R.id.textview_transferconfirmation_transactionfeecurrencysymbol);
+        mTextViewTotalCurrencySymbol=mRoot.findViewById(R.id.textview_transferconfirmation_totalcurrencysymbol);
     }
-
-
 
     @Override
     public void setPresenter(SendConfirmationContract.Presenter presenter) {
@@ -85,10 +95,8 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
         Bundle bundle = new Bundle();
         bundle.putParcelable(SendFragment.ARGUMENT_TRANSACTION, transaction);
         transferConfirmationFragment.setArguments(bundle);
-
         return transferConfirmationFragment;
     }
-
 
     @Override
     public void navigationToCompletedTransfer(Transaction transaction) {
@@ -141,7 +149,6 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
 
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -158,8 +165,15 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
 
     private void setTransferInformation() {
 
-        mTextViewWalletName.setText(mTransaction.getActionList().get(1).getWalletName());
-        mTextViewTransferAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + Math.abs(mTransaction.getActionList().get(1).getAmount()));
-        mTextViewDestinationWalletAddress.setText(mTransaction.getActionList().get(1).getWalletAddress());
+        mTextViewPayeeAddress.setText(mTransaction.getActionList().get(1).getWalletAddress());
+        mTextViewReceivedAmount.setText(String.valueOf(mTransaction.getActionList().get(0).getAmount()));
+        mTextViewPayeeAmount.setText(String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
+        mTextViewTransactionFee.setText(String.valueOf((Math.abs(mTransaction.getActionList().get(1).getAmount()))-
+                mTransaction.getActionList().get(0).getAmount()));
+        mTextViewTotal.setText(String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
+        mTextViewPayeeAmountCurrencySymbol.setText(mTransaction.getActionList().get(0).getCurrencySymbol());
+        mTextViewReceivedAmountCurrencySymbol.setText(mTransaction.getActionList().get(0).getCurrencySymbol());
+        mTextViewTransactionFeeCurrencySymbol.setText(mTransaction.getActionList().get(0).getCurrencySymbol());
+        mTextViewTotalCurrencySymbol.setText(mTransaction.getActionList().get(0).getCurrencySymbol());
     }
 }

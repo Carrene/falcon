@@ -239,7 +239,7 @@
     <dimen name="textsize_transactionfiltersrowthathasradiobutton_textview">14sp</dimen>
     <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
-    <dimen name="margintop_sendconfirmation_linearlayout">33dp</dimen>
+    <dimen name="margintop_sendconfirmation_linearlayout">63dp</dimen>
     <dimen name="marginstartend_sendconfirmation_linearlayout">17dp</dimen>
     <dimen name="textsize_sendconfirmation_walletnamelable">14sp</dimen>
     <dimen name="margintop_sendconfirmation_walletnamelable">12dp</dimen>

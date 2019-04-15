@@ -3,6 +3,7 @@ package de.netalic.falcon.ui.send;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +13,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -57,13 +61,16 @@ public class SendFragment extends Fragment implements SendContract.View {
     private List<Rate> mRateList;
     private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
     private double mRateCurrencySelectedWallet;
-    private Spinner mSpinnerCurrencyList;
     private Wallet mSelectedWallet;
     private DecimalFormat mDecimalFormat;
     private TextInputEditText mTextInputEditTextFirstAmount;
     private TextInputEditText mTextInputEditTextSecondAmount;
     private int mSelectedPosition;
+    private TextView mTextViewWalletType;
+    private TextView mTextViewCurrencySymbol;
+    private TextView mTextViewBalance;
     private TextInputLayout mTextInputLayoutFirstAmount;
+    private TextView mTextViewExchangeTo;
 
 
     @Nullable
@@ -85,7 +92,9 @@ public class SendFragment extends Fragment implements SendContract.View {
         requestCameraPermission();
         initListener();
         mTextInputLayoutFirstAmount.setHint(mSelectedWallet.getCurrencyCode());
-
+        mTextViewWalletType.setText(mSelectedWallet.getCurrencyCode());
+        mTextViewBalance.setText(String.valueOf(mSelectedWallet.getBalance()));
+        mTextViewCurrencySymbol.setText(mSelectedWallet.getCurrencySymbol());
     }
 
 
@@ -128,12 +137,21 @@ public class SendFragment extends Fragment implements SendContract.View {
 
     private void initUiComponent() {
 
-        mSpinnerCurrencyList = mRoot.findViewById(R.id.spinner_send_spinner);
+
         mTextInputEditTextFirstAmount = mRoot.findViewById(R.id.edittext_send_firstamount);
         mTextInputEditTextSecondAmount = mRoot.findViewById(R.id.edittext_send_secondeamount);
         mTextInputLayoutFirstAmount = mRoot.findViewById(R.id.textinputlayout_send_firstamount);
         mTextInputEditTextWalletAddress = mRoot.findViewById(R.id.textinputedittext_send_walletaddress);
         mDecoratedBarcodeView = mRoot.findViewById(R.id.decoratedbarcodeview_send_scanqrcode);
+        mTextViewWalletType=mRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
+        mTextViewCurrencySymbol=mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
+        mTextViewBalance=mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
+        mTextViewExchangeTo=mRoot.findViewById(R.id.textview_send_exchangeto);
+
+        SpannableString content = new SpannableString("Click Here to Register");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        mTextViewExchangeTo.setText(content);
+
         mDecoratedBarcodeView.setVisibility(View.VISIBLE);
     }
 
@@ -243,35 +261,6 @@ public class SendFragment extends Fragment implements SendContract.View {
             }
         });
 
-
-        mSpinnerCurrencyList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                mSelectedPosition = position;
-                if (mTextInputEditTextSecondAmount.getText().toString().equals("") && mTextInputEditTextFirstAmount.getText().toString().equals("")) {
-
-
-                } else if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateCurrencySelectedWallet/mRateList.get(position).getBuy())))));
-                } else if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
-
-                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * (mRateList.get(position).getBuy()/mRateCurrencySelectedWallet)))));
-                } else {
-
-                    mTextInputEditTextSecondAmount.clearComposingText();
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateCurrencySelectedWallet/mRateList.get(position).getBuy())))));
-
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-                mSelectedPosition = 0;
-            }
-        });
 
         mTextInputEditTextSecondAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
         mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
@@ -455,7 +444,6 @@ public class SendFragment extends Fragment implements SendContract.View {
     public void setRateList(List<Rate> rateList) {
         mRateList = rateList;
         mListCurrencySpinnerAdapter = new ListCurrencySpinnerAdapter(getContext(), mRateList);
-        mSpinnerCurrencyList.setAdapter(mListCurrencySpinnerAdapter);
         getSelectedRate(mSelectedWallet.getCurrencyCode());
     }
 
@@ -464,6 +452,4 @@ public class SendFragment extends Fragment implements SendContract.View {
 
         SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
     }
-
-
 }

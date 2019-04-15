@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <include layout="@layout/everywhere_ribbonheader" />
+
     <LinearLayout
         android:id="@+id/linearlayout_send_exchangeamount"
         android:layout_width="match_parent"
@@ -38,13 +40,14 @@
             android:layout_weight="0.3"
             android:src="@drawable/everywhere_rowexchangelogo" />
 
-        <Spinner
-            android:id="@+id/spinner_send_spinner"
-            style="@style/SpinnerListCurrencyCommon"
-            android:layout_width="@dimen/width_send_spinner"
-            android:layout_height="@dimen/height_send_spinner"
-            android:layout_marginTop="@dimen/margintop_send_spinner"
-            android:spinnerMode="dropdown" />
+        <TextView
+            android:id="@+id/textview_send_exchangeto"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:drawableEnd="@drawable/everywhere_arrowright"
+            android:lines="1"
+            android:text="" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
@@ -75,6 +78,7 @@
             android:id="@+id/textinputedittext_send_walletaddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/everywhere_contacticon"
             android:hint="@string/send_hintwalletaddress" />
 
     </android.support.design.widget.TextInputLayout>

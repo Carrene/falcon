@@ -135,7 +135,7 @@
     <string name="withdraw_toolbar">Withdraw</string>
     <string name="withdraw_nextamount">NEXT-AMOUNT</string>
     <string name="withdraw_balance">"Balance : "</string>
-    <string name="withdraw_wallet">Wallet</string>
+    <string name="everywhere_walletlable">Wallet</string>
     <string name="withdraw_qrcode">QR code</string>
     <string name="withdraw_withdrawmethod">Withdraw method</string>
 
@@ -284,9 +284,10 @@
 
     <string name="sendconfirmation_toolbar">Transfer confirmation</string>
     <string name="sendconfirmation_walletname">Wallet name </string>
-    <string name="sendconfirmation_paymentgateway">Payee address </string>
-    <string name="sendconfirmation_walletamount">Transfer amount  </string>
-    <string name="sendconfirmation_baseamount">Paid amount  </string>
+    <string name="sendconfirmation_total">Total </string>
+    <string name="sendconfirmation_payeeaddress">Payee address </string>
+    <string name="sendconfirmation_receiveamount">Receive amount  </string>
+    <string name="sendconfirmation_transactionfee">Transaction fee  </string>
     <string name="sendconfirmation_confirm">Confirm</string>
     <string name="sendconfirmation_transfernotfound">Transfer not found</string>
     <string name="sendconfirmation_tryingtofinalizesomeoneelsetransaction">Trying to finalize someone else transaction</string>
@@ -409,7 +410,7 @@
 
     <string name="send_title">Send</string>
     <string name="send_hintalphaamount">Alpha</string>
-    <string name="send_hintwalletaddress">Wallet Address</string>
+    <string name="send_hintwalletaddress">Receiver Address</string>
 
     <string name="receive_title">Receive</string>
     <string name="receive_hintalphaamount">Alpha</string>
