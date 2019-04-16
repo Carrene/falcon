@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-
     <LinearLayout
         android:id="@+id/linearlayout_transfercompleted_main"
         android:layout_width="match_parent"
@@ -16,7 +15,6 @@
         android:background="@drawable/loadandsendandwithdrawcompleted_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_sendcompleted_linearlayout">
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -34,7 +32,6 @@
                 android:textSize="@dimen/textsize_sendcompleted_successtextview" />
         </RelativeLayout>
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,10 +39,10 @@
             android:paddingStart="@dimen/paddingstart_sendcompleted_relativelayout">
 
             <TextView
-                android:id="@+id/textview_transfercompleted_transferamountlable"
+                android:id="@+id/textview_transfercompleted_walletnamelable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sendcompleted_paidamount"
+                android:text="@string/sendcompleted_walletname"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_sendcompleted_paidamountlable" />
 
@@ -57,7 +54,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textview_transfercompleted_transferamountalpha"
+                    android:id="@+id/textview_transfercompleted_walletname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/paddingend_sendcompleted_textview"
@@ -81,10 +78,10 @@
             android:paddingStart="@dimen/paddingstart_sendcompleted_relativelayout">
 
             <TextView
-                android:id="@+id/textview_exchangecompleted_paidamountlabel"
+                android:id="@+id/textview_exchangecompleted_payeeaddresslabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sendcompleted_baseamount"
+                android:text="@string/sendcompleted_payeeamount"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
 
@@ -95,7 +92,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textview_transfercompleted_paidamount"
+                    android:id="@+id/textview_transfercompleted_payeeaddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/paddingend_sendcompleted_textview"
@@ -103,6 +100,170 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
             </LinearLayout>
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_sendcompleted_view"
+            android:layout_marginTop="@dimen/margintopbottom_sendcompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_sendcompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_sendcompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_paidamountlabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sendcompleted_paidamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_paidamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/paddingend_sendcompleted_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_paidamountsymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/textview_transfercompleted_paidamount" />
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_sendcompleted_view"
+            android:layout_marginTop="@dimen/margintopbottom_sendcompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_sendcompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_sendcompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_receivedamountlabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sendcompleted_receivedamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_receivedamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/paddingend_sendcompleted_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_receivedamountsymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/textview_transfercompleted_receivedamount" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_sendcompleted_view"
+            android:layout_marginTop="@dimen/margintopbottom_sendcompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_sendcompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_sendcompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_transactionfeelabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sendcompleted_transactionfee"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_transactionfee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/paddingend_sendcompleted_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_transactionfeesymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/textview_transfercompleted_transactionfee" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_sendcompleted_view"
+            android:layout_marginTop="@dimen/margintopbottom_sendcompleted_view"
+            android:layout_marginBottom="@dimen/margintopbottom_sendcompleted_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_sendcompleted_relativelayout"
+            android:paddingStart="@dimen/paddingstart_sendcompleted_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_exchangecompleted_totalpaidamountlabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sendcompleted_totalpaidamount"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_totalpaidamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/paddingend_sendcompleted_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
+
+            <TextView
+                android:id="@+id/textview_transfercompleted_totalpaidamountsymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/textview_transfercompleted_totalpaidamount" />
+
+
         </RelativeLayout>
 
         <View
@@ -187,7 +348,7 @@
                 android:id="@+id/textview_transfercompleted_rrnlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sendcompleted_trackingcode"
+                android:text="@string/sendcompleted_transactionid"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_sendcompleted_trackingcode" />
 

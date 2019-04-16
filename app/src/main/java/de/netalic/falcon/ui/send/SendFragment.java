@@ -166,10 +166,7 @@ public class SendFragment extends Fragment implements SendContract.View {
                     SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_pleasefillbox), getContext());
                 } else {
 
-                    Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
-                    intent.putExtra(SELECTED_CURRENCY, mTextViewExchangeTo.getText().toString());
-                    startActivityForResult(intent, 1);
-                    // mSendPresenter.startTransfer(mSelectedWallet.getId(), mTextInputEditTextWalletAddress.getText().toString(), Float.valueOf(mTextInputEditTextFirstAmount.getText().toString()));
+                    mSendPresenter.startTransfer(mSelectedWallet.getId(), mTextInputEditTextWalletAddress.getText().toString(), Float.valueOf(mTextInputEditTextFirstAmount.getText().toString()));
                 }
 
             }
@@ -258,6 +255,14 @@ public class SendFragment extends Fragment implements SendContract.View {
         });
 
 
+        mTextViewExchangeTo.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
+            intent.putExtra(SELECTED_CURRENCY, mTextViewExchangeTo.getText().toString());
+            startActivityForResult(intent, 1);
+        });
+
+
         mTextInputEditTextSecondAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
         mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
 
@@ -335,7 +340,7 @@ public class SendFragment extends Fragment implements SendContract.View {
 
         Rate currency = ((SendActivity) getActivity()).getCurrency();
         if (currency == null) {
-            mTextViewExchangeTo.setText(getContext().getString(R.string.addwallet_pleaseselectcurrency));
+            mTextViewExchangeTo.setText("");
         } else {
             mTextViewExchangeTo.setText(currency.getCurrencyCode());
         }

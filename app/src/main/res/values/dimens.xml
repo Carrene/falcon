@@ -262,13 +262,13 @@
     <dimen name="paddingend_sendcompleted_textview">15dp</dimen>
     <dimen name="margintopbottom_sendcompleted_view">13dp</dimen>
     <dimen name="height_sendcompleted_view">1dp</dimen>
-    <dimen name="margintop_sendcompleted_relativelayoutheader">20dp</dimen>
+    <dimen name="margintop_sendcompleted_relativelayoutheader">10dp</dimen>
     <dimen name="margintop_sendcompleted_linearlayout">33dp</dimen>
-    <dimen name="margintop_sendcompleted_relativelayout">8dp</dimen>
+    <dimen name="margintop_sendcompleted_relativelayout">4dp</dimen>
     <dimen name="textsize_sendcompleted_paidamountlable">14sp</dimen>
     <dimen name="textsize_sendcompleted_amountdollarlable">14sp</dimen>
     <dimen name="textsize_sendcompleted_trackingcode">14sp</dimen>
-    <dimen name="marginbuttom_sendcompleted_confirm">27dp</dimen>
+    <dimen name="marginbuttom_sendcompleted_confirm">16dp</dimen>
     <dimen name="marginstartend_sendcompleted_confirm">16dp</dimen>
     <dimen name="textsize_sendcompleted_confirmbutton">14dp</dimen>
     <dimen name="textsize_sendcompleted_paymentgatewaylable">14sp</dimen>

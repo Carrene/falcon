@@ -166,13 +166,13 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
     private void setTransferInformation() {
 
         mTextViewPayeeAddress.setText(mTransaction.getActionList().get(1).getWalletAddress());
-        mTextViewReceivedAmount.setText(String.valueOf(mTransaction.getActionList().get(0).getAmount()));
-        mTextViewPayeeAmount.setText(String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
-        mTextViewTransactionFee.setText(String.valueOf((Math.abs(mTransaction.getActionList().get(1).getAmount()))-
-                mTransaction.getActionList().get(0).getAmount()));
-        mTextViewTotal.setText(String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
+        mTextViewReceivedAmount.setText(String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
+        mTextViewPayeeAmount.setText(String.valueOf(Math.abs(mTransaction.getActionList().get(0).getAmount())));
+        //mTextViewTransactionFee.setText(String.valueOf(Math.abs((Math.abs(mTransaction.getActionList().get(1).getAmount()))-
+              //  Math.abs(mTransaction.getActionList().get(0).getAmount()))));
+       // mTextViewTotal.setText(String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
         mTextViewPayeeAmountCurrencySymbol.setText(mTransaction.getActionList().get(0).getCurrencySymbol());
-        mTextViewReceivedAmountCurrencySymbol.setText(mTransaction.getActionList().get(0).getCurrencySymbol());
+        mTextViewReceivedAmountCurrencySymbol.setText(mTransaction.getActionList().get(1).getCurrencySymbol());
         mTextViewTransactionFeeCurrencySymbol.setText(mTransaction.getActionList().get(0).getCurrencySymbol());
         mTextViewTotalCurrencySymbol.setText(mTransaction.getActionList().get(0).getCurrencySymbol());
     }

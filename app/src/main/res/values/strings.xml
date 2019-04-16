@@ -258,11 +258,15 @@
     <string name="transferfailed_dashboardbutton">DASHBOARD</string>
 
     <string name="sendcompleted_toolbar">Send completed</string>
-    <string name="sendcompleted_paidamount">Transfer amount  </string>
-    <string name="sendcompleted_baseamount">Paid amount  </string>
+    <string name="sendcompleted_walletname">Wallet name</string>
+    <string name="sendcompleted_payeeamount">Payee amount</string>
+    <string name="sendcompleted_paidamount">Paid amount</string>
+    <string name="sendcompleted_receivedamount">Received amount</string>
+    <string name="sendcompleted_transactionfee">Transaction fee</string>
+    <string name="sendcompleted_totalpaidamount">Total paid amount</string>
     <string name="sendcompleted_transactiondate">Transaction date </string>
     <string name="sendcompleted_transactiontime">Transaction time </string>
-    <string name="sendcompleted_trackingcode">RRN </string>
+    <string name="sendcompleted_transactionid">Transaction ID </string>
     <string name="sendcompleted_dashboard">DASHBOARD</string>
     <string name="sendcompleted_success">Success</string>
     <string name="sendcompleted_imagesaved">Image Saved</string>
@@ -287,6 +291,7 @@
     <string name="sendconfirmation_total">Total </string>
     <string name="sendconfirmation_payeeaddress">Payee address </string>
     <string name="sendconfirmation_receiveamount">Receive amount  </string>
+    <string name="sendconfirmation_payeeamount">Payee amount  </string>
     <string name="sendconfirmation_transactionfee">Transaction fee  </string>
     <string name="sendconfirmation_confirm">Confirm</string>
     <string name="sendconfirmation_transfernotfound">Transfer not found</string>
