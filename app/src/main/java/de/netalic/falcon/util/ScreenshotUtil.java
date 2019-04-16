@@ -34,14 +34,14 @@ public class ScreenshotUtil {
     }
 
 
-    public static File saveScreenshot(Bitmap finalBitmap,int quality,String path) {
+    public static File saveScreenshot(String imageName, Bitmap finalBitmap,int quality,String path) {
 
         String root = Environment.getExternalStorageDirectory().toString();
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         File myDir = new File(root + path);
         myDir.mkdirs();
-        String fileName = "Image-" + now + ".PNG";
+        String fileName = imageName+"-" + now + ".PNG";
         File file = new File(myDir, fileName);
         if (file.exists()) {
             file.delete();
@@ -59,14 +59,14 @@ public class ScreenshotUtil {
         }
     }
 
-    public static File saveScreenshot(Bitmap finalBitmap,int quality,String outerPath,String innerPath) {
+    public static File saveScreenshot(String imageName,Bitmap finalBitmap,int quality,String outerPath,String innerPath) {
 
         String root = Environment.getExternalStorageDirectory().toString();
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         File myDir = new File(root + outerPath+innerPath);
         myDir.mkdirs();
-        String fileName = "Image-" + now + ".PNG";
+        String fileName = imageName+"-" + now + ".PNG";
         File file = new File(myDir, fileName);
         if (file.exists()) {
             file.delete();

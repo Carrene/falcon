@@ -469,7 +469,6 @@ public class SendFragment extends Fragment implements SendContract.View {
     @Override
     public void setRateList(List<Rate> rateList) {
         mRateList = rateList;
-        mListCurrencySpinnerAdapter = new ListCurrencySpinnerAdapter(getContext(), mRateList);
         getSelectedRate(mSelectedWallet.getCurrencyCode());
     }
 

@@ -7,6 +7,8 @@
     <string name="everywhere_imagesaved">Image Saved</string>
     <string name="everywhere_connectionerror">Connection Error</string>
     <string name="everywhere_value">VALUE</string>
+    <string name="everywhere_save">Save</string>
+    <string name="everywhere_skip">Skip</string>
 
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
@@ -418,6 +420,8 @@
     <string name="send_hintwalletaddress">Receiver Address</string>
 
     <string name="receive_title">Receive</string>
+    <string name="receive_alertdialogtitle">Choose a name for this QR code</string>
+    <string name="receive_pleasetypeaname">Please type a name</string>
     <string name="receive_hintalphaamount">Alpha</string>
 
     <string name="exchange_title">Exchange</string>

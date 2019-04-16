@@ -158,7 +158,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH)));
+            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot("Send",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH)));
             ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
 
         }
@@ -172,7 +172,7 @@ public class SendCompletedFragment extends Fragment implements SendCompletedCont
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH);
+            ScreenshotUtil.saveScreenshot("Send",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_imagesaved), getContext());
 
         }

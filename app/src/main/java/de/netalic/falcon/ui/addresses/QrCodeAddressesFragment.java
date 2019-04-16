@@ -144,7 +144,7 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            File file = ScreenshotUtil.saveScreenshot("Addresses",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             ScreenshotUtil.shareScreenshot(file, getContext());
 
         }
@@ -159,7 +159,7 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            ScreenshotUtil.saveScreenshot("Addresses",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
 
 

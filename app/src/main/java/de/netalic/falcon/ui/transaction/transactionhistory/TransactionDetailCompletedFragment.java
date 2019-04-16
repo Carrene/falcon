@@ -150,7 +150,7 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH)));
+            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot("Transaction",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH)));
             ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
 
         }
@@ -165,7 +165,7 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            ScreenshotUtil.saveScreenshot("Transaction",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transactiondetail_imagesaved), getContext());
 
         }

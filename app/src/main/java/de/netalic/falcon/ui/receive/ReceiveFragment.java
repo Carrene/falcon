@@ -1,6 +1,8 @@
 package de.netalic.falcon.ui.receive;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -19,9 +21,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.zxing.WriterException;
@@ -31,6 +34,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.common.listcurrency.ListCurrencyActivity;
 import de.netalic.falcon.common.spinneradapter.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Purchase;
 import de.netalic.falcon.data.model.Rate;
@@ -43,6 +47,7 @@ import de.netalic.falcon.util.ScreenshotUtil;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static de.netalic.falcon.ui.addwallet.AddWalletFragment.SELECTED_CURRENCY;
 
 public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
@@ -65,6 +70,11 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     private List<Rate> mRateList;
     private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
     private double mRateCurrencySelectedWallet;
+    private TextView mTextViewWalletType;
+    private TextView mTextViewCurrencySymbol;
+    private TextView mTextViewBalance;
+    private TextView mTextViewExchangeTo;
+    private Rate mSelectedCurrency;
 
     @Nullable
     @Override
@@ -94,6 +104,9 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
         mTextInputLayoutFirstAmount.setHint(mSelectedWallet.getCurrencyCode());
         initListener();
         generateQrCodeWithWalletAddress(mSelectedWallet.getAddress());
+        mTextViewWalletType.setText(mSelectedWallet.getCurrencyCode());
+        mTextViewBalance.setText(String.valueOf(mSelectedWallet.getBalance()));
+        mTextViewCurrencySymbol.setText(mSelectedWallet.getCurrencySymbol());
     }
 
     private void getListCurrency() {
@@ -149,6 +162,20 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
         return true;
     }
 
+    @Override
+    public void onResume() {
+
+        Rate currency = ((ReceiveActivity) getActivity()).getCurrency();
+        mSelectedCurrency = currency;
+        if (currency == null) {
+            mTextViewExchangeTo.setText("");
+        } else {
+            mTextViewExchangeTo.setText(currency.getCurrencyCode());
+        }
+
+        super.onResume();
+    }
+
     private void requestPermissionSave() {
 
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -158,8 +185,33 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
         } else {
 
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenShotView), IMAGE_QUALITY, ALPHA_PATH, RECEIVE_PATH);
-            SnackbarUtil.showSnackbar(mRoot, getString(R.string.everywhere_imagesaved), getContext());
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            LayoutInflater inflater = this.getLayoutInflater();
+
+            final View dialogView = inflater.inflate(R.layout.receive_customalertdialog, null);
+            final EditText edit = dialogView.findViewById(R.id.edittext_receive_qrcodename);
+            builder.setCancelable(false);
+            builder.setView(dialogView)
+                    .setPositiveButton(getString(R.string.everywhere_save), (dialog, which) -> {
+
+                        String qrCodeName = edit.getText().toString();
+
+                        if (qrCodeName.matches("")) {
+
+
+                            SnackbarUtil.showSnackbar(mRoot, getString(R.string.receive_pleasetypeaname), getContext());
+                        } else {
+
+                            ScreenshotUtil.saveScreenshot(qrCodeName, ScreenshotUtil.takeScreenshot(mScreenShotView), IMAGE_QUALITY, ALPHA_PATH, RECEIVE_PATH);
+                            SnackbarUtil.showSnackbar(mRoot, getString(R.string.everywhere_imagesaved), getContext());
+                        }
+
+                    })
+                    .setNegativeButton(getString(R.string.everywhere_skip), (dialog, which) -> {
+                    })
+                    .setTitle(getString(R.string.receive_alertdialogtitle))
+                    .create().show();
         }
 
     }
@@ -172,11 +224,34 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenShotView), IMAGE_QUALITY, ALPHA_PATH, RECEIVE_PATH)));
-            ScreenshotUtil.shareScreenshot(file, getContext());
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            LayoutInflater inflater = this.getLayoutInflater();
+
+            final View dialogView = inflater.inflate(R.layout.receive_customalertdialog, null);
+            final EditText edit = dialogView.findViewById(R.id.edittext_receive_qrcodename);
+            builder.setCancelable(false);
+            builder.setView(dialogView)
+                    .setPositiveButton(getString(R.string.everywhere_save), (dialog, which) -> {
+
+                        String qrCodeName = edit.getText().toString();
+
+                        if (qrCodeName.matches("")) {
+
+
+                            SnackbarUtil.showSnackbar(mRoot, getString(R.string.receive_pleasetypeaname), getContext());
+                        } else {
+
+                            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(qrCodeName, ScreenshotUtil.takeScreenshot(mScreenShotView), IMAGE_QUALITY, ALPHA_PATH, RECEIVE_PATH)));
+                            ScreenshotUtil.shareScreenshot(file, getContext());
+                        }
+
+                    })
+                    .setNegativeButton(getString(R.string.everywhere_skip), (dialog, which) -> {
+                    })
+                    .setTitle(getString(R.string.receive_alertdialogtitle))
+                    .create().show();
         }
-
     }
 
     @Override
@@ -197,44 +272,28 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     private void initUiComponent() {
 
         mScreenShotView = mRoot.findViewById(R.id.relativelayout_receive_forscreenshot);
-        mSpinnerCurrencyList = mRoot.findViewById(R.id.spinner_receive_spinner);
+        mTextViewExchangeTo = mRoot.findViewById(R.id.textview_receive_exchangeto);
         mTextInputEditTextFirstAmount = mRoot.findViewById(R.id.edittext_receive_firstamount);
         mTextInputEditTextSecondAmount = mRoot.findViewById(R.id.edittext_receive_secondeamount);
         mTextInputLayoutFirstAmount = mRoot.findViewById(R.id.textinputlayout_receive_firstamount);
         mImageViewGenerateQrCode = mRoot.findViewById(R.id.imageview_receive_createqrcode);
 
+        mTextViewWalletType = mRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
+        mTextViewCurrencySymbol = mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
+        mTextViewBalance = mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
+
     }
 
     private void initListener() {
 
-        mSpinnerCurrencyList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mSelectedPosition = position;
-                if (mTextInputEditTextSecondAmount.getText().toString().equals("") && mTextInputEditTextFirstAmount.getText().toString().equals("")) {
+        mTextViewExchangeTo.setOnClickListener(v -> {
 
-
-                } else if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateCurrencySelectedWallet / mRateList.get(position).getBuy())))));
-                } else if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
-
-                    mTextInputEditTextFirstAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * (mRateList.get(position).getBuy() / mRateCurrencySelectedWallet)))));
-                } else {
-
-                    mTextInputEditTextSecondAmount.clearComposingText();
-                    mTextInputEditTextSecondAmount.setText((String.valueOf(mDecimalFormat.format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) * (mRateCurrencySelectedWallet / mRateList.get(position).getBuy())))));
-
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-                mSelectedPosition = 0;
-            }
+            Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
+            intent.putExtra(SELECTED_CURRENCY, mTextViewExchangeTo.getText().toString());
+            startActivityForResult(intent, 1);
         });
+
 
         mTextInputEditTextSecondAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
         mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
@@ -262,8 +321,18 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
                         mTextInputEditTextFirstAmount.setText("");
 
                     } else if (!mTextInputEditTextFirstAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet))) {
-                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
-                                format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet)));
+
+
+                        if (mSelectedCurrency == null) {
+
+                            mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                                    format(Double.valueOf(s.toString()))));
+
+                        } else {
+                            mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                                    format(Double.valueOf(s.toString()) * mRateCurrencySelectedWallet / mSelectedCurrency.getSell())));
+                        }
+
                     }
                 }
             }
@@ -296,7 +365,7 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
                         mTextInputEditTextSecondAmount.setText("");
 
-                    }  else if (!mTextInputEditTextSecondAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet))) {
+                    } else if (!mTextInputEditTextSecondAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet))) {
 
                         try {
                             Gson gson = new Gson();
@@ -310,8 +379,15 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
                             e.printStackTrace();
                         }
 
-                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
-                                format(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mRateCurrencySelectedWallet)));
+                        if (mSelectedCurrency == null) {
+
+                            mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                                    format(Double.valueOf(s.toString()))));
+
+                        } else {
+                            mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                                    format(Double.valueOf(s.toString()) * mSelectedCurrency.getSell() / mRateCurrencySelectedWallet)));
+                        }
                     }
                 }
             }
@@ -332,7 +408,7 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
 
         for (Rate rate : mRateList) {
             if (rate.getCurrencyCode().equals(currencyCode)) {
-                mRateCurrencySelectedWallet = rate.getSell();
+                mRateCurrencySelectedWallet = rate.getBuy();
             }
         }
         return mRateCurrencySelectedWallet;
@@ -341,14 +417,12 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     @Override
     public void setRateList(List<Rate> rateList) {
         mRateList = rateList;
-        mListCurrencySpinnerAdapter = new ListCurrencySpinnerAdapter(getContext(), mRateList);
-        mSpinnerCurrencyList.setAdapter(mListCurrencySpinnerAdapter);
         getSelectedRate(mSelectedWallet.getCurrencyCode());
     }
 
     @Override
     public void internetConnectionError() {
 
-        SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
+        SnackbarUtil.showSnackbar(mRoot, getString(R.string.everywhere_connectionerror), getContext());
     }
 }
