@@ -23,10 +23,11 @@ public class LoadActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this, getToolbar(),1);
+        NavigationDrawerUtil.getDrawer(this, getToolbar(), 1);
 
-        Bundle bundle=getIntent().getExtras();
-        Wallet selectedWallet=bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
+        Bundle bundle = getIntent().getExtras();
+
+        Wallet selectedWallet = bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
 
         LoadFragment loadFragment = (LoadFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_charge_fragmentcontainer);
         if (loadFragment == null) {
@@ -65,7 +66,7 @@ public class LoadActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent=new Intent(this,DashboardActivity.class);
+        Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
     }
 }

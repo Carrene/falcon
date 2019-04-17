@@ -42,6 +42,7 @@ import nuesoft.helpdroid.UI.Keyboard;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static de.netalic.falcon.ui.addwallet.AddWalletFragment.SELECTED_CURRENCY;
+import static de.netalic.falcon.ui.dashboard.DashboardFragment.SELECTED_WALLET;
 
 public class LoadFragment extends Fragment implements LoadContract.View {
 
@@ -74,14 +75,14 @@ public class LoadFragment extends Fragment implements LoadContract.View {
 
         mRoot = inflater.inflate(R.layout.fragment_load, null);
         mDecimalFormat = new DecimalFormat("#0.00");
-        mSelectedWallet = getArguments().getParcelable(DashboardFragment.SELECTED_WALLET);
+        mSelectedWallet = getArguments().getParcelable(SELECTED_WALLET);
         return mRoot;
     }
 
     public static LoadFragment newInstance(Wallet selectedWallet) {
 
         Bundle bundle = new Bundle();
-        bundle.putParcelable(DashboardFragment.SELECTED_WALLET, selectedWallet);
+        bundle.putParcelable(SELECTED_WALLET, selectedWallet);
         LoadFragment fragment = new LoadFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -352,6 +353,7 @@ public class LoadFragment extends Fragment implements LoadContract.View {
     public void showChargePaymentConfirmation(Transaction transaction) {
 
         Intent intent = new Intent(getContext(), LoadConfirmationActivity.class);
+        intent.putExtra(SELECTED_WALLET, mSelectedWallet);
         intent.putExtra(LoadConfirmationActivity.ARGUMENT_CHARGE_START, transaction);
         startActivity(intent);
     }

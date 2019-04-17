@@ -64,7 +64,9 @@
         <activity
             android:name=".ui.dashboard.DashboardActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.load.LoadActivity" />
+        <activity android:name=".ui.load.LoadActivity"
+            android:launchMode="singleTop"
+            />
         <activity android:name=".ui.load.LoadCompletedActivity" />
         <activity
             android:name=".ui.load.LoadConfirmationActivity"

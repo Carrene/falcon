@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class LoadConfirmationActivity extends BaseActivity {
@@ -25,11 +27,12 @@ public class LoadConfirmationActivity extends BaseActivity {
 
         Bundle bundle = getIntent().getExtras();
         Transaction transaction = bundle.getParcelable(ARGUMENT_CHARGE_START);
+        Wallet selectedWallet=bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
 
         LoadConfirmationFragment loadConfirmationFragment = (LoadConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_chargeconfirmation_fragmentcontainer);
         if (loadConfirmationFragment == null) {
 
-            loadConfirmationFragment = LoadConfirmationFragment.newInstance(transaction);
+            loadConfirmationFragment = LoadConfirmationFragment.newInstance(transaction,selectedWallet);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), loadConfirmationFragment, R.id.framelayout_chargeconfirmation_fragmentcontainer);
         }
         new LoadConfirmationPresenter(loadConfirmationFragment);

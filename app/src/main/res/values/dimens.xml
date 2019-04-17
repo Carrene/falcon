@@ -81,7 +81,7 @@
     <dimen name="marginbottom_chargeamount_nextpayment">27dp</dimen>
     <dimen name="marginstartend_chargeamount_nextpayment">16dp</dimen>
 
-    <dimen name="margintop_chargeconfirmation_linearlayout">33dp</dimen>
+    <dimen name="margintop_chargeconfirmation_linearlayout">65dp</dimen>
     <dimen name="marginstartend_chargeconfirmation_linearlayout">17dp</dimen>
     <dimen name="textsize_chargeconfirmation_walletnamelable">14sp</dimen>
     <dimen name="margintop_chargeconfirmation_walletnamelable">12dp</dimen>

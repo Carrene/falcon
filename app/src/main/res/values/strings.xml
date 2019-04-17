@@ -110,7 +110,7 @@
 
     <string name="loadcompleted_chargecompleted">Load status</string>
     <string name="loadcompleted_walletname">Wallet name </string>
-    <string name="loadcompleted_amount">Charge amount  </string>
+    <string name="loadcompleted_amount">Load amount  </string>
     <string name="loadcompleted_baseamount">Paid amount  </string>
     <string name="loadcompleted_paymentgateway">Payment gateway </string>
     <string name="loadcompleted_transactiondate">Transaction date </string>
@@ -262,7 +262,7 @@
     <string name="sendcompleted_toolbar">Send completed</string>
     <string name="sendcompleted_walletname">Wallet name</string>
     <string name="sendcompleted_payeeamount">Payee amount</string>
-    <string name="sendcompleted_paidamount">Paid amount</string>
+    <string name="everywhere_paidamount">Paid amount</string>
     <string name="sendcompleted_receivedamount">Received amount</string>
     <string name="sendcompleted_transactionfee">Transaction fee</string>
     <string name="sendcompleted_totalpaidamount">Total paid amount</string>
