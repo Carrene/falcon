@@ -115,6 +115,7 @@
     <string name="loadcompleted_paymentgateway">Payment gateway </string>
     <string name="loadcompleted_transactiondate">Transaction date </string>
     <string name="loadcompleted_transactiontime">Transaction time </string>
+    <string name="loadcompleted_transactionid">Transaction ID </string>
     <string name="loadcompleted_trackingcode">RRN </string>
     <string name="loadcompleted_dashboard">DASHBOARD</string>
     <string name="loadcompleted_success">Success</string>
@@ -261,7 +262,7 @@
 
     <string name="sendcompleted_toolbar">Send completed</string>
     <string name="sendcompleted_walletname">Wallet name</string>
-    <string name="sendcompleted_payeeamount">Payee amount</string>
+    <string name="sendcompleted_payeeaddress">Payee address</string>
     <string name="everywhere_paidamount">Paid amount</string>
     <string name="sendcompleted_receivedamount">Received amount</string>
     <string name="sendcompleted_transactionfee">Transaction fee</string>

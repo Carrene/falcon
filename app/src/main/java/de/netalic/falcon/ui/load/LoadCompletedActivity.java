@@ -2,6 +2,7 @@ package de.netalic.falcon.ui.load;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Receipt;
@@ -18,16 +19,20 @@ public class LoadCompletedActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
+        Bundle bundle=getIntent().getExtras();
+
         if (getIntent().getExtras() == null) {
 
             throw new RuntimeException("deposit should not be null");
         }
+        String paidSymbol=bundle.getString("paid");
+        String loadSymbol=bundle.getString("load");
         Receipt receipt = getIntent().getExtras().getParcelable(ARGUMENT_RECEIPT);
 
         LoadCompletedFragment loadCompletedFragment = (LoadCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_chargecompleted_fragmentcontainer);
         if (loadCompletedFragment == null) {
 
-            loadCompletedFragment = LoadCompletedFragment.newInstance(receipt);
+            loadCompletedFragment = LoadCompletedFragment.newInstance(receipt,loadSymbol,paidSymbol);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), loadCompletedFragment, R.id.framelayout_chargecompleted_fragmentcontainer);
         }
 

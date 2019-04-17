@@ -42,7 +42,11 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
     private TextView mTextViewTransactionDate;
     private TextView mTextViewTransactionTime;
     private TextView mTextViewRrn;
+    private TextView mTextViewLoadAmountSymbol;
+    private TextView mTextViewPaidAmountSymbol;
     private Button mButtonNavigationToDashboard;
+    private String mLoadSymbol;
+    private String mPaidSymbol;
     private static final int REQUEST_PERMISSIONS = 1;
     private static final int IMAGE_QUALITY = 100;
     private View mScreenshotView;
@@ -55,6 +59,8 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
         checkNotNull(getArguments());
         setHasOptionsMenu(true);
         mReceipt = getArguments().getParcelable(ARGUMENT_RECEIPT);
+        mLoadSymbol = getArguments().getString("load");
+        mPaidSymbol = getArguments().getString("paid");
         return mRoot;
     }
 
@@ -83,10 +89,12 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
 
     }
 
-    public static LoadCompletedFragment newInstance(Receipt receipt) {
+    public static LoadCompletedFragment newInstance(Receipt receipt, String loadSymbol, String paidSymbol) {
 
         Bundle bundle = new Bundle();
         bundle.putParcelable(ARGUMENT_RECEIPT, receipt);
+        bundle.putString("load", loadSymbol);
+        bundle.putString("paid", paidSymbol);
         LoadCompletedFragment fragment = new LoadCompletedFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -103,6 +111,8 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
         mTextViewRrn = mRoot.findViewById(R.id.textview_chargecompleted_rrn);
         mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_chargecompleted_dashborad);
         mScreenshotView = mRoot.findViewById(R.id.linearlayout_chargecompleted_main);
+        mTextViewLoadAmountSymbol = mRoot.findViewById(R.id.textview_loadcompleted_loadamountsymbol);
+        mTextViewPaidAmountSymbol = mRoot.findViewById(R.id.textview_loadcompleted_paidamountsymbol);
     }
 
     public void initListener() {
@@ -119,11 +129,15 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
     public void setPaymentInformation() {
 
         mTextViewWalletName.setText(mReceipt.getRecipientWalletName());
-        mTextViewAmountWallet.setText(mReceipt.getQuoteCurrencySymbol() + " " + String.valueOf(mReceipt.getQuoteAmount()));
-        mTextViewAmountBase.setText(mReceipt.getQuoteCurrencySymbol() + " " + String.valueOf(Math.abs(mReceipt.getBaseAmount())));
+        mTextViewAmountWallet.setText(String.valueOf(mReceipt.getQuoteAmount()));
+        mTextViewAmountBase.setText(String.valueOf(Math.abs(mReceipt.getBaseAmount())));
         mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
         mTextViewTransactionDate.setText(mReceipt.getDate());
         mTextViewTransactionTime.setText(mReceipt.getTime());
+
+        mTextViewLoadAmountSymbol.setText(mPaidSymbol);
+        mTextViewPaidAmountSymbol.setText(mLoadSymbol);
+
         mTextViewRrn.setText(mReceipt.getRetrievalReferenceNumber());
     }
 

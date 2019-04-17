@@ -174,6 +174,8 @@ public class LoadConfirmationFragment extends Fragment implements LoadConfirmati
 
         Intent intent = new Intent(getActivity(), LoadCompletedActivity.class);
         intent.putExtra(ARGUMENT_RECEIPT, receipt);
+        intent.putExtra("load",mTransaction.getActionList().get(0).getCurrencySymbol());
+        intent.putExtra("paid",mTransaction.getActionList().get(1).getCurrencySymbol());
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

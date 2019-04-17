@@ -81,7 +81,7 @@
                 android:id="@+id/textview_exchangecompleted_payeeaddresslabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sendcompleted_payeeamount"
+                android:text="@string/sendcompleted_payeeaddress"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_sendcompleted_amountdollarlable" />
 
