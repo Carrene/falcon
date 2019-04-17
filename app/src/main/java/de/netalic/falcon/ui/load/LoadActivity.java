@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.ui.addwallet.AddWalletFragment;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.dashboard.DashboardFragment;
@@ -13,6 +15,8 @@ import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class LoadActivity extends BaseActivity {
+
+    private Rate mCurrency;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +35,18 @@ public class LoadActivity extends BaseActivity {
         }
 
         new LoadPresenter(loadFragment);
+    }
+
+    public Rate getCurrency() {
+
+        return mCurrency;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        mCurrency = data.getParcelableExtra(AddWalletFragment.SELECTED_CURRENCY);
+
     }
 
     @Override

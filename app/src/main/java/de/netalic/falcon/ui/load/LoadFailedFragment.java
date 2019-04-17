@@ -152,7 +152,7 @@ public class LoadFailedFragment extends Fragment implements LoadFailedContract.V
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = ScreenshotUtil.saveScreenshot("Load",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
             ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
         }
     }
@@ -167,7 +167,7 @@ public class LoadFailedFragment extends Fragment implements LoadFailedContract.V
         } else {
 
 
-            ScreenshotUtil.saveScreenshot("Load",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
+            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.loadfailed_imagesaved), getContext());
         }
     }
