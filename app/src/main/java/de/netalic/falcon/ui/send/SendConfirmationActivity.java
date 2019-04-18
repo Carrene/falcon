@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class SendConfirmationActivity extends BaseActivity {
@@ -19,12 +21,14 @@ public class SendConfirmationActivity extends BaseActivity {
 
             throw new RuntimeException("Transaction should not be null");
         }
+        Bundle bundle=getIntent().getExtras();
         Transaction transaction=getIntent().getExtras().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
+        Wallet selectedWallet=bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
 
         SendConfirmationFragment sendConfirmationFragment=(SendConfirmationFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transferconfirmation_fragmentcontainer);
         if (sendConfirmationFragment==null){
 
-            sendConfirmationFragment=SendConfirmationFragment.newInstance(transaction);
+            sendConfirmationFragment=SendConfirmationFragment.newInstance(transaction,selectedWallet);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),sendConfirmationFragment,R.id.framelayout_transferconfirmation_fragmentcontainer);
         }
         new SendConfirmationPresenter(sendConfirmationFragment);

@@ -20,7 +20,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -29,12 +28,10 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.common.listcurrency.ListCurrencyActivity;
-import de.netalic.falcon.common.spinneradapter.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.ui.util.DecimalDigitsInputFilter;
 import de.netalic.falcon.ui.util.OffsetItemDecoration;
 import de.netalic.falcon.util.SnackbarUtil;
@@ -52,8 +49,6 @@ public class LoadFragment extends Fragment implements LoadContract.View {
     private LoadContract.Presenter mPresenter;
     private SnapHelper mPaymentGatewaySnapHelper;
     private List<Rate> mRateList;
-    private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
-    private Spinner mSpinnerCurrencyList;
     private DecimalFormat mDecimalFormat;
     private TextInputEditText mTextInputEditTextFirstAmount;
     private TextInputEditText mTextInputEditTextSecondAmount;
@@ -115,7 +110,6 @@ public class LoadFragment extends Fragment implements LoadContract.View {
         mTextViewWalletType.setText(mSelectedWallet.getCurrencyCode());
         mTextViewBalance.setText(String.valueOf(mSelectedWallet.getBalance()));
         mTextViewCurrencySymbol.setText(mSelectedWallet.getCurrencySymbol());
-
     }
 
     private double getSelectedRate(String currencyCode) {
@@ -333,7 +327,6 @@ public class LoadFragment extends Fragment implements LoadContract.View {
                 break;
             }
         }
-
         return true;
     }
 
@@ -346,7 +339,6 @@ public class LoadFragment extends Fragment implements LoadContract.View {
     public void updateExchangeRateCurrency(Rate rate) {
 
         mRate = rate;
-
     }
 
     @Override

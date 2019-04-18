@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -34,6 +36,10 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
     private TextView mTextViewTotalCurrencySymbol;
     private SendConfirmationContract.Presenter mSendConfirmationPresenter;
     private Transaction mTransaction;
+    private TextView mTextViewWalletType;
+    private TextView mTextViewCurrencySymbol;
+    private TextView mTextViewBalance;
+    private Wallet mSelectedWallet;
 
     @Nullable
     @Override
@@ -42,6 +48,7 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
         mRoot = inflater.inflate(R.layout.fragment_sendconfirmation, null);
         checkNotNull(getArguments());
         mTransaction = getArguments().getParcelable(SendFragment.ARGUMENT_TRANSACTION);
+        mSelectedWallet = getArguments().getParcelable(DashboardFragment.SELECTED_WALLET);
         return mRoot;
     }
 
@@ -51,6 +58,9 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
         initUiComponent();
         setTransferInformation();
         setHasOptionsMenu(true);
+        mTextViewWalletType.setText(mSelectedWallet.getCurrencyCode());
+        mTextViewBalance.setText(String.valueOf(mSelectedWallet.getBalance()));
+        mTextViewCurrencySymbol.setText(mSelectedWallet.getCurrencySymbol());
     }
 
     private void initUiComponent() {
@@ -64,6 +74,9 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
         mTextViewReceivedAmountCurrencySymbol=mRoot.findViewById(R.id.textview_transferconfirmation_receiveamountcurrencysymbol);
         mTextViewTransactionFeeCurrencySymbol=mRoot.findViewById(R.id.textview_transferconfirmation_transactionfeecurrencysymbol);
         mTextViewTotalCurrencySymbol=mRoot.findViewById(R.id.textview_transferconfirmation_totalcurrencysymbol);
+        mTextViewWalletType = mRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
+        mTextViewCurrencySymbol = mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
+        mTextViewBalance = mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
     }
 
     @Override
@@ -89,11 +102,12 @@ public class SendConfirmationFragment extends Fragment implements SendConfirmati
         }
     }
 
-    public static SendConfirmationFragment newInstance(Transaction transaction) {
+    public static SendConfirmationFragment newInstance(Transaction transaction,Wallet selectedWallet) {
 
         SendConfirmationFragment transferConfirmationFragment = new SendConfirmationFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(SendFragment.ARGUMENT_TRANSACTION, transaction);
+        bundle.putParcelable(DashboardFragment.SELECTED_WALLET,selectedWallet);
         transferConfirmationFragment.setArguments(bundle);
         return transferConfirmationFragment;
     }

@@ -9,13 +9,15 @@ import de.netalic.falcon.util.ActivityUtil;
 
 public class WithdrawQrCompletedActivity extends BaseActivity {
 
+    public static final String QR="qr";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
 
-        Bitmap bitmap = getIntent().getParcelableExtra("qr");
+        Bitmap bitmap = getIntent().getParcelableExtra(QR);
 
         WithDrawQrCompletedFragment withDrawQrCompletedFragment = (WithDrawQrCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_qrcodecompleted_fragmentcontainer);
 

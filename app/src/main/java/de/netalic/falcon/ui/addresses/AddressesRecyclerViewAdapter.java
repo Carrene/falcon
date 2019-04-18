@@ -24,11 +24,8 @@ import de.netalic.falcon.util.SnackbarUtil;
 
 public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-
     private List<Wallet> mWalletList;
     private Context mContext;
-
-
 
     public AddressesRecyclerViewAdapter(List<Wallet> walletList, Context context) {
         mWalletList = walletList;
@@ -46,13 +43,12 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-
         WalletViewHolder walletViewHolder = (WalletViewHolder) holder;
         Wallet wallet = mWalletList.get(position);
         walletViewHolder.mTextViewWalletName.setText(wallet.getName());
-        walletViewHolder.mTextViewBalance.setText(wallet.getCurrencySymbol() + " " + String.valueOf(Double.valueOf(wallet.getBalance()).longValue()));
+        walletViewHolder.mTextViewBalance.setText(wallet.getCurrencySymbol() + " "
+                + String.valueOf(Double.valueOf(wallet.getBalance()).longValue()));
         walletViewHolder.mTextViewAddress.setText(wallet.getAddress());
-
     }
 
     @Override
@@ -78,7 +74,6 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
             mImageViewShare = itemView.findViewById(R.id.imageview_addresses_share);
             mImageViewQrCode.setOnClickListener(this);
             mImageViewShare.setOnClickListener(this);
-
         }
 
         @Override
@@ -97,11 +92,7 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
                 String walletAddress = mWalletList.get(getAdapterPosition()).getAddress();
                 setQrCode(walletAddress);
-
-
             }
-
-
         }
 
         public void setQrCode(String qrCodeContent) {
@@ -118,11 +109,9 @@ public class AddressesRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         private void navigateToQrCodeAddressesActivity(Bitmap bitmap) {
 
             Intent intent = new Intent(mContext, QrCodeAddressesActivity.class);
-            intent.putExtra("qr", bitmap);
-            intent.putExtra("currencyCode",mWalletList.get(getAdapterPosition()).getCurrencyCode());
+            intent.putExtra(QrCodeAddressesFragment.QR, bitmap);
+            intent.putExtra(QrCodeAddressesFragment.CURRENCY_CODE, mWalletList.get(getAdapterPosition()).getCurrencyCode());
             mContext.startActivity(intent);
         }
-
     }
-
 }

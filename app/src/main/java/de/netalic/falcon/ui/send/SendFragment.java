@@ -377,6 +377,7 @@ public class SendFragment extends Fragment implements SendContract.View {
 
         Intent intent = new Intent(getContext(), SendConfirmationActivity.class);
         intent.putExtra(ARGUMENT_TRANSACTION, transaction);
+        intent.putExtra(DashboardFragment.SELECTED_WALLET,mSelectedWallet);
         startActivity(intent);
     }
 

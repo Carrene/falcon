@@ -2,7 +2,6 @@ package de.netalic.falcon.common.listcurrency;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;

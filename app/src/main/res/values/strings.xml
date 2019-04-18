@@ -9,6 +9,7 @@
     <string name="everywhere_value">VALUE</string>
     <string name="everywhere_save">Save</string>
     <string name="everywhere_skip">Skip</string>
+    <string name="everywhere_image">Image</string>
 
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
@@ -334,6 +335,7 @@
 
     <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
     <string name="qrcodeaddresses_dashboardbutton">DASHBOARD</string>
+    <string name="qrcodeaddresses_wallet">wallet</string>
 
     <string name="authentication_hintpassword">Enter password</string>
     <string name="authentication_toolbar">Authentication</string>

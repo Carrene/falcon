@@ -59,8 +59,8 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
         checkNotNull(getArguments());
         setHasOptionsMenu(true);
         mReceipt = getArguments().getParcelable(ARGUMENT_RECEIPT);
-        mLoadSymbol = getArguments().getString("load");
-        mPaidSymbol = getArguments().getString("paid");
+        mLoadSymbol = getArguments().getString(LoadConfirmationFragment.LOAD_AMOUNT);
+        mPaidSymbol = getArguments().getString(LoadConfirmationFragment.PAID_AMOUNT);
         return mRoot;
     }
 
@@ -93,8 +93,8 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
 
         Bundle bundle = new Bundle();
         bundle.putParcelable(ARGUMENT_RECEIPT, receipt);
-        bundle.putString("load", loadSymbol);
-        bundle.putString("paid", paidSymbol);
+        bundle.putString(LoadConfirmationFragment.LOAD_AMOUNT, loadSymbol);
+        bundle.putString(LoadConfirmationFragment.PAID_AMOUNT, paidSymbol);
         LoadCompletedFragment fragment = new LoadCompletedFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -123,7 +123,6 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
-
     }
 
     public void setPaymentInformation() {
@@ -134,10 +133,8 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
         mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
         mTextViewTransactionDate.setText(mReceipt.getDate());
         mTextViewTransactionTime.setText(mReceipt.getTime());
-
-        mTextViewLoadAmountSymbol.setText(mPaidSymbol);
-        mTextViewPaidAmountSymbol.setText(mLoadSymbol);
-
+        mTextViewLoadAmountSymbol.setText(mLoadSymbol);
+        mTextViewPaidAmountSymbol.setText(mPaidSymbol);
         mTextViewRrn.setText(mReceipt.getRetrievalReferenceNumber());
     }
 
@@ -145,18 +142,15 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
 
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
-
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
             File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH)));
             ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
-
         }
     }
 
     private void requestPermissionSave() {
-
 
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
@@ -166,7 +160,6 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
 
             ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_imagesaved), getContext());
-
         }
     }
 
@@ -180,10 +173,8 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
         } else {
 
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
-
         }
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -200,7 +191,6 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
 
                 requestPermissionSave();
                 break;
-
             }
 
             case R.id.item_chargetransfercompletedmenu_share: {
@@ -208,9 +198,7 @@ public class LoadCompletedFragment extends Fragment implements LoadCompletedCont
                 requestPermissionShare();
                 break;
             }
-
         }
-
         return true;
     }
 }

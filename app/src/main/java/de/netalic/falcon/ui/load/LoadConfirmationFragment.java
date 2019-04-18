@@ -42,10 +42,11 @@ public class LoadConfirmationFragment extends Fragment implements LoadConfirmati
     public static final String ARGUMENT_CHARGE_START = "chargeStart";
     private static final int DROP_IN_REQUEST = 1;
     public static final String ARGUMENT_RECEIPT = "receipt";
+    public static final String LOAD_AMOUNT = "load";
+    public static final String PAID_AMOUNT = "paid";
     private DecimalFormat mDecimalFormat;
     private Wallet mSelectedWallet;
     public static final String SELECTED_WALLET = "wallet";
-
 
     @Nullable
     @Override
@@ -66,28 +67,25 @@ public class LoadConfirmationFragment extends Fragment implements LoadConfirmati
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-
         initUiComponent();
         setPaymentConfirmationData();
         initListener();
         getUser();
-
         mTextViewWalletType.setText(mSelectedWallet.getCurrencyCode());
         mTextViewBalance.setText(String.valueOf(mSelectedWallet.getBalance()));
         mTextViewCurrencySymbol.setText(mSelectedWallet.getCurrencySymbol());
-
     }
 
     private void getUser() {
-
 
     }
 
     private void setPaymentConfirmationData() {
 
-        mTextViewLoadAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " " + String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
-        mTextViewPaidAmount.setText(mTransaction.getActionList().get(0).getCurrencySymbol() + " " + String.valueOf(mDecimalFormat.format(Math.abs(mTransaction.getActionList().get(0).getAmount()))));
-
+        mTextViewLoadAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + " "
+                + String.valueOf(Math.abs(mTransaction.getActionList().get(1).getAmount())));
+        mTextViewPaidAmount.setText(mTransaction.getActionList().get(0).getCurrencySymbol()
+                + " " + String.valueOf(mDecimalFormat.format(Math.abs(mTransaction.getActionList().get(0).getAmount()))));
     }
 
     private void initListener() {
@@ -119,7 +117,6 @@ public class LoadConfirmationFragment extends Fragment implements LoadConfirmati
     @Override
     public void dismissProgressBar() {
 
-
         if (getActivity() instanceof BaseActivity) {
             ((BaseActivity) getActivity()).dismissMaterialDialog();
         }
@@ -143,14 +140,12 @@ public class LoadConfirmationFragment extends Fragment implements LoadConfirmati
         mTextViewWalletType = mRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
         mTextViewCurrencySymbol = mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
         mTextViewBalance = mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
-
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == DROP_IN_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
 
@@ -174,8 +169,8 @@ public class LoadConfirmationFragment extends Fragment implements LoadConfirmati
 
         Intent intent = new Intent(getActivity(), LoadCompletedActivity.class);
         intent.putExtra(ARGUMENT_RECEIPT, receipt);
-        intent.putExtra("load",mTransaction.getActionList().get(0).getCurrencySymbol());
-        intent.putExtra("paid",mTransaction.getActionList().get(1).getCurrencySymbol());
+        intent.putExtra(PAID_AMOUNT,mTransaction.getActionList().get(0).getCurrencySymbol());
+        intent.putExtra(LOAD_AMOUNT,mTransaction.getActionList().get(1).getCurrencySymbol());
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
@@ -187,16 +182,13 @@ public class LoadConfirmationFragment extends Fragment implements LoadConfirmati
         intent.putExtra(ARGUMENT_RECEIPT, receipt);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-
     }
 
     @Override
     public void showErrorBraintreeNonceIsMissing() {
 
         SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.loadconfirmation_braintreenonceismissing), getContext());
-
     }
-
 
     @Override
     public void showErrorCannotFinalizeFailedTransaction() {
@@ -208,7 +200,6 @@ public class LoadConfirmationFragment extends Fragment implements LoadConfirmati
     public void showErrorTransactionNotFound() {
 
         SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.loadconfirmation_transactionnotfound), getContext());
-
     }
 
     @Override
