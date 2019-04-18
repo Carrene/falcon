@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.util.ActivityUtil;
 import de.netalic.falcon.util.NavigationDrawerUtil;
 
@@ -17,11 +19,13 @@ public class TransactionHistoryActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         NavigationDrawerUtil.getDrawer(this, getToolbar(), 5);
+        Bundle bundle=getIntent().getExtras();
+        Wallet selectedWallet=bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
 
         TransactionHistoryFragment transactionHistoryFragment = (TransactionHistoryFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_transactionhistory_fragmentcontainer);
         if (transactionHistoryFragment == null) {
 
-            transactionHistoryFragment = TransactionHistoryFragment.newInstance();
+            transactionHistoryFragment = TransactionHistoryFragment.newInstance(selectedWallet);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), transactionHistoryFragment, R.id.framelayout_transactionhistory_fragmentcontainer);
 
         }

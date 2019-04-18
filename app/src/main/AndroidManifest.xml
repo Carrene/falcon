@@ -89,7 +89,9 @@
             android:parentActivityName=".ui.withdraw.WithdrawActivity" />
         <activity android:name=".ui.withdraw.WithdrawQrCompletedActivity" />
         <activity android:name=".ui.withdraw.WithdrawQrFailedActivity" />
-        <activity android:name=".ui.transaction.transactionhistory.TransactionHistoryActivity" />
+        <activity android:name=".ui.transaction.transactionhistory.TransactionHistoryActivity"
+            android:launchMode="singleTop"
+            />
         <activity
             android:name=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity"
             android:parentActivityName=".ui.transaction.transactionhistory.TransactionHistoryActivity">

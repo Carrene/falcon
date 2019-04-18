@@ -208,6 +208,7 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 
         mImageViewTransaction.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), TransactionHistoryActivity.class);
+            intent.putExtra(SELECTED_WALLET, mWalletList.get(mSelectedWalletPosition));
             startActivity(intent);
         });
 
