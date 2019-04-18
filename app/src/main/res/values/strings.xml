@@ -369,11 +369,12 @@
 
     <string name="transactiondetail_transactiondetail">Transaction detail</string>
     <string name="transactiondetail_walletname">Wallet name </string>
-    <string name="transactiondetail_amount">Charge amount  </string>
-    <string name="transactiondetail_baseamount">Paid amount  </string>
+    <string name="transactiondetail_amount">amount  </string>
+    <string name="transactiondetail_to">to  </string>
     <string name="transactiondetail_paymentgateway">Payment gateway </string>
     <string name="transactiondetail_transactiondate">Transaction date </string>
     <string name="transactiondetail_transactiontime">Transaction time </string>
+    <string name="transactiondetail_transactionid">Transaction ID </string>
     <string name="transactiondetail_trackingcode">RRN </string>
     <string name="transactiondetail_dashboard">DASHBOARD</string>
     <string name="transactiondetail_success">Success</string>

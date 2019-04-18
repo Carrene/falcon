@@ -336,11 +336,11 @@
     <dimen name="paddingend_transactiondetail_textview">15dp</dimen>
     <dimen name="margintopbottom_transactiondetail_view">13dp</dimen>
     <dimen name="height_transactiondetail_view">1dp</dimen>
-    <dimen name="margintop_transactiondetail_linearlayout">33dp</dimen>
+    <dimen name="margintop_transactiondetail_linearlayout">15dp</dimen>
     <dimen name="margintop_transactiondetail_walletnamelable">20dp</dimen>
     <dimen name="textsize_transactiondetail_walletnamelable">14sp</dimen>
     <dimen name="margintop_transactiondetail_walletname">20dp</dimen>
-    <dimen name="margintop_transactiondetail_relativelayout">8dp</dimen>
+    <dimen name="margintop_transactiondetail_relativelayout">4dp</dimen>
     <dimen name="textsize_transactiondetail_walletnolable">14sp</dimen>
     <dimen name="textsize_transactiondetail_amountdollarlable">14sp</dimen>
     <dimen name="textsize_transactiondetail_trackingcode">14sp</dimen>
