@@ -16,13 +16,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 import java.util.Map;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Receipt;
+import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardFragment;
 import de.netalic.falcon.ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import ru.alexbykov.nopaginate.paginate.NoPaginate;
@@ -38,12 +41,17 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
     private Map<String, ?> mFilterMap;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerViewTransactionHistory;
+    private TextView mTextViewWalletType;
+    private TextView mTextViewCurrencySymbol;
+    private TextView mTextViewBalance;
+    private Wallet mSelectedWallet;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_transactionhistory, null);
+        mSelectedWallet = getArguments().getParcelable(DashboardFragment.SELECTED_WALLET);
         return mRoot;
     }
 
@@ -54,7 +62,9 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
         initUiComponent();
         mFilterMap = PreferenceManager.getDefaultSharedPreferences(getContext()).getAll();
         setHasOptionsMenu(true);
-
+        mTextViewWalletType.setText(mSelectedWallet.getCurrencyCode());
+        mTextViewBalance.setText(String.valueOf(mSelectedWallet.getBalance()));
+        mTextViewCurrencySymbol.setText(mSelectedWallet.getCurrencySymbol());
     }
 
     @Override
@@ -62,7 +72,6 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
         mTransactionHistoryPresenter = presenter;
     }
-
 
     @Override
     public void showProgressBar() {
@@ -79,10 +88,12 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
         ((BaseActivity) getActivity()).dismissMaterialDialog();
     }
 
+    public static TransactionHistoryFragment newInstance(Wallet selectedWallet) {
 
-    public static TransactionHistoryFragment newInstance() {
-
+        Bundle bundle=new Bundle();
+        bundle.putParcelable(DashboardFragment.SELECTED_WALLET,selectedWallet);
         TransactionHistoryFragment fragment = new TransactionHistoryFragment();
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -115,7 +126,6 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
     private void getDepositList(Map<String, ?> map) {
 
-
         mTransactionHistoryPresenter.getDepositList(map);
     }
 
@@ -123,6 +133,9 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
         mRecyclerViewTransactionHistory = mRoot.findViewById(R.id.recyclerview_transactionhistory);
         mSwipeRefreshLayout = mRoot.findViewById(R.id.swiperefresh_transactionhistory);
+        mTextViewWalletType = mRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
+        mTextViewCurrencySymbol = mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
+        mTextViewBalance = mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
         mRecyclerViewTransactionHistory.setOnClickListener(v -> {
 
         });
@@ -147,7 +160,6 @@ public class TransactionHistoryFragment extends Fragment implements TransactionH
 
             mTransactionHistoryPresenter.resetPagination();
             mTransactionHistoryRecyclerViewAdapter.removeDataSource();
-
         });
     }
 

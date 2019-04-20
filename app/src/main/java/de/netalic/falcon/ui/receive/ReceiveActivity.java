@@ -1,12 +1,7 @@
 package de.netalic.falcon.ui.receive;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Rate;

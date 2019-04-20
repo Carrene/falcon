@@ -15,9 +15,9 @@ public class QrCodeAddressesActivity extends BaseActivity {
 
         setupBackButton();
 
-        Bitmap bitmap = getIntent().getParcelableExtra("qr");
+        Bitmap bitmap = getIntent().getParcelableExtra(QrCodeAddressesFragment.QR);
         Bundle bundle=getIntent().getExtras();
-        String walletAddress=bundle.getString("currencyCode");
+        String walletAddress=bundle.getString(QrCodeAddressesFragment.CURRENCY_CODE);
 
         QrCodeAddressesFragment qrCodeAddressesFragment=(QrCodeAddressesFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_qrcodeaddresses_fragmentcontainer);
         if (qrCodeAddressesFragment==null){

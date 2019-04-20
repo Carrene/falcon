@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-
     <LinearLayout
         android:id="@+id/linearlayout_transactiondetail_main"
         android:layout_width="match_parent"
@@ -16,7 +15,6 @@
         android:background="@drawable/loadandsendandwithdrawcompleted_border"
         android:orientation="vertical"
         android:paddingBottom="@dimen/paddingbottom_transactiondetail_linearlayout">
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -74,13 +72,20 @@
             android:paddingStart="@dimen/paddingstart_transactiondetail_relativelayout">
 
             <TextView
+                android:id="@+id/textview_transactiondetail_typeoftransaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
                 android:id="@+id/textview_transactiondetail_amountalphalable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/textview_transactiondetail_typeoftransaction"
                 android:text="@string/transactiondetail_amount"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_transactiondetail_walletnolable" />
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -89,7 +94,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textview_transactiondetail_amountalpha"
+                    android:id="@+id/textview_transactiondetail_paidamount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/paddingend_transactiondetail_textview"
@@ -110,15 +115,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margintop_transactiondetail_relativelayout"
-            android:paddingStart="@dimen/paddingstart_transactiondetail_relativelayout"
+            android:paddingStart="@dimen/paddingstart_transactiondetail_relativelayout">
 
-            >
+            <TextView
+                android:id="@+id/textview_transactiondetail_typeoftransactionaddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/colorBlack" />
 
             <TextView
                 android:id="@+id/textview_transactiondetail_amountdollarlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/transactiondetail_baseamount"
+                android:layout_toEndOf="@+id/textview_transactiondetail_typeoftransactionaddress"
+                android:text="@string/transactiondetail_to"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_transactiondetail_amountdollarlable" />
 
@@ -129,7 +140,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textview_transactiondetail_amountdollar"
+                    android:id="@+id/textview_transactiondetail_destinationwalletaddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/paddingend_transactiondetail_textview"
@@ -146,7 +157,6 @@
             android:layout_marginTop="@dimen/margintopbottom_transactiondetail_view"
             android:layout_marginBottom="@dimen/margintopbottom_transactiondetail_view"
             android:background="@color/colorPrimaryDark5" />
-
 
         <RelativeLayout
             android:id="@+id/relativelayout_transactiondetailcompleted_rrnbox"
@@ -213,7 +223,6 @@
             android:layout_marginBottom="@dimen/margintopbottom_transactiondetail_view"
             android:background="@color/colorPrimaryDark5" />
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -230,6 +239,38 @@
 
             <TextView
                 android:id="@+id/textview_transactiondetail_transactiontime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/paddingend_transactiondetail_textview"
+                android:text="VALUE"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetail_transactiondate" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_transactiondetail_view"
+            android:layout_marginTop="@dimen/margintopbottom_transactiondetail_view"
+            android:layout_marginBottom="@dimen/margintopbottom_transactiondetail_view"
+            android:background="@color/colorPrimaryDark5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margintop_transactiondetail_relativelayout"
+            android:paddingStart="@dimen/paddingstart_transactiondetail_relativelayout">
+
+            <TextView
+                android:id="@+id/textview_transactiondetail_transactionidlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transactiondetail_transactionid"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textsize_transactiondetail_transactiondate" />
+
+            <TextView
+                android:id="@+id/textview_transactiondetail_transactionid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -270,7 +311,6 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_transactiondetail_trackingcode" />
         </RelativeLayout>
-
 
     </LinearLayout>
 

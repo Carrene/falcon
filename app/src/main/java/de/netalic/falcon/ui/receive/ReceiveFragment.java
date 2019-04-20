@@ -23,7 +23,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -35,7 +34,6 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.common.listcurrency.ListCurrencyActivity;
-import de.netalic.falcon.common.spinneradapter.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Purchase;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Wallet;
@@ -65,10 +63,8 @@ public class ReceiveFragment extends Fragment implements ReceiveContract.View {
     private TextInputEditText mTextInputEditTextSecondAmount;
     private int mSelectedPosition;
     private TextInputLayout mTextInputLayoutFirstAmount;
-    private Spinner mSpinnerCurrencyList;
     private Wallet mSelectedWallet;
     private List<Rate> mRateList;
-    private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
     private double mRateCurrencySelectedWallet;
     private TextView mTextViewWalletType;
     private TextView mTextViewCurrencySymbol;

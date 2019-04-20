@@ -1,7 +1,6 @@
 package de.netalic.falcon.common.listcurrency;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.currency.CurrencyRepository;
 import de.netalic.falcon.data.repository.rate.RateRepository;
 
 public class ListCurrencyPresenter implements ListCurrencyContract.Presenter {

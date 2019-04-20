@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <include layout="@layout/everywhere_ribbonheader"/>
+
     <LinearLayout
         android:id="@+id/linearlayout_charge_exchangeamount"
         android:layout_width="match_parent"
@@ -26,7 +28,7 @@
                 android:layout_weight="1.2"
                 android:backgroundTint="@color/lineColor"
                 android:inputType="numberDecimal"
-                android:maxLength="6" />
+                android:maxLength="1"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -38,13 +40,14 @@
             android:layout_weight="0.3"
             android:src="@drawable/everywhere_rowexchangelogo" />
 
-        <Spinner
-            android:id="@+id/spinner_load_spinner"
-            style="@style/SpinnerListCurrencyCommon"
-            android:layout_width="@dimen/width_load_spinner"
-            android:layout_height="@dimen/height_load_spinner"
-            android:layout_marginTop="@dimen/margintop_load_spinner"
-            android:spinnerMode="dropdown" />
+        <TextView
+            android:id="@+id/textview_load_exchangeto"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:drawableEnd="@drawable/everywhere_arrowright"
+            android:lines="1"
+            android:text="" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"

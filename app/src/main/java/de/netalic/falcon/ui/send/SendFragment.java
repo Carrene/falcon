@@ -95,7 +95,6 @@ public class SendFragment extends Fragment implements SendContract.View {
         mTextViewCurrencySymbol.setText(mSelectedWallet.getCurrencySymbol());
     }
 
-
     private void getListCurrency() {
 
         mSendPresenter.listExchangeRate();
@@ -135,7 +134,6 @@ public class SendFragment extends Fragment implements SendContract.View {
 
     private void initUiComponent() {
 
-
         mTextInputEditTextFirstAmount = mRoot.findViewById(R.id.edittext_send_firstamount);
         mTextInputEditTextSecondAmount = mRoot.findViewById(R.id.edittext_send_secondeamount);
         mTextInputLayoutFirstAmount = mRoot.findViewById(R.id.textinputlayout_send_firstamount);
@@ -145,7 +143,6 @@ public class SendFragment extends Fragment implements SendContract.View {
         mTextViewCurrencySymbol = mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
         mTextViewBalance = mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
         mTextViewExchangeTo = mRoot.findViewById(R.id.textview_send_exchangeto);
-
         mDecoratedBarcodeView.setVisibility(View.VISIBLE);
     }
 
@@ -173,7 +170,6 @@ public class SendFragment extends Fragment implements SendContract.View {
             }
             break;
         }
-
         return true;
     }
 
@@ -204,7 +200,6 @@ public class SendFragment extends Fragment implements SendContract.View {
 
             resumeScanner();
         }
-
     }
 
     private void resumeScanner() {
@@ -215,7 +210,6 @@ public class SendFragment extends Fragment implements SendContract.View {
             mDecoratedBarcodeView.resume();
             mDecoratedBarcodeView.setVisibility(View.VISIBLE);
         }
-
     }
 
     private void initListener() {
@@ -263,7 +257,6 @@ public class SendFragment extends Fragment implements SendContract.View {
             startActivityForResult(intent, 1);
         });
 
-
         mTextInputEditTextSecondAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
         mTextInputEditTextSecondAmount.addTextChangedListener(new TextWatcher() {
 
@@ -290,7 +283,6 @@ public class SendFragment extends Fragment implements SendContract.View {
                         mTextInputEditTextFirstAmount.setText("");
 
                     } else if (!mTextInputEditTextFirstAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mRateCurrencySelectedWallet))) {
-
 
                         if (mSelectedCurrency == null) {
 
@@ -385,6 +377,7 @@ public class SendFragment extends Fragment implements SendContract.View {
 
         Intent intent = new Intent(getContext(), SendConfirmationActivity.class);
         intent.putExtra(ARGUMENT_TRANSACTION, transaction);
+        intent.putExtra(DashboardFragment.SELECTED_WALLET,mSelectedWallet);
         startActivity(intent);
     }
 

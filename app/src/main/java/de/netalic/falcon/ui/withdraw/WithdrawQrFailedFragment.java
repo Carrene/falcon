@@ -137,7 +137,7 @@ public class WithdrawQrFailedFragment extends Fragment implements WithdrawQrCode
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = ScreenshotUtil.saveScreenshot("Withdraw",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            File file = ScreenshotUtil.saveScreenshot(getString(R.string.everywhere_image),ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             ScreenshotUtil.shareScreenshot(file, getContext());
 
         }
@@ -152,7 +152,7 @@ public class WithdrawQrFailedFragment extends Fragment implements WithdrawQrCode
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            ScreenshotUtil.saveScreenshot("Withdraw",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            ScreenshotUtil.saveScreenshot(getString(R.string.everywhere_image),ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
 
         }

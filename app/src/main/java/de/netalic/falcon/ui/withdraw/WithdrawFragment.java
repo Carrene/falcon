@@ -52,7 +52,6 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
         mRoot = inflater.inflate(R.layout.fragment_withdraw, null);
         return mRoot;
     }
@@ -68,7 +67,6 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
     public static WithdrawFragment newInstance() {
 
         return new WithdrawFragment();
-
     }
 
     @Override
@@ -78,7 +76,6 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
         if (getActivity() instanceof BaseActivity) {
             ((BaseActivity) getActivity()).showMaterialDialog();
         }
-
     }
 
     @Override
@@ -95,7 +92,6 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
         mTextViewBalance = mRoot.findViewById(R.id.textview_withdraw_balance);
         mButtonNextAmount = mRoot.findViewById(R.id.button_withdraw_nextamount);
     }
-
 
     private void getWalletList() {
 
@@ -122,14 +118,16 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue())+" "+mWalletList.get(position).getCurrencySymbol());
+                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue())+" "
+                        +mWalletList.get(position).getCurrencySymbol());
                 mPosition = position;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance())+" "+mWalletList.get(0).getCurrencySymbol());
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance())+" "
+                        +mWalletList.get(0).getCurrencySymbol());
             }
         });
 

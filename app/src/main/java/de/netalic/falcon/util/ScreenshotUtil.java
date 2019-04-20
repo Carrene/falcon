@@ -21,7 +21,7 @@ public class ScreenshotUtil {
 //        view.setDrawingCacheEnabled(true);
 //        Bitmap viewBitmap = Bitmap.createBitmap(view.getDrawingCache());
 //        view.setDrawingCacheEnabled(false);
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),Bitmap.Config.ARGB_8888);
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         Drawable bgDrawable = view.getBackground();
         if (bgDrawable != null)
@@ -34,14 +34,14 @@ public class ScreenshotUtil {
     }
 
 
-    public static File saveScreenshot(String imageName, Bitmap finalBitmap,int quality,String path) {
+    public static File saveScreenshot(Bitmap finalBitmap, int quality, String path) {
 
         String root = Environment.getExternalStorageDirectory().toString();
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         File myDir = new File(root + path);
         myDir.mkdirs();
-        String fileName = imageName+"-" + now + ".PNG";
+        String fileName = "Image-" + now + ".PNG";
         File file = new File(myDir, fileName);
         if (file.exists()) {
             file.delete();
@@ -59,14 +59,14 @@ public class ScreenshotUtil {
         }
     }
 
-    public static File saveScreenshot(String imageName,Bitmap finalBitmap,int quality,String outerPath,String innerPath) {
+    public static File saveScreenshot(String imageName, Bitmap finalBitmap, int quality, String outerPath, String innerPath) {
 
         String root = Environment.getExternalStorageDirectory().toString();
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-        File myDir = new File(root + outerPath+innerPath);
+        File myDir = new File(root + outerPath + innerPath);
         myDir.mkdirs();
-        String fileName = imageName+"-" + now + ".PNG";
+        String fileName = imageName + "-" + now + ".PNG";
         File file = new File(myDir, fileName);
         if (file.exists()) {
             file.delete();
@@ -89,7 +89,7 @@ public class ScreenshotUtil {
 
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.putExtra(Intent.EXTRA_STREAM,FileProvider.getUriForFile(context,"de.netalic.falcon.provider",file));
+        shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(context, "de.netalic.falcon.provider", file));
         shareIntent.setType("image/jpeg");
         context.startActivity(Intent.createChooser(shareIntent, "Share Screenshot"));
 

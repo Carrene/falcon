@@ -17,7 +17,6 @@ import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.addresses.AddressesActivity;
 import de.netalic.falcon.ui.contacts.ContactsActivity;
-import de.netalic.falcon.ui.contacts.ContactsContract;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.setting.basic.SettingActivity;
 import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;

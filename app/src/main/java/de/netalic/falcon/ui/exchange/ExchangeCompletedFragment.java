@@ -29,7 +29,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ExchangeCompletedFragment extends Fragment implements ExchangeCompletedContract.View {
 
-
     private static final String ALPHA_PATH = "/Alpha";
     private static final String SEND_PATH = "/Send";
     private ExchangeCompletedContract.Presenter mExchangeCompletedPresenter;
@@ -96,7 +95,6 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
     public void initUiComponent() {
 
-
         mTextViewExchangeAmount = mRoot.findViewById(R.id.textview_exchangecompleted_exchangeamountalpha);
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_exchangecompleted_paidamount);
         mTextViewExchangeDate = mRoot.findViewById(R.id.textview_exchangecompleted_exchangedate);
@@ -114,7 +112,6 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
-
     }
 
     public void setTransactionInformation() {
@@ -124,7 +121,6 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
         mTextViewPaidAmount.setText(mPaidAmount);
         mTextViewExchangeDate.setText(mTransaction.getDate());
         mTextViewExchangeTime.setText(mTransaction.getTime());
-
     }
 
     private void requestPermissionShare() {
@@ -135,14 +131,12 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot("Exchange",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH)));
+            File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH)));
             ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
-
         }
     }
 
     private void requestPermissionSave() {
-
 
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
@@ -150,9 +144,8 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            ScreenshotUtil.saveScreenshot("Exchange",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH);
+            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + SEND_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_imagesaved), getContext());
-
         }
     }
 
@@ -167,10 +160,8 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
         } else {
 
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
-
         }
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -187,7 +178,6 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
                 requestPermissionSave();
                 break;
-
             }
 
             case R.id.item_exchangecompletedmenu_share: {
@@ -195,11 +185,7 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
                 requestPermissionShare();
                 break;
             }
-
         }
-
         return true;
     }
-
-
 }

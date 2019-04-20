@@ -9,6 +9,7 @@
     <string name="everywhere_value">VALUE</string>
     <string name="everywhere_save">Save</string>
     <string name="everywhere_skip">Skip</string>
+    <string name="everywhere_image">Image</string>
 
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
@@ -110,11 +111,12 @@
 
     <string name="loadcompleted_chargecompleted">Load status</string>
     <string name="loadcompleted_walletname">Wallet name </string>
-    <string name="loadcompleted_amount">Charge amount  </string>
+    <string name="loadcompleted_amount">Load amount  </string>
     <string name="loadcompleted_baseamount">Paid amount  </string>
     <string name="loadcompleted_paymentgateway">Payment gateway </string>
     <string name="loadcompleted_transactiondate">Transaction date </string>
     <string name="loadcompleted_transactiontime">Transaction time </string>
+    <string name="loadcompleted_transactionid">Transaction ID </string>
     <string name="loadcompleted_trackingcode">RRN </string>
     <string name="loadcompleted_dashboard">DASHBOARD</string>
     <string name="loadcompleted_success">Success</string>
@@ -261,8 +263,8 @@
 
     <string name="sendcompleted_toolbar">Send completed</string>
     <string name="sendcompleted_walletname">Wallet name</string>
-    <string name="sendcompleted_payeeamount">Payee amount</string>
-    <string name="sendcompleted_paidamount">Paid amount</string>
+    <string name="sendcompleted_payeeaddress">Payee address</string>
+    <string name="everywhere_paidamount">Paid amount</string>
     <string name="sendcompleted_receivedamount">Received amount</string>
     <string name="sendcompleted_transactionfee">Transaction fee</string>
     <string name="sendcompleted_totalpaidamount">Total paid amount</string>
@@ -333,6 +335,7 @@
 
     <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
     <string name="qrcodeaddresses_dashboardbutton">DASHBOARD</string>
+    <string name="qrcodeaddresses_wallet">wallet</string>
 
     <string name="authentication_hintpassword">Enter password</string>
     <string name="authentication_toolbar">Authentication</string>
@@ -366,11 +369,12 @@
 
     <string name="transactiondetail_transactiondetail">Transaction detail</string>
     <string name="transactiondetail_walletname">Wallet name </string>
-    <string name="transactiondetail_amount">Charge amount  </string>
-    <string name="transactiondetail_baseamount">Paid amount  </string>
+    <string name="transactiondetail_amount">amount  </string>
+    <string name="transactiondetail_to">to  </string>
     <string name="transactiondetail_paymentgateway">Payment gateway </string>
     <string name="transactiondetail_transactiondate">Transaction date </string>
     <string name="transactiondetail_transactiontime">Transaction time </string>
+    <string name="transactiondetail_transactionid">Transaction ID </string>
     <string name="transactiondetail_trackingcode">RRN </string>
     <string name="transactiondetail_dashboard">DASHBOARD</string>
     <string name="transactiondetail_success">Success</string>

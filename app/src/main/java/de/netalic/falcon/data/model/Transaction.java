@@ -156,7 +156,7 @@ public class Transaction implements Parcelable {
     protected Transaction(Parcel in) {
 
         mId = in.readInt();
-        mActionList = new ArrayList<Action>();
+        mActionList = new ArrayList<>();
         in.readTypedList(mActionList, Action.CREATOR);
         mRetrievalReferenceNumber = in.readString();
         mCreatedAt = in.readString();

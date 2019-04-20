@@ -30,7 +30,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class QrCodeAddressesFragment extends Fragment implements QrCodeAddressesContract.View {
 
-
     private QrCodeAddressesContract.Presenter mQrCodePresenter;
     private TextView mTextViewWalletType;
     private ImageView mImageViewQrCode;
@@ -40,6 +39,8 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
     private static final int REQUEST_PERMISSIONS = 1;
     private static final String ALPHA_PATH = "/Alpha";
     private static final String CHARGE_PATH = "/Addresses";
+    public static final String QR = "qr";
+    public static final String CURRENCY_CODE = "currencyCode";
     private static final int IMAGE_QUALITY = 100;
     private View mScreenshotView;
     private Button mButtonNavigationToDashboard;
@@ -50,8 +51,8 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_qrcodeaddresses, null);
-        mBitmapQrCode = getArguments().getParcelable("qr");
-        mCurrencyCode = getArguments().getString("currencyCode");
+        mBitmapQrCode = getArguments().getParcelable(QR);
+        mCurrencyCode = getArguments().getString(CURRENCY_CODE);
         setHasOptionsMenu(true);
         return mRoot;
     }
@@ -69,7 +70,6 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
     public void setPresenter(QrCodeAddressesContract.Presenter presenter) {
 
         mQrCodePresenter = presenter;
-
     }
 
     @Override
@@ -86,8 +86,8 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
 
         QrCodeAddressesFragment fragment = new QrCodeAddressesFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("qr", bitmap);
-        bundle.putString("currencyCode", walletAddress);
+        bundle.putParcelable(QR, bitmap);
+        bundle.putString(CURRENCY_CODE, walletAddress);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -107,7 +107,7 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
 
     private void setWalletAddress() {
 
-        mTextViewWalletType.setText(mCurrencyCode + " " + "wallet");
+        mTextViewWalletType.setText(mCurrencyCode + " " + getString(R.string.qrcodeaddresses_wallet));
     }
 
     @Override
@@ -130,39 +130,34 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
                 requestPermissionShare();
                 break;
             }
-
         }
         return true;
     }
 
     private void requestPermissionShare() {
 
-
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = ScreenshotUtil.saveScreenshot("Addresses",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            File file = ScreenshotUtil.saveScreenshot(getString(R.string.everywhere_image),ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             ScreenshotUtil.shareScreenshot(file, getContext());
-
         }
     }
 
     private void requestPermissionSave() {
 
-
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
-        } else {
+        }
+        else {
 
-            ScreenshotUtil.saveScreenshot("Addresses",ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            ScreenshotUtil.saveScreenshot(getString(R.string.everywhere_image),ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
-
-
         }
     }
 
@@ -172,19 +167,16 @@ public class QrCodeAddressesFragment extends Fragment implements QrCodeAddresses
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissionallowed), getContext());
         } else {
 
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
-
         }
     }
 
     private void initListener() {
 
         mButtonNavigationToDashboard.setOnClickListener(v -> {
-
             Intent intent = new Intent(getContext(), DashboardActivity.class);
             startActivity(intent);
 

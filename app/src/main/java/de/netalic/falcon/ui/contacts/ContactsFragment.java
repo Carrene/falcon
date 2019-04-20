@@ -10,10 +10,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Contact;
 import de.netalic.falcon.util.SnackbarUtil;

@@ -2,7 +2,9 @@ package de.netalic.falcon.ui.contacts;
 
 import android.content.Context;
 import android.database.Cursor;
+
 import java.util.HashMap;
+
 import de.netalic.falcon.data.model.Contact;
 
 public class ContactPresenter implements ContactsContract.Presenter {
