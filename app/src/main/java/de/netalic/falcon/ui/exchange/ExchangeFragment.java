@@ -55,7 +55,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     public static final String ARGUMENT_TRANSACTION = "transaction";
     public static final String ARGUMENT_PAID_AMOUNT = "amount";
     private TextView mTextViewAddWalletAlert;
-    private TextView mTextViewExchangeTo;
+    private TextInputEditText mTextInputEditTextExchangeTo;
     private TextView mTextViewWalletType;
     private TextView mTextViewCurrencySymbol;
     private TextView mTextViewBalance;
@@ -102,11 +102,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         mTextInputLayoutFirstAmount = mViewRoot.findViewById(R.id.textinputlayout_exchange_firstamount);
         mTextViewWalletSideUnit = mViewRoot.findViewById(R.id.textview_exchange_walletsideunit);
         mTextViewTargetSideUnit = mViewRoot.findViewById(R.id.textview_exchange_targetsideunit);
-        mTextViewExchangeTo = mViewRoot.findViewById(R.id.textview_exchange_exchangeto);
+        mTextInputEditTextExchangeTo = mViewRoot.findViewById(R.id.TextInputEditText_exchange_exchangeto);
         mTextViewWalletType = mViewRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
         mTextViewCurrencySymbol = mViewRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
         mTextViewBalance = mViewRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
-
         mTextViewWalletSideUnit.setText(mWallet.getCurrencySymbol() + "1 = ");
         mTextInputLayoutFirstAmount.setHint(mWallet.getCurrencyCode());
     }
@@ -198,10 +197,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
             }
         });
 
-        mTextViewExchangeTo.setOnClickListener(v -> {
+        mTextInputEditTextExchangeTo.setOnClickListener(v -> {
 
             Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
-            intent.putExtra(SELECTED_CURRENCY, mTextViewExchangeTo.getText().toString());
+            intent.putExtra(SELECTED_CURRENCY, mTextInputEditTextExchangeTo.getText().toString());
             startActivityForResult(intent, 1);
         });
     }
@@ -407,9 +406,9 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         mSelectedCurrency = currency;
 
         if (currency == null) {
-            mTextViewExchangeTo.setText("");
+            mTextInputEditTextExchangeTo.setText("");
         } else {
-            mTextViewExchangeTo.setText(currency.getCurrencyCode());
+            mTextInputEditTextExchangeTo.setText(currency.getCurrencyCode());
         }
 
         if (mSelectedCurrency == null) {

@@ -61,7 +61,7 @@ public class LoadFragment extends Fragment implements LoadContract.View {
     private TextView mTextViewWalletType;
     private TextView mTextViewCurrencySymbol;
     private TextView mTextViewBalance;
-    private TextView mTextViewExchangeTo;
+    private TextInputEditText mTextInputEditTextExchangeTo;
     private Rate mSelectedCurrency;
 
     @Nullable
@@ -233,17 +233,17 @@ public class LoadFragment extends Fragment implements LoadContract.View {
             }
         });
 
-        mTextViewExchangeTo.setOnClickListener(v -> {
+        mTextInputEditTextExchangeTo.setOnClickListener(v -> {
 
             Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
-            intent.putExtra(SELECTED_CURRENCY, mTextViewExchangeTo.getText().toString());
+            intent.putExtra(SELECTED_CURRENCY, mTextInputEditTextExchangeTo.getText().toString());
             startActivityForResult(intent, 1);
         });
     }
 
     private void initUiComponent() {
 
-        mTextViewExchangeTo = mRoot.findViewById(R.id.textview_load_exchangeto);
+        mTextInputEditTextExchangeTo = mRoot.findViewById(R.id.TextInputEditText_load_exchangeto);
         mTextInputEditTextFirstAmount = mRoot.findViewById(R.id.edittext_charge_firstamount);
         mTextInputEditTextSecondAmount = mRoot.findViewById(R.id.edittext_charge_secondeamount);
         mTextInputLayoutFirstAmount = mRoot.findViewById(R.id.textinputlayout_load_firstamount);
@@ -440,9 +440,9 @@ public class LoadFragment extends Fragment implements LoadContract.View {
         Rate currency = ((LoadActivity) getActivity()).getCurrency();
         mSelectedCurrency = currency;
         if (currency == null) {
-            mTextViewExchangeTo.setText("");
+            mTextInputEditTextExchangeTo.setText("");
         } else {
-            mTextViewExchangeTo.setText(currency.getCurrencyCode());
+            mTextInputEditTextExchangeTo.setText(currency.getCurrencyCode());
         }
         super.onResume();
     }

@@ -33,7 +33,6 @@ import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.common.listcurrency.ListCurrencyActivity;
-import de.netalic.falcon.common.spinneradapter.ListCurrencySpinnerAdapter;
 import de.netalic.falcon.data.model.Purchase;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
@@ -66,7 +65,7 @@ public class SendFragment extends Fragment implements SendContract.View {
     private TextView mTextViewCurrencySymbol;
     private TextView mTextViewBalance;
     private TextInputLayout mTextInputLayoutFirstAmount;
-    private TextView mTextViewExchangeTo;
+    private TextInputEditText mTextInputEditTextExchangeTo;
     private Rate mSelectedCurrency;
 
     @Nullable
@@ -140,7 +139,7 @@ public class SendFragment extends Fragment implements SendContract.View {
         mTextViewWalletType = mRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
         mTextViewCurrencySymbol = mRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
         mTextViewBalance = mRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
-        mTextViewExchangeTo = mRoot.findViewById(R.id.textview_send_exchangeto);
+        mTextInputEditTextExchangeTo = mRoot.findViewById(R.id.TextInputEditText_send_exchangeto);
         mDecoratedBarcodeView.setVisibility(View.VISIBLE);
     }
 
@@ -247,10 +246,10 @@ public class SendFragment extends Fragment implements SendContract.View {
             }
         });
 
-        mTextViewExchangeTo.setOnClickListener(v -> {
+        mTextInputEditTextExchangeTo.setOnClickListener(v -> {
 
             Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
-            intent.putExtra(SELECTED_CURRENCY, mTextViewExchangeTo.getText().toString());
+            intent.putExtra(SELECTED_CURRENCY, mTextInputEditTextExchangeTo.getText().toString());
             startActivityForResult(intent, 1);
         });
 
@@ -347,9 +346,9 @@ public class SendFragment extends Fragment implements SendContract.View {
         Rate currency = ((SendActivity) getActivity()).getCurrency();
         mSelectedCurrency = currency;
         if (currency == null) {
-            mTextViewExchangeTo.setText("");
+            mTextInputEditTextExchangeTo.setText("");
         } else {
-            mTextViewExchangeTo.setText(currency.getCurrencyCode());
+            mTextInputEditTextExchangeTo.setText(currency.getCurrencyCode());
         }
         super.onResume();
     }
