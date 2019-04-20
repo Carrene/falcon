@@ -17,16 +17,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.common.spinneradapter.ListCurrencySpinnerAdapter;
+import de.netalic.falcon.common.listcurrency.ListCurrencyActivity;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Transaction;
 import de.netalic.falcon.data.model.Wallet;
@@ -36,13 +34,13 @@ import de.netalic.falcon.ui.util.DecimalDigitsInputFilter;
 import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static de.netalic.falcon.ui.addwallet.AddWalletFragment.SELECTED_CURRENCY;
 
 public class ExchangeFragment extends Fragment implements ExchangeContract.View {
 
     private View mViewRoot;
     private TextInputEditText mTextInputEditTextFirstAmount;
     private TextInputEditText mTextInputEditTextSecondAmount;
-    private Spinner mSpinnerCurrencyList;
     private TextView mTextViewWalletSideUnit;
     private TextView mTextViewTargetSideUnit;
     private Wallet mWallet;
@@ -51,15 +49,17 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private int mSelectedPosition;
     private double mWalletRate;
     private DecimalFormat mDecimalFormat;
-    private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
     private ExchangeContract.Presenter mPresenter;
     public static final String WALLET = "wallet";
     private TextInputLayout mTextInputLayoutFirstAmount;
-
     public static final String ARGUMENT_TRANSACTION = "transaction";
     public static final String ARGUMENT_PAID_AMOUNT = "amount";
     private TextView mTextViewAddWalletAlert;
-
+    private TextInputEditText mTextInputEditTextExchangeTo;
+    private TextView mTextViewWalletType;
+    private TextView mTextViewCurrencySymbol;
+    private TextView mTextViewBalance;
+    private Rate mSelectedCurrency;
 
     @Nullable
     @Override
@@ -78,6 +78,10 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         initAlertUi();
         getListCurrency();
         initListener();
+
+        mTextViewWalletType.setText(mWallet.getCurrencyCode());
+        mTextViewBalance.setText(String.valueOf(mWallet.getBalance()));
+        mTextViewCurrencySymbol.setText(mWallet.getCurrencySymbol());
     }
 
     private void initAlertUi() {
@@ -95,11 +99,13 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     private void initUiComponents() {
         mTextInputEditTextFirstAmount = mViewRoot.findViewById(R.id.textinput_exchange_sourceamount);
         mTextInputEditTextSecondAmount = mViewRoot.findViewById(R.id.textinput_exchange_destinationamount);
-        mSpinnerCurrencyList = mViewRoot.findViewById(R.id.spinner_exchange_spinner);
         mTextInputLayoutFirstAmount = mViewRoot.findViewById(R.id.textinputlayout_exchange_firstamount);
         mTextViewWalletSideUnit = mViewRoot.findViewById(R.id.textview_exchange_walletsideunit);
         mTextViewTargetSideUnit = mViewRoot.findViewById(R.id.textview_exchange_targetsideunit);
-
+        mTextInputEditTextExchangeTo = mViewRoot.findViewById(R.id.TextInputEditText_exchange_exchangeto);
+        mTextViewWalletType = mViewRoot.findViewById(R.id.textview_everywhereribbonheader_wallettype);
+        mTextViewCurrencySymbol = mViewRoot.findViewById(R.id.textview_everywhereribbonheader_currencysymbol);
+        mTextViewBalance = mViewRoot.findViewById(R.id.textview_everywhereribbonheader_walletbalance);
         mTextViewWalletSideUnit.setText(mWallet.getCurrencySymbol() + "1 = ");
         mTextInputLayoutFirstAmount.setHint(mWallet.getCurrencyCode());
     }
@@ -132,8 +138,17 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
                         mTextInputEditTextFirstAmount.setText("");
 
                     } else if (!mTextInputEditTextFirstAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mWalletRate))) {
-                        mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
-                                format(Double.valueOf(s.toString()) * mRateList.get(mSelectedPosition).getBuy() / mWalletRate)));
+
+
+                        if (mSelectedCurrency == null) {
+
+                            mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                                    format(Double.valueOf(s.toString()))));
+
+                        } else {
+                            mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
+                                    format(Double.valueOf(s.toString()) * mWalletRate / mSelectedCurrency.getSell())));
+                        }
                     }
                 }
             }
@@ -168,47 +183,27 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
 
                     } else if (!mTextInputEditTextSecondAmount.getText().toString().equals(String.valueOf(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mWalletRate))) {
 
-                        mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
-                                format(Double.valueOf(s.toString()) / mRateList.get(mSelectedPosition).getBuy() * mWalletRate)));
+                        if (mSelectedCurrency == null) {
+
+                            mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                                    format(Double.valueOf(s.toString()))));
+
+                        } else {
+                            mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
+                                    format(Double.valueOf(s.toString()) * mSelectedCurrency.getSell() / mWalletRate)));
+                        }
                     }
                 }
             }
         });
 
-        mSpinnerCurrencyList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        mTextInputEditTextExchangeTo.setOnClickListener(v -> {
 
-                mSelectedPosition = position;
-                String targetSideAmount = String.valueOf(mRateList.get(position).getCurrencySymbol()) + String.valueOf(mDecimalFormat.
-                        format(Double.valueOf(mWalletRate / mRateList.get(mSelectedPosition).getBuy())));
-                mTextViewTargetSideUnit.setText(targetSideAmount);
-
-                if (mTextInputEditTextSecondAmount.getText().toString().equals("") && mTextInputEditTextFirstAmount.getText().toString().equals("")) {
-
-
-                } else if (mTextInputEditTextSecondAmount.getText().toString().equals("")) {
-                    mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
-                            format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) / mRateList.get(mSelectedPosition).getBuy() * mWalletRate)));
-                } else if (mTextInputEditTextFirstAmount.getText().toString().equals("")) {
-
-                    mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
-                            format(Double.valueOf(mTextInputEditTextSecondAmount.getText().toString()) * mRateList.get(mSelectedPosition).getBuy() / mWalletRate)));
-                } else {
-                    mTextInputEditTextSecondAmount.setText(String.valueOf(mDecimalFormat.
-                            format(Double.valueOf(mTextInputEditTextFirstAmount.getText().toString()) / mRateList.get(mSelectedPosition).getBuy() * mWalletRate)));
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                mSelectedPosition = 1;
-            }
+            Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
+            intent.putExtra(SELECTED_CURRENCY, mTextInputEditTextExchangeTo.getText().toString());
+            startActivityForResult(intent, 1);
         });
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -224,7 +219,6 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         return true;
     }
 
-
     @Override
     public void setPresenter(ExchangeContract.Presenter presenter) {
 
@@ -239,20 +233,7 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     @Override
     public void setRateList(List<Rate> rateList) {
         mRateList = rateList;
-        setSpinnerData();
-    }
-
-    private void setSpinnerData() {
-        for (Rate rate : mRateList) {
-            if (rate.getCurrencyCode().equals(mWallet.getCurrencyCode())) {
-                setWalletRate(rate);
-                mRateList.remove(rate);
-                break;
-            }
-        }
-        mListCurrencySpinnerAdapter = new ListCurrencySpinnerAdapter(getContext(), mRateList);
-        mSpinnerCurrencyList.setAdapter(mListCurrencySpinnerAdapter);
-
+        setData();
     }
 
     @Override
@@ -287,11 +268,6 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
         return fragment;
     }
 
-
-    public void setWalletRate(Rate rate) {
-        mWalletRate = rate.getSell();
-    }
-
     @Override
     public void setListWallet(List<Wallet> model) {
         mWalletList = model;
@@ -299,40 +275,54 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     }
 
     public void findDestinationWallet() {
-        String selectedCurrency = mRateList.get(mSelectedPosition).getCurrencyCode();
-        String destinationAddress = "";
-        int walletId = 0;
-        for (Wallet wallet : mWalletList) {
-            if (wallet.getCurrencyCode().equals(selectedCurrency)) {
-                destinationAddress = wallet.getAddress();
-                walletId = mWallet.getId();
-                mPresenter.transfer(walletId, destinationAddress, Float.valueOf(mTextInputEditTextSecondAmount.getText().toString()));
+
+        if (mSelectedCurrency != null) {
+            String selectedCurrency = mSelectedCurrency.getCurrencyCode();
+            String destinationAddress = "";
+            int walletId = 0;
+            for (Wallet wallet : mWalletList) {
+                if (wallet.getCurrencyCode().equals(selectedCurrency)) {
+                    destinationAddress = wallet.getAddress();
+                    walletId = mWallet.getId();
+                    mPresenter.transfer(walletId, destinationAddress, Float.valueOf(mTextInputEditTextSecondAmount.getText().toString()));
+                }
+            }
+            if (destinationAddress.equals("")) {
+                AlertDialog dialog = new AlertDialog.Builder(getContext(), R.style.AlertDialogStyle).setView(mTextViewAddWalletAlert).
+                        setMessage(getString(R.string.exchangefragment_alertmessage, selectedCurrency)).
+                        setPositiveButton(R.string.positivebutton_exchangefragment, (dialogInterface, i) -> {
+                            ((ViewGroup) mTextViewAddWalletAlert.getParent()).removeView(mTextViewAddWalletAlert);
+                            navigationToAddWallet();
+                        })
+                        .setNegativeButton(R.string.negativebutton_exchangefragment, (dialogInterface, which) -> {
+                            ((ViewGroup) mTextViewAddWalletAlert.getParent()).removeView(mTextViewAddWalletAlert);
+                        }).show();
+
+                TextView textView = dialog.findViewById(android.R.id.message);
+                textView.setTextSize(18);
             }
         }
-        if (destinationAddress.equals("")) {
-            AlertDialog dialog = new AlertDialog.Builder(getContext(), R.style.AlertDialogStyle).setView(mTextViewAddWalletAlert).
-                    setMessage(getString(R.string.exchangefragment_alertmessage, selectedCurrency)).
-                    setPositiveButton(R.string.positivebutton_exchangefragment, (dialogInterface, i) -> {
-                        ((ViewGroup) mTextViewAddWalletAlert.getParent()).removeView(mTextViewAddWalletAlert);
-                        navigationToAddWallet();
-                    })
-                    .setNegativeButton(R.string.negativebutton_exchangefragment, (dialogInterface, which) -> {
-                        ((ViewGroup) mTextViewAddWalletAlert.getParent()).removeView(mTextViewAddWalletAlert);
-                    }).show();
-
-            TextView textView = dialog.findViewById(android.R.id.message);
-            textView.setTextSize(18);
-
-
-        }
     }
-
     @Override
     public void navigationToExchangeConfirmation(Transaction body) {
         Intent intent = new Intent(getContext(), ExchangeConfirmationActivity.class);
         intent.putExtra(ARGUMENT_TRANSACTION, body);
         intent.putExtra(ARGUMENT_PAID_AMOUNT, (mWallet.getCurrencySymbol() + mTextInputEditTextFirstAmount.getText().toString()));
         startActivity(intent);
+    }
+
+    public void setWalletRate(Rate rate) {
+        mWalletRate = rate.getSell();
+    }
+
+    private void setData() {
+        for (Rate rate : mRateList) {
+            if (rate.getCurrencyCode().equals(mWallet.getCurrencyCode())) {
+                setWalletRate(rate);
+                mRateList.remove(rate);
+                break;
+            }
+        }
     }
 
     @Override
@@ -406,6 +396,30 @@ public class ExchangeFragment extends Fragment implements ExchangeContract.View 
     @Override
     public void internetConnectionError() {
 
-        SnackbarUtil.showSnackbar(mViewRoot,getString(R.string.everywhere_connectionerror),getContext());
+        SnackbarUtil.showSnackbar(mViewRoot, getString(R.string.everywhere_connectionerror), getContext());
+    }
+
+    @Override
+    public void onResume() {
+
+        Rate currency = ((ExchangeActivity) getActivity()).getCurrency();
+        mSelectedCurrency = currency;
+
+        if (currency == null) {
+            mTextInputEditTextExchangeTo.setText("");
+        } else {
+            mTextInputEditTextExchangeTo.setText(currency.getCurrencyCode());
+        }
+
+        if (mSelectedCurrency == null) {
+
+
+        } else {
+
+            String targetSideAmount = String.valueOf(mSelectedCurrency.getCurrencySymbol()) + String.valueOf(mDecimalFormat.
+                    format(Double.valueOf(mWalletRate / mSelectedCurrency.getBuy())));
+            mTextViewTargetSideUnit.setText(targetSideAmount);
+        }
+        super.onResume();
     }
 }
