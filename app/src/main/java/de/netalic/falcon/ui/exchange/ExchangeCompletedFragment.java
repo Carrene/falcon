@@ -33,11 +33,13 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
     private static final String SEND_PATH = "/Send";
     private ExchangeCompletedContract.Presenter mExchangeCompletedPresenter;
     private View mRoot;
-    private TextView mTextViewExchangeAmount;
+    private TextView mTextViewExchangeRate;
+    private TextView mTextViewWalletName;
+    private TextView mTextViewReceivedAmount;
     private TextView mTextViewPaidAmount;
-    private TextView mTextViewExchangeDate;
-    private TextView mTextViewExchangeTime;
-    private TextView mTextViewRrn;
+    private TextView mTextViewTransactionDate;
+    private TextView mTextViewTransactionTime;
+    private TextView mTextViewTransactionId;
     private Button mButtonNavigationToDashboard;
     private static final int REQUEST_PERMISSIONS = 1;
     private static final int IMAGE_QUALITY = 100;
@@ -64,7 +66,6 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
         initUiComponent();
         initListener();
         setTransactionInformation();
-
     }
 
     @Override
@@ -95,11 +96,13 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
     public void initUiComponent() {
 
-        mTextViewExchangeAmount = mRoot.findViewById(R.id.textview_exchangecompleted_exchangeamountalpha);
+        mTextViewReceivedAmount = mRoot.findViewById(R.id.textview_exchangecompleted_receivedamount);
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_exchangecompleted_paidamount);
-        mTextViewExchangeDate = mRoot.findViewById(R.id.textview_exchangecompleted_exchangedate);
-        mTextViewExchangeTime = mRoot.findViewById(R.id.textview_exchangecompleted_exchangetime);
-        mTextViewRrn = mRoot.findViewById(R.id.textview_exchangecompleted_rrn);
+        mTextViewTransactionDate = mRoot.findViewById(R.id.textview_exchangecompleted_transactiondate);
+        mTextViewTransactionTime = mRoot.findViewById(R.id.textview_exchangecompleted_transactiontime);
+        mTextViewTransactionId = mRoot.findViewById(R.id.textview_exchangecompleted_rrn);
+        mTextViewExchangeRate=mRoot.findViewById(R.id.textview_exchangecompleted_exchangerate);
+        mTextViewWalletName=mRoot.findViewById(R.id.textview_exchangecompleted_walletname);
         mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_exchangecompleted_dashborad);
         mScreenshotView = mRoot.findViewById(R.id.linearlayout_exchangecompleted_main);
     }
@@ -116,11 +119,12 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
     public void setTransactionInformation() {
 
-        mTextViewExchangeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + Math.abs(mTransaction.getActionList().get(1).getAmount()));
-        mTextViewRrn.setText(mTransaction.getRetrievalReferenceNumber());
+        mTextViewReceivedAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + Math.abs(mTransaction.getActionList().get(1).getAmount()));
+        mTextViewTransactionId.setText(mTransaction.getRetrievalReferenceNumber());
         mTextViewPaidAmount.setText(mPaidAmount);
-        mTextViewExchangeDate.setText(mTransaction.getDate());
-        mTextViewExchangeTime.setText(mTransaction.getTime());
+        mTextViewTransactionDate.setText(mTransaction.getDate());
+        mTextViewTransactionTime.setText(mTransaction.getTime());
+        mTextViewWalletName.setText(mTransaction.getActionList().get(0).getWalletName());
     }
 
     private void requestPermissionShare() {
@@ -154,7 +158,6 @@ public class ExchangeCompletedFragment extends Fragment implements ExchangeCompl
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
 
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissionallowed), getContext());
         } else {
