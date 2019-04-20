@@ -68,7 +68,7 @@ public class SendFragment extends Fragment implements SendContract.View {
     private TextInputLayout mTextInputLayoutFirstAmount;
     private TextView mTextViewExchangeTo;
     private Rate mSelectedCurrency;
-    
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -441,13 +441,10 @@
     <string name="text_exchangecompleted_textviewrnnlabel">RNN</string>
     <string name="text_exchangecompleted_textviewrnn">VALUE</string>
 
-    <string name="text_exchangeconfirmation_textviewnamelabel">Wallet name</string>
+    <string name="text_exchangeconfirmation_paidamount">Paid amount</string>
     <string name="text_exchangeconfirmation_textviewname">VALUE</string>
-    <string name="text_exchangeconfirmation_textviewamountlabel">Exchange amount</string>
-    <string name="text_exchangeconfirmation_textviewamount">VALUE</string>
-    <string name="text_exchangeconfirmation_textviewpaidamountlabel">Paid aount</string>
     <string name="text_exchangeconfirmation_textviewpaidamount">VALUE</string>
-    <string name="text_exchangeconfirmation_textviewpayeeaddresslabel">Payee address</string>
+    <string name="text_exchangeconfirmation_receivedamount">Received amount</string>
     <string name="text_exchangeconfirmation_textviewpayeeaddress">VALUE</string>
 
     <string name="contacts_toolbar">Contacts</string>
