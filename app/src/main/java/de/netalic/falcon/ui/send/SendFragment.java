@@ -56,7 +56,6 @@ public class SendFragment extends Fragment implements SendContract.View {
     private static final int REQUEST_PERMISSION = 1;
     private long mLongLastSnackBarTime = 0;
     private List<Rate> mRateList;
-    private ListCurrencySpinnerAdapter mListCurrencySpinnerAdapter;
     private double mRateCurrencySelectedWallet;
     private Wallet mSelectedWallet;
     private DecimalFormat mDecimalFormat;
@@ -69,8 +68,7 @@ public class SendFragment extends Fragment implements SendContract.View {
     private TextInputLayout mTextInputLayoutFirstAmount;
     private TextView mTextViewExchangeTo;
     private Rate mSelectedCurrency;
-
-
+    
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -249,7 +247,6 @@ public class SendFragment extends Fragment implements SendContract.View {
             }
         });
 
-
         mTextViewExchangeTo.setOnClickListener(v -> {
 
             Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
@@ -293,8 +290,6 @@ public class SendFragment extends Fragment implements SendContract.View {
                             mTextInputEditTextFirstAmount.setText(String.valueOf(mDecimalFormat.
                                     format(Double.valueOf(s.toString()) * mRateCurrencySelectedWallet / mSelectedCurrency.getSell())));
                         }
-
-
                     }
                 }
             }

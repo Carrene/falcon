@@ -5,6 +5,9 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+
+    <include layout="@layout/everywhere_ribbonheader"/>
+
     <LinearLayout
         android:id="@+id/linearlayout_exchange_linearlayout"
         android:layout_width="match_parent"
@@ -39,13 +42,15 @@
             android:layout_weight="0.3"
             android:src="@drawable/everywhere_rowexchangelogo" />
 
-        <Spinner
-            android:id="@+id/spinner_exchange_spinner"
-            style="@style/SpinnerListCurrencyCommon"
-            android:layout_width="75dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="5dp"
-            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:id="@+id/textview_exchange_exchangeto"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:drawableEnd="@drawable/everywhere_arrowright"
+            android:lines="1"
+            android:text="" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
@@ -75,14 +80,15 @@
             android:id="@+id/textview_exchange_walletsideunit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorRed" />
+            android:textColor="@color/colorRed"
+
+            />
 
         <TextView
             android:id="@+id/textview_exchange_targetsideunit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorRed" />
+            android:textColor="@color/colorRed"/>
     </LinearLayout>
-
 
 </RelativeLayout>
