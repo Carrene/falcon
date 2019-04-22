@@ -111,7 +111,6 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -152,6 +151,4 @@ public abstract class BaseActivity extends AppCompatActivity implements CheckInt
         super.onUserInteraction();
         ScreenLocker.getInstance().restart();
     }
-
-
 }

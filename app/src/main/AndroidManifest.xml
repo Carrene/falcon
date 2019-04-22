@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme"
         tools:replace="android:allowBackup">
-
+        <activity android:name=".ui.notification.NotificationActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.dashboard.DashboardActivity"/>
         <activity
             android:name=".ui.contacts.ContactsActivity"
             android:launchMode="singleTop"
@@ -190,7 +192,7 @@
         <activity
             android:name=".ui.exchange.ExchangeConfirmationActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.exchange.ExchangeActivity"></activity>
+            android:parentActivityName=".ui.exchange.ExchangeActivity" />
         <activity
             android:name=".ui.exchange.ExchangeFailedActivity"
             android:launchMode="singleTop" />

@@ -14,6 +14,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,6 +28,7 @@ import de.netalic.falcon.ui.addwallet.AddWalletActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.exchange.ExchangeActivity;
 import de.netalic.falcon.ui.load.LoadActivity;
+import de.netalic.falcon.ui.notification.NotificationActivity;
 import de.netalic.falcon.ui.receive.ReceiveActivity;
 import de.netalic.falcon.ui.send.SendActivity;
 import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
@@ -107,6 +109,24 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         inflater.inflate(R.menu.menu_dashboard_toolbar, menu);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.menu_dashboard_notification:{
+
+                Intent intent=new Intent(getActivity(),NotificationActivity.class);
+                startActivity(intent);
+
+                break;
+            }
+
+        }
+
+        return true;
+    }
 
     public void initUiComponents() {
 

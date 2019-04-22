@@ -466,4 +466,6 @@
     <string name="text_addwallet_textviewaddwallet">Add a new wallet</string>
     <string name="exchangefragment_alertmessage">You don\'t have a \" %1$s \" wallet, do you want to add this wallet?</string>
 
+    <string name="notification_toolbar">Notification</string>
+
 </resources>
