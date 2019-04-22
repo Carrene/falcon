@@ -30,9 +30,10 @@ public class NavigationDrawerUtil {
 
         PrimaryDrawerItem item1 = new CustomPrimaryDrawerItem().withIdentifier(1).withName(R.string.navigation_dashboard).withIcon(R.drawable.navigation_dashboard);
         PrimaryDrawerItem item2 = new CustomPrimaryDrawerItem().withIdentifier(2).withName(R.string.navigation_wallets).withIcon(R.drawable.navigation_wallet);
-        PrimaryDrawerItem item3 = new CustomPrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_qrcodes).withIcon(R.drawable.navigation_qrcodes);
+        PrimaryDrawerItem item3 = new CustomPrimaryDrawerItem().withIdentifier(3).withName(R.string.navigation_contacts).withIcon(R.drawable.everywhere_contacticon);
         PrimaryDrawerItem item4 = new CustomPrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_setting).withIcon(R.drawable.navigation_setting);
-        PrimaryDrawerItem item5 = new CustomPrimaryDrawerItem().withIdentifier(5).withName(R.string.navigation_aboutus).withIcon(R.drawable.navigation_aboutus);
+        PrimaryDrawerItem item5 = new CustomPrimaryDrawerItem().withIdentifier(4).withName(R.string.navigation_support).withIcon(R.drawable.navigation_support);
+        PrimaryDrawerItem item6 = new CustomPrimaryDrawerItem().withIdentifier(5).withName(R.string.navigation_aboutus).withIcon(R.drawable.navigation_aboutus);
 
         //TODO(Ehsan): Inject this object
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
@@ -57,7 +58,7 @@ public class NavigationDrawerUtil {
                 .withActionBarDrawerToggleAnimated(true)
                 .withCloseOnClick(true)
                 .withSelectedItem(identifier)
-                .addDrawerItems(item1, item2, item3, item4, item5)
+                .addDrawerItems(item1, item2, item3, item4, item5,item6)
                 .withAccountHeader(headerResult)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
@@ -97,6 +98,9 @@ public class NavigationDrawerUtil {
                             }
                         }
                         case 5: {
+
+                        }
+                        case 6: {
 
                         }
                     }

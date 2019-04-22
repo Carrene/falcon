@@ -63,9 +63,10 @@
     <string name="navigation_transactionhistory">Transaction history</string>
     <string name="navigation_chart">Chart</string>
     <string name="navigation_setting">Setting</string>
+    <string name="navigation_support">Support</string>
     <string name="navigation_aboutus">About Us</string>
     <string name="navigation_wallets">Wallets</string>
-    <string name="navigation_qrcodes">QR Codes</string>
+    <string name="navigation_contacts">Contacts</string>
 
     <string name="dashboard_invalidcurrency">Invalid currency</string>
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>

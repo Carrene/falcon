@@ -20,7 +20,10 @@
         android:theme="@style/BaseAppTheme"
         tools:replace="android:allowBackup">
 
-        <activity android:name=".ui.contacts.ContactsActivity"/>
+        <activity
+            android:name=".ui.contacts.ContactsActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.dashboard.DashboardActivity" />
 
         <provider
             android:name=".util.GenericFileProvider"
@@ -64,9 +67,9 @@
         <activity
             android:name=".ui.dashboard.DashboardActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.load.LoadActivity"
-            android:launchMode="singleTop"
-            />
+        <activity
+            android:name=".ui.load.LoadActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".ui.load.LoadCompletedActivity" />
         <activity
             android:name=".ui.load.LoadConfirmationActivity"
@@ -89,9 +92,9 @@
             android:parentActivityName=".ui.withdraw.WithdrawActivity" />
         <activity android:name=".ui.withdraw.WithdrawQrCompletedActivity" />
         <activity android:name=".ui.withdraw.WithdrawQrFailedActivity" />
-        <activity android:name=".ui.transaction.transactionhistory.TransactionHistoryActivity"
-            android:launchMode="singleTop"
-            />
+        <activity
+            android:name=".ui.transaction.transactionhistory.TransactionHistoryActivity"
+            android:launchMode="singleTop" />
         <activity
             android:name=".ui.transaction.transactionhistoryfilters.TransactionHistoryFiltersActivity"
             android:parentActivityName=".ui.transaction.transactionhistory.TransactionHistoryActivity">
