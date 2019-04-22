@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/imageview_notification_profilepicture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/navigationheader_profile" />
+
+    <TextView
+        android:id="@+id/textview_notification_describe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@+id/imageview_notification_profilepicture"
+        android:text="@string/everywhere_value"
+        android:textColor="@color/md_black_1000" />
+
+    <TextView
+        android:id="@+id/textview_notification_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="13dp"
+        android:layout_toEndOf="@+id/imageview_notification_profilepicture"
+        android:text="@string/everywhere_value" />
+
+    <TextView
+        android:id="@+id/textview_notification_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="13dp"
+        android:layout_toEndOf="@+id/textview_notification_date"
+        android:text="@string/everywhere_value" />
+
+</RelativeLayout>
