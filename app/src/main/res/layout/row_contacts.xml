@@ -26,7 +26,7 @@
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/icon_alpha" />
+        android:src="@drawable/contactlist_alphagray" />
 
 
 </RelativeLayout>
