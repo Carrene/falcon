@@ -4,7 +4,7 @@
     android:layout_height="90dp">
 
     <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/imageview_notification_profilepicture"
+        android:id="@+id/circularimageview_notification_profilepicture"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
