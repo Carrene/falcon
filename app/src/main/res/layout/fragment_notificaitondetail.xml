@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/circularimageview_notificationdetail_profilepicture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/navigationheader_profile" />
+
+    <TextView
+        android:id="@+id/textview_notification_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/circularimageview_notificationdetail_profilepicture"
+        android:text="@string/everywhere_value"
+        android:textColor="@color/md_black_1000" />
+
+    <TextView
+        android:id="@+id/textview_notificationdetail_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_notification_name"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/circularimageview_notificationdetail_profilepicture"
+        android:text="@string/everywhere_value" />
+
+    <TextView
+        android:id="@+id/textview_notification_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_notification_name"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/textview_notificationdetail_date"
+        android:text="@string/everywhere_value" />
+
+    <View
+        android:id="@+id/view_notificationdetail_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/textview_notification_time"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="27dp"
+        android:background="@color/lineColor" />
+
+    <TextView
+        android:id="@+id/textview_notificationdetail_describe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_notificationdetail_line"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="27dp"
+        android:text="@string/everywhere_value" />
+
+</RelativeLayout>

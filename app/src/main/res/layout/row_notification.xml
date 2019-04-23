@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="14dp"
-        android:layout_toEndOf="@+id/imageview_notification_profilepicture"
+        android:layout_toEndOf="@+id/circularimageview_notification_profilepicture"
         android:text="@string/everywhere_value"
         android:textColor="@color/md_black_1000" />
 
@@ -28,7 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="5dp"
         android:layout_marginBottom="13dp"
-        android:layout_toEndOf="@+id/imageview_notification_profilepicture"
+        android:layout_toEndOf="@+id/circularimageview_notification_profilepicture"
         android:text="@string/everywhere_value" />
 
     <TextView
