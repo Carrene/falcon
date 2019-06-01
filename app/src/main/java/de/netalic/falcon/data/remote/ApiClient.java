@@ -94,7 +94,7 @@ public class ApiClient {
 
     private static String getUrl() {
 
-        String url = BuildConfig.WEB_SERVICE_URL + ":" + "/apiv1/";
+        String url = "https://nightly-alpha.carrene.com/apiv1/";
         return url;
     }
 
