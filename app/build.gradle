@@ -67,12 +67,12 @@ android {
     productFlavors {
 
         local {
-            buildConfigField "String", "WEB_SERVICE_URL", "\"http://nightly.alpha.carrene.com\""
+            buildConfigField "String", "WEB_SERVICE_URL", "\"https://nightly-alpha.carrene.com\""
             buildConfigField "Integer", "WEB_SERVICE_VERSION", "1"
         }
         global {
 
-            buildConfigField "String", "WEB_SERVICE_URL", "\"http://nightly.alpha.carrene.com\""
+            buildConfigField "String", "WEB_SERVICE_URL", "\"https://nightly-alpha.carrene.com\""
             buildConfigField "Integer", "WEB_SERVICE_VERSION", "1"
         }
     }
