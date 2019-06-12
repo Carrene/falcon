@@ -1,28 +1,39 @@
 package de.netalic.falcon.data.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+
 import de.netalic.falcon.util.DigestUtil;
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.util.Converter;
 
-public class Authentication extends RealmObject {
+
+@Entity(tableName = "authentication")
+public class Authentication  {
 
     @PrimaryKey
-    @RealmField(name = "Id")
+    @ColumnInfo(name = "Id")
     private int mId = 1;
-    @RealmField(name = "AuthenticationType")
+
+    @ColumnInfo(name = "AuthenticationType")
     private int mAuthenticationType;
-    @RealmField(name = "AttemptNumber")
+
+    @ColumnInfo(name = "AttemptNumber")
     private int mAttemptNumber;
-    @RealmField(name = "MaxAttemptNumber")
+
+    @ColumnInfo(name = "MaxAttemptNumber")
     private int mMaxAttemptNumber = 5;
-    @RealmField(name = "Value")
+
+    @ColumnInfo(name = "Value")
     private String mCredential;
 
     public static final int PATTERN_TYPE = 0;
     public static final int PASSWORD_TYPE = 1;
 
+    @Ignore
     public Authentication() {
 
     }
@@ -32,34 +43,46 @@ public class Authentication extends RealmObject {
         this.mAuthenticationType = authenticationType;
     }
 
+
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        mId = id;
+    }
+
     public void setAuthenticationType(int authenticationType) {
 
-        this.mAuthenticationType = authenticationType;
-    }
-
-    public void setAttemptsNumber(int attemptsNumber) {
-
-        this.mAttemptNumber = attemptsNumber;
-    }
-
-    public int getAttemptsNumber() {
-
-        return this.mAttemptNumber;
+        mAuthenticationType = authenticationType;
     }
 
     public int getAuthenticationType() {
 
-        return this.mAuthenticationType;
+        return mAuthenticationType;
     }
 
-    public int getMaxAttemptsNumber() {
 
-        return this.mMaxAttemptNumber;
+    public int getAttemptNumber() {
+        return mAttemptNumber;
+    }
+
+    public void setAttemptNumber(int attemptNumber) {
+        this.mAttemptNumber = attemptNumber;
+    }
+
+
+    public int getMaxAttemptNumber() {
+        return mMaxAttemptNumber;
+    }
+
+    public void setMaxAttemptNumber(int mMaxAttemptNumber) {
+        this.mMaxAttemptNumber = mMaxAttemptNumber;
     }
 
     public boolean isLocked() {
 
-        if (this.mAttemptNumber >= this.mMaxAttemptNumber) {
+        if (this.mAttemptNumber >= mMaxAttemptNumber) {
             return true;
         }
         return false;
@@ -77,7 +100,7 @@ public class Authentication extends RealmObject {
 
     public int getRemainAttemptsNumber() {
 
-        return mMaxAttemptNumber - mAttemptNumber;
+        return mMaxAttemptNumber - this.mAttemptNumber;
     }
 
     public String getCredential() {

@@ -1,0 +1,19 @@
+package de.netalic.falcon.data.dao;
+
+
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
+
+import de.netalic.falcon.data.model.Authentication;
+
+@Dao
+public interface AuthenticationDao {
+
+
+    @Query("SELECT * FROM authentication WHERE Id = :id ")
+    Authentication findById(int id);
+
+    @Update
+    void updateAuthentication(Authentication authentication);
+}

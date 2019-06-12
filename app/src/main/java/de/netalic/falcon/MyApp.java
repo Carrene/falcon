@@ -1,9 +1,11 @@
 package de.netalic.falcon;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
 
 import com.squareup.leakcanary.LeakCanary;
 
+import de.AppDatabase;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRealmRepository;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
@@ -59,6 +61,10 @@ public class MyApp extends Application {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+
+        AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "miladtest").build();
+
 
         RepositoryLocator.getInstance().setRepository(new UserRepository(new UserRestRepository(), new UserRealmRepository()));
         RepositoryLocator.getInstance().setRepository(new WalletRepository(new WalletRestRepository(), null));
