@@ -40,28 +40,28 @@ public class UserRealmRepository implements IUserRepository {
     @Override
     public void update(User user, CallRepository<User> callRepository) {
 
-        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(user);
-        mRealm.commitTransaction();
-        mRealm.close();
-        callRepository.onDone(new Deal<>(user, null, null));
+//        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
+//        mRealm.beginTransaction();
+//        mRealm.copyToRealmOrUpdate(user);
+//        mRealm.commitTransaction();
+//        mRealm.close();
+//        callRepository.onDone(new Deal<>(user, null, null));
     }
 
     @Override
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
-        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
-        User user = mRealm.where(User.class).findFirst();
-        Deal deal;
-        if (user == null) {
-            deal = new Deal<>(null, null, null);
-        } else {
-            User returnUser = mRealm.copyFromRealm(user);
-            deal = new Deal<>(returnUser, null, null);
-        }
-        mRealm.close();
-        callRepository.onDone(deal);
+//        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
+//        User user = mRealm.where(User.class).findFirst();
+//        Deal deal;
+//        if (user == null) {
+//            deal = new Deal<>(null, null, null);
+//        } else {
+//            User returnUser = mRealm.copyFromRealm(user);
+//            deal = new Deal<>(returnUser, null, null);
+//        }
+//        mRealm.close();
+//        callRepository.onDone(deal);
     }
 
     @Override

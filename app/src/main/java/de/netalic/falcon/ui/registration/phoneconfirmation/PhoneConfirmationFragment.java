@@ -114,6 +114,11 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
                     TextInputLayout textInputLayout = mRoot.findViewById(R.id.textinputlayout_phoneconfirmation_receivecode);
                     textInputLayout.setError(getContext().getString(R.string.phoneconfirmation_Pleasefillbox));
+                    User user=new User();
+                    Intent intent = new Intent(getActivity(), RecoveryEmailActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra(ARGUMENT_USER, user);
+                    startActivity(intent);
 
                 } else {
                     mUser.setActivationCode(mEditTextReceiveCode.getText().toString());

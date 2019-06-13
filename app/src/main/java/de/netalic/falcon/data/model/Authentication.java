@@ -14,7 +14,7 @@ import nuesoft.helpdroid.util.Converter;
 @Entity(tableName = "authentication")
 public class Authentication  {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")
     private int mId = 1;
 

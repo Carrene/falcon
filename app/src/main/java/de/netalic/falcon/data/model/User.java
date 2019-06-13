@@ -1,5 +1,8 @@
 package de.netalic.falcon.data.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -13,50 +16,50 @@ import java.util.List;
 import de.netalic.falcon.MyApp;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
-import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.device.DeviceUtil;
 import nuesoft.helpdroid.util.Converter;
 
-public class User extends RealmObject implements Parcelable {
+@Entity(tableName = "user")
+public class User implements Parcelable {
 
     @PrimaryKey
     @SerializedName("id")
-    @RealmField(name = "Id")
+    @ColumnInfo(name = "Id")
     private int mId;
 
     @SerializedName("phone")
-    @RealmField(name = "Phone")
+    @ColumnInfo(name = "Phone")
     private String mPhone;
 
-    @RealmField(name = "Email")
+    @ColumnInfo(name = "Email")
     @SerializedName("email")
     private String mEmail;
 
 
-    @RealmField(name = "Balance")
+    @ColumnInfo(name = "Balance")
     private double mBalance;
 
-    @Ignore
+    @android.arch.persistence.room.Ignore
     @SerializedName("udid")
     private String mUdid;
 
     @SerializedName("deviceName")
     private String mDeviceName;
 
-    @Ignore
+    @android.arch.persistence.room.Ignore
     @SerializedName("wallets")
     private List<Wallet> mWallets;
 
-    @Ignore
+    @android.arch.persistence.room.Ignore
     @SerializedName("isActive")
     boolean mIsActive;
 
-    @RealmField(name = "Secret")
+    @ColumnInfo(name = "Secret")
     @SerializedName("secret")
     String mSecret;
 
-    @RealmField(name = "HmacSecret")
+    @ColumnInfo(name = "HmacSecret")
     @SerializedName("hmacSecret")
     String mHmacSecret;
 
@@ -66,17 +69,18 @@ public class User extends RealmObject implements Parcelable {
     @SerializedName("baseCurrencySymbol")
     private String mBaseCurrencySymbol;
 
-    @RealmField(name = "baseCurrencyCode")
+    @ColumnInfo(name = "baseCurrencyCode")
     @SerializedName("baseCurrencyCode")
     private String mBaseCurrencyCode;
 
-    @Ignore
+    @android.arch.persistence.room.Ignore
     String mActivationCode;
 
-
+    @android.arch.persistence.room.Ignore
     public User() {
 
     }
+
 
     public User(String phone) {
 
@@ -88,6 +92,14 @@ public class User extends RealmObject implements Parcelable {
         mPhone = phone;
         mUdid = udid;
         mActivationCode = activationCode;
+    }
+
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        this.mId = id;
     }
 
     public String getSecret() {
@@ -113,6 +125,11 @@ public class User extends RealmObject implements Parcelable {
     public String getPhone() {
 
         return mPhone;
+    }
+
+
+    public void setBaseCurrencyCode(String baseCurrencyCode) {
+        this.mBaseCurrencyCode = baseCurrencyCode;
     }
 
     public String getEmail() {
@@ -145,6 +162,10 @@ public class User extends RealmObject implements Parcelable {
     public String getDeviceName() {
 
         return this.mDeviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.mDeviceName = deviceName;
     }
 
     public String calculateDeviceName() {

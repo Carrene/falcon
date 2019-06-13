@@ -37,18 +37,18 @@ public class NavigationDrawerUtil {
 
         //TODO(Ehsan): Inject this object
         SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
-        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
-        String phone = (String) tokenBody.get("phone");
-        String email = (String) tokenBody.get("email");
+//        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+//        String phone = (String) tokenBody.get("phone");
+//        String email = (String) tokenBody.get("email");
 
-        if (email == null) {
-            email = EMAIL_NOT_SET;
-        }
+//        if (email == null) {
+//            email = EMAIL_NOT_SET;
+//        }
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(activity)
                 .withHeaderBackground(R.color.primary).withSelectionListEnabledForSingleProfile(false)
-                .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigationheader_profile))
+//                .addProfiles(new ProfileDrawerItem().withName(phone).withEmail(email).withIcon(R.drawable.navigationheader_profile))
                 .build();
 
         Drawer result = new DrawerBuilder()

@@ -62,13 +62,10 @@ public class MyApp extends Application {
                 .build()
         );
 
-        AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "miladtest").build();
-
 
         RepositoryLocator.getInstance().setRepository(new UserRepository(new UserRestRepository(), new UserRealmRepository()));
         RepositoryLocator.getInstance().setRepository(new WalletRepository(new WalletRestRepository(), null));
-        RepositoryLocator.getInstance().setRepository(new AuthenticationRepository(null, new AuthenticationRealmRepository()));
+        RepositoryLocator.getInstance().setRepository(new AuthenticationRepository(null, new AuthenticationRealmRepository(this)));
         RepositoryLocator.getInstance().setRepository(new RateRepository(new RateRestRepository(), null));
         RepositoryLocator.getInstance().setRepository(new ReceiptRepository(new ReceiptRestRepository(), new ReceiptRealmRepository()));
         RepositoryLocator.getInstance().setRepository(new TransactionRepository(new TransactionRestRepository(), null));

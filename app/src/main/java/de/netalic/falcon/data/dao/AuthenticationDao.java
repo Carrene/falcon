@@ -2,6 +2,7 @@ package de.netalic.falcon.data.dao;
 
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
@@ -16,4 +17,7 @@ public interface AuthenticationDao {
 
     @Update
     void updateAuthentication(Authentication authentication);
+
+    @Insert
+    void insertAuthentication(Authentication authentication);
 }

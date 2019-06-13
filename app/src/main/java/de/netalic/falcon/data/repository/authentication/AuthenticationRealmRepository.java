@@ -1,5 +1,8 @@
 package de.netalic.falcon.data.repository.authentication;
 
+import android.content.Context;
+import android.os.AsyncTask;
+
 import java.util.List;
 
 import de.AppDatabase;
@@ -9,20 +12,24 @@ import io.realm.Realm;
 
 public class AuthenticationRealmRepository implements IAuthenticationRepository {
 
-    private Realm mRealm;
     private AppDatabase appDatabase;
 
-    public AuthenticationRealmRepository() {
+    public AuthenticationRealmRepository(Context context) {
 
+        appDatabase=AppDatabase.getAppDatabase(context);
     }
 
     @Override
     public void update(Authentication authentication, CallRepository<Authentication> callRepository) {
 
 
-        appDatabase.authenticationDao().updateAuthentication(authentication);
+        AsyncTask.execute(() -> {
 
-        callRepository.onDone(new Deal<>(authentication,null,null));
+            appDatabase.authenticationDao().insertAuthentication(authentication);
+
+            callRepository.onDone(new Deal<>(authentication,null,null));
+        });
+
 //
 //
 //        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
@@ -42,6 +49,17 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
     }
 
     @Override
+    public void insert(Authentication authentication, CallRepository<Authentication> callRepository) {
+
+        AsyncTask.execute(() -> {
+
+            appDatabase.authenticationDao().insertAuthentication(authentication);
+
+            callRepository.onDone(new Deal<>(authentication,null,null));
+        });
+    }
+
+    @Override
     public void get(Integer identifier, CallRepository<Authentication> callRepository) {
 
         throw new UnsupportedOperationException();
@@ -57,17 +75,22 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
     public void get(CallRepository<Authentication> callRepository) {
 
 
-        Authentication authentication= appDatabase.authenticationDao().findById(1);
-        Deal deal;
-        if (authentication==null){
-            deal=new Deal(null,null,null);
+        AsyncTask.execute(() -> {
 
-        }
-        else {
+            Authentication authentication= appDatabase.authenticationDao().findById(1);
+            Deal deal;
+            if (authentication==null){
+                deal=new Deal<>(null,null,null);
 
-            deal=new Deal(authentication,null,null);
-        }
-        callRepository.onDone(deal);
+            }
+            else {
+
+                deal=new Deal<>(authentication,null,null);
+            }
+            callRepository.onDone(deal);
+
+        });
+
 //        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
 //        Authentication authentication1 = mRealm.where(Authentication.class).equalTo("mId", 1).findFirst();
 //        Deal deal;

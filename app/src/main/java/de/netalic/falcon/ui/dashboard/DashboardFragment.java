@@ -22,7 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.data.repository.authentication.AuthenticationRealmRepository;
+import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
+import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.ui.addwallet.AddWalletActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.exchange.ExchangeActivity;
@@ -67,6 +71,12 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         initListener();
+        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
+
+            Authentication authentication=deal.getModel();
+            SnackbarUtil.showSnackbar(mViewRoot,authentication.getCredential(),getContext());
+        });
+
     }
 
     public static DashboardFragment newInstance() {
