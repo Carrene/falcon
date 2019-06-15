@@ -1,7 +1,11 @@
 package de.netalic.falcon.data.repository.user;
 
+import android.content.Context;
+import android.os.AsyncTask;
+
 import java.util.List;
 
+import de.InsensitiveDatabase;
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.repository.base.Deal;
@@ -10,6 +14,12 @@ import io.realm.Realm;
 public class UserRealmRepository implements IUserRepository {
 
     private Realm mRealm;
+    private InsensitiveDatabase mInsensitiveDatabase;
+    private Context mContext;
+
+    public UserRealmRepository(Context context) {
+        mContext = context;
+    }
 
     @Override
     public void bind(User user, CallRepository<User> callRepository) {
@@ -33,12 +43,26 @@ public class UserRealmRepository implements IUserRepository {
     }
 
     @Override
+    public void insert(User user, CallRepository<User> callRepository) {
+
+
+    }
+
+    @Override
     public void updateCurrency(int userId, String baseCurrencyCode, CallRepository<User> callRepository) {
 
     }
 
     @Override
     public void update(User user, CallRepository<User> callRepository) {
+
+        AsyncTask.execute(() -> {
+
+            mInsensitiveDatabase=InsensitiveDatabase.getInsensitiveDatabse(mContext);
+            mInsensitiveDatabase.userDao().insert(user);
+            callRepository.onDone(new Deal<>(user,null,null));
+
+        });
 
 //        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
 //        mRealm.beginTransaction();
@@ -51,6 +75,23 @@ public class UserRealmRepository implements IUserRepository {
     @Override
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
+
+        AsyncTask.execute(() -> {
+            Deal deal;
+            mInsensitiveDatabase=InsensitiveDatabase.getInsensitiveDatabse(mContext);
+            User user = mInsensitiveDatabase.userDao().findById(identifier);
+            if (user == null) {
+                deal = new Deal<>(null, null, null);
+
+            } else {
+
+                deal = new Deal<>(user, null, null);
+
+
+            }
+            callRepository.onDone(deal);
+        });
+    }
 //        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
 //        User user = mRealm.where(User.class).findFirst();
 //        Deal deal;
@@ -62,7 +103,7 @@ public class UserRealmRepository implements IUserRepository {
 //        }
 //        mRealm.close();
 //        callRepository.onDone(deal);
-    }
+
 
     @Override
     public void getAll(CallRepository<List<User>> callRepository) {

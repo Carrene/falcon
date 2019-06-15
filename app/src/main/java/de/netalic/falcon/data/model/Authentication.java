@@ -33,14 +33,15 @@ public class Authentication  {
     public static final int PATTERN_TYPE = 0;
     public static final int PASSWORD_TYPE = 1;
 
-    @Ignore
+
     public Authentication() {
 
     }
 
+    @Ignore
     public Authentication(String credential, int authenticationType) {
-        this.mCredential = Converter.bytesToHexString(DigestUtil.digestSha512(credential));
-        this.mAuthenticationType = authenticationType;
+        mCredential = Converter.bytesToHexString(DigestUtil.digestSha512(credential));
+        mAuthenticationType = authenticationType;
     }
 
 
@@ -107,5 +108,7 @@ public class Authentication  {
         return mCredential;
     }
 
-
+    public void setCredential(String credential) {
+        mCredential = credential;
+    }
 }

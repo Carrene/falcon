@@ -8,15 +8,15 @@ import java.util.List;
 import de.AppDatabase;
 import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.base.Deal;
-import io.realm.Realm;
 
 public class AuthenticationRealmRepository implements IAuthenticationRepository {
 
-    private AppDatabase appDatabase;
+    private AppDatabase mAppDatabase;
+    private Context mContext;
 
     public AuthenticationRealmRepository(Context context) {
 
-        appDatabase=AppDatabase.getAppDatabase(context);
+        mContext=context;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
         AsyncTask.execute(() -> {
 
-            appDatabase.authenticationDao().insertAuthentication(authentication);
+            mAppDatabase.authenticationDao().updateAuthentication(authentication);
 
             callRepository.onDone(new Deal<>(authentication,null,null));
         });
@@ -53,7 +53,8 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
         AsyncTask.execute(() -> {
 
-            appDatabase.authenticationDao().insertAuthentication(authentication);
+            mAppDatabase =AppDatabase.getAppDatabase(mContext);
+            mAppDatabase.authenticationDao().insertAuthentication(authentication);
 
             callRepository.onDone(new Deal<>(authentication,null,null));
         });
@@ -77,7 +78,8 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
         AsyncTask.execute(() -> {
 
-            Authentication authentication= appDatabase.authenticationDao().findById(1);
+            mAppDatabase =AppDatabase.getAppDatabase(mContext);
+            Authentication authentication= mAppDatabase.authenticationDao().findById(1);
             Deal deal;
             if (authentication==null){
                 deal=new Deal<>(null,null,null);

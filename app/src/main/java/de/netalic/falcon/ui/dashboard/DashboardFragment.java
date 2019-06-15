@@ -20,13 +20,17 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Authentication;
+import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRealmRepository;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
+import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.ui.addwallet.AddWalletActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.exchange.ExchangeActivity;
@@ -36,6 +40,8 @@ import de.netalic.falcon.ui.send.SendActivity;
 import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
 import de.netalic.falcon.ui.withdraw.WithdrawActivity;
 import de.netalic.falcon.util.SnackbarUtil;
+import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
+import nuesoft.helpdroid.util.Parser;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -71,10 +77,25 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         initListener();
-        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
 
-            Authentication authentication=deal.getModel();
-            SnackbarUtil.showSnackbar(mViewRoot,authentication.getCredential(),getContext());
+        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor=new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+        Map<String,Object>tokenBody= Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+
+//        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
+//
+//            Authentication authentication=deal.getModel();
+//            SnackbarUtil.showSnackbar(mViewRoot,authentication.getCredential(),getContext());
+//        });
+
+        RepositoryLocator.getInstance().getRepository(UserRepository.class).get((Integer) tokenBody.get("id"), deal -> {
+
+            if (deal.getThrowable()==null){
+
+                    SnackbarUtil.showSnackbar(mViewRoot,deal.getModel().getPhone(),getContext());
+            } else {
+
+            }
+
         });
 
     }

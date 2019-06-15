@@ -27,6 +27,8 @@ public class SplashActivity extends AppCompatActivity {
 
         if (sharedPreferencesJwtPersistor.get() == null) {
             intent.set(new Intent(this, PhoneInputActivity.class));
+            startActivity(intent.get());
+            finish();
 
         } else {
             RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
@@ -34,13 +36,17 @@ public class SplashActivity extends AppCompatActivity {
 
                     intent.set(new Intent(this, AuthenticationDefinitionActivity.class));
 
+                    startActivity(intent.get());
+                    finish();
+
                 } else {
                     intent.set(new Intent(this, AuthenticationActivity.class));
+
+                    startActivity(intent.get());
+                    finish();
                 }
             });
         }
 
-        startActivity(intent.get());
-        finish();
     }
 }

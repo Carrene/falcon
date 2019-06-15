@@ -63,7 +63,7 @@ public class MyApp extends Application {
         );
 
 
-        RepositoryLocator.getInstance().setRepository(new UserRepository(new UserRestRepository(), new UserRealmRepository()));
+        RepositoryLocator.getInstance().setRepository(new UserRepository(new UserRestRepository(), new UserRealmRepository(this)));
         RepositoryLocator.getInstance().setRepository(new WalletRepository(new WalletRestRepository(), null));
         RepositoryLocator.getInstance().setRepository(new AuthenticationRepository(null, new AuthenticationRealmRepository(this)));
         RepositoryLocator.getInstance().setRepository(new RateRepository(new RateRestRepository(), null));

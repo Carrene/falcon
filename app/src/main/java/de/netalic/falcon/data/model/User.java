@@ -2,6 +2,7 @@ package de.netalic.falcon.data.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -15,7 +16,6 @@ import java.util.List;
 
 import de.netalic.falcon.MyApp;
 import io.realm.RealmObject;
-import io.realm.annotations.Ignore;
 import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.device.DeviceUtil;
 import nuesoft.helpdroid.util.Converter;
@@ -57,12 +57,13 @@ public class User implements Parcelable {
 
     @ColumnInfo(name = "Secret")
     @SerializedName("secret")
-    String mSecret;
+    private String mSecret;
 
     @ColumnInfo(name = "HmacSecret")
     @SerializedName("hmacSecret")
-    String mHmacSecret;
+    private String mHmacSecret;
 
+    @Ignore
     @SerializedName("isNewClient")
     boolean isNewClient;
 
@@ -76,17 +77,18 @@ public class User implements Parcelable {
     @android.arch.persistence.room.Ignore
     String mActivationCode;
 
-    @android.arch.persistence.room.Ignore
     public User() {
 
     }
 
 
+    @Ignore
     public User(String phone) {
 
         mPhone = phone;
     }
 
+    @Ignore
     public User(String phone, String udid, String activationCode) {
 
         mPhone = phone;
@@ -105,6 +107,14 @@ public class User implements Parcelable {
     public String getSecret() {
 
         return mSecret;
+    }
+
+    public void setSecret(String secret) {
+        mSecret = secret;
+    }
+
+    public void setHmacSecret(String hmacSecret) {
+        mHmacSecret = hmacSecret;
     }
 
     public String getHmacSecret() {
