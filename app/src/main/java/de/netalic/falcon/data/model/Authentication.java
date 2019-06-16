@@ -6,8 +6,6 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import de.netalic.falcon.util.DigestUtil;
-import io.realm.RealmObject;
-import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.util.Converter;
 
 

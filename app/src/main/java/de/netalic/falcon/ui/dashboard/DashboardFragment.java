@@ -18,17 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.commonsware.cwac.saferoom.SQLCipherUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Authentication;
-import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.model.Wallet;
-import de.netalic.falcon.data.repository.authentication.AuthenticationRealmRepository;
-import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.ui.addwallet.AddWalletActivity;
@@ -78,8 +76,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
         initUiComponents();
         initListener();
 
-        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor=new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
-        Map<String,Object>tokenBody= Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
+        SharedPreferencesJwtPersistor sharedPreferencesJwtPersistor = new SharedPreferencesJwtPersistor(MyApp.getInstance().getApplicationContext());
+        Map<String, Object> tokenBody = Parser.getTokenBody(sharedPreferencesJwtPersistor.get());
 
 //        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
 //
@@ -87,11 +85,13 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 //            SnackbarUtil.showSnackbar(mViewRoot,authentication.getCredential(),getContext());
 //        });
 
+        SQLCipherUtils.getDatabaseState(getContext(), "sensitive");
+        SQLCipherUtils.getDatabaseState(getContext(), "insensitive");
         RepositoryLocator.getInstance().getRepository(UserRepository.class).get((Integer) tokenBody.get("id"), deal -> {
 
-            if (deal.getThrowable()==null){
+            if (deal.getThrowable() == null) {
 
-                    SnackbarUtil.showSnackbar(mViewRoot,deal.getModel().getPhone(),getContext());
+                SnackbarUtil.showSnackbar(mViewRoot, deal.getModel().getPhone(), getContext());
             } else {
 
             }

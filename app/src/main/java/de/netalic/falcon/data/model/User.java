@@ -15,8 +15,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import de.netalic.falcon.MyApp;
-import io.realm.RealmObject;
-import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.device.DeviceUtil;
 import nuesoft.helpdroid.util.Converter;
 

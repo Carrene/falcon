@@ -1,11 +1,9 @@
 package de.netalic.falcon;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
 
 import com.squareup.leakcanary.LeakCanary;
 
-import de.AppDatabase;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRealmRepository;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
@@ -23,15 +21,11 @@ import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.data.repository.user.UserRestRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRestRepository;
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MyApp extends Application {
 
     private static MyApp sInstance;
-    public static RealmConfiguration.Builder sInsensitiveRealmConfiguration;
-    public static RealmConfiguration.Builder sSensitiveRealmConfiguration;
 
     public static MyApp getInstance() {
 
@@ -49,12 +43,6 @@ public class MyApp extends Application {
         }
         LeakCanary.install(this);
         sInstance = this;
-        Realm.init(this);
-
-        sInsensitiveRealmConfiguration = new RealmConfiguration.Builder()
-                .schemaVersion(1);
-        sSensitiveRealmConfiguration = new RealmConfiguration.Builder()
-                .schemaVersion(1);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/roboto_medium.ttf")
