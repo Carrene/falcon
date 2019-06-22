@@ -56,9 +56,10 @@ public class UserRealmRepository implements IUserRepository {
 
         AsyncTask.execute(() -> {
 
-            mSensitiveDatabase =SensitiveDatabase.getSensitiveDatabase(mContext);
+            mSensitiveDatabase = SensitiveDatabase.getSensitiveDatabase(mContext);
             mSensitiveDatabase.userDao().insert(user);
-            callRepository.onDone(new Deal<>(user,null,null));
+            mSensitiveDatabase.close();
+            callRepository.onDone(new Deal<>(user, null, null));
 
         });
     }
@@ -66,14 +67,11 @@ public class UserRealmRepository implements IUserRepository {
     @Override
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
-
-
-
-
         AsyncTask.execute(() -> {
             Deal deal;
-            mSensitiveDatabase =SensitiveDatabase.getSensitiveDatabase(mContext);
+            mSensitiveDatabase = SensitiveDatabase.getSensitiveDatabase(mContext);
             User user = mSensitiveDatabase.userDao().findById(identifier);
+            mSensitiveDatabase.close();
             if (user == null) {
                 deal = new Deal<>(null, null, null);
 
@@ -83,6 +81,7 @@ public class UserRealmRepository implements IUserRepository {
 
             }
             callRepository.onDone(deal);
+
         });
     }
 

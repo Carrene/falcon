@@ -19,14 +19,20 @@ public abstract class SensitiveDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
 
+    public void close() {
+        super.close();
+
+        INSTANCE = null;
+    }
+
     public static SensitiveDatabase getSensitiveDatabase(Context context) {
 
         if (INSTANCE == null) {
 
 
-            Editable editable = new SpannableStringBuilder("12345");
+            Editable editable = new SpannableStringBuilder("1234");
             SafeHelperFactory factory = SafeHelperFactory.fromUser(editable);
-            INSTANCE = Room.databaseBuilder(context, SensitiveDatabase.class, "sensitive")
+            INSTANCE = Room.databaseBuilder(context, SensitiveDatabase.class, "sensitive.db")
                     .openHelperFactory(factory)
                     .build();
 

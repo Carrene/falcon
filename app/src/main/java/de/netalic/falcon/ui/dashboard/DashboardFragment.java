@@ -85,8 +85,8 @@ public class DashboardFragment extends Fragment implements DashboardContract.Vie
 //            SnackbarUtil.showSnackbar(mViewRoot,authentication.getCredential(),getContext());
 //        });
 
-        SQLCipherUtils.getDatabaseState(getContext(), "sensitive");
-        SQLCipherUtils.getDatabaseState(getContext(), "insensitive");
+        SQLCipherUtils.getDatabaseState(getContext(), "sensitive.db");
+        SQLCipherUtils.getDatabaseState(getContext(), "insensitive.db");
         RepositoryLocator.getInstance().getRepository(UserRepository.class).get((Integer) tokenBody.get("id"), deal -> {
 
             if (deal.getThrowable() == null) {

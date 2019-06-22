@@ -38,18 +38,19 @@ public class User implements Parcelable {
     @ColumnInfo(name = "Balance")
     private double mBalance;
 
-    @android.arch.persistence.room.Ignore
+    @Ignore
     @SerializedName("udid")
     private String mUdid;
 
+    @Ignore
     @SerializedName("deviceName")
     private String mDeviceName;
 
-    @android.arch.persistence.room.Ignore
+    @Ignore
     @SerializedName("wallets")
     private List<Wallet> mWallets;
 
-    @android.arch.persistence.room.Ignore
+    @Ignore
     @SerializedName("isActive")
     boolean mIsActive;
 
@@ -65,6 +66,7 @@ public class User implements Parcelable {
     @SerializedName("isNewClient")
     boolean isNewClient;
 
+    @Ignore
     @SerializedName("baseCurrencySymbol")
     private String mBaseCurrencySymbol;
 
@@ -72,7 +74,7 @@ public class User implements Parcelable {
     @SerializedName("baseCurrencyCode")
     private String mBaseCurrencyCode;
 
-    @android.arch.persistence.room.Ignore
+    @Ignore
     String mActivationCode;
 
     public User() {

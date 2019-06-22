@@ -37,6 +37,7 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
             mInsensitiveDatabase =InsensitiveDatabase.getInsensitiveDatabase(mContext);
             mInsensitiveDatabase.authenticationDao().insertAuthentication(authentication);
+            mInsensitiveDatabase.close();
 
             callRepository.onDone(new Deal<>(authentication,null,null));
         });
@@ -62,6 +63,7 @@ public class AuthenticationRealmRepository implements IAuthenticationRepository 
 
             mInsensitiveDatabase =InsensitiveDatabase.getInsensitiveDatabase(mContext);
             Authentication authentication= mInsensitiveDatabase.authenticationDao().findById(1);
+            mInsensitiveDatabase.close();
             Deal deal;
             if (authentication==null){
                 deal=new Deal<>(null,null,null);
