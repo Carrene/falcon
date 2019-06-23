@@ -1,15 +1,23 @@
 package de.netalic.falcon.data.repository.user;
 
+import android.content.Context;
+import android.os.AsyncTask;
+
 import java.util.List;
 
-import de.netalic.falcon.MyApp;
+import de.netalic.falcon.SensitiveDatabase;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.repository.base.Deal;
-import io.realm.Realm;
+
 
 public class UserRealmRepository implements IUserRepository {
 
-    private Realm mRealm;
+    private SensitiveDatabase mSensitiveDatabase;
+    private Context mContext;
+
+    public UserRealmRepository(Context context) {
+        mContext = context;
+    }
 
     @Override
     public void bind(User user, CallRepository<User> callRepository) {
@@ -33,6 +41,12 @@ public class UserRealmRepository implements IUserRepository {
     }
 
     @Override
+    public void insert(User user, CallRepository<User> callRepository) {
+
+
+    }
+
+    @Override
     public void updateCurrency(int userId, String baseCurrencyCode, CallRepository<User> callRepository) {
 
     }
@@ -40,28 +54,35 @@ public class UserRealmRepository implements IUserRepository {
     @Override
     public void update(User user, CallRepository<User> callRepository) {
 
-        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(user);
-        mRealm.commitTransaction();
-        mRealm.close();
-        callRepository.onDone(new Deal<>(user, null, null));
+        AsyncTask.execute(() -> {
+
+            mSensitiveDatabase = SensitiveDatabase.getSensitiveDatabase(mContext);
+            mSensitiveDatabase.userDao().insert(user);
+            mSensitiveDatabase.close();
+            callRepository.onDone(new Deal<>(user, null, null));
+
+        });
     }
 
     @Override
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
-        mRealm = Realm.getInstance(MyApp.sInsensitiveRealmConfiguration.build());
-        User user = mRealm.where(User.class).findFirst();
-        Deal deal;
-        if (user == null) {
-            deal = new Deal<>(null, null, null);
-        } else {
-            User returnUser = mRealm.copyFromRealm(user);
-            deal = new Deal<>(returnUser, null, null);
-        }
-        mRealm.close();
-        callRepository.onDone(deal);
+        AsyncTask.execute(() -> {
+            Deal deal;
+            mSensitiveDatabase = SensitiveDatabase.getSensitiveDatabase(mContext);
+            User user = mSensitiveDatabase.userDao().findById(identifier);
+            mSensitiveDatabase.close();
+            if (user == null) {
+                deal = new Deal<>(null, null, null);
+
+            } else {
+
+                deal = new Deal<>(user, null, null);
+
+            }
+            callRepository.onDone(deal);
+
+        });
     }
 
     @Override

@@ -28,7 +28,7 @@ public class AuthenticationDefinitionPresenter implements AuthenticationDefiniti
     public void saveCredential(String credentialValue, int type) {
 
         Authentication authentication = new Authentication(credentialValue, type);
-        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).update(authentication, deal -> {
+        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).insert(authentication, deal -> {
 
             if (deal.getThrowable() != null) {
                 throw new RuntimeException("Authentication has not been saved!");

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Currency;
 import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.ui.addwallet.AddWalletFragment;
 import de.netalic.falcon.ui.base.BaseActivity;

@@ -75,6 +75,11 @@ public class UserRestRepository implements IUserRepository {
     }
 
     @Override
+    public void insert(User user, CallRepository<User> callRepository) {
+
+    }
+
+    @Override
     public void updateCurrency(int userId, String baseCurrencyCode, CallRepository<User> callRepository) {
 
         ApiClient.getService().changeBaseCurrency(userId,baseCurrencyCode).enqueue(new Callback<User>() {

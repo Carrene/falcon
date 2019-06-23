@@ -21,15 +21,11 @@ import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.data.repository.user.UserRestRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
 import de.netalic.falcon.data.repository.wallet.WalletRestRepository;
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MyApp extends Application {
 
     private static MyApp sInstance;
-    public static RealmConfiguration.Builder sInsensitiveRealmConfiguration;
-    public static RealmConfiguration.Builder sSensitiveRealmConfiguration;
 
     public static MyApp getInstance() {
 
@@ -47,12 +43,6 @@ public class MyApp extends Application {
         }
         LeakCanary.install(this);
         sInstance = this;
-        Realm.init(this);
-
-        sInsensitiveRealmConfiguration = new RealmConfiguration.Builder()
-                .schemaVersion(1);
-        sSensitiveRealmConfiguration = new RealmConfiguration.Builder()
-                .schemaVersion(1);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/roboto_medium.ttf")
@@ -60,9 +50,10 @@ public class MyApp extends Application {
                 .build()
         );
 
-        RepositoryLocator.getInstance().setRepository(new UserRepository(new UserRestRepository(), new UserRealmRepository()));
+
+        RepositoryLocator.getInstance().setRepository(new UserRepository(new UserRestRepository(), new UserRealmRepository(this)));
         RepositoryLocator.getInstance().setRepository(new WalletRepository(new WalletRestRepository(), null));
-        RepositoryLocator.getInstance().setRepository(new AuthenticationRepository(null, new AuthenticationRealmRepository()));
+        RepositoryLocator.getInstance().setRepository(new AuthenticationRepository(null, new AuthenticationRealmRepository(this)));
         RepositoryLocator.getInstance().setRepository(new RateRepository(new RateRestRepository(), null));
         RepositoryLocator.getInstance().setRepository(new ReceiptRepository(new ReceiptRestRepository(), new ReceiptRealmRepository()));
         RepositoryLocator.getInstance().setRepository(new TransactionRepository(new TransactionRestRepository(), null));

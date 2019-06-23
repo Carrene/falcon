@@ -47,6 +47,12 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
+    public void insert(User user, CallRepository<User> callRepository) {
+
+        mUserRealmRepository.insert(user,callRepository);
+    }
+
+    @Override
     public void updateCurrency(int userId,String baseCurrencyCode, CallRepository<User> callRepository) {
         mUserRestRepository.updateCurrency(userId,baseCurrencyCode,callRepository);
     }

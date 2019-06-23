@@ -32,6 +32,12 @@ public class AuthenticationRepository implements IAuthenticationRepository {
     }
 
     @Override
+    public void insert(Authentication authentication, CallRepository<Authentication> callRepository) {
+
+        mAuthenticationRealmRepository.insert(authentication,callRepository);
+    }
+
+    @Override
     public void get(Integer identifier, CallRepository<Authentication> callRepository) {
 
         mAuthenticationRealmRepository.get(identifier, callRepository);
