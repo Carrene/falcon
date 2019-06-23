@@ -10,12 +10,12 @@ import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.repository.base.Deal;
 
 
-public class UserRealmRepository implements IUserRepository {
+public class UserRoomRepository implements IUserRepository {
 
     private SensitiveDatabase mSensitiveDatabase;
     private Context mContext;
 
-    public UserRealmRepository(Context context) {
+    public UserRoomRepository(Context context) {
         mContext = context;
     }
 

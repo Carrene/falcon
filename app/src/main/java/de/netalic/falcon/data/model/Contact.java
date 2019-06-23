@@ -1,10 +1,9 @@
 package de.netalic.falcon.data.model;
 
-import io.realm.annotations.PrimaryKey;
 
 public class Contact {
 
-    @PrimaryKey
+
     private String mPhone;
 
     private String mName;
