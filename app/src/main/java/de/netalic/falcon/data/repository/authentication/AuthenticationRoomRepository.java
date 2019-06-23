@@ -9,12 +9,12 @@ import de.netalic.falcon.InsensitiveDatabase;
 import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.base.Deal;
 
-public class AuthenticationRealmRepository implements IAuthenticationRepository {
+public class AuthenticationRoomRepository implements IAuthenticationRepository {
 
     private InsensitiveDatabase mInsensitiveDatabase;
     private Context mContext;
 
-    public AuthenticationRealmRepository(Context context) {
+    public AuthenticationRoomRepository(Context context) {
 
         mContext=context;
     }
