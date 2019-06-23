@@ -339,6 +339,7 @@
     <string name="qrcodeaddresses_wallet">wallet</string>
 
     <string name="authentication_hintpassword">Enter password</string>
+    <string name="authentication_chooseyourmethod">Please choose authentication method</string>
     <string name="authentication_toolbar">Authentication</string>
 
     <string name="authenticationpassword_incorrect">Password is incorrect</string>

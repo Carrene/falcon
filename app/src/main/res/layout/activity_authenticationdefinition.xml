@@ -13,33 +13,56 @@
         android:layout_height="wrap_content"
         android:background="@color/white">
 
+
+        <ImageView
+            android:id="@+id/imageview_authenticationdefinition_pageindicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/navigationone_authenticationdefifnition" />
+
+        <TextView
+            android:id="@+id/textview_authenticationdefinition_choosemethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageview_authenticationdefinition_pageindicator"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/authentication_chooseyourmethod"
+            style="@style/TextAppearanceHead" />
+
         <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
             android:id="@+id/segmented_authenticationdefinition_segmentedgroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@+id/textview_authenticationdefinition_choosemethod"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/margintop_authenticationdefinition_segmentedgroup"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
+            android:weightSum="2"
             segmentedgroup:sc_border_width="@dimen/borderwidth_authenticationdefinition_segmentedgroup"
             segmentedgroup:sc_corner_radius="@dimen/cornerradius_authenticationdefinition_segmentedgroup"
-            segmentedgroup:sc_tint_color="@color/colorSecondaryDark">
-
+            segmentedgroup:sc_tint_color="@color/colorSecondary"
+            segmentedgroup:sc_checked_text_color="@color/colorText">
 
             <RadioButton
                 android:id="@+id/radiobutton_authenticationdefinition_pattern"
                 style="@style/RadioButtonTheme"
-                android:layout_width="@dimen/width_authenticationdefinition_radiobutton"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/height_authenticationdefinition_radiobutton"
+                android:layout_weight="1"
                 android:checked="true"
                 android:text="@string/authenticationdefinition_pattern" />
 
             <RadioButton
                 android:id="@+id/radiobutton_authenticationdefinition_password"
                 style="@style/RadioButtonTheme"
-                android:layout_width="@dimen/width_authenticationdefinition_radiobutton"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/height_authenticationdefinition_radiobutton"
-                android:text="@string/athenticationdefinition_password" />
+                android:layout_weight="1"
+                android:text="@string/athenticationdefinition_password"/>
         </info.hoang8f.android.segmented.SegmentedGroup>
 
     </RelativeLayout>

@@ -33,7 +33,7 @@ public class AuthenticationDefinitionPresenter implements AuthenticationDefiniti
             if (deal.getThrowable() != null) {
                 throw new RuntimeException("Authentication has not been saved!");
             }
-            mAuthenticationDefinitionView.navigateToDashboard();
+            mAuthenticationDefinitionView.navigateToPhoneInput();
         });
     }
 }

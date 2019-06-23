@@ -68,20 +68,18 @@ public class UserRoomRepository implements IUserRepository {
     public void get(Integer identifier, CallRepository<User> callRepository) {
 
         AsyncTask.execute(() -> {
-            Deal deal;
+
             mSensitiveDatabase = SensitiveDatabase.getSensitiveDatabase(mContext);
             User user = mSensitiveDatabase.userDao().findById(identifier);
             mSensitiveDatabase.close();
             if (user == null) {
-                deal = new Deal<>(null, null, null);
+                callRepository.onDone(new Deal<>(null,null,null));
 
             } else {
 
-                deal = new Deal<>(user, null, null);
+                callRepository.onDone(new Deal<>(user,null,null));
 
             }
-            callRepository.onDone(deal);
-
         });
     }
 

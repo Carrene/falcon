@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#1b1b1b</color>
     <color name="colorPrimaryLight">#6d6d6d</color>
 
-    <color name="colorSecondary">#FBC02D</color>
+    <color name="colorSecondary">#F5B32E</color>
     <color name="colorSecondaryDark">#FF9800</color>
     <color name="colorSecondaryDarkTransparent10">#1AFF9800</color>
 
@@ -13,6 +13,7 @@
     <color name="colorBlack16">#29000000</color>
     <color name="colorPrimaryDark5">#0D1b1b1b</color>
 
+    <color name="colorText">#00141E</color>
     <color name="colorRed">#B92D00</color>
     <color name="eucalyptus">#28A745</color>
     <color name="persianGreen">#009688</color>

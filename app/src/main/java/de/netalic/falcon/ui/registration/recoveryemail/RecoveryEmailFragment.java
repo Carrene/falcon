@@ -19,6 +19,7 @@ import android.widget.TextView;
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
@@ -113,9 +114,9 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     }
 
     @Override
-    public void navigateToAuthenticationDefinitionActivity() {
+    public void navigateToDashboard() {
 
-        Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+        Intent intent = new Intent(getActivity(), DashboardActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
@@ -157,7 +158,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         mTextViewSkip.setOnClickListener(v -> {
 
-            navigateToAuthenticationDefinitionActivity();
+            navigateToDashboard();
         });
 
         mEditTextRecoveryEmail.setOnKeyListener((v, keyCode, event) -> {

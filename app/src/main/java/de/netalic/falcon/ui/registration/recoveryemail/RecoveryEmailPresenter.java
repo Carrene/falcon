@@ -44,7 +44,7 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
 
                     case 200: {
 
-                        mRecoveryEmailView.navigateToAuthenticationDefinitionActivity();
+                        mRecoveryEmailView.navigateToDashboard();
                         break;
                     }
                     case 712: {
