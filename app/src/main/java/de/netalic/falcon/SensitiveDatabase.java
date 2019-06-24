@@ -1,11 +1,12 @@
 package de.netalic.falcon;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
+
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
 import com.commonsware.cwac.saferoom.SafeHelperFactory;
 

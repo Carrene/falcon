@@ -21,7 +21,7 @@
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/textsize_withdrawamount_amount" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
 
             android:id="@+id/textinputlayout_withdrawamount_walletamount"
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 android:inputType="numberDecimal"
                 android:textColor="@color/colorPrimaryLight" />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
             android:layout_marginTop="@dimen/margintop_withdrawamount_imageview"
             android:src="@drawable/withdrawamount_transfer" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
 
             android:id="@+id/textinputlayout_withdrawamount_basecurrency"
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:inputType="numberDecimal"
                 android:textColor="@color/colorPrimaryLight" />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                 android:layout_height="@dimen/height_withdrawamount_spinner"
                 android:backgroundTint="@color/colorBlack" />
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="@dimen/width_withdrawamount_textinputlayoutothercurrency"
                 android:layout_height="@dimen/height_withdrawamount_textinputlaypitothercurrency"
                 android:layout_toRightOf="@+id/spinner_withdrawamount_currency"
@@ -100,7 +100,7 @@
                     android:layout_height="@dimen/height_withdrawamount_edittextothercurrency"
                     android:inputType="numberDecimal"
                     android:textColor="@color/colorPrimaryLight" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
 
         <RelativeLayout

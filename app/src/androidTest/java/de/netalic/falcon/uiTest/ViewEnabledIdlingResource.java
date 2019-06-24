@@ -1,7 +1,8 @@
 package de.netalic.falcon.uiTest;
 
-import android.support.test.espresso.IdlingResource;
 import android.view.View;
+
+import androidx.test.espresso.IdlingResource;
 
 public class ViewEnabledIdlingResource implements IdlingResource {
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#424242</color>
-    <color name="colorPrimaryDark">#1b1b1b</color>
-    <color name="colorPrimaryLight">#6d6d6d</color>
+    <color name="colorPrimary">#F5F5F5</color>
+    <color name="colorPrimaryDark">#C0C1C2</color>
+    <color name="colorPrimaryLight">#FFFFFF</color>
 
     <color name="colorSecondary">#F5B32E</color>
-    <color name="colorSecondaryDark">#FF9800</color>
+    <color name="colorSecondaryDark">#A87612</color>
     <color name="colorSecondaryDarkTransparent10">#1AFF9800</color>
 
     <color name="colorBlack">#000000</color>
@@ -22,4 +22,5 @@
     <color name="punch">#DC3545</color>
     <color name="lineColor">#E4E4E4</color>
     <color name="colorLightPrimary">#9E9E9E</color>
+
 </resources>

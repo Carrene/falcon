@@ -2,8 +2,9 @@ package de.netalic.falcon.ui.registration.authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.widget.FrameLayout;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;

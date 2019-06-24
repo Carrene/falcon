@@ -2,9 +2,10 @@ package de.netalic.falcon.ui.registration.phoneconfirmation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.NavUtils;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;

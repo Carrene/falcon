@@ -23,6 +23,23 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextAppearanceHelper" parent="TextAppearanceBase">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorRed</item>
+    </style>
+
+    <style name="TextInputLayoutOutlineBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/colorSecondary</item>
+        <item name="android:textColorHint">@color/colorText</item>
+        <item name="hintTextAppearance">@style/TextAppearanceBase</item>
+        <item name="helperTextTextAppearance">@style/TextAppearanceHelper</item>
+        <item name="counterTextAppearance">@style/TextAppearanceBase</item>
+    </style>
+
+
+    <style name="HintTextStyle" parent="TextAppearance.Design.Hint">
+        <item name="android:background">@color/mtrl_textinput_default_box_stroke_color</item>
+    </style>
 
     <style name="RadioButtonTheme">
         <item name="android:textColor">@drawable/authenticationpasswordtab_buttontextcolor</item>

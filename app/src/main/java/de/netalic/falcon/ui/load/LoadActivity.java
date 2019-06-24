@@ -2,7 +2,8 @@ package de.netalic.falcon.ui.load;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Rate;

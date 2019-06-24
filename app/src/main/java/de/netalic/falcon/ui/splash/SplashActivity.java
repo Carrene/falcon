@@ -2,16 +2,15 @@ package de.netalic.falcon.ui.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 import de.netalic.falcon.MyApp;
-import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.registration.authentication.AuthenticationActivity;
 import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
 import de.netalic.falcon.ui.registration.phoneinput.PhoneInputActivity;

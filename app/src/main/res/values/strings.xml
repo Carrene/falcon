@@ -40,13 +40,14 @@
     <string name="authenticationdefinition_tryforsecondtime">Try for second time</string>
     <string name="authenticationdefinition_setsuccessful">Set successful</string>
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
-    <string name="authenticationdefinition_hintpassword">Enter password</string>
+    <string name="authenticationdefinition_hintpassword">Password</string>
     <string name="authenticationdefinition_hintconfirmpassword">Confirm password</string>
     <string name="authenticationdefinition_toolbartitle">Login method</string>
     <string name="authenticationdefinition_minimumlength">At least 8 characters</string>
     <string name="authenticationdefinition_digit">At least one digit</string>
     <string name="authenticationdefinition_capitalletter">At least on capital letter</string>
     <string name="authenticationdefinition_specialchar">At least one of (@  #  $  %  +  =  *  ?)</string>
+    <string name="authenticationdefinition_helpertext">8-20 characters, at least one capital letter, at least one number, and no spaces</string>
 
     <string name="recoveryemail_skip">SKIP</string>
     <string name="recoveryemail_thisemaildoesnotexist">Insert correct email</string>

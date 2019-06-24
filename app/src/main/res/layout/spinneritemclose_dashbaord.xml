@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/layoutheight_charge_spinner">
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageview_charge_spinner"
         android:layout_width="@dimen/layoutwidth_charge_imagview"
         android:layout_height="@dimen/layoutheight_charge_imagview"

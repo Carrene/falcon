@@ -2,14 +2,6 @@ package de.netalic.falcon.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.LinearSnapHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,18 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.commonsware.cwac.saferoom.SQLCipherUtils;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import de.netalic.falcon.MyApp;
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.model.Wallet;
-import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.user.UserRepository;
 import de.netalic.falcon.ui.addwallet.AddWalletActivity;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.exchange.ExchangeActivity;
@@ -39,8 +33,6 @@ import de.netalic.falcon.ui.send.SendActivity;
 import de.netalic.falcon.ui.transaction.transactionhistory.TransactionHistoryActivity;
 import de.netalic.falcon.ui.withdraw.WithdrawActivity;
 import de.netalic.falcon.util.SnackbarUtil;
-import nuesoft.helpdroid.network.SharedPreferencesJwtPersistor;
-import nuesoft.helpdroid.util.Parser;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 import static com.google.common.base.Preconditions.checkNotNull;

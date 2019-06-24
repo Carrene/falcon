@@ -5,7 +5,7 @@
     android:background="@color/white">
 
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout_settingrecoveryemail_enterrecoveryemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,6 +23,6 @@
             android:inputType="textEmailAddress"
             android:maxLength="30" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>

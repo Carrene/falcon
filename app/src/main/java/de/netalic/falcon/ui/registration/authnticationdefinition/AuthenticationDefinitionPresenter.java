@@ -1,6 +1,6 @@
 package de.netalic.falcon.ui.registration.authnticationdefinition;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.data.repository.authentication.AuthenticationRepository;
