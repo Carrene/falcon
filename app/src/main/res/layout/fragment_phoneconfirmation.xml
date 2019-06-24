@@ -15,7 +15,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textsize_phoneconfirmation_userphone" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:singleLine="true"
             android:textAlignment="center" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textview_phoneconfirmation_timer"

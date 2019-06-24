@@ -4,11 +4,12 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.preference.ListPreference;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
-import android.support.v7.preference.PreferenceManager;
 import android.widget.DatePicker;
+
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.transaction.customdatepicker.CustomDatePickerActivity;
@@ -39,8 +40,8 @@ public class TransactionHistoryFiltersPreferenceFragment extends PreferenceFragm
 
 
         Preference pref = findPreference(key);
-        if (pref instanceof android.support.v7.preference.ListPreference) {
-            mListPreference = (android.support.v7.preference.ListPreference) pref;
+        if (pref instanceof androidx.preference.ListPreference) {
+            mListPreference = (androidx.preference.ListPreference) pref;
             mListPreference.setSummary(mListPreference.getValue());
 
             PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("custom", mListPreference.getValue()).apply();

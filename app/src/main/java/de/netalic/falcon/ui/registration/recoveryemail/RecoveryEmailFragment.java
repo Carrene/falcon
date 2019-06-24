@@ -2,10 +2,6 @@ package de.netalic.falcon.ui.registration.recoveryemail;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,10 +12,16 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.textfield.TextInputLayout;
+
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
+import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 import nuesoft.helpdroid.validation.Validator;
@@ -113,9 +115,9 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     }
 
     @Override
-    public void navigateToAuthenticationDefinitionActivity() {
+    public void navigateToDashboard() {
 
-        Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+        Intent intent = new Intent(getActivity(), DashboardActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
@@ -157,7 +159,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         mTextViewSkip.setOnClickListener(v -> {
 
-            navigateToAuthenticationDefinitionActivity();
+            navigateToDashboard();
         });
 
         mEditTextRecoveryEmail.setOnKeyListener((v, keyCode, event) -> {

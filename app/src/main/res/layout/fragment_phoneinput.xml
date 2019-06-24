@@ -4,7 +4,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout_phoneinput_countrypicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,9 +23,9 @@
             android:focusable="false"
             android:hint="@string/registration_defultcountry"
             android:inputType="number" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout_phoneinput_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:text="@string/registration_codehint"
             android:textAlignment="textStart"
             android:textColor="@color/colorBlack" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/edittext_phoneinput_phonenumber"

@@ -1,45 +1,35 @@
 package de.netalic.falcon.ui.registration.authnticationdefinition;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.github.florent37.viewtooltip.ViewTooltip;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import de.netalic.falcon.R;
+import de.netalic.falcon.util.CustomPasswordValidator;
 
 
 public class AuthenticationDefinitionPasswordFragment extends Fragment {
 
-    private EditText mEditTextPassCode;
-    private EditText mEditTextConfirmCode;
+    private TextInputEditText mEditTextPassCode;
+    private TextInputEditText mEditTextConfirmCode;
     private TextInputLayout mTextInputLayoutConfirmCode;
     private View mRoot;
-    private TextView mTextViewMinimumLength;
-    private TextView mTextViewCapitalLetter;
-    private TextView mTextViewDigit;
-    private TextView mTextViewSpecialCharacter;
-    private View mPasswordCheckerView;
     private TextInputLayout mTextInputLayoutPassword;
-    private ImageView mImageViewLength;
-    private ImageView mImageViewCapital;
-    private ImageView mImageViewDigit;
-    private ImageView mImageViewSpecial;
-    private ViewTooltip mViewTooltip;
-    private ViewTooltip.TooltipView mTooltipView;
-
+    private Spannable mSpannable;
     private SaveCredentialCallback mNavigateToDashboardCallback;
 
     public interface SaveCredentialCallback {
@@ -51,8 +41,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRoot = inflater.inflate(R.layout.fragment_authenticationdefinitionpassword, container, false);
-        mPasswordCheckerView = inflater.inflate(R.layout.passwordchecker_authenticationdefinitionpassword, null);
-
         return mRoot;
     }
 
@@ -62,7 +50,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initUiComponents();
         initListener();
-
     }
 
     @Override
@@ -89,31 +76,16 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         mEditTextConfirmCode = mRoot.findViewById(R.id.edittext_authenticationdefinition_confirmcode);
         mTextInputLayoutConfirmCode = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_confirmpasscode);
         mTextInputLayoutPassword = mRoot.findViewById(R.id.textinputlayout_authenticationdefinition_enterpasscode);
-        mTextViewMinimumLength = mPasswordCheckerView.findViewById(R.id.textView_authenticationdefinition_length);
-        mTextViewCapitalLetter = mPasswordCheckerView.findViewById(R.id.textView_authenticationdefinition_capital);
-        mTextViewDigit = mPasswordCheckerView.findViewById(R.id.textView_authenticationdefinition_digit);
-        mTextViewSpecialCharacter = mPasswordCheckerView.findViewById(R.id.textView_authenticationdefinition_special);
-        mImageViewCapital = mPasswordCheckerView.findViewById(R.id.imageview_authenticationdefinitionpassword_capital);
-        mImageViewDigit = mPasswordCheckerView.findViewById(R.id.imageview_authenticationdefinitionpassword_digit);
-        mImageViewLength = mPasswordCheckerView.findViewById(R.id.imageview_authenticationdefinitionpassword_length);
-        mImageViewSpecial = mPasswordCheckerView.findViewById(R.id.imageview_authenticationdefinitionpassword_special);
+        mTextInputLayoutConfirmCode.setAlpha(0.2f);
+        mEditTextConfirmCode.setEnabled(false);
+        mEditTextPassCode.setTransformationMethod(new PasswordTransformationMethod());
+        mEditTextConfirmCode.setTransformationMethod(new PasswordTransformationMethod());
 
-        mViewTooltip = ViewTooltip
-                .on(this, mTextInputLayoutPassword)
-                .autoHide(false, 10000)
-                .corner(20)
-                .position(ViewTooltip.Position.BOTTOM)
-                .customView(mPasswordCheckerView)
-                .color(ContextCompat.getColor(getContext(), R.color.primary))
-                .textColor(R.color.white)
-                .clickToHide(true);
     }
 
     public void initListener() {
 
-
         mEditTextPassCode.addTextChangedListener(new TextWatcher() {
-
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -123,82 +95,27 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (mEditTextPassCode.getText().toString().matches("")) {
-                    mEditTextConfirmCode.setEnabled(false);
-                    mEditTextConfirmCode.setText("");
-                    mTextInputLayoutConfirmCode.setError(getContext().getString(R.string.authenticationdefinition_pleasefilloutboxabove));
-
-                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
-                String password = s.toString();
 
-                if (password.length() > 0 && mTooltipView == null) {
-                    mTooltipView = mViewTooltip.show();
-                }
-
-
-                int i = 0;
-                if (CustomValidator.hasCapitalLetter(password)) {
-
-                    mImageViewCapital.setImageResource(R.drawable.successcheck);
-
-                    i++;
-                } else {
-                    mTextViewCapitalLetter.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-                    mImageViewCapital.setImageResource(R.drawable.failedcheck);
-                    i--;
-                }
-
-                if (CustomValidator.hasDigit(password)) {
-                    mImageViewDigit.setImageResource(R.drawable.successcheck);
-                    i++;
-
-                } else {
-                    mTextViewDigit.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-                    mImageViewDigit.setImageResource(R.drawable.failedcheck);
-                    i--;
-
-                }
-
-                if (CustomValidator.hasCustomCharacters(password)) {
-                    mImageViewSpecial.setImageResource(R.drawable.successcheck);
-                    i++;
-
-                } else {
-                    mTextViewSpecialCharacter.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-                    mImageViewSpecial.setImageResource(R.drawable.failedcheck);
-                    i--;
-
-                }
-                if (CustomValidator.hasMinimumLength(password)) {
-                    mImageViewLength.setImageResource(R.drawable.successcheck);
-                    i++;
-
-                } else {
-                    mTextViewMinimumLength.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-                    mImageViewLength.setImageResource(R.drawable.failedcheck);
-                    i--;
-
-                }
-                if (i == 4) {
+                if (checkPasswordIsValid(s.toString())) {
                     mEditTextConfirmCode.setEnabled(true);
-                    mViewTooltip.close();
-                } else {
-                    mEditTextConfirmCode.setText("");
-                    mEditTextConfirmCode.setEnabled(false);
-                }
+                    mTextInputLayoutConfirmCode.setError(" ");
+                    mTextInputLayoutConfirmCode.setAlpha(1f);
 
+                } else {
+                    mEditTextConfirmCode.setEnabled(false);
+                    mTextInputLayoutConfirmCode.setAlpha(0.2f);
+                }
             }
 
         });
 
         mEditTextConfirmCode.addTextChangedListener(new TextWatcher() {
 
-            String password = mEditTextPassCode.getText().toString();
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -208,35 +125,61 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!s.toString().matches("") && !password.equals(s.toString())) {
-
-                    mTextInputLayoutConfirmCode.setError(getContext().getString(R.string.authenticationdefinition_notmatch));
-
-                } else {
-
-                    mTextInputLayoutConfirmCode.setError(null);
-                }
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
-                String password = mEditTextPassCode.getText().toString();
-
-                if (s.toString().length() > 0) {
-                    mTooltipView = null;
-                    mViewTooltip.close();
-                }
-                if (s.toString().equals(password) && mEditTextConfirmCode.isEnabled()) {
-
-                    mTextInputLayoutConfirmCode.setError(null);
+                if (s != null && !s.toString().equals("") && checkConfirmPasswordIsValid(s.toString())) {
                     navigateToDashboard(s.toString());
-                    mEditTextPassCode.setText("");
-                    mEditTextConfirmCode.setText("");
                 }
             }
         });
+    }
+
+    private boolean checkConfirmPasswordIsValid(String passwordConfirm) {
+
+        return passwordConfirm.equals(mEditTextPassCode.getText().toString());
+    }
+
+    private boolean checkPasswordIsValid(String password) {
+
+
+        int counter = 0;
+
+        mSpannable = new SpannableString(getString(R.string.authenticationdefinition_helpertext));
+
+        if (CustomPasswordValidator.hasMinimumLength(password)) {
+
+            setSpan(0, 16);
+            counter++;
+        }
+        if (CustomPasswordValidator.hasCapitalLetter(password)) {
+
+            setSpan(17, 44);
+            counter++;
+        }
+        if (CustomPasswordValidator.hasDigit(password)) {
+
+            setSpan(45, 65);
+            counter++;
+        }
+        if (CustomPasswordValidator.checkSpace(password)) {
+
+            setSpan(66, 80);
+            counter++;
+        }
+        mTextInputLayoutPassword.setHelperText(mSpannable);
+
+        return counter == 4;
+
+    }
+
+    private void setSpan(int start, int end) {
+
+        mSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.persianGreen)), start, end, 0);
+        mSpannable.setSpan(new StyleSpan(Typeface.BOLD), start, end, 0);
     }
 
     private void navigateToDashboard(String credentialValue) {
@@ -244,45 +187,10 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
         mNavigateToDashboardCallback.saveCredentialFromPassword(credentialValue);
     }
 
-    public static class CustomValidator {
-
-        public static boolean hasMinimumLength(String password) {
-
-
-            return password.length() > 7;
-        }
-
-        public static boolean hasCustomCharacters(String password) {
-
-            String customCharacters[] = {"@", "#", "$", "%", "+", "=", "_", "*", "?"};
-            for (
-                    String customCharacter : customCharacters)
-
-            {
-                if (password.contains(customCharacter)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public static boolean hasCapitalLetter(String password) {
-
-
-            return !password.equals(password.toLowerCase());
-        }
-
-        public static boolean hasDigit(String password) {
-
-            return password.matches(".*\\d+.*");
-        }
-    }
-
     @Override
     public void onPause() {
-        mViewTooltip.close();
         super.onPause();
-        mTooltipView = null;
+
     }
 }
 

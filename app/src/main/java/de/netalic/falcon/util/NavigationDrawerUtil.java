@@ -2,7 +2,8 @@ package de.netalic.falcon.util;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;

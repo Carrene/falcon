@@ -6,7 +6,7 @@
 
     <include layout="@layout/toolbar_everywhere" />
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -14,5 +14,5 @@
             android:id="@+id/framelayout_contacts_fragmentcontainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

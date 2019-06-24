@@ -1,7 +1,8 @@
 package de.netalic.falcon.ui.registration.phoneinput;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;

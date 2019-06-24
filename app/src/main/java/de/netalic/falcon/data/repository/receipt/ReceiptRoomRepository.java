@@ -2,8 +2,10 @@ package de.netalic.falcon.data.repository.receipt;
 
 import android.content.Context;
 import android.os.AsyncTask;
+
 import java.util.List;
 import java.util.Map;
+
 import de.netalic.falcon.SensitiveDatabase;
 import de.netalic.falcon.data.model.Receipt;
 import de.netalic.falcon.data.repository.base.Deal;

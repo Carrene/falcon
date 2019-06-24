@@ -34,11 +34,11 @@
     </dimen>
 
     <dimen name="dotnormalsize_authenticationdefinitionpatterntab_patternlockview">20dp</dimen>
-    <dimen name="margintop_authenticationdefinition_segmentedgroup">38dp</dimen>
+    <dimen name="margintop_authenticationdefinition_segmentedgroup">20dp</dimen>
     <dimen name="borderwidth_authenticationdefinition_segmentedgroup">2dp</dimen>
     <dimen name="cornerradius_authenticationdefinition_segmentedgroup">5dp</dimen>
     <dimen name="width_authenticationdefinition_radiobutton">130dp</dimen>
-    <dimen name="height_authenticationdefinition_radiobutton">35dp</dimen>
+    <dimen name="height_authenticationdefinition_radiobutton">42dp</dimen>
 
     <dimen name="margintop_recoveryemail_textinputlayout">155dp</dimen>
     <dimen name="margintop_recoveryemail_skip">30dp</dimen>

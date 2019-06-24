@@ -16,13 +16,13 @@
         android:orientation="horizontal"
         android:weightSum="4">
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textinputlayout_exchange_firstamount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.2">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textinput_exchange_sourceamount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -31,7 +31,7 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6" />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:id="@+id/imageview_exchange_exchangeicon"
@@ -41,7 +41,7 @@
             android:layout_weight="0.3"
             android:src="@drawable/everywhere_rowexchangelogo" />
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TextInputEditText_exchange_exchangeto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,19 +56,19 @@
             android:gravity="center"
             android:backgroundTint="@color/lineColor" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.2">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textinput_exchange_destinationamount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.2"
                 android:backgroundTint="@color/lineColor"
                 android:inputType="numberDecimal" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 

@@ -1,6 +1,6 @@
 package de.netalic.falcon.ui.registration.recoveryemail;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
@@ -44,7 +44,7 @@ public class RecoveryEmailPresenter implements RecoveryEmailContract.Presenter {
 
                     case 200: {
 
-                        mRecoveryEmailView.navigateToAuthenticationDefinitionActivity();
+                        mRecoveryEmailView.navigateToDashboard();
                         break;
                     }
                     case 712: {

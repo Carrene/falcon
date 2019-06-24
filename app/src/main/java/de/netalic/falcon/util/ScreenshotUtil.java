@@ -7,8 +7,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
-import android.support.v4.content.FileProvider;
 import android.view.View;
+
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.FileOutputStream;

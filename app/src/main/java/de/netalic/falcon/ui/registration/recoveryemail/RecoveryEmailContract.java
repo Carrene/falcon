@@ -8,7 +8,7 @@ public interface RecoveryEmailContract {
 
     interface View extends BaseView<RecoveryEmailContract.Presenter> {
 
-        void navigateToAuthenticationDefinitionActivity();
+        void navigateToDashboard();
         void showErrorInvalidEmail();
         void showErrorEmailAlreadyExists();
 
