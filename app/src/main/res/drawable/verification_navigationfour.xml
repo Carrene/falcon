@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="232dp"
+    android:height="28dp"
+    android:viewportWidth="232"
+    android:viewportHeight="28">
+
+    <path
+        android:fillColor="#00141E"
+        android:pathData="M14,12h203.8v4H14V12z" />
+    <group
+            android:translateX="-9"
+            android:translateY="-5">
+        <path
+            android:fillColor="#00141E"
+            android:pathData="M227,5c7.7,0,14,6.3,14,14s-6.3,14-14,14c-7.7,0-14-6.3-14-14S219.3,5,227,5z" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M228.6,22h-4.8v-1.1c0.9-1.6,2.4-4,4.2-6.7h1.8v6.7h1.4V22h-1.4v2h-1.2V22z M225.1,20.9h3.6v-5.6h-0.1 C227.5,16.7,226.2,18.8,225.1,20.9L225.1,20.9z" />
+    </group>
+    <group
+            android:translateX="-21"
+            android:translateY="-5">
+        <path
+            android:fillColor="#00141E"
+            android:pathData="M171,5c7.7,0,14,6.3,14,14s-6.3,14-14,14c-7.7,0-14-6.3-14-14S163.3,5,171,5z" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M176.8,14l-8.2,8.2l-3.5-3.5l-1.2,1.2l3.5,3.5l1.2,1.2l1.2-1.2l8.2-8.2L176.8,14z" />
+    </group>
+    <group
+            android:translateX="-32"
+            android:translateY="-5">
+        <path
+            android:fillColor="#00141E"
+            android:pathData="M114,5c7.7,0,14,6.3,14,14s-6.3,14-14,14s-14-6.3-14-14S106.3,5,114,5z" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M119.8,14l-8.2,8.2l-3.5-3.5l-1.2,1.2l3.5,3.5l1.2,1.2l1.2-1.2l8.2-8.2L119.8,14z" />
+    </group>
+    <group
+            android:translateX="8"
+            android:translateY="-5">
+        <path
+            android:fillColor="#00141E"
+            android:pathData="M6,5c7.7,0,14,6.3,14,14S13.7,33,6,33S-8,26.7-8,19S-1.7,5,6,5z" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M11.8,14l-8.2,8.2l-3.5-3.5L-1,19.8l3.5,3.5l1.2,1.2l1.2-1.2l8.2-8.2L11.8,14z" />
+    </group>
+</vector>
