@@ -52,12 +52,13 @@
     <string name="authenticationdefinition_specialchar">At least one of (@  #  $  %  +  =  *  ?)</string>
     <string name="authenticationdefinition_helpertext">8-20 characters, at least one capital letter, at least one number, and no spaces</string>
 
-    <string name="recoveryemail_skip">SKIP</string>
+    <string name="recoveryemail_skip">Skip</string>
     <string name="recoveryemail_thisemaildoesnotexist">Insert correct email</string>
-    <string name="recoveryemail_enteremailaddress">Enter email address</string>
+    <string name="recoveryemail_enteremailaddress">Email address</string>
     <string name="recoveryemail_toolbartitle">Recovery email</string>
     <string name="recoveryemail_invalidemail">Invalid email</string>
     <string name="recoveryemail_emailalreadyexists"> Email already exists</string>
+    <string name="recoveryemail_pleaseenteryouremailaddress">Please enter your email address</string>
     <string name="recoveryemail_menudone">Done</string>
 
     <string name="navigation_dashboard">Dashboard</string>
