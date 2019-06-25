@@ -5,16 +5,35 @@
     android:background="@color/white">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textinputlayout_recoveryemail_enterrecoveryemail"
+    <ImageView
+        android:id="@+id/imageview_recoveryemail_pageindicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/recoveryemail_navigationfour" />
+
+    <TextView
+        android:id="@+id/textview_recoveryemail_title"
+        style="@style/TextAppearanceHeadRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview_recoveryemail_pageindicator"
+        android:layout_marginTop="32dp"
+        android:text="@string/recoveryemail_pleaseenteryouremailaddress" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinputlayout_recoveryemail_enterrecoveryemail"
+        style="@style/TextInputLayoutOutlineBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_recoveryemail_title"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="@dimen/marginstart_recoveryemail_textinputlayout"
         android:layout_marginTop="@dimen/margintop_recoveryemail_textinputlayout"
         android:layout_marginEnd="@dimen/marginend_recoveryemail_textinputlayout">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_recoveryemail_enterrecoveryemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,16 +44,15 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <TextView
-        android:id="@+id/textview_recoveryemail_skip"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button_recoveryemail_skip"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textinputlayout_recoveryemail_enterrecoveryemail"
+        android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/margintop_recoveryemail_skip"
+        android:background="@drawable/all_whitebackgroundwithcornerradius"
         android:text="@string/recoveryemail_skip"
-        android:textAlignment="center"
-        android:textColor="@color/colorSecondaryDark"
-        android:textSize="@dimen/textsize_authenticationdefinition_enterpasscode" />
+        android:textAllCaps="false" />
 
 </RelativeLayout>

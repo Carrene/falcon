@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import de.netalic.falcon.R;
@@ -32,9 +34,9 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     private View mRoot;
     private RecoveryEmailContract.Presenter mPresenter;
-    private EditText mEditTextRecoveryEmail;
+    private TextInputEditText mEditTextRecoveryEmail;
     private TextInputLayout mTextInputLayoutRecoveryEmail;
-    private TextView mTextViewSkip;
+    private Button mButtonSkip;
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
 
@@ -110,7 +112,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         mTextInputLayoutRecoveryEmail = mRoot.findViewById(R.id.textinputlayout_recoveryemail_enterrecoveryemail);
         mEditTextRecoveryEmail = mRoot.findViewById(R.id.edittext_recoveryemail_enterrecoveryemail);
-        mTextViewSkip = mRoot.findViewById(R.id.textview_recoveryemail_skip);
+        mButtonSkip=mRoot.findViewById(R.id.button_recoveryemail_skip);
 
     }
 
@@ -157,7 +159,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     public void initListeners() {
 
-        mTextViewSkip.setOnClickListener(v -> {
+        mButtonSkip.setOnClickListener(v -> {
 
             navigateToDashboard();
         });

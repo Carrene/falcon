@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId "de.netalic.falcon"
         minSdkVersion project.ext.minimumSdkVersion
-        targetSdkVersion 28
+        targetSdkVersion 27
         versionCode generateVersionCode()
         versionName generateVersionName()
         flavorDimensions "default"

@@ -28,7 +28,6 @@ public class ApiClient {
 
     private static Retrofit sRetrofit = null;
     private static ApiInterface sApi;
-    private static CallBack mCallBack;
 
 
     public interface CallBack {

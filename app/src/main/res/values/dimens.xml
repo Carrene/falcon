@@ -40,7 +40,7 @@
     <dimen name="width_authenticationdefinition_radiobutton">130dp</dimen>
     <dimen name="height_authenticationdefinition_radiobutton">42dp</dimen>
 
-    <dimen name="margintop_recoveryemail_textinputlayout">155dp</dimen>
+    <dimen name="margintop_recoveryemail_textinputlayout">50dp</dimen>
     <dimen name="margintop_recoveryemail_skip">30dp</dimen>
     <dimen name="marginstart_recoveryemail_textinputlayout">30dp</dimen>
     <dimen name="marginend_recoveryemail_textinputlayout">30dp</dimen>
