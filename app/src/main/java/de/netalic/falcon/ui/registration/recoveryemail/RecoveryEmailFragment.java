@@ -10,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +37,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     private Button mButtonSkip;
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
+
 
     @Nullable
     @Override
@@ -84,6 +83,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.menu_everywhere_thathastick, menu);
+
     }
 
     @Override

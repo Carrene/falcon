@@ -28,7 +28,7 @@
 
     <string name="verification_pleaseenterverificationcodehere">Please enter verification code here</string>
 
-    <string name="registration_menudone">Done</string>
+    <string name="registration_menudone">Next</string>
     <string name="registration_toolbartitle">Your phone</string>
     <string name="registration_defultcountry">Select your country</string>
     <string name="registration_pleasepickcountry">Please pick a country</string>
