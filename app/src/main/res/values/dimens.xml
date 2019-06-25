@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margintop_registration_countrypicker">84dp</dimen>
+    <dimen name="margintop_registration_countrypicker">50dp</dimen>
     <dimen name="marginstart_registration_countrypicker">40dp</dimen>
     <dimen name="marginend_registration_countrypicker">40dp</dimen>
     <dimen name="marginstart_registration_code">40dp</dimen>
     <dimen name="marginend_registration_phonenumber">40dp</dimen>
-    <dimen name="margintop_registration_phonenumber">180dp</dimen>
+    <dimen name="margintop_registration_phonenumber">230dp</dimen>
     <dimen name="marginbottom_registration_confirmtext">20dp</dimen>
 
     <dimen name="margintop_phoneconfirmation_userphone">90dp</dimen>

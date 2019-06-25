@@ -11,6 +11,9 @@
     <string name="everywhere_skip">Skip</string>
     <string name="everywhere_image">Image</string>
 
+    <string name="phoneinput_header">Please choose your country and select your phone number</string>
+    <string name="phoneinput_hintcodecountry">Code</string>
+
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
@@ -25,12 +28,10 @@
 
     <string name="registration_menudone">Done</string>
     <string name="registration_toolbartitle">Your phone</string>
-    <string name="registration_bottomtextview">Confirmation code will be sent to you</string>
     <string name="registration_defultcountry">Select your country</string>
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
     <string name="registration_phonehint">Phone number</string>
-    <string name="registration_codehint">XXXX</string>
 
     <string name="phoneconfirmation_Pleasefillbox">Please fill box</string>
     <string name="athenticationdefinition_password">Password</string>
