@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/textview_phoneinput_title"
-        style="@style/TextAppearanceHead"
+        style="@style/TextAppearanceHeadRegular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageview_phoneinput_pageindicator"

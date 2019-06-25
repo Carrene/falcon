@@ -17,14 +17,16 @@
     <string name="phoneconfirmation_menudone">Done</string>
     <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
-    <string name="phoneconfirmation_entertheverificationhere">"Enter the verification code here"</string>
+    <string name="phoneconfirmation_entertheverificationhere">"Verification code "</string>
     <string name="phoneconfirmation_timer">"(02:00)"</string>
-    <string name="phoneconfirmation_changenumber">"CHANGE NUMBER"</string>
-    <string name="phoneconfirmation_resend">RESEND</string>
+    <string name="phoneconfirmation_changenumber">"Change Number"</string>
+    <string name="phoneconfirmation_resend">Resend</string>
     <string name="phoneconfirmation_sentcodeagain">Sent code again</string>
     <string name="phoneconfirmation_invalidactivationcode">Invalid activation code</string>
     <string name="phoneconfirmation_invalidudidorphone">Invalid udid or phone</string>
     <string name="phoneconfirmation_invaliddevicename">Invalid device name</string>
+
+    <string name="verification_pleaseenterverificationcodehere">Please enter verification code here</string>
 
     <string name="registration_menudone">Done</string>
     <string name="registration_toolbartitle">Your phone</string>
