@@ -106,7 +106,6 @@ public class AuthenticationDefinitionPasswordFragment extends Fragment {
 
                 if (checkPasswordIsValid(s.toString())) {
                     mEditTextConfirmCode.setEnabled(true);
-                    mTextInputLayoutConfirmCode.setError(" ");
                     mTextInputLayoutConfirmCode.setAlpha(1f);
 
                 } else {
