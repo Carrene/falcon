@@ -19,6 +19,7 @@
         android:roundIcon="@drawable/icon_alpha"
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme"
+        tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
 
         <activity

@@ -8,6 +8,9 @@
     <color name="colorSecondaryDark">#A87612</color>
     <color name="colorSecondaryDarkTransparent10">#1AFF9800</color>
 
+    <color name="colorTertiary">#5856D6</color>
+    <color name="colorTertiaryDark">#2B2F88</color>
+
     <color name="colorBlack">#000000</color>
     <color name="colorBlack35">#60000000</color>
     <color name="colorBlack16">#29000000</color>

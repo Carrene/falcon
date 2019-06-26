@@ -29,14 +29,6 @@ public class ApiClient {
     private static Retrofit sRetrofit = null;
     private static ApiInterface sApi;
 
-
-    public interface CallBack {
-
-        void internetConnectionError() throws IOException;
-
-    }
-
-
     private static Retrofit getClient() {
 
         if (sRetrofit == null) {
