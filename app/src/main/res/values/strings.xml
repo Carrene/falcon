@@ -15,7 +15,7 @@
     <string name="phoneinput_hintcodecountry">Code</string>
 
     <string name="phoneconfirmation_menudone">Done</string>
-    <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
+    <string name="phoneconfirmation_toolbartitle">Verification</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
     <string name="phoneconfirmation_entertheverificationhere">"Verification code "</string>
     <string name="phoneconfirmation_timer">"(02:00)"</string>
@@ -29,7 +29,7 @@
     <string name="verification_pleaseenterverificationcodehere">Please enter verification code here</string>
 
     <string name="registration_menudone">Next</string>
-    <string name="registration_toolbartitle">Your phone</string>
+    <string name="registration_toolbartitle">Your Phone</string>
     <string name="registration_defultcountry">Select your country</string>
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
@@ -45,7 +45,7 @@
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
     <string name="authenticationdefinition_hintpassword">Password</string>
     <string name="authenticationdefinition_hintconfirmpassword">Confirm password</string>
-    <string name="authenticationdefinition_toolbartitle">Login method</string>
+    <string name="authenticationdefinition_toolbartitle">Authentication</string>
     <string name="authenticationdefinition_minimumlength">At least 8 characters</string>
     <string name="authenticationdefinition_digit">At least one digit</string>
     <string name="authenticationdefinition_capitalletter">At least on capital letter</string>
@@ -55,7 +55,7 @@
     <string name="recoveryemail_skip">Skip</string>
     <string name="recoveryemail_thisemaildoesnotexist">Insert correct email</string>
     <string name="recoveryemail_enteremailaddress">Email address</string>
-    <string name="recoveryemail_toolbartitle">Recovery email</string>
+    <string name="recoveryemail_toolbartitle">Email Recovery</string>
     <string name="recoveryemail_invalidemail">Invalid email</string>
     <string name="recoveryemail_emailalreadyexists"> Email already exists</string>
     <string name="recoveryemail_pleaseenteryouremailaddress">Please enter your email address</string>

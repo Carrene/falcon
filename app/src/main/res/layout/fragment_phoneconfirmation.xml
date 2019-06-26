@@ -60,17 +60,17 @@
 
     <Button
         android:id="@+id/button_verification_timer"
+        style="@style/TextAppearanceBaseRegular"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_alignEnd="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext"
-        android:text="@string/phoneconfirmation_timer"
-        style="@style/TextAppearanceBaseRegular"
-        />
+        android:text="@string/phoneconfirmation_timer" />
 
     <Button
         android:id="@+id/button_verificaiton_changenumber"
+        style="@style/TextAppearanceBaseRegular"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
@@ -78,9 +78,7 @@
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_changenumber"
         android:background="@drawable/all_whitebackgroundwithcornerradius"
         android:text="@string/phoneconfirmation_changenumber"
-        android:textAllCaps="false"
-        style="@style/TextAppearanceBaseRegular"
-        />
+        android:textAllCaps="false" />
 
 
 </RelativeLayout>

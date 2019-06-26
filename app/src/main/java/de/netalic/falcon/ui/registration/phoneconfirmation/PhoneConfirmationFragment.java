@@ -203,7 +203,6 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                 long secondTimer = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
                 mButtonTimer.setText(String.format("%02d:%02d ", minuteTimer, secondTimer));
-                mButtonTimer.setTextColor(getResources().getColor(R.color.colorBlack));
                 mButtonTimer.setBackground(getResources().getDrawable(R.drawable.all_colorprimarydarkbackgroundwithcornerradius));
                 mButtonTimer.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 mButtonTimer.setEnabled(false);
