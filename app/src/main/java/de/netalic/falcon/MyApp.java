@@ -1,6 +1,9 @@
 package de.netalic.falcon;
 
 import android.app.Application;
+import android.content.Context;
+
+import androidx.multidex.MultiDex;
 
 import com.squareup.leakcanary.LeakCanary;
 
@@ -32,6 +35,13 @@ public class MyApp extends Application {
         return sInstance;
     }
 
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
+        MultiDex.install(this);
+    }
+
     @Override
     public void onCreate() {
 
@@ -49,7 +59,6 @@ public class MyApp extends Application {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
-
 
         RepositoryLocator.getInstance().setRepository(new UserRepository(new UserRestRepository(), new UserRoomRepository(this)));
         RepositoryLocator.getInstance().setRepository(new WalletRepository(new WalletRestRepository(), null));
