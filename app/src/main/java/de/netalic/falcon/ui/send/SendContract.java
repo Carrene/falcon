@@ -24,6 +24,7 @@ public interface SendContract {
         void showError602();
         void showError401();
         void setRateList(List<Rate> rateList);
+        void internetConnectionError();
 
     }
 

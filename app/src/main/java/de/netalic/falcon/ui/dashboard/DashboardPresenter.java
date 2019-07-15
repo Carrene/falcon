@@ -1,6 +1,6 @@
 package de.netalic.falcon.ui.dashboard;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.wallet.WalletRepository;
@@ -25,17 +25,18 @@ public class DashboardPresenter implements DashboardContract.Presenter {
         RepositoryLocator.getInstance().getRepository(WalletRepository.class).getAll(deal -> {
 
             if (deal.getThrowable() != null) {
-                mDashboardView.dismissProgressBar();
+
             } else {
 
                 switch (deal.getResponse().code()) {
                     case 200: {
                         mDashboardView.setWalletList(deal.getResponse().body());
+                        mDashboardView.dismissProgressBar();
                         break;
                     }
                 }
             }
-            mDashboardView.dismissProgressBar();
+
         });
 
     }

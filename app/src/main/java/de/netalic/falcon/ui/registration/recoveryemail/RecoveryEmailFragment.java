@@ -2,10 +2,6 @@ package de.netalic.falcon.ui.registration.recoveryemail;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,13 +9,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.User;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.registration.authnticationdefinition.AuthenticationDefinitionActivity;
+import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.util.SnackbarUtil;
 import nuesoft.helpdroid.UI.Keyboard;
 import nuesoft.helpdroid.validation.Validator;
@@ -30,11 +32,12 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     private View mRoot;
     private RecoveryEmailContract.Presenter mPresenter;
-    private EditText mEditTextRecoveryEmail;
+    private TextInputEditText mEditTextRecoveryEmail;
     private TextInputLayout mTextInputLayoutRecoveryEmail;
-    private TextView mTextViewSkip;
+    private Button mButtonSkip;
     private User mUser;
     private static final String ARGUMENT_USER = "USER";
+
 
     @Nullable
     @Override
@@ -80,6 +83,7 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.menu_everywhere_thathastick, menu);
+
     }
 
     @Override
@@ -108,14 +112,14 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
         mTextInputLayoutRecoveryEmail = mRoot.findViewById(R.id.textinputlayout_recoveryemail_enterrecoveryemail);
         mEditTextRecoveryEmail = mRoot.findViewById(R.id.edittext_recoveryemail_enterrecoveryemail);
-        mTextViewSkip = mRoot.findViewById(R.id.textview_recoveryemail_skip);
+        mButtonSkip=mRoot.findViewById(R.id.button_recoveryemail_skip);
 
     }
 
     @Override
-    public void navigateToAuthenticationDefinitionActivity() {
+    public void navigateToDashboard() {
 
-        Intent intent = new Intent(getActivity(), AuthenticationDefinitionActivity.class);
+        Intent intent = new Intent(getActivity(), DashboardActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
@@ -155,9 +159,9 @@ public class RecoveryEmailFragment extends Fragment implements RecoveryEmailCont
 
     public void initListeners() {
 
-        mTextViewSkip.setOnClickListener(v -> {
+        mButtonSkip.setOnClickListener(v -> {
 
-            navigateToAuthenticationDefinitionActivity();
+            navigateToDashboard();
         });
 
         mEditTextRecoveryEmail.setOnKeyListener((v, keyCode, event) -> {

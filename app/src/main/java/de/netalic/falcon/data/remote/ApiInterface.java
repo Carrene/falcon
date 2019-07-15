@@ -22,11 +22,11 @@ public interface ApiInterface {
 
 
     @FormUrlEncoded
-    @HTTP(method = "CLAIM", path = "phones", hasBody = true)
+    @HTTP(method = "CLAIM", path = "clients", hasBody = true)
     Call<User> claim(@Field("udid") String udid, @Field("phone") String phone);
 
     @FormUrlEncoded
-    @HTTP(method = "BIND", path = "phones", hasBody = true)
+    @HTTP(method = "BIND", path = "clients", hasBody = true)
     Call<User> bind(@Field("udid") String udid, @Field("phone") String phone, @Field("deviceName") String deviceName, @Field("activationCode") String activationCode);
 
     @FormUrlEncoded
@@ -75,7 +75,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @HTTP(method = "CREATE",path = "wallets",hasBody = true)
-    Call<Wallet>addWallet(@Field("walletName")String walletName,@Field("walletCurrencyCode") String walletCurrencyCode);
+    Call<Wallet>addWallet(@Field("name")String walletName,@Field("currencyCode") String walletCurrencyCode);
 
 }
 

@@ -3,6 +3,11 @@ package de.netalic.falcon.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.UnsupportedEncodingException;
@@ -11,36 +16,34 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import de.netalic.falcon.MyApp;
-import io.realm.RealmObject;
-import io.realm.annotations.Ignore;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmField;
 import nuesoft.helpdroid.device.DeviceUtil;
 import nuesoft.helpdroid.util.Converter;
 
-public class User extends RealmObject implements Parcelable {
+@Entity(tableName = "user")
+public class User implements Parcelable {
 
     @PrimaryKey
     @SerializedName("id")
-    @RealmField(name = "Id")
+    @ColumnInfo(name = "Id")
     private int mId;
 
     @SerializedName("phone")
-    @RealmField(name = "Phone")
+    @ColumnInfo(name = "Phone")
     private String mPhone;
 
-    @RealmField(name = "Email")
+    @ColumnInfo(name = "Email")
     @SerializedName("email")
     private String mEmail;
 
 
-    @RealmField(name = "Balance")
+    @ColumnInfo(name = "Balance")
     private double mBalance;
 
     @Ignore
     @SerializedName("udid")
     private String mUdid;
 
+    @Ignore
     @SerializedName("deviceName")
     private String mDeviceName;
 
@@ -52,37 +55,41 @@ public class User extends RealmObject implements Parcelable {
     @SerializedName("isActive")
     boolean mIsActive;
 
-    @RealmField(name = "Secret")
+    @ColumnInfo(name = "Secret")
     @SerializedName("secret")
-    String mSecret;
+    private String mSecret;
 
-    @RealmField(name = "HmacSecret")
+    @ColumnInfo(name = "HmacSecret")
     @SerializedName("hmacSecret")
-    String mHmacSecret;
+    private String mHmacSecret;
 
+    @Ignore
     @SerializedName("isNewClient")
     boolean isNewClient;
 
+    @Ignore
     @SerializedName("baseCurrencySymbol")
     private String mBaseCurrencySymbol;
 
-    @RealmField(name = "baseCurrencyCode")
+    @ColumnInfo(name = "baseCurrencyCode")
     @SerializedName("baseCurrencyCode")
     private String mBaseCurrencyCode;
 
     @Ignore
     String mActivationCode;
 
-
     public User() {
 
     }
 
+
+    @Ignore
     public User(String phone) {
 
         mPhone = phone;
     }
 
+    @Ignore
     public User(String phone, String udid, String activationCode) {
 
         mPhone = phone;
@@ -90,9 +97,25 @@ public class User extends RealmObject implements Parcelable {
         mActivationCode = activationCode;
     }
 
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        this.mId = id;
+    }
+
     public String getSecret() {
 
         return mSecret;
+    }
+
+    public void setSecret(String secret) {
+        mSecret = secret;
+    }
+
+    public void setHmacSecret(String hmacSecret) {
+        mHmacSecret = hmacSecret;
     }
 
     public String getHmacSecret() {
@@ -113,6 +136,11 @@ public class User extends RealmObject implements Parcelable {
     public String getPhone() {
 
         return mPhone;
+    }
+
+
+    public void setBaseCurrencyCode(String baseCurrencyCode) {
+        this.mBaseCurrencyCode = baseCurrencyCode;
     }
 
     public String getEmail() {
@@ -145,6 +173,10 @@ public class User extends RealmObject implements Parcelable {
     public String getDeviceName() {
 
         return this.mDeviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.mDeviceName = deviceName;
     }
 
     public String calculateDeviceName() {

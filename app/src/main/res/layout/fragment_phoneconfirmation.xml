@@ -5,58 +5,80 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/imageview_verification_pageindicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/verification_navigationthree" />
+
     <TextView
         android:id="@+id/textview_phoneconfirmation_number"
+        style="@style/TextAppearanceHeadMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_userphone"
         android:text="@string/phoneconfirmation_phonenumber"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/textsize_phoneconfirmation_userphone" />
+        android:textColor="@color/colorBlack" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textinputlayout_phoneconfirmation_receivecode"
+
+    <TextView
+        android:id="@+id/textview_verification_title"
+        style="@style/TextAppearanceHeadRegular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_phoneconfirmation_number"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/verification_pleaseenterverificationcodehere" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinputlayout_phoneconfirmation_receivecode"
+        style="@style/TextInputLayoutOutlineBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_verification_title"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="@dimen/marginstart_phoneconfirmation_textinputlayout"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_confirmationcodehere"
         android:layout_marginEnd="@dimen/marginend_phoneconfirmation_textinputlayout">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_phoneconfirmation_receivecode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/phoneconfirmation_entertheverificationhere"
             android:inputType="number"
-            android:maxLength="6"
+            android:maxLength="7"
             android:singleLine="true"
             android:textAlignment="center" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textview_phoneconfirmation_timer"
-        android:layout_width="wrap_content"
+
+    <Button
+        android:id="@+id/button_verification_timer"
+        style="@style/TextAppearanceBaseRegular"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_alignEnd="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_resendtext"
-        android:text="@string/phoneconfirmation_timer"
-        android:textSize="@dimen/textsize_phoneconfirmation_resendtext" />
+        android:text="@string/phoneconfirmation_timer" />
 
-    <TextView
-        android:id="@+id/textview_phoneconfirmation_changenumber"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/button_verificaiton_changenumber"
+        style="@style/TextAppearanceBaseRegular"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_alignStart="@+id/textinputlayout_phoneconfirmation_receivecode"
         android:layout_marginTop="@dimen/margintop_phoneconfirmation_changenumber"
+        android:background="@drawable/all_whitebackgroundwithcornerradius"
         android:text="@string/phoneconfirmation_changenumber"
-        android:textColor="@color/colorSecondaryDark"
-        android:textSize="@dimen/textsize_phoneconfirmation_changenumber" />
+        android:textAllCaps="false" />
+
 
 </RelativeLayout>

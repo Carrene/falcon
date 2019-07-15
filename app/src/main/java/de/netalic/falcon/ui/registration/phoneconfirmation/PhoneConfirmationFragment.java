@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
 import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,8 +14,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,9 +42,9 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private PhoneConfirmationContract.Presenter mPresenter;
     private User mUser;
     private TextView mTextViewPhone;
-    private TextView mTextViewChangeNumber;
-    private EditText mEditTextReceiveCode;
-    private TextView mTextViewTimer;
+    private TextInputEditText mEditTextReceiveCode;
+    private Button mButtonChangeNumber;
+    private Button mButtonTimer;
     private View mRoot;
     private boolean mIsRunning = true;
     private CountDownTimer mCountDownTimer;
@@ -127,9 +130,9 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
     private void initUiComponents() {
 
         mTextViewPhone = mRoot.findViewById(R.id.textview_phoneconfirmation_number);
-        mTextViewChangeNumber = mRoot.findViewById(R.id.textview_phoneconfirmation_changenumber);
         mEditTextReceiveCode = mRoot.findViewById(R.id.edittext_phoneconfirmation_receivecode);
-        mTextViewTimer = mRoot.findViewById(R.id.textview_phoneconfirmation_timer);
+        mButtonChangeNumber=mRoot.findViewById(R.id.button_verificaiton_changenumber);
+        mButtonTimer=mRoot.findViewById(R.id.button_verification_timer);
     }
 
     private void bind() {
@@ -139,16 +142,16 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
     private void initListeners() {
 
-        mTextViewTimer.setOnClickListener(v -> {
+        mButtonTimer.setOnClickListener(v -> {
 
-            if (mIsRunning == false) {
+            if (!mIsRunning) {
                 setTimer();
                 mPresenter.resendActivationCode(mUser);
 
             }
         });
 
-        mTextViewChangeNumber.setOnClickListener(v -> changePhoneNumber());
+        mButtonChangeNumber.setOnClickListener(v -> changePhoneNumber());
 
         mEditTextReceiveCode.setOnKeyListener((v, keyCode, event) -> {
 
@@ -164,6 +167,8 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
             }
             return false;
         });
+
+
 
         mEditTextReceiveCode.addTextChangedListener(new TextWatcher() {
             @Override
@@ -197,17 +202,22 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
                 long minuteTimer = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
                 long secondTimer = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
-                mTextViewTimer.setText(String.format("%02d:%02d ", minuteTimer, secondTimer));
-                mTextViewTimer.setTextColor(getResources().getColor(R.color.colorBlack));
+                mButtonTimer.setText(String.format("%02d:%02d ", minuteTimer, secondTimer));
+                mButtonTimer.setBackground(getResources().getDrawable(R.drawable.all_colorprimarydarkbackgroundwithcornerradius));
+                mButtonTimer.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                mButtonTimer.setEnabled(false);
+
             }
 
             @Override
             public void onFinish() {
 
+                mButtonTimer.setEnabled(true);
                 mIsRunning = false;
                 if (getContext() != null) {
-                    mTextViewTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
-                    mTextViewTimer.setTextColor(getResources().getColor(R.color.colorSecondaryDark));
+                    mButtonTimer.setBackground(getResources().getDrawable(R.drawable.all_colorsecandarybackgroundwithcornerradius));
+                    mButtonTimer.setTextColor(getResources().getColor(R.color.colorBlack));
+                    mButtonTimer.setText(getContext().getString(R.string.phoneconfirmation_resend));
                 }
             }
         }.start();
@@ -287,4 +297,3 @@ public class PhoneConfirmationFragment extends Fragment implements PhoneConfirma
 
 
 }
-

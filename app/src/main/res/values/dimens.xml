@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margintop_registration_countrypicker">84dp</dimen>
+    <dimen name="margintop_registration_countrypicker">50dp</dimen>
     <dimen name="marginstart_registration_countrypicker">40dp</dimen>
     <dimen name="marginend_registration_countrypicker">40dp</dimen>
     <dimen name="marginstart_registration_code">40dp</dimen>
     <dimen name="marginend_registration_phonenumber">40dp</dimen>
-    <dimen name="margintop_registration_phonenumber">180dp</dimen>
+    <dimen name="margintop_registration_phonenumber">230dp</dimen>
     <dimen name="marginbottom_registration_confirmtext">20dp</dimen>
 
     <dimen name="margintop_phoneconfirmation_userphone">90dp</dimen>
     <dimen name="textsize_phoneconfirmation_userphone">22sp</dimen>
-    <dimen name="marginend_phoneconfirmation_textinputlayout">50dp</dimen>
-    <dimen name="marginstart_phoneconfirmation_textinputlayout">50dp</dimen>
+    <dimen name="marginend_phoneconfirmation_textinputlayout">32dp</dimen>
+    <dimen name="marginstart_phoneconfirmation_textinputlayout">32dp</dimen>
     <dimen name="margintop_phoneconfirmation_resendtext">30dp</dimen>
-    <dimen name="margintop_phoneconfirmation_confirmationcodehere">80dp</dimen>
+    <dimen name="margintop_phoneconfirmation_confirmationcodehere">50dp</dimen>
     <dimen name="textsize_phoneconfirmation_resendtext">16sp</dimen>
     <dimen name="margintop_phoneconfirmation_changenumber">30dp</dimen>
     <dimen name="textsize_phoneconfirmation_changenumber">14sp</dimen>
@@ -34,13 +34,13 @@
     </dimen>
 
     <dimen name="dotnormalsize_authenticationdefinitionpatterntab_patternlockview">20dp</dimen>
-    <dimen name="margintop_authenticationdefinition_segmentedgroup">38dp</dimen>
+    <dimen name="margintop_authenticationdefinition_segmentedgroup">20dp</dimen>
     <dimen name="borderwidth_authenticationdefinition_segmentedgroup">2dp</dimen>
     <dimen name="cornerradius_authenticationdefinition_segmentedgroup">5dp</dimen>
     <dimen name="width_authenticationdefinition_radiobutton">130dp</dimen>
-    <dimen name="height_authenticationdefinition_radiobutton">35dp</dimen>
+    <dimen name="height_authenticationdefinition_radiobutton">42dp</dimen>
 
-    <dimen name="margintop_recoveryemail_textinputlayout">155dp</dimen>
+    <dimen name="margintop_recoveryemail_textinputlayout">50dp</dimen>
     <dimen name="margintop_recoveryemail_skip">30dp</dimen>
     <dimen name="marginstart_recoveryemail_textinputlayout">30dp</dimen>
     <dimen name="marginend_recoveryemail_textinputlayout">30dp</dimen>
@@ -81,7 +81,7 @@
     <dimen name="marginbottom_chargeamount_nextpayment">27dp</dimen>
     <dimen name="marginstartend_chargeamount_nextpayment">16dp</dimen>
 
-    <dimen name="margintop_chargeconfirmation_linearlayout">33dp</dimen>
+    <dimen name="margintop_chargeconfirmation_linearlayout">65dp</dimen>
     <dimen name="marginstartend_chargeconfirmation_linearlayout">17dp</dimen>
     <dimen name="textsize_chargeconfirmation_walletnamelable">14sp</dimen>
     <dimen name="margintop_chargeconfirmation_walletnamelable">12dp</dimen>
@@ -108,9 +108,9 @@
     <dimen name="marginstartend_chargecompleted_linearlayout">17dp</dimen>
     <dimen name="height_chargecompleted_header">40dp</dimen>
     <dimen name="paddingend_chargecompleted_textview">15dp</dimen>
-    <dimen name="margintopbottom_chargecompleted_view">13dp</dimen>
+    <dimen name="margintopbottom_chargecompleted_view">6dp</dimen>
     <dimen name="height_chargecompleted_view">1dp</dimen>
-    <dimen name="margintop_chargecompleted_linearlayout">33dp</dimen>
+    <dimen name="margintop_chargecompleted_linearlayout">16dp</dimen>
     <dimen name="margintop_chargecompleted_walletnamelable">20dp</dimen>
     <dimen name="textsize_chargecompleted_walletnamelable">14sp</dimen>
     <dimen name="margintop_chargecompleted_walletname">20dp</dimen>
@@ -239,7 +239,7 @@
     <dimen name="textsize_transactionfiltersrowthathasradiobutton_textview">14sp</dimen>
     <dimen name="margintop_transactionfiltersrowthathasradiobutton_textview">5dp</dimen>
 
-    <dimen name="margintop_sendconfirmation_linearlayout">33dp</dimen>
+    <dimen name="margintop_sendconfirmation_linearlayout">63dp</dimen>
     <dimen name="marginstartend_sendconfirmation_linearlayout">17dp</dimen>
     <dimen name="textsize_sendconfirmation_walletnamelable">14sp</dimen>
     <dimen name="margintop_sendconfirmation_walletnamelable">12dp</dimen>
@@ -262,13 +262,13 @@
     <dimen name="paddingend_sendcompleted_textview">15dp</dimen>
     <dimen name="margintopbottom_sendcompleted_view">13dp</dimen>
     <dimen name="height_sendcompleted_view">1dp</dimen>
-    <dimen name="margintop_sendcompleted_relativelayoutheader">20dp</dimen>
+    <dimen name="margintop_sendcompleted_relativelayoutheader">10dp</dimen>
     <dimen name="margintop_sendcompleted_linearlayout">33dp</dimen>
-    <dimen name="margintop_sendcompleted_relativelayout">8dp</dimen>
+    <dimen name="margintop_sendcompleted_relativelayout">4dp</dimen>
     <dimen name="textsize_sendcompleted_paidamountlable">14sp</dimen>
     <dimen name="textsize_sendcompleted_amountdollarlable">14sp</dimen>
     <dimen name="textsize_sendcompleted_trackingcode">14sp</dimen>
-    <dimen name="marginbuttom_sendcompleted_confirm">27dp</dimen>
+    <dimen name="marginbuttom_sendcompleted_confirm">16dp</dimen>
     <dimen name="marginstartend_sendcompleted_confirm">16dp</dimen>
     <dimen name="textsize_sendcompleted_confirmbutton">14dp</dimen>
     <dimen name="textsize_sendcompleted_paymentgatewaylable">14sp</dimen>
@@ -336,11 +336,11 @@
     <dimen name="paddingend_transactiondetail_textview">15dp</dimen>
     <dimen name="margintopbottom_transactiondetail_view">13dp</dimen>
     <dimen name="height_transactiondetail_view">1dp</dimen>
-    <dimen name="margintop_transactiondetail_linearlayout">33dp</dimen>
+    <dimen name="margintop_transactiondetail_linearlayout">15dp</dimen>
     <dimen name="margintop_transactiondetail_walletnamelable">20dp</dimen>
     <dimen name="textsize_transactiondetail_walletnamelable">14sp</dimen>
     <dimen name="margintop_transactiondetail_walletname">20dp</dimen>
-    <dimen name="margintop_transactiondetail_relativelayout">8dp</dimen>
+    <dimen name="margintop_transactiondetail_relativelayout">4dp</dimen>
     <dimen name="textsize_transactiondetail_walletnolable">14sp</dimen>
     <dimen name="textsize_transactiondetail_amountdollarlable">14sp</dimen>
     <dimen name="textsize_transactiondetail_trackingcode">14sp</dimen>

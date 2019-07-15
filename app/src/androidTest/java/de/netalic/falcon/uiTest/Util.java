@@ -1,12 +1,13 @@
 package de.netalic.falcon.uiTest;
 
-import android.support.design.widget.TextInputLayout;
-import android.support.test.espresso.matcher.BoundedMatcher;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.test.espresso.matcher.BoundedMatcher;
+
 import com.andrognito.patternlockview.PatternLockView;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,17 +18,17 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textview_transferconfirmation_walletnamelable"
+                android:id="@+id/textview_transferconfirmation_paidamountlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginstart_exchangeconfirmation_textviewnamelabel"
                 android:layout_marginTop="@dimen/margintop_exchangeconfirmation_textviewnamelabel"
-                android:text="@string/text_exchangeconfirmation_textviewnamelabel"
+                android:text="@string/text_exchangeconfirmation_paidamount"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_exchangeconfirmation_textviewnamelabel" />
 
             <TextView
-                android:id="@+id/textview_exchangeconfirmation_walletname"
+                android:id="@+id/textview_exchangeconfirmation_paidamount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -48,104 +47,26 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textview_transferconfirmation_amountalphalabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginstart_exchangeconfirmation_textviewamountlabel"
-                android:text="@string/text_exchangeconfirmation_textviewamountlabel"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_exchangeconfirmation_textviewamountlabel" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textview_exchangeconfirmation_exchangeamount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/marginend_exchangeconfirmation_textviewamount"
-                    android:text="@string/text_exchangeconfirmation_textviewamount"
-                    android:textColor="@color/colorBlack" />
-
-
-            </LinearLayout>
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_exchangeconfirmation_view"
-            android:layout_marginTop="@dimen/margintop_exchangeconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_exchangeconfirmation_view"
-            android:background="@color/colorPrimaryDark5" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textview_exchangeconfirmation_paidamountlabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/marginstart_exchangeconfirmation_textviewpaidamountlabel"
-                android:text="@string/text_exchangeconfirmation_textviewpaidamountlabel"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/textsize_exchangeconfirmation_textviewpaidamountlabel" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textview_exchangeconfirmation_paidamount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/marginend_exchangeconfirmation_textviewpaidamount"
-                    android:text="@string/text_exchangeconfirmation_textviewpaidamount"
-                    android:textColor="@color/colorBlack"
-
-                    />
-            </LinearLayout>
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_exchangeconfirmation_view"
-            android:layout_marginTop="@dimen/margintop_exchangeconfirmation_view"
-            android:layout_marginBottom="@dimen/marginbottom_exchangeconfirmation_view"
-            android:background="@color/colorPrimaryDark5" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/marginbottom_exchangeconfirmation_relativelayout">
 
             <TextView
-                android:id="@+id/textview_transferconfirmation_payeelabel"
+                android:id="@+id/textview_transferconfirmation_receivedamount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginstart_exchangeconfirmation_textviewpayeeaddresslabel"
-                android:text="@string/text_exchangeconfirmation_textviewpayeeaddresslabel"
+                android:text="@string/text_exchangeconfirmation_receivedamount"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textsize_exchangeconfirmation_textviewpayeeaddresslabel" />
 
             <TextView
-                android:id="@+id/textview_exchangeconfirmation_payee"
+                android:id="@+id/textview_exchangeconfirmation_receivedamount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/marginend_exchangeconfirmation_textviewpayeeaddress"
                 android:text="@string/text_exchangeconfirmation_textviewpayeeaddress"
-                android:textColor="@color/colorBlack"
-
-                />
+                android:textColor="@color/colorBlack"/>
         </RelativeLayout>
     </LinearLayout>
 

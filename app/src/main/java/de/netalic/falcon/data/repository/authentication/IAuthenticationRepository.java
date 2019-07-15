@@ -6,4 +6,8 @@ import de.netalic.falcon.data.repository.base.IRepository;
 public interface IAuthenticationRepository extends IRepository<Authentication, Integer> {
 
     void get(CallRepository<Authentication> callRepository);
+
+    void insert(Authentication authentication,CallRepository<Authentication> callRepository);
+
+
 }

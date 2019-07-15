@@ -2,9 +2,6 @@ package de.netalic.falcon.ui.withdraw;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +10,16 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import java.util.List;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
+import de.netalic.falcon.util.SnackbarUtil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -51,7 +53,6 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
         mRoot = inflater.inflate(R.layout.fragment_withdraw, null);
         return mRoot;
     }
@@ -67,7 +68,6 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
     public static WithdrawFragment newInstance() {
 
         return new WithdrawFragment();
-
     }
 
     @Override
@@ -77,7 +77,6 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
         if (getActivity() instanceof BaseActivity) {
             ((BaseActivity) getActivity()).showMaterialDialog();
         }
-
     }
 
     @Override
@@ -95,7 +94,6 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
         mButtonNextAmount = mRoot.findViewById(R.id.button_withdraw_nextamount);
     }
 
-
     private void getWalletList() {
 
         mPresenter.getWalletList();
@@ -109,20 +107,28 @@ public class WithdrawFragment extends Fragment implements WithdrawContract.View 
         mSpinnerWalletList.setAdapter(mWithdrawSpinnerAdapter);
     }
 
+    @Override
+    public void internetConnectionError() {
+
+        SnackbarUtil.showSnackbar(mRoot,getString(R.string.everywhere_connectionerror),getContext());
+    }
+
     private void initListener() {
 
         mSpinnerWalletList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue())+" "+mWalletList.get(position).getCurrencySymbol());
+                mTextViewBalance.setText(String.valueOf(Double.valueOf(mWalletList.get(position).getBalance()).longValue())+" "
+                        +mWalletList.get(position).getCurrencySymbol());
                 mPosition = position;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance())+" "+mWalletList.get(0).getCurrencySymbol());
+                mTextViewBalance.setText(String.valueOf(mWalletList.get(0).getBalance())+" "
+                        +mWalletList.get(0).getCurrencySymbol());
             }
         });
 

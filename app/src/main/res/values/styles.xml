@@ -13,6 +13,46 @@
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorText</item>
+        <item name="android:actionMenuTextColor">@color/colorTertiary</item>
+
+    </style>
+
+    <style name="TextAppearanceBaseMedium" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="TextAppearanceBaseRegular" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="TextAppearanceHeadRegular" parent="TextAppearanceBaseRegular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextAppearanceHeadMedium" parent="TextAppearanceBaseRegular">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextAppearanceHelperRegular" parent="TextAppearanceBaseRegular">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorRed</item>
+    </style>
+
+    <style name="TextInputLayoutOutlineBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/colorTertiary</item>
+        <item name="android:textColorHint">@color/colorText</item>
+        <item name="hintTextAppearance">@style/TextAppearanceBaseRegular</item>
+        <item name="helperTextTextAppearance">@style/TextAppearanceHelperRegular</item>
+        <item name="counterTextAppearance">@style/TextAppearanceBaseRegular</item>
+    </style>
+
+
+    <style name="HintTextStyle" parent="TextAppearance.Design.Hint">
+        <item name="android:background">@color/mtrl_textinput_default_box_stroke_color</item>
     </style>
 
     <style name="RadioButtonTheme">
@@ -23,10 +63,7 @@
         <item name="android:button">@null</item>
         <item name="android:paddingLeft">@dimen/paddingleft_style_radiobutton</item>
         <item name="android:paddingRight">@dimen/paddingright_style_radiobutton</item>
-    </style>
-
-    <style name="SpinnerThemeDashboard" parent="android:Widget.Holo.Spinner">
-        <item name="android:background">@drawable/dashboard_backgroundspinner</item>
+        <item name="android:textColorTertiary">@color/colorText</item>
     </style>
 
     <style name="SpinnerThemeWithdrawAndTransferAndPurchase" parent="android:Widget.Holo.Spinner">
@@ -36,15 +73,6 @@
     <style name="SpinnerThemeWithdrawAmount" parent="android:Widget.Holo.Spinner">
         <item name="android:background">@drawable/withdrawamount_backgroundspinner</item>
     </style>
-
-    <style name="SpinnerListCurrencyCommon" parent="android:Widget.Holo.Spinner">
-
-        <item name="android:background">@drawable/common_listcurrencybackgroundspinner</item>
-    </style>
-
-    <style name="BaseAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="BaseAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
 

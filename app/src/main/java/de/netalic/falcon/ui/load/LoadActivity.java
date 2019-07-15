@@ -2,10 +2,13 @@ package de.netalic.falcon.ui.load;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Wallet;
+import de.netalic.falcon.ui.addwallet.AddWalletFragment;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
 import de.netalic.falcon.ui.dashboard.DashboardFragment;
@@ -14,15 +17,18 @@ import de.netalic.falcon.util.NavigationDrawerUtil;
 
 public class LoadActivity extends BaseActivity {
 
+    private Rate mCurrency;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        NavigationDrawerUtil.getDrawer(this, getToolbar(),1);
+        NavigationDrawerUtil.getDrawer(this, getToolbar(), 1);
 
-        Bundle bundle=getIntent().getExtras();
-        Wallet selectedWallet=bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
+        Bundle bundle = getIntent().getExtras();
+
+        Wallet selectedWallet = bundle.getParcelable(DashboardFragment.SELECTED_WALLET);
 
         LoadFragment loadFragment = (LoadFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_charge_fragmentcontainer);
         if (loadFragment == null) {
@@ -31,6 +37,18 @@ public class LoadActivity extends BaseActivity {
         }
 
         new LoadPresenter(loadFragment);
+    }
+
+    public Rate getCurrency() {
+
+        return mCurrency;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        mCurrency = data.getParcelableExtra(AddWalletFragment.SELECTED_CURRENCY);
+
     }
 
     @Override
@@ -49,7 +67,7 @@ public class LoadActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent=new Intent(this,DashboardActivity.class);
+        Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
     }
 }

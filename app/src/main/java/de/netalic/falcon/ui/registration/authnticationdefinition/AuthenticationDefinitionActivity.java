@@ -2,13 +2,14 @@ package de.netalic.falcon.ui.registration.authnticationdefinition;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Authentication;
 import de.netalic.falcon.ui.base.BaseActivity;
-import de.netalic.falcon.ui.dashboard.DashboardActivity;
+import de.netalic.falcon.ui.registration.phoneinput.PhoneInputActivity;
 import de.netalic.falcon.util.ActivityUtil;
 import info.hoang8f.android.segmented.SegmentedGroup;
 
@@ -115,9 +116,9 @@ public class AuthenticationDefinitionActivity extends BaseActivity implements Au
     }
 
     @Override
-    public void navigateToDashboard() {
+    public void navigateToPhoneInput() {
 
-        Intent intent = new Intent(this, DashboardActivity.class);
+        Intent intent = new Intent(this, PhoneInputActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

@@ -40,6 +40,8 @@ public interface ExchangeContract {
         void showError602();
 
         void showError401();
+
+        void internetConnectionError();
     }
 
     interface Presenter extends BasePresenter {

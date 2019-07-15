@@ -1,16 +1,18 @@
-package de.netalic.falcon.ui.addwallet;
+package de.netalic.falcon.common.listcurrency;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import de.netalic.falcon.R;
+import de.netalic.falcon.data.model.Rate;
+import de.netalic.falcon.ui.addwallet.AddWalletFragment;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.util.ActivityUtil;
 
 public class ListCurrencyActivity extends BaseActivity implements ListCurrencyFragment.Callback {
 
-    private String mCurrency;
+    private Rate mCurrency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +21,13 @@ public class ListCurrencyActivity extends BaseActivity implements ListCurrencyFr
         setupBackButton();
 
         Bundle bundle=getIntent().getExtras();
-        mCurrency=bundle.getString(AddWalletFragment.SELECTED_CURRENCY);
+        mCurrency=bundle.getParcelable(AddWalletFragment.SELECTED_CURRENCY);
 
 
         ListCurrencyFragment listCurrencyFragment = (ListCurrencyFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_listcurrency_fragmentcontainer);
         if (listCurrencyFragment == null) {
 
-            listCurrencyFragment = ListCurrencyFragment.newInstance(mCurrency );
+            listCurrencyFragment = ListCurrencyFragment.newInstance(mCurrency);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), listCurrencyFragment, R.id.framelayout_listcurrency_fragmentcontainer);
         }
         new ListCurrencyPresenter(listCurrencyFragment);
@@ -43,7 +45,7 @@ public class ListCurrencyActivity extends BaseActivity implements ListCurrencyFr
     }
 
     @Override
-    public void setCurrency(String currency) {
+    public void setCurrency(Rate currency) {
 
         mCurrency=currency;
     }
@@ -53,7 +55,7 @@ public class ListCurrencyActivity extends BaseActivity implements ListCurrencyFr
     public void onBackPressed() {
 
         Intent intent=new Intent();
-        intent.putExtra(AddWalletFragment.SELECTED_CURRENCY,mCurrency);
+        intent.putExtra(AddWalletFragment.SELECTED_CURRENCY, mCurrency);
         setResult(RESULT_OK,intent);
         finish();
     }
@@ -66,7 +68,7 @@ public class ListCurrencyActivity extends BaseActivity implements ListCurrencyFr
             case android.R.id.home:{
 
                 Intent intent=new Intent();
-                intent.putExtra(AddWalletFragment.SELECTED_CURRENCY,mCurrency);
+                intent.putExtra(AddWalletFragment.SELECTED_CURRENCY, mCurrency);
                 setResult(RESULT_OK,intent);
                 finish();
                 break;

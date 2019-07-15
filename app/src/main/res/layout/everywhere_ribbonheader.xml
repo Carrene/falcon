@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
+    android:layout_marginTop="3dp"
+    android:background="@color/colorPrimary"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/textview_everywhereribbonheader_wallettype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:text="@string/everywhere_value"
+        android:textColor="@color/colorSecondary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textview_everywhereribbonheader_wallletlable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/textview_everywhereribbonheader_wallettype"
+        android:text="@string/everywhere_walletlable"
+        android:textColor="@color/colorSecondary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textview_everywhereribbonheader_currencysymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@+id/textview_everywhereribbonheader_walletbalance"
+        android:text="@string/everywhere_value"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textview_everywhereribbonheader_walletbalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="90dp"
+        android:text="@string/everywhere_value"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+
+</RelativeLayout>

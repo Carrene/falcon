@@ -1,28 +1,29 @@
-package de.netalic.falcon.ui.addwallet;
+package de.netalic.falcon.common.listcurrency;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 import de.netalic.falcon.R;
-import de.netalic.falcon.data.model.Currency;
+import de.netalic.falcon.data.model.Rate;
 
 
 public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Currency> mCurrencyList;
+    private List<Rate> mRateList;
     private Callback mCallback;
     private String mSelectedCurrency;
 
 
-    public ListCurrencyRecyclerViewAdapter(List<Currency> currencyList, String selectedCurrency, Callback callback) {
-        mCurrencyList = currencyList;
+    public ListCurrencyRecyclerViewAdapter(List<Rate> currencyList, String selectedCurrency, Callback callback) {
+        mRateList = currencyList;
         mCallback = callback;
         mSelectedCurrency = selectedCurrency;
 
@@ -30,7 +31,7 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
     public interface Callback {
 
-        void setCurrency(String currency);
+        void setCurrency(Rate currency);
 
     }
 
@@ -46,8 +47,8 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        ((CurrencyViewHolder) holder).mTextViewCurrencyName.setText(mCurrencyList.get(position).getCode());
-        if (mSelectedCurrency != null && mSelectedCurrency.equals(mCurrencyList.get(position).getCode())) {
+        ((CurrencyViewHolder) holder).mTextViewCurrencyName.setText(mRateList.get(position).getCurrencyCode());
+        if (mSelectedCurrency != null && mSelectedCurrency.equals(mRateList.get(position).getCurrencyCode())) {
 
             ((CurrencyViewHolder) holder).mImageViewTick.setVisibility(View.VISIBLE);
         } else {
@@ -60,7 +61,7 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
     @Override
     public int getItemCount() {
-        return mCurrencyList.size();
+        return mRateList.size();
     }
 
     public class CurrencyViewHolder extends RecyclerView.ViewHolder {
@@ -76,7 +77,7 @@ public class ListCurrencyRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
             itemView.setOnClickListener(v -> {
 
-                mCallback.setCurrency(mCurrencyList.get(getLayoutPosition()).getCode());
+                mCallback.setCurrency(mRateList.get(getLayoutPosition()));
             });
         }
     }

@@ -1,7 +1,7 @@
-package de.netalic.falcon.ui.addwallet;
+package de.netalic.falcon.common.listcurrency;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
-import de.netalic.falcon.data.repository.currency.CurrencyRepository;
+import de.netalic.falcon.data.repository.rate.RateRepository;
 
 public class ListCurrencyPresenter implements ListCurrencyContract.Presenter {
 
@@ -17,7 +17,7 @@ public class ListCurrencyPresenter implements ListCurrencyContract.Presenter {
     public void getCurrencyList() {
 
         mListCurrencyView.showProgressBar();
-        RepositoryLocator.getInstance().getRepository(CurrencyRepository.class).getAll(deal -> {
+        RepositoryLocator.getInstance().getRepository(RateRepository.class).getAll(deal -> {
 
             if (deal.getThrowable() == null) {
 

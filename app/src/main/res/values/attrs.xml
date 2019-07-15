@@ -4,4 +4,7 @@
         <attr name="collapsedTarget" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="them">
+        <attr name="textColorError" format="reference" />
+    </declare-styleable>
 </resources>

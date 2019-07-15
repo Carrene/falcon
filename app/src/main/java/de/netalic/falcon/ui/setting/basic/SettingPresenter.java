@@ -1,5 +1,7 @@
 package de.netalic.falcon.ui.setting.basic;
 
+import android.os.AsyncTask;
+
 import java.util.Map;
 
 import de.netalic.falcon.MyApp;
@@ -29,7 +31,7 @@ public class SettingPresenter implements SettingContract.Presenter {
     @Override
     public void loginMethod() {
 
-        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
+        AsyncTask.execute(() -> RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
             if (deal.getThrowable() == null) {
                 switch (deal.getModel().getAuthenticationType()) {
                     case Authentication.PATTERN_TYPE: {
@@ -43,7 +45,8 @@ public class SettingPresenter implements SettingContract.Presenter {
                     }
                 }
             }
-        });
+        }));
+
     }
 
     @Override

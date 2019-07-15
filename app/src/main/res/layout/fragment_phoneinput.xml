@@ -4,17 +4,38 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textinputlayout_phoneinput_countrypicker"
+    <ImageView
+        android:id="@+id/imageview_phoneinput_pageindicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/phoneinput_navigationtwo" />
+
+    <TextView
+        android:id="@+id/textview_phoneinput_title"
+        style="@style/TextAppearanceHeadRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview_phoneinput_pageindicator"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="65dp"
+        android:gravity="center"
+        android:text="@string/phoneinput_header" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinputlayout_phoneinput_countrypicker"
+        style="@style/TextInputLayoutOutlineBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_phoneinput_title"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="@dimen/marginstart_registration_countrypicker"
         android:layout_marginTop="@dimen/margintop_registration_countrypicker"
         android:layout_marginEnd="@dimen/marginend_registration_countrypicker">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_phoneinput_countrypicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,47 +44,43 @@
             android:focusable="false"
             android:hint="@string/registration_defultcountry"
             android:inputType="number" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout_phoneinput_code"
+        style="@style/TextInputLayoutOutlineBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textinputlayout_phoneinput_countrypicker"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/margintop_registration_phonenumber">
+        android:layout_marginStart="@dimen/marginstart_registration_code"
+        android:layout_marginTop="30dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_phoneinput_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginstart_registration_code"
-            android:ems="3"
+            android:ems="4"
             android:enabled="false"
-            android:text="@string/registration_codehint"
+            android:hint="@string/phoneinput_hintcodecountry"
             android:textAlignment="textStart"
             android:textColor="@color/colorBlack" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/edittext_phoneinput_phonenumber"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayoutOutlineBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textinputlayout_phoneinput_code"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/marginend_registration_phonenumber"
-        android:ems="10"
-        android:hint="@string/registration_phonehint"
-        android:inputType="phone" />
+        android:layout_alignParentEnd="true">
 
-    <TextView
-        android:id="@+id/textview_phoneinput_confirmation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/marginbottom_registration_confirmtext"
-        android:gravity="center"
-        android:text="@string/registration_bottomtextview"
-        android:textColor="@color/colorBlack" />
-
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_phoneinput_phonenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginend_registration_phonenumber"
+            android:ems="10"
+            android:hint="@string/registration_phonehint"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
 </RelativeLayout>

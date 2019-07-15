@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <include layout="@layout/everywhere_ribbonheader"/>
+
+
     <LinearLayout
         android:id="@+id/linearlayout_receive_exchangeamount"
         android:layout_width="match_parent"
@@ -13,13 +16,13 @@
         android:orientation="horizontal"
         android:weightSum="4">
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textinputlayout_receive_firstamount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.2">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edittext_receive_firstamount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -28,7 +31,7 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6" />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:id="@+id/imageview_receive_exchange"
@@ -38,27 +41,38 @@
             android:layout_weight="0.3"
             android:src="@drawable/everywhere_rowexchangelogo" />
 
-        <Spinner
-            android:id="@+id/spinner_receive_spinner"
-            style="@style/SpinnerListCurrencyCommon"
-            android:layout_width="@dimen/width_receive_spinner"
-            android:layout_height="@dimen/height_receive_spinner"
-            android:layout_marginTop="@dimen/margintop_receive_spinner"
-            android:spinnerMode="dropdown" />
 
-        <android.support.design.widget.TextInputLayout
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TextInputEditText_receive_exchangeto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:drawableEnd="@drawable/everywhere_arrowright"
+            android:lines="1"
+            android:text=""
+            android:focusable="false"
+            android:clickable="true"
+            android:ems="5"
+            android:layout_marginBottom="7dp"
+            android:gravity="center"
+            android:backgroundTint="@color/lineColor" />
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.2">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edittext_receive_secondeamount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.2"
                 android:backgroundTint="@color/lineColor"
                 android:inputType="numberDecimal" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 

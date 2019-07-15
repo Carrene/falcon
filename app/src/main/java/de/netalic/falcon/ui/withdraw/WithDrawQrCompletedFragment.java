@@ -5,10 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import java.io.File;
 
@@ -48,7 +49,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
 
         mRoot = inflater.inflate(R.layout.fragment_withdrawqrcompleted, null);
         setHasOptionsMenu(true);
-        mBitmapQrCode = getArguments().getParcelable("qr");
+        mBitmapQrCode = getArguments().getParcelable(WithdrawQrCompletedActivity.QR);
         return mRoot;
     }
 
@@ -81,7 +82,7 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
 
         WithDrawQrCompletedFragment withDrawQrCompletedFragment = new WithDrawQrCompletedFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("qr", bitmap);
+        bundle.putParcelable(WithdrawQrCompletedActivity.QR, bitmap);
         withDrawQrCompletedFragment.setArguments(bundle);
         return withDrawQrCompletedFragment;
     }
@@ -108,14 +109,11 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
                 requestPermissionShare();
                 break;
             }
-
         }
         return true;
     }
 
-
     private void requestPermissionShare() {
-
 
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
@@ -123,29 +121,23 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            File file = ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            File file = ScreenshotUtil.saveScreenshot(getString(R.string.everywhere_image),ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             ScreenshotUtil.shareScreenshot(file, getContext());
-
-
         }
     }
 
     private void requestPermissionSave() {
 
-
         int checkPermission = ContextCompat.checkSelfPermission(checkNotNull(getContext()), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (checkPermission != PackageManager.PERMISSION_GRANTED) {
 
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS);
         } else {
 
-            ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
+            ScreenshotUtil.saveScreenshot(getString(R.string.everywhere_image),ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH, CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.qrcodecompleted_imagesaved), getContext());
-
-
         }
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -158,10 +150,8 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
         } else {
 
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
-
         }
     }
-
 
     private void initUiComponent() {
 
@@ -183,8 +173,5 @@ public class WithDrawQrCompletedFragment extends Fragment implements WithdrawQrC
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
-
     }
-
-
 }

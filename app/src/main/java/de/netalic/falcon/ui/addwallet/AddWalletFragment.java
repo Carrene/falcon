@@ -2,16 +2,19 @@ package de.netalic.falcon.ui.addwallet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import de.netalic.falcon.R;
+import de.netalic.falcon.common.listcurrency.ListCurrencyActivity;
+import de.netalic.falcon.data.model.Rate;
 import de.netalic.falcon.data.model.Wallet;
 import de.netalic.falcon.ui.base.BaseActivity;
 import de.netalic.falcon.ui.dashboard.DashboardActivity;
@@ -62,10 +65,10 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
     }
 
-    public static AddWalletFragment newInstance(String currency) {
+    public static AddWalletFragment newInstance(Rate currency) {
 
         Bundle bundle = new Bundle();
-        bundle.putString(AddWalletFragment.SELECTED_CURRENCY, currency);
+        bundle.putParcelable(AddWalletFragment.SELECTED_CURRENCY, currency);
         AddWalletFragment fragment = new AddWalletFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -96,7 +99,6 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
 
             Intent intent = new Intent(getContext(), ListCurrencyActivity.class);
             intent.putExtra(SELECTED_CURRENCY, mButtonCurrencyList.getText().toString());
-
             startActivityForResult(intent, 1);
 
         });
@@ -107,12 +109,12 @@ public class AddWalletFragment extends Fragment implements AddWalletContract.Vie
     public void onResume() {
         super.onResume();
 
-        String currency=((AddWalletActivity)getActivity()).getCurrency();
+        Rate currency=((AddWalletActivity)getActivity()).getCurrency();
         if (currency==null){
             mButtonCurrencyList.setText(getContext().getString(R.string.addwallet_pleaseselectcurrency));
         }
         else {
-            mButtonCurrencyList.setText(currency);
+            mButtonCurrencyList.setText(currency.getCurrencyCode());
         }
 
     }

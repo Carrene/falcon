@@ -2,9 +2,6 @@ package de.netalic.falcon.ui.exchange;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.data.model.Transaction;
@@ -23,9 +24,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ExchangeConfirmationFragment extends Fragment implements ExchangeConfirmationContract.View {
 
     private View mRoot;
-    private TextView mTextViewWalletName;
-    private TextView mTextViewDestinationWalletAddress;
-    private TextView mTextViewExchangeAmount;
+    private TextView mTextViewReceivedAmount;
     private TextView mTextViewPaidAmount;
     private ExchangeConfirmationContract.Presenter mExchangeConfirmationPresenter;
     private Transaction mTransaction;
@@ -52,12 +51,9 @@ public class ExchangeConfirmationFragment extends Fragment implements ExchangeCo
 
     private void initUiComponent() {
 
-        mTextViewWalletName = mRoot.findViewById(R.id.textview_exchangeconfirmation_walletname);
-        mTextViewDestinationWalletAddress = mRoot.findViewById(R.id.textview_exchangeconfirmation_payee);
-        mTextViewExchangeAmount = mRoot.findViewById(R.id.textview_exchangeconfirmation_exchangeamount);
+        mTextViewReceivedAmount = mRoot.findViewById(R.id.textview_exchangeconfirmation_receivedamount);
         mTextViewPaidAmount = mRoot.findViewById(R.id.textview_exchangeconfirmation_paidamount);
     }
-
 
     @Override
     public void setPresenter(ExchangeConfirmationContract.Presenter presenter) {
@@ -92,7 +88,6 @@ public class ExchangeConfirmationFragment extends Fragment implements ExchangeCo
 
         return exchangeConfirmationFragment;
     }
-
 
     @Override
     public void navigationToCompletedTransfer(Transaction transaction) {
@@ -163,9 +158,7 @@ public class ExchangeConfirmationFragment extends Fragment implements ExchangeCo
 
     private void setTransferInformation() {
 
-        mTextViewWalletName.setText(mTransaction.getActionList().get(1).getWalletName());
-        mTextViewExchangeAmount.setText(mTransaction.getActionList().get(1).getCurrencySymbol() + Math.abs(mTransaction.getActionList().get(1).getAmount()));
-        mTextViewDestinationWalletAddress.setText(mTransaction.getActionList().get(1).getWalletAddress());
+        mTextViewReceivedAmount.setText(String.valueOf(mTransaction.getActionList().get(1).getCurrencySymbol()+Math.abs(mTransaction.getActionList().get(1).getAmount())));
         mTextViewPaidAmount.setText(mPaidAmount);
     }
 }

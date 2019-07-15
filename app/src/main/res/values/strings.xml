@@ -5,27 +5,35 @@
     <string name="everywhere_permissiondenied">Permission Denied</string>
     <string name="everywhere_dollarsymbol">$</string>
     <string name="everywhere_imagesaved">Image Saved</string>
+    <string name="everywhere_connectionerror">Connection Error</string>
+    <string name="everywhere_value">VALUE</string>
+    <string name="everywhere_save">Save</string>
+    <string name="everywhere_skip">Skip</string>
+    <string name="everywhere_image">Image</string>
+
+    <string name="phoneinput_header">Please choose your country and select your phone number</string>
+    <string name="phoneinput_hintcodecountry">Code</string>
 
     <string name="phoneconfirmation_menudone">Done</string>
-    <string name="phoneconfirmation_toolbartitle">Phone confirmation</string>
+    <string name="phoneconfirmation_toolbartitle">Verification</string>
     <string name="phoneconfirmation_phonenumber">"912 222 22 22"</string>
-    <string name="phoneconfirmation_entertheverificationhere">"Enter the verification code here"</string>
+    <string name="phoneconfirmation_entertheverificationhere">"Verification code "</string>
     <string name="phoneconfirmation_timer">"(02:00)"</string>
-    <string name="phoneconfirmation_changenumber">"CHANGE NUMBER"</string>
-    <string name="phoneconfirmation_resend">RESEND</string>
+    <string name="phoneconfirmation_changenumber">"Change Number"</string>
+    <string name="phoneconfirmation_resend">Resend</string>
     <string name="phoneconfirmation_sentcodeagain">Sent code again</string>
     <string name="phoneconfirmation_invalidactivationcode">Invalid activation code</string>
     <string name="phoneconfirmation_invalidudidorphone">Invalid udid or phone</string>
     <string name="phoneconfirmation_invaliddevicename">Invalid device name</string>
 
-    <string name="registration_menudone">Done</string>
-    <string name="registration_toolbartitle">Your phone</string>
-    <string name="registration_bottomtextview">Confirmation code will be sent to you</string>
+    <string name="verification_pleaseenterverificationcodehere">Please enter verification code here</string>
+
+    <string name="registration_menudone">Next</string>
+    <string name="registration_toolbartitle">Your Phone</string>
     <string name="registration_defultcountry">Select your country</string>
     <string name="registration_pleasepickcountry">Please pick a country</string>
     <string name="registration_pleasefillyournumber">Please fill your number</string>
     <string name="registration_phonehint">Phone number</string>
-    <string name="registration_codehint">XXXX</string>
 
     <string name="phoneconfirmation_Pleasefillbox">Please fill box</string>
     <string name="athenticationdefinition_password">Password</string>
@@ -35,20 +43,22 @@
     <string name="authenticationdefinition_tryforsecondtime">Try for second time</string>
     <string name="authenticationdefinition_setsuccessful">Set successful</string>
     <string name="authenticationdefinition_pleasefilloutboxabove">Please fill out box above</string>
-    <string name="authenticationdefinition_hintpassword">Enter password</string>
+    <string name="authenticationdefinition_hintpassword">Password</string>
     <string name="authenticationdefinition_hintconfirmpassword">Confirm password</string>
-    <string name="authenticationdefinition_toolbartitle">Login method</string>
+    <string name="authenticationdefinition_toolbartitle">Authentication</string>
     <string name="authenticationdefinition_minimumlength">At least 8 characters</string>
     <string name="authenticationdefinition_digit">At least one digit</string>
     <string name="authenticationdefinition_capitalletter">At least on capital letter</string>
     <string name="authenticationdefinition_specialchar">At least one of (@  #  $  %  +  =  *  ?)</string>
+    <string name="authenticationdefinition_helpertext">8-20 characters, at least one capital letter, at least one number, and no spaces</string>
 
-    <string name="recoveryemail_skip">SKIP</string>
+    <string name="recoveryemail_skip">Skip</string>
     <string name="recoveryemail_thisemaildoesnotexist">Insert correct email</string>
-    <string name="recoveryemail_enteremailaddress">Enter email address</string>
-    <string name="recoveryemail_toolbartitle">Recovery email</string>
+    <string name="recoveryemail_enteremailaddress">Email address</string>
+    <string name="recoveryemail_toolbartitle">Email Recovery</string>
     <string name="recoveryemail_invalidemail">Invalid email</string>
     <string name="recoveryemail_emailalreadyexists"> Email already exists</string>
+    <string name="recoveryemail_pleaseenteryouremailaddress">Please enter your email address</string>
     <string name="recoveryemail_menudone">Done</string>
 
     <string name="navigation_dashboard">Dashboard</string>
@@ -58,9 +68,10 @@
     <string name="navigation_transactionhistory">Transaction history</string>
     <string name="navigation_chart">Chart</string>
     <string name="navigation_setting">Setting</string>
+    <string name="navigation_support">Support</string>
     <string name="navigation_aboutus">About Us</string>
     <string name="navigation_wallets">Wallets</string>
-    <string name="navigation_qrcodes">QR Codes</string>
+    <string name="navigation_contacts">Contacts</string>
 
     <string name="dashboard_invalidcurrency">Invalid currency</string>
     <string name="dashboard_ratedosenotexists">Rate dose not exists</string>
@@ -106,11 +117,12 @@
 
     <string name="loadcompleted_chargecompleted">Load status</string>
     <string name="loadcompleted_walletname">Wallet name </string>
-    <string name="loadcompleted_amount">Charge amount  </string>
+    <string name="loadcompleted_amount">Load amount  </string>
     <string name="loadcompleted_baseamount">Paid amount  </string>
     <string name="loadcompleted_paymentgateway">Payment gateway </string>
     <string name="loadcompleted_transactiondate">Transaction date </string>
     <string name="loadcompleted_transactiontime">Transaction time </string>
+    <string name="loadcompleted_transactionid">Transaction ID </string>
     <string name="loadcompleted_trackingcode">RRN </string>
     <string name="loadcompleted_dashboard">DASHBOARD</string>
     <string name="loadcompleted_success">Success</string>
@@ -133,7 +145,7 @@
     <string name="withdraw_toolbar">Withdraw</string>
     <string name="withdraw_nextamount">NEXT-AMOUNT</string>
     <string name="withdraw_balance">"Balance : "</string>
-    <string name="withdraw_wallet">Wallet</string>
+    <string name="everywhere_walletlable">Wallet</string>
     <string name="withdraw_qrcode">QR code</string>
     <string name="withdraw_withdrawmethod">Withdraw method</string>
 
@@ -256,11 +268,15 @@
     <string name="transferfailed_dashboardbutton">DASHBOARD</string>
 
     <string name="sendcompleted_toolbar">Send completed</string>
-    <string name="sendcompleted_paidamount">Transfer amount  </string>
-    <string name="sendcompleted_baseamount">Paid amount  </string>
+    <string name="sendcompleted_walletname">Wallet name</string>
+    <string name="sendcompleted_payeeaddress">Payee address</string>
+    <string name="everywhere_paidamount">Paid amount</string>
+    <string name="sendcompleted_receivedamount">Received amount</string>
+    <string name="sendcompleted_transactionfee">Transaction fee</string>
+    <string name="sendcompleted_totalpaidamount">Total paid amount</string>
     <string name="sendcompleted_transactiondate">Transaction date </string>
     <string name="sendcompleted_transactiontime">Transaction time </string>
-    <string name="sendcompleted_trackingcode">RRN </string>
+    <string name="sendcompleted_transactionid">Transaction ID </string>
     <string name="sendcompleted_dashboard">DASHBOARD</string>
     <string name="sendcompleted_success">Success</string>
     <string name="sendcompleted_imagesaved">Image Saved</string>
@@ -282,9 +298,11 @@
 
     <string name="sendconfirmation_toolbar">Transfer confirmation</string>
     <string name="sendconfirmation_walletname">Wallet name </string>
-    <string name="sendconfirmation_paymentgateway">Payee address </string>
-    <string name="sendconfirmation_walletamount">Transfer amount  </string>
-    <string name="sendconfirmation_baseamount">Paid amount  </string>
+    <string name="sendconfirmation_total">Total </string>
+    <string name="sendconfirmation_payeeaddress">Payee address </string>
+    <string name="sendconfirmation_receiveamount">Receive amount  </string>
+    <string name="sendconfirmation_payeeamount">Payee amount  </string>
+    <string name="sendconfirmation_transactionfee">Transaction fee  </string>
     <string name="sendconfirmation_confirm">Confirm</string>
     <string name="sendconfirmation_transfernotfound">Transfer not found</string>
     <string name="sendconfirmation_tryingtofinalizesomeoneelsetransaction">Trying to finalize someone else transaction</string>
@@ -323,8 +341,10 @@
 
     <string name="qrcodeaddresses_toolbar">Addresses QR code</string>
     <string name="qrcodeaddresses_dashboardbutton">DASHBOARD</string>
+    <string name="qrcodeaddresses_wallet">wallet</string>
 
     <string name="authentication_hintpassword">Enter password</string>
+    <string name="authentication_chooseyourmethod">Please choose authentication method</string>
     <string name="authentication_toolbar">Authentication</string>
 
     <string name="authenticationpassword_incorrect">Password is incorrect</string>
@@ -356,11 +376,12 @@
 
     <string name="transactiondetail_transactiondetail">Transaction detail</string>
     <string name="transactiondetail_walletname">Wallet name </string>
-    <string name="transactiondetail_amount">Charge amount  </string>
-    <string name="transactiondetail_baseamount">Paid amount  </string>
+    <string name="transactiondetail_amount">amount  </string>
+    <string name="transactiondetail_to">to  </string>
     <string name="transactiondetail_paymentgateway">Payment gateway </string>
     <string name="transactiondetail_transactiondate">Transaction date </string>
     <string name="transactiondetail_transactiontime">Transaction time </string>
+    <string name="transactiondetail_transactionid">Transaction ID </string>
     <string name="transactiondetail_trackingcode">RRN </string>
     <string name="transactiondetail_dashboard">DASHBOARD</string>
     <string name="transactiondetail_success">Success</string>
@@ -407,32 +428,36 @@
 
     <string name="send_title">Send</string>
     <string name="send_hintalphaamount">Alpha</string>
-    <string name="send_hintwalletaddress">Wallet Address</string>
+    <string name="send_hintwalletaddress">Receiver Address</string>
 
     <string name="receive_title">Receive</string>
+    <string name="receive_alertdialogtitle">Choose a name for this QR code</string>
+    <string name="receive_pleasetypeaname">Please type a name</string>
     <string name="receive_hintalphaamount">Alpha</string>
 
     <string name="exchange_title">Exchange</string>
 
     <string name="exchangecompleted_title">Exchange completed</string>
+    <string name="exchangecompleted_walletname">Wallet name</string>
     <string name="text_rowtransactionhistory_textviewdivider">" / "</string>
-    <string name="text_exchangecompleted_textviewamount">VALUE</string>
+    <string name="text_exchangecompleted_textviewwalletname">VALUE</string>
     <string name="text_exchangecompleted_textviewpaidamountlable">Paid amount</string>
+    <string name="text_exchangecompleted_textviewreceivedamountlable">Received amount</string>
     <string name="text_exchangecompleted_textviewpaidamount">VALUE</string>
-    <string name="text_exchangecompleted_textviewdatelabel">Exchange Date</string>
+    <string name="text_exchangecompleted_textviewdatelabel">Transaction Date</string>
+    <string name="text_exchangecompleted_textviewexchangeratelabel">Exchange Rate</string>
     <string name="text_exchangecompleted_textviewdate">VALUE</string>
-    <string name="text_exchangecompleted_textviewtimelabel">Exchange time</string>
-    <string name="text_exchangecompleted_textviewrnnlabel">RNN</string>
+    <string name="text_exchangecompleted_textviewtimelabel">Transaction time</string>
+    <string name="text_exchangecompleted_textviewrnnlabel">Transaction ID</string>
     <string name="text_exchangecompleted_textviewrnn">VALUE</string>
 
-    <string name="text_exchangeconfirmation_textviewnamelabel">Wallet name</string>
+    <string name="text_exchangeconfirmation_paidamount">Paid amount</string>
     <string name="text_exchangeconfirmation_textviewname">VALUE</string>
-    <string name="text_exchangeconfirmation_textviewamountlabel">Exchange amount</string>
-    <string name="text_exchangeconfirmation_textviewamount">VALUE</string>
-    <string name="text_exchangeconfirmation_textviewpaidamountlabel">Paid aount</string>
     <string name="text_exchangeconfirmation_textviewpaidamount">VALUE</string>
-    <string name="text_exchangeconfirmation_textviewpayeeaddresslabel">Payee address</string>
+    <string name="text_exchangeconfirmation_receivedamount">Received amount</string>
     <string name="text_exchangeconfirmation_textviewpayeeaddress">VALUE</string>
+
+    <string name="contacts_toolbar">Contacts</string>
 
     <string name="text_exchangefailed_textviewfailtitle">Failed</string>
     <string name="text_exchangefailed_textviewfail">Lorem lpsum is simply dummy text of the printing and type setting industry</string>

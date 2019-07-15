@@ -1,6 +1,6 @@
 package de.netalic.falcon.ui.load;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import de.netalic.falcon.data.repository.base.RepositoryLocator;
 import de.netalic.falcon.data.repository.rate.RateRepository;
@@ -60,6 +60,7 @@ public class LoadPresenter implements LoadContract.Presenter {
 
 
                 mChargeView.dismissProgressBar();
+                mChargeView.internetConnectionError();
             } else {
 
                 switch (deal.getResponse().code()) {
@@ -112,9 +113,9 @@ public class LoadPresenter implements LoadContract.Presenter {
 
                 }
             }
-
+            mChargeView.dismissProgressBar();
         });
-        mChargeView.dismissProgressBar();
+
 
     }
 

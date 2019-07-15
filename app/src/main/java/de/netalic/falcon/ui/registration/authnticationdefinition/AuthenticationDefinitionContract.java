@@ -6,7 +6,7 @@ import de.netalic.falcon.ui.base.BaseView;
 public interface AuthenticationDefinitionContract {
 
     interface View extends BaseView<AuthenticationDefinitionContract.Presenter> {
-        void navigateToDashboard();
+        void navigateToPhoneInput();
     }
 
     interface Presenter extends BasePresenter {

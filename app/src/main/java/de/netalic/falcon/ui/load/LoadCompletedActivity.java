@@ -18,23 +18,24 @@ public class LoadCompletedActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
+        Bundle bundle=getIntent().getExtras();
+
         if (getIntent().getExtras() == null) {
 
             throw new RuntimeException("deposit should not be null");
         }
+        String paidSymbol=bundle.getString(LoadConfirmationFragment.PAID_AMOUNT);
+        String loadSymbol=bundle.getString(LoadConfirmationFragment.LOAD_AMOUNT);
         Receipt receipt = getIntent().getExtras().getParcelable(ARGUMENT_RECEIPT);
 
         LoadCompletedFragment loadCompletedFragment = (LoadCompletedFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_chargecompleted_fragmentcontainer);
         if (loadCompletedFragment == null) {
 
-            loadCompletedFragment = LoadCompletedFragment.newInstance(receipt);
+            loadCompletedFragment = LoadCompletedFragment.newInstance(receipt,loadSymbol,paidSymbol);
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), loadCompletedFragment, R.id.framelayout_chargecompleted_fragmentcontainer);
         }
-
         new LoadCompletedPresenter(loadCompletedFragment);
-
     }
-
 
     @Override
     protected int getLayoutId() {

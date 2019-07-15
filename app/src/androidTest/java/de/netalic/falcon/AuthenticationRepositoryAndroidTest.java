@@ -1,6 +1,6 @@
 package de.netalic.falcon;
 
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -29,13 +29,13 @@ public class AuthenticationRepositoryAndroidTest {
 
         Authentication authentication = new Authentication();
         authentication.setAuthenticationType(1);
-        authentication.setAttemptsNumber(1);
-        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).update(authentication, deal -> Assert.assertEquals(deal.getModel().getAttemptsNumber(), 1));
+        authentication.setAttemptNumber(1);
+        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).update(authentication, deal -> Assert.assertEquals(deal.getModel().getAttemptNumber(), 1));
         RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).get(deal -> {
 
-            Assert.assertEquals(deal.getModel().getAttemptsNumber(), 1);
+            Assert.assertEquals(deal.getModel().getAttemptNumber(), 1);
             Assert.assertEquals(deal.getModel().getAuthenticationType(), 1);
-            Assert.assertEquals(deal.getModel().getMaxAttemptsNumber(), 5);
+            Assert.assertEquals(deal.getModel().getMaxAttemptNumber(), 5);
 
         });
     }
@@ -44,7 +44,7 @@ public class AuthenticationRepositoryAndroidTest {
     public void testAuthentication_lock() {
 
         Authentication authentication = new Authentication();
-        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).update(authentication, deal -> Assert.assertEquals(authentication.getAttemptsNumber(), 0));
+        RepositoryLocator.getInstance().getRepository(AuthenticationRepository.class).update(authentication, deal -> Assert.assertEquals(authentication.getAttemptNumber(), 0));
         authentication.failAttempt();
         authentication.failAttempt();
         authentication.failAttempt();

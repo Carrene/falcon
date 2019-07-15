@@ -4,10 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import java.io.File;
 
@@ -36,8 +37,8 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
     private Receipt mReceipt;
     private View mRoot;
     private TextView mTextViewWalletName;
-    private TextView mTextViewAmountWallet;
-    private TextView mTextViewAmountBase;
+    private TextView mTextViewPaidAmount;
+    private TextView mTextViewDestinationwalletaddress;
     private TextView mTextViewPaymentGateway;
     private TextView mTextViewTransactionDate;
     private TextView mTextViewTransactionTime;
@@ -48,7 +49,10 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
     private View mScreenshotView;
     private String mTransactionType;
     private RelativeLayout mRelativeLayoutRrnBox;
-    private View mViewRrrnLine;
+    private View mViewRrnLine;
+    private TextView mTextViewTypeOfTransaction;
+    private TextView mTextViewTypeOfTransactionAddress;
+    private TextView mTextViewTransactionId;
 
     @Nullable
     @Override
@@ -74,7 +78,6 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
     @Override
     public void setPresenter(TransactionDetailCompletedContract.Presenter presenter) {
 
-
     }
 
     @Override
@@ -97,13 +100,11 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
         return fragment;
     }
 
-
     public void initUiComponent() {
 
-
         mTextViewWalletName = mRoot.findViewById(R.id.textview_transactiondetail_walletname);
-        mTextViewAmountWallet = mRoot.findViewById(R.id.textview_transactiondetail_amountalpha);
-        mTextViewAmountBase = mRoot.findViewById(R.id.textview_transactiondetail_amountdollar);
+        mTextViewPaidAmount = mRoot.findViewById(R.id.textview_transactiondetail_paidamount);
+        mTextViewDestinationwalletaddress = mRoot.findViewById(R.id.textview_transactiondetail_destinationwalletaddress);
         mTextViewPaymentGateway = mRoot.findViewById(R.id.textview_transactiondetail_paymentgateway);
         mTextViewTransactionDate = mRoot.findViewById(R.id.textview_transactiondetail_transactiondate);
         mTextViewTransactionTime = mRoot.findViewById(R.id.textview_transactiondetail_transactiontime);
@@ -111,12 +112,15 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
         mButtonNavigationToDashboard = mRoot.findViewById(R.id.button_transactiondetail_dashborad);
         mScreenshotView = mRoot.findViewById(R.id.linearlayout_transactiondetail_main);
         mRelativeLayoutRrnBox = mRoot.findViewById(R.id.relativelayout_transactiondetailcompleted_rrnbox);
-        mViewRrrnLine = mRoot.findViewById(R.id.view_transactiondetailcompleted_rrnlineview);
+        mViewRrnLine = mRoot.findViewById(R.id.view_transactiondetailcompleted_rrnlineview);
+        mTextViewTypeOfTransaction=mRoot.findViewById(R.id.textview_transactiondetail_typeoftransaction);
+        mTextViewTypeOfTransactionAddress=mRoot.findViewById(R.id.textview_transactiondetail_typeoftransactionaddress);
+        mTextViewTransactionId=mRoot.findViewById(R.id.textview_transactiondetail_transactionid);
 
         if (mTransactionType.equals(getContext().getString(R.string.transactiondetail_forchecktransferorcharge))) {
 
             mRelativeLayoutRrnBox.setVisibility(mRoot.GONE);
-            mViewRrrnLine.setVisibility(mRoot.GONE);
+            mViewRrnLine.setVisibility(mRoot.GONE);
         }
     }
 
@@ -128,18 +132,20 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
-
     }
 
     public void setPaymentInformation() {
 
         mTextViewWalletName.setText(mReceipt.getRecipientWalletName());
-        mTextViewAmountWallet.setText(mReceipt.getQuoteCurrencySymbol() + " " + String.valueOf(mReceipt.getQuoteAmount()));
-        mTextViewAmountBase.setText(mReceipt.getQuoteCurrencySymbol() + " " + String.valueOf(Math.abs(mReceipt.getBaseAmount())));
+        mTextViewPaidAmount.setText(mReceipt.getQuoteCurrencySymbol() + " " + String.valueOf(mReceipt.getQuoteAmount()));
+        mTextViewDestinationwalletaddress.setText(mReceipt.getRecipientWalletAddress());
         mTextViewPaymentGateway.setText(mReceipt.getPaymentGatewayName());
         mTextViewTransactionDate.setText(mReceipt.getDate());
         mTextViewTransactionTime.setText(mReceipt.getTime());
         mTextViewRrn.setText(mReceipt.getRetrievalReferenceNumber());
+        mTextViewTransactionId.setText(mReceipt.getRetrievalReferenceNumber());
+        mTextViewTypeOfTransaction.setText(mTransactionType);
+        mTextViewTypeOfTransactionAddress.setText(mTransactionType);
     }
 
     private void requestPermissionShare() {
@@ -152,7 +158,6 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
 
             File file = new File(String.valueOf(ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH)));
             ScreenshotUtil.shareScreenshot(file, checkNotNull(getContext()));
-
         }
     }
 
@@ -167,7 +172,6 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
 
             ScreenshotUtil.saveScreenshot(ScreenshotUtil.takeScreenshot(mScreenshotView), IMAGE_QUALITY, ALPHA_PATH + CHARGE_PATH);
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.transactiondetail_imagesaved), getContext());
-
         }
     }
 
@@ -181,10 +185,8 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
         } else {
 
             SnackbarUtil.showSnackbar(mRoot, getContext().getString(R.string.everywhere_permissiondenied), getContext());
-
         }
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -201,7 +203,6 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
 
                 requestPermissionSave();
                 break;
-
             }
 
             case R.id.item_chargetransfercompletedmenu_share: {
@@ -209,9 +210,7 @@ public class TransactionDetailCompletedFragment extends Fragment implements Tran
                 requestPermissionShare();
                 break;
             }
-
         }
-
         return true;
     }
 }

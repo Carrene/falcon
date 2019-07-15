@@ -2,8 +2,10 @@ package de.netalic.falcon.ui.setting.basic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
+
+import androidx.annotation.Nullable;
+
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.base.BaseActivity;

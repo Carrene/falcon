@@ -2,8 +2,9 @@ package de.netalic.falcon.ui.setting.basic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
+
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import de.netalic.falcon.R;
 import de.netalic.falcon.ui.setting.authenticationdefinition.SettingAuthenticationDefinitionActivity;
@@ -94,7 +95,14 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
     @Override
     public void setPatternType() {
 
-        mPreferenceLoginMethod.setTitle(getContext().getString(R.string.settingfragment_pattern));
+        new Runnable() {
+            @Override
+            public void run() {
+
+                mPreferenceLoginMethod.setTitle(getContext().getString(R.string.settingfragment_pattern));
+            }
+        };
+
     }
 
     @Override
@@ -129,7 +137,16 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
 
     @Override
     public void setBaseCurrency(String currency) {
-        mPreferenceBaseCurrency.setTitle(currency);
+
+        new Runnable() {
+            @Override
+            public void run() {
+
+                mPreferenceBaseCurrency.setTitle(currency);
+            }
+        };
+
+
     }
 
     @Override
@@ -141,5 +158,6 @@ public class SettingFragment extends PreferenceFragmentCompat implements Setting
     public void getTitleOfActivityToolbar(String phone) {
         ((SettingActivity) getActivity()).setName(phone);
     }
+
 
 }

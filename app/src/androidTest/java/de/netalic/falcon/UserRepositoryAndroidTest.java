@@ -1,7 +1,8 @@
 package de.netalic.falcon;
 
-import android.support.test.runner.AndroidJUnit4;
 import android.util.Base64;
+
+import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.After;
 import org.junit.Assert;
