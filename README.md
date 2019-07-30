@@ -4,6 +4,8 @@ Falcon
 
 ![alt text](https://hdanimalspot.com//storage/upload/falcon/falcon-2.jpg "falcon")
 
+***This repository is archived and we have moved to peacock.***
+
 Setting up development Environment
 ----------------------------------
 
